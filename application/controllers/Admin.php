@@ -9,6 +9,9 @@ Class Admin extends MY_Controller {
 
     public function __construct() {
         parent::__construct();
+        $this->load->database();
+        $this->load->model('Admin_model');
+        $this->load->helper(array('form', 'url')); 
     }
 
     public function index()
@@ -21,4 +24,23 @@ Class Admin extends MY_Controller {
     	$this->middle = 'dashboard';
         $this->Admin();
     }
+
+    public function adminLogin(){
+         
+        $userName = $this->input->post('userName');
+        $password = $this->input->post('password');
+            
+        $query = $this->Admin_model->login($userName,$password,'admin');
+
+        if(!empty($query))
+        {
+            echo "success";
+            //redirect(base_url('admin/dashboard'));
+        }
+        else
+        {
+            echo "failed";
+        }
+    }
+
 }
