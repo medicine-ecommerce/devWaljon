@@ -11,7 +11,7 @@ class Admin_model extends CI_model
 		$this->db->select('*');
 		$this->db->from($table);
 		$this->db->where('name',$user);
-		$this->db->where('password',$pass);
+		$this->db->where('password',md5($pass));
 		$result=$this->db->get();
 		return $result->row();
 	}

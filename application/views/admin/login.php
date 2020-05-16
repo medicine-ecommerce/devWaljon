@@ -39,7 +39,7 @@
                 <input type="password" class="form-control" placeholder="Password" required="" name="password" />
               </div>
               <div>
-                <a class="btn btn-default submit" href="index.html" name="submit" type="submit">Log in</a>
+                <input class="btn btn-default submit" href="index.html" value="Log in" name="submit" type="submit">
                 <a class="reset_pass" href="#">Lost your password?</a>
               </div>
 

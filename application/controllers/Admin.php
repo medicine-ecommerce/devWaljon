@@ -34,8 +34,8 @@ Class Admin extends MY_Controller {
 
         if(!empty($query))
         {
-            echo "success";
-            //redirect(base_url('admin/dashboard'));
+            //echo "success";
+            redirect(base_url('admin/dashboard'));
         }
         else
         {
