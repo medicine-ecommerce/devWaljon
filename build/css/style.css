@@ -9,3 +9,29 @@ span.head-title {
     margin-left: 8px;
 }
 /*header css*/
+
+/*dashboard css*/
+h5.dashboard-head {
+    font-size: 16px;
+    font-weight: 600;
+}
+/*dashboard css*/
+
+
+@media (max-width: 568px) {
+	.nav-item {
+	    margin-left: 15px;
+	}
+	.top_nav .navbar-right {
+	    margin: 15px 10px;
+	    margin-right: 20px;
+	    float: right;
+	    padding: 0px;
+	}
+	.toggle a i {
+	    margin-left: 10px;
+	}
+	span.head-title {
+	    margin-left: 5px;
+	}
+}
