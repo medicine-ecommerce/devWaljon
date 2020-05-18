@@ -10,6 +10,8 @@ span.head-title {
 }
 /*header css*/
 
+/*dashboard css*/
+
 .nav-md ul.nav.child_menu li:before {
     background: #425668;
     bottom: auto;
@@ -55,5 +57,34 @@ ul.nav.child_menu li a.active {
     font-weight: 700;
 }
 .admin-side-bar {
-    width: 230px;
+    width: auto;
+}
+.fa-chevron-down:before { 
+    margin-left: 35px;
+}
+.nav-md .container.body .col-md-3.left_col {
+    min-height: 100%;
+    width: 190px;
+}
+.nav-md .container.body .right_col {
+    padding: 10px 20px 0;
+    margin-left: 190px;
+}
+
+@media (max-width: 568px) {
+    .nav-item {
+        margin-left: 15px;
+    }
+    .top_nav .navbar-right {
+        margin: 15px 10px;
+        margin-right: 20px;
+        float: right;
+        padding: 0px;
+    }
+    .toggle a i {
+        margin-left: 10px;
+    }
+    span.head-title {
+        margin-left: 5px;
+    }
 }
