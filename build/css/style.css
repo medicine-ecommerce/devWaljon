@@ -9,3 +9,51 @@ span.head-title {
     margin-left: 8px;
 }
 /*header css*/
+
+.nav-md ul.nav.child_menu li:before {
+    background: #425668;
+    bottom: auto;
+    content: "";
+    height: 11px;
+    width: 11px;
+    left: 21px;
+    margin-top: 12px;
+    position: absolute;
+    right: auto;
+    z-index: 1;
+    border-radius: 50%;
+    border: 1px solid #8e9eaf;
+}
+.nav-md ul.nav.child_menu li:after {
+    border-left: 1px solid #8e9eaf;
+    bottom: -15px;
+    content: "";
+    left: 26px;
+    position: absolute;
+    top: 15px;
+}
+.nav-md ul.nav.child_menu li a.active:before {
+    font-family: "FontAwesome";
+    background: #ffffff00;
+    background-url: initial;
+    bottom: auto;
+    content: "\f192";
+    height: 12px;
+    width: 11px;
+    left: -15px;
+    margin-top: -1px;
+    position: absolute;
+    right: auto;
+    z-index: 1;
+    border-radius: 50%;
+    color: white;
+    font-size: 13px;  
+    font-weight: 100;
+    
+}
+ul.nav.child_menu li a.active {
+    font-weight: 700;
+}
+.admin-side-bar {
+    width: 230px;
+}
