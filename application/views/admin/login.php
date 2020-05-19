@@ -30,10 +30,15 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
+            <?php if (!empty($this->session->flashdata('error'))) {
+              echo '<div class="alert alert-danger">
+                    '.$this->session->flashdata('error').'
+                  </div>';
+            } ?>
             <form action="<?php echo base_url('Admin/adminLogin')?>" method="post">
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" name="userName" />
+                <input type="text" class="form-control" placeholder="Username/Email" required="" name="username" />
               </div>
               <div>
                 <input type="password" class="form-control" placeholder="Password" required="" name="password" />

@@ -1,8 +1,8 @@
 
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          <div class="pull-center">
+            copyright <i class="fa fa-copyright"></i> 2020. All Right Reserved
           </div>
           <div class="clearfix"></div>
         </footer>
@@ -11,7 +11,8 @@
     </div>
 
     <!-- jQuery -->
-    <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>
+    <!-- <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script> -->
+    
     <!-- Bootstrap -->
     <script src="<?php echo base_url(); ?>vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FastClick -->
