@@ -37,7 +37,8 @@
                   </li>
                   <li><a><i class="fa fa-university"></i> Vendor <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="index.html">List</a></li>
+                      <li><a href="<?php echo base_url('admin/vendors'); ?>">List</a></li>
+                      <li><a href="<?php echo base_url('admin/vendor_add'); ?>">Add</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-home"></i> Home Module <span class="fa fa-chevron-down"></span></a>
