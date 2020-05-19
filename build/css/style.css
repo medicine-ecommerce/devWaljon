@@ -70,6 +70,17 @@ ul.nav.child_menu li a.active {
     padding: 10px 20px 0;
     margin-left: 190px;
 }
+.nav.side-menu>li.active, .nav.side-menu>li.current-page { 
+    margin-right: -23px;
+}
+.active a span.fa {
+    text-align: right!important;
+    margin-right: 18px;
+}
+.menu_section>ul {
+    margin-top: 0px;
+    display: block;
+}
 
 @media (max-width: 568px) {
     .nav-item {
