@@ -9,3 +9,206 @@ span.head-title {
     margin-left: 8px;
 }
 /*header css*/
+
+/*dashboard css*/
+h5.dashboard-head {
+    font-size: 16px;
+    font-weight: 600;
+}
+.table-data{
+	display: flow-root;
+    padding: 10px;
+    background: #fff;
+}
+.dash-box {
+    display: flow-root;
+    padding: 20px 15px;
+    color: white;
+    border-radius: 5px;
+}
+.blue-box{
+    background-image: linear-gradient(to right, #89cdf4, #749ccd);
+}
+.orange-box{
+    background-image: linear-gradient(to right, #f8bd6d, #d3a260);
+}
+.green-box{
+    background-image: linear-gradient(to right, #8df4a5, #4dd56f);
+}
+.light-green-box{
+    background-image: linear-gradient(to right, #5bdfe4, #15bfbf);
+}
+.dash-box .pull-right i {
+    font-size: 50px;
+}
+.dash-box .pull-right.visitors-icon i {
+    font-size: 35px;
+}
+.dash-box .pull-right.user-icon i {
+    font-size: 40px;
+}
+
+.dash-box h2{
+	font-size: 38px;
+    font-weight: 500;
+    margin: 0px;
+}   
+.table.user-detail-table thead th {
+    vertical-align: bottom;
+    border-top: none;
+    padding: 10px !important;
+    font-size: 12px;
+} 
+table.dataTable.user-detail-table thead .sorting:after {
+    display: none;
+}
+table.dataTable.user-detail-table thead .sorting_asc:after {
+    display: none;
+}
+table.dataTable.user-detail-table {
+    border-collapse: collapse !important;
+}
+.table.user-detail-table tbody td {
+    padding: 5px;
+    font-size: 12px;
+    vertical-align: middle;
+    border-top: none;
+    border-bottom: 1px solid #dee2e6;
+}
+span.status-progress {
+    background: #4ebbf3;
+    width: 100%;
+    text-align: center;
+    display: block;
+    border-radius: 50px;
+    color: white;
+} 
+span.status-shipped {
+    background: #e1c32d;
+    width: 100%;
+    text-align: center;
+    display: block;
+    border-radius: 50px;
+    color: white;
+} 
+
+span.status-consulted {
+    background: #5adf76;
+    width: 100%;
+    text-align: center;
+    display: block;
+    border-radius: 50px;
+    color: white;
+} 
+.list-heading h2{
+	color: #0172bc;
+    font-weight: 500;
+    font-size: 16px;
+}
+span.status-Review {
+    border: 1px solid #ddd;
+    padding: 3px;
+    border-radius: 3px;
+}
+span.status-approve {
+    border: 1px solid #ddd;
+    padding: 3px;
+    color: #2eae3e;
+    border-radius: 3px;
+}
+span.status-cancle {
+    border: 1px solid #ddd;
+    padding: 3px 5px;
+    color: red;
+    margin-left: 4px;
+    border-radius: 3px;
+}
+/*dashboard css*/
+
+.nav-md ul.nav.child_menu li:before {
+    background: #425668;
+    bottom: auto;
+    content: "";
+    height: 11px;
+    width: 11px;
+    left: 21px;
+    margin-top: 12px;
+    position: absolute;
+    right: auto;
+    z-index: 1;
+    border-radius: 50%;
+    border: 1px solid #8e9eaf;
+}
+.nav-md ul.nav.child_menu li:after {
+    border-left: 1px solid #8e9eaf;
+    bottom: -15px;
+    content: "";
+    left: 26px;
+    position: absolute;
+    top: 15px;
+}
+.nav-md ul.nav.child_menu li a.active:before {
+    font-family: "FontAwesome";
+    background: #ffffff00;
+    background-url: initial;
+    bottom: auto;
+    content: "\f192";
+    height: 12px;
+    width: 11px;
+    left: -15px;
+    margin-top: -1px;
+    position: absolute;
+    right: auto;
+    z-index: 1;
+    border-radius: 50%;
+    color: white;
+    font-size: 13px;  
+    font-weight: 100;
+    
+}
+ul.nav.child_menu li a.active {
+    font-weight: 700;
+}
+.admin-side-bar {
+    width: auto;
+}
+.fa-chevron-down:before { 
+    margin-left: 35px;
+}
+.nav-md .container.body .col-md-3.left_col {
+    min-height: 100%;
+    width: 190px;
+}
+.nav-md .container.body .right_col {
+    padding: 10px 20px 0;
+    margin-left: 190px;
+}
+.nav.side-menu>li.active, .nav.side-menu>li.current-page { 
+    margin-right: -23px;
+}
+.active a span.fa {
+    text-align: right!important;
+    margin-right: 18px;
+}
+.menu_section>ul {
+    margin-top: 0px;
+    display: block;
+}
+
+@media (max-width: 568px) {
+    .nav-item {
+        margin-left: 15px;
+    }
+    .top_nav .navbar-right {
+        margin: 15px 10px;
+        margin-right: 20px;
+        float: right;
+        padding: 0px;
+    }
+    .toggle a i {
+        margin-left: 10px;
+    }
+    span.head-title {
+        margin-left: 5px;
+    }
+}

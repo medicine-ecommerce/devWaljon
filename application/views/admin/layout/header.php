@@ -14,6 +14,7 @@
     <link href="<?php echo base_url(); ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="<?php echo base_url(); ?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- NProgress -->
     <link href="<?php echo base_url(); ?>vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- iCheck -->
@@ -26,9 +27,17 @@
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url(); ?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
+    <!-- Datatables -->
+    <link href="<?php echo base_url(); ?>vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
+
     <!-- Custom Theme Style -->
-    <link href="<?php echo base_url(); ?>build/css/custom.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>build/css/custom.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>build/css/Style.css" rel="stylesheet">
+    <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>
   </head>
 
   <body class="nav-md">
