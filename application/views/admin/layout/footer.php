@@ -11,7 +11,8 @@
     </div>
 
     <!-- jQuery -->
-    <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>
+    <!-- <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script> -->
+    
     <!-- Bootstrap -->
     <script src="<?php echo base_url(); ?>vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FastClick -->
