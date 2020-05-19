@@ -986,7 +986,7 @@
 .nav_menu {
   float: left;
   background: #4abcde;
-  box-shadow: 1px 3px 5px;
+  box-shadow: -2px 4px 12px rgba(0, 0, 0, 0.2);
   border-bottom: 1px solid #4abcde;
   margin-bottom: 10px;
   width: 100%;
@@ -1275,7 +1275,7 @@ a:hover, a:focus {
   margin-right: 0; }
 
 .top_nav .navbar-right {
-  margin: 15px;
+  margin: 20px;
   margin-right: 100px;
   width: auto;
   float: right; }
