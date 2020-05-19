@@ -81,6 +81,15 @@ ul.nav.child_menu li a.active {
     margin-top: 0px;
     display: block;
 }
+.nav_menu {
+    margin-bottom: 0px;
+}
+.padding-top50 {
+    padding-top: 50px;
+}
+hr.custom-form-hr {
+    background-color: #7d7d7d;
+}
 
 @media (max-width: 568px) {
     .nav-item {
