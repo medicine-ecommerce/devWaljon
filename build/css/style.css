@@ -11,6 +11,146 @@ span.head-title {
 /*header css*/
 
 /*dashboard css*/
+h5.dashboard-head {
+    font-size: 16px;
+    font-weight: 600;
+}
+.table-data{
+	display: inherit;
+    padding: 10px;
+    background: #fff;
+}
+.dash-box {
+    display: flow-root;
+    padding: 20px 15px;
+    color: white;
+    border-radius: 5px;
+}
+.blue-box{
+    background-image: linear-gradient(to right, #89cdf4, #749ccd);
+}
+.orange-box{
+    background-image: linear-gradient(to right, #f8bd6d, #d3a260);
+}
+.green-box{
+    background-image: linear-gradient(to right, #8df4a5, #4dd56f);
+}
+.light-green-box{
+    background-image: linear-gradient(to right, #5bdfe4, #15bfbf);
+}
+.dash-box .pull-right i {
+    font-size: 50px;
+}
+.dash-box .pull-right.visitors-icon i {
+    font-size: 35px;
+}
+.dash-box .pull-right.user-icon i {
+    font-size: 40px;
+}
+
+.dash-box h2{
+	font-size: 38px;
+    font-weight: 500;
+    margin: 0px;
+}   
+.table.user-detail-table thead th {
+    vertical-align: bottom;
+    border-top: none;
+    padding: 10px !important;
+    font-size: 12px;
+} 
+table.dataTable.user-detail-table thead .sorting:after {
+    display: none;
+}
+table.dataTable.user-detail-table thead .sorting_asc:after {
+    display: none;
+}
+table.dataTable.user-detail-table {
+    border-collapse: collapse !important;
+}
+.table.user-detail-table tbody td {
+    padding: 5px;
+    font-size: 12px;
+    vertical-align: middle;
+    border-top: none;
+    border-bottom: 1px solid #dee2e6;
+}
+span.status-progress {
+    background: #4ebbf3;
+    width: 100%;
+    text-align: center;
+    display: block;
+    border-radius: 50px;
+    color: white;
+} 
+span.status-shipped {
+    background: #e1c32d;
+    width: 100%;
+    text-align: center;
+    display: block;
+    border-radius: 50px;
+    color: white;
+} 
+
+span.status-consulted {
+    background: #5adf76;
+    width: 100%;
+    text-align: center;
+    display: block;
+    border-radius: 50px;
+    color: white;
+} 
+.list-heading h2{
+	color: #0172bc;
+    font-weight: 500;
+    font-size: 16px;
+    margin-left: 5px;
+}
+span.status-Review {
+    border: 1px solid #ddd;
+    padding: 3px;
+    border-radius: 3px;
+}
+span.status-approve {
+    border: 1px solid #ddd;
+    padding: 3px;
+    color: #2eae3e;
+    border-radius: 3px;
+}
+span.status-cancle {
+    border: 1px solid #ddd;
+    padding: 3px 5px;
+    color: red;
+    margin-left: 4px;
+    border-radius: 3px;
+}
+.graph .graph_line{
+    width:100%; 
+    height:340px;
+}
+.graph.x_panel {
+    border: none;
+}
+.dashboard-section{
+    padding-bottom: 20px;
+}
+.label-btn{
+    border: 1px solid #eee;
+    border-radius: 50px;
+    font-size: 14px;
+}
+p.revenu-heading {
+    margin-top: 15px;
+    text-align: right; 
+    margin-bottom: 0px; 
+}
+h3.revenu-count {
+    text-align: right;
+    font-size: 25px;
+    color: #0172bc;
+    margin-top: 0px; 
+}
+/*dashboard css*/
 
 .nav-md ul.nav.child_menu li:before {
     background: #425668;
@@ -82,6 +222,33 @@ ul.nav.child_menu li a.active {
     display: block;
 }
 
+@media (max-width: 992px) {
+    .nav-md .container.body .right_col {
+         margin-left: 0px; 
+    }
+    .dash-box h2 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 768) {
+    .dash-box h2 {
+        font-size: 25px;
+    }
+    .dash-box .pull-right i {
+        font-size: 40px;
+    }
+    .dash-box .pull-right.user-icon i {
+        font-size: 35px;
+    }
+    .dash-box .pull-right.visitors-icon i {
+        font-size: 22px;
+    }
+    .dash-box {
+        padding: 15px 10px;
+    }
+}
+
 @media (max-width: 568px) {
     .nav-item {
         margin-left: 15px;
@@ -98,4 +265,20 @@ ul.nav.child_menu li a.active {
     span.head-title {
         margin-left: 5px;
     }
+    .dash-box {
+        margin-bottom: 15px;
+    }
+    .custom-col-xs {
+        margin-bottom: 15px;
+    }
+    span.status-progress {
+        font-size: 10px;
+    }
+    span.status-shipped {
+        font-size: 12px;
+    }
+    span.status-consulted {
+        font-size: 12px;
+    }
+     
 }
