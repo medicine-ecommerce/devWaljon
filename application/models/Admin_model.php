@@ -20,6 +20,15 @@ class Admin_model extends MY_model
 			return $query->row();
 		}
 	}
+	public function VendorAdd($data)
+	{
+		return $this->insertData('vendors',$data);
+	}
+
+	public function VendorList()
+	{
+		return $this->getData('vendors','*','');
+	}
 
 }
 
