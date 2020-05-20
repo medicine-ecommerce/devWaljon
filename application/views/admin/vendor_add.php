@@ -32,10 +32,6 @@
                 </div>';
           } ?>
           <div class="x_panel">
-            <div class="x_title">
-              <h2>Add Vendor</h2>
-              <div class="clearfix"></div>
-            </div>
             <div class="x_content">
               <form class="" action="" method="post" novalidate>
                 <span class="section">Company Info</span>
