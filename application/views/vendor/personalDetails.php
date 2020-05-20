@@ -1,4 +1,6 @@
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 <div class="right_col">
 	<div class="row padding-top50">
 		<div class="col-md-3">
@@ -96,19 +98,21 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					<div class="form-group label-float-top">					  
-					  <select class="form-control control-float-top" id="sel1">
+					  <select class="form-control control-float-top" >
 					    <option></option>
-					    <option>2</option>
-					    <option>3</option>
-					    <option>4</option>
+					    <option>List 1</option>
+					    <option>List 2</option>
+					    <option>List 3</option>
 					  </select>
-					  <label for="Address">City</label>
+					  <label for="Address">Degree</label>
 					</div>
 				</div>
 				<div class="col-md-3">
-					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="last_name">
-						<label for="email">Last Name</label>
+					<div class="form-group">
+						<input id="datepicker" class="form-control" width="270" />
+
+						<!-- <input type="text" class="form-control control-float-top" name="last_name">
+						<label for="email">Last Name</label> -->
 					</div>
 				</div>			
 				<div class="col-md-3">
@@ -201,4 +205,8 @@
 		   }
 	  });
 	});
+	// Date Picker
+	$('#datepicker').datepicker({
+            uiLibrary: 'bootstrap'
+    });
 </script>
