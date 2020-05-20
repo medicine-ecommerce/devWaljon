@@ -236,7 +236,7 @@ ul.nav.child_menu li a.active {
     font-weight: 700;
 }
 .admin-side-bar {
-    width: auto;
+    width: 100%;
 }
 .fa-chevron-down:before { 
     margin-left: 35px;
@@ -249,9 +249,6 @@ ul.nav.child_menu li a.active {
     padding: 10px 20px 0;
     margin-left: 190px;
     background-color:#fff;
-}
-.nav.side-menu>li.active, .nav.side-menu>li.current-page { 
-    margin-right: -23px;
 }
 .active a span.fa {
     text-align: right!important;
