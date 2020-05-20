@@ -12,7 +12,15 @@
 
     <!-- jQuery -->
     <!-- <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script> -->
-    
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#datatable1').DataTable();
+        } );
+
+        $(document).ready(function() {
+            $('#datatable2').DataTable();
+        } );
+    </script>
     <!-- Bootstrap -->
     <script src="<?php echo base_url(); ?>vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <!-- FastClick -->
