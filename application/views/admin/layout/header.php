@@ -37,8 +37,7 @@
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url(); ?>build/css/custom.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>build/css/Style.css" rel="stylesheet">
-    <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>
-    <script src="//geodata.solutions/includes/countrystatecity.js"></script>
+    <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>    
   </head>
 
   <body class="nav-md">
