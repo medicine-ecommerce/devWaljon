@@ -10,53 +10,67 @@
 	<div class="row"> 
 		<div class="col-md-8">
 			<div class="col-md-4">
-				 <div class="form-group">
-					<input type="text" class="form-control" name="first_name" placeholder="First Name">
-				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" name="first_name" autocomplete="off">
+					<label for="name">First Name</label>
+			  	</div>
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
-					<input type="text" class="form-control" name="last_name" placeholder="Last Name">
+					<input type="text" class="form-control" name="last_name">
+					<label for="email">Last Name</label>
 				</div>
 			</div>			
 			<div class="col-md-4">
 				<div class="form-group">
 					<input type="date" class="form-control" name="date_of_birth">
+					<!-- <label for="email">Date Of Birth</label> -->
 				</div>
 			</div>
 			<div class="col-md-4">
 				 <div class="form-group">
-					<input type="text" class="form-control" name="address" placeholder="Address">
+					<input type="text" class="form-control" name="address">
+					<label for="email">Address</label>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<div class="form-group">
-					<input type="text" class="form-control" name="city" placeholder="City">
+					<select name="country" class="form-control countries" id="countryId">
+						<option>Select Country</option>
+					</select>
+					<!-- <label for="email">Country</label> -->					
 				</div>
 			</div>			
 			<div class="col-md-4">
 				<div class="form-group">
-					<input type="text" class="form-control" name="State" placeholder="State">
+					<select name="state" class="form-control states" id="stateId">		    			
+					</select>		
+					<label for="country">State</label>
 				</div>
 			</div>
 			<div class="col-md-3">
 				 <div class="form-group">
-					<input type="text" class="form-control" name="address" placeholder="Zip Postal Code">
+				 	<select name="city" class="form-control cities" id="cityId">					    
+					</select>
+					<label for="country">City</label>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="form-group">
-					<input type="text" class="form-control" name="city" placeholder="Country">
+					<input type="text" class="form-control" name="address">
+					<label for="email">Zip Postal Code</label>
 				</div>
 			</div>			
 			<div class="col-md-3">
 				<div class="form-group">
-					<input type="text" class="form-control" name="State" placeholder="Phone">
+					<input type="text" class="form-control" name="State">
+					<label for="email">Phone</label>
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div class="form-group">
-					<input type="text" class="form-control" name="State" placeholder="Email">
+					<input type="text" class="form-control" name="State" >
+					<label for="email">Email</label>
 				</div>
 			</div>
 		</div>
@@ -81,27 +95,31 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					<div class="form-group">					  
-						  <select class="form-control" id="sel1">
-						    <option>Pharmacist</option>
-						    <option>2</option>
-						    <option>3</option>
-						    <option>4</option>
-						  </select>
+					  <select class="form-control" id="sel1">
+					    <option></option>
+					    <option>2</option>
+					    <option>3</option>
+					    <option>4</option>
+					  </select>
+					  <label for="Address">City</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-						<input type="text" class="form-control" name="last_name" placeholder="Last Name">
+						<input type="text" class="form-control" name="last_name">
+						<label for="email">Last Name</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group">
 						<input type="date" class="form-control" name="date_of_birth">
+						<!-- <label for="email">Last Name</label> -->
 					</div>
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group">
 						<input type="text" class="form-control" name="address" placeholder="Address">
+						<label for="Address">Address</label>
 					</div>
 				</div>			
 			</div>
@@ -120,12 +138,14 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					 <div class="form-group">
-						<input type="text" class="form-control" name="first_name" placeholder="First Name">
+						<input type="text" class="form-control" name="first_name">
+						<label for="Address">First Name</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group">
-						<input type="text" class="form-control" name="last_name" placeholder="Last Name">
+						<input type="text" class="form-control" name="last_name">
+						<label for="Address">Last Name</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
@@ -135,22 +155,14 @@
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group">
-						<input type="text" class="form-control" name="address" placeholder="Address">
+						<input type="text" class="form-control" name="address">
+						<label for="Address">Address</label>
 					</div>
 				</div>			
 			</div>
 			<div class="col-md-4 text-right">			
 			</div>
-		</div>
-		<select name="country" class="countries" id="countryId">
-		    <option value="">Select Country</option>
-		</select>
-		<select name="state" class="states" id="stateId">
-		    <option value="">Select State</option>
-		</select>
-		<select name="city" class="cities" id="cityId">
-		    <option value="">Select City</option>
-		</select>
+		</div>		
 	</div>
 </div>
 
@@ -178,4 +190,14 @@
 	  }
 	}
 
+	$(document).ready(function(){
+	
+  $(".form-group .form-control").blur(function(){
+		   if($(this).val()!=""){
+			   $(this).siblings("label").addClass("active");
+		   }else{
+			    $(this).siblings("label").removeClass("active");
+		   }
+	  });
+	});
 </script>

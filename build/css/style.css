@@ -143,6 +143,20 @@ input.image-upload-input {
     bottom: 5px;
     opacity: 0;
 }
+/*Google Input*/
+form{margin-top:30px;}
+
+.form-group{position:relative;}
+.form-control{height: 40px;}
+.form-control:focus{box-shadow:none;}
+
+label{position:absolute; left:10px; top:10px; transition:all 0.3s; color:#999; font-weight:normal;}
+
+
+.form-control:focus ~ label{left:5px; top:-10px; background:#fff; padding:0 5px;}
+
+label.active{left:5px; top:-10px; background:#fff; padding:0 5px;}
+/*end Google*/
 /*dashboard css*/
 
 .nav-md ul.nav.child_menu li:before {
@@ -202,6 +216,7 @@ ul.nav.child_menu li a.active {
 .nav-md .container.body .right_col {
     padding: 10px 20px 0;
     margin-left: 190px;
+    background-color:#fff;
 }
 .nav.side-menu>li.active, .nav.side-menu>li.current-page { 
     margin-right: -23px;
