@@ -16,7 +16,7 @@ class MY_Controller extends CI_Controller
 
       $this->template['header']        = $this->load->view('admin/layout/header');      
       $this->template['sidebar']        = $this->load->view('admin/layout/sidebar');  
-      $this->template['middle']        = $this->load->view('admin/'.$this->middle);
+      $this->template['middle']        = $this->load->view('admin/'.$this->middle,$this->data);
       $this->template['footer']        = $this->load->view('admin/layout/footer');
       return  $this->template;
       // $this->load->view('developer/index', $this->template);
