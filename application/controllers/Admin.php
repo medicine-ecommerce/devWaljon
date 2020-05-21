@@ -94,7 +94,7 @@ Class Admin extends MY_Controller {
         else{
             $data = array('username'=> $this->input->post('username'),
                         'password' => $this->input->post('password'));
-            $result = $this->Admin_model->login($data);
+            $result = $this->Admin->login($data);
 
             if(!empty($result))
             {
