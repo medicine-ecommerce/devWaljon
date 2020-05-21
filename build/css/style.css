@@ -123,7 +123,7 @@ span.status-cancle {
     color: red;
     margin-left: 4px;
     border-radius: 3px;
-}
+a}
 img.profile-images-custom {
     width: 130px;
 }
@@ -145,18 +145,21 @@ input.image-upload-input {
     opacity: 0;
 }
 /*Google Input*/
-form{margin-top:30px;}
+/*form{margin-top:30px;}*/
 
-.form-group{position:relative;}
-.form-control{height: 40px;}
-.form-control:focus{box-shadow:none;}
+.form-group.label-float-top{position:relative;}
+.form-control.control-float-top{height: 40px;}
+.form-control.control-float-top:focus{box-shadow:none;}
 
-label{position:absolute; left:10px; top:10px; transition:all 0.3s; color:#999; font-weight:normal;}
+.label-float-top label{position:absolute; left:10px; top:10px; transition:all 0.3s; color:#999; font-weight:normal;}
 
 
-.form-control:focus ~ label{left:5px; top:-10px; background:#fff; padding:0 5px;}
+.form-control.control-float-top:focus ~ label{left:5px; top:-10px; background:#fff; padding:0 5px;}
 
 label.active{left:5px; top:-10px; background:#fff; padding:0 5px;}
+input.form-control.control-float-top:focus {
+    padding-left: 10px;
+}
 /*end Google*/
 
 .graph .graph_line{
@@ -233,7 +236,7 @@ ul.nav.child_menu li a.active {
     font-weight: 700;
 }
 .admin-side-bar {
-    width: auto;
+    width: 100%;
 }
 .fa-chevron-down:before { 
     margin-left: 35px;
@@ -246,9 +249,6 @@ ul.nav.child_menu li a.active {
     padding: 10px 20px 0;
     margin-left: 190px;
     background-color:#fff;
-}
-.nav.side-menu>li.active, .nav.side-menu>li.current-page { 
-    margin-right: -23px;
 }
 .active a span.fa {
     text-align: right!important;

@@ -1,3 +1,4 @@
+<script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
 <div class="right_col">
 	<div class="row padding-top50">
 		<div class="col-md-3">
@@ -10,66 +11,66 @@
 	<div class="row"> 
 		<div class="col-md-8">
 			<div class="col-md-4">
-				<div class="form-group">
-					<input type="text" class="form-control" name="first_name" autocomplete="off">
+				<div class="form-group label-float-top">
+					<input type="text" class="form-control control-float-top" name="first_name" autocomplete="off">
 					<label for="name">First Name</label>
 			  	</div>
 			</div>
 			<div class="col-md-4">
-				<div class="form-group">
-					<input type="text" class="form-control" name="last_name">
+				<div class="form-group label-float-top">
+					<input type="text" class="form-control control-float-top" name="last_name">
 					<label for="email">Last Name</label>
 				</div>
 			</div>			
 			<div class="col-md-4">
-				<div class="form-group">
-					<input type="date" class="form-control" name="date_of_birth">
+				<div class="form-group label-float-top">
+					<input type="date" class="form-control control-float-top" name="date_of_birth">
 					<!-- <label for="email">Date Of Birth</label> -->
 				</div>
 			</div>
 			<div class="col-md-4">
-				 <div class="form-group">
-					<input type="text" class="form-control" name="address">
+				 <div class="form-group label-float-top">
+					<input type="text" class="form-control control-float-top" name="address">
 					<label for="email">Address</label>
 				</div>
 			</div>
 			<div class="col-md-4">
-				<div class="form-group">
-					<select name="country" class="form-control countries" id="countryId">
+				<div class="form-group label-float-top">
+					<select name="country" class="form-control control-float-top countries" id="countryId">
 						<option>Select Country</option>
 					</select>
 					<!-- <label for="email">Country</label> -->					
 				</div>
 			</div>			
 			<div class="col-md-4">
-				<div class="form-group">
-					<select name="state" class="form-control states" id="stateId">		    			
+				<div class="form-group label-float-top">
+					<select name="state" class="form-control control-float-top states" id="stateId">		    			
 					</select>		
 					<label for="country">State</label>
 				</div>
 			</div>
 			<div class="col-md-3">
-				 <div class="form-group">
-				 	<select name="city" class="form-control cities" id="cityId">					    
+				 <div class="form-group label-float-top">
+				 	<select name="city" class="form-control control-float-top cities" id="cityId">					    
 					</select>
 					<label for="country">City</label>
 				</div>
 			</div>
 			<div class="col-md-3">
-				<div class="form-group">
-					<input type="text" class="form-control" name="address">
+				<div class="form-group label-float-top">
+					<input type="text" class="form-control control-float-top" name="address">
 					<label for="email">Zip Postal Code</label>
 				</div>
 			</div>			
 			<div class="col-md-3">
-				<div class="form-group">
-					<input type="text" class="form-control" name="State">
+				<div class="form-group label-float-top">
+					<input type="text" class="form-control control-float-top" name="State">
 					<label for="email">Phone</label>
 				</div>
 			</div>
 			<div class="col-md-3">
-				<div class="form-group">
-					<input type="text" class="form-control" name="State" >
+				<div class="form-group label-float-top">
+					<input type="text" class="form-control control-float-top" name="State" >
 					<label for="email">Email</label>
 				</div>
 			</div>
@@ -94,8 +95,8 @@
 		<div class="row"> 
 			<div class="col-md-8">
 				<div class="col-md-3">
-					<div class="form-group">					  
-					  <select class="form-control" id="sel1">
+					<div class="form-group label-float-top">					  
+					  <select class="form-control control-float-top" id="sel1">
 					    <option></option>
 					    <option>2</option>
 					    <option>3</option>
@@ -105,20 +106,20 @@
 					</div>
 				</div>
 				<div class="col-md-3">
-					<div class="form-group">
-						<input type="text" class="form-control" name="last_name">
+					<div class="form-group label-float-top">
+						<input type="text" class="form-control control-float-top" name="last_name">
 						<label for="email">Last Name</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
-					<div class="form-group">
-						<input type="date" class="form-control" name="date_of_birth">
+					<div class="form-group label-float-top">
+						<input type="date" class="form-control control-float-top" name="date_of_birth">
 						<!-- <label for="email">Last Name</label> -->
 					</div>
 				</div>
 				<div class="col-md-3">
-					 <div class="form-group">
-						<input type="text" class="form-control" name="address" placeholder="Address">
+					 <div class="form-group label-float-top">
+						<input type="text" class="form-control control-float-top" name="address" placeholder="Address">
 						<label for="Address">Address</label>
 					</div>
 				</div>			
@@ -137,25 +138,25 @@
 		<div class="row"> 
 			<div class="col-md-8">
 				<div class="col-md-3">
-					 <div class="form-group">
-						<input type="text" class="form-control" name="first_name">
+					 <div class="form-group label-float-top">
+						<input type="text" class="form-control control-float-top" name="first_name">
 						<label for="Address">First Name</label>
 					</div>
 				</div>
 				<div class="col-md-3">
-					<div class="form-group">
-						<input type="text" class="form-control" name="last_name">
+					<div class="form-group label-float-top">
+						<input type="text" class="form-control control-float-top" name="last_name">
 						<label for="Address">Last Name</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
-					<div class="form-group">
-						<input type="date" class="form-control" name="date_of_birth">
+					<div class="form-group label-float-top">
+						<input type="date" class="form-control control-float-top" name="date_of_birth">
 					</div>
 				</div>
 				<div class="col-md-3">
-					 <div class="form-group">
-						<input type="text" class="form-control" name="address">
+					 <div class="form-group label-float-top">
+						<input type="text" class="form-control control-float-top" name="address">
 						<label for="Address">Address</label>
 					</div>
 				</div>			
@@ -192,7 +193,7 @@
 
 	$(document).ready(function(){
 	
-  $(".form-group .form-control").blur(function(){
+  $(".form-group .form-control .control-float-top").blur(function(){
 		   if($(this).val()!=""){
 			   $(this).siblings("label").addClass("active");
 		   }else{

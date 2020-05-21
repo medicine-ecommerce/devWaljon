@@ -118,6 +118,16 @@ Class Admin extends MY_Controller {
         $this->Admin();
          //$this->load->view('admin/product_add');
     }
+    public function home_category()
+    {
+        $this->middle = 'home_category';
+        $this->Admin();
+    }
+    public function home_banners()
+    {
+        $this->middle = 'home_banner';
+        $this->Admin();
+    }
     public function logout()
     {
         $this->session->sess_destroy();
