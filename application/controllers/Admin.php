@@ -68,6 +68,18 @@ Class Admin extends MY_Controller {
         $this->middle = 'vendor_add';
         $this->Admin();
     }
+
+    public function vendor_status($status,$id)
+    {
+        $result =$this->Admin->VendorStatus($status,$id);
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'status updated successfully'); 
+        }
+        else{
+            $this->session->set_flashdata('error', 'error! Please try again'); 
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
     public function users()
     {
         $this->middle = 'user_list';
