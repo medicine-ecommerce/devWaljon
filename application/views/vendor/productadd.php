@@ -1,4 +1,4 @@
-<script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <div class="right_col">
 	<div class="row padding-top50">
 		<div class="col-md-3">
@@ -10,164 +10,80 @@
 	</div>
 	<div class="row"> 
 		<div class="col-md-8">
-			
 			<div class="col-md-4">
 				<div class="form-group label-float-top">
-					<select name="country" class="form-control control-float-top countries" id="countryId">
-						<option>Product Category</option>
+					<select name="product_category" class="form-control control-float-top countries" >
+						<option></option>
+						<option>Diabetic Diet</option>
 					</select>
-<!-- 					<label for="email">Product Category</label>					
- -->				</div>
+					<label for="email">Product Category</label>					
+				</div>
 			</div>			
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="form-group label-float-top">
-					<select name="state" class="form-control control-float-top states" id="stateId">		    			
+					<select name="produtc_form" class="form-control control-float-top states" >
+					<option></option>
+						<option>Paste</option>		    			
 					</select>		
-					<label for="country">State</label>
+					<label for="country">Product Form</label>
 				</div>
 			</div>
-			<div class="col-md-3">
-				 <div class="form-group label-float-top">
-				 	<select name="city" class="form-control control-float-top cities" id="cityId">					    
-					</select>
-					<label for="country">City</label>
-				</div>
-			</div>
-			<div class="col-md-3">
+			<div class="col-md-5">
 				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="address">
-					<label for="email">Zip Postal Code</label>
+					<select name="produtc_form" class="form-control control-float-top states" >	
+						<option></option>
+						<option>Dabur India Ltd</option>		    			
+					</select>		
+					<label for="country">Manufacturer</label>
 				</div>
-			</div>			
-			<div class="col-md-3">
-				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="State">
-					<label for="email">Phone</label>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="State" >
-					<label for="email">Email</label>
-				</div>
-			</div>
+			</div>										
 		</div>
-		<div class="col-md-4 text-right">
-			<div class="profile-image-section">								
-				<div>					
-					<img src="<?php echo base_url(); ?>assets/img/profile_dummy.png" class="profile-images-custom" id="preview">
-				</div>
-				<button type="button" class="btn btn-primary image-upload-button">Upload</button>
-				<input type="file" id="filetag" class="image-upload-input">
-			</div>
+		<div class="col-md-12">
+			<table class="table table-bordered" id="dynamic_field">  
+                <tr>  
+                    <td>
+                    	<div class="form-group label-float-top">
+							<select name="quantity[][quantity]" class="form-control control-float-top states" >	
+								<option></option>
+								<option>750gm</option>		    			
+							</select>		
+							<label for="country">Quantity</label>
+						</div>
+					</td> 
+                    <td  style="width: 10%;">
+                    	<div class="form-group label-float-top">
+							<input type="text" class="form-control control-float-top" name="mrp[][mrp]">
+							<label for="email">MRP</label>
+						</div>
+                    </td> 
+                    <td style="width: 10%;">
+                    	<div class="form-group label-float-top">
+							<input type="text" class="form-control control-float-top"  name="sellprice[][sellprice]">
+							<label for="email">Sell Price</label>
+						</div>
+                    </td> 
+                    <td style="width: 15%;">
+                    	<div class="form-group label-float-top">
+							<input type="date" class="form-control control-float-top" name="expriydate[][expriydate]">
+							<label for="email">Expiry Date</label>
+						</div>
+                    </td>  
+                    <td style="width: 5%;"><button type="button" name="add" id="add" class="btn btn-success">Add</button></td> 
+                    <td>
+						<div class="form-group">
+							<div id="coba"></div>
+						</div>	
+					</td>
+				</tr>  
+		    </table> 
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3">
-			<h5>Working Information </h5>
-		</div>
-		<div class="col-md-9">
-			<hr class="custom-form-hr">
-		</div>		
-		<div class="row"> 
-			<div class="col-md-8">
-				<div class="col-md-3">
-					<div class="form-group label-float-top">					  
-					  <select class="form-control control-float-top" id="sel1">
-					    <option></option>
-					    <option>2</option>
-					    <option>3</option>
-					    <option>4</option>
-					  </select>
-					  <label for="Address">City</label>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="last_name">
-						<label for="email">Last Name</label>
-					</div>
-				</div>			
-				<div class="col-md-3">
-					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="date_of_birth">
-						<!-- <label for="email">Last Name</label> -->
-					</div>
-				</div>
-				<div class="col-md-3">
-					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="address" placeholder="Address">
-						<label for="Address">Address</label>
-					</div>
-				</div>			
-			</div>
-			<div class="col-md-4 text-right">			
-			</div>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3">
-			<h5>Account Details </h5>
-		</div>
-		<div class="col-md-9">
-			<hr class="custom-form-hr">
-		</div>		
-		<div class="row"> 
-			<div class="col-md-8">
-				<div class="col-md-3">
-					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="first_name">
-						<label for="Address">First Name</label>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="last_name">
-						<label for="Address">Last Name</label>
-					</div>
-				</div>			
-				<div class="col-md-3">
-					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="date_of_birth">
-					</div>
-				</div>
-				<div class="col-md-3">
-					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="address">
-						<label for="Address">Address</label>
-					</div>
-				</div>			
-			</div>
-			<div class="col-md-4 text-right">			
-			</div>
-		</div>		
 	</div>
 </div>
 
 
 
 <script type="text/javascript">
-	var fileTag = document.getElementById("filetag"),
-    preview = document.getElementById("preview");
-    
-	fileTag.addEventListener("change", function() {
-	  changeImage(this);
-	});
-
-	function changeImage(input) {
-	  var reader;
-
-	  if (input.files && input.files[0]) {
-	    reader = new FileReader();
-
-	    reader.onload = function(e) {
-	      preview.setAttribute('src', e.target.result);
-	    }
-
-	    reader.readAsDataURL(input.files[0]);
-	  }
-	}
-
+	
 	$(document).ready(function(){
 	
   $(".form-group .form-control .control-float-top").blur(function(){
@@ -179,3 +95,39 @@
 	  });
 	});
 </script>
+<script type="text/javascript">
+
+    $(document).ready(function(){      
+      var i=1;  
+      $('#add').click(function(){  
+           i++;  
+           $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><div class="form-group label-float-top"><select name="quantity[][quantity]" class="form-control control-float-top states" >	<option></option><option>750gm</option></select><label for="country">Quantity</label></div><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="mrp[][mrp]"><label for="email">MRP</label></div></td><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="sellprice[][sellprice]"><label for="email">Sell Price</label></div></td><td><div class="form-group label-float-top"><input type="date" class="form-control control-float-top" name="expriydate[][expriydate]"><label for="email">Expiry Date</label>	</div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td><td><div class="form-group"><div id="coba"></div></div></td></tr>');  
+      });
+      $(document).on('click', '.btn_remove', function(){  
+           var button_id = $(this).attr("id");   
+           $('#row'+button_id+'').remove();  
+      });  					  
+    });  
+</script>
+
+	<script type="text/javascript">
+		$(function(){
+
+			$("#coba").spartanMultiImagePicker({
+				fieldName:        'fileUpload[]',
+				directUpload : {
+					status: true,
+					loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
+					url: '../c.php',
+					additionalParam : {
+						name : 'My Name'
+					},
+					success : function(data, textStatus, jqXHR){
+					},
+					error : function(jqXHR, textStatus, errorThrown){
+					}
+				}
+			});
+		});
+	</script>
+
