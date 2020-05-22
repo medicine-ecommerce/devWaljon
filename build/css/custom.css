@@ -1178,7 +1178,9 @@ body {
   display: block; }
 
 .page-title .title_left h3 {
-  margin: 9px 0; }
+    font-size: 18px;
+    margin: 9px 10px;
+}
 
 .page-title .title_right {
   width: 55%;

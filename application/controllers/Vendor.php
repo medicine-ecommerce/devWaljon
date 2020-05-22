@@ -34,6 +34,11 @@ Class Vendor extends MY_Controller {
     {
         $this->middle = 'productadd';
         $this->Vendor();
+    } 
+    public function addSingleProduct()
+    {
+        $this->middle = 'add_single_product';
+        $this->Vendor();
     }
     // public function vendors()
     // {

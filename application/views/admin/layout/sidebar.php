@@ -25,7 +25,7 @@
               <div class="menu_section">
                 <!-- <h3>General</h3> -->
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-dashboard"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="<?php echo base_url('admin/dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
                     <!-- <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard</a></li>
                     </ul> -->

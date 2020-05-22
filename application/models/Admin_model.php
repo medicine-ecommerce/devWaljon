@@ -29,6 +29,10 @@ class Admin_model extends MY_model
 	{
 		return $this->getData('vendors','*','');
 	}
+	public function VendorStatus($status,$id)
+	{
+		return $this->updateData('vendors',array('is_active'=>$status),array('id'=>$id));
+	}
 
 }
 

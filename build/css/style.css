@@ -123,9 +123,13 @@ span.status-cancle {
     color: red;
     margin-left: 4px;
     border-radius: 3px;
-a}
+}
 img.profile-images-custom {
     width: 130px;
+    border: 1px solid #d4d4d4;
+}
+.text-center{
+    text-align: center;
 }
 button.btn.btn-primary.image-upload-button {
     background-color: #1fcdf9;
@@ -248,11 +252,11 @@ ul.nav.child_menu li a.active {
 .nav-md .container.body .right_col {
     padding: 10px 20px 0;
     margin-left: 190px;
-    background-color:#fff;
+   /* background-color:#fff;*/
 }
 .active a span.fa {
     text-align: right!important;
-    margin-right: 18px;
+    margin-right: 13px;
 }
 .menu_section>ul {
     margin-top: 0px;
@@ -267,7 +271,236 @@ ul.nav.child_menu li a.active {
 hr.custom-form-hr {
     background-color: #7d7d7d;
 }
+.padding-bottom20{
+    padding-bottom: 20px;
+}
+.padding-top-bottom-20{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.padding-top-bottom50{
+    padding: 50px 0px;
+}
+.float-right{
+    float: right;
+}
+button.btn.btn-default.submit_button {
+    width: 116px;
+    border-radius: 23px;
+    background-color: #1fcdf9;
+    border: none;
+    color: #fff;
+}
+button.btn.btn-default.submit_button:hover {
+    width: 116px;
+    border-radius: 23px;
+    background-color: #28859c;
+    border: none;
+}
+.nav-md .container.body .right_col.registration-page {
+    padding: 40px;
+}
+img.green-tick-img {
+    width: 60px;
+}
+.welldon-modal {
+    text-align: center;
+    padding: 25px;
+}
+.welldon-modal h1 {
+    color: #00b01d;
+}
+.registration-done{
+    width: 300px;
+}
+img.registration-logo {
+    width: 130px;
+}
+.form-content {
+    padding-top: 100px;
+}
+.content-box {
+    width: 260px;
+    background-color: #0a0b0e24;
+    height: auto;
+    padding: 15px;
+}
+button.btn.btn-primary.registration-button {
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+    color: #444;
+    width: 100%;
+}
+.button-division {
+    margin: 10px;
+}
+.content-box p {
+    font-size: 12px;
+    text-align: center;
+}
+.content-box h6 {
+    text-align: center;
+    margin: 15px 0px;
+}
+input.form-control.transparent-back {
+    background-color: #ffffff00;
+}
+section.registration_content {
+    background-image: url(../images/footer_bg_jpg.jpg);
+    height: 100vh;
+    background-size: cover;
+}
+.form-content {
+    padding: 0px 50px;
+    margin-top: 100px;
+}
 
+/*home category page css*/
+.home-page-head h4{
+    font-size: 14px;
+    font-weight: 600;
+    color: #676767;
+}
+.home-page-head{
+    margin-bottom: 20px;
+}
+.home-page-box {
+    border: 1px solid #d4d2d2;
+    padding: 8px;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.switch-input:checked + .slider {
+  background-color: #5be599;
+}
+
+.switch-input:focus + .slider {
+  box-shadow: 0 0 1px #5be599;
+}
+
+.switch-input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+.active-btn{
+    background:#1fcdf9 ;
+    color: #fff;
+    box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px 25px;
+    width: 110px;
+}
+.active-btn:hover{
+    background:#1fcdf9 ;
+    color: #fff;
+}
+.previous-btn {
+    background: #f1f1f1;
+    color: #9da0a5;
+    width: 110px;
+    box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.2);
+    padding: 10px 25px;
+}
+.previous-btn:hover {
+    background: #f1f1f1;
+    color: #9da0a5;
+}
+.switch-btn {
+    margin: 12px;
+}
+.action-head{
+    margin: 12px;      
+}
+.home-module-pages{
+    display: contents;
+}
+/*home category page css*/
+
+/*home banner page css*/
+.img-upload-div {
+    border: 1px dashed;
+    width: 700px;
+    height: 250px;
+    margin-bottom: 10px;
+}
+.previous-img-gallery {
+    list-style: none;
+    margin-bottom: 50px;
+}
+.previous-img {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px;
+}
+.gallery-img {
+    width: 100px;
+    height: 100px;
+    border: 1px dashed;
+    display: inline-flex;
+    border-radius: 3px;
+}
+.gallery-img img {
+    width: 100%;
+    height: 100%;
+}
+span.transh-btn {
+    display: inline-block;
+    color: red;
+    font-size: 20px;
+    margin-left: 15px;
+}
+.img-upload-btn {
+    margin-bottom: 35px;
+}
+.img-upload-div img{
+    width: 100%;
+    height: 100%;
+}
+/*home banner page css*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {
          margin-left: 0px; 
