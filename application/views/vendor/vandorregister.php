@@ -1,5 +1,5 @@
 <link href="<?php echo base_url(); ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?php echo base_url(); ?>build/css/Style.css" rel="stylesheet">
+<link href="<?php echo base_url(); ?>build/css/style.css" rel="stylesheet">
 <section class="container-fluid registration_content">
   <div class="row">
     <div class="col-md-8"> 
