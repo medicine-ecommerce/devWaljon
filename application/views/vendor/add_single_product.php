@@ -2,78 +2,98 @@
 <div class="right_col registration-page">
 	<div class="row padding-top50 padding-bottom20">
 		<div class="col-md-3">
-			<h5>Personal Information </h5>
+			<h5>Product Information </h5>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-6">
 			<hr class="custom-form-hr">
 		</div>		
+		<div class="col-md-3">
+		</div>
 	</div>
 	<div class="row"> 
 		<div class="col-md-8">
-			<div class="col-md-4">
-				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="first_name" autocomplete="off">
-					<label for="name">First Name</label>
-			  	</div>
+			<div class="col-md-3">
+				<div class="form-group label-float-top">					  
+				  <select class="form-control control-float-top" >
+				    <option></option>
+				    <option>List 1</option>
+				    <option>List 2</option>
+				    <option>List 3</option>
+				  </select>
+				  <label for="Address">Product Category</label>
+				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="last_name">
-					<label for="email">Last Name</label>
+					<select class="form-control control-float-top" >
+				    <option></option>
+				    <option>List 1</option>
+				    <option>List 2</option>
+				    <option>List 3</option>
+				  </select>
+				  <label for="Address">Product Form</label>
 				</div>
 			</div>			
-			<div class="col-md-4">
+			<div class="col-md-6">
 				<div class="form-group label-float-top">
-					<input type="date" class="form-control control-float-top" name="date_of_birth">
+					<select class="form-control control-float-top" >
+				    <option></option>
+				    <option>List 1</option>
+				    <option>List 2</option>
+				    <option>List 3</option>
+				  </select>
+				  <label for="Address">Manufacturer</label>
 					<!-- <label for="email">Date Of Birth</label> -->
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				 <div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="address">
-					<label for="email">Address</label>
+					<select class="form-control control-float-top" >
+				    <option></option>
+				    <option>List 1</option>
+				    <option>List 2</option>
+				    <option>List 3</option>
+				  </select>
+				  <label for="Address">Quantity</label>
 				</div>
 			</div>
-			<div class="col-md-4">
+			<div class="col-md-3">
 				<div class="form-group label-float-top">
-					<select name="country" class="form-control control-float-top countries" id="countryId">
-						<option>Select Country</option>
-					</select>
+					<input type="text" class="form-control control-float-top" name="address">
+					<label for="Address">MRP</label>
 					<!-- <label for="email">Country</label> -->					
 				</div>
 			</div>			
-			<div class="col-md-4">
-				<div class="form-group label-float-top">
-					<select name="state" class="form-control control-float-top states" id="stateId">		    			
-					</select>		
-					<label for="country">State</label>
-				</div>
-			</div>
-			<div class="col-md-3">
-				 <div class="form-group label-float-top">
-				 	<select name="city" class="form-control control-float-top cities" id="cityId">					    
-					</select>
-					<label for="country">City</label>
-				</div>
-			</div>
 			<div class="col-md-3">
 				<div class="form-group label-float-top">
 					<input type="text" class="form-control control-float-top" name="address">
-					<label for="email">Zip Postal Code</label>
+					<label for="Address">Sales Price</label>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="form-group label-float-top">
+					<input type="date" class="form-control control-float-top" name="address">
+					<!-- <label for="Address">Date</label> -->
+				</div>
+			</div>
+			<div class="col-md-12">
+				 <div class="form-group label-float-top">
+				 	<input type="text" class="form-control control-float-top" name="address">
+					<label for="country">Product</label>
+				</div>
+			</div>		
+			<div class="col-md-3">
+				 <div class="form-group">
+				 	<input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        			<label for="vehicle1"> Prescription Required</label><br>
+				</div>
+			</div>		
+			<div class="col-md-9">
+				 <div class="form-group label-float-top">
+				 	<input type="text" class="form-control control-float-top" name="address">
+					<label for="country">Salt Composition</label>
 				</div>
 			</div>			
-			<div class="col-md-3">
-				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="State">
-					<label for="email">Phone</label>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="State" >
-					<label for="email">Email</label>
-				</div>
-			</div>
 		</div>
 		<div class="col-md-4 text-right">
 			<div class="profile-image-section">								
@@ -87,10 +107,12 @@
 	</div>
 	<div class="row padding-top-bottom-20">
 		<div class="col-md-3">
-			<h5>Working Information </h5>
+			<h5>Additional Information </h5>
 		</div>
-		<div class="col-md-9">
+		<div class="col-md-6">
 			<hr class="custom-form-hr">
+		</div>		
+		<div class="col-md-3">			
 		</div>		
 	</div>
 	<div class="row">		
@@ -136,89 +158,6 @@
 			</div>			
 		</div>
 		<div class="col-md-4 text-right">			
-		</div>
-	</div>	
-	<div class="row padding-top-bottom-20">
-		<div class="col-md-3">
-			<h5>Account Details </h5>
-		</div>
-		<div class="col-md-9">
-			<hr class="custom-form-hr">
-		</div>		
-	</div>
-	<div class="row padding-top-bottom-20"> 
-		<div class="col-md-8">
-			<div class="col-md-3">
-				 <div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="first_name">
-					<label for="Address">Bank Name</label>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="last_name">
-					<label for="Address">Account Number</label>
-				</div>
-			</div>			
-			<div class="col-md-3">
-				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="date_of_birth">
-					<label for="Address">IFSC Code</label>
-				</div>
-			</div>
-			<div class="col-md-3">
-				 <div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="address">
-					<label for="Address">Account Type</label>
-				</div>
-			</div>			
-		</div>
-		<div class="col-md-4 text-right">			
-		</div>
-	</div>		
-	<div class="row padding-top-bottom-20">
-		<div class="col-md-3">
-			<h5>Medical Information</h5>
-		</div>
-		<div class="col-md-9">
-			<hr class="custom-form-hr">
-		</div>		
-	</div>
-	<div class="row"> 
-		<div class="col-md-8">
-			<div class="col-md-3">
-				 <div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="medical_name">
-					<label for="Address">Medical Name</label>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="form-group label-float-top">
-					<input type="date" class="form-control control-float-top" name="medical_from_date">
-					<!-- <label for="Address">Account Number</label> -->
-				</div>
-			</div>			
-			<div class="col-md-3">
-				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="medical_phone">
-					<label for="Address">Phone</label>
-				</div>
-			</div>
-			<div class="col-md-3">
-				 <div class="form-group label-float-top">
-					<input type="email" class="form-control control-float-top" name="medical_email">
-					<label for="Address">Email</label>
-				</div>
-			</div>			
-		</div>
-		<div class="col-md-4 text-right">			
-			<div class="profile-image-section">								
-				<div>					
-					<img src="<?php echo base_url(); ?>assets/img/prescription.png" class="profile-images-custom" id="preview">
-				</div>
-				<button type="button" class="btn btn-primary image-upload-button">Upload</button>
-				<input type="file" id="filetag" class="image-upload-input">
-			</div>
 		</div>
 	</div>	
 	<div class="row"> 
