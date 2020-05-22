@@ -8,7 +8,7 @@
         </div>
       </div>
 
-      <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="col-md-12 col-sm-12 col-xs-12 home-module-pages">
         <div class="x_panel">
           <div class="x_content">
             <div class="img-upload-page"> 
@@ -16,7 +16,7 @@
                 <h4>Upload Advertisement Banners</h4>
               </div> 
               <div class="img-upload-div">
-              	<img src="">	
+              	<!-- <img src="" alt="Upload Image"> -->
               </div> 
               <p>Banner Size 1920X600</p> 
               <div class="img-upload-btn">
@@ -28,10 +28,54 @@
             	<div class="home-page-head">
                 <h4>Previous Advertisement Banners </h4>
               </div>
-              <ul>
-              	<li>
-              		<img src="">
+              <ul class="previous-img-gallery">
+              	<li class="previous-img">
+                  <span class="gallery-img">
+              		  <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
+                  </span>
               	</li>
+                <li class="previous-img">
+                  <span class="gallery-img">
+                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
+                  </span>
+                </li>
+                <li class="previous-img">
+                  <span class="gallery-img">
+                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
+                  </span>
+                </li>
+                <li class="previous-img">
+                  <span class="gallery-img">
+                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
+                  </span>
+                </li>
+                <li class="previous-img">
+                  <span class="gallery-img">
+                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
+                  </span>
+                </li>
+
+                <li class="previous-img">
+                  <span class="gallery-img">
+                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
+                  </span>
+                </li>
+                <li class="previous-img">
+                  <span class="gallery-img">
+                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
+                  </span>
+                </li>
+                <li class="previous-img">
+                  <span class="gallery-img">
+                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
+                  </span>
+                </li>
+
+                <li class="previous-img">
+                  <span class="gallery-img">
+                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
+                  </span>
+                </li>
               </ul> 
             	<div class="pull-right">
                 <div class="submit-btn">
