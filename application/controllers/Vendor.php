@@ -30,6 +30,16 @@ Class Vendor extends MY_Controller {
         $this->middle = 'personalDetails';
         $this->Vendor();
     }
+    public function inventory()
+    {
+        $this->middle = 'inventory';
+        $this->Vendor();
+    }
+    public function vendor_dashboard()
+    {
+        $this->middle = 'vendor_dashboard';
+        $this->Vendor();
+    }
     // public function vendors()
     // {
     //     $this->middle = 'vendor_list';

@@ -140,6 +140,16 @@ Class Admin extends MY_Controller {
         $this->middle = 'home_banner';
         $this->Admin();
     }
+    public function product_category()
+    {
+        $this->middle = 'product_category';
+        $this->Admin();
+    }
+    public function brands()
+    {
+        $this->middle = 'brands';
+        $this->Admin();
+    }
     public function logout()
     {
         $this->session->sess_destroy();
