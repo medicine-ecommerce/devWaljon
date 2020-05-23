@@ -585,17 +585,57 @@ span.transh-btn {
 /*vendor Dashboard */
 .vendor-dash-overview{
     background: #fff;
-    padding: 15px;
+    padding: 15px 5px;
     display: flow-root;
     margin: 10px;
+    border-radius: 3px;
 }
-.white-box{
+.white-box {
     background: #fff;
-    color: #73879C;    
+    color: #73879C;
+    padding: 10px 10px 20px;
+    display: flow-root;
+    border-radius: 5px;
+}
+.white-box h2 {
+    font-size: 38px;
+    font-weight: 500;
+    margin: 0px;
+}
+.white-box .pull-right i {
+    font-size: 50px;
 }
 .white-list{
-    display: flow-root;  
+    display: flow-root; 
+    margin-bottom: 25px; 
 }
+.link-icon-btn {
+    display: inherit;
+    margin-bottom: 5px;
+}
+.link-icon-btn span i {
+    font-size: 20px !important;
+}
+.ven-dash-tab {
+    display: flow-root;
+    margin-bottom: 20px;
+}
+.ven-dash-tab h5.dashboard-head {
+    display: contents;
+}
+.stock-btn .label-btn {
+    border-radius: 5px;
+}
+.stock-btn .label-btn.active {
+    background: #4abcde;
+    color: #fff;
+}
+
+.revenue-btn .label-btn.active {
+    background: #6c757d;
+    color: #fff;
+}
+
 /*vendor Dashboard */
 invertory-head
 @media (max-width: 992px) {
