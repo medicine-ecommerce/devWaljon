@@ -351,6 +351,11 @@ section.registration_content {
     height: 100vh;
     background-size: cover;
 }
+section.login_content {
+    background-image: url(../images/footer_bg_jpg.jpg);
+    height: 100vh;
+    background-size: cover;
+}
 .form-content {
     padding: 0px 50px;
     margin-top: 100px;
@@ -470,6 +475,7 @@ section.registration_content {
 .previous-img-gallery {
     list-style: none;
     margin-bottom: 50px;
+    padding: 0px;
 }
 .previous-img {
     display: inline-block;
@@ -501,6 +507,97 @@ span.transh-btn {
     height: 100%;
 }
 /*home banner page css*/
+/*brand page css*/
+.table.no-border-table thead th {
+    vertical-align: bottom;
+    border-bottom: none;
+}
+.table.no-border-table td, .table.no-border-table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: none;
+}
+.brand-name-box {
+    border: 1px solid #aeb4b7;
+    padding: 12px 2px 2px;
+    font-size: 12px;
+}
+.brand-description-box {
+    border: 1px solid #aeb4b7;
+    padding: 12px 8px 2px;
+    font-size: 12px;
+}
+.brand-img-box {
+    width: 50px;
+    height: 50px;
+    padding: 2px;
+    border: 1px solid #aeb4b7;
+}
+.brand-img-box img {
+    width: 100%;
+    height: 100%;
+}
+/*brand page css*/
+/*inventory*/
+.invertory-head h6 {
+    font-size: 14px;
+    margin: 50px 0px;
+}
+.invertory-box-head h4{
+    font-size: 18px;    
+}
+.invertory-box-img {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+.invertory-box-img img{
+    width: 100%;
+    height: 100%;
+}
+.invertory-box {
+    border: 1px solid;
+    width: 250px;
+    border-radius: 3px;
+    padding: 15px;
+}
+.single-upload {
+    width: 250px;
+    float: right;
+}
+.Bulk-upload {
+    width: 250px;
+    float: left;
+}
+.single-upload-btn{
+    margin-top: 38px;
+}
+.invertory-content {
+    margin-top: 15px;
+}
+.invertory-module{
+    padding-bottom: 50px;
+}
+.Bulk-upload-btn{
+    width: 125px;
+}
+/*inventory*/
+/*vendor Dashboard */
+.vendor-dash-overview{
+    background: #fff;
+    padding: 15px;
+    display: flow-root;
+    margin: 10px;
+}
+.white-box{
+    background: #fff;
+    color: #73879C;    
+}
+.white-list{
+    display: flow-root;  
+}
+/*vendor Dashboard */
+invertory-head
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {
          margin-left: 0px; 

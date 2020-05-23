@@ -50,9 +50,9 @@
                   </li>
                   <li><a><i class="fa fa-eraser"></i> Inventory<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a class="sub-item" href="#">Home Module</a></li>
-                      <li><a class="sub-item" href="#">Product Category</a></li>
-                      <li><a class="sub-item" href="#">Brands</a></li>
+                      <li><a class="sub-item" href="<?php echo base_url('admin/home_category'); ?>">Home Module</a></li>
+                      <li><a class="sub-item" href="<?php echo base_url('admin/product_category'); ?>">Product Category</a></li>
+                      <li><a class="sub-item" href="<?php echo base_url('admin/brands'); ?>">Brands</a></li>
                       <li><a class="sub-item" href="#">Manufacturer</a></li>
                       <li><a class="sub-item" href="#">Product Form</a></li>
                       <li><a class="sub-item" href="#">Linking</a></li>
