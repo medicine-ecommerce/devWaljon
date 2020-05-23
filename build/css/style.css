@@ -123,9 +123,13 @@ span.status-cancle {
     color: red;
     margin-left: 4px;
     border-radius: 3px;
-a}
+}
 img.profile-images-custom {
     width: 130px;
+    border: 1px solid #d4d4d4;
+}
+.text-center{
+    text-align: center;
 }
 button.btn.btn-primary.image-upload-button {
     background-color: #1fcdf9;
@@ -252,7 +256,7 @@ ul.nav.child_menu li a.active {
 }
 .active a span.fa {
     text-align: right!important;
-    margin-right: 18px;
+    margin-right: 13px;
 }
 .menu_section>ul {
     margin-top: 0px;
@@ -267,6 +271,96 @@ ul.nav.child_menu li a.active {
 hr.custom-form-hr {
     background-color: #7d7d7d;
 }
+.padding-bottom20{
+    padding-bottom: 20px;
+}
+.padding-top-bottom-20{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.padding-top-bottom50{
+    padding: 50px 0px;
+}
+.float-right{
+    float: right;
+}
+button.btn.btn-default.submit_button {
+    width: 116px;
+    border-radius: 23px;
+    background-color: #1fcdf9;
+    border: none;
+    color: #fff;
+}
+button.btn.btn-default.submit_button:hover {
+    width: 116px;
+    border-radius: 23px;
+    background-color: #28859c;
+    border: none;
+}
+.nav-md .container.body .right_col.registration-page {
+    padding: 40px;
+}
+img.green-tick-img {
+    width: 60px;
+}
+.welldon-modal {
+    text-align: center;
+    padding: 25px;
+}
+.welldon-modal h1 {
+    color: #00b01d;
+}
+.registration-done{
+    width: 300px;
+}
+img.registration-logo {
+    width: 130px;
+}
+.form-content {
+    padding-top: 100px;
+}
+.content-box {
+    width: 260px;
+    background-color: #0a0b0e24;
+    height: auto;
+    padding: 15px;
+}
+button.btn.btn-primary.registration-button {
+    background-color: #fff;
+    border: none;
+    border-radius: 20px;
+    color: #444;
+    width: 100%;
+}
+.button-division {
+    margin: 10px;
+}
+.content-box p {
+    font-size: 12px;
+    text-align: center;
+}
+.content-box h6 {
+    text-align: center;
+    margin: 15px 0px;
+}
+input.form-control.transparent-back {
+    background-color: #ffffff00;
+}
+section.registration_content {
+    background-image: url(../images/footer_bg_jpg.jpg);
+    height: 100vh;
+    background-size: cover;
+}
+section.login_content {
+    background-image: url(../images/footer_bg_jpg.jpg);
+    height: 100vh;
+    background-size: cover;
+}
+.form-content {
+    padding: 0px 50px;
+    margin-top: 100px;
+}
+
 /*home category page css*/
 .home-page-head h4{
     font-size: 14px;

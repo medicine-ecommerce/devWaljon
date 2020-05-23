@@ -36,7 +36,7 @@
 
     <!-- Custom Theme Style -->
     <link href="<?php echo base_url(); ?>build/css/custom.css" rel="stylesheet">
-    <link href="<?php echo base_url(); ?>build/css/Style.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>build/css/style.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>    
 
   </head>
@@ -65,6 +65,7 @@
                       </a>
                   <a class="dropdown-item"  href="javascript:;">Help</a>
                     <a class="dropdown-item"  href="<?php echo base_url('admin/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <a class="dropdown-item"  href="<?php echo base_url('vendor/logout'); ?>"><i class="fa fa-sign-out pull-right"></i>Vendor Log Out</a>
                   </div>
                 </li>
 
