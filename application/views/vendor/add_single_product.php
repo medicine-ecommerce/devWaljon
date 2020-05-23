@@ -1,4 +1,6 @@
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
 <div class="right_col registration-page">
 	<div class="row padding-top50 padding-bottom20">
 		<div class="col-md-3">
@@ -46,36 +48,41 @@
 					<!-- <label for="email">Date Of Birth</label> -->
 				</div>
 			</div>
-			<div class="col-md-3">
-				 <div class="form-group label-float-top">
-					<select class="form-control control-float-top" >
-				    <option></option>
-				    <option>List 1</option>
-				    <option>List 2</option>
-				    <option>List 3</option>
-				  </select>
-				  <label for="Address">Quantity</label>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="address">
-					<label for="Address">MRP</label>
-					<!-- <label for="email">Country</label> -->					
-				</div>
-			</div>			
-			<div class="col-md-3">
-				<div class="form-group label-float-top">
-					<input type="text" class="form-control control-float-top" name="address">
-					<label for="Address">Sales Price</label>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="form-group label-float-top">
-					<input type="date" class="form-control control-float-top" name="address">
-					<!-- <label for="Address">Date</label> -->
-				</div>
-			</div>
+			<div class="col-md-8">
+			<table class="table table-bordered" id="dynamic_field">  
+                <tr>  
+                    <td >
+                    	<div class="form-group label-float-top" style="width: 100px;">
+							<select name="quantity[][quantity]" class="form-control control-float-top states" >	
+								<option></option>
+								<option>750gm</option>		    			
+							</select>		
+							<label for="country">Quantity</label>
+						</div>
+					</td> 
+                    <td  >
+                    	<div class="form-group label-float-top" style="width: 100px;">
+							<input type="text" class="form-control control-float-top" name="mrp[][mrp]">
+							<label for="email">MRP</label>
+						</div>
+                    </td> 
+                    <td >
+                    	<div class="form-group label-float-top" style="width: 100px;">
+							<input type="text" class="form-control control-float-top"  name="sellprice[][sellprice]">
+							<label for="email">Sell Price</label>
+						</div>
+                    </td> 
+                    <td >
+                    	<div class="form-group label-float-top" >
+							<input type="date" class="form-control control-float-top" name="expriydate[][expriydate]">
+<!-- 							<label for="email">Expiry Date</label>
+ -->						</div>
+                    </td>  
+                    <td style="width: 5%;"><button type="button" name="add" id="add" class="btn btn-success">Add</button></td> 
+                   
+				</tr>  
+		    </table> 
+		</div>
 			<div class="col-md-12">
 				 <div class="form-group label-float-top">
 				 	<input type="text" class="form-control control-float-top" name="address">
@@ -97,11 +104,9 @@
 		</div>
 		<div class="col-md-4 text-right">
 			<div class="profile-image-section">								
-				<div>					
-					<img src="<?php echo base_url(); ?>assets/img/profile_dummy.png" class="profile-images-custom" id="preview">
-				</div>
-				<button type="button" class="btn btn-primary image-upload-button">Upload</button>
-				<input type="file" id="filetag" class="image-upload-input">
+				<div class="form-group">
+					<div id="coba"></div>
+				</div>			
 			</div>
 		</div>
 	</div>
@@ -226,3 +231,37 @@
 	  });
 	});
 </script>
+<script type="text/javascript">
+
+    $(document).ready(function(){      
+      var i=1;  
+      $('#add').click(function(){  
+           i++;  
+           $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><div class="form-group label-float-top"><select name="quantity[][quantity]" class="form-control control-float-top states" >	<option></option><option>750gm</option></select><label for="country">Quantity</label></div><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="mrp[][mrp]"><label for="email">MRP</label></div></td><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="sellprice[][sellprice]"><label for="email">Sell Price</label></div></td><td><div class="form-group label-float-top"><input type="date" class="form-control control-float-top" name="expriydate[][expriydate]"><label for="email">Expiry Date</label>	</div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');  
+      });
+      $(document).on('click', '.btn_remove', function(){  
+           var button_id = $(this).attr("id");   
+           $('#row'+button_id+'').remove();  
+      });  					  
+    });  
+</script>
+<script type="text/javascript">
+		$(function(){
+
+			$("#coba").spartanMultiImagePicker({
+				fieldName:        'fileUpload[]',
+				directUpload : {
+					status: true,
+					loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
+					url: '../c.php',
+					additionalParam : {
+						name : 'My Name'
+					},
+					success : function(data, textStatus, jqXHR){
+					},
+					error : function(jqXHR, textStatus, errorThrown){
+					}
+				}
+			});
+		});
+	</script>
