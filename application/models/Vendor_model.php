@@ -10,10 +10,10 @@ class Vendor_model extends MY_model
 
 	public function login($data){
 		$this->db->select('*');
-		$this->db->from('admin');
+		$this->db->from('vendor');
 		$this->db->group_start();
-		$this->db->where('username',$data['username']);		
-		$this->db->or_where('email',$data['username']);
+		$this->db->where('email',$data['username']);		
+		$this->db->or_where('phone',$data['username']);
 		$this->db->group_end();
 		$this->db->where('password',md5($data['password']));
 		$query = $this->db->get();

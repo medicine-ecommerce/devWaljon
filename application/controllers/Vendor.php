@@ -19,7 +19,8 @@ Class Vendor extends MY_Controller {
 
     public function index()
     {
-    	$this->load->view('admin/login');
+        $this->load->helper('cookie');
+    	$this->load->view('vendor/vendor_login');
     }
     public function vendorregister()
     {   
@@ -55,10 +56,38 @@ Class Vendor extends MY_Controller {
         $this->load->view('vendor/vandorregister');
         //$this->Admin();
     }
-    public function vendorLogin()
-    {
+    
+    public function vendorLogin(){
         $this->load->helper('cookie');
-        $this->load->view('vendor/vendor_login');
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){            
+            $this->form_validation->set_rules('username', 'User Name', 'required');
+            $this->form_validation->set_rules('password', 'Password', 'required');
+            
+            if ($this->form_validation->run() == FALSE){          
+              $this->session->set_flashdata('error', validation_errors());      
+            }
+            else{
+                $data = array('username'=> $this->input->post('username'),
+                            'password' => $this->input->post('password'));
+                $result = $this->Vendor->login($data);
+
+                if(!empty($result))
+                {
+                    $data = array('username'=>$result->username,
+                                'email'=>$result->email,
+                                'id'=>$result->id);
+                    $this->session->set_userdata($data);
+                    // redirect(base_url('admin/dashboard'));
+                    redirect('/admin/dashboard/', 'refresh');
+                }
+                else
+                {
+                    $this->session->set_flashdata('error', 'Incorrect Username or password');
+                    //redirect($_SERVER['HTTP_REFERER']);    
+                }
+            } 
+        }   
+        $this->load->view('vendor/vendor_login');    
     }
     public function dashboard()
     {
@@ -84,42 +113,12 @@ Class Vendor extends MY_Controller {
     // {
     //     $this->middle = 'user_list';
     //     $this->Admin();
-    // }
-
-    // public function adminLogin(){
-
-    //     $this->form_validation->set_rules('username', 'User Name', 'required');
-    //     $this->form_validation->set_rules('password', 'Password', 'required');
-        
-    //     if ($this->form_validation->run() == FALSE){          
-    //       $this->session->set_flashdata('error', validation_errors());      
-    //     }
-    //     else{
-    //         $data = array('username'=> $this->input->post('username'),
-    //                     'password' => $this->input->post('password'));
-    //         $result = $this->Admin_model->login($data);
-
-    //         if(!empty($result))
-    //         {
-    //             $data = array('username'=>$result->username,
-    //                         'email'=>$result->email,
-    //                         'id'=>$result->id);
-    //             $this->session->set_userdata($data);
-    //             redirect(base_url('admin/dashboard'));
-    //         }
-    //         else
-    //         {
-    //             $this->session->set_flashdata('error', 'Incorrect Username or password');
-    //             redirect($_SERVER['HTTP_REFERER']);    
-    //         }
-    //     }      
-        
-    // }
+    // }    
 
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect(base_url('admin'));
+        redirect(base_url('vendor'));
     }
 
 }

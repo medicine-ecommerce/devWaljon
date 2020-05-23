@@ -65,6 +65,7 @@
                       </a>
                   <a class="dropdown-item"  href="javascript:;">Help</a>
                     <a class="dropdown-item"  href="<?php echo base_url('admin/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <a class="dropdown-item"  href="<?php echo base_url('vendor/logout'); ?>"><i class="fa fa-sign-out pull-right"></i>Vendor Log Out</a>
                   </div>
                 </li>
 
