@@ -13,13 +13,53 @@ Class Vendor extends MY_Controller {
         // $this->load->model('Admin_model');
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');  
+        $this->load->model('Vendor_model','Vendor');        
+
     }
 
     public function index()
     {
     	$this->load->view('admin/login');
     }
-
+    public function vendorregister()
+    {   
+        $this->load->helper('cookie');
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){            
+            $this->form_validation->set_rules('email', 'email', 'required|valid_email');
+            $this->form_validation->set_rules('password', 'password', 'required');            
+            if($this->input->post('remember_password')){                
+                set_cookie('email',base64_encode($this->input->post('email')),3000);
+                set_cookie('password',base64_encode($this->input->post('password')),3000);
+            }
+            
+            // $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
+            // $this->form_validation->set_rules('company_name', 'Company Name', 'required');
+            // $this->form_validation->set_rules('company_address', 'Company addresss', 'required');
+           
+            if ($this->form_validation->run() == FALSE){ 
+              $this->session->set_flashdata('error', validation_errors());      
+            }
+            else{
+                $data = array(                            
+                            'email'             =>$this->input->post('email'),
+                            'password'            =>md5($this->input->post('password')),
+                            'is_active'         =>'0');
+                $result = $this->Vendor->VendorRegistration($data);
+                if ($result > 0) {
+                    $this->session->set_flashdata('success', 'Vendor account created successfully');                     
+                }
+            }            
+            redirect('/Vendor/personalDetails/', 'refresh');
+            //redirect($_SERVER['HTTP_REFERER']); 
+        }
+        $this->load->view('vendor/vandorregister');
+        //$this->Admin();
+    }
+    public function vendorLogin()
+    {
+        $this->load->helper('cookie');
+        $this->load->view('vendor/vendor_login');
+    }
     public function dashboard()
     {
     	$this->middle = 'dashboard';
