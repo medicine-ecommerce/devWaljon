@@ -1,6 +1,7 @@
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
 <div class="right_col registration-page">
 	<form method="post" action="<?php echo base_url() ?>/vendor/vendor_profile" enctype="multipart/form-data">
+		<span class="input-error-message"><?= $this->session->flashdata('error') ?></span>
 		<div class="row padding-top50 padding-bottom20">
 			<div class="col-md-3">
 				<h5>Personal Information </h5>
@@ -127,10 +128,9 @@
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
 						<select class="form-control control-float-top" name="marital_status">
-						    <option></option>
-						    <option value="List1" >List 1</option>
-						    <option value="List1">List 2</option>
-						    <option value="List1">List 3</option>
+						    <option>Select Status</option>
+						    <option>Married</option>
+						    <option>Unmarried</option>
 						</select>
 					  <label for="Address">Marital Status</label>
 					</div>
@@ -163,7 +163,7 @@
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="ifsc">
+						<input type="text" class="form-control control-float-top" name="ifc_code">
 						<label for="Address">IFSC Code</label>
 					</div>
 				</div>
@@ -189,7 +189,7 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="medical_name">
+						<input type="text" class="form-control control-float-top" name="company_name">
 						<label for="Address">Medical Name</label>
 					</div>
 				</div>
@@ -301,12 +301,14 @@
 
 	$(document).ready(function(){
 	
-  $(".form-group .form-control .control-float-top").blur(function(){
-		   if($(this).val()!=""){
+  $(".form-group .form-control").blur(function(){
+		   if($(this).val()!=""){		   	
+		   		$(this).("label").hide();
 			   $(this).siblings("label").addClass("active");
 		   }else{
 			    $(this).siblings("label").removeClass("active");
 		   }
 	  });
-	});
+	});	
+
 </script>

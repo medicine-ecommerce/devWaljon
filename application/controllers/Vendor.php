@@ -105,23 +105,54 @@ Class Vendor extends MY_Controller {
     public function vendor_profile()
     {
         
-        
-        if(!empty($_FILES)){            
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $this->form_validation->set_rules('first_name', 'First Name', 'required');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'required');
+            $this->form_validation->set_rules('email', 'email', 'required|valid_email');
+            $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
+            $this->form_validation->set_rules('company_name', 'Company Name', 'required');
+            $this->form_validation->set_rules('address', 'Addresss', 'required');
+
             
-            $config['upload_path'] = './img/vendor_profile/';
-            $config['allowed_types'] = 'gif|jpg|png';
-            $config['max_size'] = 2000;
-            $config['max_width'] = 1500;
-            $config['max_height'] = 1500;
-
-            $this->load->library('upload', $config);
-
-            if ($this->upload->do_upload()) 
-            {                
-                $data = array('profile_image' => $this->upload->data());
-
-                redirect($_SERVER['HTTP_REFERER']); 
+            if ($this->form_validation->run() == FALSE){ 
+                echo "FALSE";
+              $this->session->set_flashdata('error', validation_errors());      
             }
+            else{
+                print_r($this->input->post());
+                $data = array(
+                            'company_name'=>$this->input->post('company_name'),
+                            'address'=>$this->input->post('address'),
+                            'first_name'=>$this->input->post('first_name'),
+                            'last_name'=>$this->input->post('last_name'),
+                            'email'=>$this->input->post('email'),
+                            'mobile'=>$this->input->post('mobile'),
+                            'country'=>$this->input->post('country'),
+                            'state'=>$this->input->post('state'),
+                            'city'=>$this->input->post('city'),
+                            'pin_code'=>$this->input->post('pin_code'),
+                            'degree'=>$this->input->post('degree'),
+                            'working_from'=>$this->input->post('working_from'),
+                            'experience'=>$this->input->post('experience'),
+                            'marital_status'=>$this->input->post('marital_status'),
+                            'medical_since'=>$this->input->post('medical_since'),
+                            'medical_phone'=>$this->input->post('medical_phone'),
+                            'medical_email'=>$this->input->post('medical_email'),
+                            'is_active'=>'0');
+
+                $bankData = array(
+                            'bank_name'=>$this->input->post('bank_name'),
+                            'account_number'=>$this->input->post('account_number'),
+                            'ifc_code'=>$this->input->post('ifc_code'),
+                            'account_type'=>$this->input->post('account_type'));                
+
+                $result = $this->Vendor->vendorRegistration($data);
+                $result1 = $this->Vendor->addBankAccount($bankData);
+                if ($result > 0) {
+                    $this->session->set_flashdata('success', 'Vendor account created successfully');                     
+                }
+            }
+            redirect($_SERVER['HTTP_REFERER']); 
         }
     
     }
