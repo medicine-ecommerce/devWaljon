@@ -663,6 +663,9 @@ invertory-head
     .dash-box {
         padding: 15px 10px;
     }
+    .nav-md .container.body .right_col {
+        margin-left: 0px;
+    }
 }
 
 @media (max-width: 568px) {
@@ -696,5 +699,13 @@ invertory-head
     span.status-consulted {
         font-size: 12px;
     }
-     
+    .nav-md .container.body .right_col {
+        margin-left: 0px;
+    }
+    .white-box {
+        margin-bottom: 15px;
+    }
+    .stock-btn .label-btn {
+        font-size: 13px;
+    }
 }
