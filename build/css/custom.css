@@ -1049,7 +1049,11 @@ body .container.body .right_col {
   .right_col {
     padding: 10px !important; }
   .item {
-    display: block; } }
+    display: block; } 
+  .nav-md .container.body .right_col {
+    margin-left: 0px !important;
+  }
+}
 
 @media (max-width: 1200px) {
   .x_title h2 {

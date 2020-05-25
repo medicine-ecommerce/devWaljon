@@ -125,6 +125,11 @@ Class Vendor extends MY_Controller {
         }
     
     }
+    public function productadd()
+    {
+        $this->middle = 'productadd';
+        $this->Vendor();
+    } 
 
     public function inventory()
     {
