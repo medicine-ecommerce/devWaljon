@@ -8,12 +8,12 @@ class Vendor_model extends MY_model
 		return	$this->db->insert($table, $data);
 	}
 
-	public function login($data){
+	public function login($data){		
 		$this->db->select('*');
-		$this->db->from('vendor');
+		$this->db->from('vendors');
 		$this->db->group_start();
-		$this->db->where('email',$data['username']);		
-		$this->db->or_where('phone',$data['username']);
+		$this->db->where('email',$data['email']);		
+		$this->db->or_where('mobile',$data['email']);
 		$this->db->group_end();
 		$this->db->where('password',md5($data['password']));
 		$query = $this->db->get();

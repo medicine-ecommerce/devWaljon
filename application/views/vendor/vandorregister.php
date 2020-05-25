@@ -32,7 +32,7 @@
           <div class="button-division text-center">          
             <button type="submit" class="btn btn-primary registration-button">Register</button>
           </div>
-          <p>Already have an account <a href="<?php echo base_url();?>/Vendor/vendorLogin">Login</a> here</p>        
+          <p>Already have an account <a href="<?php echo base_url();?>/Vendor/vendor_login">Login</a> here</p>        
         </div>
       </form>
     </div>

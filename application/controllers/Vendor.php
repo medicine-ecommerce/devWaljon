@@ -14,6 +14,7 @@ Class Vendor extends MY_Controller {
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');  
         $this->load->model('Vendor_model','Vendor');        
+        $this->load->library('upload');
 
     }
 
@@ -26,7 +27,7 @@ Class Vendor extends MY_Controller {
     {   
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
-            $this->form_validation->set_rules('email', 'email', 'required|valid_email');
+            $this->form_validation->set_rules('email', 'email', 'required|valid_email|is_unique[vendors.email]');
             $this->form_validation->set_rules('password', 'password', 'required');            
             if($this->input->post('remember_password')){                
                 set_cookie('email',base64_encode($this->input->post('email')),3000);
@@ -56,38 +57,40 @@ Class Vendor extends MY_Controller {
         $this->load->view('vendor/vandorregister');
         //$this->Admin();
     }
+    public function vendor_login(){
+        $this->load->helper('cookie');
+        $this->load->view('vendor/vendor_login');    
+    }
     
     public function vendorLogin(){
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
-            $this->form_validation->set_rules('username', 'User Name', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required');
             $this->form_validation->set_rules('password', 'Password', 'required');
             
             if ($this->form_validation->run() == FALSE){          
               $this->session->set_flashdata('error', validation_errors());      
             }
             else{
-                $data = array('username'=> $this->input->post('username'),
+                $data = array('email'=> $this->input->post('email'),
                             'password' => $this->input->post('password'));
                 $result = $this->Vendor->login($data);
 
                 if(!empty($result))
                 {
-                    $data = array('username'=>$result->username,
-                                'email'=>$result->email,
+                    $data = array('email'=>$result->email,
                                 'id'=>$result->id);
                     $this->session->set_userdata($data);
                     // redirect(base_url('admin/dashboard'));
-                    redirect('/admin/dashboard/', 'refresh');
+                    redirect('/vendor/personalDetails/', 'refresh');
                 }
                 else
                 {
                     $this->session->set_flashdata('error', 'Incorrect Username or password');
-                    //redirect($_SERVER['HTTP_REFERER']);    
+                    redirect($_SERVER['HTTP_REFERER']);    
                 }
             } 
-        }   
-        $this->load->view('vendor/vendor_login');    
+        }           
     }
     public function dashboard()
     {
@@ -99,6 +102,30 @@ Class Vendor extends MY_Controller {
         $this->middle = 'personalDetails';
         $this->Vendor();
     }
+    public function vendor_profile()
+    {
+        
+        
+        if(!empty($_FILES)){            
+            
+            $config['upload_path'] = './img/vendor_profile/';
+            $config['allowed_types'] = 'gif|jpg|png';
+            $config['max_size'] = 2000;
+            $config['max_width'] = 1500;
+            $config['max_height'] = 1500;
+
+            $this->load->library('upload', $config);
+
+            if ($this->upload->do_upload()) 
+            {                
+                $data = array('profile_image' => $this->upload->data());
+
+                redirect($_SERVER['HTTP_REFERER']); 
+            }
+        }
+    
+    }
+
     public function inventory()
     {
         $this->middle = 'inventory';
