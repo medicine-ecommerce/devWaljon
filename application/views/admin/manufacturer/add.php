@@ -3,7 +3,7 @@
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Add Vendor</h3>
+          <h3>Add Manufacturer</h3>
         </div>
 
         <div class="title_right">
@@ -31,47 +31,16 @@
           } ?>
           <div class="x_panel">
             <div class="x_content">
-              <form class="" action="<?php echo(!empty($vendor)) ? base_url('admin/vendor_edit/'.$vendor->id) : base_url('admin/vendor_add') ?>" method="post" novalidate>
-                <span class="section">Company Info</span>
+              <form class="" action="<?php echo(!empty($manufacturer)) ? base_url('admin/manufacturer_edit/'.$manufacturer->id) : base_url('admin/manufacturer_add') ?>" method="post" novalidate>
+                <span class="section">Add Manufacturer</span>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align"> Name<span
                       class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input class="form-control"  name="company_name" required="required" value="<?php echo (!empty($vendor)) ? $vendor->company_name: '';?>" />
+                    <input class="form-control"  name="name" required="required" value="<?php echo (!empty($manufacturer)) ? $manufacturer->name: '';?>" />
                   </div>
                 </div>
-                <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">Address<span
-                      class="required">*</span></label>
-                  <div class="col-md-6 col-sm-6">
-                    <input class="form-control" class='optional' name="company_address" data-validate-length-range="5,15"
-                      type="text" value="<?php echo (!empty($vendor)) ? $vendor->company_address: '';?>" /></div>
-                </div>
-                <span class="section">Personal Info</span>
-                <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">First Name<span
-                      class="required">*</span></label>
-                  <div class="col-md-6 col-sm-6">
-                    <input class="form-control" name="first_name" required="required" type="text" value="<?php echo (!empty($vendor)) ? $vendor->first_name: '';?>" /></div>
-                </div>
-                <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">Last Name<span
-                      class="required">*</span></label>
-                  <div class="col-md-6 col-sm-6">
-                    <input class="form-control" name="last_name" required="required" type="text" value="<?php echo (!empty($vendor)) ? $vendor->last_name: '';?>" /></div>
-                </div>
-                <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">email<span
-                      class="required">*</span></label>
-                  <div class="col-md-6 col-sm-6">
-                    <input class="form-control" name="email" class='email' required="required" type="email" value="<?php echo (!empty($vendor)) ? $vendor->email: '';?>" /></div>
-                </div>
-                <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">Telephone<span
-                      class="required">*</span></label>
-                  <div class="col-md-6 col-sm-6">
-                    <input class="form-control" type="tel" class='tel' name="mobile" required='required' data-validate-length-range="8,20" value="<?php echo (!empty($vendor)) ? $vendor->mobile: '';?>" /></div>
-                </div>
+                
                 <div class="ln_solid">
                   <div class="form-group">
                     <div class="col-md-6 offset-md-3">
