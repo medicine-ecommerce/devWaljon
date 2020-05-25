@@ -129,16 +129,7 @@ Class Admin extends MY_Controller {
     {
         $this->middle = 'user_list';
         $this->Admin();
-    }
-    public function vendorLogin()
-    {
-        $this->load->view('vendor/vendor_login');
-    }
-    public function vandorregister()
-    {
-
-        $this->load->view('vendor/vandorregister');
-    }
+    }  
 
     public function adminLogin(){
 
@@ -398,6 +389,16 @@ Class Admin extends MY_Controller {
     public function home_banners()
     {
         $this->middle = 'home_banner';
+        $this->Admin();
+    }
+    public function product_category()
+    {
+        $this->middle = 'product_category';
+        $this->Admin();
+    }
+    public function brands()
+    {
+        $this->middle = 'brands';
         $this->Admin();
     }
     public function logout()

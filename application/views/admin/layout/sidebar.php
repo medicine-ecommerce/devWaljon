@@ -25,7 +25,7 @@
               <div class="menu_section">
                 <!-- <h3>General</h3> -->
                 <ul class="nav side-menu">
-                  <li><a href="<?php echo base_url('admin/dashboard');?>"><i class="fa fa-dashboard"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="<?php echo base_url('admin/dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
                     <!-- <ul class="nav child_menu">
                       <li><a href="index.html">Dashboard</a></li>
                     </ul> -->
@@ -51,9 +51,9 @@
                   </li>
                   <li><a><i class="fa fa-eraser"></i> Inventory<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a class="sub-item" href="#">Home Module</a></li>
-                      <li><a class="sub-item" href="#">Product Category</a></li>
-                      <li><a class="sub-item" href="#">Brands</a></li>
+                      <li><a class="sub-item" href="<?php echo base_url('admin/home_category'); ?>">Home Module</a></li>
+                      <li><a class="sub-item" href="<?php echo base_url('admin/product_category'); ?>">Product Category</a></li>
+                      <li><a class="sub-item" href="<?php echo base_url('admin/brands'); ?>">Brands</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/manufacturer_list'); ?>">Manufacturer</a></li>
                       <li><a class="sub-item" href="#">Product Form</a></li>
                       <li><a class="sub-item" href="#">Linking</a></li>

@@ -1049,7 +1049,11 @@ body .container.body .right_col {
   .right_col {
     padding: 10px !important; }
   .item {
-    display: block; } }
+    display: block; } 
+  .nav-md .container.body .right_col {
+    margin-left: 0px !important;
+  }
+}
 
 @media (max-width: 1200px) {
   .x_title h2 {
@@ -1178,7 +1182,9 @@ body {
   display: block; }
 
 .page-title .title_left h3 {
-  margin: 9px 0; }
+    font-size: 18px;
+    margin: 9px 10px;
+}
 
 .page-title .title_right {
   width: 55%;
