@@ -13,7 +13,6 @@ class MY_Controller extends CI_Controller
     }
 
     public function Admin(){
-      print_r($this->data);
       $this->template['header']        = $this->load->view('admin/layout/header',$this->data);      
       $this->template['sidebar']        = $this->load->view('admin/layout/sidebar');  
       $this->template['middle']        = $this->load->view('admin/'.$this->middle,$this->data);

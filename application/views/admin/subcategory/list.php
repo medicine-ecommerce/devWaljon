@@ -13,7 +13,7 @@
                 <div class="x_title">
                   <h2>Sub-Category<small>List</small></h2>
                   <div class="pull-right">
-                    <button type='submit' class="btn btn-primary">Add Sub Category</button>  
+                    <a href="<?php echo base_url('admin/subcategory_add'); ?>" class="btn btn-primary">Add Sub Category</a>  
                   </div>
                   <div class="clearfix"></div>
                 </div>
