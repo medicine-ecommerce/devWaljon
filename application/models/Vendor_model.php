@@ -25,6 +25,10 @@ class Vendor_model extends MY_model
 	{
 		return $this->insertData('vendors',$data);
 	}
+	public function vendorProfileUpdate($data,$where)
+	{
+		return $this->updateData('vendors',$data,$where);
+	}
 	public function addBankAccount($data)
 	{
 		return $this->insertData('bank_account',$data);

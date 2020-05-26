@@ -72,15 +72,19 @@ class MY_Model extends CI_Model {
         }
     }
     function upload($image,$path)
-    {
+    {        
+
         $config['upload_path'] = './assets/'.$path.'/';
         $config['allowed_types'] = 'gif|jpg|png';
         $config['overwrite'] = TRUE;
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
+        
+        $this->upload->initialize($config);
         $this->load->library('upload', $config);
-        if ( ! $this->upload->do_upload($image)) {
-            return false
+        if (!$this->upload->do_upload($image)) {
+            //print_r($this->upload->display_errors());
+            return false;
         } else {
             return $this->upload->data();
         }

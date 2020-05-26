@@ -43,11 +43,15 @@ Class Vendor extends MY_Controller {
             }
             else{
                 $data = array(                            
-                            'email'             =>$this->input->post('email'),
-                            'password'            =>md5($this->input->post('password')),
-                            'is_active'         =>'0');
-                $result = $this->Vendor->VendorRegistration($data);
-                if ($result > 0) {
+                            'email'=>$this->input->post('email'),
+                            'password'=>md5($this->input->post('password')),
+                            'is_active'=>'0');
+                $last_id = $this->Vendor->VendorRegistration($data);               
+
+                if ($last_id > 0) {
+                    $data = array('email'=>$this->input->post('email'),
+                                  'vendor_id'=>$last_id);
+                    $this->session->set_userdata($data);
                     $this->session->set_flashdata('success', 'Vendor account created successfully');                     
                 }
             }            
@@ -79,7 +83,7 @@ Class Vendor extends MY_Controller {
                 if(!empty($result))
                 {
                     $data = array('email'=>$result->email,
-                                'id'=>$result->id);
+                                'vendor_id'=>$result->id);
                     $this->session->set_userdata($data);
                     // redirect(base_url('admin/dashboard'));
                     redirect('/vendor/personalDetails/', 'refresh');
@@ -114,12 +118,10 @@ Class Vendor extends MY_Controller {
             $this->form_validation->set_rules('address', 'Addresss', 'required');
 
             
-            if ($this->form_validation->run() == FALSE){ 
-                echo "FALSE";
-              $this->session->set_flashdata('error', validation_errors());      
+            if ($this->form_validation->run() == FALSE){                 
+                $this->session->set_flashdata('error', validation_errors());      
             }
-            else{
-                print_r($this->input->post());
+            else{                
                 $data = array(
                             'company_name'=>$this->input->post('company_name'),
                             'address'=>$this->input->post('address'),
@@ -146,8 +148,19 @@ Class Vendor extends MY_Controller {
                             'ifc_code'=>$this->input->post('ifc_code'),
                             'account_type'=>$this->input->post('account_type'));                
 
-                $result = $this->Vendor->vendorRegistration($data);
+                $result = $this->Vendor->vendorProfileUpdate($data,array('id'=>$this->session->userdata('vendor_id')));
                 $result1 = $this->Vendor->addBankAccount($bankData);
+
+                // $universityLogoImage = date("YmdHis").$_FILES["logo"]["name"];
+
+                if(!empty($_FILES['profile_image'])){
+                    $this->Vendor->upload("profile_image","vendor_profile");
+                }
+
+                if(!empty($_FILES['licence_image'])){
+                    $this->Vendor->upload("licence_image","licence");
+                }
+
                 if ($result > 0) {
                     $this->session->set_flashdata('success', 'Vendor account created successfully');                     
                 }
