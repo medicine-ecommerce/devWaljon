@@ -62,7 +62,7 @@ class MY_Model extends CI_Model {
 
     }
 
-    public function insertData($table,$update_data) {      
+    public function insertData($table,$update_data) {              
         $q = $this->db->insert($table,$update_data);
         if ($q) {
             return  $this->db->insert_id();

@@ -242,7 +242,7 @@
 	    <div >
 			<img src="<?php echo base_url(); ?>assets/img/green_tick.jpg" class="green-tick-img" id="preview">
 			<h1> Well Done</h1>		
-			<p>Congratulations your medical storr has been created succesfully now you can add staff member after continue</p>
+			<p>Congratulations your medical store has been created succesfully now you can add staff member after continue</p>
 	      <!-- <h4 class="modal-title">Modal Header</h4>
 	      <button type="button" class="close" data-dismiss="modal">&times;</button> -->
 	    </div>
@@ -277,6 +277,7 @@
 </div>
 <input type="hidden" name="" class="hid_id" value="<?= $this->session->flashdata('error') ?>">
 <input type="hidden" name="" class="success_id" value="<?= $this->session->flashdata('success') ?>">
+<input type="hidden" name="" class="prev_url" value="<?= $_SERVER['HTTP_REFERER'] ?>">
 
 
 <script type="text/javascript">
@@ -341,9 +342,12 @@
 
 	$(document).ready(function(){
 		var id = document.getElementsByClassName("success_id")[0].value;
-		if(id!=''){
-			$('#myModal').modal('show'); 
-		}					
+		var prev_url = document.getElementsByClassName("prev_url")[0].value;		
+		
+		if(prev_url!= BaseUrl+''+'/vendor/vendorregister' && prev_url!= BaseUrl+''+'/vendor/vendor_login' && id!='' ){
+				$('#myModal').modal('show'); 
+		}
+
 	});
 	
 </script>
