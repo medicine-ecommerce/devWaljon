@@ -12,6 +12,9 @@
               <div class="x_panel">
                 <div class="x_title">
                   <h2>Category<small>List</small></h2>
+                  <div class="pull-right">
+                    <a href="<?php echo base_url('admin/category_add'); ?>" class="btn btn-primary">Add Category</a>  
+                  </div>
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
