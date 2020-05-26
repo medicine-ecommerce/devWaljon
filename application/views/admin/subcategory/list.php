@@ -12,6 +12,9 @@
               <div class="x_panel">
                 <div class="x_title">
                   <h2>Sub-Category<small>List</small></h2>
+                  <div class="pull-right">
+                    <button type='submit' class="btn btn-primary">Add Sub Category</button>  
+                  </div>
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
