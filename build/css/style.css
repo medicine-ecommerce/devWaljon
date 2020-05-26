@@ -151,7 +151,10 @@ input.image-upload-input {
 /*Google Input*/
 /*form{margin-top:30px;}*/
 
-.form-group.label-float-top{position:relative;}
+.form-group.label-float-top{
+    position:relative;
+    margin: 12px 0;
+}
 .form-control.control-float-top{height: 40px;}
 .form-control.control-float-top:focus{box-shadow:none;}
 

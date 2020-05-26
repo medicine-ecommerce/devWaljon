@@ -33,6 +33,25 @@ class Admin_model extends MY_model
 	{
 		return $this->updateData('vendors',array('is_active'=>$status),array('id'=>$id));
 	}
+	public function getVendorByID($id)
+	{
+		return $this->getRowData('vendors','*',array('id'=>$id));
+	}
+	public function VendorUpdate($data,$id)
+	{
+		return $this->updateData('vendors',$data,array('id'=>$id));
+	}
+	public function VendorDelete($id)
+	{
+		return $this->deleteData('vendors',array('id'=>$id));
+	}
+	public function SubCategoryList()
+	{
+		$this->db->select('subcategory.*,category.category_name');
+		$this->db->from('subcategory');
+		$this->db->join('category','category.id = subcategory.category_id');
+		return $this->db->get()->result();
+	}
 
 }
 
