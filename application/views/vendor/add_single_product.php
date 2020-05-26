@@ -95,7 +95,7 @@
                  </div>
               </div>
               <div class="col-md-3">
-                 <div class="form-group" style="margin-top: 10px;">
+                 <div class="form-group padding-top-bottom-20">
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
                     <label for="vehicle1"> Prescription Required</label><br>
                  </div>
@@ -204,7 +204,7 @@
               </div> 
             </div>
             <div class="upload-img-sec">
-              <div class="row img-upload">
+              <div class="img-upload">
                 <div class="column">
                   <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/profile_dummy.png" onclick="currentSlide(1)" alt="The Woods">
                 </div>
