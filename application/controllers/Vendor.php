@@ -110,6 +110,12 @@ Class Vendor extends MY_Controller {
         $this->middle = 'personalDetails';
         $this->Vendor();
     }
+    public function editPersonalDetails()
+    {
+        
+        $this->middle = 'edit_personalDetails';
+        $this->Vendor();
+    }
     public function vendor_profile()
     {
         
