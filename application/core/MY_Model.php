@@ -80,7 +80,7 @@ class MY_Model extends CI_Model {
         $config['remove_spaces'] = TRUE;
         $this->load->library('upload', $config);
         if ( ! $this->upload->do_upload($image)) {
-            return false
+            return false;
         } else {
             return $this->upload->data();
         }
