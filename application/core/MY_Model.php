@@ -82,6 +82,7 @@ class MY_Model extends CI_Model {
         
         $this->upload->initialize($config);
         $this->load->library('upload', $config);
+
         if (!$this->upload->do_upload($image)) {
             //print_r($this->upload->display_errors());
             return false;
