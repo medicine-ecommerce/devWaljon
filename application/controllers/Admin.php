@@ -12,11 +12,18 @@ Class Admin extends MY_Controller {
         $this->load->database();
         $this->load->model('Admin_model','Admin');
         $this->load->helper(array('form', 'url'));
-        $this->load->library('form_validation');  
+        $this->load->library('form_validation');
+        if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
+            redirect(base_url('admin'));
+        }
+
     }
 
     public function index()
     {
+        if (!empty($this->session->userdata('user_id'))) {
+            redirect('admin/dashboard');
+        }
     	$this->load->view('admin/login');
     }
 
@@ -148,7 +155,7 @@ Class Admin extends MY_Controller {
             {
                 $data = array('username'=>$result->username,
                             'email'=>$result->email,
-                            'id'=>$result->id);
+                            'user_id'=>$result->id);
                 $this->session->set_userdata($data);
                 redirect(base_url('admin/dashboard'));
             }
