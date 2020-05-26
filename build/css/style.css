@@ -644,6 +644,89 @@ span.input-error-message {
 }
 
 /*vendor Dashboard */
+/*single product upload*/
+.attachment-box {
+    border: 1px dashed;
+    padding: 12px;
+}
+.mySlides {
+  display: none;
+}
+.cursor {
+  cursor: pointer;
+}
+.column {
+    width: 70px;
+    height: 70px;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid;
+}
+.column img{
+    width: 100%;
+    height: 100%;
+}
+.demo {
+  opacity: 0.6;
+}
+.active,
+.demo:hover {
+  opacity: 1;
+}
+#gallery img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+#fileElem {
+  display: none;
+}
+div#gallery {
+    text-align: left;
+}
+.mySlides {
+    padding: 10px;
+    border: 1px solid;
+    margin-bottom: 10px;
+}
+.nav-tabs .nav-link {
+    font-weight: 600;
+    border: 1px solid #2a3f544a;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #fff;
+    background-color: #5d7184;
+    border-color: #5d7184; 
+}
+.faq-textarea{
+    margin-top: 10px;
+}
+.addMore-btn {
+    background: #1fcdf9;
+    border-radius: 50%;
+    color: #fff;
+    margin: 0px;
+}
+.addMore-btn:hover {
+    background: #1fcdf9;
+    border-radius: 50%;
+    color: #fff;
+    margin: 0px;
+}
+.btn-custom-rev{
+    color: red;
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+}
+.btn-custom-rev:hover{
+    color: red;
+    font-size: 20px;
+}
+/*single product upload*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {
          margin-left: 0px; 
