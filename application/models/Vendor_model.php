@@ -15,8 +15,12 @@ class Vendor_model extends MY_model
 		$this->db->where('email',$data['email']);		
 		$this->db->or_where('mobile',$data['email']);
 		$this->db->group_end();
-		$this->db->where('password',md5($data['password']));
+		$this->db->where('password',$data['password']);
 		$query = $this->db->get();
+		// $this->db->get();
+		// echo $this->db->last_query();
+		// die();
+
 		if ($query->num_rows() > 0) {
 			return $query->row();
 		}

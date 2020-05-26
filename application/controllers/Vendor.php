@@ -29,6 +29,7 @@ Class Vendor extends MY_Controller {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
             $this->form_validation->set_rules('email', 'email', 'required|valid_email|is_unique[vendors.email]');
             $this->form_validation->set_rules('password', 'password', 'required');            
+            
             if($this->input->post('remember_password')){                
                 set_cookie('email',base64_encode($this->input->post('email')),3000);
                 set_cookie('password',base64_encode($this->input->post('password')),3000);
@@ -46,16 +47,16 @@ Class Vendor extends MY_Controller {
                             'email'=>$this->input->post('email'),
                             'password'=>md5($this->input->post('password')),
                             'is_active'=>'0');
-                $last_id = $this->Vendor->VendorRegistration($data);               
 
+                $last_id = $this->Vendor->VendorRegistration($data);               
                 if ($last_id > 0) {
                     $data = array('email'=>$this->input->post('email'),
                                   'vendor_id'=>$last_id);
                     $this->session->set_userdata($data);
                     $this->session->set_flashdata('success', 'Vendor account created successfully');                     
+                    redirect('/Vendor/personalDetails/', 'refresh');
                 }
             }            
-            redirect('/Vendor/personalDetails/', 'refresh');
             //redirect($_SERVER['HTTP_REFERER']); 
         }
         $this->load->view('vendor/vandorregister');
@@ -67,19 +68,22 @@ Class Vendor extends MY_Controller {
     }
     
     public function vendorLogin(){
+
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
             $this->form_validation->set_rules('email', 'Email', 'required');
             $this->form_validation->set_rules('password', 'Password', 'required');
             
             if ($this->form_validation->run() == FALSE){          
+                
               $this->session->set_flashdata('error', validation_errors());      
-            }
-            else{
+            }            
+            else{                
                 $data = array('email'=> $this->input->post('email'),
-                            'password' => $this->input->post('password'));
-                $result = $this->Vendor->login($data);
+                            'password' =>md5($this->input->post('password'))
+                            );
 
+                $result = $this->Vendor->login($data);
                 if(!empty($result))
                 {
                     $data = array('email'=>$result->email,
@@ -204,7 +208,7 @@ Class Vendor extends MY_Controller {
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect(base_url('vendor'));
+        redirect(base_url('vendor/vendor_login'));
     }
 
 }

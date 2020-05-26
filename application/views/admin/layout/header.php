@@ -40,9 +40,11 @@
     <link href="<?php echo base_url(); ?>build/css/style.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>    
 
-  </head>
-
+  </head>  
   <body class="nav-md">
+    <script type="text/javascript">       
+       var BaseUrl = "<?=base_url()?>";
+    </script>
     <div class="container body">
       <div class="main_container">
         <!-- top navigation -->
