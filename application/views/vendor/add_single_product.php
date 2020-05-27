@@ -179,22 +179,12 @@
           </div>
           <div class="attachment-box">
             <div class="preview-box">
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png" style="width:100%">
-              </div>
-
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/snake2.png" style="width:100%">
+              <div class="defaultSlides">
+                <img src="<?php echo base_url(); ?>assets/img/imgpsh_fullsize_anim.png" style="width:100%">
               </div>
             </div>
             <div class="upload-img-sec">
               <div class="img-upload">
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/profile_dummy.png" onclick="currentSlide(1)" alt="The Woods">
-                </div>
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/snake2.png" onclick="currentSlide(2)" alt="Cinque Terre">
-                </div>
               </div>
             </div>
             <div class="upload-btn text-center padding-top-bottom-20">
@@ -383,12 +373,11 @@ function updateProgress(fileNumber, percent) {
   progressBar.value = total
 }
 
-let imgCount = 0;
 function handleFiles(files) {
   files = [...files]
   initializeProgress(files.length)
   files.forEach(uploadFile)
-  files.forEach(previewFile,imgCount++);
+  files.forEach(previewFile);
 }
 
 function previewFile(file) {
@@ -396,11 +385,16 @@ function previewFile(file) {
   reader.readAsDataURL(file);
   reader.onloadend = function() {
     let img = document.createElement('img');
+    var numberOfChildren = $('.img-upload').children('.column').length;
+    var imgNumber = numberOfChildren+1;
     img.src = reader.result;
+    $(".defaultSlides").hide();
     //document.getElementById('gallery').appendChild(img);
     $(".preview-box").append('<div class="mySlides"><img src="'+img.src+'" style="width:100%"></div>');
-    $(".img-upload").append('<div class="column"><img class="demo cursor" src="'+img.src+'" style="width:100%" onclick="currentSlide('+imgCount+')"></div>');
-  }
+    $(".img-upload").append('<div class="column"><img class="demo cursor" src="'+img.src+'" style="width:100%" onclick="currentSlide('+imgNumber+')"></div>');
+    
+  } 
+
 }
 
 function uploadFile(file, i) {
