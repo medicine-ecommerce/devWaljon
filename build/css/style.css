@@ -729,23 +729,29 @@ div#gallery {
     background: #1fcdf9;
     border-radius: 50%;
     color: #fff;
-    margin-top: 10px;
+    margin: 10px 0px 10px 10px;
 }
 .addMore-btn:hover {
     background: #1fcdf9;
     border-radius: 50%;
     color: #fff;
-    margin: 0px;
+    margin: 10px 0px 10px 10px;
 }
 .btn-custom-rev{
     color: red;
     font-size: 20px;
-    margin: 0px;
+    margin: 10px;
     padding: 0px;
 }
 .btn-custom-rev:hover{
     color: red;
     font-size: 20px;
+}
+.append-table td{
+    padding: 0px !important;
+}
+.upload-btn {
+    border: 1px solid;
 }
 /*single product upload*/
 @media (max-width: 992px) {
