@@ -68,6 +68,7 @@
     border-radius:10px;
 }
   			</style>
+  			<script src="<?php echo base_url(); ?>vendor/countrystatecity.js"></script>
   			<div class="right_col" role="main">
                <div class="">
                   <div class="page-title">
@@ -218,16 +219,95 @@
             </ul>
         </div><!-- End .container -->
         <div class="tab-content">
-            <div class="tab-pane fade show active" id="featured-products" role="tabpanel" aria-labelledby="featured-products-tab">
+            <div class="tab-pane fade show active" id="featured-products" role="tabpanel" aria-labelledby="featured-products-tab">	<div class="form-group">
+				<label class="control-label col-md-3">Upload Image</label>
+				<div class="col-md-8">
+					<div class="row">
+						<div id="coba"></div>
+					</div>
+				</div>
+			</div>
                 
             </div><!-- End .tab-pane -->
             <div class="tab-pane fade" id="latest-products" role="tabpanel" aria-labelledby="latest-products-tab">
+            	<div class="form-group">
+				<label class="control-label col-md-3">Upload Image</label>
+				<div class="col-md-8">
+					<div class="row">
+						<div id="coba1"></div>
+					</div>
+				</div>
+			</div>
                 
             </div><!-- End .tab-pane -->
             <div class="tab-pane fade" id="old-products" role="tabpanel" aria-labelledby="old-products-tab">
+            	<div class="form-group">
+				<label class="control-label col-md-3">Upload Image</label>
+				<div class="col-md-8">
+					<div class="row">
+						<div id="coba2"></div>
+					</div>
+				</div>
+			</div>
                
             </div>
         </div><!-- End .tab-content -->
     </div>
     
 </div>
+<script type="text/javascript">
+		$(function(){
+
+			$("#coba").spartanMultiImagePicker({
+				fieldName:        'fileUpload[]',
+				directUpload : {
+					status: true,
+					loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
+					url: '../c.php',
+					additionalParam : {
+						name : 'My Name'
+					},
+					success : function(data, textStatus, jqXHR){
+					},
+					error : function(jqXHR, textStatus, errorThrown){
+					}
+				}
+			});
+		});
+		$(function(){
+
+			$("#coba1").spartanMultiImagePicker({
+				fieldName:        'fileUpload[]',
+				directUpload : {
+					status: true,
+					loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
+					url: '../c.php',
+					additionalParam : {
+						name : 'My Name'
+					},
+					success : function(data, textStatus, jqXHR){
+					},
+					error : function(jqXHR, textStatus, errorThrown){
+					}
+				}
+			});
+		});
+		$(function(){
+
+			$("#coba2").spartanMultiImagePicker({
+				fieldName:        'fileUpload[]',
+				directUpload : {
+					status: true,
+					loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
+					url: '../c.php',
+					additionalParam : {
+						name : 'My Name'
+					},
+					success : function(data, textStatus, jqXHR){
+					},
+					error : function(jqXHR, textStatus, errorThrown){
+					}
+				}
+			});
+		});
+	</script>
