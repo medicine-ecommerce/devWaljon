@@ -39,7 +39,7 @@ Class Vendor extends MY_Controller {
             // $this->form_validation->set_rules('company_name', 'Company Name', 'required');
             // $this->form_validation->set_rules('company_address', 'Company addresss', 'required');
            
-            if ($this->form_validation->run() == FALSE){ 
+            if($this->form_validation->run() == FALSE){ 
               $this->session->set_flashdata('error', validation_errors());      
             }
             else{
