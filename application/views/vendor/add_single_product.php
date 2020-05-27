@@ -186,22 +186,6 @@
               <div class="mySlides">
                 <img src="<?php echo base_url(); ?>assets/img/snake2.png" style="width:100%">
               </div>
-
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png" style="width:100%">
-              </div>
-                
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/snake2.png" style="width:100%">
-              </div>
-
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png" style="width:100%">
-              </div>
-                
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/snake2.png" style="width:100%">
-              </div> 
             </div>
             <div class="upload-img-sec">
               <div class="img-upload">
@@ -210,18 +194,6 @@
                 </div>
                 <div class="column">
                   <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/snake2.png" onclick="currentSlide(2)" alt="Cinque Terre">
-                </div>
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/profile_dummy.png" onclick="currentSlide(3)" alt="Mountains and fjords">
-                </div>
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/snake2.png" onclick="currentSlide(4)" alt="Northern Lights">
-                </div>
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/profile_dummy.png" onclick="currentSlide(5)" alt="Nature and sunrise">
-                </div>    
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/snake2.png" onclick="currentSlide(6)" alt="Snowy Mountains">
                 </div>
               </div>
             </div>
@@ -320,26 +292,7 @@
      });  					  
    });  
 </script>
-<!-- <script type="text/javascript">
-   $(function(){
-   
-   	$("#coba").spartanMultiImagePicker({
-   		fieldName:        'fileUpload[]',
-   		directUpload : {
-   			status: true,
-   			loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
-   			url: '../c.php',
-   			additionalParam : {
-   				name : 'My Name'
-   			},
-   			success : function(data, textStatus, jqXHR){
-   			},
-   			error : function(jqXHR, textStatus, errorThrown){
-   			}
-   		}
-   	});
-   });
-</script> -->
+
 <script>
   var slideIndex = 1;
   showSlides(slideIndex);
@@ -429,6 +382,7 @@ function updateProgress(fileNumber, percent) {
   console.debug('update', fileNumber, percent, total)
   progressBar.value = total
 }
+
 let imgCount = 0;
 function handleFiles(files) {
   files = [...files]
