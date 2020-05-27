@@ -95,7 +95,7 @@
                  </div>
               </div>
               <div class="col-md-3">
-                 <div class="form-group" style="margin-top: 10px;">
+                 <div class="form-group padding-top-bottom-20">
                     <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
                     <label for="vehicle1"> Prescription Required</label><br>
                  </div>
@@ -179,50 +179,12 @@
           </div>
           <div class="attachment-box">
             <div class="preview-box">
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png" style="width:100%">
+              <div class="defaultSlides">
+                <img src="<?php echo base_url(); ?>assets/img/imgpsh_fullsize_anim.png" style="width:100%">
               </div>
-
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/snake2.png" style="width:100%">
-              </div>
-
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png" style="width:100%">
-              </div>
-                
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/snake2.png" style="width:100%">
-              </div>
-
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png" style="width:100%">
-              </div>
-                
-              <div class="mySlides">
-                <img src="<?php echo base_url(); ?>assets/img/snake2.png" style="width:100%">
-              </div> 
             </div>
             <div class="upload-img-sec">
-              <div class="row img-upload">
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/profile_dummy.png" onclick="currentSlide(1)" alt="The Woods">
-                </div>
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/snake2.png" onclick="currentSlide(2)" alt="Cinque Terre">
-                </div>
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/profile_dummy.png" onclick="currentSlide(3)" alt="Mountains and fjords">
-                </div>
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/snake2.png" onclick="currentSlide(4)" alt="Northern Lights">
-                </div>
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/profile_dummy.png" onclick="currentSlide(5)" alt="Nature and sunrise">
-                </div>    
-                <div class="column">
-                  <img class="demo cursor" src="<?php echo base_url(); ?>assets/img/snake2.png" onclick="currentSlide(6)" alt="Snowy Mountains">
-                </div>
+              <div class="img-upload">
               </div>
             </div>
             <div class="upload-btn text-center padding-top-bottom-20">
@@ -320,26 +282,7 @@
      });  					  
    });  
 </script>
-<!-- <script type="text/javascript">
-   $(function(){
-   
-   	$("#coba").spartanMultiImagePicker({
-   		fieldName:        'fileUpload[]',
-   		directUpload : {
-   			status: true,
-   			loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
-   			url: '../c.php',
-   			additionalParam : {
-   				name : 'My Name'
-   			},
-   			success : function(data, textStatus, jqXHR){
-   			},
-   			error : function(jqXHR, textStatus, errorThrown){
-   			}
-   		}
-   	});
-   });
-</script> -->
+
 <script>
   var slideIndex = 1;
   showSlides(slideIndex);
@@ -429,12 +372,12 @@ function updateProgress(fileNumber, percent) {
   console.debug('update', fileNumber, percent, total)
   progressBar.value = total
 }
-let imgCount = 0;
+
 function handleFiles(files) {
   files = [...files]
   initializeProgress(files.length)
   files.forEach(uploadFile)
-  files.forEach(previewFile,imgCount++);
+  files.forEach(previewFile);
 }
 
 function previewFile(file) {
@@ -442,11 +385,16 @@ function previewFile(file) {
   reader.readAsDataURL(file);
   reader.onloadend = function() {
     let img = document.createElement('img');
+    var numberOfChildren = $('.img-upload').children('.column').length;
+    var imgNumber = numberOfChildren+1;
     img.src = reader.result;
+    $(".defaultSlides").hide();
     //document.getElementById('gallery').appendChild(img);
     $(".preview-box").append('<div class="mySlides"><img src="'+img.src+'" style="width:100%"></div>');
-    $(".img-upload").append('<div class="column"><img class="demo cursor" src="'+img.src+'" style="width:100%" onclick="currentSlide('+imgCount+')"></div>');
-  }
+    $(".img-upload").append('<div class="column"><img class="demo cursor" src="'+img.src+'" style="width:100%" onclick="currentSlide('+imgNumber+')"></div>');
+    
+  } 
+
 }
 
 function uploadFile(file, i) {
