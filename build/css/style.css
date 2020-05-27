@@ -729,7 +729,7 @@ div#gallery {
     background: #1fcdf9;
     border-radius: 50%;
     color: #fff;
-    margin: 0px;
+    margin-top: 10px;
 }
 .addMore-btn:hover {
     background: #1fcdf9;
