@@ -62,13 +62,32 @@ class MY_Model extends CI_Model {
 
     }
 
-    public function insertData($table,$update_data) {      
+    public function insertData($table,$update_data) {              
         $q = $this->db->insert($table,$update_data);
         if ($q) {
             return  $this->db->insert_id();
         }
         else{
            return $this->db->error()['message'];
+        }
+    }
+    function upload($image,$path)
+    {        
+
+        $config['upload_path'] = './assets/'.$path.'/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['overwrite'] = TRUE;
+        $config['encrypt_name'] = TRUE;
+        $config['remove_spaces'] = TRUE;
+        
+        $this->upload->initialize($config);
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload($image)) {
+            //print_r($this->upload->display_errors());
+            return false;
+        } else {
+            return $this->upload->data();
         }
     }
 

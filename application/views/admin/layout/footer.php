@@ -11,7 +11,7 @@
     </div>
 
     <!-- jQuery -->
-    <!-- <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script> -->
+    <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#datatable1').DataTable();
@@ -74,7 +74,8 @@
     <script src="<?php echo base_url(); ?>vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="<?php echo base_url(); ?>vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
     <script src="<?php echo base_url(); ?>vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
-
+     <!-- Dropzone.js -->
+    <script src="<?php echo base_url(); ?>/vendors/dropzone/dist/min/dropzone.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url(); ?>build/js/custom.min.js"></script>
 	

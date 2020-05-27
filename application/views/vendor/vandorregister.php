@@ -8,7 +8,7 @@
       
     </div>
     <div class="col-md-4">      
-      <form method="post" action="<?php echo base_url(); ?>/vendor/vendorregister">
+      <form id="registratio_form" method="post" action="<?php echo base_url(); ?>/vendor/vendorregister">
         <div class="form-content">
             <img src="<?php echo base_url(); ?>assets/img/snake2.png" class="registration-logo" id="preview">       
             <p>Medicin Managment</p>
@@ -17,22 +17,21 @@
           <h6>Register</h6>
           <div class="form-group">
             <input type="email" class="form-control transparent-back" name="email" placeholder="Email or Phone" value="<?php echo set_value('email')?>" autocomplete="off">
-          </div>        
-          <?php echo form_error('email', '<div class="error">', '</div>'); ?>
-
+          </div>   
+          <span class="input-error-message"><?php echo form_error('email', '<div class="error">', '</div>'); ?></span>     
           <div class="form-group">
             <input type="Password" class="form-control transparent-back" id="txtNewPassword" name="password" placeholder="Enter Password" autocomplete="off">
           </div>                  
           <div class="form-group">
             <input type="password" class="form-control transparent-back" id="txtConfirmPassword" onChange="checkPasswordMatch();"  name="re-password" placeholder="Re-enter Password" autocomplete="off">
           </div>        
-          <div class="registrationFormAlert" id="divCheckPasswordMatch"></div>
+          <span class="input-error-message"><div class="registrationFormAlert" id="divCheckPasswordMatch"></div></span>
           <input type="checkbox" id="remember_password" name="remember_password" value="remember_password" >
           <label for="vehicle1"> Remember Password</label><br>
           <div class="button-division text-center">          
-            <button type="submit" class="btn btn-primary registration-button">Register</button>
+            <button type="button" onclick="submitFunction()" class="btn btn-primary registration-button">Register</button>
           </div>
-          <p>Already have an account <a href="<?php echo base_url();?>/Vendor/vendorLogin">Login</a> here</p>        
+          <p>Already have an account <a href="<?php echo base_url();?>/Vendor/vendor_login">Login</a> here</p>        
         </div>
       </form>
     </div>
@@ -45,7 +44,7 @@
     var confirmPassword = $("#txtConfirmPassword").val(); 
     
     if (password == confirmPassword && confirmPassword!=''){      
-        $("#divCheckPasswordMatch").html("Passwords match.");
+        $("#divCheckPasswordMatch").html("");
     }
     else if(password != confirmPassword && confirmPassword!='' && password!=''){
         $("#divCheckPasswordMatch").html("Passwords do not match!");
@@ -56,6 +55,13 @@
     $(document).ready(function () {
        $("#txtNewPassword, #txtConfirmPassword").keyup(checkPasswordMatch);
     });
+  }
+  function submitFunction() {
+    var password = $("#txtNewPassword").val();
+    var confirmPassword = $("#txtConfirmPassword").val();     
+    if(password==confirmPassword){      
+      $('#registratio_form').submit()
+    }
   }
 
 </script>
