@@ -310,6 +310,7 @@
     }
     slides[slideIndex-1].style.display = "block";
     dots[slideIndex-1].className += " active";
+    $(".defaultSlides").hide();
   }
 </script>
 <script type="text/javascript">
@@ -388,7 +389,6 @@ function previewFile(file) {
     var numberOfChildren = $('.img-upload').children('.column').length;
     var imgNumber = numberOfChildren+1;
     img.src = reader.result;
-    $(".defaultSlides").hide();
     //document.getElementById('gallery').appendChild(img);
     $(".preview-box").append('<div class="mySlides"><img src="'+img.src+'" style="width:100%"></div>');
     $(".img-upload").append('<div class="column"><img class="demo cursor" src="'+img.src+'" style="width:100%" onclick="currentSlide('+imgNumber+')"></div>');
