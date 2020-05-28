@@ -173,6 +173,12 @@ Class Admin extends MY_Controller {
         $this->Admin();
          //$this->load->view('admin/product_add');
     }
+    public function product_form()
+    {
+        $this->middle = 'product_form';
+        $this->Admin();
+         //$this->load->view('admin/product_add');
+    }
     public function category_add()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
