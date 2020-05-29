@@ -229,7 +229,7 @@ Class Admin extends MY_Controller {
             }
         }
         $this->data['category'] = $this->Admin->getRowData('category','*',array('id'=>$id));
-        $this->middle = 'home_category';
+        $this->middle = 'category/add';
         $this->Admin();
     }
     public function category_delete($id)
@@ -412,6 +412,88 @@ Class Admin extends MY_Controller {
     {
         $this->session->sess_destroy();
         redirect(base_url('admin'));
+    }
+
+    public function product_form_add()
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $this->form_validation->set_rules('name', 'name', 'required');
+            if ($this->form_validation->run() == FALSE){ 
+              $this->session->set_flashdata('error', validation_errors());      
+            }
+            else{
+                $data = array(
+                            'name'=>$this->input->post('name'),
+                            'created_by'=>$this->session->userdata('user_id'),
+                            'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
+                            'created_at'=> date('Y-m-d H:i:s')
+                        );
+                $result = $this->Admin->insertData('product_form',$data);
+                if (!empty($result)) {
+                    $this->session->set_flashdata('success', 'Product form added successfully');                    
+                }
+                else{
+                    $this->session->set_flashdata('error','error! Please try again');
+                }
+                redirect($_SERVER['HTTP_REFERER']); 
+            }
+        }
+        $this->middle = 'product-form/add';
+        $this->Admin();
+    }
+    public function product_form_list()
+    {
+        $this->data['product_form'] = $this->Admin->getData('product_form','*','');
+        $this->middle = 'product-form/list';
+        $this->Admin();
+    }
+    public function product_form_edit($id)
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $this->form_validation->set_rules('name', 'name', 'required');
+            if ($this->form_validation->run() == FALSE){ 
+              $this->session->set_flashdata('error', validation_errors());      
+            }
+            else{
+                $data = array(
+                            'name'=>$this->input->post('name'),
+                            'created_by'=>$this->session->userdata('user_id'),
+                            'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending'
+                        );
+                $result = $this->Admin->updateData('product_form',$data,array('id'=>$id));
+                if (!empty($result)) {
+                    $this->session->set_flashdata('success', 'Product form updated successfully');
+                }
+                else{
+                    $this->session->set_flashdata('error','error! Please try again');
+                }
+                redirect($_SERVER['HTTP_REFERER']); 
+            }
+        }
+        $this->data['product_form'] = $this->Admin->getRowData('product_form','*',array('id'=>$id));
+        $this->middle = 'product-form/add';
+        $this->Admin();
+    }
+    public function product_form_delete($id)
+    {
+        $result = $this->Admin->deleteData('product_form',array('id'=>$id));
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'Product form deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'error! Please try again');
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function product_form_status($status,$id)
+    {
+        $result = $this->Admin->updateData('category',array('is_active'=>$status),array('id'=>$id));
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'status updated successfully'); 
+        }
+        else{
+            $this->session->set_flashdata('error', 'error! Please try again'); 
+        }
+        redirect($_SERVER['HTTP_REFERER']);
     }
 
     
