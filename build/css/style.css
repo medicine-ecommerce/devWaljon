@@ -584,6 +584,24 @@ span.transh-btn {
 .Bulk-upload-btn{
     width: 125px;
 }
+.upload-details p {
+    color: #397fff;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+.Varieties-upload p{
+    margin-bottom: 0px;    
+}
+.bulk-uoload-varieties label.active{
+    left:0px; 
+    top:0px; 
+    padding: 5px;
+    border-radius: 50px; 
+}
+.bulk-uoload-varieties label.label-btn{
+    border-radius: 50px; 
+}
 /*inventory*/
 /*vendor Dashboard */
 .vendor-dash-overview{
@@ -757,6 +775,78 @@ div#gallery {
 /*Bulk upload*/
 .bulk-uoload-table{
     border: 1px solid #8d9ba9;
+}
+.imageuploadModel .modal-dialog {
+    max-width: 750px;
+}
+.bulk-img-div {
+    border: 1px solid #397fff;
+    padding: 10px;
+    height: 250px;
+    border-radius: 5px;
+}
+.bulk-product-detail{
+    margin-top: 45px;
+}
+.bulk-product-detail span {
+    display: block;
+}
+.bulk-product-detail span p {
+    margin: 0px 5px;
+    display: inline-block;
+}
+.bulk-product-detail span span {
+    margin: 0px 5px;
+    width: 100px;
+    font-weight: 600;
+    display: inline-block;
+}
+.margin-top20{
+    margin-top: 20px;
+}
+a.btn-linking-page {
+    border: 1px solid;
+    border-radius: 50px;
+    padding: 6px 20px;
+    background: #fff;
+}
+.btn-linking-div hr {
+    padding: 0px;
+    border: 1px solid;
+    width: 7%;
+}
+a.btn-linking-page.active {
+    background: #46e799;
+    border-color: #46e799;
+    color: white !important;
+}
+.btn-linking-div hr.active {
+    background: #46e799;
+    border-color: #46e799;
+}
+a.btn-linking-page.next {
+    background: #fff;
+    border-color: #2b89e1;
+    color: #2b89e1 !important;
+}
+.btn-linking-div hr.next {
+    background: #2b89e1;
+    border-color: #2b89e1;
+}
+a.img-uplod-modal {
+    display: inline-block;
+    border: 1px solid #8d9ba9;
+    border-radius: 5px;
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+}
+a.img-uplod-modal.active{
+    border: 1px solid #2b89e1;
+}
+a.img-uplod-modal img{
+    width: 100%;
+    height: 100%;
 }
 /*Bulk upload*/
 /*product form*/
