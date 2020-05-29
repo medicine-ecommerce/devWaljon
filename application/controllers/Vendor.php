@@ -27,8 +27,8 @@ Class Vendor extends MY_Controller {
     {   
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
-            $this->form_validation->set_rules('email', 'email', 'required|valid_email|is_unique[vendors.email]');
-            $this->form_validation->set_rules('password', 'password', 'required');            
+            $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[vendors.email]');
+            $this->form_validation->set_rules('password', 'password', 'trim|required');            
             
             if($this->input->post('remember_password')){                
                 set_cookie('email',base64_encode($this->input->post('email')),3000);
@@ -53,7 +53,7 @@ Class Vendor extends MY_Controller {
                     $data = array('email'=>$this->input->post('email'),
                                   'vendor_id'=>$last_id);
                     $this->session->set_userdata($data);
-                    $this->session->set_flashdata('success', 'Vendor account created successfully');                     
+                    $this->session->set_flashdata('success', 'Your account created successfully');                     
                     redirect('/Vendor/personalDetails/', 'refresh');
                 }
             }            
@@ -71,8 +71,8 @@ Class Vendor extends MY_Controller {
 
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
-            $this->form_validation->set_rules('email', 'Email', 'required');
-            $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|trim');
+            $this->form_validation->set_rules('password', 'Password', 'required|trim');
             
             if ($this->form_validation->run() == FALSE){          
                 
@@ -112,26 +112,37 @@ Class Vendor extends MY_Controller {
     }
     public function editPersonalDetails()
     {
-        
+        $this->data['edit_data'] = $this->Vendor->getRowData('vendors','*',array('id'=>$this->session->userdata('vendor_id')));
+        $this->data['bank_data'] = $this->Vendor->getRowData('bank_account','*',array('vendor_id'=>$this->session->userdata('vendor_id')));
+
+        $this->data['working_experience'] = $this->config->item('working_experience'); 
         $this->middle = 'edit_personalDetails';
         $this->Vendor();
     }
     public function vendor_profile()
     {
-        
+                
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('first_name', 'First Name', 'required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'required');
-            $this->form_validation->set_rules('email', 'email', 'required|valid_email');
+            $this->form_validation->set_rules('email', 'email', 'required');
             $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
             $this->form_validation->set_rules('company_name', 'Company Name', 'required');
             $this->form_validation->set_rules('address', 'Addresss', 'required');
+            // $this->form_validation->set_rules('licence', 'Licence', 'required');
 
             
             if ($this->form_validation->run() == FALSE){                 
                 $this->session->set_flashdata('error', validation_errors());      
             }
-            else{                
+            else{  
+                if(!empty($_FILES['profile_image'])){
+                    $uploadedImg = $this->Vendor->upload("profile_image","vendor_profile");
+                }
+                if(!empty($_FILES['licence'])){
+                    $uploadedLicence = $this->Vendor->upload("licence","licence");
+                }
+                
                 $data = array(
                             'company_name'=>$this->input->post('company_name'),
                             'address'=>$this->input->post('address'),
@@ -150,8 +161,12 @@ Class Vendor extends MY_Controller {
                             'medical_since'=>$this->input->post('medical_since'),
                             'medical_phone'=>$this->input->post('medical_phone'),
                             'medical_email'=>$this->input->post('medical_email'),
-                            'is_active'=>'0');
-
+                            'image'=>!empty($uploadedImg['file_name']) ? $uploadedImg['file_name'] : $this->input->post('edit_profile_image'),
+                            'licence'=>!empty($uploadedLicence['file_name']) ? $uploadedLicence['file_name'] : $this->input->post('edit_licence')
+                        );
+                // echo "<pre>";
+                // print_r($data);
+                // die();
                 $bankData = array(
                             'bank_name'=>$this->input->post('bank_name'),
                             'account_number'=>$this->input->post('account_number'),
@@ -160,22 +175,17 @@ Class Vendor extends MY_Controller {
 
                 $result = $this->Vendor->vendorProfileUpdate($data,array('id'=>$this->session->userdata('vendor_id')));
                 $result1 = $this->Vendor->addBankAccount($bankData);
-
-                // $universityLogoImage = date("YmdHis").$_FILES["logo"]["name"];
-
-                if(!empty($_FILES['profile_image'])){
-                    $this->Vendor->upload("profile_image","vendor_profile");
-                }
-
-                if(!empty($_FILES['licence_image'])){
-                    $this->Vendor->upload("licence_image","licence");
-                }
-
                 if ($result > 0) {
-                    $this->session->set_flashdata('success', 'Vendor account created successfully');                     
+                    $this->session->set_flashdata('success', 'Profile successfully Updated');
+                    
+                    if($_SERVER['HTTP_REFERER']== base_url()."vendor/editPersonalDetails"){
+                        redirect($_SERVER['HTTP_REFERER']); 
+                    }else{
+                        redirect(base_url('vendor/vendor_dashboard'));
+                    }
                 }
             }
-            redirect($_SERVER['HTTP_REFERER']); 
+            redirect($_SERVER['HTTP_REFERER']);             
         }
     
     }

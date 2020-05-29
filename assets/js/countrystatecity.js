@@ -190,9 +190,9 @@ function locationInfo() {
         var url = rootUrl+'?type=getCountries' + addParams + addClasses;
         var method = "post";
         var data = {};
-        jQuery('.countries').find("option:eq(0)").html("Please wait..");
+        // jQuery('.countries').find("option:eq(0)").html("Please wait..");
         call.send(data, url, method, function(data) {
-            jQuery('.countries').find("option:eq(0)").html("Select Country");
+            // jQuery('.countries').find("option:eq(0)").html("Select Country");
 
             if(data.tp == 1){
                 if(data.hits > 1000)

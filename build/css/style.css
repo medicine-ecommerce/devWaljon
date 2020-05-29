@@ -155,7 +155,7 @@ input.image-upload-input {
     position:relative;
     margin: 12px 0;
 }
-.form-control.control-float-top{height: 40px;}
+.form-control.control-float-top{height: 40px; padding:0px 10px;border-radius: 3px;}
 .form-control.control-float-top:focus{box-shadow:none;}
 
 .label-float-top label{position:absolute; left:10px; top:10px; transition:all 0.3s; color:#999; font-weight:normal;}
@@ -163,7 +163,16 @@ input.image-upload-input {
 
 .form-control.control-float-top:focus ~ label{left:5px; top:-10px; background:#fff; padding:0 5px;}
 
-label.active{left:5px; top:-10px; background:#fff; padding:0 5px;}
+label.active{
+    left: 5px;
+    top: -10px;
+    background: #fff;
+    padding: 0 5px;
+    color: #4a93de;
+    font-weight: 500;
+    font-size: 12px;
+
+}
 input.form-control.control-float-top:focus {
     padding-left: 10px;
 }
@@ -746,6 +755,45 @@ div#gallery {
 .btn-custom-rev:hover{
     color: red;
     font-size: 20px;
+}
+input.edit-profile-image {
+    bottom: 50px;
+    position: absolute;
+    cursor: pointer;
+}
+.custom-success-alert {    
+    width: 350px;
+    height: 80px;
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    z-index: 99;
+    font-size: 16px;
+    padding: 10px 18px;
+    transition: opacity .4s linear,left .5s ease,top .5s ease,right .5s ease,bottom .5s ease;
+    background-color: rgba(38,185,154,0.88);
+    color: #fff;
+}
+span.custom-remove {
+    float: right;
+    color: #fff;
+    cursor: pointer;
+}
+.custom-success-alert p {
+    padding: 20px 0px;
+}
+.custom-error-alert{    
+    width: 350px;
+    height: auto;
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    z-index: 99;
+    font-size: 16px;
+    padding: 10px 18px;
+    transition: opacity .4s linear,left .5s ease,top .5s ease,right .5s ease,bottom .5s ease;
+    background-color: rgba(243, 86, 86, 0.88);
+    color: #fff;
 }
 /*single product upload*/
 @media (max-width: 992px) {

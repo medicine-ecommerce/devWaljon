@@ -1,5 +1,21 @@
   <!-- page content -->
   <div class="right_col" role="main">
+  <?php if($this->session->flashdata('success')){ ?>
+  <div class="custom-success-alert">    
+    <a class="remove-alert"> <span class="glyphicon glyphicon-remove custom-remove"></span></a>
+    <p>   
+      <span class="glyphicon glyphicon-ok-sign"></span>
+      <?= $this->session->flashdata('success');?> 
+    </p>
+  </div>
+  <?php }?>
+  <?php if($this->session->flashdata('error')){ ?>
+  <div class="custom-error-alert">    
+    <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+    <span class="glyphicon glyphicon-warning-sign"></span>
+    <?= $this->session->flashdata('error');?> 
+  </div>
+  <?php }?>
     <!-- top tiles -->
     <div class="row">
       <div class="tile_count">
@@ -313,3 +329,28 @@
     </div> 
   </div>
   <!-- /page content -->
+  <script type="text/javascript">
+    $(document).ready(function(){
+    // var id = document.getElementsByClassName("hid_id")[0].value;
+    // if(id!=''){
+    //  $('#error-myModal').modal('show'); 
+    // }          
+    $('.remove-alert').click(function() {
+        $('.custom-success-alert').fadeOut("slow")
+    })
+    setInterval(function () {
+        $('.custom-success-alert').fadeOut("slow")
+        }, 7000);
+        
+        $('.remove-red-alert').click(function() {
+        $('.custom-error-alert').fadeOut("slow")
+    })
+    setInterval(function () {
+        $('.custom-error-alert').fadeOut("slow")
+        }, 7000);
+
+    });
+
+
+
+  </script>
