@@ -738,18 +738,18 @@ div#gallery {
     background: #1fcdf9;
     border-radius: 50%;
     color: #fff;
-    margin: 0px;
+    margin: 10px 0px 10px 10px;
 }
 .addMore-btn:hover {
     background: #1fcdf9;
     border-radius: 50%;
     color: #fff;
-    margin: 0px;
+    margin: 10px 0px 10px 10px;
 }
 .btn-custom-rev{
     color: red;
     font-size: 20px;
-    margin: 0px;
+    margin: 10px;
     padding: 0px;
 }
 .btn-custom-rev:hover{
@@ -795,7 +795,35 @@ span.custom-remove {
     background-color: rgba(243, 86, 86, 0.88);
     color: #fff;
 }
+.append-table td{
+    padding: 0px !important;
+}
+.upload-btn {
+    border: 1px solid;
+}
 /*single product upload*/
+/*Bulk upload*/
+.bulk-uoload-table{
+    border: 1px solid #8d9ba9;
+}
+/*Bulk upload*/
+/*product form*/
+    .product_tab {
+        border: none;
+        margin: 10px;
+        display: inline-flex;
+    }
+    .product_tab .nav-item.show .nav-link, .product_tab .nav-link.active {
+        color: #4abcde;
+        background-color: #ffffff;
+        border-color: #4abcde;
+    }
+    .product_form_heading {
+        font-size: 18px;
+        margin: 9px 10px;
+        display: contents;
+    }
+/*product form*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {
          margin-left: 0px; 
