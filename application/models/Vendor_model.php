@@ -46,6 +46,7 @@ class Vendor_model extends MY_model
 	{
 		return $this->updateData('vendors',array('is_active'=>$status),array('id'=>$id));
 	}
+	
 
 }
 
