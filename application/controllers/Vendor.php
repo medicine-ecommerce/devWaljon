@@ -11,10 +11,11 @@ Class Vendor extends MY_Controller {
         parent::__construct();
         $this->load->database();
         // $this->load->model('Admin_model');
-        $this->load->helper(array('form', 'url'));
+        $this->load->helper(array('form', 'url','custome'));
         $this->load->library('form_validation');  
         $this->load->model('Vendor_model','Vendor');        
         $this->load->library('upload');
+        
 
     }
 
@@ -58,7 +59,7 @@ Class Vendor extends MY_Controller {
                 }
             }            
             //redirect($_SERVER['HTTP_REFERER']); 
-        }
+        }        
         $this->load->view('vendor/vandorregister');
         //$this->Admin();
     }
@@ -107,6 +108,7 @@ Class Vendor extends MY_Controller {
     }
     public function personalDetails()
     {
+        $this->data['profile_data'] = $this->config->item('working_experience'); 
         $this->middle = 'personalDetails';
         $this->Vendor();
     }
@@ -215,6 +217,52 @@ Class Vendor extends MY_Controller {
         $this->middle = 'bulk_upload';
         $this->Vendor();
     }  
+    public function testEmail()
+    {
+                           // require_once("./mail/PHPMailerAutoload.php");
+           // ini_set('display_errors', 0);  
+
+
+        //PHP Mailer Function File
+        require_once("./phpmailer/_lib/class.phpmailer.php");
+        require("./phpmailer/_lib/class.smtp.php");    
+
+        $mail = new PHPMailer();
+        $mail->IsSMTP();     
+        $mail->Host = "mail.test.waljon.com";  
+        $mail->SMTPAuth = true;
+        $mail->Port = 587;     
+        $mail->SMTPSecure = 'tls';
+        $mail->Username = "mytest@test.waljon.com";  
+        $mail->Password = "Ogg%-C5zO_=x";
+
+   
+        $sub = 'Email Regarding Contact To You...';
+        $mail->From = 'mytest@test.waljon.com';
+        $mail->FromName = "Mausam";
+        //To address and name
+        $mail->addAddress('mausam.varun22@gmail.com', 'Testing Purpose');
+        //Address to which recipient will reply
+        $mail->addReplyTo('mytest@test.waljon.com', 'Reply');
+        //Send HTML or Plain Text email
+        $mail->isHTML(true);
+        $mail->Subject = "$sub";
+        $mail->Body = "Testing";
+        
+        $mail->send();        
+        print_r(error_get_last());
+        die();
+        if(!$mail->send())
+        {
+            echo  $mail->ErrorInfo;           
+            echo "success";
+        } 
+        else{          
+            echo "failed";
+        }
+        $mail->ClearAddresses();
+    }  
+    
     // public function vendors()
     // {
     //     $this->middle = 'vendor_list';

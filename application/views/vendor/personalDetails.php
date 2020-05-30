@@ -139,10 +139,11 @@
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
 						<select class="form-control control-float-top" name="experience" value="<?php echo set_value('experience')?>">
-						    <option></option>
-						    <option value="List1" >List 1</option>
-						    <option value="List1">List 2</option>
-						    <option value="List1">List 3</option>
+							<option></option>
+						    <?php 
+								foreach ($profile_data as $key => $value) { ?>
+									<option  value="<?=$value['key']?>"><?=$value['value']?></option> 
+								<?php } ?>	
 						</select>
 					  <label for="Address">Year of Experience</label>
 					</div>
