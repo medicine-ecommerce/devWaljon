@@ -11,10 +11,12 @@ Class Vendor extends MY_Controller {
         parent::__construct();
         $this->load->database();
         // $this->load->model('Admin_model');
-        $this->load->helper(array('form', 'url'));
+        $this->load->helper(array('form', 'url','custome'));
         $this->load->library('form_validation');  
         $this->load->model('Vendor_model','Vendor');        
         $this->load->library('upload');
+        $this->load->library('phpmailer');
+        
 
     }
 
@@ -58,7 +60,7 @@ Class Vendor extends MY_Controller {
                 }
             }            
             //redirect($_SERVER['HTTP_REFERER']); 
-        }
+        }        
         $this->load->view('vendor/vandorregister');
         //$this->Admin();
     }
@@ -107,6 +109,7 @@ Class Vendor extends MY_Controller {
     }
     public function personalDetails()
     {
+        $this->data['profile_data'] = $this->config->item('working_experience'); 
         $this->middle = 'personalDetails';
         $this->Vendor();
     }
@@ -215,6 +218,59 @@ Class Vendor extends MY_Controller {
         $this->middle = 'bulk_upload';
         $this->Vendor();
     }  
+    public function testEmail()
+    {
+          
+        function send_email() {
+            $response = false;
+            $mail = new PHPMailer();
+            $subject = 'Test subject';
+            $body = 'Hi there, <strong>Carl</strong> here.<br/> This is our email body.';
+            $email = 'mausamvarun@gmail.com';
+
+
+            $mail->CharSet = 'UTF-8';
+            $mail->SetFrom('mausam.varun22@gmail.com','Carl');
+
+            //You could either add recepient name or just the email address.
+            $mail->AddAddress($email,"Recepient Name");
+            $mail->AddAddress($email);
+
+            //Address to which recipient will reply
+            $mail->addReplyTo("reply@yourdomain.com","Reply");
+            $mail->addCC("cc@example.com");
+            $mail->addBCC("bcc@example.com");
+
+            //Add a file attachment
+            // $mail->addAttachment("file.txt", "File.txt");        
+            // $mail->addAttachment("images/profile.png"); //Filename is optional
+
+            //You could send the body as an HTML or a plain text
+            $mail->IsHTML(true);
+
+            $mail->Subject = $subject;
+            $mail->Body = $body;
+
+            //Send email via SMTP
+            $mail->IsSMTP();
+            $mail->SMTPAuth   = true; 
+            $mail->SMTPSecure = "ssl";  //tls
+            $mail->Host       = "smtp.googlemail.com";
+            $mail->Port       = 465; //you could use port 25, 587, 465 for googlemail
+            $mail->Username   = "mausam.varun22@gmail.com";
+            $mail->Password   = "8839977402";
+
+            if(!$mail->send()){
+                $response['message'] = 'Email has been sent successfully';
+            }
+            else{
+                $response['message'] = 'Oops! Something went wrong while trying to send your email.';
+            }
+            echo json_encode($response);
+        }
+        
+    }  
+    
     // public function vendors()
     // {
     //     $this->middle = 'vendor_list';

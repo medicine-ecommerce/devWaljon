@@ -933,6 +933,26 @@ span.pending {
     font-weight: 600;
     color: #37aaec;
 }
+
+.product_tab {
+    border: none;
+    margin: 10px;
+    display: inline-flex;
+}
+.product_tab .nav-item.show .nav-link, .product_tab .nav-link.active {
+    color: #4abcde;
+    background-color: #ffffff;
+    border-color: #4abcde;
+}
+.product_form_heading {
+    font-size: 18px;
+    margin: 9px 10px;
+    display: contents;
+}
+input.form-control {
+    font-size: 14px;
+}
+
 /*product form*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {
