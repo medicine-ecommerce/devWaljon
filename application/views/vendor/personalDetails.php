@@ -93,7 +93,7 @@
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); ?> <?php } ?>" id="email">
+						<input type="email" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); ?> <?php } ?>" id="email"  readonly="">
 						<label id="email-label" for="email">Email</label>
 					</div>
 				</div>
@@ -120,12 +120,13 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					<div class="form-group label-float-top">					  
-					  <select class="form-control control-float-top" name="degree" value="<?php echo set_value('degree')?>">
+					  <!-- <select class="form-control control-float-top" name="degree" value="<?php echo set_value('degree')?>">
 					    <option></option>
 					    <option>List 1</option>
 					    <option>List 2</option>
 					    <option>List 3</option>
-					  </select>
+					  </select> -->
+					  <input type="text" class="form-control control-float-top" name="degree" value="<?php echo set_value('degree')?>">					  
 					  <label for="Address">Degree</label>
 					</div>
 				</div>
@@ -329,6 +330,11 @@
 			    $(this).siblings("label").removeClass("active");
 		   }
 	  });
+  $(".label-float-top").click(function(){
+  	$(this).find("label").addClass("active");
+  	$(this).find("input").focus();
+  	
+  	});
 	});	
 	// $(document).ready(function(){
 	// 	var id = document.getElementsByClassName("hid_id")[0].value;
@@ -372,5 +378,6 @@
 	  		$("#email-label").addClass("active");
 		});	
 	});
+	
 	
 </script>

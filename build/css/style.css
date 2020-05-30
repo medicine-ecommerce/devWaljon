@@ -823,6 +823,9 @@ span.custom-remove {
         margin: 9px 10px;
         display: contents;
     }
+    input.form-control {
+        font-size: 14px;
+    }
 /*product form*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {

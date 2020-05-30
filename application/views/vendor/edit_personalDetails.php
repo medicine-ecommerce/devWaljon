@@ -368,6 +368,12 @@
     	}, 7000);
 
 	});
+	$(".label-float-top").click(function(){
+	  	$(this).find("label").addClass("active");
+	  	$(this).find("input").focus();  	
+  	});
+  	
+	
 
 
 	// $(document).ready(function(){
