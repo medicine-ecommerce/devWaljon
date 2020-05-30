@@ -4,10 +4,10 @@
       <div class="page-title">
         <div class="title_left">
         <ul class="nav nav-tabs product_tab" id="myTab" role="tablist">
-          <li class="">
+          <li class="product_li">
             <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Product Form</a>
           </li>
-          <li class="">
+          <li class="product_li">
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Requests</a>
           </li>
         </ul>
@@ -15,12 +15,9 @@
         </div>
 
         <div class="title_right">
-          <div class="col-md-5 col-sm-5 form-group pull-right top_search">
+          <div class="col-md-6 col-sm-6 form-group pull-right top_search">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-              </span>
+              <input type="text" class="form-control product-form" placeholder="Search ">
             </div>
           </div>
         </div>
@@ -36,7 +33,7 @@
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                   <div class="card-box table-responsive">                
-                    <table id="datatable-responsive" class="table table-bordered" cellspacing="0" width="100%">
+                    <table id="datatable-responsive" class="table user-detail-table" cellspacing="0" width="100%">
                       <thead>
                         <tr>
                           <th>#</th>
@@ -53,7 +50,7 @@
                           <td>Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
-                          <td>61</td>
+                          <td><span class="approved">Approved</span></td>
                           <td><span class="status-approve"><i class="fa fa-check"></i>
                           </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
                         </tr>
@@ -62,7 +59,7 @@
                           <td>Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
-                          <td>61</td>
+                          <td><span class="rejected">Rejected</span></td>
                           <td><span class="status-approve"><i class="fa fa-check"></i>
                           </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
                         </tr>
@@ -71,7 +68,7 @@
                           <td>Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
-                          <td>61</td>
+                          <td><span class="pending">Pending</span></td>
                           <td><span class="status-approve"><i class="fa fa-check"></i>
                           </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
                         </tr>
