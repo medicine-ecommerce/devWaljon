@@ -15,6 +15,7 @@ Class Vendor extends MY_Controller {
         $this->load->library('form_validation');  
         $this->load->model('Vendor_model','Vendor');        
         $this->load->library('upload');
+        $this->load->library('phpmailer');
         
 
     }
@@ -219,48 +220,55 @@ Class Vendor extends MY_Controller {
     }  
     public function testEmail()
     {
-                           // require_once("./mail/PHPMailerAutoload.php");
-           // ini_set('display_errors', 0);  
+          
+        function send_email() {
+            $response = false;
+            $mail = new PHPMailer();
+            $subject = 'Test subject';
+            $body = 'Hi there, <strong>Carl</strong> here.<br/> This is our email body.';
+            $email = 'mausamvarun@gmail.com';
 
 
-        //PHP Mailer Function File
-        require_once("./phpmailer/_lib/class.phpmailer.php");
-        require("./phpmailer/_lib/class.smtp.php");    
+            $mail->CharSet = 'UTF-8';
+            $mail->SetFrom('mausam.varun22@gmail.com','Carl');
 
-        $mail = new PHPMailer();
-        $mail->IsSMTP();     
-        $mail->Host = "mail.test.waljon.com";  
-        $mail->SMTPAuth = true;
-        $mail->Port = 587;     
-        $mail->SMTPSecure = 'tls';
-        $mail->Username = "mytest@test.waljon.com";  
-        $mail->Password = "Ogg%-C5zO_=x";
+            //You could either add recepient name or just the email address.
+            $mail->AddAddress($email,"Recepient Name");
+            $mail->AddAddress($email);
 
-   
-        $sub = 'Email Regarding Contact To You...';
-        $mail->From = 'mytest@test.waljon.com';
-        $mail->FromName = "Mausam";
-        //To address and name
-        $mail->addAddress('mausam.varun22@gmail.com', 'Testing Purpose');
-        //Address to which recipient will reply
-        $mail->addReplyTo('mytest@test.waljon.com', 'Reply');
-        //Send HTML or Plain Text email
-        $mail->isHTML(true);
-        $mail->Subject = "$sub";
-        $mail->Body = "Testing";
-        
-        
-        //print_r(error_get_last());
-        
-        if($mail->send())
-        {
-            echo  $mail->ErrorInfo;           
-            echo "success";
-        } 
-        else{          
-            echo "failed";
+            //Address to which recipient will reply
+            $mail->addReplyTo("reply@yourdomain.com","Reply");
+            $mail->addCC("cc@example.com");
+            $mail->addBCC("bcc@example.com");
+
+            //Add a file attachment
+            // $mail->addAttachment("file.txt", "File.txt");        
+            // $mail->addAttachment("images/profile.png"); //Filename is optional
+
+            //You could send the body as an HTML or a plain text
+            $mail->IsHTML(true);
+
+            $mail->Subject = $subject;
+            $mail->Body = $body;
+
+            //Send email via SMTP
+            $mail->IsSMTP();
+            $mail->SMTPAuth   = true; 
+            $mail->SMTPSecure = "ssl";  //tls
+            $mail->Host       = "smtp.googlemail.com";
+            $mail->Port       = 465; //you could use port 25, 587, 465 for googlemail
+            $mail->Username   = "mausam.varun22@gmail.com";
+            $mail->Password   = "8839977402";
+
+            if(!$mail->send()){
+                $response['message'] = 'Email has been sent successfully';
+            }
+            else{
+                $response['message'] = 'Oops! Something went wrong while trying to send your email.';
+            }
+            echo json_encode($response);
         }
-        $mail->ClearAddresses();
+        
     }  
     
     // public function vendors()
