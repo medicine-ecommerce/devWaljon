@@ -50,7 +50,7 @@
                           <td>Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
-                          <td>61</td>
+                          <td><span class="approved">Approved</span></td>
                           <td><span class="status-approve"><i class="fa fa-check"></i>
                           </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
                         </tr>
@@ -59,7 +59,7 @@
                           <td>Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
-                          <td>61</td>
+                          <td><span class="rejected">Rejected</span></td>
                           <td><span class="status-approve"><i class="fa fa-check"></i>
                           </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
                         </tr>
@@ -68,7 +68,7 @@
                           <td>Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
-                          <td>61</td>
+                          <td><span class="pending">Pending</span></td>
                           <td><span class="status-approve"><i class="fa fa-check"></i>
                           </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
                         </tr>

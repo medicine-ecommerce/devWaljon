@@ -921,6 +921,18 @@ a.img-uplod-modal img{
     border-bottom: none;
     background-color: #ffffff;
 }
+span.approved {
+    font-weight: 600;
+    color: #39da6e;
+}
+span.rejected {
+    font-weight: 600;
+    color: #ff5256;
+}
+span.pending {
+    font-weight: 600;
+    color: #37aaec;
+}
 /*product form*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {
