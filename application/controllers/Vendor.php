@@ -249,10 +249,10 @@ Class Vendor extends MY_Controller {
         $mail->Subject = "$sub";
         $mail->Body = "Testing";
         
-        $mail->send();        
-        print_r(error_get_last());
-        die();
-        if(!$mail->send())
+        
+        //print_r(error_get_last());
+        
+        if($mail->send())
         {
             echo  $mail->ErrorInfo;           
             echo "success";
