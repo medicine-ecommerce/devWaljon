@@ -756,12 +756,14 @@ div#gallery {
     background: #4abdde;
     border-radius: 50%;
     color: #fff;
+    padding: 2px 6px 0px;
     margin: 10px 0px 10px 10px;
 }
 .addMore-btn:hover {
     background: #4abdde;
     border-radius: 50%;
     color: #fff;
+    padding: 2px 6px 0px;
     margin: 10px 0px 10px 10px;
 }
 .btn-custom-rev{
@@ -992,6 +994,22 @@ a.modal-btn{
     border-top: none;
 }
 /*excel formate modal*/
+/*faq*/
+.faq-heading div p{
+    font-weight: 600;
+}
+.faq-heading div .addMore-btn {
+     margin: 0px; 
+}
+.faq-table{
+    padding-right: 10px;
+    border-right-color: #333 !important;
+}
+.submit_button.disable{
+    color:#9da0a5 !important;
+    background:#e7ecf4 !important;
+}
+/*faq*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {
          margin-left: 0px; 
