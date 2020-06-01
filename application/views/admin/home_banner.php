@@ -15,13 +15,14 @@
               <div class="home-page-head">
                 <h4>Upload Advertisement Banners</h4>
               </div> 
-              <div class="img-upload-div">
-              	<!-- <img src="" alt="Upload Image"> -->
+                <form action="<?php echo base_url('admin/home_banners'); ?>" enctype="multipart/form-data" class="dropzone"></form>
+              <!-- <div class="img-upload-div">
+              	<img src="" alt="Upload Image">
               </div> 
-              <p>Banner Size 1920X600</p> 
+               --><p>Banner Size 1920X600</p> 
               <div class="img-upload-btn">
-              	<button type="button" class="btn active-btn btn-round">Upload</button>
-              	<span class="transh-btn"><i class="fa fa-trash"></i></span>	
+              	<!-- <button type="button" class="btn active-btn btn-round">Upload</button> -->
+              	<!-- <span class="transh-btn"><i class="fa fa-trash"></i></span> -->	
               </div>
             </div>
             <div class="previous-upload-img">
@@ -29,60 +30,22 @@
                 <h4>Previous Advertisement Banners </h4>
               </div>
               <ul class="previous-img-gallery">
-              	<li class="previous-img">
-                  <span class="gallery-img">
-              		  <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
-                  </span>
-              	</li>
-                <li class="previous-img">
-                  <span class="gallery-img">
-                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
-                  </span>
-                </li>
-                <li class="previous-img">
-                  <span class="gallery-img">
-                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
-                  </span>
-                </li>
-                <li class="previous-img">
-                  <span class="gallery-img">
-                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
-                  </span>
-                </li>
-                <li class="previous-img">
-                  <span class="gallery-img">
-                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
-                  </span>
-                </li>
-
-                <li class="previous-img">
-                  <span class="gallery-img">
-                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
-                  </span>
-                </li>
-                <li class="previous-img">
-                  <span class="gallery-img">
-                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
-                  </span>
-                </li>
-                <li class="previous-img">
-                  <span class="gallery-img">
-                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
-                  </span>
-                </li>
-
-                <li class="previous-img">
-                  <span class="gallery-img">
-                    <img src="<?php echo base_url(); ?>assets/img/profile_dummy.png">
-                  </span>
-                </li>
+                <?php if (!empty($banners)) {
+                  foreach ($banners as $key => $value) { ?>
+                    <li class="previous-img">
+                      <span class="gallery-img">
+                        <img src="<?php echo base_url('assets/banner-images/'.$value->image); ?>">
+                      </span>
+                    </li>
+                 <?php }
+                } ?>
               </ul> 
-            	<div class="pull-right">
+            	<!-- <div class="pull-right">
                 <div class="submit-btn">
                   <button type="button" class="btn previous-btn">Cancle</button>
                   <button type="button" class="btn active-btn">Save</button>
                 </div> 
-              </div>	
+              </div> -->	
             </div>
           </div>
         </div>

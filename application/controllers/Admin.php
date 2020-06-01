@@ -153,7 +153,9 @@ Class Admin extends MY_Controller {
 
             if(!empty($result))
             {
-                $data = array('username'=>$result->username,
+                $data = array('first_name'=>$result->first_name,
+                            'last_name'=>$result->last_name,
+                            'user_type'=>$result->user_type,
                             'email'=>$result->email,
                             'user_id'=>$result->id);
                 $this->session->set_userdata($data);
@@ -401,6 +403,13 @@ Class Admin extends MY_Controller {
 
     public function home_banners()
     {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $result = $this->Admin->upload('file','banner-images');
+            $this->Admin->insertData('banner_images',array('image'=>$result['file_name'],'created_at'=>date('Y-m-d H:i:s')));
+            $this->session->set_flashdata('success', 'Image uploaded successfully');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $this->data['banners'] = $this->Admin->getData('banner_images','*','');
         $this->middle = 'home_banner';
         $this->Admin();
     }
@@ -449,7 +458,7 @@ Class Admin extends MY_Controller {
     }
     public function product_form_list()
     {
-        $this->data['product_form'] = $this->Admin->getData('product_form','*','');
+        $this->data['product_form'] = $this->Admin->ProducFormList();
         $this->middle = 'product-form/list';
         $this->Admin();
     }
@@ -492,7 +501,7 @@ Class Admin extends MY_Controller {
     }
     public function product_form_status($status,$id)
     {
-        $result = $this->Admin->updateData('category',array('is_active'=>$status),array('id'=>$id));
+        $result = $this->Admin->updateData('product_form',array('status'=>$status),array('id'=>$id));
         if (!empty($result)) {
             $this->session->set_flashdata('success', 'status updated successfully'); 
         }
