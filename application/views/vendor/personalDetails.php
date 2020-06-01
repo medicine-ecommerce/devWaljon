@@ -23,7 +23,7 @@
 	<?php }?>
 
 	<form method="post" action="<?php echo base_url() ?>/vendor/vendor_profile" enctype="multipart/form-data">		
-		<div class="row padding-bottom20">
+		<div class="row padding-bottom20 padding-top50">
 			<div class="col-md-3">
 				<h5>Personal Information </h5>
 			</div>

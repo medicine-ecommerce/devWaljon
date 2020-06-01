@@ -20,6 +20,11 @@
           </div>
         </div>
     </div>
+    <form id="import_form" method="post"  enctype="multipart/form-data">      
+        <input type="file" name="file">
+        <button type="submit"> Upload </button>
+    </form>
+
 
     <div class="col-md-12 col-sm-12  home-module-pages">
       <div class="x_panel">
@@ -30,104 +35,59 @@
                 <th class="column-title">Image</th>
                 <th>Product ID</th>
                 <th>Product Name</th>
-                <th>Variety</th>
-                <th>MAnufacturer</th>
-                <th>Product For</th>
+                <th>Product Manufacturer</th>
+                <th>Product Form</th>
+                <th>Varieties</th>
+                <th>Unit Type</th>
+                <th>MRP</th>
+                <th>Sell Price</th>
+                <th>Stock Quantity</th>
+                <th>Pricscription Yes/No</th>
+                <th>Product Category</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
-                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
-                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
-                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
+                  <div class="bulk-images">                    
+                    <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                      <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
+                    <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
+                      <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
+                  </div>
                 </td>
                 <td>Larry</td>
                 <td>the Bird</td>
                 <td>@twitter</td>
                 <td>@twitter</td>
+                <td>Larry</td>
+                <td>the Bird</td>
+                <td>@twitter</td>
+                <td>@twitter</td>
+                <td>@twitter</td>
                 <td>
                   <div class="form-group label-float-top">
-				            <select class="form-control control-float-top" >
+                    <select class="form-control control-float-top bulk-dropdown" >
+                       <option></option>
+                       <option value="1">Yes</option>
+                       <option value="0">No</option>                       
+                    </select>
+                    <label for="Address">Select</label>
+                  </div>
+                </td>
+                <td>
+                  <div class="form-group label-float-top">
+				            <select class="form-control control-float-top bulk-dropdown" >
 				               <option></option>
 				               <option>List 1</option>
 				               <option>List 2</option>
 				               <option>List 3</option>
 				            </select>
-				            <label for="Address">Product Category</label>
+				            <label for="Address">Select</label>
 				          </div>
 			     	    </td>
               </tr>
-				      <tr>
-                <td>
-                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
-                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
-                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
-                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
-                </td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>
-                  <div class="form-group label-float-top">
-                    <select class="form-control control-float-top" >
-                       <option></option>
-                       <option>List 1</option>
-                       <option>List 2</option>
-                       <option>List 3</option>
-                    </select>
-                    <label for="Address">Product Category</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
-                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
-                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
-                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
-                </td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>
-                  <div class="form-group label-float-top">
-                    <select class="form-control control-float-top" >
-                       <option></option>
-                       <option>List 1</option>
-                       <option>List 2</option>
-                       <option>List 3</option>
-                    </select>
-                    <label for="Address">Product Category</label>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
-                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
-                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
-                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
-                </td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>
-                  <div class="form-group label-float-top">
-                    <select class="form-control control-float-top" >
-                       <option></option>
-                       <option>List 1</option>
-                       <option>List 2</option>
-                       <option>List 3</option>
-                    </select>
-                    <label for="Address">Product Category</label>
-                  </div>
-                </td>
-              </tr>
+				      
             </tbody>
           </table>
           <div class=""> 
@@ -236,5 +196,42 @@
 			}
 		});
 	});
+
+$(document).ready(function(){
+  $(".form-group .form-control").blur(function(){
+       if($(this).val()!=""){                 
+         $(this).siblings("label").addClass("active");
+       }else{
+          $(this).siblings("label").removeClass("active");
+       }
+    });
+    $(".label-float-top").click(function(){
+      $(this).find("label").addClass("active");
+      $(this).find("input").focus();
+    
+    });
+});
+
+</script>
+<script type="text/javascript">
+  
+  $('#import_form').on('submit', function(event){
+    event.preventDefault();
+    $.ajax({
+      url:"<?php echo base_url() ?>vendor/import_data",
+      method:"POST",
+      data:new FormData(this),
+      contentType:false,
+      cache:false,
+      processData:false,
+      success:function(data){
+        $('#file').val('');
+        //load_data();
+        alert(data);
+        console.log("success");
+      }
+    })
+  });
+
 
 </script>

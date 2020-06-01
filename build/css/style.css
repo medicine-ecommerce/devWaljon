@@ -885,8 +885,8 @@ a.img-uplod-modal {
     display: inline-block;
     border: 1px solid #8d9ba9;
     border-radius: 5px;
-    width: 60px;
-    height: 60px;
+    width: 45px;
+    height: 45px;
     padding: 5px;
 }
 a.img-uplod-modal.active{
@@ -951,6 +951,16 @@ span.pending {
 }
 input.form-control {
     font-size: 14px;
+}
+.bulk-images {
+    display: inline-flex;
+}
+select.form-control.bulk-dropdown {
+    height: 30px;
+    padding: 7px 15px;
+    font-size: 12px;
+    color: black;
+    width: auto;
 }
 
 /*product form*/

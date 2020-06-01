@@ -14,10 +14,41 @@ Class Vendor extends MY_Controller {
         $this->load->helper(array('form', 'url','custome'));
         $this->load->library('form_validation');  
         $this->load->model('Vendor_model','Vendor');        
+        $this->load->model('Excel_import_model');        
+        $this->load->library('excel');  
         $this->load->library('upload');
         
 
     }
+    public function import_data()
+    {
+        if(isset($_FILES["file"]["name"]))
+        {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PHPExcel_IOFactory::load($path);
+            foreach($object->getWorksheetIterator() as $worksheet)
+            {
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                for($row=2; $row<=$highestRow; $row++)
+                {
+                    $first_name = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+                    $last_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                    $email = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    // $postal_code = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    // $country = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $data[] = array(
+                        'first_name'      =>  $first_name,
+                        'last_name'           =>  $last_name,
+                        'email'              =>  $email
+                    );
+                }
+            }            
+            $this->Vendor->bulkData($data);
+            echo 'Data Imported successfully';
+        }
+    }
+
 
     public function index()
     {
