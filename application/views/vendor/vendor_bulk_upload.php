@@ -45,36 +45,38 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-body">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Product SKU ID</th>
-                <th>Product Name</th>
-                <th>Product Manufacturer</th>
-                <th>Product Form</th>
-                <th>Varieties</th>
-                <th>Unit Type</th>
-                <th>MRP</th>
-                <th>Sell Price</th>
-                <th>Stock Quantity</th>
-                <th>Prescription Yes/No</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>SKU-000001</td>
-                <td>Product1</td>
-                <td>Manufacturer1</td>
-                <td>Tablets, Syrup, Powder etc..</td>
-                <td>3 Varieties</td>
-                <td>gm</td>
-                <td>420</td>
-                <td>400</td>
-                <td>250</td>
-                <td>yes</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="excel-formate-table"> 
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Product SKU ID</th>
+                  <th>Product Name</th>
+                  <th>Product Manufacturer</th>
+                  <th>Product Form</th>
+                  <th>Varieties</th>
+                  <th>Unit Type</th>
+                  <th>MRP</th>
+                  <th>Sell Price</th>
+                  <th>Stock Quantity</th>
+                  <th>Prescription Yes/No</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SKU-000001</td>
+                  <td>Product1</td>
+                  <td>Manufacturer1</td>
+                  <td>Tablets, Syrup, Powder etc..</td>
+                  <td>3 Varieties</td>
+                  <td>gm</td>
+                  <td>420</td>
+                  <td>400</td>
+                  <td>250</td>
+                  <td>yes</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div class="bulk-upload-notes">
             <div class="">
               <div class="text-center"> 
