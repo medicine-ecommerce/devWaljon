@@ -216,7 +216,12 @@ Class Vendor extends MY_Controller {
     {
         $this->middle = 'bulk_upload';
         $this->Vendor();
-    }  
+    } 
+    public function vendor_bulk_upload()
+    {
+        $this->middle = 'vendor_bulk_upload';
+        $this->Vendor();
+    } 
     public function testEmail()
     {
                            // require_once("./mail/PHPMailerAutoload.php");
