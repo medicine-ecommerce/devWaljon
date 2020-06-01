@@ -7,12 +7,15 @@
           <h3> Inventory > Image Upload</h3>
        </div>
        <div class="title_right">
-          <div class="col-md-5 col-sm-5 form-group pull-right top_search">
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Go!</button>
-              </span>
+          <div class="col-md-12 col-sm-8 form-group pull-right top_search">
+            <div class="input-group btn-linking-div">
+              <a class="btn-linking-page active">Bulk Upload</a>
+              <hr class="active">
+              <a class="btn-linking-page next">Image Upload</a>
+              <hr>
+              <a class="btn-linking-page ">Additional information</a>
+              <hr>
+              <a class="btn-linking-page ">FAQ</a>
             </div>
           </div>
         </div>
@@ -21,7 +24,7 @@
     <div class="col-md-12 col-sm-12  home-module-pages">
       <div class="x_panel">
         <div class="x_content">
-          <table class="table">
+          <table class="table bulk-uoload-table">
             <thead>
               <tr>
                 <th class="column-title">Image</th>
@@ -35,7 +38,10 @@
             <tbody>
               <tr>
                 <td>
-                  <a data-toggle="modal" data-target="#myModal"><img style=" width: 50px;" src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
+                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
+                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
+                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
                 </td>
                 <td>Larry</td>
                 <td>the Bird</td>
@@ -55,7 +61,10 @@
               </tr>
 				      <tr>
                 <td>
-                  <a data-toggle="modal" data-target="#myModal"><img style=" width: 50px;" src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
+                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
+                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
+                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
                 </td>
                 <td>Larry</td>
                 <td>the Bird</td>
@@ -75,7 +84,10 @@
               </tr>
               <tr>
                 <td>
-                  <a data-toggle="modal" data-target="#myModal"><img style=" width: 50px;" src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
+                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
+                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
+                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
                 </td>
                 <td>Larry</td>
                 <td>the Bird</td>
@@ -95,7 +107,10 @@
               </tr>
               <tr>
                 <td>
-                  <a data-toggle="modal" data-target="#myModal"><img style=" width: 50px;" src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
+                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
+                  <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
+                    <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
                 </td>
                 <td>Larry</td>
                 <td>the Bird</td>
@@ -115,85 +130,96 @@
               </tr>
             </tbody>
           </table>
+          <div class=""> 
+            <div class="col-md-6">
+              <div class="upload-details">
+                <p>Total Products : 0</p>
+                <p>Products link with images : 0</p>
+                <p>Products not link with images : 0</p>
+              </div>
+            </div>
+            <div class="col-md-6 padding-top50">
+              <button type="submit" class="btn btn-default submit_button float-right">Next</button>
+              <button type="submit" class="btn btn-default submit_button float-right">Previous</button> 
+              <button type="submit" class="btn btn-default submit_button float-right">Cancle</button>   
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- <div id="overlay">
-  <a href="#" class="close">&times;</a>  
-  <div class="home-product-tabs">
-    <div class="container">
-        <ul class="nav nav-tabs" role="tablist" >
-            <li class="nav-item">
-                <a class="nav-link active" id="featured-products-tab" data-toggle="tab" href="#featured-products" role="tab" aria-controls="featured-products" aria-selected="true">NEW ITEMS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="latest-products-tab" data-toggle="tab" href="#latest-products" role="tab" aria-controls="latest-products" aria-selected="false">BEST ITEMS</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="old-products-tab" data-toggle="tab" href="#old-products" role="tab" aria-controls="old-products" aria-selected="false">HOT ITEMS</a>
-            </li>
-        </ul>
-    </div>
-    <div class="tab-content">
-      <div class="tab-pane fade show active" id="featured-products" role="tabpanel" aria-labelledby="featured-products-tab">	
-        <div class="form-group">
-    			<label class="control-label col-md-3">Upload Image</label>
-    			<div class="col-md-8">
-    				<div class="row">
-    					<div id="coba"></div>
-    				</div>
-    			</div>
-  		  </div>     
-      </div>
-      <div class="tab-pane fade" id="latest-products" role="tabpanel" aria-labelledby="latest-products-tab">
-        <div class="form-group">
-    			<label class="control-label col-md-3">Upload Image</label>
-    			<div class="col-md-8">
-    				<div class="row">
-    					<div id="coba1"></div>
-    				</div>
-    			</div>
-    		</div>
-      </div>
-      <div class="tab-pane fade" id="old-products" role="tabpanel" aria-labelledby="old-products-tab">
-        <div class="form-group">
-    			<label class="control-label col-md-3">Upload Image</label>
-    			<div class="col-md-8">
-    				<div class="row">
-    					<div id="coba2"></div>
-    				</div>
-    			</div>
-    		</div>
-      </div>
-    </div>
-  </div>    
-</div> -->
-
 <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
+  <div class="modal fade imageuploadModel" id="myModal" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-titles">Modal Header</h4>
+          <div class="Varieties-upload">  
+            <p>Varieties</p>
+            <div id="gender" class="btn-group bulk-uoload-varieties stock-btn" data-toggle="buttons">
+              <label class="btn label-btn active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                <input type="radio" name="graph" value="monthly" class="join-btn"> &nbsp; 200gm &nbsp;
+              </label>
+              <label class="btn label-btn" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                <input type="radio" name="graph" value="weekly" class="join-btn"> 500gm
+              </label>
+              <label class="btn label-btn" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                <input type="radio" name="graph" value="weekly" class="join-btn"> 1Kg
+              </label>
+            </div>
+          </div> 
         </div>
         <div class="modal-body">
-          <p>Some text in the modal.</p>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="bulk-upload-image">
+                <div class="text-center">
+                  <p>Main Images</p>
+                </div>
+                <div class="bulk-img-div">
+                  <img src=""> 
+                </div>
+              </div> 
+            </div>
+            <div class="col-md-8">
+              <div class="bulk-product-detail">
+                <span>
+                  <span>Product ID : </span> 
+                  <p>fgdrrg</p>
+                </span>
+                <span> 
+                  <span>Product Name : </span> 
+                  <p>fgg</p>
+                </span>
+                <span>
+                  <span>Manufacturer : </span> 
+                  <p>fdgg</p>
+                </span>
+              </div> 
+              <hr>
+              <div class="upload-details padding-top-bottom-20">
+                <p><i class="fa fa-upload"></i> Ipload Main Image</p>
+                <p><i class="fa fa-trash" style="color:red"></i> Delete Main Image</p>
+              </div>
+            </div>
+          </div>
+          <div class="row margin-top20">
+            <div id="coba" style="width: 100%"></div>  
+          </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" data-dismiss="modal" class="btn btn-default submit_button float-right">Cancle</button>              
+          <button type="submit" class="btn btn-default submit_button float-right">Save</button> 
         </div>
       </div> 
     </div>
   </div>
 
 <script type="text/javascript">
-	$(function(){
 
+	$(function(){
 		$("#coba").spartanMultiImagePicker({
 			fieldName:        'fileUpload[]',
 			directUpload : {
@@ -210,40 +236,5 @@
 			}
 		});
 	});
-	$(function(){
 
-		$("#coba1").spartanMultiImagePicker({
-			fieldName:        'fileUpload[]',
-			directUpload : {
-				status: true,
-				loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
-				url: '../c.php',
-				additionalParam : {
-					name : 'My Name'
-				},
-				success : function(data, textStatus, jqXHR){
-				},
-				error : function(jqXHR, textStatus, errorThrown){
-				}
-			}
-		});
-	});
-	$(function(){
-
-		$("#coba2").spartanMultiImagePicker({
-			fieldName:        'fileUpload[]',
-			directUpload : {
-				status: true,
-				loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
-				url: '../c.php',
-				additionalParam : {
-					name : 'My Name'
-				},
-				success : function(data, textStatus, jqXHR){
-				},
-				error : function(jqXHR, textStatus, errorThrown){
-				}
-			}
-		});
-	});
 </script>

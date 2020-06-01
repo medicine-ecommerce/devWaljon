@@ -132,7 +132,7 @@ img.profile-images-custom {
     text-align: center;
 }
 button.btn.btn-primary.image-upload-button {
-    background-color: #1fcdf9;
+    background-color: #4abdde;
     border: none;
     border-radius: 23px;
     width: 130px;
@@ -155,7 +155,7 @@ input.image-upload-input {
     position:relative;
     margin: 12px 0;
 }
-.form-control.control-float-top{height: 40px;}
+.form-control.control-float-top{height: 40px; padding:0px 10px;border-radius: 3px;}
 .form-control.control-float-top:focus{box-shadow:none;}
 
 .label-float-top label{position:absolute; left:10px; top:10px; transition:all 0.3s; color:#999; font-weight:normal;}
@@ -163,7 +163,16 @@ input.image-upload-input {
 
 .form-control.control-float-top:focus ~ label{left:5px; top:-10px; background:#fff; padding:0 5px;}
 
-label.active{left:5px; top:-10px; background:#fff; padding:0 5px;}
+label.active{
+    left: 5px;
+    top: -10px;
+    background: #fff;
+    padding: 0 5px;
+    color: #4a93de;
+    font-weight: 500;
+    font-size: 12px;
+
+}
 input.form-control.control-float-top:focus {
     padding-left: 10px;
 }
@@ -290,7 +299,7 @@ hr.custom-form-hr {
 button.btn.btn-default.submit_button {
     width: 116px;
     border-radius: 23px;
-    background-color: #1fcdf9;
+    background-color: #4abdde;
     border: none;
     color: #fff;
 }
@@ -436,14 +445,14 @@ section.login_content {
   border-radius: 50%;
 }
 .active-btn{
-    background:#1fcdf9 ;
+    background:#4abdde ;
     color: #fff;
     box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.2);
     padding: 10px 25px;
-    width: 110px;
+    width: auto;
 }
 .active-btn:hover{
-    background:#1fcdf9 ;
+    background:#4abdde ;
     color: #fff;
 }
 .previous-btn {
@@ -583,6 +592,24 @@ span.transh-btn {
 }
 .Bulk-upload-btn{
     width: 125px;
+}
+.upload-details p {
+    color: #397fff;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+.Varieties-upload p{
+    margin-bottom: 0px;    
+}
+.bulk-uoload-varieties label.active{
+    left:0px; 
+    top:0px; 
+    padding: 5px;
+    border-radius: 50px; 
+}
+.bulk-uoload-varieties label.label-btn{
+    border-radius: 50px; 
 }
 /*inventory*/
 /*vendor Dashboard */
@@ -726,15 +753,17 @@ div#gallery {
     margin-top: 10px;
 }
 .addMore-btn {
-    background: #1fcdf9;
+    background: #4abdde;
     border-radius: 50%;
     color: #fff;
+    padding: 2px 6px 0px;
     margin: 10px 0px 10px 10px;
 }
 .addMore-btn:hover {
-    background: #1fcdf9;
+    background: #4abdde;
     border-radius: 50%;
     color: #fff;
+    padding: 2px 6px 0px;
     margin: 10px 0px 10px 10px;
 }
 .btn-custom-rev{
@@ -747,6 +776,45 @@ div#gallery {
     color: red;
     font-size: 20px;
 }
+input.edit-profile-image {
+    bottom: 50px;
+    position: absolute;
+    cursor: pointer;
+}
+.custom-success-alert {    
+    width: 350px;
+    height: 80px;
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    z-index: 99;
+    font-size: 16px;
+    padding: 10px 18px;
+    transition: opacity .4s linear,left .5s ease,top .5s ease,right .5s ease,bottom .5s ease;
+    background-color: rgba(38,185,154,0.88);
+    color: #fff;
+}
+span.custom-remove {
+    float: right;
+    color: #fff;
+    cursor: pointer;
+}
+.custom-success-alert p {
+    padding: 20px 0px;
+}
+.custom-error-alert{    
+    width: 350px;
+    height: auto;
+    position: absolute;
+    right: 20px;
+    top: 100px;
+    z-index: 99;
+    font-size: 16px;
+    padding: 10px 18px;
+    transition: opacity .4s linear,left .5s ease,top .5s ease,right .5s ease,bottom .5s ease;
+    background-color: rgba(243, 86, 86, 0.88);
+    color: #fff;
+}
 .append-table td{
     padding: 0px !important;
 }
@@ -758,24 +826,190 @@ div#gallery {
 .bulk-uoload-table{
     border: 1px solid #8d9ba9;
 }
+.imageuploadModel .modal-dialog {
+    max-width: 750px;
+}
+.bulk-img-div {
+    border: 1px solid #397fff;
+    padding: 10px;
+    height: 250px;
+    border-radius: 5px;
+}
+.bulk-product-detail{
+    margin-top: 45px;
+}
+.bulk-product-detail span {
+    display: block;
+}
+.bulk-product-detail span p {
+    margin: 0px 5px;
+    display: inline-block;
+}
+.bulk-product-detail span span {
+    margin: 0px 5px;
+    width: 100px;
+    font-weight: 600;
+    display: inline-block;
+}
+.margin-top20{
+    margin-top: 20px;
+}
+a.btn-linking-page {
+    border: 1px solid;
+    border-radius: 50px;
+    padding: 6px 20px;
+    background: #fff;
+}
+.btn-linking-div hr {
+    padding: 0px;
+    border: 1px solid;
+    width: 7%;
+}
+a.btn-linking-page.active {
+    background: #46e799;
+    border-color: #46e799;
+    color: white !important;
+}
+.btn-linking-div hr.active {
+    background: #46e799;
+    border-color: #46e799;
+}
+a.btn-linking-page.next {
+    background: #fff;
+    border-color: #2b89e1;
+    color: #2b89e1 !important;
+}
+.btn-linking-div hr.next {
+    background: #2b89e1;
+    border-color: #2b89e1;
+}
+a.img-uplod-modal {
+    display: inline-block;
+    border: 1px solid #8d9ba9;
+    border-radius: 5px;
+    width: 60px;
+    height: 60px;
+    padding: 5px;
+}
+a.img-uplod-modal.active{
+    border: 1px solid #2b89e1;
+}
+a.img-uplod-modal img{
+    width: 100%;
+    height: 100%;
+}
 /*Bulk upload*/
 /*product form*/
-    .product_tab {
-        border: none;
-        margin: 10px;
-        display: inline-flex;
-    }
-    .product_tab .nav-item.show .nav-link, .product_tab .nav-link.active {
-        color: #4abcde;
-        background-color: #ffffff;
-        border-color: #4abcde;
-    }
-    .product_form_heading {
-        font-size: 18px;
-        margin: 9px 10px;
-        display: contents;
-    }
+.product_tab {
+    border: none;
+    margin: 15px 0px 0px;
+    display: inline-flex;
+}
+.product_tab .nav-item.show .nav-link, .product_tab .nav-link.active {
+    color: #4abcde;
+    background-color: #ffffff;
+    border-color: #4abcde;
+    border-bottom: none;
+}
+.product_form_heading {
+    font-size: 18px;
+    margin: 9px 10px;
+    display: contents;
+}
+.product-form{
+    border-radius: 25px !important;
+}
+.product_tab .nav-item.show .nav-link, .product_tab .nav-link {
+    border-bottom: none;
+    background-color: #ffffff;
+}
+span.approved {
+    font-weight: 600;
+    color: #39da6e;
+}
+span.rejected {
+    font-weight: 600;
+    color: #ff5256;
+}
+span.pending {
+    font-weight: 600;
+    color: #37aaec;
+}
+
+.product_tab {
+    border: none;
+    margin: 10px;
+    display: inline-flex;
+}
+.product_tab .nav-item.show .nav-link, .product_tab .nav-link.active {
+    color: #4abcde;
+    background-color: #ffffff;
+    border-color: #4abcde;
+}
+.product_form_heading {
+    font-size: 18px;
+    margin: 9px 10px;
+    display: contents;
+}
+input.form-control {
+    font-size: 14px;
+}
 /*product form*/
+
+/*excel formate modal*/
+.invertory-module.excelFormateContent {
+    margin: 100px auto;
+    width: 400px;
+}
+a.modal-btn{
+    color: #3ea1ff !important;
+    cursor: pointer;
+}
+#excelFormateModal .modal-dialog {
+    max-width: 90%;
+}
+.notes{
+    color:#e8b037 ;
+}
+.bulk-upload-notes{
+    margin: 20px auto;
+    width: 400px;
+}
+.excel-logo {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 10px;
+}
+.excel-logo img{
+    width: 100%;
+    height: 100%;
+}
+.excel-formate-table{
+    border-bottom: 1px solid #dee2e6;
+}
+.excel-formate-table table{
+    margin-bottom: 0px; 
+}
+.excel-formate-table .table td, .excel-formate-table .table th {
+    border-top: none;
+}
+/*excel formate modal*/
+/*faq*/
+.faq-heading div p{
+    font-weight: 600;
+}
+.faq-heading div .addMore-btn {
+     margin: 0px; 
+}
+.faq-table{
+    padding-right: 10px;
+    border-right-color: #333 !important;
+}
+.submit_button.disable{
+    color:#9da0a5 !important;
+    background:#e7ecf4 !important;
+}
+/*faq*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {
          margin-left: 0px; 
