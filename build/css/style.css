@@ -132,7 +132,7 @@ img.profile-images-custom {
     text-align: center;
 }
 button.btn.btn-primary.image-upload-button {
-    background-color: #1fcdf9;
+    background-color: #4abdde;
     border: none;
     border-radius: 23px;
     width: 130px;
@@ -299,7 +299,7 @@ hr.custom-form-hr {
 button.btn.btn-default.submit_button {
     width: 116px;
     border-radius: 23px;
-    background-color: #1fcdf9;
+    background-color: #4abdde;
     border: none;
     color: #fff;
 }
@@ -445,14 +445,14 @@ section.login_content {
   border-radius: 50%;
 }
 .active-btn{
-    background:#1fcdf9 ;
+    background:#4abdde ;
     color: #fff;
     box-shadow: 0px 2px 12px 0px rgba(0, 0, 0, 0.2);
     padding: 10px 25px;
-    width: 110px;
+    width: auto;
 }
 .active-btn:hover{
-    background:#1fcdf9 ;
+    background:#4abdde ;
     color: #fff;
 }
 .previous-btn {
@@ -753,13 +753,13 @@ div#gallery {
     margin-top: 10px;
 }
 .addMore-btn {
-    background: #1fcdf9;
+    background: #4abdde;
     border-radius: 50%;
     color: #fff;
     margin: 10px 0px 10px 10px;
 }
 .addMore-btn:hover {
-    background: #1fcdf9;
+    background: #4abdde;
     border-radius: 50%;
     color: #fff;
     margin: 10px 0px 10px 10px;
@@ -964,6 +964,36 @@ select.form-control.bulk-dropdown {
 }
 
 /*product form*/
+
+/*excel formate modal*/
+.invertory-module.excelFormateContent {
+    margin: 100px auto;
+    width: 400px;
+}
+a.modal-btn{
+    color: #3ea1ff !important;
+    cursor: pointer;
+}
+#excelFormateModal .modal-dialog {
+    max-width: 90%;
+}
+.notes{
+    color:#e8b037 ;
+}
+.bulk-upload-notes{
+    margin: 20px auto;
+    width: 400px;
+}
+.excel-logo {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 10px;
+}
+.excel-logo img{
+    width: 100%;
+    height: 100%;
+}
+/*excel formate modal*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {
          margin-left: 0px; 
