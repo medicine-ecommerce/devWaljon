@@ -214,6 +214,8 @@ Class Vendor extends MY_Controller {
     }    
     public function addSingleProduct()
     {
+        $this->data['category'] = $this->Vendor->getData('category','category_name,id',array('is_active'=>"1"));
+        $this->data['manufacturer'] = $this->Vendor->getData('manufacturer','*','');
         $this->middle = 'add_single_product';
         $this->Vendor();
     }

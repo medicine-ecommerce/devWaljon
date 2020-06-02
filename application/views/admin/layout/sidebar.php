@@ -55,7 +55,7 @@
                       <li><a class="sub-item" href="<?php echo base_url('admin/product_category'); ?>">Product Category</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/brands'); ?>">Brands</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/manufacturer_list'); ?>">Manufacturer</a></li>
-                      <li><a class="sub-item" href="#">Product Form</a></li>
+                      <li><a class="sub-item" href="<?php echo base_url('admin/product_form_list'); ?>">Product Form</a></li>
                       <li><a class="sub-item" href="#">Linking</a></li>
                       <li><a class="sub-item" href="#">Salt Composition</a></li>
                       <li><a class="sub-item" href="#">All Inventory</a></li>
