@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://test.waljon.com/';
+$config['base_url'] = 'http://localhost/devWaljon/';
 
 /*
 |--------------------------------------------------------------------------
@@ -521,3 +521,49 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+$config['working_experience']= array(
+	array(
+        "key" => '0',
+        "value" => "Select Years",
+    ),
+    array(
+        "key" => '1',
+        "value" => "1 Year",
+    ),
+    array(
+        "key" => '2',
+        "value" => "2 Years",
+    ),
+    array(
+        "key" => '3',
+        "value" => "3 Years",
+    ),
+    array(
+        "key" => '4',
+        "value" => "4 Years",
+    ),
+    array(
+        "key" => '5',
+        "value" => "5 Years",
+    ),
+    array(
+        "key" => '6',
+        "value" => "6 Years",
+    ),
+    array(
+        "key" => '7',
+        "value" => "7 Years",
+    ),
+    array(
+        "key" => '8',
+        "value" => "8 Years",
+    ),
+    array(
+        "key" => '9',
+        "value" => "9 Years",
+    ),
+    array(
+        "key" => '10',
+        "value" => "10 Years",
+    ),
+);

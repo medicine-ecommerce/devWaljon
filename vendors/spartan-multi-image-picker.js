@@ -10,12 +10,13 @@
     $.fn.spartanMultiImagePicker = function(options) {
 
         var count       = 0; 
+        var countImage  = 2;
         var last_index  = 0;
         var total_count = 0;
 
         var defaults = {
             fieldName:        '',
-            groupClassName:   'col-md-4 col-sm-6 col-xs-8',
+            groupClassName:   'col-md-2 col-sm-4 col-xs-6',
             rowHeight:        '100px',
             dropFileLabel:    'Drop file here',
             placeholderImage: {
@@ -61,13 +62,14 @@
             if(typeof placeholderImage.width != 'undefined'){
                 placeholderImageWidth = placeholderImage.width;
             }
-            var template = `<div class="${groupClassName} spartan_item_wrapper" data-spartanindexrow="${count}" style="margin-bottom : 20px; ">`+
-                                `<div style="position: relative;">`+
+            var template = `<div class="${groupClassName} spartan_item_wrapper" data-spartanindexrow="${count}">`+
+                                `<div style="position: relative;display: inline-block;">`+
+                                    `<p class="imageNumber" style="text-align: center;margin-bottom: 5px;">Image ${countImage}</p>`+
                                     `<div class="spartan_item_loader" data-spartanindexloader="${count}" style=" position: absolute; width: 100%; height: ${rowHeight}; background: rgba(255,255,255, 0.7); z-index: 22; text-align: center; align-items: center; margin: auto; justify-content: center; flex-direction: column; display : none; font-size : 1.7em; color: #CECECE">` +
                                         `${uploadLoaderIcon}` +
                                     `</div>`+
-                                    `<label class="file_upload" style="width: 100px;; height: ${rowHeight}; border: 2px dashed #ddd; border-radius: 3px; cursor: pointer; text-align: center; overflow: hidden;  margin-top: 5px; margin-bottom : 5px; position : relative; display: flex; align-items: center; margin: auto; justify-content: center; flex-direction: column;">`+
-                                        `<a href="javascript:void(0)" data-spartanindexremove="${count}" style="position: absolute !important; right : 3px; top: 3px; display : none; background : #ED3C20; border-radius: 3px; width: 30px; height: 30px; line-height : 30px; text-align: center; text-decoration : none; color : #FFF;" class="spartan_remove_row"><i class="fas fa-times"></i></a>`+
+                                    `<label class="file_upload" style="width: 100px; height: ${rowHeight}; border: 2px solid #ddd;padding: 5px; border-radius: 3px; cursor: pointer; text-align: center; overflow: hidden;  margin-top: 5px; margin-bottom : 5px; position : relative; display: flex; align-items: center; margin: auto; justify-content: center; flex-direction: column;">`+
+                                        `<a href="javascript:void(0)" data-spartanindexremove="${count}" style="position: absolute !important; right : 3px; top: 3px; display : none; background : #ED3C20; border-radius: 3px; width: 30px; height: 30px; line-height : 30px; text-align: center; text-decoration : none; color : #FFF;" class="spartan_remove_row"><i class="fa fa-close"></i></a>`+
                                         `<img style="width: ${placeholderImageWidth}; margin: 0 auto; vertical-align: middle;" data-spartanindexi="${count}" src="${placeholderImageTarget}" class="spartan_image_placeholder" /> `+
                                         `<p data-spartanlbldropfile="${count}" style="color : #5FAAE1; display: none; width : auto; ">${dropFileLabel}</p>`+
                                         `<img style="width: 100%; vertical-align: middle; display:none;" class="img_" data-spartanindeximage="${count}">`+
@@ -80,6 +82,7 @@
 
             $(el).append(html);
             count++;
+            countImage ++;
             var param = {
                 index : count,
                 last_index : last_index
@@ -219,6 +222,7 @@
                 addRow(settings, parent);
             }
             total_count--;
+            // countImage --;
             settings.onRemoveRow.call(this, index);
         }
 

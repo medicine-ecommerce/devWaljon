@@ -60,6 +60,16 @@ class MY_Model extends CI_Model {
         return $this->db->affected_rows() ;       
 
     }
+    public function insertBatch($table,$data) {
+        $q  = $this->db->insert_batch($table, $data);
+        if ($q) {
+            return  true;
+        }
+        else{
+           return $this->db->error()['message'];
+        }
+
+    }
 
     public function insertData($table,$update_data) {              
         $q = $this->db->insert($table,$update_data);

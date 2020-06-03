@@ -19,7 +19,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-              <div class="col-md-3">
+              <div class="col-md-6">
                  <div class="form-group label-float-top">
                     <select class="form-control control-float-top" >
                        <option></option>
@@ -30,7 +30,18 @@
                     <label for="Address">Product Category</label>
                  </div>
               </div>
-              <div class="col-md-3">
+              <div class="col-md-6">
+                 <div class="form-group label-float-top">
+                    <select class="form-control control-float-top" >
+                       <option></option>
+                       <option>List 1</option>
+                       <option>List 2</option>
+                       <option>List 3</option>
+                    </select>
+                    <label for="Address">Product SubCategory</label>
+                 </div>
+              </div>
+              <div class="col-md-6">
                  <div class="form-group label-float-top">
                     <select class="form-control control-float-top" >
                        <option></option>
@@ -53,22 +64,28 @@
                     <!-- <label for="email">Date Of Birth</label> -->
                  </div>
               </div>
-              <div class="col-md-8">
-                 <table class="table no-border-table" id="dynamic_field">
+              <div class="col-md-12">
+                 <table class="table no-border-table append-table" id="dynamic_field">
                     <tr>
-                       <td >
-                          <div class="form-group label-float-top" style="width: 100px;">
-                             <select name="quantity[][quantity]" class="form-control control-float-top states" >
-                                <option></option>
-                                <option>750gm</option>
-                             </select>
-                             <label for="country">Quantity</label>
+                      <td>
+                        <div style="width: 210px;">
+                          <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
+                            <input type="text" class="form-control control-float-top" name="quantity[][quantity]">
+                            <label for="email">Quantity</label>
                           </div>
+                          <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
+                            <select name="measurement[][measurement]" class="form-control control-float-top states" >
+                              <option>l</option>
+                              <option>gm</option>
+                            </select>
+                            <label for="country">measurement</label>
+                          </div>
+                        </div>
                        </td>
                        <td  >
                           <div class="form-group label-float-top" style="width: 100px;">
-                             <input type="text" class="form-control control-float-top" name="mrp[][mrp]">
-                             <label for="email">MRP</label>
+                            <input type="text" class="form-control control-float-top" name="mrp[][mrp]">
+                            <label for="email">MRP</label>
                           </div>
                        </td>
                        <td >
@@ -157,7 +174,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-                 <table class="table no-border-table" id="dynamic_field2">
+                 <table class="table no-border-table append-table" id="dynamic_field2">
                     <tr>
                        <td>
                           <div class="form-group label-float-top" >
@@ -201,6 +218,12 @@
           </div>
         </div> 
       </div> 
+    </div>
+    <div class="row"> 
+      <div class="col-md-12 padding-top-bottom50">
+        <button type="submit" class="btn btn-default submit_button float-right">Cancle</button>   
+        <button type="submit" class="btn btn-default submit_button float-right">Save</button> 
+      </div>
     </div>
   </div>
 </div>  
@@ -263,7 +286,7 @@
      var i=1;  
      $('#add').click(function(){  
           i++;  
-          $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><div class="form-group label-float-top"><select name="quantity[][quantity]" class="form-control control-float-top states" >	<option></option><option>750gm</option></select><label for="country">Quantity</label></div><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="mrp[][mrp]"><label for="email">MRP</label></div></td><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="sellprice[][sellprice]"><label for="email">Sell Price</label></div></td><td><div class="form-group label-float-top"><input type="date" class="form-control control-float-top" name="expriydate[][expriydate]"><label for="email">Expiry Date</label>	</div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-custom-rev btn_remove"><i class="fa fa-trash-o"></i></button></td></tr>');  
+          $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><div class="form-group label-float-top"><select name="quantity[][quantity]" class="form-control control-float-top states" >	<option></option><option>750gm</option></select><label for="country">Quantity</label></div><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="mrp[][mrp]"><label for="email">MRP</label></div></td><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="sellprice[][sellprice]"><label for="email">Sell Price</label></div></td><td><div class="form-group label-float-top"><input type="date" class="form-control control-float-top" name="expriydate[][expriydate]"></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-custom-rev btn_remove"><i class="fa fa-trash-o"></i></button></td></tr>');  
      });
      $(document).on('click', '.btn_remove', function(){  
           var button_id = $(this).attr("id");   

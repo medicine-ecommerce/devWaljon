@@ -5,8 +5,25 @@
 </style>
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
 <div class="right_col registration-page">
+	<?php if($this->session->flashdata('success')){ ?>
+	<div class="custom-success-alert">		
+		<a class="remove-alert"> <span class="glyphicon glyphicon-remove custom-remove"></span></a>
+		<p>		
+			<span class="glyphicon glyphicon-ok-sign"></span>
+			<?= $this->session->flashdata('success');?>	
+		</p>
+	</div>
+	<?php }?>
+	<?php if($this->session->flashdata('error')){ ?>
+	<div class="custom-error-alert">		
+		<a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+		<span class="glyphicon glyphicon-warning-sign"></span>
+		<?= $this->session->flashdata('error');?>	
+	</div>
+	<?php }?>
+
 	<form method="post" action="<?php echo base_url() ?>/vendor/vendor_profile" enctype="multipart/form-data">		
-		<div class="row padding-bottom20">
+		<div class="row padding-bottom20 padding-top50">
 			<div class="col-md-3">
 				<h5>Personal Information </h5>
 			</div>
@@ -18,31 +35,31 @@
 			<div class="col-md-8">
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="first_name" autocomplete="off">
+						<input type="text" class="form-control control-float-top" name="first_name" value="<?php echo set_value('first_name'); ?>">
 						<label for="name">First Name</label>
 				  	</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="last_name">
+						<input type="text" class="form-control control-float-top" name="last_name" value="<?php echo set_value('last_name')?>">
 						<label for="email">Last Name</label>
 					</div>
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="date_of_birth">
+						<input type="date" class="form-control control-float-top" name="date_of_birth" value="<?php echo set_value('date_of_birth')?>">
 						<!-- <label for="email">Date Of Birth</label> -->
 					</div>
 				</div>
 				<div class="col-md-4">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="address">
+						<input type="text" class="form-control control-float-top" name="address" value="<?php echo set_value('address')?>">
 						<label for="email">Address</label>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<select name="country" class="form-control control-float-top countries" id="countryId">
+						<select name="country" class="form-control control-float-top custom-select countries" id="countryId" value="<?php echo set_value('country')?>">
 							<option>Select Country</option>
 						</select>
 						<!-- <label for="email">Country</label> -->					
@@ -50,34 +67,34 @@
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<select name="state" class="form-control control-float-top states" id="stateId">		    			
+						<select name="state" class="form-control control-float-top custom-select states" id="stateId" value="<?php echo set_value('state')?>">		    			
 						</select>		
 						<label for="country">State</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-					 	<select name="city" class="form-control control-float-top cities" id="cityId">					    
+					 	<select name="city" class="form-control control-float-top custom-select cities" id="cityId" value="<?php echo set_value('city')?>">					    
 						</select>
 						<label for="country">City</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="pin_code">
+						<input type="text" maxlength="6" class="form-control control-float-top" name="pin_code" value="<?php echo set_value('pin_code')?>">
 						<label for="email">Zip Postal Code</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="mobile">
+						<input type="text" class="form-control control-float-top" minlength="10" maxlength="10" name="mobile" value="<?php echo set_value('mobile')?>">
 						<label for="email">Mobile</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="email" >
-						<label for="email">Email</label>
+						<input type="email" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); ?> <?php } ?>" id="email"  readonly="">
+						<label id="email-label" for="email">Email</label>
 					</div>
 				</div>
 			</div>
@@ -103,35 +120,37 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					<div class="form-group label-float-top">					  
-					  <select class="form-control control-float-top" name="degree">
+					  <!-- <select class="form-control control-float-top" name="degree" value="<?php echo set_value('degree')?>">
 					    <option></option>
 					    <option>List 1</option>
 					    <option>List 2</option>
 					    <option>List 3</option>
-					  </select>
+					  </select> -->
+					  <input type="text" class="form-control control-float-top" name="degree" value="<?php echo set_value('degree')?>">					  
 					  <label for="Address">Degree</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="working_from">
+						<input type="date" class="form-control control-float-top" name="working_from" value="<?php echo set_value('working_from')?>">
 						<!-- <label for="Address">Working From</label> -->
 					</div>
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<select class="form-control control-float-top" name="experience">
-						    <option></option>
-						    <option value="List1" >List 1</option>
-						    <option value="List1">List 2</option>
-						    <option value="List1">List 3</option>
+						<select class="form-control control-float-top custom-select" name="experience" value="<?php echo set_value('experience')?>">
+							<option></option>
+						    <?php 
+								foreach ($profile_data as $key => $value) { ?>
+									<option  value="<?=$value['key']?>"><?=$value['value']?></option> 
+								<?php } ?>	
 						</select>
 					  <label for="Address">Year of Experience</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<select class="form-control control-float-top" name="marital_status">
+						<select class="form-control control-float-top custom-select" name="marital_status" value="<?php echo set_value('marital_status')?>">
 						    <option></option>
 						    <option>Married</option>
 						    <option>Unmarried</option>
@@ -155,25 +174,35 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="bank_name">
+					 	<select class="form-control control-float-top custom-select" name="bank_name" value="<?php echo set_value('bank_name')?>">
+							<option></option>
+						    <?php foreach ($bank as $value) { ?>
+								<option  value="<?=$value->id ?>"><?=$value->bank_name?></option> 
+							<?php } ?>	
+						</select>						
 						<label for="Address">Bank Name</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="account_number">
+						<input type="text" class="form-control control-float-top" name="account_number" value="<?php echo set_value('account_number')?>">
 						<label for="Address">Account Number</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="ifc_code">
+						<input type="text" class="form-control control-float-top" name="ifc_code" value="<?php echo set_value('ifc_code')?>">
 						<label for="Address">IFSC Code</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="account_type">
+						<select class="form-control control-float-top custom-select" name="account_type" value="<?php echo set_value('account_type')?>">
+							<option></option>
+						    <?php foreach ($account_type as $value) { ?>
+								<option  value="<?=$value['key'] ?>"><?=$value['value']?></option> 
+							<?php } ?>	
+						</select>						
 						<label for="Address">Account Type</label>
 					</div>
 				</div>			
@@ -193,25 +222,25 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="company_name">
-						<label for="Address">Medical Name</label>
+						<input type="text" class="form-control control-float-top" name="company_name" value="<?php echo set_value('company_name')?>">
+						<label for="Address">Company Name</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="medical_since">
+						<input type="date" class="form-control control-float-top" name="medical_since" value="<?php echo set_value('medical_since')?>">
 						<!-- <label for="Address">Account Number</label> -->
 					</div>
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="medical_phone">
+						<input type="text" minlength="10" maxlength="10" class="form-control control-float-top" name="medical_phone" value="<?php echo set_value('medical_phone')?>">
 						<label for="Address">Phone</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<input type="email" class="form-control control-float-top" name="medical_email">
+						<input type="email" class="form-control control-float-top" name="medical_email" value="<?php echo set_value('medical_email')?>">
 						<label for="Address">Email</label>
 					</div>
 				</div>			
@@ -222,7 +251,7 @@
 						<img src="<?php echo base_url(); ?>assets/img/prescription.png" class="profile-images-custom" id="preview2">
 					</div>
 					<button type="button" class="btn btn-primary image-upload-button">Upload</button>
-					<input type="file" id="licenceImg" name="licence_image" class="image-upload-input">
+					<input type="file" id="licenceImg" name="licence" class="image-upload-input">
 				</div>
 			</div>
 		</div>	
@@ -234,27 +263,7 @@
 	</form>
 </div>
 <!-- data-toggle="modal" data-target="#myModal" -->
- <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-	<div class="modal-dialog registration-done">
-  <!-- Modal content-->
-	  <div class="modal-content welldon-modal">
-	    <div >
-			<img src="<?php echo base_url(); ?>assets/img/green_tick.jpg" class="green-tick-img" id="preview">
-			<h1> Well Done</h1>		
-			<p>Congratulations your medical store has been created succesfully now you can add staff member after continue</p>
-	      <!-- <h4 class="modal-title">Modal Header</h4>
-	      <button type="button" class="close" data-dismiss="modal">&times;</button> -->
-	    </div>
-	    <div class="modal-body">
-	      
-	    </div>
-	    <div class="text-center">
-	      <button type="button" class="btn btn-default submit_button" data-dismiss="modal">Continue</button>
-	    </div>
-	  </div>  
-	</div>
-</div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="error-myModal" role="dialog">
@@ -332,13 +341,18 @@
 			    $(this).siblings("label").removeClass("active");
 		   }
 	  });
+  $(".label-float-top").click(function(){
+  	$(this).find("label").addClass("active");
+  	$(this).find("input").focus();
+  	
+  	});
 	});	
-	$(document).ready(function(){
-		var id = document.getElementsByClassName("hid_id")[0].value;
-		if(id!=''){
-			$('#error-myModal').modal('show'); 
-		}					
-	});
+	// $(document).ready(function(){
+	// 	var id = document.getElementsByClassName("hid_id")[0].value;
+	// 	if(id!=''){
+	// 		$('#error-myModal').modal('show'); 
+	// 	}					
+	// });
 
 	$(document).ready(function(){
 		var id = document.getElementsByClassName("success_id")[0].value;
@@ -349,5 +363,32 @@
 		}
 
 	});
+
+	$(document).ready(function(){
+		// var id = document.getElementsByClassName("hid_id")[0].value;
+		// if(id!=''){
+		// 	$('#error-myModal').modal('show'); 
+		// }					
+		$('.remove-alert').click(function() {
+			$('.custom-success-alert').fadeOut("slow")
+		})
+		setInterval(function () {
+	        $('.custom-success-alert').fadeOut("slow")
+    	}, 7000);
+    	
+    	$('.remove-red-alert').click(function() {
+			$('.custom-error-alert').fadeOut("slow")
+		})
+		setInterval(function () {
+	        $('.custom-error-alert').fadeOut("slow")
+    	}, 7000);
+
+	});
+	$(document).ready(function(){			
+		$(window).load(function(){  	
+	  		$("#email-label").addClass("active");
+		});	
+	});
+	
 	
 </script>

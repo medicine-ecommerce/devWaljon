@@ -9,11 +9,12 @@ class Admin_model extends MY_model
 
 	public function login($data){
 		$this->db->select('*');
-		$this->db->from('admin');
-		$this->db->group_start();
-		$this->db->where('username',$data['username']);		
-		$this->db->or_where('email',$data['username']);
-		$this->db->group_end();
+		$this->db->from('users');
+		//$this->db->group_start();
+		$this->db->where('type','admin');
+		//$this->db->where('username',$data['username']);		
+		$this->db->where('email',$data['username']);
+		//$this->db->group_end();
 		$this->db->where('password',md5($data['password']));
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
@@ -50,6 +51,14 @@ class Admin_model extends MY_model
 		$this->db->select('subcategory.*,category.category_name');
 		$this->db->from('subcategory');
 		$this->db->join('category','category.id = subcategory.category_id');
+		return $this->db->get()->result();
+	}
+	public function ProducFormList()
+	{
+		$this->db->select('CONCAT(users.first_name," ",users.last_name) as username,product_form.*');
+		$this->db->from('product_form');
+		$this->db->join('users','users.id = product_form.created_by','left');
+		$this ->db->order_by("FIELD(product_form.status,'pending,active,reject')");
 		return $this->db->get()->result();
 	}
 

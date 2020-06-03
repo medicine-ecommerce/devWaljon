@@ -47,6 +47,28 @@ class Vendor_model extends MY_model
 	{
 		return $this->updateData('vendors',array('is_active'=>$status),array('id'=>$id));
 	}
+	public function getUploadedBulkData()
+	{		
+		if(!empty($this->session->userdata('vendor_id'))){			
+			$this->db->select('product.*,product_item.*,manufacturer.name as manufacturer_name,product_form.name as product_form');
+			$this->db->from('product');
+			$this->db->join('product_item','product_item.product_id=product.id','left');
+			$this->db->join('manufacturer','manufacturer.id=product.manufacturer_id','left');
+			$this->db->join('product_form','product_form.id=product.product_form','left');
+			$this->db->where('vendor_id',$this->session->userdata('vendor_id'));
+			$this->db->where('update_at is NULL', NULL, FALSE);
+			$query = $this->db->get();
+			if($query->num_rows() > 0){
+            $data = $query->result();
+	            return  $data;
+	        }else{
+	            return  json_encode(array('status'=>0,'message'=>'No record Found'));
+	        }
+
+		}
+		
+	}
+	
 
 }
 
