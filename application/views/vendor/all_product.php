@@ -31,7 +31,7 @@
                       <th>Form</th>
                       <th>Stock Quantity</th>
                       <th>Unit Available</th>
-                      <th>Add On</th>
+                      <th>Added On</th>
                       <th>Action</th>
                     </tr>
                   </thead>
