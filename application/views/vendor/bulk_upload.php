@@ -1,4 +1,3 @@
-  			
 <!-- <script src="<?php echo base_url(); ?>vendor/countrystatecity.js"></script> -->
 <div class="right_col" role="main">
   <div class="">
@@ -20,12 +19,6 @@
           </div>
         </div>
     </div>
-    <form id="import_form" method="post"  enctype="multipart/form-data">      
-        <input type="file" name="file">
-        <button type="submit"> Upload </button>
-    </form>
-
-
     <div class="col-md-12 col-sm-12  home-module-pages">
       <div class="x_panel">
         <div class="x_content">
@@ -47,6 +40,7 @@
               </tr>
             </thead>
             <tbody>
+              <?php foreach ($bulk_data as $value) { ?>
               <tr>
                 <td>
                   <div class="bulk-images">                    
@@ -56,21 +50,21 @@
                       <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
                   </div>
                 </td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
+                <td><?php echo $value->product_sku_id; ?></td>
+                <td><?php echo $value->name; ?></td>
+                <td><?php echo $value->manufacturer_name; ?></td>
+                <td><?php echo $value->product_form; ?></td>
+                <td><?php echo $value->varieties; ?></td>
+                <td><?php echo $value->unit; ?></td>
+                <td><?php echo $value->mrp; ?></td>
+                <td><?php echo $value->sale_price; ?></td>                
+                <td><?php echo $value->quantity; ?></td>                                
                 <td>
                   <div class="form-group label-float-top">
                     <select class="form-control control-float-top bulk-dropdown" >
                        <option></option>
-                       <option value="1">Yes</option>
-                       <option value="0">No</option>                       
+                       <option <?php if($value->quantity==1){ ?> selected <?php } ?> value="1">Yes</option>
+                       <option <?php if($value->quantity==0){ ?> selected <?php } ?> value="0">No</option>                       
                     </select>
                     <label for="Address">Select</label>
                   </div>
@@ -78,7 +72,11 @@
                 <td>
                   <div class="form-group label-float-top">
 				            <select class="form-control control-float-top bulk-dropdown" >
-				               <option></option>
+                      <option></option>
+                      <?php foreach ($category as $value) { ?>
+                        <option value="<?=$value->id ?>"><?= $value->category_name ?></option> 
+                      <?php } ?>  
+				               
 				               <option>List 1</option>
 				               <option>List 2</option>
 				               <option>List 3</option>
@@ -87,7 +85,7 @@
 				          </div>
 			     	    </td>
               </tr>
-				      
+				      <?php } ?>
             </tbody>
           </table>
           <div class=""> 
@@ -211,27 +209,5 @@ $(document).ready(function(){
     
     });
 });
-
-</script>
-<script type="text/javascript">
-  
-  $('#import_form').on('submit', function(event){
-    event.preventDefault();
-    $.ajax({
-      url:"<?php echo base_url() ?>vendor/import_data",
-      method:"POST",
-      data:new FormData(this),
-      contentType:false,
-      cache:false,
-      processData:false,
-      success:function(data){
-        $('#file').val('');
-        //load_data();
-        alert(data);
-        console.log("success");
-      }
-    })
-  });
-
 
 </script>
