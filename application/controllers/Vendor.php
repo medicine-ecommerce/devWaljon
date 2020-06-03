@@ -282,6 +282,11 @@ Class Vendor extends MY_Controller {
         $this->middle = 'inventory';
         $this->Vendor();
     }
+    public function all_product()
+    {
+        $this->middle = 'all_product';
+        $this->Vendor();
+    }
     public function vendor_dashboard()
     {
         $this->middle = 'vendor_dashboard';
@@ -289,6 +294,8 @@ Class Vendor extends MY_Controller {
     }    
     public function addSingleProduct()
     {
+        $this->data['category'] = $this->Vendor->getData('category','category_name,id',array('is_active'=>"1"));
+        $this->data['manufacturer'] = $this->Vendor->getData('manufacturer','*','');
         $this->middle = 'add_single_product';
         $this->Vendor();
     }
@@ -302,6 +309,11 @@ Class Vendor extends MY_Controller {
     public function vendor_bulk_upload()
     {
         $this->middle = 'vendor_bulk_upload';
+        $this->Vendor();
+    } 
+    public function faq()
+    {
+        $this->middle = 'faq';
         $this->Vendor();
     } 
     public function testEmail()

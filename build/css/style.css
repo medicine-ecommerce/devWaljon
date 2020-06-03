@@ -756,12 +756,14 @@ div#gallery {
     background: #4abdde;
     border-radius: 50%;
     color: #fff;
+    padding: 2px 6px 0px;
     margin: 10px 0px 10px 10px;
 }
 .addMore-btn:hover {
     background: #4abdde;
     border-radius: 50%;
     color: #fff;
+    padding: 2px 6px 0px;
     margin: 10px 0px 10px 10px;
 }
 .btn-custom-rev{
@@ -933,10 +935,15 @@ span.pending {
     font-weight: 600;
     color: #37aaec;
 }
-
+.top_search .form-control {
+    height: 40px;
+}
+.top_search  .input-group {
+     margin-bottom: 0px; 
+}
 .product_tab {
     border: none;
-    margin: 10px;
+ /*   margin: 10px;*/
     display: inline-flex;
 }
 .product_tab .nav-item.show .nav-link, .product_tab .nav-link.active {
@@ -1001,8 +1008,114 @@ a.modal-btn{
 select.form-control.control-float-top.custom-select {
     font-size: 14px;
 }
-
+.excel-formate-table{
+    border-bottom: 1px solid #dee2e6;
+}
+.excel-formate-table table{
+    margin-bottom: 0px; 
+}
+.excel-formate-table .table td, .excel-formate-table .table th {
+    border-top: none;
+}
 /*excel formate modal*/
+/*faq*/
+.faq-heading div p{
+    font-weight: 600;
+}
+.faq-heading div .addMore-btn {
+     margin: 0px; 
+}
+.faq-table{
+    padding-right: 10px;
+    border-right-color: #333 !important;
+}
+.submit_button.disable{
+    color:#9da0a5 !important;
+    background:#e7ecf4 !important;
+}
+/*faq*/
+/*all product*/
+.hamburger{
+    margin-top: 15px;
+}
+.open-button {
+    background-color: #4abdde;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    position: fixed;
+    bottom: 40px;
+    right: 28px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 21px;
+    z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  /*background-color: white;*/
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4abdde;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+    position: fixed;
+    bottom: 40px;
+    right: 28px;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+.single-upload-div .upload-span {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 0px 12px 17px;
+    background: #4abdde;
+    margin-right: 20px;
+}
+.single-upload-div {
+    margin-top: 20px;
+}
+.bulk-upload-div .upload-span {
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 0px 12px 17px;
+    background: #4abdde;
+    margin-right: 20px;
+}
+span.rotate-div {
+    background: #4abdde;
+    color: white;
+    margin: 0px -7px 0px 0px;
+    transform: rotate(35deg);
+    padding: 8px 10px;
+    display: inline-block;
+}
+/*all product*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {
          margin-left: 0px; 
