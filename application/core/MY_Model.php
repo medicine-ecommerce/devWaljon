@@ -5,11 +5,11 @@ class MY_Model extends CI_Model {
 
         parent::__construct();
         // Load form helper library    
-	//comment while merging    
+	    //comment while merging    
         //$this->load->model(array('CustomUpload_model'=>'customUpload','CustomEmail_model','DeveloperProfileApi_model'=>'DeveloperProfileApi'));            
     }
-
-    public function getData($table,$column,$where) {
+    public function getData($table,$column,$where) 
+    {
         $this->db->select($column);
         if($where){
             $this->db->where($where);
@@ -21,7 +21,6 @@ class MY_Model extends CI_Model {
         }
         
     }
-
     public function getRowData($table,$column,$where) {
         $this->db->select($column);
         if($where){

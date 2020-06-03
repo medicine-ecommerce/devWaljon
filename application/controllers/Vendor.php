@@ -7,7 +7,8 @@
 
 Class Vendor extends MY_Controller {
 
-    public function __construct() {
+    public function __construct() 
+    {
         parent::__construct();
         $this->load->database();
         // $this->load->model('Admin_model');
@@ -15,9 +16,7 @@ Class Vendor extends MY_Controller {
         $this->load->library('form_validation');  
         $this->load->model('Vendor_model','Vendor');        
         $this->load->library('upload');
-
     }
-
     public function index()
     {
         $this->load->helper('cookie');
@@ -62,13 +61,13 @@ Class Vendor extends MY_Controller {
         $this->load->view('vendor/vandorregister');
         //$this->Admin();
     }
-    public function vendor_login(){
+    public function vendor_login()
+    {
         $this->load->helper('cookie');
         $this->load->view('vendor/vendor_login');    
     }
-    
-    public function vendorLogin(){
-
+    public function vendorLogin()
+    {
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
             $this->form_validation->set_rules('email', 'Email', 'required');
@@ -82,7 +81,6 @@ Class Vendor extends MY_Controller {
                 $data = array('email'=> $this->input->post('email'),
                             'password' =>md5($this->input->post('password'))
                             );
-
                 $result = $this->Vendor->login($data);
                 if(!empty($result))
                 {
@@ -112,13 +110,11 @@ Class Vendor extends MY_Controller {
     }
     public function editPersonalDetails()
     {
-        
         $this->middle = 'edit_personalDetails';
         $this->Vendor();
     }
     public function vendor_profile()
     {
-        
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('first_name', 'First Name', 'required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'required');
@@ -126,8 +122,6 @@ Class Vendor extends MY_Controller {
             $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
             $this->form_validation->set_rules('company_name', 'Company Name', 'required');
             $this->form_validation->set_rules('address', 'Addresss', 'required');
-
-            
             if ($this->form_validation->run() == FALSE){                 
                 $this->session->set_flashdata('error', validation_errors());      
             }
@@ -151,40 +145,32 @@ Class Vendor extends MY_Controller {
                             'medical_phone'=>$this->input->post('medical_phone'),
                             'medical_email'=>$this->input->post('medical_email'),
                             'is_active'=>'0');
-
                 $bankData = array(
                             'bank_name'=>$this->input->post('bank_name'),
                             'account_number'=>$this->input->post('account_number'),
                             'ifc_code'=>$this->input->post('ifc_code'),
                             'account_type'=>$this->input->post('account_type'));                
-
                 $result = $this->Vendor->vendorProfileUpdate($data,array('id'=>$this->session->userdata('vendor_id')));
                 $result1 = $this->Vendor->addBankAccount($bankData);
-
                 // $universityLogoImage = date("YmdHis").$_FILES["logo"]["name"];
-
                 if(!empty($_FILES['profile_image'])){
                     $this->Vendor->upload("profile_image","vendor_profile");
                 }
-
                 if(!empty($_FILES['licence_image'])){
                     $this->Vendor->upload("licence_image","licence");
                 }
-
                 if ($result > 0) {
                     $this->session->set_flashdata('success', 'Vendor account created successfully');                     
                 }
             }
             redirect($_SERVER['HTTP_REFERER']); 
         }
-    
     }
     public function productadd()
     {
         $this->middle = 'productadd';
         $this->Vendor();
     } 
-
     public function inventory()
     {
         $this->middle = 'inventory';
@@ -215,11 +201,9 @@ Class Vendor extends MY_Controller {
     //     $this->middle = 'user_list';
     //     $this->Admin();
     // }    
-
     public function logout()
     {
         $this->session->sess_destroy();
         redirect(base_url('vendor/vendor_login'));
     }
-
 }
