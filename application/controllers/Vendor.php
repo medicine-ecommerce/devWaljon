@@ -298,6 +298,11 @@ Class Vendor extends MY_Controller {
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
+     public function add_product()
+    {        
+        $this->middle = 'add_product';
+        $this->Vendor();
+    }
     public function vendor_dashboard()
     {
         $this->middle = 'vendor_dashboard';
