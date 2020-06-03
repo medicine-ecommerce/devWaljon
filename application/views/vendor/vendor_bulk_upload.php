@@ -26,8 +26,14 @@
                     <div class="invertory-content text-center">
                       <p>Please download your excel formate before you want to upload your excel file. You can also check the preview of our excel formate before download. To check the preview <a data-toggle="modal" data-target="#excelFormateModal" class="modal-btn">click here</a></p> 
                     </div>
-                    <button type="button" class="btn active-btn btn-round Bulk-upload-btn">Download</button>
-                    <button type="button" class="btn active-btn btn-round Bulk-upload-btn"><i class="fa fa-file-excel-o"></i> Upload</button>
+                    <form id="import_form" method="post"  enctype="multipart/form-data">      
+                    <a type="button" href="<?php echo base_url(); ?>assets/bulk_format/" download="products_format.xls" class="btn active-btn btn-round Bulk-upload-btn" value="Download" onchange="fileUpload()">Download</a>                    
+
+
+                      <input type="file" name="file" class="bulk-excel-upload">
+                      <button type="submit" id="file_upload"  class="btn active-btn btn-round Bulk-upload-btn"><i class="fa fa-file-excel-o"></i> Upload</button>
+                      
+                    </form>
                   </div>   
                 </div>   
               </div>
@@ -94,6 +100,33 @@
         </div>
       </div> 
     </div>
-  </div>     
+  </div>   
 
 
+
+
+<script type="text/javascript">
+  
+  $('#import_form').on('submit', function(event){
+    event.preventDefault();
+    $.ajax({
+      url:"<?php echo base_url() ?>vendor/import_data",
+      method:"POST",
+      data:new FormData(this),
+      contentType:false,
+      cache:false,
+      processData:false,
+      success:function(data){
+        $('#file').val('');
+        window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+      }
+    })
+  });
+
+  $('.bulk-excel-upload').on('change', function(event){       
+       $( "#file_upload" ).trigger( "click" );
+
+  });
+
+
+</script>

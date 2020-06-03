@@ -23,7 +23,7 @@
 	<?php }?>
 
 	<form method="post" action="<?php echo base_url() ?>/vendor/vendor_profile" enctype="multipart/form-data">		
-		<div class="row padding-bottom20">
+		<div class="row padding-bottom20 padding-top50">
 			<div class="col-md-3">
 				<h5>Personal Information </h5>
 			</div>
@@ -59,7 +59,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<select name="country" class="form-control control-float-top countries" id="countryId" value="<?php echo set_value('country')?>">
+						<select name="country" class="form-control control-float-top custom-select countries" id="countryId" value="<?php echo set_value('country')?>">
 							<option>Select Country</option>
 						</select>
 						<!-- <label for="email">Country</label> -->					
@@ -67,21 +67,21 @@
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<select name="state" class="form-control control-float-top states" id="stateId" value="<?php echo set_value('state')?>">		    			
+						<select name="state" class="form-control control-float-top custom-select states" id="stateId" value="<?php echo set_value('state')?>">		    			
 						</select>		
 						<label for="country">State</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-					 	<select name="city" class="form-control control-float-top cities" id="cityId" value="<?php echo set_value('city')?>">					    
+					 	<select name="city" class="form-control control-float-top custom-select cities" id="cityId" value="<?php echo set_value('city')?>">					    
 						</select>
 						<label for="country">City</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="pin_code" value="<?php echo set_value('pin_code')?>">
+						<input type="text" maxlength="6" class="form-control control-float-top" name="pin_code" value="<?php echo set_value('pin_code')?>">
 						<label for="email">Zip Postal Code</label>
 					</div>
 				</div>			
@@ -138,7 +138,7 @@
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<select class="form-control control-float-top" name="experience" value="<?php echo set_value('experience')?>">
+						<select class="form-control control-float-top custom-select" name="experience" value="<?php echo set_value('experience')?>">
 							<option></option>
 						    <?php 
 								foreach ($profile_data as $key => $value) { ?>
@@ -150,7 +150,7 @@
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<select class="form-control control-float-top" name="marital_status" value="<?php echo set_value('marital_status')?>">
+						<select class="form-control control-float-top custom-select" name="marital_status" value="<?php echo set_value('marital_status')?>">
 						    <option></option>
 						    <option>Married</option>
 						    <option>Unmarried</option>
@@ -174,7 +174,12 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="bank_name" value="<?php echo set_value('bank_name')?>">
+					 	<select class="form-control control-float-top custom-select" name="bank_name" value="<?php echo set_value('bank_name')?>">
+							<option></option>
+						    <?php foreach ($bank as $value) { ?>
+								<option  value="<?=$value->id ?>"><?=$value->bank_name?></option> 
+							<?php } ?>	
+						</select>						
 						<label for="Address">Bank Name</label>
 					</div>
 				</div>
@@ -192,7 +197,12 @@
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="account_type" value="<?php echo set_value('account_type')?>">
+						<select class="form-control control-float-top custom-select" name="account_type" value="<?php echo set_value('account_type')?>">
+							<option></option>
+						    <?php foreach ($account_type as $value) { ?>
+								<option  value="<?=$value['key'] ?>"><?=$value['value']?></option> 
+							<?php } ?>	
+						</select>						
 						<label for="Address">Account Type</label>
 					</div>
 				</div>			
@@ -224,7 +234,7 @@
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="medical_phone" value="<?php echo set_value('medical_phone')?>">
+						<input type="text" minlength="10" maxlength="10" class="form-control control-float-top" name="medical_phone" value="<?php echo set_value('medical_phone')?>">
 						<label for="Address">Phone</label>
 					</div>
 				</div>

@@ -5,7 +5,6 @@
 </style>
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
 <span class="input-error-message"><?php echo form_error('email', '<div class="error">', '</div>'); ?></span>     
-
 <div class="right_col registration-page ">
 	<?php if($this->session->flashdata('success')){ ?>
 	<div class="custom-success-alert">		
@@ -61,7 +60,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<select name="country" class="form-control control-float-top countries" id="countryId" value="<?= $edit_data->country ?>">							
+						<select name="country" class="form-control control-float-top custom-select countries" id="countryId" value="<?= $edit_data->country ?>">							
 							<option><?= $edit_data->country ?></option>
 							<!-- <option>Select Country</option> -->
 						</select>
@@ -70,7 +69,7 @@
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<select name="state" class="form-control control-float-top states" id="stateId" value="<?= $edit_data->state ?>">		    			
+						<select name="state" class="form-control control-float-top custom-select states" id="stateId" value="<?= $edit_data->state ?>">		    			
 							<option><?= $edit_data->state ?></option>
 						</select>		
 						<label for="country">State</label>
@@ -78,7 +77,7 @@
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-					 	<select name="city" class="form-control control-float-top cities" id="cityId" value="<?= $edit_data->city ?>">					    
+					 	<select name="city" class="form-control control-float-top custom-select cities" id="cityId" value="<?= $edit_data->city ?>">					    
 					 		<option><?= $edit_data->city ?></option>
 						</select>
 						<label for="country">City</label>
@@ -86,19 +85,19 @@
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="pin_code" value="<?= $edit_data->pin_code ?>">
+						<input type="text" maxlength="6" class="form-control control-float-top" name="pin_code" value="<?= $edit_data->pin_code ?>">
 						<label for="email">Zip Postal Code</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="mobile" value="<?= $edit_data->mobile ?>">
+						<input type="text" minlength="10" maxlength="10" class="form-control control-float-top" name="mobile" value="<?= $edit_data->mobile ?>">
 						<label for="email">Mobile</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="email" value="<?= $edit_data->email ?>">
+						<input type="email" class="form-control control-float-top" name="email" value="<?= $edit_data->email ?>">
 						<label for="email">Email</label>
 					</div>
 				</div>
@@ -149,7 +148,7 @@
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<select class="form-control control-float-top" name="experience">
+						<select class="form-control control-float-top custom-select" name="experience">
 							
 							<?php 
 								foreach ($working_experience as $key => $value) { ?>
@@ -161,7 +160,7 @@
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<select class="form-control control-float-top" name="marital_status" value="<?= $edit_data->marital_status ?>">
+						<select class="form-control control-float-top custom-select" name="marital_status" value="<?= $edit_data->marital_status ?>">
 						    <option>Select Option</option>
 						    <option <?php if($edit_data->marital_status=="married"){ ?> selected <?php } ?> value="married">Married</option>
 						    <option <?php if($edit_data->marital_status=="unmarried"){ ?> selected <?php } ?> value="unmarried">Unmarried</option>
@@ -185,25 +184,35 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="bank_name"  value="<?php !empty($bank_data->bank_name)? $bank_data->bank_name : "" ?>">
+						<select class="form-control control-float-top custom-select" name="bank_name" value="<?php echo set_value('bank_name')?>">
+							<option></option>
+						    <?php foreach ($bank as $value) { ?>
+								<option <?php if($bank_data->bank_id==$value->id){ ?> selected <?php } ?>  value="<?=$value->id ?>"  ><?=$value->bank_name?></option> 
+							<?php } ?>	
+						</select>						
 						<label for="Address">Bank Name</label>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-3">					
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="account_number" value="<?php !empty($bank_data->account_number) ? $bank_data->account_number :"" ?>">
+						<input type="text" class="form-control control-float-top" name="account_number" value="<?= !empty($bank_data->account_number) ? $bank_data->account_number :"" ?>">
 						<label for="Address">Account Number</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="ifc_code" value="<?php !empty($bank_data->ifc_code) ? $bank_data->ifc_code : "" ?>">
+						<input type="text" class="form-control control-float-top" name="ifc_code" value="<?= !empty($bank_data->ifc_code) ? $bank_data->ifc_code : "" ?>">
 						<label for="Address">IFSC Code</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="account_type" value="<?php !empty($bank_data->account_type) ? $bank_data->account_type :"" ?>">
+					 	<select class="form-control control-float-top custom-select" name="account_type" value="<?php echo set_value('account_type')?>">
+							<option></option>
+						    <?php foreach ($account_type as $value) { ?>
+								<option <?php if($bank_data->account_type_id==$value['key']){ ?> selected <?php } ?>  value="<?=$value['key'] ?>"><?=$value['value']?></option> 
+							<?php } ?>	
+						</select>						
 						<label for="Address">Account Type</label>
 					</div>
 				</div>			
@@ -235,7 +244,7 @@
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="medical_phone" value="<?= $edit_data->medical_phone ?>">
+						<input type="text" class="form-control control-float-top" maxlength="10" minlength="10" name="medical_phone" value="<?= $edit_data->medical_phone ?>">
 						<label for="Address">Phone</label>
 					</div>
 				</div>
