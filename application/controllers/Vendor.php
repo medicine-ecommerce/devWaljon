@@ -209,8 +209,43 @@ Class Vendor extends MY_Controller {
     }    
     public function addSingleProduct()
     {
-        $this->data['category'] = $this->Vendor->getData('category','category_name,id',array('is_active'=>"1"));
-        $this->data['manufacturer'] = $this->Vendor->getData('manufacturer','*','');
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $data = array('category_id'=>$this->input->post('category_id'),
+                        'sucategory_id'=>$this->input->post('sucategory_id'),
+                        'manufacturer_id'=>$this->input->post('manufacturer_id'),
+                        'name'=>$this->input->post('name'),
+                        'product_form_id'=>$this->input->post('product_form_id'),
+                        'salt_composition'=>$this->input->post('salt_composition'),
+                        'about_product'=>$this->input->post('about_product'),
+                        'side_effect'=>$this->input->post('side_effect'),
+                        'when_to_use'=>$this->input->post('when_to_use'),
+                        'how_to_use'=>$this->input->post('how_to_use'),
+                        'how_to_work'=>$this->input->post('how_to_work'),
+                        'how_to_store'=>$this->input->post('how_to_store'),
+                        'safety_info'=>$this->input->post('safety_info'),
+                        'created_at'=>date('Y-m-d H:i:s'));
+            $lastID = $this->Vendor->insertData('product',$data);
+            if ($lastID) {
+                foreach ($this->input->post('mrp') as $key => $value) {
+                    $dataItem = array('product_id'=>$lastID,
+                                'mrp'=>$this->input->post('mrp')[$key],
+                                'sale_price'=>$this->input->post('sellprice')[$key],
+                                'unit'=>$this->input->post('unit')[$key],
+                                'quantity'=>$this->input->post('quantity')[$key],
+                                'expiry_date'=>$this->input->post('expiry_date')[$key]);
+                    $lastID = $this->Vendor->insertData('product_item',$dataItem);
+                }
+                $this->session->set_flashdata('success', 'Product updated successfully'); 
+            }
+            else{
+                $this->session->set_flashdata('error', 'error! Please try again'); 
+                
+            }
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        $this->data['category'] = $this->Vendor->getData('category','category_name,id',array('status'=>"active"));
+        $this->data['manufacturer'] = $this->Vendor->getData('manufacturer','name,id',array('status'=>"active"));
+        $this->data['product_form'] = $this->Vendor->getData('product_form','name,id',array('status'=>"active"));
         $this->middle = 'add_single_product';
         $this->Vendor();
     }
