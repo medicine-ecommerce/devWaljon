@@ -6,226 +6,254 @@
       <h3>Invertory > Add Product</h3>
     </div>
   </div>
-  <div class="x_panel add-product">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="row padding-top-bottom-20">
-          <div class="col-md-3">
-            <h6>Product Information </h6>
-          </div>
-          <div class="col-md-9">
-              <hr class="custom-form-hr">
-          </div>
-        </div>
+  <form method="post" enctype="multipart/form-data">
+    <div class="x_panel add-product">
         <div class="row">
-          <div class="col-md-12">
-              <div class="col-md-6">
-                 <div class="form-group label-float-top">
-                    <select class="form-control control-float-top" >
-                       <option></option>
-                       <option>List 1</option>
-                       <option>List 2</option>
-                       <option>List 3</option>
-                    </select>
-                    <label for="Address">Product Category</label>
-                 </div>
-              </div>
-              <div class="col-md-6">
-                 <div class="form-group label-float-top">
-                    <select class="form-control control-float-top" >
-                       <option></option>
-                       <option>List 1</option>
-                       <option>List 2</option>
-                       <option>List 3</option>
-                    </select>
-                    <label for="Address">Product SubCategory</label>
-                 </div>
-              </div>
-              <div class="col-md-6">
-                 <div class="form-group label-float-top">
-                    <select class="form-control control-float-top" >
-                       <option></option>
-                       <option>List 1</option>
-                       <option>List 2</option>
-                       <option>List 3</option>
-                    </select>
-                    <label for="Address">Product Form</label>
-                 </div>
-              </div>
-              <div class="col-md-6">
-                 <div class="form-group label-float-top">
-                    <select class="form-control control-float-top" >
-                       <option></option>
-                       <option>List 1</option>
-                       <option>List 2</option>
-                       <option>List 3</option>
-                    </select>
-                    <label for="Address">Manufacturer</label>
-                    <!-- <label for="email">Date Of Birth</label> -->
-                 </div>
-              </div>
-              <div class="col-md-12">
-                 <table class="table no-border-table append-table" id="dynamic_field">
-                    <tr>
-                      <td>
-                        <div style="width: 210px;">
-                          <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
-                            <input type="text" class="form-control control-float-top" name="quantity[][quantity]">
-                            <label for="email">Quantity</label>
-                          </div>
-                          <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
-                            <select name="measurement[][measurement]" class="form-control control-float-top states" >
-                              <option>l</option>
-                              <option>gm</option>
-                            </select>
-                            <label for="country">measurement</label>
-                          </div>
-                        </div>
-                       </td>
-                       <td  >
-                          <div class="form-group label-float-top" style="width: 100px;">
-                            <input type="text" class="form-control control-float-top" name="mrp[][mrp]">
-                            <label for="email">MRP</label>
-                          </div>
-                       </td>
-                       <td >
-                          <div class="form-group label-float-top" style="width: 100px;">
-                             <input type="text" class="form-control control-float-top"  name="sellprice[][sellprice]">
-                             <label for="email">Sell Price</label>
-                          </div>
-                       </td>
-                       <td >
-                          <div class="form-group label-float-top" >
-                             <input type="date" class="form-control control-float-top" name="expriydate[][expriydate]">
-                             <!--               <label for="email">Expiry Date</label>
-                                -->           
-                          </div>
-                       </td>
-                       <td style="width: 5%;"><button type="button" name="add" id="add" class="btn addMore-btn"><i class="fa fa-plus"></i></button></td>
-                    </tr>
-                 </table>
-              </div>
-              <div class="col-md-12">
-                 <div class="form-group label-float-top">
-                    <input type="text" class="form-control control-float-top" name="address">
-                    <label for="country">Product Name</label>
-                 </div>
-              </div>
+          <?php if (!empty($this->session->flashdata('error'))) {
+            echo '<div class="alert alert-danger">
+                  '.$this->session->flashdata('error').'
+                </div>';
+          }
+          elseif (!empty($this->session->flashdata('success'))) {
+            echo '<div class="alert alert-success">
+                  '.$this->session->flashdata('success').'
+                </div>';
+          } ?>
+          
+          <div class="col-md-8">
+            <div class="row padding-top-bottom-20">
               <div class="col-md-3">
-                 <div class="form-group padding-top-bottom-20">
-                    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
-                    <label for="vehicle1"> Prescription Required</label><br>
-                 </div>
+                <h6>Product Information </h6>
               </div>
               <div class="col-md-9">
-                 <div class="form-group label-float-top">
-                    <input type="text" class="form-control control-float-top" name="address">
-                    <label for="country">Salt Composition</label>
-                 </div>
-              </div>
-          </div>
-        </div>
-        <div class="row padding-top-bottom-20">
-           <div class="col-md-3">
-              <h6>Additional Information </h6>
-           </div>
-           <div class="col-md-9">
-              <hr class="custom-form-hr">
-           </div>  
-        </div>
-        <div class="row">
-           <div class="col-md-12 col-sm-12">
-              <div class="x_panel">
-                 <div class="x_content">
-                    <div class="col-md-3">
-                       <div class="nav nav-tabs flex-column  bar_tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                          <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">About</a>
-                          <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Side Effect</a>
-                          <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">When to Use</a>
-                          <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">How to Use</a>
-                          <a class="nav-link" id="v-pills-use-tab" data-toggle="pill" href="#v-pills-use" role="tab" aria-controls="v-pills-use" aria-selected="false">How to Works</a>
-                          <a class="nav-link" id="v-pills-store-tab" data-toggle="pill" href="#v-pills-store" role="tab" aria-controls="v-pills-store" aria-selected="false">How to Store</a>
-                          <a class="nav-link" id="v-pills-imformation-tab" data-toggle="pill" href="#v-pills-imformation" role="tab" aria-controls="v-pills-imformation" aria-selected="false">Safety Information</a>
-                       </div>
-                    </div>
-                    <div class="col-md-9">
-                       <div class="tab-content" id="v-pills-tabContent">
-                          <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab"><textarea style="width: 100%;height: 260px;" class="form-control"></textarea></div>
-                          <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab"><textarea style="width: 100%;height: 260px;" class="form-control"></textarea></div>
-                          <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab"><textarea style="width: 100%;height: 260px;" class="form-control"></textarea></div>
-                          <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab"><textarea style="width: 100%;height: 260px;" class="form-control"></textarea></div>
-                          <div class="tab-pane fade" id="v-pills-use" role="tabpanel" aria-labelledby="v-pills-use-tab"><textarea style="width: 100%;height: 260px;" class="form-control"></textarea></div>
-                          <div class="tab-pane fade" id="v-pills-store" role="tabpanel" aria-labelledby="v-pills-store-tab"><textarea style="width: 100%;height: 260px;" class="form-control"></textarea></div>
-                          <div class="tab-pane fade" id="v-pills-information" role="tabpanel" aria-labelledby="v-pills-information-tab"><textarea style="width: 100%;height: 260px;" class="form-control"></textarea></div>
-                       </div>
-                    </div>
-                    <div class="clearfix"></div>
-                 </div>
-              </div>
-           </div>
-        </div>
-        <div class="row padding-top-bottom-20">
-           <div class="col-md-4">
-              <h6>Frequently Asked Question</h6>
-           </div>
-           <div class="col-md-8">
-              <hr class="custom-form-hr">
-           </div> 
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-                 <table class="table no-border-table append-table" id="dynamic_field2">
-                    <tr>
-                       <td>
-                          <div class="form-group label-float-top" >
-                             <input type="text" class="form-control control-float-top" name="faq_question">
-                             <label for="email">What is the product for ?</label>
-                             <textarea class="form-control faq-textarea" rows="5" placeholder="About this product"></textarea>
-                          </div>
-                       </td>
-                       <td style="width: 5%;"><button type="button" name="add2" id="add2" class="btn addMore-btn"><i class="fa fa-plus"></i></button></td>
-                    </tr>
-                 </table>
-            </div>
-        </div>  
-      </div> 
-      <div class="col-md-4">
-        <div>
-          <div class="padding-top-bottom-20">
-            <h6>Attachments</h6>
-          </div>
-          <div class="attachment-box">
-            <div class="preview-box">
-              <div class="defaultSlides">
-                <img src="<?php echo base_url(); ?>assets/img/imgpsh_fullsize_anim.png" style="width:100%">
+                  <hr class="custom-form-hr">
               </div>
             </div>
-            <div class="upload-img-sec">
-              <div class="img-upload">
+            <div class="row">
+              <div class="col-md-12">
+                  <div class="col-md-6">
+                     <div class="form-group label-float-top">
+                        <select class="form-control control-float-top" name="category_id" onchange="getSubcategory(this.value)">
+                           <option></option>
+                           <?php if (!empty($category)) {
+                             foreach ($category as $key => $value) { ?>
+                              <option value="<?php echo $value->id; ?>"><?php echo $value->category_name; ?></option>
+                            <?php }
+                           } ?>
+                        </select>
+                        <label for="Address">Product Category</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group label-float-top">
+                        <select class="form-control control-float-top" id="subcategory">
+                           <option></option>
+                        </select>
+                        <label for="Address">Product SubCategory</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group label-float-top">
+                        <select class="form-control control-float-top" >
+                           <option></option>
+                           <?php if (!empty($product_form)) {
+                             foreach ($product_form as $key => $value) { ?>
+                              <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                            <?php }
+                           } ?>
+                        </select>
+                        <label for="Address">Product Form</label>
+                     </div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="form-group label-float-top">
+                        <select class="form-control control-float-top" >
+                           <option></option>
+                           <?php if (!empty($manufacturer)) {
+                             foreach ($manufacturer as $key => $value) { ?>
+                              <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                            <?php }
+                           } ?>
+                        </select>
+                        <label for="Address">Manufacturer</label>
+                        <!-- <label for="email">Date Of Birth</label> -->
+                     </div>
+                  </div>
+                  <div class="col-md-12">
+                     <table class="table no-border-table append-table" id="dynamic_field">
+                        <tr>
+                          <td>
+                            <div style="width: 210px;">
+                              <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
+                                <input type="text" class="form-control control-float-top" name="quantity[]">
+                                <label for="email">Quantity</label>
+                              </div>
+                              <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
+                                <select name="measurement[]" class="form-control control-float-top states" >
+                                  <option>l</option>
+                                  <option>gm</option>
+                                </select>
+                                <label for="country">measurement</label>
+                              </div>
+                            </div>
+                           </td>
+                           <td  >
+                              <div class="form-group label-float-top" style="width: 100px;">
+                                <input type="text" class="form-control control-float-top" name="mrp[]">
+                                <label for="email">MRP</label>
+                              </div>
+                           </td>
+                           <td >
+                              <div class="form-group label-float-top" style="width: 100px;">
+                                 <input type="text" class="form-control control-float-top"  name="sellprice[]">
+                                 <label for="email">Sell Price</label>
+                              </div>
+                           </td>
+                           <td >
+                              <div class="form-group label-float-top" >
+                                 <input type="date" class="form-control control-float-top" name="expriydate[]">
+                                 <!--               <label for="email">Expiry Date</label>
+                                    -->           
+                              </div>
+                           </td>
+                           <td style="width: 5%;"><button type="button" name="add" id="add" class="btn addMore-btn"><i class="fa fa-plus"></i></button></td>
+                        </tr>
+                     </table>
+                  </div>
+                  <div class="col-md-12">
+                     <div class="form-group label-float-top">
+                        <input type="text" class="form-control control-float-top" name="name">
+                        <label for="country">Product Name</label>
+                     </div>
+                  </div>
+                  <div class="col-md-3">
+                     <div class="form-group padding-top-bottom-20">
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                        <label for="vehicle1"> Prescription Required</label><br>
+                     </div>
+                  </div>
+                  <div class="col-md-9">
+                     <div class="form-group label-float-top">
+                        <input type="text" class="form-control control-float-top" name="salt_composition">
+                        <label for="country">Salt Composition</label>
+                     </div>
+                  </div>
               </div>
             </div>
-            <div class="upload-btn text-center padding-top-bottom-20">
-              <div id="drop-area">
-                <form class="my-form">
-                  <h5>Drag here or uploade images</h5>
-                  <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
-                  <label class="btn active-btn btn-round Bulk-upload-btn" for="fileElem">Upload</label>
-                </form>
-                <progress id="progress-bar" max=100 value=0 style="display: none;"></progress>
-               <!--  <div id="gallery" /></div> -->
+            <div class="row padding-top-bottom-20">
+               <div class="col-md-3">
+                  <h6>Additional Information </h6>
+               </div>
+               <div class="col-md-9">
+                  <hr class="custom-form-hr">
+               </div>  
+            </div>
+            <div class="row">
+               <div class="col-md-12 col-sm-12">
+                  <div class="x_panel">
+                     <div class="x_content">
+                        <div class="col-md-3">
+                           <div class="nav nav-tabs flex-column  bar_tabs" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                              <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">About</a>
+                              <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Side Effect</a>
+                              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">When to Use</a>
+                              <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">How to Use</a>
+                              <a class="nav-link" id="v-pills-use-tab" data-toggle="pill" href="#v-pills-use" role="tab" aria-controls="v-pills-use" aria-selected="false">How to Works</a>
+                              <a class="nav-link" id="v-pills-store-tab" data-toggle="pill" href="#v-pills-store" role="tab" aria-controls="v-pills-store" aria-selected="false">How to Store</a>
+                              <a class="nav-link" id="v-pills-imformation-tab" data-toggle="pill" href="#v-pills-imformation" role="tab" aria-controls="v-pills-imformation" aria-selected="false">Safety Information</a>
+                           </div>
+                        </div>
+                        <div class="col-md-9">
+                           <div class="tab-content" id="v-pills-tabContent">
+                              <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                                <textarea name="about_product" style="width: 100%;height: 260px;" class="form-control"></textarea >
+                              </div>
+                              <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                <textarea name="side_effect" style="width: 100%;height: 260px;" class="form-control"></textarea >
+                              </div>
+                              <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                                <textarea name="when_to_use" style="width: 100%;height: 260px;" class="form-control"></textarea >
+                              </div>
+                              <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                                <textarea name="how_to_use" style="width: 100%;height: 260px;" class="form-control"></textarea >
+                              </div>
+                              <div class="tab-pane fade" id="v-pills-use" role="tabpanel" aria-labelledby="v-pills-use-tab">
+                                <textarea name="how_to_work" style="width: 100%;height: 260px;" class="form-control"></textarea >
+                              </div>
+                              <div class="tab-pane fade" id="v-pills-store" role="tabpanel" aria-labelledby="v-pills-store-tab">
+                                <textarea name="how_to_store" style="width: 100%;height: 260px;" class="form-control"></textarea >
+                              </div>
+                              <div class="tab-pane fade" id="v-pills-information" role="tabpanel" aria-labelledby="v-pills-information-tab">
+                                <textarea name="safety_info" style="width: 100%;height: 260px;" class="form-control"></textarea >
+                              </div>
+                           </div>
+                        </div>
+                        <div class="clearfix"></div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="row padding-top-bottom-20">
+               <div class="col-md-4">
+                  <h6>Frequently Asked Question</h6>
+               </div>
+               <div class="col-md-8">
+                  <hr class="custom-form-hr">
+               </div> 
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                     <table class="table no-border-table append-table" id="dynamic_field2">
+                        <tr>
+                           <td>
+                              <div class="form-group label-float-top" >
+                                 <input type="text" class="form-control control-float-top" name="faq_question">
+                                 <label for="email">What is the product for ?</label>
+                                 <textarea class="form-control faq-textarea" rows="5" placeholder="About this product"></textarea>
+                              </div>
+                           </td>
+                           <td style="width: 5%;"><button type="button" name="add2" id="add2" class="btn addMore-btn"><i class="fa fa-plus"></i></button></td>
+                        </tr>
+                     </table>
+                </div>
+            </div>  
+          </div> 
+          <div class="col-md-4">
+            <div>
+              <div class="padding-top-bottom-20">
+                <h6>Attachments</h6>
+              </div>
+              <div class="attachment-box">
+                <div class="preview-box">
+                  <div class="defaultSlides">
+                    <img src="<?php echo base_url(); ?>assets/img/imgpsh_fullsize_anim.png" style="width:100%">
+                  </div>
+                </div>
+                <div class="upload-img-sec">
+                  <div class="img-upload">
+                  </div>
+                </div>
+                <div class="upload-btn text-center padding-top-bottom-20">
+                  <div id="drop-area">
+                      <h5>Drag here or uploade images</h5>
+                      <input type="file" id="fileElem" name="file[]" multiple accept="image/*" onchange="handleFiles(this.files)">
+                      <label class="btn active-btn btn-round Bulk-upload-btn" for="fileElem">Upload</label>
+                    <progress id="progress-bar" max=100 value=0 style="display: none;"></progress>
+                   <!--  <div id="gallery" /></div> -->
+                  </div>
+                </div> 
               </div>
             </div> 
+          </div> 
+        </div>
+        <div class="row"> 
+          <div class="col-md-12 padding-top-bottom50">
+            <button type="submit" class="btn btn-default submit_button float-right">Cancle</button>   
+            <button type="submit" class="btn btn-default submit_button float-right">Save</button> 
           </div>
-        </div> 
-      </div> 
+        </div>
     </div>
-    <div class="row"> 
-      <div class="col-md-12 padding-top-bottom50">
-        <button type="submit" class="btn btn-default submit_button float-right">Cancle</button>   
-        <button type="submit" class="btn btn-default submit_button float-right">Save</button> 
-      </div>
-    </div>
-  </div>
+  </form>
 </div>  
 	
 <!-- Modal -->
@@ -286,7 +314,7 @@
      var i=1;  
      $('#add').click(function(){  
           i++;  
-          $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td><div class="form-group label-float-top"><select name="quantity[][quantity]" class="form-control control-float-top states" >	<option></option><option>750gm</option></select><label for="country">Quantity</label></div><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="mrp[][mrp]"><label for="email">MRP</label></div></td><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="sellprice[][sellprice]"><label for="email">Sell Price</label></div></td><td><div class="form-group label-float-top"><input type="date" class="form-control control-float-top" name="expriydate[][expriydate]"></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-custom-rev btn_remove"><i class="fa fa-trash-o"></i></button></td></tr>');  
+          $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td> <div style="width: 210px;"><div class="form-group label-float-top" style="width: 100px;display: inline-block;"><input type="text" class="form-control control-float-top" name="quantity[][quantity]"><label for="email">Quantity</label></div><div class="form-group label-float-top" style="width: 100px;display: inline-block;"><select name="measurement[][measurement]" class="form-control control-float-top states" ><option>l</option><option>gm</option></select><label for="country">measurement</label></div></div><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="mrp[][mrp]"><label for="email">MRP</label></div></td><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="sellprice[][sellprice]"><label for="email">Sell Price</label></div></td><td><div class="form-group label-float-top"><input type="date" class="form-control control-float-top" name="expriydate[][expriydate]"></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-custom-rev btn_remove"><i class="fa fa-trash-o"></i></button></td></tr>');  
      });
      $(document).on('click', '.btn_remove', function(){  
           var button_id = $(this).attr("id");   
@@ -444,5 +472,18 @@ function uploadFile(file, i) {
   formData.append('upload_preset', 'ujpu6gyk')
   formData.append('file', file)
   xhr.send(formData)
+}
+function getSubcategory(cat_id) {
+  alert(cat_id);
+  $.ajax({
+      type: "POST",
+      url: '<?php echo base_url('admin/getSubcategory'); ?>',
+      data: {cat_id : cat_id}, // serializes the form's elements.
+      success: function(data)
+      {
+        $('#subcategory').html(data);
+        alert(data); // show response from the php script.
+      }
+  });
 }
 </script>

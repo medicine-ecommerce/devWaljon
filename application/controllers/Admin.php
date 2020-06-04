@@ -13,9 +13,9 @@ Class Admin extends MY_Controller {
         $this->load->model('Admin_model','Admin');
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
-        if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
-            redirect(base_url('admin'));
-        }
+        // if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
+        //     redirect(base_url('admin'));
+        // }
 
     }
 
@@ -39,7 +39,7 @@ Class Admin extends MY_Controller {
     }
     public function vendors()
     {
-        $this->data['vendors'] = $this->Admin->VendorList();
+        $this->data['vendors'] = $this->Admin->getData('users','*',array('type'=>'vendor'));
         $this->middle = 'vendor_list';
         $this->Admin();
     }
@@ -64,8 +64,10 @@ Class Admin extends MY_Controller {
                             'last_name'         =>$this->input->post('last_name'),
                             'email'             =>$this->input->post('email'),
                             'mobile'            =>$this->input->post('mobile'),
+                            'password'          => md5('123456'),
+                            'type'              =>'vendor',
                             'is_active'         =>'1');
-                $result = $this->Admin->VendorAdd($data);
+                $result = $this->Admin->insertData('users',$data);
                 if ($result > 0) {
                     $this->session->set_flashdata('success', 'Vendor account created successfully');                     
                 }
@@ -96,16 +98,15 @@ Class Admin extends MY_Controller {
                             'first_name'        =>$this->input->post('first_name'),
                             'last_name'         =>$this->input->post('last_name'),
                             'email'             =>$this->input->post('email'),
-                            'mobile'            =>$this->input->post('mobile'),
-                            'is_active'         =>'1');
-                $result = $this->Admin->VendorUpdate($data,$id);
+                            'mobile'            =>$this->input->post('mobile'));
+                $result = $this->Admin->updateData('users',$data,array('id'=>$id));
                 if ($result > 0) {
                     $this->session->set_flashdata('success', 'Vendor account updated successfully');                     
                 }
             }
             redirect($_SERVER['HTTP_REFERER']); 
         }
-        $this->data['vendor'] = $this->Admin->getVendorByID($id);        
+        $this->data['vendor'] = $this->Admin->getRowData('users','*',array('id'=>$id));        
         $this->middle = 'vendor_add';
         $this->Admin();
 
@@ -113,7 +114,7 @@ Class Admin extends MY_Controller {
 
     public function vendor_status($status,$id)
     {
-        $result =$this->Admin->VendorStatus($status,$id);
+        $result =$this->Admin->updateData('users',array('is_active'=>$status),array('id'=>$id));
         if (!empty($result)) {
             $this->session->set_flashdata('success', 'status updated successfully'); 
         }
@@ -124,7 +125,7 @@ Class Admin extends MY_Controller {
     }
     public function vendor_delete($id)
     {
-        $result = $this->Admin->VendorDelete($id);
+        $result = $this->Admin->deleteData('users',array('id'=>$id));
         if (!empty($result)) {
             $this->session->set_flashdata('success', 'Vendor deleted successfully');
         }else{
@@ -155,7 +156,7 @@ Class Admin extends MY_Controller {
             {
                 $data = array('first_name'=>$result->first_name,
                             'last_name'=>$result->last_name,
-                            'user_type'=>$result->user_type,
+                            'user_type'=>$result->type,
                             'email'=>$result->email,
                             'user_id'=>$result->id);
                 $this->session->set_userdata($data);
@@ -191,7 +192,8 @@ Class Admin extends MY_Controller {
             else{
                 $data = array(
                             'category_name'=>$this->input->post('category_name'),
-                            'is_active'=>'1',
+                            'created_by'=> $this->session->userdata('user_id'),
+                            'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
                             'created_at'=> date('Y-m-d H:i:s')
                         );
                 $result = $this->Admin->insertData('category',$data);
@@ -209,7 +211,7 @@ Class Admin extends MY_Controller {
     }
     public function category_list()
     {
-        $this->data['category'] = $this->Admin->getData('category','*','');
+        $this->data['category'] = $this->Admin->CategoryList();
         $this->middle = 'category/list';
         $this->Admin();
     }
@@ -252,7 +254,7 @@ Class Admin extends MY_Controller {
     }
     public function category_status($status,$id)
     {
-        $result = $this->Admin->updateData('category',array('is_active'=>$status),array('id'=>$id));
+        $result = $this->Admin->updateData('category',array('status'=>$status),array('id'=>$id));
         if (!empty($result)) {
             $this->session->set_flashdata('success', 'status updated successfully'); 
         }
@@ -284,7 +286,7 @@ Class Admin extends MY_Controller {
                 redirect($_SERVER['HTTP_REFERER']); 
             }
         }
-        $this->data['category'] = $this->Admin->getData('category','category_name,id',array('is_active'=>'1'));
+        $this->data['category'] = $this->Admin->getData('category','category_name,id',array('status'=>'active'));
         $this->middle = 'subcategory/add';
         $this->Admin();
     }
@@ -342,7 +344,10 @@ Class Admin extends MY_Controller {
             }
             else{
                 $data = array(
-                            'name'=>$this->input->post('name')
+                            'name'=>$this->input->post('name'),
+                            'created_by'=> $this->session->userdata('user_id'),
+                            'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
+                            'created_at'=> date('Y-m-d H:i:s')
                         );
                 $result = $this->Admin->insertData('manufacturer',$data);
                 if (!empty($result)) {
@@ -359,7 +364,7 @@ Class Admin extends MY_Controller {
     }
     public function manufacturer_list()
     {
-        $this->data['manufacturer'] = $this->Admin->getData('manufacturer','*','');
+        $this->data['manufacturer'] = $this->Admin->ManufacturerList();
 
         $this->middle = 'manufacturer/list';
         $this->Admin();
@@ -400,6 +405,17 @@ Class Admin extends MY_Controller {
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
+    public function manufacturer_status($status,$id)
+    {
+        $result = $this->Admin->updateData('manufacturer',array('status'=>$status),array('id'=>$id));
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'status updated successfully'); 
+        }
+        else{
+            $this->session->set_flashdata('error', 'error! Please try again'); 
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
 
     public function home_banners()
     {
@@ -424,7 +440,7 @@ Class Admin extends MY_Controller {
         $this->Admin();
     }
     public function logout()
-    {
+    {   
         $this->session->sess_destroy();
         redirect(base_url('admin'));
     }
@@ -445,7 +461,7 @@ Class Admin extends MY_Controller {
                         );
                 $result = $this->Admin->insertData('product_form',$data);
                 if (!empty($result)) {
-                    $this->session->set_flashdata('success', 'Product form added successfully');                    
+                    $this->session->set_flashdata('success', 'Product form added successfully'); 
                 }
                 else{
                     $this->session->set_flashdata('error','error! Please try again');
@@ -509,6 +525,17 @@ Class Admin extends MY_Controller {
             $this->session->set_flashdata('error', 'error! Please try again'); 
         }
         redirect($_SERVER['HTTP_REFERER']);
+    }
+
+    public function getSubcategory()
+    {
+      if (!empty($this->input->post('cat_id'))) {
+        $result = $this->Admin->getData('subcategory',array('subcategory','id'),array('category_id'=>$this->input->post('cat_id')));
+        $option='';
+        foreach ($result as $key => $value) {
+          echo $option.='<option value="'.$value->id.'">'.$value->subcategory.'</option>';
+        }
+      }
     }
 
     
