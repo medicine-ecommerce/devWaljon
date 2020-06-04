@@ -53,5 +53,15 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['vendor/category_add'] = 'admin/category_add';
+$route['vendor/category_list'] = 'admin/category_list';
+$route['vendor/manufacturer_add'] = 'admin/manufacturer_add';
+$route['vendor/manufacturer_list'] = 'admin/manufacturer_list';
+$route['vendor/product_form_list'] = 'admin/product_form_list';
+$route['vendor/product_form_add'] = 'admin/product_form_add';
+$route['vendor/subcategory_list'] = 'admin/subcategory_list';
+$route['vendor/subcategory_add'] = 'admin/subcategory_add';
+
+$route['admin/all_product'] = 'vendor/all_product';
 $route['admin/addSingleProduct'] = 'vendor/addSingleProduct';
 

@@ -66,9 +66,13 @@
                         <span class="badge bg-red pull-right">50%</span>
                         <span>Settings</span>
                       </a>
-                  <a class="dropdown-item"  href="javascript:;">Help</a>
-                    <a class="dropdown-item"  href="<?php echo base_url('admin/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                    <a class="dropdown-item"  href="<?php echo base_url('vendor/logout'); ?>"><i class="fa fa-sign-out pull-right"></i>Vendor Log Out</a>
+                    <a class="dropdown-item"  href="javascript:;">Help</a>
+                    <?php if($_SESSION["user_type"]=='admin'){ ?>
+                      <a class="dropdown-item"  href="<?php echo base_url('admin/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                     <?php }
+                    elseif($_SESSION["user_type"]=='vendor'){ ?>
+                      <a class="dropdown-item"  href="<?php echo base_url('vendor/logout'); ?>"><i class="fa fa-sign-out pull-right"></i>Log Out</a>
+                    <?php } ?>
                   </div>
                 </li>
 
