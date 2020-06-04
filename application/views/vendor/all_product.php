@@ -27,95 +27,38 @@
                       <th>Manufacturer</th>
                       <th>MRP</th>
                       <th>Sell Price</th>
-                      <th>Type</th>
+                      <!-- <th>Type</th> -->
                       <th>Form</th>
-                      <th>Stock Quantity</th>
-                      <th>Unit Available</th>
+                      <th>Quantity</th>
+                      <!-- <th>Unit Available</th> -->
                       <th>Added On</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
+                    <?php $i = 1;
+                    foreach ($all_product as $value) { ?>
                     <tr>
-                      <td>1</td>
-                      <td>Nixon</td>
-                      <td>System Architect</td>
-                      <td>200</td>
-                      <td>220</td>
-                      <td>Powder</td>
-                      <td>Nixon</td>
-                      <td>System Architect</td>
-                      <td>200</td>
-                      <td>220</td>
+                      <td><?php echo $i++; ?></td>
+                      <td><?php echo $value->name; ?></td>
+                      <td><?php echo $value->manufacturer_name; ?></td>
+                      <td><i class="fa fa-inr"></i> <?php echo $value->mrp; ?></td>
+                      <td><i class="fa fa-inr"></i> <?php echo $value->sale_price; ?></td>
+                      <!-- <td></td> -->
+                      <td><?php echo $value->product_form; ?></td>
+                      <td><?php echo $value->quantity; ?> (<?php echo $value->unit; ?>)</td>
+                      <!-- <td></td> -->
+                      <td><?php echo $value->created_at;?></td>
                       <td>
-                        <span> 
-                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
+                        <span class="status-approve"> 
+                          <a data-toggle="tooltip" data-placement="top" data-original-title="Refill"><i class="fa fa-check"></i></a>
                         </span> 
-                        <span>
-                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
+                        <span class="status-cancle">
+                          <a href="<?php echo base_url('vendor/product_delete/'.$value->id); ?>" onclick="return confirm('Are you sure？')" data-toggle="tooltip" data-placement="top" data-original-title="Remove"><i class="fa fa-close"></i></a>
                         </span>
                       </td>  
                     </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Nixon</td>
-                      <td>System Architect</td>
-                      <td>200</td>
-                      <td>220</td>
-                      <td>Powder</td>
-                      <td>Nixon</td>
-                      <td>System Architect</td>
-                      <td>200</td>
-                      <td>220</td>
-                      <td>
-                        <span> 
-                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                        </span> 
-                        <span>
-                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                        </span>
-                      </td>  
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Nixon</td>
-                      <td>System Architect</td>
-                      <td>200</td>
-                      <td>220</td>
-                      <td>Powder</td>
-                      <td>Nixon</td>
-                      <td>System Architect</td>
-                      <td>200</td>
-                      <td>220</td>
-                      <td>
-                        <span> 
-                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                        </span> 
-                        <span>
-                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                        </span>
-                      </td>  
-                    </tr>
-                    <tr>
-                      <td>1</td>
-                      <td>Nixon</td>
-                      <td>System Architect</td>
-                      <td>200</td>
-                      <td>220</td>
-                      <td>Powder</td>
-                      <td>Nixon</td>
-                      <td>System Architect</td>
-                      <td>200</td>
-                      <td>220</td>
-                      <td>
-                        <span> 
-                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                        </span> 
-                        <span>
-                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                        </span>
-                      </td>  
-                    </tr>
+                    <?php } ?>
                   </tbody>
                 </table>
               </div>
@@ -124,12 +67,16 @@
                 <div class="chat-popup" id="myForm">
                   <div class="form-container">
                     <div class="bulk-upload-div">
-                      <span class="upload-span">Bulk Upload <span class="rotate-div"></span></span>
-                      <button type="button" class="btn bulk-upload-btn"><i class="fa fa-clone"></i></button>
+                      <a href="<?php echo base_url('vendor/vendor_bulk_upload'); ?>">
+                        <span class="upload-span">Bulk Upload <span class="rotate-div"></span></span>
+                        <button type="button" class="btn bulk-upload-btn"><i class="fa fa-clone"></i></button>
+                      </a>  
                     </div>
                     <div class="single-upload-div">
-                      <span class="upload-span">Single Upload <span class="rotate-div"></span></span>
-                      <button type="button" class="btn single-upload-icon"><i class="fa fa-upload"></i></button>
+                      <a href="<?php echo base_url('vendor/addSingleProduct'); ?>">
+                        <span class="upload-span">Single Upload <span class="rotate-div"></span></span>
+                        <button type="button" class="btn single-upload-icon"><i class="fa fa-upload"></i></button>
+                      </a>  
                     </div>
                     <button type="button" class="btn cancel" onclick="closeForm()"><i class="fa fa-close"></i></button>
                   </div>

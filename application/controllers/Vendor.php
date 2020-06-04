@@ -285,7 +285,23 @@ Class Vendor extends MY_Controller {
     }
     public function all_product()
     {
+        $this->data['all_product'] = $this->Vendor->getAllProductData();        
         $this->middle = 'all_product';
+        $this->Vendor();
+    }
+    public function product_delete($id)
+    {
+        $result = $this->Vendor->productDelete($id);
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'Vendor deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'error! Please try again');
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+     public function add_product()
+    {        
+        $this->middle = 'add_product';
         $this->Vendor();
     }
     public function vendor_dashboard()

@@ -124,6 +124,9 @@ span.status-cancle {
     margin-left: 4px;
     border-radius: 3px;
 }
+span.status-cancle a {
+    color: red !important;
+}
 img.profile-images-custom {
     width: 130px;
     border: 1px solid #d4d4d4;
