@@ -155,7 +155,8 @@ Class Vendor extends MY_Controller {
                 if(!empty($result))
                 {
                     $data = array('email'=>$result->email,
-                                'vendor_id'=>$result->id);
+                                'vendor_id'=>$result->id,
+                                'user_type'=>'vendor');
                     $this->session->set_userdata($data);
                     // redirect(base_url('admin/dashboard'));
                     redirect('/vendor/personalDetails/', 'refresh');

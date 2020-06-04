@@ -13,9 +13,9 @@ Class Admin extends MY_Controller {
         $this->load->model('Admin_model','Admin');
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
-        if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
-            redirect(base_url('admin'));
-        }
+        // if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
+        //     redirect(base_url('admin'));
+        // }
 
     }
 
@@ -155,7 +155,7 @@ Class Admin extends MY_Controller {
             {
                 $data = array('first_name'=>$result->first_name,
                             'last_name'=>$result->last_name,
-                            'user_type'=>$result->user_type,
+                            'user_type'=>$result->type,
                             'email'=>$result->email,
                             'user_id'=>$result->id);
                 $this->session->set_userdata($data);
@@ -439,7 +439,7 @@ Class Admin extends MY_Controller {
         $this->Admin();
     }
     public function logout()
-    {
+    {   
         $this->session->sess_destroy();
         redirect(base_url('admin'));
     }
@@ -460,7 +460,7 @@ Class Admin extends MY_Controller {
                         );
                 $result = $this->Admin->insertData('product_form',$data);
                 if (!empty($result)) {
-                    $this->session->set_flashdata('success', 'Product form added successfully');                    
+                    $this->session->set_flashdata('success', 'Product form added successfully'); 
                 }
                 else{
                     $this->session->set_flashdata('error','error! Please try again');
