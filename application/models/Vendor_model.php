@@ -10,7 +10,7 @@ class Vendor_model extends MY_model
 
 	public function login($data){		
 		$this->db->select('*');
-		$this->db->from('vendors');
+		$this->db->from('users');
 		$this->db->group_start();
 		$this->db->where('email',$data['email']);		
 		$this->db->or_where('mobile',$data['email']);
@@ -27,11 +27,11 @@ class Vendor_model extends MY_model
 	}
 	public function vendorRegistration($data)
 	{
-		return $this->insertData('vendors',$data);
+		return $this->insertData('users',$data);
 	}
 	public function vendorProfileUpdate($data,$where)
 	{
-		return $this->updateData('vendors',$data,$where);
+		return $this->updateData('users',$data,$where);
 	}
 	public function addBankAccount($data)
 	{
@@ -40,11 +40,11 @@ class Vendor_model extends MY_model
 
 	public function VendorList()
 	{
-		return $this->getData('vendors','*','');
+		return $this->getData('users','*','');
 	}
 	public function VendorStatus($status,$id)
 	{
-		return $this->updateData('vendors',array('is_active'=>$status),array('id'=>$id));
+		return $this->updateData('users',array('is_active'=>$status),array('id'=>$id));
 	}
 	public function getUploadedBulkData()
 	{		

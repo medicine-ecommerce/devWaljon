@@ -22,86 +22,89 @@
     <div class="col-md-12 col-sm-12  home-module-pages">
       <div class="x_panel">
         <div class="x_content">
-          <table class="table bulk-uoload-table">
-            <thead>
-              <tr>
-                <th class="column-title">Image</th>
-                <th>Product ID</th>
-                <th>Product Name</th>
-                <th>Product Manufacturer</th>
-                <th>Product Form</th>
-                <th>Varieties</th>
-                <th>Unit Type</th>
-                <th>MRP</th>
-                <th>Sell Price</th>
-                <th>Stock Quantity</th>
-                <th>Pricscription Yes/No</th>
-                <th>Product Category</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($bulk_data as $value) { ?>
-              <tr>
-                <td>
-                  <div class="bulk-images">                    
-                    <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
-                      <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>
-                    <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
-                      <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
-                  </div>
-                </td>
-                <td><?php echo $value->product_sku_id; ?></td>
-                <td><?php echo $value->name; ?></td>
-                <td><?php echo $value->manufacturer_name; ?></td>
-                <td><?php echo $value->product_form; ?></td>
-                <td><?php echo $value->varieties; ?></td>
-                <td><?php echo $value->unit; ?></td>
-                <td><?php echo $value->mrp; ?></td>
-                <td><?php echo $value->sale_price; ?></td>                
-                <td><?php echo $value->quantity; ?></td>                                
-                <td>
-                  <div class="form-group label-float-top">
-                    <select class="form-control control-float-top bulk-dropdown" >
-                       <option></option>
-                       <option <?php if($value->quantity==1){ ?> selected <?php } ?> value="1">Yes</option>
-                       <option <?php if($value->quantity==0){ ?> selected <?php } ?> value="0">No</option>                       
-                    </select>
-                    <label for="Address">Select</label>
-                  </div>
-                </td>
-                <td>
-                  <div class="form-group label-float-top">
-				            <select class="form-control control-float-top bulk-dropdown" >
-                      <option></option>
-                      <?php foreach ($category as $value) { ?>
-                        <option value="<?=$value->id ?>"><?= $value->category_name ?></option> 
-                      <?php } ?>  
-				               
-				               <option>List 1</option>
-				               <option>List 2</option>
-				               <option>List 3</option>
-				            </select>
-				            <label for="Address">Select</label>
-				          </div>
-			     	    </td>
-              </tr>
-				      <?php } ?>
-            </tbody>
-          </table>
-          <div class=""> 
-            <div class="col-md-6">
-              <div class="upload-details">
-                <p>Total Products : 0</p>
-                <p>Products link with images : 0</p>
-                <p>Products not link with images : 0</p>
+          <form method="post" action="<?php echo base_url() ?>vendor/bulk_product_update">
+            <table id="dtBasicExample" class="table table-striped table-bordered table-sm bulk-uoload-table" cellspacing="0" width="100%" class="table bulk-uoload-table">
+              <thead>
+                <tr>
+                  <th class="column-title">Image</th>
+                  <th>Product ID</th>
+                  <th>Product Name</th>
+                  <th>Product Manufacturer</th>
+                  <th>Product Form</th>
+                  <th>Varieties</th>
+                  <th>Unit Type</th>
+                  <th>MRP</th>
+                  <th>Sell Price</th>
+                  <th>Stock Quantity</th>
+                  <th>Pricscription Yes/No</th>
+                  <th>Product Category</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php foreach ($bulk_data as $value) { ?>
+                <tr>
+                  <td>
+                    <div class="bulk-images">                    
+                      <a data-id="<?= $value->id ?>" data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                        <img src="<?php echo base_url('assets/img/main_product_image.png');?>"></a>
+                      <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
+                        <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
+                    </div>
+                  </td>
+                  <td><?php echo $value->product_sku_id; ?></td>
+                  <td><?php echo $value->name; ?></td>
+                  <td><?php echo $value->manufacturer_name; ?></td>
+                  <td><?php echo $value->product_form; ?></td>
+                  <td><?php echo $value->varieties; ?></td>
+                  <td><?php echo $value->unit; ?></td>
+                  <td><?php echo $value->mrp; ?></td>
+                  <td><?php echo $value->sale_price; ?></td>                
+                  <td><?php echo $value->quantity; ?></td>                                
+                  <td>
+                    <input type="hidden" name="prpduct_id[]" value="<?php echo $value->id;?>">
+                    <div class="form-group label-float-top">
+                      <select class="form-control control-float-top bulk-dropdown" name="bulk_priscription[]">
+                         <option></option>
+                         <option <?php if($value->quantity==1){ ?> selected <?php } ?> value="1">Yes</option>
+                         <option <?php if($value->quantity==0){ ?> selected <?php } ?> value="0">No</option>                       
+                      </select>
+                      <label for="Address">Select</label>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group label-float-top">
+  				            <select class="form-control control-float-top bulk-dropdown" name="bulk_product_category[]">
+                        <option></option>
+                        <?php foreach ($category as $value) { ?>
+                          <option value="<?=$value->id ?>"><?= $value->category_name ?></option> 
+                        <?php } ?>  
+  				               
+  				               <option>List 1</option>
+  				               <option>List 2</option>
+  				               <option>List 3</option>
+  				            </select>
+  				            <label for="Address">Select</label>
+  				          </div>
+  			     	    </td>
+                </tr>
+  				      <?php } ?>
+              </tbody>
+            </table>          
+            <div class=""> 
+              <div class="col-md-6">
+                <div class="upload-details">
+                  <p>Total Products : 0</p>
+                  <p>Products link with images : 0</p>
+                  <p>Products not link with images : 0</p>
+                </div>
+              </div>              
+              <div class="col-md-6 padding-top50">
+                <button type="submit" class="btn btn-default submit_button float-right">Next</button>
+                <button type="submit" class="btn btn-default submit_button float-right">Previous</button> 
+                <button type="submit" class="btn btn-default submit_button float-right">Cancle</button>   
               </div>
             </div>
-            <div class="col-md-6 padding-top50">
-              <button type="submit" class="btn btn-default submit_button float-right">Next</button>
-              <button type="submit" class="btn btn-default submit_button float-right">Previous</button> 
-              <button type="submit" class="btn btn-default submit_button float-right">Cancle</button>   
-            </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
@@ -137,7 +140,7 @@
                   <p>Main Images</p>
                 </div>
                 <div class="bulk-img-div">
-                  <img src=""> 
+                  <img width="200" height="220" src="<?php echo base_url('assets/img/main_product_image.png');?>" class="bulk-img-main" > 
                 </div>
               </div> 
             </div>
@@ -158,7 +161,8 @@
               </div> 
               <hr>
               <div class="upload-details padding-top-bottom-20">
-                <p><i class="fa fa-upload"></i> Ipload Main Image</p>
+                <input type="file" name="product_main_image" id="product_main_image">
+                <p><i class="fa fa-upload"></i> Upload Main Image</p>
                 <p><i class="fa fa-trash" style="color:red"></i> Delete Main Image</p>
               </div>
             </div>
@@ -169,7 +173,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" data-dismiss="modal" class="btn btn-default submit_button float-right">Cancle</button>              
-          <button type="submit" class="btn btn-default submit_button float-right">Save</button> 
+          <button type="submit" class="btn btn-default submit_button float-right product-image-save">Save</button> 
         </div>
       </div> 
     </div>
@@ -209,5 +213,56 @@ $(document).ready(function(){
     
     });
 });
+
+// Basic example
+$(document).ready(function () {
+  $('#dtBasicExample').DataTable();
+  $('.dataTables_length').addClass('bs-select');
+});
+
+$(".img-uplod-modal").click(function(){
+     var getId =$(this).attr("data-id");
+    $(".bulk-img-main").attr("id",getId);
+    $("#product_main_image").attr("custom-data-id",getId);
+    $(this).find("img").attr("main-preview-id","");
+});
+  $(".product-image-save").click(function(){    
+     var getId =$(".bulk-img-main").attr("id");
+     var tempSRC =$(".bulk-img-main").attr("src");
+     console.log(tempSRC);
+     $(".bulk-img-main").removeAttr("id");
+    $("img").find("main-preview-id").attr('src',tempSRC);  
+     
+    // $(".bulk-img-main").attr("id",getId);
+    // $("#product_main_image").attr("custom-data-id",getId);
+
+  });
+
+var product_main_image = document.getElementById("product_main_image"),
+    preview = document.getElementById("SK14");
+    
+  product_main_image.addEventListener("change", function() {
+
+    var getId = $(this).attr("custom-data-id");    
+
+    changeImage(this,getId);
+  });
+
+  function changeImage(input,getId) {
+    preview = document.getElementById(getId);
+    var reader;
+
+    if (input.files && input.files[0]) {
+      reader = new FileReader();
+
+      reader.onload = function(e) {
+        console.log(e.target.result);
+        preview.setAttribute('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  } 
+
 
 </script>

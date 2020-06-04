@@ -20,72 +20,7 @@ Class Vendor extends MY_Controller {
         
 
     }
-    public function import_data()
-    {
-        if(isset($_FILES["file"]["name"]))
-        {
-            $path = $_FILES["file"]["tmp_name"];
-            $object = PHPExcel_IOFactory::load($path);
-            foreach($object->getWorksheetIterator() as $worksheet)
-            {
-                $highestRow = $worksheet->getHighestRow();
-                $highestColumn = $worksheet->getHighestColumn();
-                for($row=2; $row<=$highestRow; $row++)
-                {
-                    $product_id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-                    $product_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-                    $Manufacturer = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-                    $product_form = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-                    $varieties = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-                    $unit = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-                    $mrp = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-                    $sale_price = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
-                    $quantity = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
-                $prescription = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
-                    
-                    ///////////// MANUFACTURER CREATE AND UPDATE
-                    $manufacturerExist = $this->Vendor->getRowData('manufacturer','id',array('name'=>$Manufacturer));
-                    if($manufacturerExist){
-                        $manufacturer_id = $manufacturerExist->id;
-                    }else{
-                        $manufacturer_id = $this->Vendor->insertData('manufacturer',array('name'=>$Manufacturer));
-                    }
-                    ///////////// PRODUCT FORM CREATE AND UPDATE
-                    $productFormExist = $this->Vendor->getRowData('product_form','id',array('name'=>$product_form));
-                    if($productFormExist){
-                        $product_form = $productFormExist->id;
-                    }else{
-                        $product_form = $this->Vendor->insertData('product_form',array('name'=>$product_form));
-                    }
-
-                    $productdata = array('name'              =>  $product_name,
-                                    'manufacturer_id'    =>  $manufacturer_id,
-                                    'product_form'       =>  $product_form,
-                                    'varieties'          =>  $varieties,
-                                    'prescription'       =>  $prescription,
-                                    'vendor_id'          =>  $this->session->userdata('vendor_id'),
-                                    'upload_source'      =>  "bulk_upload");                               
-                    $product_last_id = $this->Vendor->insertData('product',$productdata);
-
-                    $productItemData = array( 'product_sku_id'   =>  $product_id,
-                                    'product_id'     =>  $product_last_id,
-                                    'unit'           =>  $unit,
-                                    'mrp'            =>  $mrp,
-                                    'sale_price'     =>  $sale_price,
-                                    'quantity'       =>  $quantity);
-
-                    if($product_last_id){
-                     $this->Vendor->insertData('product_item',$productItemData);
-                    }
-                }
-                
-            //$this->Vendor->bulkData($data);
-            echo 'Data Imported successfully';
-        }
-    }
-    }
-
-
+   
     public function index()
     {
         $this->load->helper('cookie');
@@ -95,12 +30,12 @@ Class Vendor extends MY_Controller {
     {   
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
-            $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[vendors.email]');
+            $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[users.email]');
             $this->form_validation->set_rules('password', 'password', 'trim|required');            
             
             if($this->input->post('remember_password')){                
-                set_cookie('email',base64_encode($this->input->post('email')),3000);
-                set_cookie('password',base64_encode($this->input->post('password')),3000);
+                set_cookie('email',base64_encode($this->input->post('email')), (86400*30));
+                set_cookie('password',base64_encode($this->input->post('password')), (86400*30));
             }
             
             // $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
@@ -111,17 +46,19 @@ Class Vendor extends MY_Controller {
               $this->session->set_flashdata('error', validation_errors());      
             }
             else{
-                $data = array(                            
-                            'email'=>$this->input->post('email'),
-                            'password'=>md5($this->input->post('password')),
-                            'is_active'=>'0');
+                $data = array('email'=>$this->input->post('email'),
+                              'password'=>md5($this->input->post('password')),
+                              'is_active'=>'0',
+                              'type'=>'vendor');  
 
                 $last_id = $this->Vendor->VendorRegistration($data);               
                 if ($last_id > 0) {
                     $data = array('email'=>$this->input->post('email'),
-                                  'vendor_id'=>$last_id);
+                                  'vendor_id'=>$last_id,
+                                  'type'=>'vendor'
+                              );
                     $this->session->set_userdata($data);
-                    $this->session->set_flashdata('success', 'Your account created successfully');                     
+                    $this->session->set_flashdata('success', 'Your account successfully created ');                     
                     redirect('/Vendor/personalDetails/', 'refresh');
                 }
             }            
@@ -136,7 +73,7 @@ Class Vendor extends MY_Controller {
     }
     
     public function vendorLogin(){
-
+        
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
             $this->form_validation->set_rules('email', 'Email', 'required|trim');
@@ -145,8 +82,13 @@ Class Vendor extends MY_Controller {
             if ($this->form_validation->run() == FALSE){          
                 
               $this->session->set_flashdata('error', validation_errors());      
-            }            
-            else{                
+            }
+            else{               
+                if(empty($this->input->post('remember_password'))){
+                    delete_cookie("email");                
+                    delete_cookie("password");                
+                }
+
                 $data = array('email'=> $this->input->post('email'),
                             'password' =>md5($this->input->post('password'))
                             );
@@ -155,10 +97,15 @@ Class Vendor extends MY_Controller {
                 if(!empty($result))
                 {
                     $data = array('email'=>$result->email,
-                                'vendor_id'=>$result->id);
+                                'vendor_id'=>$result->id,
+                                'user_type'=>$result->type);
                     $this->session->set_userdata($data);
                     // redirect(base_url('admin/dashboard'));
-                    redirect('/vendor/personalDetails/', 'refresh');
+                    if(!empty($result->email) && !empty($result->first_name) && !empty($result->last_name) && !empty($result->mobile) && !empty($result->address)){
+                        redirect('/vendor/vendor_dashboard/', 'refresh');
+                    }else{                        
+                        redirect('/vendor/personalDetails/', 'refresh');
+                    }
                 }
                 else
                 {
@@ -184,7 +131,7 @@ Class Vendor extends MY_Controller {
     public function editPersonalDetails()
     {
         $this->data['bank'] = $this->Vendor->getData('bank','*','');
-        $this->data['edit_data'] = $this->Vendor->getRowData('vendors','*',array('id'=>$this->session->userdata('vendor_id')));
+        $this->data['edit_data'] = $this->Vendor->getRowData('users','*',array('id'=>$this->session->userdata('vendor_id')));
         $this->data['bank_data'] = $this->Vendor->getRowData('bank_account','*',array('vendor_id'=>$this->session->userdata('vendor_id')));
 
         $this->data['working_experience'] = $this->config->item('working_experience'); 
@@ -258,8 +205,7 @@ Class Vendor extends MY_Controller {
                 }
 
                 if ($result > 0) {
-                    $this->session->set_flashdata('success', 'Profile successfully Updated');
-                    
+                    $this->session->set_flashdata('success', 'Profile successfully Updated');                    
                     if($_SERVER['HTTP_REFERER']== base_url()."vendor/editPersonalDetails"){
                         redirect($_SERVER['HTTP_REFERER']); 
                     }else{
@@ -275,7 +221,7 @@ Class Vendor extends MY_Controller {
     {
         $this->middle = 'productadd';
         $this->Vendor();
-    } 
+    }     
 
     public function inventory()
     {
@@ -298,6 +244,70 @@ Class Vendor extends MY_Controller {
         $this->data['manufacturer'] = $this->Vendor->getData('manufacturer','*','');
         $this->middle = 'add_single_product';
         $this->Vendor();
+    }
+     public function import_data()
+    {
+        if(isset($_FILES["file"]["name"]))
+        {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PHPExcel_IOFactory::load($path);
+            foreach($object->getWorksheetIterator() as $worksheet)
+            {
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                for($row=2; $row<=$highestRow; $row++)
+                {
+                    $product_id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+                    $product_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                    $Manufacturer = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                    $product_form = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                    $varieties = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                    $unit = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+                    $mrp = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+                    $sale_price = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+                    $quantity = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
+                $prescription = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
+                    
+                    ///////////// MANUFACTURER CREATE AND UPDATE
+                    $manufacturerExist = $this->Vendor->getRowData('manufacturer','id',array('name'=>$Manufacturer));
+                    if($manufacturerExist){
+                        $manufacturer_id = $manufacturerExist->id;
+                    }else{
+                        $manufacturer_id = $this->Vendor->insertData('manufacturer',array('name'=>$Manufacturer));
+                    }
+                    ///////////// PRODUCT FORM CREATE AND UPDATE
+                    $productFormExist = $this->Vendor->getRowData('product_form','id',array('name'=>$product_form));
+                    if($productFormExist){
+                        $product_form = $productFormExist->id;
+                    }else{
+                        $product_form = $this->Vendor->insertData('product_form',array('name'=>$product_form));
+                    }
+
+                    $productdata = array('name'              =>  $product_name,
+                                    'manufacturer_id'    =>  $manufacturer_id,
+                                    'product_form'       =>  $product_form,
+                                    'varieties'          =>  $varieties,
+                                    'prescription'       =>  $prescription,
+                                    'vendor_id'          =>  $this->session->userdata('vendor_id'),
+                                    'upload_source'      =>  "bulk_upload");                               
+                    $product_last_id = $this->Vendor->insertData('product',$productdata);
+
+                    $productItemData = array( 'product_sku_id'   =>  $product_id,
+                                    'product_id'     =>  $product_last_id,
+                                    'unit'           =>  $unit,
+                                    'mrp'            =>  $mrp,
+                                    'sale_price'     =>  $sale_price,
+                                    'quantity'       =>  $quantity);
+
+                    if($product_last_id){
+                     $this->Vendor->insertData('product_item',$productItemData);
+                    }
+                }
+                
+            //$this->Vendor->bulkData($data);
+            echo 'Data Imported successfully';
+            }
+        }
     }
     public function bulk_upload()
     {
@@ -361,6 +371,12 @@ Class Vendor extends MY_Controller {
         }
         $mail->ClearAddresses();
     }  
+    public function bulk_product_update(){
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            print_r($this->input->post());
+            exit();
+        }
+    }
     
     // public function vendors()
     // {

@@ -46,9 +46,9 @@
 						<label for="email">Last Name</label>
 					</div>
 				</div>			
-				<div class="col-md-4">
+				<div class="col-md-4">					
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="date_of_birth"  value="<?php echo date('Y-m-d',strtotime($edit_data->date_of_birth)) ?>">
+						<input type="date" class="form-control control-float-top" name="date_of_birth"  value="<?= !empty($edit_data->date_of_birth) ? date('Y-m-d',strtotime($edit_data->date_of_birth)) : date("d/m/Y"); ?>">
 						<label for="email">Date Of Birth</label>
 					</div>
 				</div>
@@ -142,7 +142,7 @@
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="working_from" value="<?php echo date('Y-m-d',strtotime($edit_data->working_from)) ?>">
+						<input type="date" class="form-control control-float-top" name="working_from" value="<?= !empty($edit_data->working_from) ? date('Y-m-d',strtotime($edit_data->working_from)) : "" ?>">
 						<label for="Address">Working From</label>
 					</div>
 				</div>			
@@ -160,8 +160,8 @@
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<select class="form-control control-float-top custom-select" name="marital_status" value="<?= $edit_data->marital_status ?>">
-						    <option>Select Option</option>
+						<select class="form-control control-float-top custom-select" name="marital_status" value="<?= $edit_data->marital_status ?>">							
+						    <option <?php if($edit_data->marital_status==""){ ?> selected <?php } ?>>Select Option</option>
 						    <option <?php if($edit_data->marital_status=="married"){ ?> selected <?php } ?> value="married">Married</option>
 						    <option <?php if($edit_data->marital_status=="unmarried"){ ?> selected <?php } ?> value="unmarried">Unmarried</option>
 						</select>
@@ -238,7 +238,7 @@
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="medical_since" value="<?php echo date('Y-m-d',strtotime($edit_data->medical_since)) ?>">
+						<input type="date" class="form-control control-float-top" name="medical_since" value="<?=  !empty($edit_data->medical_since) ? date('Y-m-d',strtotime($edit_data->medical_since)): "" ?>">
 						<label for="Address">Medical Since</label>
 					</div>
 				</div>			
