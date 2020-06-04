@@ -21,7 +21,7 @@ class Admin_model extends MY_model
 			return $query->row();
 		}
 	}
-	public function VendorAdd($data)
+	/*public function VendorAdd($data)
 	{
 		return $this->insertData('vendors',$data);
 	}
@@ -33,11 +33,11 @@ class Admin_model extends MY_model
 	public function VendorStatus($status,$id)
 	{
 		return $this->updateData('vendors',array('is_active'=>$status),array('id'=>$id));
-	}
-	public function getVendorByID($id)
+	}*/
+	/*public function getVendorByID($id)
 	{
 		return $this->getRowData('vendors','*',array('id'=>$id));
-	}
+	}*/
 	public function VendorUpdate($data,$id)
 	{
 		return $this->updateData('vendors',$data,array('id'=>$id));
