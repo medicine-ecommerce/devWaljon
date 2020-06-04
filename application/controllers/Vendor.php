@@ -219,6 +219,7 @@ Class Vendor extends MY_Controller {
                 
                 $data = array(
                             'company_name'=>$this->input->post('company_name'),
+                            'created_by'=>$this->session->userdata('user_id'),
                             'address'=>$this->input->post('address'),
                             'first_name'=>$this->input->post('first_name'),
                             'last_name'=>$this->input->post('last_name'),

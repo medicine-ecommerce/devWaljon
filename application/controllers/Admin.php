@@ -39,7 +39,7 @@ Class Admin extends MY_Controller {
     }
     public function vendors()
     {
-        $this->data['vendors'] = $this->Admin->VendorList();
+        $this->data['vendors'] = $this->Admin->getData('users','*',array('type'=>'vendor'));
         $this->middle = 'vendor_list';
         $this->Admin();
     }
@@ -64,8 +64,10 @@ Class Admin extends MY_Controller {
                             'last_name'         =>$this->input->post('last_name'),
                             'email'             =>$this->input->post('email'),
                             'mobile'            =>$this->input->post('mobile'),
+                            'password'          => md5('123456'),
+                            'type'              =>'vendor',
                             'is_active'         =>'1');
-                $result = $this->Admin->VendorAdd($data);
+                $result = $this->Admin->insertData('users',$data);
                 if ($result > 0) {
                     $this->session->set_flashdata('success', 'Vendor account created successfully');                     
                 }
@@ -96,16 +98,15 @@ Class Admin extends MY_Controller {
                             'first_name'        =>$this->input->post('first_name'),
                             'last_name'         =>$this->input->post('last_name'),
                             'email'             =>$this->input->post('email'),
-                            'mobile'            =>$this->input->post('mobile'),
-                            'is_active'         =>'1');
-                $result = $this->Admin->VendorUpdate($data,$id);
+                            'mobile'            =>$this->input->post('mobile'));
+                $result = $this->Admin->updateData('users',$data,array('id'=>$id));
                 if ($result > 0) {
                     $this->session->set_flashdata('success', 'Vendor account updated successfully');                     
                 }
             }
             redirect($_SERVER['HTTP_REFERER']); 
         }
-        $this->data['vendor'] = $this->Admin->getVendorByID($id);        
+        $this->data['vendor'] = $this->Admin->getRowData('users','*',array('id'=>$id));        
         $this->middle = 'vendor_add';
         $this->Admin();
 
@@ -113,7 +114,7 @@ Class Admin extends MY_Controller {
 
     public function vendor_status($status,$id)
     {
-        $result =$this->Admin->VendorStatus($status,$id);
+        $result =$this->Admin->updateData('users',array('is_active'=>$status),array('id'=>$id));
         if (!empty($result)) {
             $this->session->set_flashdata('success', 'status updated successfully'); 
         }
@@ -124,7 +125,7 @@ Class Admin extends MY_Controller {
     }
     public function vendor_delete($id)
     {
-        $result = $this->Admin->VendorDelete($id);
+        $result = $this->Admin->deleteData('users',array('id'=>$id));
         if (!empty($result)) {
             $this->session->set_flashdata('success', 'Vendor deleted successfully');
         }else{
