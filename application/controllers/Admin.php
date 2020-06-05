@@ -439,6 +439,16 @@ Class Admin extends MY_Controller {
         $this->middle = 'brands';
         $this->Admin();
     }
+    public function saltComposition_add()
+    {
+        $this->middle = 'saltComposition/add';
+        $this->Admin();
+    }
+    public function saltComposition_list()
+    {
+        $this->middle = 'saltComposition/list';
+        $this->Admin();
+    }
     public function logout()
     {   
         $this->session->sess_destroy();
