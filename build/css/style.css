@@ -129,6 +129,7 @@ span.status-cancle a {
 }
 img.profile-images-custom {
     width: 130px;
+    height: 130px;
     border: 1px solid #d4d4d4;
 }
 .text-center{
@@ -148,7 +149,7 @@ input.image-upload-input {
     width: 130px;
     height: 31px;
     cursor: pointer;
-    bottom: 5px;
+    bottom: 20px;
     opacity: 0;
 }
 /*Google Input*/
@@ -166,7 +167,7 @@ input.image-upload-input {
 
 .form-control.control-float-top:focus ~ label{left:5px; top:-10px; background:#fff; padding:0 5px;}
 
-label.active{
+.form-group label.active{
     left: 5px;
     top: -10px;
     background: #fff;
@@ -780,9 +781,12 @@ div#gallery {
     font-size: 20px;
 }
 input.edit-profile-image {
-    bottom: 50px;
+    bottom: 18px;
     position: absolute;
     cursor: pointer;
+}
+input.edit-licence-upload {
+    bottom: 7px;
 }
 .custom-success-alert {    
     width: 350px;

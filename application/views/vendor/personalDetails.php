@@ -53,7 +53,7 @@
 				</div>
 				<div class="col-md-4">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="address" value="<?php echo set_value('address')?>">
+						<input type="text" class="form-control control-float-top" name="address" id="location" value="<?php echo set_value('address')?>">
 						<label for="email">Address</label>
 					</div>
 				</div>
@@ -87,7 +87,7 @@
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" minlength="10" maxlength="10" name="mobile" value="<?php echo set_value('mobile')?>">
+						<input type="text" class="form-control control-float-top" minlength="10" maxlength="10" name="mobile" value="<?php echo set_value('mobile')?>" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
 						<label for="email">Mobile</label>
 					</div>
 				</div>
@@ -234,7 +234,7 @@
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" minlength="10" maxlength="10" class="form-control control-float-top" name="medical_phone" value="<?php echo set_value('medical_phone')?>">
+						<input type="text" minlength="10" maxlength="10" class="form-control control-float-top" name="medical_phone" value="<?php echo set_value('medical_phone')?>" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
 						<label for="Address">Phone</label>
 					</div>
 				</div>
@@ -286,8 +286,7 @@
 </div>
 <input type="hidden" name="" class="hid_id" value="<?= $this->session->flashdata('error') ?>">
 <input type="hidden" name="" class="success_id" value="<?= $this->session->flashdata('success') ?>">
-<input type="hidden" name="" class="prev_url" value="<?= $_SERVER['HTTP_REFERER'] ?>">
-
+<input type="hidden" name="" class="prev_url" value="<?= !empty($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] :"" ?>">
 
 <script type="text/javascript">
 	var profile_image = document.getElementById("profile_image"),
@@ -390,5 +389,16 @@
 		});	
 	});
 	
+	    // scripts.js custom js file
+	$(document).ready(function () {
+		$("#location").attr("placeholder","");		
+		
+	   google.maps.event.addDomListener(window, 'load', initialize);
+	});
+
+	function initialize() {
+	    var input = document.getElementById('location');
+	    var autocomplete = new google.maps.places.Autocomplete(input);
+	}
 	
 </script>

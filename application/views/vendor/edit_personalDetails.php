@@ -54,7 +54,7 @@
 				</div>
 				<div class="col-md-4">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="address" value="<?= $edit_data->address ?>">
+						<input type="text" class="form-control control-float-top" name="address" value="<?= $edit_data->address ?>" id="location"> 
 						<label for="email">Address</label>
 					</div>
 				</div>
@@ -85,7 +85,7 @@
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" maxlength="6" class="form-control control-float-top" name="pin_code" value="<?= $edit_data->pin_code ?>">
+						<input type="text" maxlength="6" class="form-control control-float-top" name="pin_code" value="<?= !empty($edit_data->pin_code) ?$edit_data->pin_code : "" ?>">
 						<label for="email">Zip Postal Code</label>
 					</div>
 				</div>			
@@ -263,7 +263,7 @@
 
 					</div>
 					<button type="button" class="btn btn-primary image-upload-button">Upload</button>
-					<input type="file" id="licenceImg" name="licence" class="image-upload-input">
+					<input type="file" id="licenceImg" name="licence" class="image-upload-input edit-licence-upload">
 					<input type="hidden" name="edit_licence" value="<?php echo $edit_data->licence ?>">
 				</div>
 			</div>
@@ -394,5 +394,15 @@
 	// 	}
 
 	// });
-	
+	// scripts.js custom js file
+	$(document).ready(function () {
+		$("#location").attr("placeholder","");		
+		
+	   google.maps.event.addDomListener(window, 'load', initialize);
+	});
+
+	function initialize() {
+	    var input = document.getElementById('location');
+	    var autocomplete = new google.maps.places.Autocomplete(input);
+	}
 </script>

@@ -486,4 +486,16 @@ function getSubcategory(cat_id) {
       }
   });
 }
+$(".form-group .form-control").blur(function(){
+       if($(this).val()!=""){                 
+         $(this).siblings("label").addClass("active");
+       }else{
+          $(this).siblings("label").removeClass("active");
+       }
+    });
+  // $(".label-float-top").click(function(){
+  //   $(this).find("label").addClass("active");
+  //   $(this).find("input").focus();
+    
+  //   });
 </script>

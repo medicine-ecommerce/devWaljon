@@ -49,16 +49,17 @@ Class Vendor extends MY_Controller {
                 $data = array('email'=>$this->input->post('email'),
                               'password'=>md5($this->input->post('password')),
                               'is_active'=>'0',
-                              'type'=>'vendor');  
+                              'type'=>'vendor',
+                              'created_by'=>'sign_up');  
 
                 $last_id = $this->Vendor->VendorRegistration($data);               
                 if ($last_id > 0) {
                     $data = array('email'=>$this->input->post('email'),
                                   'vendor_id'=>$last_id,
-                                  'type'=>'vendor'
+                                  'user_type'=>'vendor'
                               );
                     $this->session->set_userdata($data);
-                    $this->session->set_flashdata('success', 'Your account successfully created ');                     
+                    $this->session->set_flashdata('success', 'Your account successfully created ');
                     redirect('/Vendor/personalDetails/', 'refresh');
                 }
             }            
@@ -155,6 +156,7 @@ Class Vendor extends MY_Controller {
             
             if ($this->form_validation->run() == FALSE){                 
                 $this->session->set_flashdata('error', validation_errors());      
+                redirect(base_url('vendor/personalDetails'));
             }
             else{  
                 if(!empty($_FILES['profile_image'])){
@@ -166,7 +168,6 @@ Class Vendor extends MY_Controller {
                 
                 $data = array(
                             'company_name'=>$this->input->post('company_name'),
-                            'created_by'=>$this->session->userdata('user_id'),
                             'address'=>$this->input->post('address'),
                             'first_name'=>$this->input->post('first_name'),
                             'last_name'=>$this->input->post('last_name'),
@@ -215,7 +216,7 @@ Class Vendor extends MY_Controller {
                     }
                 }
             }
-            redirect($_SERVER['HTTP_REFERER']);             
+            //redirect($_SERVER['HTTP_REFERER']);             
         }
     
     }
