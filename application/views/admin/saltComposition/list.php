@@ -5,13 +5,13 @@
         <div class="title_left">
         <ul class="nav nav-tabs product_tab" id="myTab" role="tablist">
           <li class="product_li">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Product Form</a>
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Salt Composition</a>
           </li>
           <li class="product_li">
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Requests</a>
           </li>
         </ul>
-          <h3 class="product_form_heading">Inventory > Product Form</h3>
+          <h3 class="product_form_heading">Inventory > Salt Composition</h3>
         </div>
 
         <div class="title_right">
@@ -28,8 +28,55 @@
             <div class="x_title">
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
-                      synth. Cosby sweater eu banh mi, qui irure terr.
+                  <div class="card-box table-responsive">                
+                    <table id="datatable-responsive" class="table user-detail-table" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Image</th>
+                          <th>Salt Composition Name</th>
+                          <th>Created by</th>
+                          <th>Created on</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>
+                            <div class="bulk-images">                    
+                              <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                                <img src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>">
+                              </a>  
+                            </div>
+                          </td>
+                          <td>Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>Inactive</td>
+                          <td><span class="status-approve"><i class="fa fa-check"></i>
+                          </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>
+                            <div class="bulk-images">                    
+                              <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                                <img src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>">
+                              </a>  
+                            </div>
+                          </td>
+                          <td>Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>Active</td>
+                          <td><span class="status-approve"><i class="fa fa-check"></i>
+                          </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                   <div class="card-box table-responsive">                
@@ -37,6 +84,7 @@
                       <thead>
                         <tr>
                           <th>#</th>
+                          <th>Image</th>
                           <th>Requested By</th>
                           <th>Requested For</th>
                           <th>Requested On</th>
@@ -46,7 +94,14 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Tiger</td>
+                          <td>1</td>
+                          <td>
+                            <div class="bulk-images">                    
+                              <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                                <img src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>">
+                              </a>  
+                            </div>
+                          </td>
                           <td>Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
@@ -55,7 +110,14 @@
                           </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
                         </tr>
                         <tr>
-                          <td>Tiger</td>
+                          <td>2</td>
+                          <td>
+                            <div class="bulk-images">                    
+                              <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                                <img src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>">
+                              </a>  
+                            </div>
+                          </td>
                           <td>Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
@@ -64,20 +126,18 @@
                           </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
                         </tr>
                         <tr>
-                          <td>Tiger</td>
+                          <td>3</td>
+                          <td>
+                            <div class="bulk-images">                    
+                              <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                                <img src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>">
+                              </a>  
+                            </div>
+                          </td>
                           <td>Nixon</td>
                           <td>System Architect</td>
                           <td>Edinburgh</td>
                           <td><span class="pending">Pending</span></td>
-                          <td><span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
-                        </tr>
-                        <tr>
-                          <td>Tiger</td>
-                          <td>Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
                           <td><span class="status-approve"><i class="fa fa-check"></i>
                           </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
                         </tr>
