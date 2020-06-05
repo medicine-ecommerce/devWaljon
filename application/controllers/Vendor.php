@@ -143,7 +143,9 @@ Class Vendor extends MY_Controller {
     }
     public function vendor_profile()
     {
-                
+        // echo "<pre>";
+        //   print_r($_POST);
+        //   die();
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('first_name', 'First Name', 'required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'required');
@@ -154,7 +156,7 @@ Class Vendor extends MY_Controller {
             // $this->form_validation->set_rules('licence', 'Licence', 'required');
 
             
-            if ($this->form_validation->run() == FALSE){                 
+            if ($this->form_validation->run() == FALSE){                                 
                 $this->session->set_flashdata('error', validation_errors());      
                 redirect(base_url('vendor/personalDetails'));
             }
@@ -201,12 +203,15 @@ Class Vendor extends MY_Controller {
                 
                 $bankExist = $this->Vendor->getRowData('bank_account','id',array('vendor_id'=>$this->session->userdata('vendor_id')));
                 //////////////////////// INSET AND UPDATE BANK
+
                 if(!empty($bankExist)){                    
                     $result1 = $this->Vendor->updateData('bank_account',$bankData,array('vendor_id'=>$this->session->userdata('vendor_id')));
                 }else{
                     $result1 = $this->Vendor->addBankAccount($bankData);
                 }
-
+                // echo "string";
+                // print_r($result);
+                // die();
                 if ($result > 0) {
                     $this->session->set_flashdata('success', 'Profile successfully Updated');                    
                     if($_SERVER['HTTP_REFERER']== base_url()."vendor/editPersonalDetails"){
@@ -216,7 +221,8 @@ Class Vendor extends MY_Controller {
                     }
                 }
             }
-            //redirect($_SERVER['HTTP_REFERER']);             
+            $this->session->set_flashdata('info', 'No data changes');
+            redirect($_SERVER['HTTP_REFERER']);             
         }
     
     }

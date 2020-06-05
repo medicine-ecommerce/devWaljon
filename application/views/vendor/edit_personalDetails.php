@@ -22,13 +22,25 @@
 		<?= $this->session->flashdata('error');?>	
 	</div>
 	<?php }?>
+	<?php if($this->session->flashdata('info')){ ?>
+	<div class="custom-info-alert">		
+		<a class="remove-alert"> <span class="glyphicon glyphicon-remove custom-remove"></span></a>
+		<p>		
+			<span class="glyphicon glyphicon-ok-sign"></span>
+			<?= $this->session->flashdata('info');?>	
+		</p>
+	</div>
+	<?php }?>
 
 	<form method="post" action="<?php echo base_url() ?>/vendor/vendor_profile" enctype="multipart/form-data">		
 		<div class="row padding-bottom20 padding-top50">
 			<div class="col-md-3">
 				<h5>Personal Information </h5>
+				<a onclick="editEnable()">
+					<img src="<?php echo base_url(); ?>assets/img/edit_dark.png"  class="edit-pencil">
+				</a>
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-9"> 
 				<hr class="custom-form-hr">
 			</div>		
 		</div>
@@ -36,31 +48,31 @@
 			<div class="col-md-8">
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="first_name" value="<?php echo $edit_data->first_name ?>">
+						<input type="text" class="form-control control-float-top personal-section" name="first_name" value="<?php echo $edit_data->first_name ?>" >
 						<label for="name">First Name</label>
 				  	</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="last_name" value="<?php echo $edit_data->last_name ?>">
+						<input type="text" class="form-control control-float-top personal-section" name="last_name" value="<?php echo $edit_data->last_name ?>">
 						<label for="email">Last Name</label>
 					</div>
 				</div>			
 				<div class="col-md-4">					
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="date_of_birth"  value="<?= !empty($edit_data->date_of_birth) ? date('Y-m-d',strtotime($edit_data->date_of_birth)) : date("d/m/Y"); ?>">
+						<input type="date" class="form-control control-float-top personal-section" name="date_of_birth"  value="<?= !empty($edit_data->date_of_birth) ? date('Y-m-d',strtotime($edit_data->date_of_birth)) : date("d/m/Y"); ?>">
 						<label for="email">Date Of Birth</label>
 					</div>
 				</div>
 				<div class="col-md-4">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="address" value="<?= $edit_data->address ?>" id="location"> 
+						<input type="text" class="form-control control-float-top personal-section" name="address" value="<?= $edit_data->address ?>" id="location"> 
 						<label for="email">Address</label>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<select name="country" class="form-control control-float-top custom-select countries" id="countryId" value="<?= $edit_data->country ?>">							
+						<select name="country" class="form-control control-float-top custom-select countries personal-section" id="countryId" value="<?= $edit_data->country ?>">							
 							<option><?= $edit_data->country ?></option>
 							<!-- <option>Select Country</option> -->
 						</select>
@@ -69,7 +81,7 @@
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<select name="state" class="form-control control-float-top custom-select states" id="stateId" value="<?= $edit_data->state ?>">		    			
+						<select name="state" class="form-control control-float-top custom-select states personal-section" id="stateId" value="<?= $edit_data->state ?>">		    			
 							<option><?= $edit_data->state ?></option>
 						</select>		
 						<label for="country">State</label>
@@ -77,7 +89,7 @@
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-					 	<select name="city" class="form-control control-float-top custom-select cities" id="cityId" value="<?= $edit_data->city ?>">					    
+					 	<select name="city" class="form-control control-float-top custom-select cities personal-section" id="cityId" value="<?= $edit_data->city ?>">					    
 					 		<option><?= $edit_data->city ?></option>
 						</select>
 						<label for="country">City</label>
@@ -85,19 +97,19 @@
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" maxlength="6" class="form-control control-float-top" name="pin_code" value="<?= !empty($edit_data->pin_code) ?$edit_data->pin_code : "" ?>">
+						<input type="text" maxlength="6" class="form-control control-float-top personal-section" name="pin_code" value="<?= !empty($edit_data->pin_code) ?$edit_data->pin_code : "" ?>">
 						<label for="email">Zip Postal Code</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" minlength="10" maxlength="10" class="form-control control-float-top" name="mobile" value="<?= $edit_data->mobile ?>">
+						<input type="text" minlength="10" maxlength="10" class="form-control control-float-top personal-section" name="mobile" value="<?= $edit_data->mobile ?>">
 						<label for="email">Mobile</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="email" class="form-control control-float-top" name="email" value="<?= $edit_data->email ?>">
+						<input type="email" class="form-control control-float-top personal-section" name="email" value="<?= $edit_data->email ?>">
 						<label for="email">Email</label>
 					</div>
 				</div>
@@ -121,6 +133,9 @@
 		<div class="row padding-top-bottom-20">
 			<div class="col-md-3">
 				<h5>Working Information </h5>
+				<a onclick="editEnableWorking()">
+					<img src="<?php echo base_url(); ?>assets/img/edit_dark.png"  class="edit-pencil">
+				</a>
 			</div>
 			<div class="col-md-9">
 				<hr class="custom-form-hr">
@@ -136,19 +151,19 @@
 					    <option>List 2</option>
 					    <option>List 3</option>
 					  </select> -->
-					  <input type="text" class="form-control control-float-top" name="degree" value="<?php echo $edit_data->degree ?>">
+					  <input type="text" class="form-control control-float-top working-section" name="degree" value="<?php echo $edit_data->degree ?>">
 					  <label for="Address">Degree</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="working_from" value="<?= !empty($edit_data->working_from) ? date('Y-m-d',strtotime($edit_data->working_from)) : "" ?>">
+						<input type="date" class="form-control control-float-top working-section" name="working_from" value="<?= !empty($edit_data->working_from) ? date('Y-m-d',strtotime($edit_data->working_from)) : "" ?>">
 						<label for="Address">Working From</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<select class="form-control control-float-top custom-select" name="experience">
+						<select class="form-control control-float-top custom-select working-section" name="experience">
 							
 							<?php 
 								foreach ($working_experience as $key => $value) { ?>
@@ -160,7 +175,7 @@
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<select class="form-control control-float-top custom-select" name="marital_status" value="<?= $edit_data->marital_status ?>">							
+						<select class="form-control control-float-top custom-select working-section" name="marital_status" value="<?= $edit_data->marital_status ?>">							
 						    <option <?php if($edit_data->marital_status==""){ ?> selected <?php } ?>>Select Option</option>
 						    <option <?php if($edit_data->marital_status=="married"){ ?> selected <?php } ?> value="married">Married</option>
 						    <option <?php if($edit_data->marital_status=="unmarried"){ ?> selected <?php } ?> value="unmarried">Unmarried</option>
@@ -175,6 +190,9 @@
 		<div class="row padding-top-bottom-20">
 			<div class="col-md-3">
 				<h5>Account Details </h5>
+				<a onclick="editEnableBank()">
+					<img src="<?php echo base_url(); ?>assets/img/edit_dark.png"  class="edit-pencil">
+				</a>
 			</div>
 			<div class="col-md-9">
 				<hr class="custom-form-hr">
@@ -184,7 +202,7 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<select class="form-control control-float-top custom-select" name="bank_name" value="<?php echo set_value('bank_name')?>">
+						<select class="form-control control-float-top custom-select bank-section" name="bank_name" value="<?php echo set_value('bank_name')?>">
 							<option></option>
 						    <?php foreach ($bank as $value) { ?>
 								<option <?php if($bank_data->bank_id==$value->id){ ?> selected <?php } ?>  value="<?=$value->id ?>"  ><?=$value->bank_name?></option> 
@@ -195,19 +213,19 @@
 				</div>
 				<div class="col-md-3">					
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="account_number" value="<?= !empty($bank_data->account_number) ? $bank_data->account_number :"" ?>">
+						<input type="text" class="form-control control-float-top bank-section" name="account_number" value="<?= !empty($bank_data->account_number) ? $bank_data->account_number :"" ?>">
 						<label for="Address">Account Number</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="ifc_code" value="<?= !empty($bank_data->ifc_code) ? $bank_data->ifc_code : "" ?>">
+						<input type="text" class="form-control control-float-top bank-section" name="ifc_code" value="<?= !empty($bank_data->ifc_code) ? $bank_data->ifc_code : "" ?>">
 						<label for="Address">IFSC Code</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-					 	<select class="form-control control-float-top custom-select" name="account_type" value="<?php echo set_value('account_type')?>">
+					 	<select class="form-control control-float-top custom-select bank-section" name="account_type" value="<?php echo set_value('account_type')?>">
 							<option></option>
 						    <?php foreach ($account_type as $value) { ?>
 								<option <?php if($bank_data->account_type_id==$value['key']){ ?> selected <?php } ?>  value="<?=$value['key'] ?>"><?=$value['value']?></option> 
@@ -223,6 +241,9 @@
 		<div class="row padding-top-bottom-20">
 			<div class="col-md-3">
 				<h5>Medical Information</h5>
+				<a onclick="editEnableMedical()">
+					<img src="<?php echo base_url(); ?>assets/img/edit_dark.png"  class="edit-pencil">
+				</a>
 			</div>
 			<div class="col-md-9">
 				<hr class="custom-form-hr">
@@ -232,25 +253,25 @@
 			<div class="col-md-8">
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="company_name" value="<?= $edit_data->company_name ?>">
+						<input type="text" class="form-control control-float-top medical-section" name="company_name" value="<?= $edit_data->company_name ?>">
 						<label for="Address">Company Name</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="medical_since" value="<?=  !empty($edit_data->medical_since) ? date('Y-m-d',strtotime($edit_data->medical_since)): "" ?>">
+						<input type="date" class="form-control control-float-top medical-section" name="medical_since" value="<?=  !empty($edit_data->medical_since) ? date('Y-m-d',strtotime($edit_data->medical_since)): "" ?>">
 						<label for="Address">Medical Since</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" maxlength="10" minlength="10" name="medical_phone" value="<?= $edit_data->medical_phone ?>">
+						<input type="text" class="form-control control-float-top medical-section" maxlength="10" minlength="10" name="medical_phone" value="<?= $edit_data->medical_phone ?>">
 						<label for="Address">Phone</label>
 					</div>
 				</div>
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
-						<input type="email" class="form-control control-float-top" name="medical_email" value="<?= $edit_data->medical_email ?>">
+						<input type="email" class="form-control control-float-top medical-section" name="medical_email" value="<?= $edit_data->medical_email ?>">
 						<label for="Address">Email</label>
 					</div>
 				</div>			
@@ -358,6 +379,12 @@
 	  });
 	});	
 	$(document).ready(function(){
+		$(".personal-section").attr("readonly","");
+		$(".working-section").attr("readonly","");
+		
+		$('.remove-alert').click(function() {
+			$('.custom-success-alert').fadeOut("slow")
+		})
 		// var id = document.getElementsByClassName("hid_id")[0].value;
 		// if(id!=''){
 		// 	$('#error-myModal').modal('show'); 
@@ -374,6 +401,13 @@
 		})
 		setInterval(function () {
 	        $('.custom-error-alert').fadeOut("slow")
+    	}, 7000);
+
+    	$('.remove-alert').click(function() {
+			$('.custom-info-alert').fadeOut("slow")
+		})
+		setInterval(function () {
+	        $('.custom-info-alert').fadeOut("slow")
     	}, 7000);
 
 	});
@@ -405,4 +439,24 @@
 	    var input = document.getElementById('location');
 	    var autocomplete = new google.maps.places.Autocomplete(input);
 	}
+	function editEnable(){
+		$(".personal-section").removeAttr("readonly");
+		$(".form-control").removeClass('personal-section');
+
+	}
+	function editEnableWorking(){
+		$(".working-section").removeAttr("readonly");
+		$(".form-control").removeClass('working-section');
+	}
+	function editEnableBank(){
+		$(".bank-section").removeAttr("readonly");
+		$(".form-control").removeClass('bank-section');
+	}
+	function editEnableMedical(){
+		$(".medical-section").removeAttr("readonly");
+		$(".form-control").removeClass('medical-section');
+	}
+
+
+
 </script>
