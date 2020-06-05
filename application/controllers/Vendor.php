@@ -260,7 +260,9 @@ Class Vendor extends MY_Controller {
     public function addSingleProduct()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
-            $data = array('category_id'=>$this->input->post('category_id'),
+            $data = array('upload_source'=>'single_upload',
+                        'created_by' =>$this->session->userdata('user_id'),
+                        'category_id'=>$this->input->post('category_id'),
                         'sucategory_id'=>$this->input->post('sucategory_id'),
                         'manufacturer_id'=>$this->input->post('manufacturer_id'),
                         'name'=>$this->input->post('name'),
