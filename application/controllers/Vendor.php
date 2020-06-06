@@ -7,7 +7,8 @@
 
 Class Vendor extends MY_Controller {
 
-    public function __construct() {
+    public function __construct() 
+    {
         parent::__construct();
         $this->load->database();
         // $this->load->model('Admin_model');
@@ -17,10 +18,11 @@ Class Vendor extends MY_Controller {
         $this->load->model('Excel_import_model');        
         $this->load->library('excel');  
         $this->load->library('upload');
-        
+      
 
     }
-   
+
+
     public function index()
     {
         $this->load->helper('cookie');
@@ -68,13 +70,14 @@ Class Vendor extends MY_Controller {
         $this->load->view('vendor/vandorregister');
         //$this->Admin();
     }
-    public function vendor_login(){
+    public function vendor_login()
+    {
         $this->load->helper('cookie');
         $this->load->view('vendor/vendor_login');    
     }
     
     public function vendorLogin(){
-        
+
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
             $this->form_validation->set_rules('email', 'Email', 'required|trim');
@@ -93,7 +96,6 @@ Class Vendor extends MY_Controller {
                 $data = array('email'=> $this->input->post('email'),
                             'password' =>md5($this->input->post('password'))
                             );
-
                 $result = $this->Vendor->login($data);
                 if(!empty($result))
                 {
@@ -119,6 +121,7 @@ Class Vendor extends MY_Controller {
     }
     public function dashboard()
     {
+        
     	$this->middle = 'dashboard';
         $this->Admin();
     }
@@ -240,10 +243,12 @@ Class Vendor extends MY_Controller {
         }
     
     }
+    
     public function productadd()
     {
         $this->middle = 'productadd';
         $this->Vendor();
+
     }     
 
     public function inventory()
@@ -274,6 +279,7 @@ Class Vendor extends MY_Controller {
     }
     public function vendor_dashboard()
     {
+        $this->data['product'] = $this->Vendor->getData('product','*','');
         $this->middle = 'vendor_dashboard';
         $this->Vendor();
     }    
@@ -464,11 +470,9 @@ Class Vendor extends MY_Controller {
     //     $this->middle = 'user_list';
     //     $this->Admin();
     // }    
-
     public function logout()
     {
         $this->session->sess_destroy();
         redirect(base_url('vendor/vendor_login'));
     }
-
 }

@@ -78,21 +78,21 @@ $bulk_data = $bulk_data['uploaded_bulk_data'];
                   </td>
                   <td>
                     <div class="form-group label-float-top">
-  				            <select class="form-control control-float-top bulk-dropdown" name="bulk_product_category[]">
+                      <select class="form-control control-float-top bulk-dropdown" name="bulk_product_category[]">
                         <option></option>
                         <?php foreach ($category as $value) { ?>
                           <option value="<?=$value->id ?>"><?= $value->category_name ?></option> 
                         <?php } ?>  
-  				               
-  				               <option>List 1</option>
-  				               <option>List 2</option>
-  				               <option>List 3</option>
-  				            </select>
-  				            <label for="Address">Select</label>
-  				          </div>
-  			     	    </td>
+                         
+                         <option>List 1</option>
+                         <option>List 2</option>
+                         <option>List 3</option>
+                      </select>
+                      <label for="Address">Select</label>
+                    </div>
+                  </td>
                 </tr>
-  				      <?php } ?>
+                <?php } ?>
               </tbody>
             </table>          
             <div class=""> 
@@ -186,23 +186,23 @@ $bulk_data = $bulk_data['uploaded_bulk_data'];
 
 <script type="text/javascript">
 
-	$(function(){
-		$("#coba").spartanMultiImagePicker({
-			fieldName:        'fileUpload[]',
-			directUpload : {
-				status: true,
-				loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
-				url: '../c.php',
-				additionalParam : {
-					name : 'My Name'
-				},
-				success : function(data, textStatus, jqXHR){
-				},
-				error : function(jqXHR, textStatus, errorThrown){
-				}
-			}
-		});
-	});
+  $(function(){
+    $("#coba").spartanMultiImagePicker({
+      fieldName:        'fileUpload[]',
+      directUpload : {
+        status: true,
+        loaderIcon: '<i class="fas fa-sync fa-spin"></i>',
+        url: '../c.php',
+        additionalParam : {
+          name : 'My Name'
+        },
+        success : function(data, textStatus, jqXHR){
+        },
+        error : function(jqXHR, textStatus, errorThrown){
+        }
+      }
+    });
+  });
 
 $(document).ready(function(){
   $(".form-group .form-control").blur(function(){

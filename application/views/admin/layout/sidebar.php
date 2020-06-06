@@ -53,14 +53,14 @@
                   <li><a><i class="fa fa-eraser"></i> Inventory<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a class="sub-item" href="<?php echo base_url('admin/home_category'); ?>">Home Module</a></li>
-                      <li><a class="sub-item" href="<?php echo base_url('admin/product_category'); ?>">Product Category</a></li>
+                      <li><a class="sub-item" href="<?php echo base_url('admin/category_list'); ?>">Product Category</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/brands'); ?>">Brands</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/manufacturer_list'); ?>">Manufacturer</a></li>
+                      <li><a class="sub-item" href="<?php echo base_url('admin/addSingleProduct'); ?>">Add Product</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/product_form_list'); ?>">Product Form</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/all_product'); ?>">All Product</a></li>
                       <li><a class="sub-item" href="#">Linking</a></li>
-                      <li><a class="sub-item" href="#">Salt Composition</a></li>
-                      <li><a class="sub-item" href="<?php echo base_url('admin/addSingleProduct'); ?>">Add Product</a></li>
+                      <li><a class="sub-item" href="<?php echo base_url('admin/saltComposition_list'); ?>">Salt Composition</a></li>
                       <li><a class="sub-item" href="#">All Inventory</a></li>
                     </ul>
                   </li>

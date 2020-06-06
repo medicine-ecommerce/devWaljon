@@ -5,11 +5,11 @@ class MY_Model extends CI_Model {
 
         parent::__construct();
         // Load form helper library    
-	//comment while merging    
+	    //comment while merging    
         //$this->load->model(array('CustomUpload_model'=>'customUpload','CustomEmail_model','DeveloperProfileApi_model'=>'DeveloperProfileApi'));            
     }
-
-    public function getData($table,$column,$where) {
+    public function getData($table,$column,$where) 
+    {
         $this->db->select($column);
         if($where){
             $this->db->where($where);
@@ -21,7 +21,6 @@ class MY_Model extends CI_Model {
         }
         
     }
-
     public function getRowData($table,$column,$where) {
         $this->db->select($column);
         if($where){
@@ -85,7 +84,7 @@ class MY_Model extends CI_Model {
     {        
 
         $config['upload_path'] = './assets/'.$path.'/';
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png';
         $config['overwrite'] = TRUE;
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;
