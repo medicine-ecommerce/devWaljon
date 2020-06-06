@@ -11,7 +11,7 @@ class Vendor_model extends MY_model
 
 	public function login($data){		
 		$this->db->select('*');
-		$this->db->from('vendors');
+		$this->db->from('users');
 		$this->db->group_start();
 		$this->db->where('email',$data['email']);		
 		$this->db->or_where('mobile',$data['email']);
@@ -28,11 +28,11 @@ class Vendor_model extends MY_model
 	}
 	public function vendorRegistration($data)
 	{
-		return $this->insertData('vendors',$data);
+		return $this->insertData('users',$data);
 	}
 	public function vendorProfileUpdate($data,$where)
 	{
-		return $this->updateData('vendors',$data,$where);
+		return $this->updateData('users',$data,$where);
 	}
 	public function addBankAccount($data)
 	{
@@ -41,11 +41,11 @@ class Vendor_model extends MY_model
 
 	public function VendorList()
 	{
-		return $this->getData('vendors','*','');
+		return $this->getData('users','*','');
 	}
 	public function VendorStatus($status,$id)
 	{
-		return $this->updateData('vendors',array('is_active'=>$status),array('id'=>$id));
+		return $this->updateData('users',array('is_active'=>$status),array('id'=>$id));
 	}
 	public function getUploadedBulkData()
 	{		
@@ -68,7 +68,27 @@ class Vendor_model extends MY_model
 		}
 		
 	}
-	
+	public function getAllProductData()
+	{		
+		//if(!empty($this->session->userdata('vendor_id'))){			
+		$this->db->select('product.id,product.name,manufacturer.name as manufacturer_name,product_item.mrp,product_item.sale_price,product_item.quantity,product.created_at,product_form.name as product_form,product_item.unit');
+		$this->db->from('product');
+		$this->db->join('product_item','product_item.product_id=product.id','left');
+		$this->db->join('manufacturer','manufacturer.id=product.manufacturer_id','left');
+		$this->db->join('product_form','product_form.id=product.product_form_id','left');
+		//$this->db->where('vendor_id',$this->session->userdata('vendor_id'));
+		$query = $this->db->get();
+		if($query->num_rows() > 0){
+        	return $query->result();
+        }else{
+            return  json_encode(array('status'=>0,'message'=>'No record Found'));
+        }	
+		
+	}
+	public function productDelete($id)
+	{
+		return $this->deleteData('product',array('id'=>$id));
+	}
 
 }
 

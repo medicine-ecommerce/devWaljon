@@ -567,3 +567,36 @@ $config['working_experience']= array(
         "value" => "10 Years",
     ),
 );
+$config['account_type']= array(
+	array(
+        "key" => '0',
+        "value" => "Select Type",
+    ),
+    array(
+        "key" => '1',
+        "value" => "Saving Account",
+    ),
+    array(
+        "key" => '2',
+        "value" => "Regular Savings",
+    ),
+    array(
+        "key" => '3',
+        "value" => "Current Account",
+    ),
+    array(
+        "key" => '4',
+        "value" => "Recurring Deposit Account",
+    ),
+    array(
+        "key" => '5',
+        "value" => "Fixed Deposit Account",
+    ),
+    array(
+        "key" => '6',
+        "value" => "DEMAT Account",
+    ),
+    array(
+        "key" => '7',
+        "value" => "NRI Accounts",
+    ));

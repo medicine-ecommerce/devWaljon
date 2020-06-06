@@ -39,6 +39,7 @@
     <link href="<?php echo base_url(); ?>build/css/custom.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>build/css/style.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>    
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ9GyWMzIoUSeTvXLg8YatVBOt9UCwkB8&libraries=places"></script>
 
   </head>  
   <body class="nav-md">
@@ -66,9 +67,13 @@
                         <span class="badge bg-red pull-right">50%</span>
                         <span>Settings</span>
                       </a>
-                  <a class="dropdown-item"  href="javascript:;">Help</a>
-                    <a class="dropdown-item"  href="<?php echo base_url('admin/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                    <a class="dropdown-item"  href="<?php echo base_url('vendor/logout'); ?>"><i class="fa fa-sign-out pull-right"></i>Vendor Log Out</a>
+                    <a class="dropdown-item"  href="javascript:;">Help</a>
+                    <?php if($_SESSION["user_type"]=='admin'){ ?>
+                      <a class="dropdown-item"  href="<?php echo base_url('admin/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                     <?php }
+                    elseif($_SESSION["user_type"]=='vendor'){ ?>
+                      <a class="dropdown-item"  href="<?php echo base_url('vendor/logout'); ?>"><i class="fa fa-sign-out pull-right"></i>Log Out</a>
+                    <?php } ?>
                   </div>
                 </li>
 

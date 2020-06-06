@@ -53,12 +53,26 @@
                                   <td><?php echo $value->last_name; ?></td>
                                   <td><?php echo $value->email; ?></td>
                                   <td><?php echo $value->mobile; ?></td>
-                                  <td><a href="<?php echo ($value->is_active > 0)? base_url('admin/vendor_status/0/'.$value->id): base_url('admin/vendor_status/1/'.$value->id); ?>"><?php echo ($value->is_active <= 0)?'<span class="status-consulted">Active</span>':'<span class="status-shipped">Deactive</span>'; ?></a></td>
-                                  <td><span class="status-Review">Review</span>
-                                    <a href="<?php echo base_url('admin/vendor_edit/'.$value->id);?>"><span class="status-approve"><i class="fa fa-check"></i>
-                                    </span></a>
-                                    <a href="<?php echo base_url('admin/vendor_delete/'.$value->id); ?>" onclick="return confirm('Are you sure？')"><span class="status-cancle"><i class="fa fa-close"></i></span></a>
-                                  </td>
+                                  <td>
+                                  <?php if ($value->is_active=='1') {
+                                    echo '<span class="approved">Active</span>';
+                                  } else {
+                                    echo '<span class="rejected">Deactive</span>';
+                                  } ?>
+                                </td>
+                                <td>
+                                  <a href="<?php echo base_url('admin/vendor_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-check"></i></span></a>
+                                  <a href="<?php echo base_url('admin/vendor_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-close"></i></span></a>
+                                  <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
+                                  <?php if ($value->is_active=='0') { ?>
+                                    <a class="dropdown-item" href="<?php echo base_url('admin/vendor_status/1/'.$value->id);?>">Approve</a>
+                                  <?php }
+                                  else { ?>
+                                    <a class="dropdown-item" href="<?php echo base_url('admin/vendor_status/0/'.$value->id);?>">Reject</a>
+                                  <?php } ?>
+                                  </div>
+                                </td>
                                 </tr>
 
                               <?php }

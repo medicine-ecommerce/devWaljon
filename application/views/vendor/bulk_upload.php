@@ -45,8 +45,8 @@
                 <tr>
                   <td>
                     <div class="bulk-images">                    
-                      <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
-                        <img  src="<?php echo base_url('assets/img/main_product_image.png');?>"></a>
+                      <a data-id="<?= $value->id ?>" data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
+                        <img src="<?php echo base_url('assets/img/main_product_image.png');?>"></a>
                       <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
                         <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
                     </div>
@@ -140,7 +140,7 @@
                   <p>Main Images</p>
                 </div>
                 <div class="bulk-img-div">
-                  <img src="<?php echo base_url('assets/img/main_product_image.png');?>"> 
+                  <img width="200" height="220" src="<?php echo base_url('assets/img/main_product_image.png');?>" class="bulk-img-main" > 
                 </div>
               </div> 
             </div>
@@ -161,7 +161,8 @@
               </div> 
               <hr>
               <div class="upload-details padding-top-bottom-20">
-                <p><i class="fa fa-upload"></i> Ipload Main Image</p>
+                <input type="file" name="product_main_image" id="product_main_image">
+                <p><i class="fa fa-upload"></i> Upload Main Image</p>
                 <p><i class="fa fa-trash" style="color:red"></i> Delete Main Image</p>
               </div>
             </div>
@@ -172,7 +173,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" data-dismiss="modal" class="btn btn-default submit_button float-right">Cancle</button>              
-          <button type="submit" class="btn btn-default submit_button float-right">Save</button> 
+          <button type="submit" class="btn btn-default submit_button float-right product-image-save">Save</button> 
         </div>
       </div> 
     </div>
@@ -218,5 +219,50 @@ $(document).ready(function () {
   $('#dtBasicExample').DataTable();
   $('.dataTables_length').addClass('bs-select');
 });
+
+$(".img-uplod-modal").click(function(){
+     var getId =$(this).attr("data-id");
+    $(".bulk-img-main").attr("id",getId);
+    $("#product_main_image").attr("custom-data-id",getId);
+    $(this).find("img").attr("main-preview-id","");
+});
+  $(".product-image-save").click(function(){    
+     var getId =$(".bulk-img-main").attr("id");
+     var tempSRC =$(".bulk-img-main").attr("src");
+     console.log(tempSRC);
+     $(".bulk-img-main").removeAttr("id");
+    $("img").find("main-preview-id").attr('src',tempSRC);  
+     
+    // $(".bulk-img-main").attr("id",getId);
+    // $("#product_main_image").attr("custom-data-id",getId);
+
+  });
+
+var product_main_image = document.getElementById("product_main_image"),
+    preview = document.getElementById("SK14");
+    
+  product_main_image.addEventListener("change", function() {
+
+    var getId = $(this).attr("custom-data-id");    
+
+    changeImage(this,getId);
+  });
+
+  function changeImage(input,getId) {
+    preview = document.getElementById(getId);
+    var reader;
+
+    if (input.files && input.files[0]) {
+      reader = new FileReader();
+
+      reader.onload = function(e) {
+        console.log(e.target.result);
+        preview.setAttribute('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  } 
+
 
 </script>
