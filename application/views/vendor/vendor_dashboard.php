@@ -1,3 +1,4 @@
+
   <!-- page content -->
   <div class="right_col" role="main">
   <?php if($this->session->flashdata('success')){ ?>
@@ -176,8 +177,8 @@
                     <td><?php echo $row->id; ?></td>
                     <td><?php echo $row->name; ?></td>
                     <td></td>
-                    <td><?php $manufacturer_name = $this->db->get_where('manufacturer', array('id' => $row->manufacturer_id,))->row(); echo $manufacturer_name->name;  ?></td>
-                    <td><?php $product = $this->db->get_where('product_item', array('product_id' => $row->id,))->row(); echo $product->quantity;  ?></td>
+                    <td><?= $row->manufacturer_name; ?></td>
+                    <td><?= $row->quantity ?></td>
                     <td>
                       <span>
                         <a href="#" >

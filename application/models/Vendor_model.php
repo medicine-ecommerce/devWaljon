@@ -90,6 +90,30 @@ class Vendor_model extends MY_model
         }	
 		
 	}
+	public function getProductForStockDetails()
+	{		
+		if(!empty($this->session->userdata('vendor_id'))){			
+			$this->db->select('product.*,product_item.*,manufacturer.name as manufacturer_name,product_form.name as product_form');
+			$this->db->from('product');
+			$this->db->join('product_item','product_item.product_id=product.id','left');
+			$this->db->join('manufacturer','manufacturer.id=product.manufacturer_id','left');
+			$this->db->join('product_form','product_form.id=product.product_form_id','left');
+			$this->db->where('product.created_by',$this->session->userdata('vendor_id'));
+			$query = $this->db->get();			
+			// $this->db->get();
+			// echo $this->db->last_query();
+			// die();
+			if($query->num_rows() > 0){
+			// $data['allCount'] = $this->db->query('SELECT FOUND_ROWS() count;')->row()->count;
+            $data = $query->result();
+	            return  $data;
+	        }else{
+	            return  json_encode(array('status'=>0,'message'=>'No record Found'));
+	        }
+
+		}
+		
+	}
 	public function productDelete($id)
 	{
 		return $this->deleteData('product',array('id'=>$id));
