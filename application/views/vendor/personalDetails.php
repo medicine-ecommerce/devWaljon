@@ -223,7 +223,7 @@
 				<div class="col-md-3">
 					 <div class="form-group label-float-top">
 						<input type="text" class="form-control control-float-top" name="company_name" value="<?php echo set_value('company_name')?>">
-						<label for="Address">Company Name</label>
+						<label for="Address">Medical Name</label>
 					</div>
 				</div>
 				<div class="col-md-3">
@@ -263,7 +263,26 @@
 	</form>
 </div>
 <!-- data-toggle="modal" data-target="#myModal" -->
-
+<div class="modal fade" id="myModal" role="dialog">
+	<div class="modal-dialog registration-done">
+  <!-- Modal content-->
+	  <div class="modal-content welldon-modal">
+	    <div >
+			<img src="<?php echo base_url(); ?>assets/img/green_tick.jpg" class="green-tick-img" id="preview">
+			<h1> Well Done</h1>		
+			<p>Congratulations your medical store has been created succesfully now you can add staff member after continue</p>
+	      <!-- <h4 class="modal-title">Modal Header</h4>
+	      <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+	    </div>
+	    <div class="modal-body">
+	      
+	    </div>
+	    <div class="text-center">
+	      <button type="button" onclick="location.href='<?php echo base_url();?>vendor/vendor_dashboard'" class="btn btn-default submit_button" data-dismiss="modal">Continue</button>
+	    </div>
+	  </div>  
+	</div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="error-myModal" role="dialog">
@@ -359,6 +378,10 @@
 		
 		if(prev_url!= BaseUrl+''+'/vendor/vendorregister' && prev_url!= BaseUrl+''+'/vendor/vendor_login' && id!='' ){
 				$('#myModal').modal('show'); 
+				$('#myModal').modal({
+				    backdrop: 'static',
+				    keyboard: false
+				});
 		}
 
 	});

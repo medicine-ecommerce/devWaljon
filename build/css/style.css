@@ -1158,7 +1158,6 @@ img.edit-pencil:hover {
 .form-control.personal-section, .form-control.working-section, .form-control.bank-section, .form-control.medical-section {
     background-color: whitesmoke;
 }
-
 /*all product*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {

@@ -146,20 +146,34 @@ Class Vendor extends MY_Controller {
         // echo "<pre>";
         //   print_r($_POST);
         //   die();
+        $msg = '';
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('first_name', 'First Name', 'required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'required');
             $this->form_validation->set_rules('email', 'email', 'required');
             $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
-            $this->form_validation->set_rules('company_name', 'Company Name', 'required');
+            $this->form_validation->set_rules('company_name', 'Medical Name', 'required');
             $this->form_validation->set_rules('address', 'Addresss', 'required');
             // $this->form_validation->set_rules('licence', 'Licence', 'required');
-
             
-            if ($this->form_validation->run() == FALSE){                                 
-                $this->session->set_flashdata('error', validation_errors());      
-                redirect(base_url('vendor/personalDetails'));
+            
+            if (empty($_FILES['licence']['name']) && empty($this->input->post('edit_licence'))) {
+                $msg.= '<p>Please upload your medical licence</p>';
+            }            
+            if ($this->form_validation->run() == FALSE){
+                $msg.= validation_errors();                
             }
+
+            if (!empty($msg)) {
+                $this->session->set_flashdata('error', $msg);      
+                redirect($_SERVER['HTTP_REFERER']); 
+                //redirect(base_url('vendor/personalDetails'));
+            }
+
+            // if ($this->form_validation->run() == FALSE){                                 
+            //     $this->session->set_flashdata('error', validation_errors());      
+            //     redirect(base_url('vendor/personalDetails'));
+            // }
             else{  
                 if(!empty($_FILES['profile_image'])){
                     $uploadedImg = $this->Vendor->upload("profile_image","vendor_profile");
@@ -214,11 +228,11 @@ Class Vendor extends MY_Controller {
                 // die();
                 if ($result > 0) {
                     $this->session->set_flashdata('success', 'Profile successfully Updated');                    
-                    if($_SERVER['HTTP_REFERER']== base_url()."vendor/editPersonalDetails"){
                         redirect($_SERVER['HTTP_REFERER']); 
-                    }else{
-                        redirect(base_url('vendor/vendor_dashboard'));
-                    }
+                    // if($_SERVER['HTTP_REFERER']== base_url()."vendor/editPersonalDetails"){
+                    // }else{
+                    //     redirect(base_url('vendor/vendor_dashboard'));
+                    // }
                 }
             }
             $this->session->set_flashdata('info', 'No data changes');
