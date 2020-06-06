@@ -53,12 +53,18 @@ class Vendor_model extends MY_model
 			$this->db->from('product');
 			$this->db->join('product_item','product_item.product_id=product.id','left');
 			$this->db->join('manufacturer','manufacturer.id=product.manufacturer_id','left');
-			$this->db->join('product_form','product_form.id=product.product_form','left');
-			$this->db->where('vendor_id',$this->session->userdata('vendor_id'));
+			$this->db->join('product_form','product_form.id=product.product_form_id','left');
+			$this->db->where('product.created_by',$this->session->userdata('vendor_id'));
 			$this->db->where('update_at is NULL', NULL, FALSE);
 			$query = $this->db->get();
+
+			
+			// $this->db->get();
+			// echo $this->db->last_query();
+			// die();
 			if($query->num_rows() > 0){
-            $data = $query->result();
+			$data['allCount'] = $this->db->query('SELECT FOUND_ROWS() count;')->row()->count;
+            $data['uploaded_bulk_data'] = $query->result();
 	            return  $data;
 	        }else{
 	            return  json_encode(array('status'=>0,'message'=>'No record Found'));

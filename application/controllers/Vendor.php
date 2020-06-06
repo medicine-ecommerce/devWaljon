@@ -359,12 +359,12 @@ Class Vendor extends MY_Controller {
                         $product_form = $this->Vendor->insertData('product_form',array('name'=>$product_form));
                     }
 
-                    $productdata = array('name'              =>  $product_name,
+                    $productdata = array('name'          =>  $product_name,
                                     'manufacturer_id'    =>  $manufacturer_id,
-                                    'product_form'       =>  $product_form,
+                                    'product_form_id'    =>  $product_form,
                                     'varieties'          =>  $varieties,
                                     'prescription'       =>  $prescription,
-                                    'vendor_id'          =>  $this->session->userdata('vendor_id'),
+                                    'created_by'         =>  $this->session->userdata('vendor_id'),
                                     'upload_source'      =>  "bulk_upload");                               
                     $product_last_id = $this->Vendor->insertData('product',$productdata);
 
@@ -388,7 +388,7 @@ Class Vendor extends MY_Controller {
     public function bulk_upload()
     {
         $this->data['category'] = $this->Vendor->getData('category','*','');
-        $this->data['bulk_data'] = $this->Vendor->getUploadedBulkData();        
+        $this->data['bulk_data'] = $this->Vendor->getUploadedBulkData();                
         $this->middle = 'bulk_upload';
         $this->Vendor();
     } 

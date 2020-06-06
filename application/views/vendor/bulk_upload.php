@@ -1,4 +1,9 @@
 <!-- <script src="<?php echo base_url(); ?>vendor/countrystatecity.js"></script> -->
+<?php 
+$allCount = $bulk_data['allCount'];
+$bulk_data = $bulk_data['uploaded_bulk_data'];
+?>
+
 <div class="right_col" role="main">
   <div class="">
     <div class="page-title">
@@ -93,7 +98,7 @@
             <div class=""> 
               <div class="col-md-6">
                 <div class="upload-details">
-                  <p>Total Products : 0</p>
+                  <p>Total Products : <?php echo $allCount; ?>  </p>                  
                   <p>Products link with images : 0</p>
                   <p>Products not link with images : 0</p>
                 </div>
