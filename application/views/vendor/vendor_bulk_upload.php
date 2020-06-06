@@ -93,7 +93,8 @@
                   <img src="<?php echo base_url(); ?>assets/img/excel-logo.jpg">  
                 </div>
                 <button type="button" class="btn active-btn btn-round" data-dismiss="modal">Cancle</button>
-                <button type="button" class="btn active-btn btn-round"> Download Excel </button>
+                <a type="button" href="<?php echo base_url(); ?>assets/bulk_format/" download="products_format.xls" class="btn btn active-btn btn-round" value="Download" onchange="fileUpload()">Download Excel</a>                    
+                <!-- <button type="button" class="btn active-btn btn-round"> Download Excel </button> -->
               </div>      
             </div>  
           </div> 
