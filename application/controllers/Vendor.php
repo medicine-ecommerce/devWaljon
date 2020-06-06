@@ -58,6 +58,7 @@ Class Vendor extends MY_Controller {
                 if ($last_id > 0) {
                     $data = array('email'=>$this->input->post('email'),
                                   'vendor_id'=>$last_id,
+                                  'user_id'=>$last_id,
                                   'user_type'=>'vendor'
                               );
                     $this->session->set_userdata($data);
@@ -101,6 +102,7 @@ Class Vendor extends MY_Controller {
                 {
                     $data = array('email'=>$result->email,
                                 'vendor_id'=>$result->id,
+                                'user_id'=>$result->id,
                                 'user_type'=>$result->type);
 
                     $this->session->set_userdata($data);
