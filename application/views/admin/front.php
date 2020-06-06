@@ -24,7 +24,7 @@
           <div class="col-md-6 col-sm-6 col-xs-6 admin-side-6" onclick='location.href = "<?=base_url('admin');?>"'>
             <div class="banner-half-sec dev-half-sec">
               <div class="banner-vector-bg dev-vector-bg">
-                <img src="<?= base_url('assets/img/sp1.png')?>">
+                <img src="<?= base_url('assets/img/a1.jpg')?>">
               </div>
               <div class="banner-sec-btn">
                 <a href="<?=base_url('admin');?>" class="btn btn-banner-action btn-work">Go to Admin Dashboard</a>
@@ -35,7 +35,7 @@
           <div class="col-md-6 col-sm-6 col-xs-6 vendor-side-6" onclick='location.href = "<?=base_url('vendor');?>"'>
             <div class="banner-half-sec client-half-sec">
               <div class="banner-vector-bg client-vector-bg">
-                <img src="<?= base_url('assets/img/v1.png')?>">
+                <img src="<?= base_url('assets/img/v2.jpg')?>">
               </div>
               <div class="banner-sec-btn">
                 <a href="<?=base_url('vendor');?>" class="btn btn-banner-action btn-hire">Go to Vendor Dashboard</a>

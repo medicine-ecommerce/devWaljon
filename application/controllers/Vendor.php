@@ -260,7 +260,7 @@ Class Vendor extends MY_Controller {
     }
     public function all_product()
     {
-        $this->data['all_product'] = $this->Vendor->getAllProductData();        
+        $this->data['all_products'] = $this->Vendor->getAllProductData();        
         $this->middle = 'all_product';
         $this->Vendor();
     }

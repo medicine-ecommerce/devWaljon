@@ -52,7 +52,7 @@
                   </li>
                   <li><a><i class="fa fa-eraser"></i> Inventory<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a class="sub-item" href="<?php echo base_url('admin/home_category'); ?>">Home Module</a></li>
+                      <!-- <li><a class="sub-item" href="<?php echo base_url('admin/home_category'); ?>">Home Module</a></li> -->
                       <li><a class="sub-item" href="<?php echo base_url('admin/category_list'); ?>">Product Category</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/brands'); ?>">Brands</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/manufacturer_list'); ?>">Manufacturer</a></li>

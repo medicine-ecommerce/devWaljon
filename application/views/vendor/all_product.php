@@ -37,7 +37,7 @@
                   </thead>
                   <tbody>
                     <?php $i = 1;
-                    foreach ($all_product as $value) { ?>
+                    foreach ($all_products as $value) { ?>
                     <tr>
                       <td><?php echo $i++; ?></td>
                       <td><?php echo $value->name; ?></td>
