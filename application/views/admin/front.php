@@ -21,24 +21,24 @@
     <div class="">
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-6 col-sm-6 col-xs-6 admin-side-6" onclick='location.href = "<?=base_url('admin/login');?>"'>
+          <div class="col-md-6 col-sm-6 col-xs-6 admin-side-6" onclick='location.href = "<?=base_url('admin');?>"'>
             <div class="banner-half-sec dev-half-sec">
               <div class="banner-vector-bg dev-vector-bg">
                 <img src="<?= base_url('assets/img/sp1.png')?>">
               </div>
               <div class="banner-sec-btn">
-                <a href="<?=base_url('admin/login');?>" class="btn btn-banner-action btn-work">Work as a Admin</a>
+                <a href="<?=base_url('admin');?>" class="btn btn-banner-action btn-work">Go to Admin Dashboard</a>
               </div>
             </div>
           </div>
           <div class="dev-page-half"></div>
-          <div class="col-md-6 col-sm-6 col-xs-6 vendor-side-6" onclick='location.href = "<?=base_url('vendors');?>"'>
+          <div class="col-md-6 col-sm-6 col-xs-6 vendor-side-6" onclick='location.href = "<?=base_url('vendor');?>"'>
             <div class="banner-half-sec client-half-sec">
               <div class="banner-vector-bg client-vector-bg">
                 <img src="<?= base_url('assets/img/v1.png')?>">
               </div>
               <div class="banner-sec-btn">
-                <a href="<?=base_url('vendors');?>" class="btn btn-banner-action btn-hire">Work as a Vendor</a>
+                <a href="<?=base_url('vendor');?>" class="btn btn-banner-action btn-hire">Go to Vendor Dashboard</a>
               </div>
             </div>
           </div>

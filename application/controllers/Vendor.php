@@ -27,7 +27,7 @@ Class Vendor extends MY_Controller {
     {
         $this->load->helper('cookie');
     	$this->load->view('vendor/vandorregister');
-    }
+    }   
     public function vendorregister()
     {   
         $this->load->helper('cookie');
