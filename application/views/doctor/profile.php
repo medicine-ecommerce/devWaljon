@@ -47,13 +47,13 @@
 						<label for="email">Mobile</label>
 					</div>
 				</div>
-				<div class="col-md-4">
+				<!-- <div class="col-md-4">
 					<div class="form-group label-float-top">
 						<input type="text" class="form-control control-float-top" name="email" >
 						<label for="email">Email</label>
 					</div>
 				</div>
-				<div class="col-md-6">
+ -->				<div class="col-md-6">
 					<div class="form-group label-float-top">
 						<textarea class="form-control control-float-top" name="specialty"></textarea>
 						<label for="email">Specialty</label>

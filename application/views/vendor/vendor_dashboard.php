@@ -180,13 +180,13 @@
                     <td><?php $product = $this->db->get_where('product_item', array('product_id' => $row->id,))->row(); echo $product->quantity;  ?></td>
                     <td>
                       <span>
-                        <a href="">
-                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
+                        <a href="#" >
+                          <button type="button"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
                         </a> 
                       </span> 
                       <span>
-                        <a href="">
-                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
+                        <a href="<?php echo base_url('vendor/product_delete/'.$row->id); ?>" onclick="return confirm('Are you sure？')" >
+                          <button type="button"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
                         </a>
                       </span>
                     </td>
@@ -226,3 +226,12 @@
 
 
   </script>
+  <script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
+</script>
