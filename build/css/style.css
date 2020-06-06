@@ -20,20 +20,24 @@ span.head-title {
     height: 100%;
 }
 .admin-side-6{
-    background: #d7d7d7;
+    background: #91c9e2;
     height: 100vh;
 }
 .banner-half-sec.dev-half-sec {
     text-align: center;
-    background: #d7d7d7;
-    padding: 76px 50px 50px;
+    background: #91c9e2;
+}
+.banner-half-sec{
+    padding:50px ;
 }
 .banner-half-sec.client-half-sec {
-    margin: 0px 50px;
     text-align: center;
 }
-.banner-half-sec.dev-half-sec .banner-sec-btn {
-    margin: 72px 0px 0px;
+.banner-half-sec .banner-sec-btn {
+    margin: 30px 0px;
+}
+.vendor-side-6 {
+    background: #2c95b3;
 }
 a.btn-banner-action.btn-work {
     border-color: #21638a;
@@ -56,8 +60,8 @@ a.btn-banner-action {
     overflow: hidden;
 }
 a.btn-banner-action.btn-hire {
-    border-color: #199028;
-    color: #199028;
+    border-color: white;
+    color: white;
 }
 /*front page*/
 /*dashboard css*/
