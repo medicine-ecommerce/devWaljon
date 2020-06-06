@@ -67,16 +67,32 @@
                 <div class="chat-popup" id="myForm">
                   <div class="form-container">
                     <div class="bulk-upload-div">
-                      <a href="<?php echo base_url('vendor/vendor_bulk_upload'); ?>">
-                        <span class="upload-span">Bulk Upload <span class="rotate-div"></span></span>
-                        <button type="button" class="btn bulk-upload-btn"><i class="fa fa-clone"></i></button>
-                      </a>  
+                      <?php if($_SESSION["user_type"]=='admin'){ ?>
+                        <a href="<?php echo base_url('admin/vendor_bulk_upload'); ?>">
+                          <span class="upload-span">Bulk Upload <span class="rotate-div"></span></span>
+                          <button type="button" class="btn bulk-upload-btn"><i class="fa fa-clone"></i></button>
+                        </a> 
+                      <?php }
+                      elseif($_SESSION["user_type"]=='vendor'){ ?>
+                        <a href="<?php echo base_url('vendor/vendor_bulk_upload'); ?>">
+                          <span class="upload-span">Bulk Upload <span class="rotate-div"></span></span>
+                          <button type="button" class="btn bulk-upload-btn"><i class="fa fa-clone"></i></button>
+                        </a>  
+                      <?php } ?>  
                     </div>
                     <div class="single-upload-div">
-                      <a href="<?php echo base_url('vendor/addSingleProduct'); ?>">
-                        <span class="upload-span">Single Upload <span class="rotate-div"></span></span>
-                        <button type="button" class="btn single-upload-icon"><i class="fa fa-upload"></i></button>
-                      </a>  
+                      <?php if($_SESSION["user_type"]=='admin'){ ?>
+                        <a href="<?php echo base_url('admin/addSingleProduct'); ?>">
+                          <span class="upload-span">Single Upload <span class="rotate-div"></span></span>
+                          <button type="button" class="btn single-upload-icon"><i class="fa fa-upload"></i></button>
+                        </a> 
+                      <?php }
+                      elseif($_SESSION["user_type"]=='vendor'){ ?>
+                        <a href="<?php echo base_url('vendor/addSingleProduct'); ?>">
+                          <span class="upload-span">Single Upload <span class="rotate-div"></span></span>
+                          <button type="button" class="btn single-upload-icon"><i class="fa fa-upload"></i></button>
+                        </a>  
+                      <?php } ?> 
                     </div>
                     <button type="button" class="btn cancel" onclick="closeForm()"><i class="fa fa-close"></i></button>
                   </div>
