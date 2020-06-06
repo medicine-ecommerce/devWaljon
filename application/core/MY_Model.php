@@ -84,7 +84,7 @@ class MY_Model extends CI_Model {
     {        
 
         $config['upload_path'] = './assets/'.$path.'/';
-        $config['allowed_types'] = 'gif|jpg|png';
+        $config['allowed_types'] = 'gif|jpg|jpeg|png';
         $config['overwrite'] = TRUE;
         $config['encrypt_name'] = TRUE;
         $config['remove_spaces'] = TRUE;

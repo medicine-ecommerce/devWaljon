@@ -170,156 +170,28 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php foreach ($product as $row ) {
+                         ?>
                   <tr>
-                    <td>1</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>55</td>
+                    <td><?php echo $row->id; ?></td>
+                    <td><?php echo $row->name; ?></td>
+                    <td></td>
+                    <td><?php $manufacturer_name = $this->db->get_where('manufacturer', array('id' => $row->manufacturer_id,))->row(); echo $manufacturer_name->name;  ?></td>
+                    <td><?php $product = $this->db->get_where('product_item', array('product_id' => $row->id,))->row(); echo $product->quantity;  ?></td>
                     <td>
-                      <span> 
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
+                      <span>
+                        <a href="">
+                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
+                        </a> 
                       </span> 
                       <span>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
+                        <a href="">
+                          <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
+                        </a>
                       </span>
                     </td>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                      <span> 
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                      </span> 
-                      <span>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                      <span> 
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                      </span> 
-                      <span>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                      <span> 
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                      </span> 
-                      <span>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                      <span> 
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                      </span> 
-                      <span>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                      <span> 
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                      </span> 
-                      <span>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>7</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                      <span> 
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                      </span> 
-                      <span>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>8</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                      <span> 
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                      </span> 
-                      <span>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>9</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                      <span> 
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                      </span> 
-                      <span>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>10</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>55</td>
-                    <td>
-                      <span> 
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
-                      </span> 
-                      <span>
-                        <button type="button" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
-                      </span>
-                    </td>
-                  </tr>
+                <?php } ?>
                 </tbody>
               </table>
             </div>      

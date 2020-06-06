@@ -5,7 +5,7 @@
 </style>
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
 <div class="right_col registration-page">
-	<form method="post" action="<?php echo base_url() ?>/doctor/doctor_profile" enctype="multipart/form-data">		
+	<form method="post" action="<?php echo base_url() ?>doctor/doctor_profile" enctype="multipart/form-data">		
 		<div class="row padding-bottom20">
 			<div class="col-md-3">
 				<h5>Personal Information </h5>
@@ -88,7 +88,7 @@
 					<input type="file" id="licenceImg" name="licence_image" class="image-upload-input">
 				</div>
 			</div>
-			<!-- <div class="col-md-2">			
+			<div class="col-md-2">			
 				<div class="profile-image-section">								
 					<div>					
 						<img src="<?php echo base_url(); ?>assets/img/prescription.png" class="profile-images-custom" id="preview3">
@@ -96,7 +96,7 @@
 					<button type="button" class="btn btn-primary image-upload-button">Upload</button>
 					<input type="file" id="documents" name="documents" class="image-upload-input">
 				</div>
-			</div> -->
+			</div>
 		</div>	
 		<div class="row"> 
 			<div class="col-md-12 padding-top-bottom50">
@@ -200,26 +200,26 @@
 	    reader.readAsDataURL(input.files[0]);
 	  }
 	}
-	// var documents = document.getElementById("documents"),
- //    preview3 = document.getElementById("preview3");
+	var documents = document.getElementById("documents"),
+    preview3 = document.getElementById("preview3");
     
-	// documents.addEventListener("change", function() {
-	//   changeImage2(this);
-	// });
+	documents.addEventListener("change", function() {
+	  changeImage3(this);
+	});
 
-	// function changeImage3(input) {
-	//   var reader;
+	function changeImage3(input) {
+	  var reader;
 
-	//   if (input.files && input.files[0]) {
-	//     reader = new FileReader();
+	  if (input.files && input.files[0]) {
+	    reader = new FileReader();
 
-	//     reader.onload = function(e) {
-	//       preview3.setAttribute('src', e.target.result);
-	//     }
+	    reader.onload = function(e) {
+	      preview3.setAttribute('src', e.target.result);
+	    }
 
-	//     reader.readAsDataURL(input.files[0]);
-	//   }
-	// }
+	    reader.readAsDataURL(input.files[0]);
+	  }
+	}
 
 
 	$(document).ready(function(){

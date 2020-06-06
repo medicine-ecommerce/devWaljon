@@ -67,7 +67,7 @@
                         <span>Settings</span>
                       </a>
                   <a class="dropdown-item"  href="javascript:;">Help</a>
-                    <a class="dropdown-item"  href="<?php echo base_url('tordoc/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                    <a class="dropdown-item"  href="<?php echo base_url('doctor/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
                 </li>+
                 <li role="presentation" class="nav-item">

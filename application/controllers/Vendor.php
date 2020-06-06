@@ -42,8 +42,7 @@ Class Vendor extends MY_Controller {
                     $mrp = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
                     $sale_price = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
                     $quantity = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
-                $prescription = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
-                    
+                    $prescription = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
                     ///////////// MANUFACTURER CREATE AND UPDATE
                     $manufacturerExist = $this->Vendor->getRowData('manufacturer','id',array('name'=>$Manufacturer));
                     if($manufacturerExist){
@@ -58,8 +57,7 @@ Class Vendor extends MY_Controller {
                     }else{
                         $product_form = $this->Vendor->insertData('product_form',array('name'=>$product_form));
                     }
-
-                    $productdata = array('name'              =>  $product_name,
+                    $productdata = array('name'          =>  $product_name,
                                     'manufacturer_id'    =>  $manufacturer_id,
                                     'product_form'       =>  $product_form,
                                     'varieties'          =>  $varieties,
@@ -67,25 +65,21 @@ Class Vendor extends MY_Controller {
                                     'vendor_id'          =>  $this->session->userdata('vendor_id'),
                                     'upload_source'      =>  "bulk_upload");                               
                     $product_last_id = $this->Vendor->insertData('product',$productdata);
-
                     $productItemData = array( 'product_sku_id'   =>  $product_id,
                                     'product_id'     =>  $product_last_id,
                                     'unit'           =>  $unit,
                                     'mrp'            =>  $mrp,
                                     'sale_price'     =>  $sale_price,
                                     'quantity'       =>  $quantity);
-
                     if($product_last_id){
                      $this->Vendor->insertData('product_item',$productItemData);
                     }
                 }
-                
-            //$this->Vendor->bulkData($data);
-            echo 'Data Imported successfully';
+                //$this->Vendor->bulkData($data);
+                echo 'Data Imported successfully';
+            }
         }
     }
-    }
-
     public function index()
     {
         $this->load->helper('cookie');
@@ -169,6 +163,7 @@ Class Vendor extends MY_Controller {
     }
     public function dashboard()
     {
+        
     	$this->middle = 'dashboard';
         $this->Admin();
     }
@@ -202,8 +197,6 @@ Class Vendor extends MY_Controller {
             $this->form_validation->set_rules('company_name', 'Company Name', 'required');
             $this->form_validation->set_rules('address', 'Addresss', 'required');
             // $this->form_validation->set_rules('licence', 'Licence', 'required');
-
-            
             if ($this->form_validation->run() == FALSE){                 
                 $this->session->set_flashdata('error', validation_errors());      
             }
@@ -288,6 +281,7 @@ Class Vendor extends MY_Controller {
     }
     public function vendor_dashboard()
     {
+        $this->data['product'] = $this->Vendor->getData('product','*','');
         $this->middle = 'vendor_dashboard';
         $this->Vendor();
     }    

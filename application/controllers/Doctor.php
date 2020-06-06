@@ -117,9 +117,7 @@ Class Doctor extends MY_Controller {
         $this->load->view('doctor/footer');
     }
     public function doctor_profile()
-    {
-       // $a = $this->session->userdata('doctor_id');
-       // print_r($a);die();   
+    { 
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('first_name', 'First Name', 'required');
             $this->form_validation->set_rules('last_name', 'Last Name', 'required');
@@ -132,7 +130,17 @@ Class Doctor extends MY_Controller {
             if ($this->form_validation->run() == FALSE){                 
                 $this->session->set_flashdata('error', validation_errors());      
             }
-            else{                
+            else{
+
+                if(!empty($_FILES['profile_image'])){
+                  $uploadedImg = $this->Doctor->upload("profile_image","doctor_profile");
+                }
+                if(!empty($_FILES['licence_image'])){
+                   $uploadedLicence = $this->Doctor->upload("licence_image","licence");
+                } 
+                if(!empty($_FILES['licence_image'])){
+                   $uploadedDocuments = $this->Doctor->upload("documents","documents");
+                }                
                 $data = array(
                             'specialty'=>$this->input->post('specialty'),
                             'address'=>$this->input->post('address'),
@@ -140,24 +148,13 @@ Class Doctor extends MY_Controller {
                             'last_name'=>$this->input->post('last_name'),
                             'email'=>$this->input->post('email'),
                             'mobile'=>$this->input->post('mobile'),
+                            'profile_image'=>!empty($uploadedImg['file_name']) ? $uploadedImg['file_name'] : $this->input->post('edit_profile_image'),
+                            'licence_image'=>!empty($uploadedLicence['file_name']) ? $uploadedLicence['file_name'] : $this->input->post('edit_licence_image'),
+                            'documents'=>!empty($uploadedDocuments['file_name']) ? $uploadedDocuments['file_name'] : $this->input->post('edit_documents'),
                             'is_active'=>'0');
-               
                 $result = $this->Doctor->doctorProfileUpdate($data,array('doctor_id'=>$this->session->userdata('doctor_id')));
-                // print_r($result);die();
-
-                if(!empty($_FILES['profile_image'])){
-                    $this->Doctor->upload("profile_image","doctor_profile");
-                }
-
-                if(!empty($_FILES['licence_image'])){
-                    $this->Doctor->upload("licence_image","licence");
-                }
-                // if(!empty($_FILES['documents'])){
-                //     $this->Doctor->upload("documents","documents");
-                // }
-
                 if ($result > 0) {
-                    $this->session->set_flashdata('success', 'Doctor account created successfully');                     
+                    $this->session->set_flashdata('success', 'Doctor account created successfully');
                 }
             }
             redirect($_SERVER['HTTP_REFERER']); 
