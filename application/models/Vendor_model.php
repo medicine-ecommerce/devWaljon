@@ -108,7 +108,8 @@ class Vendor_model extends MY_model
             $data = $query->result();
 	            return  $data;
 	        }else{
-	            return  json_encode(array('status'=>0,'message'=>'No record Found'));
+	        	return 0;
+	            // return  json_encode(array('status'=>0,'message'=>'No record Found'));
 	        }
 
 		}

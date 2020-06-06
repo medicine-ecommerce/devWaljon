@@ -1,4 +1,8 @@
-
+<?php 
+if($product==0){
+  $product = [];
+}
+?>
   <!-- page content -->
   <div class="right_col" role="main">
   <?php if($this->session->flashdata('success')){ ?>
