@@ -10,6 +10,56 @@ span.head-title {
 }
 /*header css*/
 
+/*front page*/
+.banner-vector-bg {
+    width: 350px;
+    margin: 0 auto;
+}
+.banner-vector-bg img{
+    width: 100%;
+    height: 100%;
+}
+.admin-side-6{
+    background: #d7d7d7;
+    height: 100vh;
+}
+.banner-half-sec.dev-half-sec {
+    text-align: center;
+    background: #d7d7d7;
+    padding: 76px 50px 50px;
+}
+.banner-half-sec.client-half-sec {
+    margin: 0px 50px;
+    text-align: center;
+}
+.banner-half-sec.dev-half-sec .banner-sec-btn {
+    margin: 72px 0px 0px;
+}
+a.btn-banner-action.btn-work {
+    border-color: #21638a;
+    color: #21638a;
+}
+
+a.btn-banner-action {
+    background: none;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    color: #fff;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 1em auto;
+    padding: 1em 4em;
+    position: relative;
+    text-transform: uppercase;
+    width: auto;
+    overflow: hidden;
+}
+a.btn-banner-action.btn-hire {
+    border-color: #199028;
+    color: #199028;
+}
+/*front page*/
 /*dashboard css*/
 h5.dashboard-head {
     font-size: 16px;
