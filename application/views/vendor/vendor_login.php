@@ -20,7 +20,7 @@
           </div>        
           <span class="input-error-message"><?= $this->session->flashdata('error') ?></span>
           <div>            
-            <input type="checkbox" id="vehicle1" name="remember_password" value="Bike" <?php if(get_cookie('email')) { echo "checked"; } ?> >
+            <input type="checkbox" id="remember_password" name="remember_password" value="remember_password" <?php if(get_cookie('email')) { echo "checked"; } ?> >
             <label for="vehicle1"> Remember Password</label>
           </div>
           <br>

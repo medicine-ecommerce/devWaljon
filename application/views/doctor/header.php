@@ -39,7 +39,6 @@
     <link href="<?php echo base_url(); ?>build/css/custom.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>build/css/style.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>    
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ9GyWMzIoUSeTvXLg8YatVBOt9UCwkB8&libraries=places"></script>
 
   </head>  
   <body class="nav-md">
@@ -62,28 +61,21 @@
                     <span class="head-title">Account</span>
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item"  href="<?php echo base_url('vendor/editPersonalDetails'); ?>"> Profile</a>
+                    <a class="dropdown-item"  href="javascript:;"> Profile</a>
                       <a class="dropdown-item"  href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
                         <span>Settings</span>
                       </a>
-                    <a class="dropdown-item"  href="javascript:;">Help</a>
-                    <?php if($_SESSION["user_type"]=='admin'){ ?>
-                      <a class="dropdown-item"  href="<?php echo base_url('admin/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                     <?php }
-                    elseif($_SESSION["user_type"]=='vendor'){ ?>
-                      <a class="dropdown-item"  href="<?php echo base_url('vendor/logout'); ?>"><i class="fa fa-sign-out pull-right"></i>Log Out</a>
-                    <?php } ?>
+                  <a class="dropdown-item"  href="javascript:;">Help</a>
+                    <a class="dropdown-item"  href="<?php echo base_url('doctor/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                   </div>
-                </li>
-
+                </li>+
                 <li role="presentation" class="nav-item">
                   <a href="javascript:;" class="info-number" aria-expanded="false">
                     <i class="fa fa-commenting"></i>
                     <span class="head-title">Support</span>
                   </a>
                 </li>
-
                 <li role="presentation" class="nav-item">
                   <a href="javascript:;" class="info-number" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
