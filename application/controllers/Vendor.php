@@ -280,8 +280,8 @@ Class Vendor extends MY_Controller {
         $this->Vendor();
     }
     public function vendor_dashboard()
-    {
-        $this->data['product'] = $this->Vendor->getData('product','*','');
+    {        
+        $this->data['product'] = $this->Vendor->getProductForStockDetails();        
         $this->middle = 'vendor_dashboard';
         $this->Vendor();
     }    
