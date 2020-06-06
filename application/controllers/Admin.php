@@ -319,7 +319,7 @@ Class Admin extends MY_Controller {
             }
         }
         $this->data['subcategory'] = $this->Admin->getRowData('subcategory','*',array('id'=>$id));
-        $this->data['category'] = $this->Admin->getData('category','category_name,id',array('is_active'=>'1'));
+        $this->data['category'] = $this->Admin->getData('category','category_name,id',array('status'=>'active'));
         $this->middle = 'subcategory/add';
         $this->Admin();
     }
