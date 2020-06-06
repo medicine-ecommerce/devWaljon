@@ -26,6 +26,11 @@ Class Admin extends MY_Controller {
         }
     	$this->load->view('admin/login');
     }
+     public function front()
+    {
+        $this->middle = 'front';
+        $this->Admin();
+    }
 
     public function dashboard()
     {

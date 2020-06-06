@@ -28,8 +28,40 @@
             <div class="x_title">
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
-                      synth. Cosby sweater eu banh mi, qui irure terr.
+                  <div class="card-box table-responsive">                
+                    <table id="datatable-responsive" class="table user-detail-table" cellspacing="0" width="100%">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Product Form</th>
+                          <th>Created by</th>
+                          <th>Created On</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>active</td>
+                          <td><span class="status-approve"><i class="fa fa-pencil"></i>
+                          </span><span class="status-cancle"><i class="fa fa-trash"></i></span></td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>Nixon</td>
+                          <td>System Architect</td>
+                          <td>Edinburgh</td>
+                          <td>Inactive</td>
+                          <td><span class="status-approve"><i class="fa fa-pencil"></i>
+                          </span><span class="status-cancle"><i class="fa fa-trash"></i></span></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                   <div class="card-box table-responsive">                
@@ -69,15 +101,6 @@
                           <td>System Architect</td>
                           <td>Edinburgh</td>
                           <td><span class="pending">Pending</span></td>
-                          <td><span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
-                        </tr>
-                        <tr>
-                          <td>Tiger</td>
-                          <td>Nixon</td>
-                          <td>System Architect</td>
-                          <td>Edinburgh</td>
-                          <td>61</td>
                           <td><span class="status-approve"><i class="fa fa-check"></i>
                           </span><span class="status-cancle"><i class="fa fa-close"></i></span></td>
                         </tr>
