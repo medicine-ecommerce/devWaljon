@@ -59,10 +59,9 @@
                       foreach ($brand as $key => $value) { ?>
                       <tr>
                         <td><?php echo $i++; ?></td>
-                        <td><?php echo $value->username; ?></td>
+                        <td><span class="brand_img"><img src="<?php echo base_url(); ?>assets/brand-images/<?php echo $value->brand_img ?>" ></span></td>
                         <td><?php echo $value->brand_name; ?></td>
-                         <td><?php echo $value->brand_desc; ?></td>
-                        <td><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?></td>
+                        <td><?php echo $value->brand_desc; ?></td>
                         <td>
                           <?php if ($value->status=='pending') {
                             echo '<span class="pending">Pending</span>';
