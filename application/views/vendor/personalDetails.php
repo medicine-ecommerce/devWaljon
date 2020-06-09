@@ -48,7 +48,7 @@
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
 						<input type="date" class="form-control control-float-top" name="date_of_birth" value="<?php echo set_value('date_of_birth')?>">
-						<!-- <label for="email">Date Of Birth</label> -->
+						<label class="date-type-format">Date Of Birth</label>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -133,7 +133,7 @@
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
 						<input type="date" class="form-control control-float-top" name="working_from" value="<?php echo set_value('working_from')?>">
-						<!-- <label for="Address">Working From</label> -->
+						<label class="date-type-format">Working From</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
@@ -229,7 +229,7 @@
 				<div class="col-md-3">
 					<div class="form-group label-float-top">
 						<input type="date" class="form-control control-float-top" name="medical_since" value="<?php echo set_value('medical_since')?>">
-						<!-- <label for="Address">Account Number</label> -->
+						<label class="date-type-format">Medical Since</label>
 					</div>
 				</div>			
 				<div class="col-md-3">
@@ -423,5 +423,10 @@
 	    var input = document.getElementById('location');
 	    var autocomplete = new google.maps.places.Autocomplete(input);
 	}
+	$(document).ready(function(){			
+		$(window).load(function(){  	
+	  		$(".date-type-format").addClass("active");
+		});	
+	});
 	
 </script>

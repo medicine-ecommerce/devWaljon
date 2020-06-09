@@ -474,7 +474,7 @@ function uploadFile(file, i) {
   xhr.send(formData)
 }
 function getSubcategory(cat_id) {
-  alert(cat_id);
+  // alert(cat_id);
   $.ajax({
       type: "POST",
       url: '<?php echo base_url('admin/getSubcategory'); ?>',
@@ -482,7 +482,7 @@ function getSubcategory(cat_id) {
       success: function(data)
       {
         $('#subcategory').html(data);
-        alert(data); // show response from the php script.
+        // alert(data); // show response from the php script.
       }
   });
 }

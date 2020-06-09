@@ -25,12 +25,7 @@ Class Admin extends MY_Controller {
             redirect('admin/dashboard');
         }
     	$this->load->view('admin/login');
-    }
-     public function front()
-    {
-        $this->middle = 'front';
-        $this->Admin();
-    }
+    }    
 
     public function dashboard()
     {
@@ -229,9 +224,7 @@ Class Admin extends MY_Controller {
             }
             else{
                 $data = array(
-                            'category_name'=>$this->input->post('category_name'),
-                            'is_active'=>'1',
-                            'created_at'=> date('Y-m-d H:i:s')
+                            'category_name'=>$this->input->post('category_name')
                         );
                 $result = $this->Admin->updateData('category',$data,array('id'=>$id));
                 if (!empty($result)) {
@@ -326,7 +319,7 @@ Class Admin extends MY_Controller {
             }
         }
         $this->data['subcategory'] = $this->Admin->getRowData('subcategory','*',array('id'=>$id));
-        $this->data['category'] = $this->Admin->getData('category','category_name,id',array('is_active'=>'1'));
+        $this->data['category'] = $this->Admin->getData('category','category_name,id',array('status'=>'active'));
         $this->middle = 'subcategory/add';
         $this->Admin();
     }
