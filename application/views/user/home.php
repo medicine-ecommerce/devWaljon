@@ -64,7 +64,7 @@
 .owl-dots button.owl-dot:focus {
   outline: none;
 }
-/*.owl-nav button {
+.owl-nav button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -77,7 +77,7 @@ span {
 }
 .owl-nav button:focus {
     outline: none;
-}*/
+}
 .owl-stage-outer.owl-height{
   height: 300px!important;
 }
@@ -93,10 +93,18 @@ span {
 .icon-slider{
   background-color: #adcedd;
 }
+
+/*custom css*/
+.banner-slider .owl-nav {
+    display: none;
+}
+.remove-dots .owl-dots {
+    display: none;
+}
    </style>
 <div class="container">
   <div class="owl-slider">
-    <div id="carousel" class="owl-carousel">
+    <div id="carousel" class="owl-carousel banner-slider">
       <div class="item">
         <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
       </div>
@@ -136,7 +144,7 @@ span {
     <section id="demos">
         <div class="row">
           <div class="large-12 columns">
-            <div class="owl-carousel ">
+            <div class="owl-carousel remove-dots">
               <div class="item" style="height: 5rem !important;">
                 <h4>1</h4>
               </div>
@@ -204,7 +212,7 @@ span {
     <section id="demos">
       <div class="row">
         <div class="large-12 columns">
-          <div class="owl-carousel ">
+          <div class="owl-carousel remove-dots">
             <div class="item">
               <h4>1</h4>
             </div>
