@@ -77,6 +77,14 @@ class Admin_model extends MY_model
 		$this ->db->order_by("FIELD(product_form.status,'pending,active,reject')");
 		return $this->db->get()->result();
 	}
+	public function brandList()
+	{
+		$this->db->select('CONCAT(users.first_name," ",users.last_name) as username,brand.*');
+		$this->db->from('brand');
+		$this->db->join('users','users.id = brand.created_by','left');
+		$this ->db->order_by("FIELD(brand.status,'pending','active','reject')");
+		return $this->db->get()->result();
+	}
 
 }
 
