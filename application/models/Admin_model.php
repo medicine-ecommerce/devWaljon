@@ -84,10 +84,17 @@ class Admin_model extends MY_model
 		$this->db->select('users.full_name as username,brand.*');
 		$this->db->from('brand');
 		$this->db->join('users','users.id = brand.created_by','left');
-		$this ->db->order_by("FIELD(brand.status,'pending','active','reject')");
+		// $this ->db->order_by("FIELD(brand.status,'pending','active','reject')");
 		return $this->db->get()->result();
 	}
-
+	public function saltCompositionList()
+	{
+		$this->db->select('CONCAT(users.first_name," ",users.last_name) as username,saltComposition.*');
+		$this->db->from('saltComposition');
+		$this->db->join('users','users.id = saltComposition.created_by','left');
+		// $this ->db->order_by("FIELD(saltComposition.status,'pending','active','reject')");
+		return $this->db->get()->result();
+	}
 }
 
 ?>

@@ -48,13 +48,13 @@ class Vendor_model extends MY_model
 	}
 	public function getUploadedBulkData()
 	{		
-		if(!empty($this->session->userdata('vendor_id'))){			
+		if(!empty($this->session->userdata('user_id'))){			
 			$this->db->select('product.*,product_item.*,manufacturer.name as manufacturer_name,product_form.name as product_form');
 			$this->db->from('product');
 			$this->db->join('product_item','product_item.product_id=product.id','left');
 			$this->db->join('manufacturer','manufacturer.id=product.manufacturer_id','left');
 			$this->db->join('product_form','product_form.id=product.product_form_id','left');
-			$this->db->where('product.created_by',$this->session->userdata('vendor_id'));
+			$this->db->where('product.created_by',$this->session->userdata('user_id'));
 			$this->db->where('update_at is NULL', NULL, FALSE);
 			$query = $this->db->get();
 
@@ -92,13 +92,13 @@ class Vendor_model extends MY_model
 	}
 	public function getProductForStockDetails()
 	{		
-		if(!empty($this->session->userdata('vendor_id'))){			
+		if(!empty($this->session->userdata('user_id'))){			
 			$this->db->select('product.*,product_item.*,manufacturer.name as manufacturer_name,product_form.name as product_form');
 			$this->db->from('product');
 			$this->db->join('product_item','product_item.product_id=product.id','left');
 			$this->db->join('manufacturer','manufacturer.id=product.manufacturer_id','left');
 			$this->db->join('product_form','product_form.id=product.product_form_id','left');
-			$this->db->where('product.created_by',$this->session->userdata('vendor_id'));
+			$this->db->where('product.created_by',$this->session->userdata('user_id'));
 			$query = $this->db->get();			
 			// $this->db->get();
 			// echo $this->db->last_query();
