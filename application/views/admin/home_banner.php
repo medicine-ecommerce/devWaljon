@@ -33,9 +33,18 @@
                 <?php if (!empty($banners)) {
                   foreach ($banners as $key => $value) { ?>
                     <li class="previous-img">
+                      <span class="remove-img"><i class="fa fa-close"></i></span>
                       <span class="gallery-img">
                         <img src="<?php echo base_url('assets/banner-images/'.$value->image); ?>">
                       </span>
+                      <div class="home-page-btn">
+                        <div class="switch-btn banner-img">
+                          <label class="switch">
+                            <input type="checkbox" class="switch-input" name="trending" >
+                            <span class="slider round"></span>
+                          </label>
+                        </div>
+                      </div>
                     </li>
                  <?php }
                 } ?>

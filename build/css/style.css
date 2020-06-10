@@ -553,6 +553,28 @@ a.close-saltcomposition i.active {
 /*home category page css*/
 
 /*home banner page css*/
+.remove-img {
+    position: relative;
+    float: right;
+    background: red;
+    color: white;
+    padding: 1px 5px;
+    border-radius: 50%;
+    margin-left: -12px;
+    margin-top: -8px;
+}
+.switch-btn.banner-img {
+    text-align: center;
+    margin: 0px;
+}
+.switch-btn.banner-img .switch {
+    width: 52px;
+    height: 24px;
+}
+.switch-btn.banner-img .switch .slider:before {
+    height: 16px;
+    width: 16px;
+}
 .img-upload-div {
     border: 1px dashed;
     width: 700px;
