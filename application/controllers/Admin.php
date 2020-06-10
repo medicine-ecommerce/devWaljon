@@ -546,6 +546,98 @@ Class Admin extends MY_Controller {
       }
     }
 
+     public function brand_add()
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $this->form_validation->set_rules('brand_name', 'brand', 'required');
+            if ($this->form_validation->run() == FALSE){ 
+                $this->session->set_flashdata('error', validation_errors());      
+            }
+            else{
+                $data = array(
+                            'brand_name'=>$this->input->post('brand_name'),
+                            'brand_desc'=>$this->input->post('brand_desc'),
+                            'created_by'=> $this->session->userdata('user_id'),
+                            'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
+                            'created_at'=> date('Y-m-d H:i:s')
+                        );
+
+                if(!empty($_FILES['brand_img'])){
+                    $uploadedImg = $this->Admin->upload('brand_img','brand-images');
+                    $data['brand_img'] = $uploadedImg['file_name'];
+                }
+
+                $result = $this->Admin->insertData('brand',$data);
+                if (!empty($result)) {
+                    $this->session->set_flashdata('success', 'Brand added successfully');                    
+                }
+                else{
+                    $this->session->set_flashdata('error','error! Please try again');
+                }
+                redirect($_SERVER['HTTP_REFERER']); 
+            }
+        }
+        $this->middle = 'brand/add';
+        $this->Admin();
+    }
+    public function brand_list()
+    {
+        $this->data['brand'] = $this->Admin->brandList();
+        $this->middle = 'brand/list';
+        $this->Admin();
+    }
+    public function brand_edit($id)
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $this->form_validation->set_rules('brand_name', 'brand', 'required');
+            if ($this->form_validation->run() == FALSE){ 
+              $this->session->set_flashdata('error', validation_errors());      
+            }
+            else{
+                $data = array(
+                            'brand_name'=>$this->input->post('brand_name'),
+                            'brand_desc'=>$this->input->post('brand_desc')
+                        );
+                if(!empty($_FILES['brand_img'])){
+                    $uploadedImg = $this->Admin->upload('brand_img','brand-images');
+                    $data['brand_img'] = $uploadedImg['file_name'];
+                }
+                $result = $this->Admin->updateData('brand',$data,array('id'=>$id));
+                if (!empty($result)) {
+                    $this->session->set_flashdata('success', 'Brand updated successfully');                    
+                }
+                else{
+                    $this->session->set_flashdata('error','error! Please try again');
+                }
+                redirect($_SERVER['HTTP_REFERER']); 
+            }
+        }
+        $this->data['brand'] = $this->Admin->getRowData('brand','*',array('id'=>$id));
+        $this->middle = 'brand/add';
+        $this->Admin();
+    }
+    public function brand_delete($id)
+    {
+        $result = $this->Admin->deleteData('brand',array('id'=>$id));
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'Brand deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'error! Please try again');
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function brand_status($status,$id)
+    {
+        $result = $this->Admin->updateData('brand',array('status'=>$status),array('id'=>$id));
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'status updated successfully'); 
+        }
+        else{
+            $this->session->set_flashdata('error', 'error! Please try again'); 
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+
     
 
 }
