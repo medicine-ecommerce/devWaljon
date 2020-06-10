@@ -64,4 +64,5 @@ $route['vendor/subcategory_add'] = 'admin/subcategory_add';
 
 $route['admin/all_product'] = 'vendor/all_product';
 $route['admin/addSingleProduct'] = 'vendor/addSingleProduct';
+$route['admin/editPersonalDetails/(:any)'] = 'vendor/editPersonalDetails/$1';
 
