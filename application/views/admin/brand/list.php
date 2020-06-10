@@ -46,6 +46,7 @@
                     <tr>
                       <th>#</th>
                       <th>Image</th>
+                      <th>Created By</th>
                       <th>Brand Name</th>
                       <th>Description</th>
                       <th>Status</th>
@@ -60,6 +61,7 @@
                       <tr>
                         <td><?php echo $i++; ?></td>
                         <td><span class="brand_img"><img src="<?php echo base_url(); ?>assets/brand-images/<?php echo $value->brand_img ?>" ></span></td>
+                        <td><?php echo $value->username; ?></td>
                         <td><?php echo $value->brand_name; ?></td>
                         <td><?php echo $value->brand_desc; ?></td>
                         <td>

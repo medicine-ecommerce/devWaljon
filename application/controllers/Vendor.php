@@ -326,6 +326,7 @@ Class Vendor extends MY_Controller {
         $this->data['category'] = $this->Vendor->getData('category','category_name,id',array('status'=>"active"));
         $this->data['manufacturer'] = $this->Vendor->getData('manufacturer','name,id',array('status'=>"active"));
         $this->data['product_form'] = $this->Vendor->getData('product_form','name,id',array('status'=>"active"));
+        $this->data['brand'] = $this->Vendor->getData('brand','brand_name,id',array('status'=>"active"));
         $this->middle = 'add_single_product';
         $this->Vendor();
     }

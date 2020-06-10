@@ -48,7 +48,7 @@ class Admin_model extends MY_model
 	}
 	public function CategoryList()
 	{
-		$this->db->select('CONCAT(users.first_name," ",users.last_name) as username,category.*');
+		$this->db->select('users.full_name as username,category.*');
 		$this->db->from('category');
 		$this->db->join('users','users.id = category.created_by','left');
 		$this ->db->order_by("FIELD(category.status,'pending','active','reject')");
@@ -56,14 +56,16 @@ class Admin_model extends MY_model
 	}
 	public function SubCategoryList()
 	{
-		$this->db->select('subcategory.*,category.category_name');
+		$this->db->select('users.full_name as username,subcategory.*,category.category_name');
 		$this->db->from('subcategory');
-		$this->db->join('category','category.id = subcategory.category_id');
+		$this->db->join('category','category.id = subcategory.category_id','left');
+		$this->db->join('users','users.id = subcategory.created_by','left');
+		$this ->db->order_by("FIELD(subcategory.status,'pending','active','reject')");
 		return $this->db->get()->result();
 	}
 	public function ManufacturerList()
 	{
-		$this->db->select('CONCAT(users.first_name," ",users.last_name) as username,manufacturer.*');
+		$this->db->select('users.full_name as username,manufacturer.*');
 		$this->db->from('manufacturer');
 		$this->db->join('users','users.id = manufacturer.created_by','left');
 		$this ->db->order_by("FIELD(manufacturer.status,'pending','active','reject')");
@@ -71,7 +73,7 @@ class Admin_model extends MY_model
 	}
 	public function ProducFormList()
 	{
-		$this->db->select('CONCAT(users.first_name," ",users.last_name) as username,product_form.*');
+		$this->db->select('users.full_name as username,product_form.*');
 		$this->db->from('product_form');
 		$this->db->join('users','users.id = product_form.created_by','left');
 		$this ->db->order_by("FIELD(product_form.status,'pending,active,reject')");
@@ -79,7 +81,7 @@ class Admin_model extends MY_model
 	}
 	public function brandList()
 	{
-		$this->db->select('CONCAT(users.first_name," ",users.last_name) as username,brand.*');
+		$this->db->select('users.full_name as username,brand.*');
 		$this->db->from('brand');
 		$this->db->join('users','users.id = brand.created_by','left');
 		$this ->db->order_by("FIELD(brand.status,'pending','active','reject')");
