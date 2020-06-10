@@ -64,7 +64,7 @@
 .owl-dots button.owl-dot:focus {
   outline: none;
 }
-/*.owl-nav button {
+.owl-nav button {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -77,7 +77,7 @@ span {
 }
 .owl-nav button:focus {
     outline: none;
-}*/
+}
 .owl-stage-outer.owl-height{
   height: 300px!important;
 }
@@ -93,6 +93,10 @@ span {
 .icon-slider{
   background-color: #adcedd;
 }
+.remove-owl-nav {
+  display: none;
+}
+
    </style>
 <div class="container">
   <div class="owl-slider">
@@ -132,142 +136,51 @@ span {
   <div class="brand-heading">
     <h2>hello</h2>
   </div>
-  <div class="brand-slider">
-    <section id="demos">
-        <div class="row">
-          <div class="large-12 columns">
-            <div class="owl-carousel ">
-              <div class="item" style="height: 5rem !important;">
-                <h4>1</h4>
-              </div>
-              <div class="item" style="height: 5rem !important;">
-                <h4>2</h4>
-              </div>
-              <div class="item" style="height: 5rem !important;">
-                <h4>3</h4>
-              </div>
-              <div class="item" style="height: 5rem !important;">
-                <h4>4</h4>
-              </div>
-              <div class="item" style="height: 5rem !important;">
-                <h4>5</h4>
-              </div>
-              <div class="item" style="height: 5rem !important;">
-                <h4>6</h4>
-              </div>
-              <div class="item" style="height: 5rem !important;">
-                <h4>7</h4>
-              </div>
-              <div class="item" style="height: 5rem !important;">
-                <h4>8</h4>
-              </div>
-              <div class="item" style="height: 5rem !important;">
-                <h4>9</h4>
-              </div>
-              <div class="item" style="height: 5rem !important;">
-                <h4>10</h4>
-              </div>
-              <div class="item" style="height: 5rem !important;">
-                <h4>11</h4>
-              </div>
-              <div class="item" style="height: 5rem !important;">
-                <h4>12</h4>
-              </div>
-            </div>
-            
-            <script>
-              $(document).ready(function() {
-                var owl = $('.owl-carousel');
-                owl.owlCarousel({
-                  margin: 10,
-                  nav: true,
-                  loop: true,
-                  responsive: {
-                    0: {
-                      items: 1
-                    },
-                    600: {
-                      items: 3
-                    },
-                    1000: {
-                      items: 5
-                    }
-                  }
-                })
-              })
-            </script>
-          </div>
-        </div>
-    </section>
-  </div>
-  <div class="icon-slider">
-    <section id="demos">
-      <div class="row">
-        <div class="large-12 columns">
-          <div class="owl-carousel ">
-            <div class="item">
-              <h4>1</h4>
-            </div>
-            <div class="item">
-              <h4>2</h4>
-            </div>
-            <div class="item">
-              <h4>3</h4>
-            </div>
-            <div class="item">
-              <h4>4</h4>
-            </div>
-            <div class="item">
-              <h4>5</h4>
-            </div>
-            <div class="item">
-              <h4>6</h4>
-            </div>
-            <div class="item">
-              <h4>7</h4>
-            </div>
-            <div class="item">
-              <h4>8</h4>
-            </div>
-            <div class="item">
-              <h4>9</h4>
-            </div>
-            <div class="item">
-              <h4>10</h4>
-            </div>
-            <div class="item">
-              <h4>11</h4>
-            </div>
-            <div class="item">
-              <h4>12</h4>
-            </div>
-          </div>
-          
-          <script>
-            $(document).ready(function() {
-              var owl = $('.owl-carousel');
-              owl.owlCarousel({
-                margin: 10,
-                nav: true,
-                loop: true,
-                responsive: {
-                  0: {
-                    items: 1
-                  },
-                  600: {
-                    items: 3
-                  },
-                  1000: {
-                    items: 5
-                  }
-                }
-              })
-            })
-          </script>
-        </div>
+  <div class="owl-slider">
+    <div id="carousel2" class="owl-carousel remove-nav">
+      <div class="item">
+        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
       </div>
-    </section>
+      <div class="item">
+        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
+      </div>
+      <div class="item">
+        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+      </div>
+      <div class="item">
+        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
+      </div>
+        <div class="item">
+        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+      </div>
+      <div class="item">
+        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
+      </div>
+    </div>
   </div>
+  <div class="owl-slider">
+    <div id="carousel3" class="owl-carousel">
+      <div class="item">
+        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+      </div>
+      <div class="item">
+        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
+      </div>
+      <div class="item">
+        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+      </div>
+      <div class="item">
+        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
+      </div>
+        <div class="item">
+        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+      </div>
+      <div class="item">
+        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
+      </div>
+    </div>
+  </div>
+  
   
 </div>  
 
@@ -302,7 +215,37 @@ span {
               
             }
           });
-            jQuery("#carousell").owlCarousel({
+            jQuery("#carousel2").owlCarousel({
+            autoplay: true,
+            lazyLoad: true,
+            loop: true,
+            margin: 20,
+             /*
+            animateOut: 'fadeOut',
+            animateIn: 'fadeIn',
+            */
+            responsiveClass: true,
+            autoHeight: true,
+            autoplayTimeout: 3000,
+            smartSpeed: 800,
+            nav: true,
+            responsive: {
+              0: {
+                items: 1
+              },
+
+              600: {
+                items: 3
+              },
+
+              1024: {
+                items: 5
+              },
+
+              
+            }
+          });
+            jQuery("#carousel3").owlCarousel({
             autoplay: true,
             lazyLoad: true,
             loop: true,
@@ -333,7 +276,9 @@ span {
             }
           });
             
+            
           </script>
+          
           
   </body>
 </html>
