@@ -3,7 +3,7 @@
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Invertory > Salt Composition</h3>
+          <h3>Add Brands</h3>
         </div>
 
         <div class="title_right">
@@ -31,30 +31,35 @@
           } ?>
           <div class="x_panel">
             <div class="x_content">
-              <form class="" action="<?php echo(!empty($saltComposition)) ? base_url('admin/saltComposition_edit/'.$saltComposition->id) : base_url('admin/saltComposition_add') ?>" method="post" novalidate enctype="multipart/form-data">
-                <span class="section">Salt Composition</span>
-
+              <form class="" action="<?php echo(!empty($brand)) ? base_url('admin/brand_edit/'.$brand->id) : base_url('admin/brand_add') ?>" method="post" novalidate enctype="multipart/form-data">
+                <span class="section">Brand</span>
                 <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">Name<span
+                  <label class="col-form-label col-md-3 col-sm-3  label-align">Brand Name<span
                       class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input class="form-control"  name="saltComposition_name" required="required" value="<?php echo (!empty($saltComposition)) ? $saltComposition->name: '';?>" />
+                    <input class="form-control"  name="brand_name" required="required" value="<?php echo (!empty($brand)) ? $brand->brand_name: '';?>" />
                   </div>
                 </div>
-
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Image</label>
                   <div class="col-md-6 col-sm-6">
                     <div class="profile-image-section">               
                       <div> 
-                        <img <?php if(!empty($saltComposition->image)){ ?> src="<?php echo base_url(); ?>assets/saltComposition-images/<?php echo $saltComposition->image ?>" <?php }else{ ?>src="<?php echo base_url(); ?>assets/img/profile_dummy.png" <?php } ?>  class="profile-images-custom" id="preview">
-                        <input type="file" id="brand_img" name="saltComposition_img" class="image-upload-input brand_add">        
+                        <img <?php if(!empty($brand->brand_img)){ ?> src="<?php echo base_url(); ?>assets/brand-images/<?php echo $brand->brand_img ?>" <?php }else{ ?>src="<?php echo base_url(); ?>assets/img/profile_dummy.png" <?php } ?>  class="profile-images-custom" id="preview">
+                        <input type="file" id="brand_img" name="brand_img" class="image-upload-input brand_add">        
                       </div>
-                      <input type="hidden" name="edit_saltComposition_img" value="<?php echo (!empty($saltComposition)) ? $saltComposition->image: ''?>">
+                      <input type="hidden" name="edit_brand_img" value="<?php echo (!empty($brand)) ? $brand->brand_img: ''?>">
                     </div>
                   </div>
                 </div> 
 
+                <div class="field item form-group">
+                  <label class="col-form-label col-md-3 col-sm-3  label-align">Brand Description</label>
+                  <div class="col-md-6 col-sm-6">
+                    <input class="form-control"  name="brand_desc" required="required" value="<?php echo (!empty($brand)) ? $brand->brand_desc: '';?>" />
+                  </div>
+                </div>
+                
                 <div class="ln_solid">
                   <div class="form-group">
                     <div class="col-md-6 offset-md-3">
