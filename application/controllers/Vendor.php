@@ -35,9 +35,10 @@ Class Vendor extends MY_Controller {
             $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[users.email]');
             $this->form_validation->set_rules('password', 'password', 'trim|required');            
             
-            if($this->input->post('remember_password')){                
-                set_cookie('email',base64_encode($this->input->post('email')), (86400*30));
-                set_cookie('password',base64_encode($this->input->post('password')), (86400*30));
+            if($this->input->post('remember_password')){ 
+                $unexpired_cookie_exp_time = 2147483647 - time();               
+                set_cookie('email',base64_encode($this->input->post('email')), $unexpired_cookie_exp_time);
+                set_cookie('password',base64_encode($this->input->post('password')), $unexpired_cookie_exp_time);
             }
             
             // $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
@@ -129,7 +130,8 @@ Class Vendor extends MY_Controller {
     }
     public function personalDetails()
     {
-        $this->data['bank'] = $this->Vendor->getData('bank','*','');
+        $this->data['bank']   = $this->Vendor->getData('bank','*','');
+        $this->data['status'] = $this->Vendor->getRowData('users','is_active',array('id'=>$this->session->userdata('user_id')));        
         $this->data['account_type'] = $this->config->item('account_type'); 
         $this->data['profile_data'] = $this->config->item('working_experience'); 
         $this->middle = 'personalDetails';
@@ -138,23 +140,21 @@ Class Vendor extends MY_Controller {
     public function editPersonalDetails()
     {
         $this->data['bank'] = $this->Vendor->getData('bank','*','');
-        $this->data['edit_data'] = $this->Vendor->getRowData('users','*',array('id'=>$this->session->userdata('vendor_id')));
-        $this->data['bank_data'] = $this->Vendor->getRowData('bank_account','*',array('vendor_id'=>$this->session->userdata('vendor_id')));
+        $this->data['edit_data'] = $this->Vendor->getRowData('users','*',array('id'=>$this->session->userdata('user_id')));
+        $this->data['bank_data'] = $this->Vendor->getRowData('bank_account','*',array('vendor_id'=>$this->session->userdata('user_id')));
+        $this->data['status'] = $this->Vendor->getRowData('users','is_active',array('id'=>$this->session->userdata('user_id')));        
 
         $this->data['working_experience'] = $this->config->item('working_experience'); 
         $this->data['account_type'] = $this->config->item('account_type'); 
         $this->middle = 'edit_personalDetails';
         $this->Vendor();
     }
-    public function vendor_profile()
+    public function vendor_profile($userId)
     {
-        // echo "<pre>";
-        //   print_r($_POST);
-        //   die();
+        $user_id = base64_decode($userId);
         $msg = '';
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
-            $this->form_validation->set_rules('first_name', 'First Name', 'required');
-            $this->form_validation->set_rules('last_name', 'Last Name', 'required');
+            $this->form_validation->set_rules('full_name', 'Full Name', 'required');            
             $this->form_validation->set_rules('email', 'email', 'required');
             $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
             $this->form_validation->set_rules('company_name', 'Medical Name', 'required');
@@ -190,8 +190,8 @@ Class Vendor extends MY_Controller {
                 $data = array(
                             'company_name'=>$this->input->post('company_name'),
                             'address'=>$this->input->post('address'),
-                            'first_name'=>$this->input->post('first_name'),
-                            'last_name'=>$this->input->post('last_name'),
+                            'full_name'=>$this->input->post('full_name'),                            
+                            'date_of_birth'=>$this->input->post('date_of_birth'),
                             'email'=>$this->input->post('email'),
                             'mobile'=>$this->input->post('mobile'),
                             'country'=>$this->input->post('country'),
@@ -200,8 +200,7 @@ Class Vendor extends MY_Controller {
                             'pin_code'=>$this->input->post('pin_code'),
                             'degree'=>$this->input->post('degree'),
                             'working_from'=>$this->input->post('working_from'),
-                            'experience'=>$this->input->post('experience'),
-                            'marital_status'=>$this->input->post('marital_status'),
+                            'experience'=>$this->input->post('experience'),                            
                             'medical_since'=>$this->input->post('medical_since'),
                             'medical_phone'=>$this->input->post('medical_phone'),
                             'medical_email'=>$this->input->post('medical_email'),
@@ -212,19 +211,20 @@ Class Vendor extends MY_Controller {
                 // print_r($data);
                 // die();
                 $bankData = array(
-                            'vendor_id'=>$this->session->userdata('vendor_id'),
+                            'vendor_id'=>$user_id,
                             'bank_id'=>$this->input->post('bank_name'),
                             'account_number'=>$this->input->post('account_number'),
+                            'branch_name'=>$this->input->post('branch_name'),
                             'ifc_code'=>$this->input->post('ifc_code'),
                             'account_type_id'=>$this->input->post('account_type'));                
 
-                $result = $this->Vendor->vendorProfileUpdate($data,array('id'=>$this->session->userdata('vendor_id')));
+                $result = $this->Vendor->vendorProfileUpdate($data,array('id'=>$user_id));
                 
-                $bankExist = $this->Vendor->getRowData('bank_account','id',array('vendor_id'=>$this->session->userdata('vendor_id')));
-                //////////////////////// INSET AND UPDATE BANK
-
+                $bankExist = $this->Vendor->getRowData('bank_account','id',array('vendor_id'=>$user_id));
+                
+                //////////////////////// INSERT AND UPDATE BANK
                 if(!empty($bankExist)){                    
-                    $result1 = $this->Vendor->updateData('bank_account',$bankData,array('vendor_id'=>$this->session->userdata('vendor_id')));
+                    $result1 = $this->Vendor->updateData('bank_account',$bankData,array('vendor_id'=>$user_id));
                 }else{
                     $result1 = $this->Vendor->addBankAccount($bankData);
                 }
@@ -283,6 +283,11 @@ Class Vendor extends MY_Controller {
     {        
         $this->data['product'] = $this->Vendor->getProductForStockDetails();        
         $this->middle = 'vendor_dashboard';
+        $this->Vendor();
+    }
+    public function profile_waiting_approval()
+    {   
+        $this->middle = 'profile_waiting_approval';
         $this->Vendor();
     }    
     public function addSingleProduct()
@@ -372,7 +377,7 @@ Class Vendor extends MY_Controller {
                                     'product_form_id'    =>  $product_form,
                                     'varieties'          =>  $varieties,
                                     'prescription'       =>  $prescription,
-                                    'created_by'         =>  $this->session->userdata('vendor_id'),
+                                    'created_by'         =>  $this->session->userdata('user_id'),
                                     'upload_source'      =>  "bulk_upload");                               
                     $product_last_id = $this->Vendor->insertData('product',$productdata);
 

@@ -1,4 +1,3 @@
-
         <div class="col-md-3 left_col custom-sidebar-col">
           <div class="left_col scroll-view admin-side-bar">
             <!-- <div class="navbar nav_title" style="border: 0;">
@@ -74,7 +73,7 @@
             <!--End Super Admin sidebar menu -->
 
             <?php }
-            elseif($_SESSION["user_type"]=='vendor'){ ?>
+            elseif($_SESSION["user_type"]=='vendor' && $status->is_active==1){ ?>
             <!--Vendor sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">                
@@ -101,6 +100,26 @@
                   </li>
                   <li><a><i class="fa fa-cog"></i>Settings</a>                  
                   </li>
+                </ul>
+              </div>
+            </div>
+            <?php }
+            elseif($_SESSION["user_type"]=='vendor' && $status->is_active==0 && $status->full_name!=''){ ?>
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">                
+                <ul class="nav side-menu">
+                  <li><a href="<?php echo base_url('vendor/profile_waiting_approval'); ?>"><i class="fa fa-dashboard"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
+                  </li>                  
+                </ul>
+              </div>
+            </div>
+            <?php }
+            elseif($_SESSION["user_type"]=='vendor' && $status->is_active==0 ){ ?>
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">                
+                <ul class="nav side-menu">
+                  <li><a href="<?php echo base_url('vendor/personalDetails'); ?>"><i class="fa fa-dashboard"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
+                  </li>                  
                 </ul>
               </div>
             </div>

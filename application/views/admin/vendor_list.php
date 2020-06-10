@@ -49,7 +49,7 @@
                               foreach ($vendors as $key => $value) { ?>
                                 <tr>
                                   <td><?php echo $i++; ?></td>
-                                  <td><?php echo $value->first_name; ?></td>
+                                  <td><?php echo $value->full_name; ?></td>
                                   <td><?php echo $value->last_name; ?></td>
                                   <td><?php echo $value->email; ?></td>
                                   <td><?php echo $value->mobile; ?></td>
