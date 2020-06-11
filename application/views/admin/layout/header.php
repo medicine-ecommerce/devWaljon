@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" href="images/favicon.ico" type="image/ico" />
 
-    <title>Gentelella Alela! | </title>
+    <title>Medicine   | </title>
 
     <!-- Bootstrap -->
     <link href="<?php echo base_url(); ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,6 +40,12 @@
     <link href="<?php echo base_url(); ?>build/css/style.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>    
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ9GyWMzIoUSeTvXLg8YatVBOt9UCwkB8&libraries=places"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.css" rel="stylesheet">
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/intlTelInput-jquery.js"></script>    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/intlTelInput.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"></script>     -->
+
+    <script src="<?php echo base_url(); ?>assets/js/intlTelInput.js"></script>
 
   </head>  
   <body class="nav-md">
@@ -62,7 +68,10 @@
                     <span class="head-title">Account</span>
                   </a>
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
+                  <?php
+                    if($_SESSION["user_type"]=='vendor' && $status->full_name!=''){ ?>
                     <a class="dropdown-item"  href="<?php echo base_url('vendor/editPersonalDetails'); ?>"> Profile</a>
+                  <?php } ?>
                       <a class="dropdown-item"  href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
                         <span>Settings</span>

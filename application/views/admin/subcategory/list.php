@@ -41,8 +41,11 @@
                           <thead>
                             <tr>
                               <th>S.No.</th>
+                              <th>Requested By</th>
                               <th>Category</th>
                               <th>Sub-Category</th>
+                              <th>Created On</th>
+                              <th>Status</th>
                               <th>Action</th>
                             </tr>
                           </thead>
@@ -53,19 +56,41 @@
                               foreach ($subcategory as $key => $value) { ?>
                                 <tr>
                                   <td><?php echo $i++; ?></td>
+                                  <td><?php echo $value->username; ?></td>
                                   <td><?php echo $value->category_name; ?></td>
                                   <td><?php echo $value->subcategory; ?></td>
-                                  
+                                  <td><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?></td> 
                                   <td>
-                                    <a href="<?php echo base_url('admin/subcategory_edit/'.$value->id);?>"><span class="status-approve"><i class="fa fa-check"></i>
-                                    </span></a>
-                                    <a href="<?php echo base_url('admin/subcategory_delete/'.$value->id); ?>" onclick="return confirm('Are you sure？')"><span class="status-cancle"><i class="fa fa-close"></i></span></a>
+                                    <?php if ($value->status=='pending') {
+                                      echo '<span class="pending">Pending</span>';
+                                    } elseif ($value->status=='active') {
+                                      echo '<span class="approved">Approved</span>';
+                                    } else {
+                                      echo '<span class="rejected">Rejected</span>';
+                                    } ?>
+                                  </td>                                 
+                                  <td>
+                                    <?php if ($this->session->userdata('user_type')=='vendor' && $value->status=='pending') { ?>
+                                      <a href="<?php echo base_url('admin/subcategory_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-check"></i></span></a>
+                                      <a href="<?php echo base_url('admin/subcategory_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-close"></i></span></a>
+                                    <?php }
+                                    else{ ?>
+                                      <a href="<?php echo base_url('admin/subcategory_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-check"></i></span></a>
+                                      <a href="<?php echo base_url('admin/subcategory_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-close"></i></span></a> 
+                                      <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
+                                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
+                                        <?php if ($value->status=='pending' || $value->status=='reject') { ?>
+                                          <a class="dropdown-item" href="<?php echo base_url('admin/subcategory_status/active/'.$value->id);?>">Approve</a>
+                                        <?php }
+                                        if ($value->status=='pending' || $value->status=='active') { ?>
+                                          <a class="dropdown-item" href="<?php echo base_url('admin/subcategory_status/reject/'.$value->id);?>">Reject</a>
+                                        <?php } ?>
+                                      </div>
+                                    <?php } ?> 
                                   </td>
                                 </tr>
-
                               <?php }
-                            } ?>
-                            
+                            } ?>                            
                           </tbody>
                         </table>
                       </div>

@@ -234,6 +234,10 @@ input.image-upload-input {
 input.form-control.control-float-top:focus {
     padding-left: 10px;
 }
+input.form-control.mobile-intel:focus {
+    padding-left: 52px;
+}
+
 /*end Google*/
 
 .graph .graph_line{
@@ -1272,6 +1276,103 @@ img.edit-pencil:hover {
 /*salt composition*/
 .admin-btn{
     width: 100%;
+}
+label.image-title {
+    font-size: 14px;
+    font-weight: 600;
+}
+input.licence-img {
+    position: absolute;
+    right: 7px;
+    width: 130px;
+    height: 38px;
+    cursor: pointer;
+    bottom: 5px;
+    opacity: 0;
+}
+.custom-select {    
+    background: url(data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2012%2012%22%3E%3Ctitle%3Edown-arrow%3C%2Ftitle%3E%3Cg%20fill%3D%22%23000000%22%3E%3Cpath%20d%3D%22M10.293%2C3.293%2C6%2C7.586%2C1.707%2C3.293A1%2C1%2C0%2C0%2C0%2C.293%2C4.707l5%2C5a1%2C1%2C0%2C0%2C0%2C1.414%2C0l5-5a1%2C1%2C0%2C1%2C0-1.414-1.414Z%22%20fill%3D%22%23000000%22%3E%3C%2Fpath%3E%3C%2Fg%3E%3C%2Fsvg%3E) no-repeat right 0.75rem center/14px 12px;
+
+}
+.green-section, .verify-section {
+    width: 900px;
+    margin: 0 auto;
+    max-width: 100%;
+    margin-top: 40px;
+}
+a.alert-box, .alert-box {
+    display: table;
+    width: 100%;
+    min-height: 50px;
+    background-color: #ddd;
+    margin: 5px 0;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+}
+a.alert-yellow-box {
+    background-color: #fcbd01;
+    font-size: 15px;
+    color: #fff;
+}
+.alert-yellow-box p {
+    color: #fff;
+    margin-bottom: 0px;
+}
+.alert-icon {
+    text-align: center;
+    display: table-cell;
+    background-color: rgba(0,0,0,0.1);
+    width: 50px;
+    min-width: 50px;
+    vertical-align: middle;
+    font-size: 16px;
+}
+.alert-content {
+    display: table-cell;
+    padding: 10px 15px;
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+.show-section{
+    display: block;
+}
+.hide-section{
+    display:none;
+}
+.approval-profile {
+    font-size: 18px;
+    padding: 64px 0;
+}
+img.waiting-image {
+    height: 400px; 
+}
+.email-button-section {
+    margin-top: 40px;
+}
+.email-button-section button {
+    margin-top: 15px;
+}
+.email-button-section .disable {
+    cursor: not-allowed;
+}
+.email-button-section button.btn.btn-default.submit_button:focus {
+    box-shadow: none;
+}
+.iti.iti--allow-dropdown.iti--separate-dial-code {
+     width: 100%; 
+}
+img.image-loader {
+    position: absolute;
+     z-index: 9; 
+    left: 50%;    
+    bottom: 5%;
+}
+img.loader-show{
+    display: block;
+}
+img.loader-hide{
+    display: none;
 }
 /*salt composition*/
 @media (max-width: 992px) {
