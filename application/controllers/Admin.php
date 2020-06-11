@@ -441,11 +441,11 @@ Class Admin extends MY_Controller {
         $this->middle = 'home_banner';
         $this->Admin();
     }
-    // public function product_category()
-    // {
-    //     $this->middle = 'product_category';
-    //     $this->Admin();
-    // }
+    public function product_category()
+    {
+        $this->middle = 'product_category';
+        $this->Admin();
+    }
     public function logout()
     {   
         $this->session->sess_destroy();
@@ -728,5 +728,10 @@ Class Admin extends MY_Controller {
         }
         redirect($_SERVER['HTTP_REFERER']);
     }  
+    public function linking()
+    {
+        $this->middle = 'linking/linking';
+        $this->Admin();
+    }
 
 }

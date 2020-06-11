@@ -1364,7 +1364,7 @@ img.waiting-image {
 }
 img.image-loader {
     position: absolute;
-     z-index: 9; 
+    z-index: 9; 
     left: 50%;    
     bottom: 5%;
 }
@@ -1373,6 +1373,9 @@ img.loader-show{
 }
 img.loader-hide{
     display: none;
+}
+.product-cat-btn{
+    margin-top: 40px; l
 }
 /*salt composition*/
 @media (max-width: 992px) {
