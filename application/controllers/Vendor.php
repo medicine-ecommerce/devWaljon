@@ -159,9 +159,21 @@ Class Vendor extends MY_Controller {
             $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
             $this->form_validation->set_rules('company_name', 'Medical Name', 'required');
             $this->form_validation->set_rules('address', 'Addresss', 'required');
-            // $this->form_validation->set_rules('licence', 'Licence', 'required');
+            $this->form_validation->set_rules('date_of_birth', 'date_of_birth', 'required');
+            $this->form_validation->set_rules('country', 'country', 'required');
+            $this->form_validation->set_rules('state', 'state', 'required');
+            $this->form_validation->set_rules('city', 'City', 'required');
+            $this->form_validation->set_rules('pin_code', 'Pin code', 'required');
+            $this->form_validation->set_rules('degree', 'Degree', 'required');
+            $this->form_validation->set_rules('working_from', 'Working from', 'required');
+            $this->form_validation->set_rules('experience', 'Experience', 'required');
+            $this->form_validation->set_rules('medical_since', 'Medical since', 'required');
+            $this->form_validation->set_rules('account_number', 'Account number', 'required');
+            $this->form_validation->set_rules('branch_name', 'Branch name', 'required');
+            $this->form_validation->set_rules('ifc_code', 'IFSC Code', 'required');
+            $this->form_validation->set_rules('account_type', 'account_type_id', 'required');
             
-            
+            print_r($_POST);
             if (empty($_FILES['licence']['name']) && empty($this->input->post('edit_licence'))) {
                 $msg.= '<p>Please upload your medical licence</p>';
             }            
@@ -410,6 +422,14 @@ Class Vendor extends MY_Controller {
         $this->middle = 'vendor_bulk_upload';
         $this->Vendor();
     } 
+    public function bulk_update_product()
+    {
+
+        print_r($_FILES);
+        // $this->middle = 'vendor_bulk_upload';
+        // $this->Vendor();
+    } 
+
     public function faq()
     {
         $this->middle = 'faq';

@@ -15,6 +15,11 @@
 	    <span class="alert-content"><p> Your profile is inactive status please complete you profile.</p></span>
 	  </a>  
 	</div>
+	<div class="custom-error-alert front-end-validation">		
+		<a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+		<span class="glyphicon glyphicon-warning-sign"></span>
+		<p id="error-text"></p>
+	</div>
 
 	<?php if($this->session->flashdata('success')){ ?>
 	<div class="custom-success-alert">		
@@ -33,7 +38,7 @@
 	</div>
 	<?php }?>
 
-	<form method="post" action="<?php echo base_url() ?>/vendor/vendor_profile" enctype="multipart/form-data">		
+	<form id="personal_details" method="post" action="<?php echo base_url() ?>/vendor/vendor_profile/<?= base64_encode($this->session->userdata('user_id')); ?>" enctype="multipart/form-data">		
 		<div class="row padding-bottom20 padding-top50">
 			<div class="col-md-3">
 				<h5>Personal Information </h5>
@@ -46,19 +51,19 @@
 			<div class="col-md-8">
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="full_name" value="<?php echo set_value('full_name'); ?>">
+						<input id="full_name" type="text" class="form-control control-float-top" name="full_name" value="<?php echo set_value('full_name'); ?>">
 						<label for="name">Full Name</label>
 				  	</div>
 				</div>				
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="date_of_birth" value="<?php echo set_value('date_of_birth')?>" >
+						<input type="date" class="form-control control-float-top" id="date_of_birth" name="date_of_birth" value="<?php echo set_value('date_of_birth')?>" >
 						<label class="date-type-format">Date Of Birth</label>
 					</div>
 				</div>
 				<div class="col-md-4">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="address" value="<?php echo set_value('address')?>">
+						<input type="text" class="form-control control-float-top" id="address" name="address" value="<?php echo set_value('address')?>">
 						<label for="email">Address</label>
 					</div>
 				</div>
@@ -86,7 +91,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="text" maxlength="6" class="form-control control-float-top" name="pin_code" value="<?php echo set_value('pin_code')?>">
+						<input type="text" maxlength="6" id="pin_code" class="form-control control-float-top" name="pin_code" value="<?php echo set_value('pin_code')?>">
 						<label for="email">Zip Postal Code</label>
 					</div>
 				</div>			
@@ -98,7 +103,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="email" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); ?> <?php } ?>" id="email"  readonly="">
+						<input type="email" id="email" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); ?> <?php } ?>"  readonly="">
 						<label id="email-label" for="email">Email</label>
 					</div>
 				</div>
@@ -132,19 +137,19 @@
 					    <option>List 2</option>
 					    <option>List 3</option>
 					  </select> -->
-					  <input type="text" class="form-control control-float-top" name="degree" value="<?php echo set_value('degree')?>">					  
+					  <input type="text" id="degree" class="form-control control-float-top" name="degree" value="<?php echo set_value('degree')?>">					  
 					  <label for="Address">Degree</label>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="working_from" value="<?php echo set_value('working_from')?>">
+						<input type="date" id="working_from" class="form-control control-float-top" name="working_from" value="<?php echo set_value('working_from')?>">
 						<label class="date-type-format">Working From</label>
 					</div>
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<select class="form-control control-float-top custom-select" name="experience" value="<?php echo set_value('experience')?>">
+						<select id="experience" class="form-control control-float-top custom-select" name="experience" value="<?php echo set_value('experience')?>">
 							<option></option>
 						    <?php 
 								foreach ($profile_data as $key => $value) { ?>
@@ -180,7 +185,7 @@
 			<div class="col-md-8">
 				<div class="col-md-6">
 					 <div class="form-group label-float-top">
-					 	<select class="form-control control-float-top custom-select" name="bank_name" value="<?php echo set_value('bank_name')?>">
+					 	<select id="bank_name" class="form-control control-float-top custom-select" name="bank_name" value="<?php echo set_value('bank_name')?>">
 							<option></option>
 						    <?php foreach ($bank as $value) { ?>
 								<option  value="<?=$value->id ?>"><?=$value->bank_name?></option> 
@@ -191,25 +196,25 @@
 				</div>
 				<div class="col-md-6">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="account_number" value="<?php echo set_value('account_number')?>">
+						<input id="account_number" type="text" class="form-control control-float-top" name="account_number" value="<?php echo set_value('account_number')?>">
 						<label for="Address">Account Number</label>
 					</div>
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="branch_name" value="<?php echo set_value('branch_name')?>">
+						<input id="branch_name" type="text" class="form-control control-float-top" name="branch_name" value="<?php echo set_value('branch_name')?>">
 						<label for="Address">Branch Name</label>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="ifc_code" value="<?php echo set_value('ifc_code')?>">
+						<input id="ifc_code" type="text" class="form-control control-float-top" name="ifc_code" value="<?php echo set_value('ifc_code')?>">
 						<label for="Address">IFSC Code</label>
 					</div>
 				</div>
 				<div class="col-md-4">
 					 <div class="form-group label-float-top">
-						<select class="form-control control-float-top custom-select" name="account_type" value="<?php echo set_value('account_type')?>">
+						<select id="account_type" class="form-control control-float-top custom-select" name="account_type" value="<?php echo set_value('account_type')?>">
 							<option></option>
 						    <?php foreach ($account_type as $value) { ?>
 								<option  value="<?=$value['key'] ?>"><?=$value['value']?></option> 
@@ -234,13 +239,13 @@
 			<div class="col-md-8">
 				<div class="col-md-6">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top" name="company_name" value="<?php echo set_value('company_name')?>">
+						<input type="text" class="form-control control-float-top" id="company_name" name="company_name" value="<?php echo set_value('company_name')?>">
 						<label for="Address">Medical Name</label>
 					</div>
 				</div>
 				<div class="col-md-6">
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top" name="medical_since" value="<?php echo set_value('medical_since')?>">
+						<input type="date" id="medical_since" class="form-control control-float-top" name="medical_since" value="<?php echo set_value('medical_since')?>">
 						<label class="date-type-format">Medical Since</label>
 					</div>
 				</div>			
@@ -252,7 +257,7 @@
 				</div>
 				<div class="col-md-6">
 					 <div class="form-group label-float-top">
-						<input type="email" class="form-control control-float-top" name="medical_email" value="<?php echo set_value('medical_email')?>">
+						<input type="email" id="medical_email" class="form-control control-float-top" name="medical_email" value="<?php echo set_value('medical_email')?>">
 						<label for="Address">Email</label>
 					</div>
 				</div>			
@@ -270,7 +275,7 @@
 		</div>	
 		<div class="row"> 
 			<div class="col-md-12 padding-top-bottom50">
-				<button type="submit" class="btn btn-default submit_button float-right">Save</button>		
+				<button type="button" id="submit_form" class="btn btn-default submit_button float-right">Save</button>		
 			</div>
 		</div>
 	</form>
@@ -291,7 +296,7 @@
 	      
 	    </div>
 	    <div class="text-center">
-	      <button type="button" onclick="location.href='<?php echo base_url();?>vendor/profile_waiting_approval'" class="btn btn-default submit_button" data-dismiss="modal">Continue</button>
+	      <button type="button" id="profile_waiting" onclick="location.href='<?php echo base_url();?>vendor/profile_waiting_approval'" class="btn btn-default submit_button" data-dismiss="modal">Continue</button>
 	    </div>
 	  </div>  
 	</div>
@@ -405,11 +410,17 @@
 		
 		if(prev_url!= BaseUrl+''+'/vendor/vendorregister' && prev_url!= BaseUrl+''+'/vendor/vendor_login' && id!='' ){
 				$('#myModal').modal('show'); 
+				$('.registration-page').addClass('blur-background'); 
+				$('.custom-sidebar-col').addClass('blur-background'); 				
 				$('#myModal').modal({
 				    backdrop: 'static',
 				    keyboard: false
 				});
 		}
+		// $('#profile_waiting').click(function(){
+		// 	$('.registration-page').removeClass('blur-background'); 
+		// 	$('.custom-sidebar-col').removeClass('blur-background'); 				
+		// })
 
 	});
 
@@ -483,6 +494,115 @@
 		});
 
 	});
+	$(document).ready(function(){	
+		$('.front-end-validation').hide();
+		$('#submit_form').click(function(argument){			
+			var error = ''
+			var full_name 	 		= $("#full_name").val();
+			var date_of_birth 	 	= $("#date_of_birth").val();
+			var mobile 		 		= $("#mobile").val();
+			var email 		 		= $("#email").val();
+			var address 	 		= $("#address").val();
+			var company_name 		= $("#company_name").val();
+			var licenceImg 	 		= $("#licenceImg").val();
+			var country 	 		= $("#countryId").val();
+			var state 	 			= $("#stateId").val();
+			var city 	 			= $("#cityId").val();
+			var degree 	 			= $("#degree").val();
+			var working_from 	 	= $("#working_from").val();
+			var experience 	 		= $("#experience").val();
+			var medical_since 	 	= $("#medical_since").val();
+			var medical_phone 	 	= $("#phone").val();
+			var medical_email 	 	= $("#medical_email").val();
+			var account_number 	 	= $("#account_number").val();
+			var branch_name 	 	= $("#branch_name").val();
+			var ifc_code 	 		= $("#ifc_code").val();
+			var account_type_id 	= $("#account_type_id").val();
+			var profile_image 		= $("#profile_image").val();
+
+
+
+
+
+
+			if(full_name==''){
+				error += "<p>The Full Name field is required.</p>";
+			}
+			if(date_of_birth==''){
+				error += '<p>Date of birth is required.</p>';
+			}
+			if(address==''){
+				error += '<p>The Addresss field is required.</p>';
+			}
+			if(country==''){
+				error += '<p>Country is required.</p>';
+			}
+			if(state==''){
+				error += '<p>State is required.</p>';
+			}
+			if(city==''){
+				error += '<p>City is required.</p>';
+			}
+			if(pin_code==''){
+				error += '<p>Pin code is required.</p>';
+			}
+			if(mobile==''){
+				error += '<p>The mobile number field is required.</p>';
+			}
+			if(email==''){
+				error += '<p>The email field is required.</p>';
+			}
+			if(profile_image==''){
+				error += '<p>Profile image is required.</p>';
+			}
+			if(degree==''){
+				error += '<p>Degree is required.</p>';
+			}
+			if(working_from==''){
+				error += '<p>Working from is required.</p>';
+			}
+			if(experience==''){
+				error += '<p>Experience is required.</p>';
+			}			
+			if(account_number==''){
+				error += '<p>Account number is required.</p>';
+			}
+			if(branch_name==''){
+				error += '<p>Branch name is required.</p>';
+			}
+			if(ifc_code==''){
+				error += '<p>IFSC code is required.</p>';
+			}
+			if(account_type_id==''){
+				error += '<p>Account type is required.</p>';
+			}				
+			if(company_name==''){
+				error += '<p>The Medical Name field is required.</p>';
+			}
+			if(medical_since==''){
+				error += '<p>Medical since is required.</p>';
+			}
+			if(medical_phone==''){
+				error += '<p>Medical phone is required.</p>';
+			}
+			if(medical_email==''){
+				error += '<p>Medical email is required.</p>';
+			}	
+			if(licenceImg==''){
+				error += '<p>Please upload your medical licence.</p>';
+			}	
+
+			if(error!=''){				
+				$("#error-text").html(error);			
+				$('.front-end-validation').show();
+				window.scrollTo(0, 0);
+			}else{				
+				$('#personal_details').submit();
+			}
+		});
+
+	})
+	
 	
 </script> 
     <script>
