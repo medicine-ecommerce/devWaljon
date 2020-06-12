@@ -3,7 +3,7 @@
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Category</h3>
+          <h3>Inventory > Linking</h3>
         </div>
 
         <div class="title_right">
@@ -27,25 +27,39 @@
                 </div>';
           } ?>  
           <div class="x_panel">
-            <div class="x_title">
-              <div class="clearfix"></div>
-            </div>
             <div class="tab-content" id="myTabContent">
               <div class="card-box">                
-                <table class="table user-detail-table" cellspacing="0" width="70%">
+                <table class="table user-detail-table linking-table" cellspacing="0">
                   <thead>
                     <tr>
                       <th>Home Categories</th>
+                      <th></th>
                       <th>Product Categories</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
+                      <td>Featured Brans</td>
                       <td></td>
-                      <td></td>  
+                      <td>
+                        <select class="form-control">
+                          <option>Select Brands</option>
+                          <option>Option one</option>
+                          <option>Option two</option>
+                          <option>Option three</option>
+                          <option>Option four</option>
+                        </select>
+                      </td>  
                     </tr> 
                   </tbody>
                 </table>
+              </div>
+              <div class="pull-right padding-top50">
+                <div class="submit-btn">
+                  <button type="button" class="btn previous-btn">Previous</button>
+                  <button type="button" class="btn active-btn">Cancle</button>
+                  <button type="button" class="btn active-btn">Next</button> 
+                </div> 
               </div>
             </div>            
           </div>
