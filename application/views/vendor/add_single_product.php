@@ -52,7 +52,7 @@
                         <label for="Address">Product SubCategory</label>
                      </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                      <div class="form-group label-float-top">
                         <select class="form-control control-float-top" >
                            <option></option>
@@ -65,7 +65,7 @@
                         <label for="Address">Product Form</label>
                      </div>
                   </div>
-                  <div class="col-md-6">
+                  <div class="col-md-4">
                      <div class="form-group label-float-top">
                         <select class="form-control control-float-top" >
                            <option></option>
@@ -76,6 +76,20 @@
                            } ?>
                         </select>
                         <label for="Address">Manufacturer</label>
+                        <!-- <label for="email">Date Of Birth</label> -->
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <div class="form-group label-float-top">
+                        <select class="form-control control-float-top" name="brand_id" >
+                           <option></option>
+                           <?php if (!empty($brand)) {
+                             foreach ($brand as $key => $value) { ?>
+                              <option value="<?php echo $value->id; ?>"><?php echo $value->brand_name; ?></option>
+                            <?php }
+                           } ?>
+                        </select>
+                        <label for="Address">Brand</label>
                         <!-- <label for="email">Date Of Birth</label> -->
                      </div>
                   </div>

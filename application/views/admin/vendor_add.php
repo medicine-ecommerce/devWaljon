@@ -32,7 +32,7 @@
           <div class="x_panel">
             <div class="x_content">
               <form class="" action="<?php echo(!empty($vendor)) ? base_url('admin/vendor_edit/'.$vendor->id) : base_url('admin/vendor_add') ?>" method="post" novalidate>
-                <span class="section">Company Info</span>
+                <span class="section">Medical Info</span>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align"> Name<span
                       class="required">*</span></label>
@@ -49,17 +49,17 @@
                 </div>
                 <span class="section">Personal Info</span>
                 <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">First Name<span
+                  <label class="col-form-label col-md-3 col-sm-3  label-align">Full Name<span
                       class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input class="form-control" name="first_name" required="required" type="text" value="<?php echo (!empty($vendor)) ? $vendor->first_name: '';?>" /></div>
+                    <input class="form-control" name="full_name" required="required" type="text" value="<?php echo (!empty($vendor)) ? $vendor->full_name: '';?>" /></div>
                 </div>
-                <div class="field item form-group">
+                <!-- <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Last Name<span
                       class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
                     <input class="form-control" name="last_name" required="required" type="text" value="<?php echo (!empty($vendor)) ? $vendor->last_name: '';?>" /></div>
-                </div>
+                </div> -->
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">email<span
                       class="required">*</span></label>
