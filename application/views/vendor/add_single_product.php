@@ -512,4 +512,8 @@ $(".form-group .form-control").blur(function(){
   //   $(this).find("input").focus();
     
   //   });
+  $(".label-float-top").click(function(){
+      $(this).find("label").addClass("active");
+      $(this).find("input").focus();    
+  });
 </script>
