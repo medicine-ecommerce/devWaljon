@@ -52,6 +52,7 @@ $bulk_data = $bulk_data['uploaded_bulk_data'];
                     <div class="bulk-images">                    
                       <a data-id="<?= $value->id ?>" data-toggle="modal" data-target="#myModal" class="img-uplod-modal active">
                         <img src="<?php echo base_url('assets/img/main_product_image.png');?>"></a>
+                        <input type="file" name="bulk_main_image" id="<?= $value->id ?>">
                       <a data-toggle="modal" data-target="#myModal" class="img-uplod-modal">
                         <img  src="<?php echo base_url('assets/img/imgpsh_fullsize_anim.png');?>"></a>  
                     </div>
@@ -118,7 +119,8 @@ $bulk_data = $bulk_data['uploaded_bulk_data'];
 
 <!-- Modal -->
   <div class="modal fade imageuploadModel" id="myModal" role="dialog">
-    <div class="modal-dialog">
+    <div class="modal-dialog">             
+      <form method="post" action="<?php echo base_url() ?>/vendor/bulk_update_product/<?= base64_encode($this->session->userdata('user_id')); ?>" enctype="multipart/form-data">   
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -178,9 +180,10 @@ $bulk_data = $bulk_data['uploaded_bulk_data'];
         </div>
         <div class="modal-footer">
           <button type="button" data-dismiss="modal" class="btn btn-default submit_button float-right">Cancle</button>              
-          <button type="submit" class="btn btn-default submit_button float-right product-image-save">Save</button> 
+          <button type="button" class="btn btn-default submit_button float-right product-image-save">Save</button> 
         </div>
       </div> 
+    </form>
     </div>
   </div>
 
@@ -232,7 +235,13 @@ $(".img-uplod-modal").click(function(){
     $(this).find("img").attr("main-preview-id","");
 });
   $(".product-image-save").click(function(){    
-     var getId =$(".bulk-img-main").attr("id");
+     var getIds = $("#product_main_image").val();
+     var DynamicIds = $('input[custom-data-id]').text();
+     alert(DynamicIds);
+      // $("#product_main_image").removeAttr("name");
+      // $("#product_main_image").removeAttr("id");
+     $('#my_file').html(filename);
+     alert(getIds)
      var tempSRC =$(".bulk-img-main").attr("src");
      console.log(tempSRC);
      $(".bulk-img-main").removeAttr("id");

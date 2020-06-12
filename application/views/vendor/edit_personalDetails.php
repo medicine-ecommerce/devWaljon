@@ -393,6 +393,8 @@
 	$(document).ready(function(){
 		$(".personal-section").attr("readonly","");
 		$(".working-section").attr("readonly","");
+		$(".bank-section").attr("readonly","");
+		$(".medical-section").attr("readonly","");
 		
 		$('.remove-alert').click(function() {
 			$('.custom-success-alert').fadeOut("slow")

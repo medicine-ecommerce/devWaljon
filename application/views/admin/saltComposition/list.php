@@ -69,17 +69,17 @@
                                   echo '<span class="rejected">Rejected</span>';
                                 }?>
                               </td>
-                              <td><a href="<?php echo base_url('admin/saltComposition_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-check"></i></span></a>
-                              <a href="<?php echo base_url('admin/saltComposition_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-close"></i></span></a>
-                              <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
-                                <?php if ($value->status=='pending' || $value->status=='reject') { ?>
-                                  <a class="dropdown-item" href="<?php echo base_url('admin/saltComposition_status/active/'.$value->id);?>">Approve</a>
-                                <?php }
-                                if ($value->status=='pending' || $value->status=='active') { ?>
-                                  <a class="dropdown-item" href="<?php echo base_url('admin/saltComposition_status/reject/'.$value->id);?>">Reject</a>
-                                <?php } ?>
-                              </div>
+                              <td>
+                              <a href="<?php echo base_url('admin/saltComposition_edit/'.$value->id); ?>"><span><i class="fa fa-pencil" style="color: #007bff;"></i></span></a>
+
+                              <a href="<?php echo base_url('admin/saltComposition_delete/'.$value->id); ?>"><span><i class="fa fa-trash" style="color: red;margin-right: 10px;"></i></span></a>
+
+                              <?php if ($value->status=='pending' || $value->status=='reject') { ?>
+                                <a href="<?php echo base_url('admin/saltComposition_status/active/'.$value->id);?>"><span class="approved">Active</span></a>
+                              <?php }
+                              if ($value->status=='pending' || $value->status=='active') { ?>
+                                <a href="<?php echo base_url('admin/saltComposition_status/reject/'.$value->id);?>"><span class="rejected">Deactive</span></a>
+                              <?php } ?>
                             </td>
                             </tr>
                           <?php } 
@@ -106,36 +106,46 @@
                         <?php 
                           if (!empty($saltComposition)) {
                             $i = 1;
-                            foreach ($saltComposition as $key => $value) { ?>
-                            <tr>
-                              <td><?php echo $i++; ?></td>
-                              <td><span class="brand_img"><img src="<?php echo base_url(); ?>assets/saltComposition-images/<?php echo $value->image ?>" ></span></td>
-                              <td><?php echo $value->username; ?></td>
-                              <td><?php echo $value->name; ?></td>
-                              <td><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?></td>
-                              <td>
-                                <?php if ($value->status=='pending') {
-                                  echo '<span class="pending">Pending</span>';
-                                } elseif ($value->status=='active') {
-                                  echo '<span class="approved">Approved</span>';
-                                } else {
-                                  echo '<span class="rejected">Rejected</span>';
-                                } ?>
-                              </td>
-                              <td><a href="<?php echo base_url('admin/saltComposition_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-check"></i></span></a>
-                              <a href="<?php echo base_url('admin/saltComposition_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-close"></i></span></a>
-                              <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
-                              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
-                                <?php if ($value->status=='pending' || $value->status=='reject') { ?>
-                                  <a class="dropdown-item" href="<?php echo base_url('admin/saltComposition_status/active/'.$value->id);?>">Approve</a>
-                                <?php }
-                                if ($value->status=='pending' || $value->status=='active') { ?>
-                                  <a class="dropdown-item" href="<?php echo base_url('admin/saltComposition_status/reject/'.$value->id);?>">Reject</a>
-                                <?php } ?>
-                              </div>
-                            </td>
-                            </tr>
-                          <?php } 
+                            foreach ($saltComposition as $key => $value) { 
+                              if($value->status=='pending'){?>
+                                <tr>
+                                  <td><?php echo $i++; ?></td>
+                                  <td><span class="brand_img"><img src="<?php echo base_url(); ?>assets/saltComposition-images/<?php echo $value->image ?>" ></span></td>
+                                  <td><?php echo $value->username; ?></td>
+                                  <td><?php echo $value->name; ?></td>
+                                  <td><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?></td>
+                                  <td>
+                                    <?php if ($value->status=='pending') {
+                                      echo '<span class="pending">Pending</span>';
+                                    } elseif ($value->status=='active') {
+                                      echo '<span class="approved">Approved</span>';
+                                    } else {
+                                      echo '<span class="rejected">Rejected</span>';
+                                    } ?>
+                                  </td>
+                                  <td>
+                                  <a href="<?php echo base_url('admin/saltComposition_edit/'.$value->id); ?>"><span><i class="fa fa-pencil" style="color: #007bff;"></i></span></a>
+                                  <a href="<?php echo base_url('admin/saltComposition_delete/'.$value->id); ?>"><span><i class="fa fa-trash" style="color: red;margin-right: 10px;"></i></span></a>
+
+                                  <?php if ($value->status=='pending' || $value->status=='reject') { ?>
+                                    <a href="<?php echo base_url('admin/saltComposition_status/active/'.$value->id);?>"><span class="approved">Active</span></a>
+                                  <?php }
+                                  if ($value->status=='pending' || $value->status=='active') { ?>
+                                    <a href="<?php echo base_url('admin/saltComposition_status/reject/'.$value->id);?>"><span class="rejected">Deactive</span></a>
+                                  <?php } ?>
+
+                                  <!-- <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
+                                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
+                                    <?php if ($value->status=='pending' || $value->status=='reject') { ?>
+                                      <a class="dropdown-item" href="<?php echo base_url('admin/saltComposition_status/active/'.$value->id);?>">Approve</a>
+                                    <?php }
+                                    if ($value->status=='pending' || $value->status=='active') { ?>
+                                      <a class="dropdown-item" href="<?php echo base_url('admin/saltComposition_status/reject/'.$value->id);?>">Reject</a>
+                                    <?php } ?>
+                                  </div> -->
+                                </td>
+                                </tr>
+                          <?php } } 
                         }?>
                       </tbody>
                     </table>
