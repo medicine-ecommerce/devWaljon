@@ -309,16 +309,28 @@ Class Vendor extends MY_Controller {
                         'how_to_store'=>$this->input->post('how_to_store'),
                         'safety_info'=>$this->input->post('safety_info'),
                         'created_at'=>date('Y-m-d H:i:s'));
-            $lastID = $this->Vendor->insertData('product',$data);
-            if ($lastID) {
+             $lastProductID = $this->Vendor->insertData('product',$data);
+            if ($lastProductID) {
                 foreach ($this->input->post('mrp') as $key => $value) {
-                    $dataItem = array('product_id'=>$lastID,
+                    $dataItem = array('product_id'=>$lastProductID,
                                 'mrp'=>$this->input->post('mrp')[$key],
                                 'sale_price'=>$this->input->post('sellprice')[$key],
                                 'unit'=>$this->input->post('unit')[$key],
                                 'quantity'=>$this->input->post('quantity')[$key],
                                 'expiry_date'=>$this->input->post('expiry_date')[$key]);
-                    $lastID = $this->Vendor->insertData('product_item',$dataItem);
+                        $lastID = $this->Vendor->insertData('product_item',$dataItem);
+                }
+                if (!empty($this->input->post('base64image'))) {
+                    $base64image = $this->input->post('base64image');
+                    foreach ($base64image as $key => $value) {
+                        $data = $value;
+                        list($type, $data) = explode(';', $data);
+                        list(, $data)      = explode(',', $data);
+                        $data = base64_decode($data);
+                        $path = 'assets/product-images/'.date('YmdHis').'.png';
+                        file_put_contents($path, $data);
+                        $this->Vendor->insertData('product_images',array('product_id'=>$lastProductID,'image'=>$path));
+                    }
                 }
                 $this->session->set_flashdata('success', 'Product updated successfully'); 
             }
@@ -334,6 +346,11 @@ Class Vendor extends MY_Controller {
         $this->data['brand'] = $this->Vendor->getData('brand','brand_name,id',array('status'=>"active"));
         $this->middle = 'add_single_product';
         $this->Vendor();
+    }
+
+    public function UploadProductImage()
+    {
+        $this->Vendor->upload('file','product-images');
     }
      public function import_data()
     {

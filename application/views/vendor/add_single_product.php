@@ -8,8 +8,7 @@
   </div>
   <form method="post" enctype="multipart/form-data">
     <div class="x_panel add-product">
-        <div class="row">
-          <?php if (!empty($this->session->flashdata('error'))) {
+      <?php if (!empty($this->session->flashdata('error'))) {
             echo '<div class="alert alert-danger">
                   '.$this->session->flashdata('error').'
                 </div>';
@@ -19,6 +18,8 @@
                   '.$this->session->flashdata('success').'
                 </div>';
           } ?>
+        <div class="row">
+          
           
           <div class="col-md-8">
             <div class="row padding-top-bottom-20">
@@ -445,8 +446,9 @@ function handleFiles(files) {
   files.forEach(uploadFile)
   files.forEach(previewFile);
 }
-
+var fileArr = [];
 function previewFile(file) {
+  
   let reader = new FileReader()
   reader.readAsDataURL(file);
   reader.onloadend = function() {
@@ -454,11 +456,11 @@ function previewFile(file) {
     var numberOfChildren = $('.img-upload').children('.column').length;
     var imgNumber = numberOfChildren+1;
     img.src = reader.result;
-    //document.getElementById('gallery').appendChild(img);
     $(".preview-box").append('<div class="mySlides"><img src="'+img.src+'" style="width:100%"></div>');
-    $(".img-upload").append('<div class="column"><img class="demo cursor" src="'+img.src+'" style="width:100%" onclick="currentSlide('+imgNumber+')"></div>');
+    $(".img-upload").append('<div class="column"><img class="demo cursor" src="'+img.src+'" style="width:100%" onclick="currentSlide('+imgNumber+')"></div><input type="hidden" name="base64image[]" value="'+img.src+'">');
     
   } 
+
 
 }
 
