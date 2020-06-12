@@ -624,6 +624,23 @@ span.transh-btn {
     width: 100%;
     height: 100%;
 }
+input.image-upload-input.brand_add {
+    position: absolute;
+    left: 10px;
+    width: 130px;
+    height: 130px;
+    cursor: pointer;
+    bottom: 0px;
+}
+span.brand_img {
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+}
+span.brand_img img{
+    width: 100%;
+    height: 100%;
+}
 /*brand page css*/
 /*inventory*/
 .invertory-head h6 {
