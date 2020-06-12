@@ -1,0 +1,262 @@
+  .container{
+    width: 100%;
+    height: 50%;
+    }
+.owl-nav button {
+  position: absolute;
+  top: 50%;
+  background-color: #000;
+  color: #fff;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
+}
+.owl-nav button.owl-prev {
+  left: 0;
+}
+.owl-nav button.owl-next {
+  right: 0;
+}
+
+.owl-dots {
+      position: absolute;
+    bottom: 2%;
+    width: 100%;
+    text-align: center;
+}
+.owl-dots button.owl-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  background: #ccc;
+  margin: 0 3px;
+}
+.owl-dots button.owl-dot.active {
+  background-color: #000;
+}
+.owl-dots button.owl-dot:focus {
+  outline: none;
+}
+.owl-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.38) !important;
+}
+span {
+    font-size: 70px;    
+    position: relative;
+    top: -5px;
+}
+.owl-nav button:focus {
+    outline: none;
+}
+.banner-slider .owl-stage-outer.owl-height{
+  height: 300px!important;
+}
+.brand-heading{
+  text-align: center;
+  
+}
+.brand-slider{
+  text-align: center;
+  padding-bottom: 50px;
+  padding-left: 100px;
+  padding-right: 100px;
+
+  
+}
+
+.banner-slider .owl-nav {
+    display: none;
+}
+.remove-dots .owl-dots {
+    display: none;
+}
+
+.remove-dots .owl-stage-outer.owl-height {
+    height: 100px!important;
+}
+.icon-slider{
+  background: linear-gradient(80deg,#4abdde,#2b89e1);
+}
+.icon-slider .owl-slider{
+ 
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 100px;
+}
+.icon-slider .owl-dots {
+    display: none;
+}
+.icon-slider .owl-stage-outer.owl-height {
+    height: 150px!important;
+}
+.icon-slider .owl-lazy{
+    width: 100%!important;
+    height: 170px!important;
+    object-fit: scale-down;
+}
+.product-heading{
+
+  height: 40px;
+  text-align: center;
+  background: linear-gradient(45deg,#44b5e8,#eeefdb)!important;
+  color: white;
+  font-size: 30px;
+  text-align: left;
+  margin-bottom: 20px;
+
+}
+.product-slider .owl-slider{
+
+  padding-left: 100px;
+  padding-right: 100px;
+  padding-bottom: 50px;
+  
+}
+.product-slider .owl-dots {
+    display: none;
+}
+.product-slider .owl-stage-outer.owl-height {
+    height: 150px!important;
+}
+.product-slider .owl-nav button.owl-prev{
+      margin-left: 96%;
+      top: -42px;
+}
+.product-slider .owl-nav button.owl-next {
+   
+    top: -42px;
+}
+.product-slider .span{
+    font-size: 23px;
+    position: relative;
+    top: 0px;
+}
+.product-heading-h4{
+  padding-left: 100px;
+}
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  max-width: 800px;
+}
+
+.layout__item {
+  //flex: 0 1 25%;
+  box-sizing: border-box;
+  width: 25%;
+  border: 1px solid #ddd;
+  display: inline-flex;
+  flex-direction: column;
+  padding: .8rem;
+}
+.countdown{
+  position: absolute;
+  background: #fff;
+  width: 250px;
+  height: 150px;
+  margin-top: 25%;
+  margin-left: 20%;
+  font-size: 15px;
+}
+.countdown-text {
+  color: red;
+  padding: 25px;
+  font-size: 50px;
+}
+.countdown-button{
+  background: linear-gradient(80deg,#4abdde,#2b89e1);
+  margin-top: -25px;
+  margin-left: 55px;
+}
+.countdown-text p {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+.product-default {
+    color: #777;
+    margin-bottom: 2rem;
+}
+.product-default:hover {
+    z-index: 2;
+}
+.product-default:hover figure {
+    box-shadow: 0 25px 35px -5px rgba(0,0,0,0.1);
+}
+figure {
+    margin: 0 0 1rem;
+}
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+}
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+.product-default:hover figure img:last-child {
+    opacity: 1;
+}
+.product-default figure img:first-child {
+    position: relative;
+}
+.product-default figure {
+    margin-bottom: 1.6rem;
+    position: relative;
+}
+.product-default figure img:last-child {
+    right: 0;
+    top: 0;
+    left: 0;
+}
+.owl-carousel .owl-item img {
+    display: block;
+   
+}
+.product-default figure img {
+    transition: all .5s;
+}
+.abc {
+    width: 100%!important;
+    height: 170px!important;
+    object-fit: scale-down;
+}
+.product-default .product-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.product-default .product-title {
+    font: 400 1.5rem "Open Sans",sans-serif;
+    letter-spacing: -.01em;
+    line-height: 1.35;
+    margin-bottom: .72rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+a:not([href]):not([tabindex]) {
+    color: inherit;
+    text-decoration: none;
+}
+a:not([href]):not([tabindex]):hover {
+    color: inherit;
+    text-decoration: none;
+}
+.product-default a {
+        white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.price-box {
+    margin-bottom: 1.2rem;
+}
+
+
+}
