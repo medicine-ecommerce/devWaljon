@@ -1,3 +1,4 @@
+
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class MY_Controller extends CI_Controller 
@@ -13,6 +14,7 @@ class MY_Controller extends CI_Controller
     }
 
     public function Admin(){
+
       $this->template['header']        = $this->load->view('admin/layout/header',$this->data);      
       $this->template['sidebar']        = $this->load->view('admin/layout/sidebar');  
       $this->template['middle']        = $this->load->view('admin/'.$this->middle,$this->data);
@@ -22,9 +24,10 @@ class MY_Controller extends CI_Controller
 
     }
     public function Vendor(){
+      $this->data['status'] = $this->Vendor->getRowData('users','is_active,created_at,full_name',array('id'=>$this->session->userdata('vendor_id')));        
 
-      $this->template['header']        = $this->load->view('admin/layout/header');      
-      $this->template['sidebar']        = $this->load->view('admin/layout/sidebar');  
+      $this->template['header']        = $this->load->view('admin/layout/header',$this->data);      
+      $this->template['sidebar']        = $this->load->view('admin/layout/sidebar',$this->data);  
       $this->template['middle']        = $this->load->view('vendor/'.$this->middle,$this->data);
       $this->template['footer']        = $this->load->view('admin/layout/footer');
       return  $this->template;

@@ -51,7 +51,15 @@
                                   <td><?php echo $value->username; ?></td>
                                   <td><?php echo $value->name; ?></td>
                                   <td><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?></td>
-                                  <td><?php echo $value->status; ?></td>
+                                  <td>
+                                    <?php if ($value->status=='pending') {
+                                      echo '<span class="pending">Pending</span>';
+                                    } elseif ($value->status=='active') {
+                                      echo '<span class="approved">Approved</span>';
+                                    } else {
+                                      echo '<span class="rejected">Rejected</span>';
+                                    } ?>
+                                  </td>
                                   <td>
                                     <a href="<?php echo base_url('admin/product_form_edit/'.$value->id);?>"><span class="status-approve"><i class="fa fa-check"></i>
                                     </span></a>

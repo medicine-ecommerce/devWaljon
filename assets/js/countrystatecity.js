@@ -277,7 +277,10 @@ jQuery(function() {
             jQuery(".states option:gt(0)").remove();
         }
     });
-    jQuery(".states").on("change", function(ev) {
+    
+    jQuery(".states").on("change", function(ev) {      
+        
+
         var stateId = jQuery("option:selected", this).attr('stateid');
         if(stateId != ''){
             loc.getCities(stateId);

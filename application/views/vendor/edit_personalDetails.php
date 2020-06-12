@@ -1,3 +1,4 @@
+
 <style type="text/css">
 	.nav-md .container.body .right_col {    
     background-color: #fff;
@@ -6,6 +7,14 @@
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
 <span class="input-error-message"><?php echo form_error('email', '<div class="error">', '</div>'); ?></span>     
 <div class="right_col registration-page ">
+
+	<div class="green-section alert-section  <?= ($status->is_active)==0 ? "show-section":"hide-section" ?> " >
+	  <a onclick="redirectToEditProfile()" class="alert-box alert-yellow-box profileverify-alert">
+	    <span class="alert-icon"><i class="fa fa-exclamation-triangle"></i></span>
+	    <span class="alert-content"><p> Your profile is under review, Our team will get back to you within 72 hours.</p></span>
+	  </a>  
+	</div>
+
 	<?php if($this->session->flashdata('success')){ ?>
 	<div class="custom-success-alert">		
 		<a class="remove-alert"> <span class="glyphicon glyphicon-remove custom-remove"></span></a>
@@ -32,7 +41,7 @@
 	</div>
 	<?php }?>
 
-	<form method="post" action="<?php echo base_url() ?>/vendor/vendor_profile" enctype="multipart/form-data">		
+	<form method="post" action="<?php echo base_url() ?>/vendor/vendor_profile/<?= base64_encode($this->session->userdata('user_id')); ?>" enctype="multipart/form-data">		
 		<div class="row padding-bottom20 padding-top50">
 			<div class="col-md-3">
 				<h5>Personal Information </h5>
@@ -48,25 +57,19 @@
 			<div class="col-md-8">
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top personal-section" name="first_name" value="<?php echo $edit_data->first_name ?>" >
+						<input type="text" class="form-control control-float-top personal-section" name="full_name" value="<?php echo $edit_data->full_name ?>" >
 						<label for="name">First Name</label>
 				  	</div>
-				</div>
-				<div class="col-md-4">
-					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top personal-section" name="last_name" value="<?php echo $edit_data->last_name ?>">
-						<label for="email">Last Name</label>
-					</div>
-				</div>			
+				</div>				
 				<div class="col-md-4">					
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top personal-section" name="date_of_birth"  value="<?= !empty($edit_data->date_of_birth) ? date('Y-m-d',strtotime($edit_data->date_of_birth)) : date("d/m/Y"); ?>">
+						<input type="date" class="form-control control-float-top personal-section" name="date_of_birth" value="<?= !empty($edit_data->date_of_birth) ? date('Y-m-d',strtotime($edit_data->date_of_birth)) : "" ?>">
 						<label for="email">Date Of Birth</label>
 					</div>
 				</div>
 				<div class="col-md-4">
 					 <div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top personal-section" name="address" value="<?= $edit_data->address ?>" id="location"> 
+						<input type="text" class="form-control control-float-top personal-section" name="address" value="<?= $edit_data->address ?>"> 
 						<label for="email">Address</label>
 					</div>
 				</div>
@@ -87,7 +90,7 @@
 						<label for="country">State</label>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					 <div class="form-group label-float-top">
 					 	<select name="city" class="form-control control-float-top custom-select cities personal-section" id="cityId" value="<?= $edit_data->city ?>">					    
 					 		<option><?= $edit_data->city ?></option>
@@ -95,19 +98,19 @@
 						<label for="country">City</label>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="form-group label-float-top">
 						<input type="text" maxlength="6" class="form-control control-float-top personal-section" name="pin_code" value="<?= !empty($edit_data->pin_code) ?$edit_data->pin_code : "" ?>">
 						<label for="email">Zip Postal Code</label>
 					</div>
 				</div>			
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="text" minlength="10" maxlength="10" class="form-control control-float-top personal-section" name="mobile" value="<?= $edit_data->mobile ?>">
+						<input id="mobile" class="form-control control-float-top personal-section" type="tel" name="mobile" minlength="10" maxlength="10" value="<?= $edit_data->mobile ?>">
 						<label for="email">Mobile</label>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="form-group label-float-top">
 						<input type="email" class="form-control control-float-top personal-section" name="email" value="<?= $edit_data->email ?>">
 						<label for="email">Email</label>
@@ -116,6 +119,7 @@
 			</div>
 			<div class="col-md-4 text-right">
 				<div class="profile-image-section">								
+					<label class="image-title">Upload profile image</label>
 					<div>	
 						<a target="_blank" href="<?php echo base_url(); ?>assets/vendor_profile/<?php echo $edit_data->image ?>">
 						<img <?php if($edit_data->image){ ?> src="<?php echo base_url(); ?>assets/vendor_profile/<?php echo $edit_data->image ?>" <?php }else{ ?>src="<?php echo base_url(); ?>assets/img/profile_dummy.png" <?php } ?>  class="profile-images-custom" id="preview">				
@@ -123,7 +127,7 @@
 						
 					</div>
 					<button type="button" class="btn btn-primary image-upload-button">Upload</button>
-					<input type="file" id="profile_image" name="profile_image" class="image-upload-input edit-profile-image">
+					<input type="file" id="profile_image" name="profile_image" class="image-upload-input edit-profile-image licence-img">
 					<input type="hidden" name="edit_profile_image" value="<?php echo $edit_data->image ?>">
 					
 
@@ -132,7 +136,7 @@
 		</div>
 		<div class="row padding-top-bottom-20">
 			<div class="col-md-3">
-				<h5>Working Information </h5>
+				<h5>Professional Information </h5>
 				<a onclick="editEnableWorking()">
 					<img src="<?php echo base_url(); ?>assets/img/edit_dark.png"  class="edit-pencil">
 				</a>
@@ -143,7 +147,7 @@
 		</div>
 		<div class="row">		
 			<div class="col-md-8">
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="form-group label-float-top">					  
 					  <!-- <select class="form-control control-float-top" name="degree" value="<?= $edit_data->degree ?>">
 					    <option></option>
@@ -155,13 +159,13 @@
 					  <label for="Address">Degree</label>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="form-group label-float-top">
 						<input type="date" class="form-control control-float-top working-section" name="working_from" value="<?= !empty($edit_data->working_from) ? date('Y-m-d',strtotime($edit_data->working_from)) : "" ?>">
 						<label for="Address">Working From</label>
 					</div>
 				</div>			
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<div class="form-group label-float-top">
 						<select class="form-control control-float-top custom-select working-section" name="experience">
 							
@@ -173,7 +177,7 @@
 					  <label for="Address">Year of Experience</label>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<!-- <div class="col-md-3">
 					 <div class="form-group label-float-top">
 						<select class="form-control control-float-top custom-select working-section" name="marital_status" value="<?= $edit_data->marital_status ?>">							
 						    <option <?php if($edit_data->marital_status==""){ ?> selected <?php } ?>>Select Option</option>
@@ -182,7 +186,7 @@
 						</select>
 					  <label for="Address">Marital Status</label>
 					</div>
-				</div>			
+				</div>		 -->	
 			</div>
 			<div class="col-md-4 text-right">			
 			</div>
@@ -200,7 +204,7 @@
 		</div>
 		<div class="row padding-top-bottom-20"> 
 			<div class="col-md-8">
-				<div class="col-md-3">
+				<div class="col-md-6">
 					 <div class="form-group label-float-top">
 						<select class="form-control control-float-top custom-select bank-section" name="bank_name" value="<?php echo set_value('bank_name')?>">
 							<option></option>
@@ -211,19 +215,25 @@
 						<label for="Address">Bank Name</label>
 					</div>
 				</div>
-				<div class="col-md-3">					
+				<div class="col-md-6">					
 					<div class="form-group label-float-top">
 						<input type="text" class="form-control control-float-top bank-section" name="account_number" value="<?= !empty($bank_data->account_number) ? $bank_data->account_number :"" ?>">
 						<label for="Address">Account Number</label>
 					</div>
 				</div>			
-				<div class="col-md-3">
+				<div class="col-md-4">
+					<div class="form-group label-float-top">
+						<input type="text" class="form-control control-float-top bank-section" name="branch_name" value="<?= !empty($bank_data->branch_name) ? $bank_data->branch_name : "" ?>">
+						<label for="Address">Branch Name</label>
+					</div>
+				</div>
+				<div class="col-md-4">
 					<div class="form-group label-float-top">
 						<input type="text" class="form-control control-float-top bank-section" name="ifc_code" value="<?= !empty($bank_data->ifc_code) ? $bank_data->ifc_code : "" ?>">
 						<label for="Address">IFSC Code</label>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-4">
 					 <div class="form-group label-float-top">
 					 	<select class="form-control control-float-top custom-select bank-section" name="account_type" value="<?php echo set_value('account_type')?>">
 							<option></option>
@@ -251,25 +261,25 @@
 		</div>
 		<div class="row"> 
 			<div class="col-md-8">
-				<div class="col-md-3">
+				<div class="col-md-6">
 					 <div class="form-group label-float-top">
 						<input type="text" class="form-control control-float-top medical-section" name="company_name" value="<?= $edit_data->company_name ?>">
 						<label for="Address">Company Name</label>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<div class="form-group label-float-top">
 						<input type="date" class="form-control control-float-top medical-section" name="medical_since" value="<?=  !empty($edit_data->medical_since) ? date('Y-m-d',strtotime($edit_data->medical_since)): "" ?>">
 						<label for="Address">Medical Since</label>
 					</div>
 				</div>			
-				<div class="col-md-3">
+				<div class="col-md-6">
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top medical-section" maxlength="10" minlength="10" name="medical_phone" value="<?= $edit_data->medical_phone ?>">
+						<input id="phone" class="form-control control-float-top mobile-intel" type="tel" minlength="10" maxlength="10" name="medical_phone" value="<?= $edit_data->medical_phone ?>">
 						<label for="Address">Phone</label>
 					</div>
 				</div>
-				<div class="col-md-3">
+				<div class="col-md-6">
 					 <div class="form-group label-float-top">
 						<input type="email" class="form-control control-float-top medical-section" name="medical_email" value="<?= $edit_data->medical_email ?>">
 						<label for="Address">Email</label>
@@ -278,13 +288,12 @@
 			</div>
 			<div class="col-md-4 text-right">			
 				<div class="profile-image-section">								
+					<label class="image-title">Please upload licence</label>
 					<div>					
-						
-						<img <?php if($edit_data->licence){ ?> src="<?php echo base_url(); ?>assets/licence/<?php echo $edit_data->licence ?>" <?php }else{ ?>src="<?php echo base_url(); ?>assets/img/prescription.png" <?php } ?>  class="profile-images-custom" id="preview2">				
-
+						<img <?php if($edit_data->licence){ ?> src="<?php echo base_url(); ?>assets/licence/<?php echo $edit_data->licence ?>" <?php }else{ ?>src="<?php echo base_url(); ?>assets/img/prescription.png" <?php } ?>  class="profile-images-custom" id="preview2">		
 					</div>
 					<button type="button" class="btn btn-primary image-upload-button">Upload</button>
-					<input type="file" id="licenceImg" name="licence" class="image-upload-input edit-licence-upload">
+					<input type="file" id="licenceImg" name="licence" class="image-upload-input edit-licence-upload licence-img">
 					<input type="hidden" name="edit_licence" value="<?php echo $edit_data->licence ?>">
 				</div>
 			</div>
@@ -318,8 +327,10 @@
 	  </div>  
 	</div>
 </div>
+
 <!-- <input type="hidden" name="" class="success_id" value="<?= $this->session->flashdata('success') ?>">
 <input type="hidden" name="" class="prev_url" value="<?= $_SERVER['HTTP_REFERER'] ?>"> -->
+<script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>    
 <script type="text/javascript">
 	var profile_image = document.getElementById("profile_image"),
     preview = document.getElementById("preview");
@@ -366,6 +377,7 @@
 		$(window).load(function(){  	
 	  		$(".label-float-top").find("label").addClass("active");
 		});	
+		// $('#jquery-intl-phone').intlTelInput("setCountry", 'in');
 	});
 
 	$(document).ready(function(){
@@ -381,6 +393,8 @@
 	$(document).ready(function(){
 		$(".personal-section").attr("readonly","");
 		$(".working-section").attr("readonly","");
+		$(".bank-section").attr("readonly","");
+		$(".medical-section").attr("readonly","");
 		
 		$('.remove-alert').click(function() {
 			$('.custom-success-alert').fadeOut("slow")
@@ -409,6 +423,18 @@
 		setInterval(function () {
 	        $('.custom-info-alert').fadeOut("slow")
     	}, 7000);
+    	jQuery(".states").on("click", function() {
+        var countryIdS = jQuery('#countryId').val();
+        	if(countryIdS=='Select Country'){
+            	alert("please select country first");                        
+        	}
+    	});
+		jQuery(".cities").on("click", function() {
+			var stateIdS = jQuery('#stateId').val();        			
+			if(!stateIdS){
+			            alert("please select state first");                        
+			}
+		});
 
 	});
 	$(".label-float-top").click(function(){
@@ -429,16 +455,16 @@
 
 	// });
 	// scripts.js custom js file
-	$(document).ready(function () {
-		$("#location").attr("placeholder","");		
+	// $(document).ready(function () {
+	// 	$("#location").attr("placeholder","");		
 		
-	   google.maps.event.addDomListener(window, 'load', initialize);
-	});
+	//    google.maps.event.addDomListener(window, 'load', initialize);
+	// });
 
-	function initialize() {
-	    var input = document.getElementById('location');
-	    var autocomplete = new google.maps.places.Autocomplete(input);
-	}
+	// function initialize() {
+	//     var input = document.getElementById('location');
+	//     var autocomplete = new google.maps.places.Autocomplete(input);
+	// }
 	function editEnable(){
 		$(".personal-section").removeAttr("readonly");
 		$(".form-control").removeClass('personal-section');
@@ -460,3 +486,58 @@
 
 
 </script>
+  <script>
+
+    var input_mobile = document.querySelector("#mobile");
+    var input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+    	initialCountry: 'in',
+      // allowDropdown: false,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+      // formatOnDisplay: false,
+      // geoIpLookup: function(callback) {
+      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      //     var countryCode = (resp && resp.country) ? resp.country : "";
+      //     callback(countryCode);
+      //   });
+      // },
+      // hiddenInput: "full_number",
+      // initialCountry: "auto",
+      // localizedCountries: { 'de': 'Deutschland' },
+      // nationalMode: false,
+      onlyCountries: ['in','us','ch', 'ca', 'do'],
+      preferredCountries: ["in", 'us'],
+      // placeholderNumberType: "MOBILE",
+      // preferredCountries: ['cn', 'jp'],
+      separateDialCode: true,
+      utilsScript: "build/js/utils.js",
+    });
+     window.intlTelInput(input_mobile, {
+    	initialCountry: 'in',
+      // allowDropdown: false,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+      // formatOnDisplay: false,
+      // geoIpLookup: function(callback) {
+      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      //     var countryCode = (resp && resp.country) ? resp.country : "";
+      //     callback(countryCode);
+      //   });
+      // },
+      // hiddenInput: "full_number",
+      // initialCountry: "auto",
+      // localizedCountries: { 'de': 'Deutschland' },
+      // nationalMode: false,
+      onlyCountries: ['in','us','ch', 'ca', 'do'],
+      preferredCountries: ["in", 'us'],
+      // placeholderNumberType: "MOBILE",
+      // preferredCountries: ['cn', 'jp'],
+      separateDialCode: true,
+      utilsScript: "build/js/utils.js",
+    });
+  </script>

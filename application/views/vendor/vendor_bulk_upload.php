@@ -102,13 +102,18 @@
       </div> 
     </div>
   </div>   
-
+  <div class="loader-div">    
+      <img src="<?php echo base_url(); ?>assets/img/rolling_data.gif" class="image-loader loader-hide">  
+  </div>
 
 
 
 <script type="text/javascript">
   
   $('#import_form').on('submit', function(event){
+
+    $(".image-loader").removeClass("loader-hide");
+    $(".image-loader").addClass("loader-show");
     event.preventDefault();
     $.ajax({
       url:"<?php echo base_url() ?>vendor/import_data",

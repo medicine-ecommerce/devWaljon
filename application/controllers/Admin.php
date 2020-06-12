@@ -46,8 +46,8 @@ Class Admin extends MY_Controller {
     public function vendor_add()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
-            $this->form_validation->set_rules('first_name', 'First Name', 'required');
-            $this->form_validation->set_rules('last_name', 'Last Name', 'required');
+            $this->form_validation->set_rules('full_name', 'Full Name', 'required');
+            //$this->form_validation->set_rules('last_name', 'Last Name', 'required');
             $this->form_validation->set_rules('email', 'email', 'required|valid_email');
             $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
             $this->form_validation->set_rules('company_name', 'Company Name', 'required');
@@ -60,8 +60,8 @@ Class Admin extends MY_Controller {
                 $data = array(
                             'company_name'      =>$this->input->post('company_name'),
                             'company_address'   =>$this->input->post('company_address'),
-                            'first_name'        =>$this->input->post('first_name'),
-                            'last_name'         =>$this->input->post('last_name'),
+                            'full_name'        =>$this->input->post('full_name'),
+                            //'last_name'         =>$this->input->post('last_name'),
                             'email'             =>$this->input->post('email'),
                             'mobile'            =>$this->input->post('mobile'),
                             'password'          => md5('123456'),
@@ -81,8 +81,8 @@ Class Admin extends MY_Controller {
     public function vendor_edit($id)
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
-            $this->form_validation->set_rules('first_name', 'First Name', 'required');
-            $this->form_validation->set_rules('last_name', 'Last Name', 'required');
+            $this->form_validation->set_rules('full_name', 'First Name', 'required');
+            //$this->form_validation->set_rules('last_name', 'Last Name', 'required');
             $this->form_validation->set_rules('email', 'email', 'required|valid_email');
             $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
             $this->form_validation->set_rules('company_name', 'Company Name', 'required');
@@ -95,8 +95,8 @@ Class Admin extends MY_Controller {
                 $data = array(
                             'company_name'      =>$this->input->post('company_name'),
                             'company_address'   =>$this->input->post('company_address'),
-                            'first_name'        =>$this->input->post('first_name'),
-                            'last_name'         =>$this->input->post('last_name'),
+                            'full_name'        =>$this->input->post('full_name'),
+                            //'last_name'         =>$this->input->post('last_name'),
                             'email'             =>$this->input->post('email'),
                             'mobile'            =>$this->input->post('mobile'));
                 $result = $this->Admin->updateData('users',$data,array('id'=>$id));
@@ -271,8 +271,11 @@ Class Admin extends MY_Controller {
             }
             else{
                 $data = array(
+                            'created_by'=>$this->session->userdata('user_id'),
                             'category_id'=>$this->input->post('category_id'),
-                            'subcategory'=>$this->input->post('subcategory_name')
+                            'subcategory'=>$this->input->post('subcategory_name'),
+                            'created_at'=>date('Y-m-d H:i:s'),
+                            'status'=> ($this->session->userdata('user_type')=='admin')?'active':'pending' 
                         );
                 $result = $this->Admin->insertData('subcategory',$data);
                 if (!empty($result)) {
@@ -330,6 +333,17 @@ Class Admin extends MY_Controller {
             $this->session->set_flashdata('success', 'Subcategory deleted successfully');
         }else{
             $this->session->set_flashdata('error', 'error! Please try again');
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function subcategory_status($status,$id)
+    {
+        $result = $this->Admin->updateData('subcategory',array('status'=>$status),array('id'=>$id));
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'status updated successfully'); 
+        }
+        else{
+            $this->session->set_flashdata('error', 'error! Please try again'); 
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
@@ -432,21 +446,6 @@ Class Admin extends MY_Controller {
         $this->middle = 'product_category';
         $this->Admin();
     }
-    public function brands()
-    {
-        $this->middle = 'brands';
-        $this->Admin();
-    }
-    public function saltComposition_add()
-    {
-        $this->middle = 'saltComposition/add';
-        $this->Admin();
-    }
-    public function saltComposition_list()
-    {
-        $this->middle = 'saltComposition/list';
-        $this->Admin();
-    }
     public function logout()
     {   
         $this->session->sess_destroy();
@@ -546,7 +545,7 @@ Class Admin extends MY_Controller {
       }
     }
 
-     public function brand_add()
+    public function brand_add()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('brand_name', 'brand', 'required');
@@ -638,6 +637,101 @@ Class Admin extends MY_Controller {
         redirect($_SERVER['HTTP_REFERER']);
     }
 
-    
+    public function saltComposition_add()
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $this->form_validation->set_rules('saltComposition_name', 'saltComposition', 'required');
+            if ($this->form_validation->run() == FALSE){ 
+                $this->session->set_flashdata('error', validation_errors());      
+            }
+            else{
+                $data = array(
+                            'name'=>$this->input->post('saltComposition_name'),
+                            'created_by'=> $this->session->userdata('user_id'),
+                            'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
+                            'created_at'=> date('Y-m-d H:i:s')
+                        );
+
+                if(!empty($_FILES['saltComposition_img'])){
+                    $uploadedImg = $this->Admin->upload('saltComposition_img','saltComposition-images');
+                    $data['image'] = $uploadedImg['file_name'];
+                }
+
+                $result = $this->Admin->insertData('saltComposition',$data);
+                if (!empty($result)) {
+                    $this->session->set_flashdata('success', 'Salt Composition added successfully');                    
+                }
+                else{
+                    $this->session->set_flashdata('error','error! Please try again');
+                }
+                redirect($_SERVER['HTTP_REFERER']); 
+            }
+        }
+        $this->middle = 'saltComposition/add';
+        $this->Admin();
+    }
+    public function saltComposition_list()
+    {
+        $this->data['saltComposition'] = $this->Admin->saltCompositionList();
+        $this->middle = 'saltComposition/list';
+        $this->Admin();
+    }
+    public function saltComposition_edit($id)
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $this->form_validation->set_rules('saltComposition_name', 'saltComposition', 'required');
+            if ($this->form_validation->run() == FALSE){ 
+              $this->session->set_flashdata('error', validation_errors());      
+            }
+            else{
+                $data = array(
+                            'name'=>$this->input->post('saltComposition_name')
+                        );
+
+                if(!empty($_FILES['saltComposition_img'])){
+                    $uploadedImg = $this->Admin->upload('saltComposition_img','saltComposition-images');
+                    $data['image'] = $uploadedImg['file_name'];
+                }
+
+                $result = $this->Admin->updateData('saltComposition',$data,array('id'=>$id));
+                if (!empty($result)) {
+                    $this->session->set_flashdata('success', 'Salt Composition updated successfully');                    
+                }
+                else{
+                    $this->session->set_flashdata('error','error! Please try again');
+                }
+                redirect($_SERVER['HTTP_REFERER']); 
+            }
+        }
+        $this->data['saltComposition'] = $this->Admin->getRowData('saltComposition','*',array('id'=>$id));
+        $this->middle = 'saltComposition/add';
+        $this->Admin();
+    }
+    public function saltComposition_delete($id)
+    {
+        $result = $this->Admin->deleteData('saltComposition',array('id'=>$id));
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'saltComposition deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'error! Please try again');
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function saltComposition_status($status,$id)
+    {
+        $result = $this->Admin->updateData('saltComposition',array('status'=>$status),array('id'=>$id));
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'status updated successfully'); 
+        }
+        else{
+            $this->session->set_flashdata('error', 'error! Please try again'); 
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }  
+    public function linking()
+    {
+        $this->middle = 'linking/linking';
+        $this->Admin();
+    }
 
 }
