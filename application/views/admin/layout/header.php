@@ -26,7 +26,7 @@
     <link href="<?php echo base_url(); ?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url(); ?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    
+     <!-- <link href="<?php echo base_url(); ?>vendors/select2/dist/css/select2.min.css" rel="stylesheet"> -->
 
     <!-- Datatables -->
     <link href="<?php echo base_url(); ?>vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">

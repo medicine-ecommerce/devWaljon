@@ -32,15 +32,54 @@
                 <table class="table user-detail-table linking-table" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Home Categories</th>
-                      <th></th>
-                      <th>Product Categories</th>
+                      <th style="width: 30%">Home Categories</th>
+                      <th style="width: 20%"></th>
+                      <th style="width: 50%">Product Categories</th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
                       <td>Featured Brans</td>
-                      <td></td>
+                      <td><span class="dot">............</span><img src="<?php echo base_url(); ?>assets/img/link.png" class="link-img"><span class="dot">............</span></td>
+                      <td>
+                        <select class="form-control">
+                          <option>Select Brands</option>
+                          <option>Option one</option>
+                          <option>Option two</option>
+                          <option>Option three</option>
+                          <option>Option four</option>
+                        </select>
+                      </td>  
+                    </tr> 
+                    <tr>
+                      <td>Featured Brans</td>
+                      <td><span class="dot">............</span><img src="<?php echo base_url(); ?>assets/img/link.png" class="link-img"><span class="dot">............</span></td>
+                      <td>
+                        <select class="form-control">
+                          <option>Select Brands</option>
+                          <option>Option one</option>
+                          <option>Option two</option>
+                          <option>Option three</option>
+                          <option>Option four</option>
+                        </select>
+                      </td>  
+                    </tr>
+                    <tr>
+                      <td>Featured Brans</td>
+                      <td><span class="dot">............</span><img src="<?php echo base_url(); ?>assets/img/link.png" class="link-img"><span class="dot">............</span></td>
+                      <td>
+                        <select class="form-control">
+                          <option>Select Brands</option>
+                          <option>Option one</option>
+                          <option>Option two</option>
+                          <option>Option three</option>
+                          <option>Option four</option>
+                        </select>
+                      </td>  
+                    </tr>
+                    <tr>
+                      <td>Featured Brans</td>
+                      <td><span class="dot">............</span><img src="<?php echo base_url(); ?>assets/img/link.png" class="link-img"><span class="dot">............</span></td>
                       <td>
                         <select class="form-control">
                           <option>Select Brands</option>
@@ -68,5 +107,3 @@
     </div>
   </div>
   <!-- /page content -->
-
-      
