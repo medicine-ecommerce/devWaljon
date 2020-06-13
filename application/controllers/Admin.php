@@ -154,8 +154,7 @@ Class Admin extends MY_Controller {
 
             if(!empty($result))
             {
-                $data = array('first_name'=>$result->first_name,
-                            'last_name'=>$result->last_name,
+                $data = array('full_name'=>$result->full_name,                            
                             'user_type'=>$result->type,
                             'email'=>$result->email,
                             'user_id'=>$result->id);
