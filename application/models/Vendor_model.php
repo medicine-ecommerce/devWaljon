@@ -1,5 +1,4 @@
 <?php
-
 class Vendor_model extends MY_model
 {
 	

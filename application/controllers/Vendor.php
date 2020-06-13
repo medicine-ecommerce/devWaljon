@@ -4,7 +4,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 Class Vendor extends MY_Controller {
 
     public function __construct() 
@@ -246,10 +245,6 @@ Class Vendor extends MY_Controller {
                 if ($result > 0) {
                     $this->session->set_flashdata('success', 'Profile successfully Updated');                    
                         redirect($_SERVER['HTTP_REFERER']); 
-                    // if($_SERVER['HTTP_REFERER']== base_url()."vendor/editPersonalDetails"){
-                    // }else{
-                    //     redirect(base_url('vendor/vendor_dashboard'));
-                    // }
                 }
             }
             $this->session->set_flashdata('info', 'No data changes');
