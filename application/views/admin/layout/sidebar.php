@@ -1,6 +1,5 @@
-<?php 
+<?php
 $page = $this->uri->segment('2');
-
 ?>
         <div class="col-md-3 left_col custom-sidebar-col">
           <div class="left_col scroll-view admin-side-bar">
