@@ -136,12 +136,14 @@ Class Vendor extends MY_Controller {
         $this->middle = 'personalDetails';
         $this->Vendor();
     }
-    public function editPersonalDetails()
+    public function editPersonalDetails($userId)
     {
+        $user_id = base64_decode($userId);
+
         $this->data['bank'] = $this->Vendor->getData('bank','*','');
-        $this->data['edit_data'] = $this->Vendor->getRowData('users','*',array('id'=>$this->session->userdata('user_id')));
-        $this->data['bank_data'] = $this->Vendor->getRowData('bank_account','*',array('vendor_id'=>$this->session->userdata('user_id')));
-        $this->data['status'] = $this->Vendor->getRowData('users','is_active',array('id'=>$this->session->userdata('user_id')));        
+        $this->data['edit_data'] = $this->Vendor->getRowData('users','*',array('id'=>$user_id));
+        $this->data['bank_data'] = $this->Vendor->getRowData('bank_account','*',array('vendor_id'=>$user_id));
+        $this->data['status'] = $this->Vendor->getRowData('users','is_active',array('id'=>$user_id));        
 
         $this->data['working_experience'] = $this->config->item('working_experience'); 
         $this->data['account_type'] = $this->config->item('account_type'); 
@@ -243,7 +245,7 @@ Class Vendor extends MY_Controller {
                 // print_r($result);
                 // die();
                 if ($result > 0) {
-                    $this->session->set_flashdata('success', 'Profile successfully Updated');                    
+                    $this->session->set_flashdata('success', 'Profile successfully Updated');
                         redirect($_SERVER['HTTP_REFERER']); 
                 }
             }
