@@ -1374,6 +1374,9 @@ img.loader-show{
 img.loader-hide{
     display: none;
 }
+.blur-background{
+    filter: blur(4px);
+}
 .product-cat-btn{
     margin-top: 40px; 
 }
