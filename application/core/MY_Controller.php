@@ -14,8 +14,9 @@ class MY_Controller extends CI_Controller
     }
 
     public function Admin(){
-
-      $this->data['status'] = $this->Admin->getRowData('users','is_active,created_at,full_name',array('id'=>$this->session->userdata('vendor_id'))); 
+      if(!empty($this->session->userdata('vendor_id'))){
+        $this->data['status'] = $this->Admin->getRowData('users','is_active,created_at,full_name',array('id'=>$this->session->userdata('vendor_id'))); 
+      }
       $this->template['header']        = $this->load->view('admin/layout/header',$this->data);      
       $this->template['sidebar']        = $this->load->view('admin/layout/sidebar',$this->data);  
       $this->template['middle']        = $this->load->view('admin/'.$this->middle,$this->data);
