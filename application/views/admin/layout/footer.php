@@ -75,9 +75,10 @@
     <script src="<?php echo base_url(); ?>vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
     <script src="<?php echo base_url(); ?>vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
      <!-- Dropzone.js -->
-    <script src="<?php echo base_url(); ?>/vendors/dropzone/dist/min/dropzone.min.js"></script>
+    <script src="<?php echo base_url(); ?>vendors/dropzone/dist/min/dropzone.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="<?php echo base_url(); ?>build/js/custom.min.js"></script>
-	
+	      
+   <!--  <script src="<?php echo base_url(); ?>vendors/select2/dist/js/select2.full.min.js" type="4ab41406c87f1a08f7eb842c-text/javascript"></script> -->
   </body>
 </html>

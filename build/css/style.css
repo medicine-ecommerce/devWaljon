@@ -1375,13 +1375,34 @@ img.loader-hide{
     display: none;
 }
 .product-cat-btn{
-    margin-top: 40px; l
+    margin-top: 40px; 
 }
 /*salt composition*/
 /*linking*/
 .linking-table{
-    width: 70%;
+    width: 80%;
 }
+span.dot {
+    color: #acb1b6;
+    font-size: 20px;
+}
+.link-img{
+    margin-top: 4px;
+}
+.table.linking-table thead th {
+    vertical-align: bottom;
+    border-top: none;
+    font-size: 14px;
+    color: #6183c3;
+}
+.table.linking-table tbody td {
+    padding: 10px 5px 5px;
+    font-size: 14px;
+    vertical-align: initial;
+    border-top: none;
+    border-bottom: none;
+}
+
 /*linking*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {

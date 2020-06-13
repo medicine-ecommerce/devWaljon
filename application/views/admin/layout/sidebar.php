@@ -58,7 +58,7 @@
                       <li><a class="sub-item" href="<?php echo base_url('admin/addSingleProduct'); ?>">Add Product</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/product_form_list'); ?>">Product Form</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/all_product'); ?>">All Product</a></li>
-                      <li><a class="sub-item" href="#">Linking</a></li>
+                      <li><a class="sub-item" href="<?php echo base_url('admin/linking'); ?>">Linking</a></li>
                       <li><a class="sub-item" href="<?php echo base_url('admin/saltComposition_list'); ?>">Salt Composition</a></li>
                       <li><a class="sub-item" href="#">All Inventory</a></li>
                     </ul>
