@@ -103,7 +103,7 @@
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="email" id="email" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); echo "readonly"; ?> <?php } ?>" <?= (!empty($this->session->userdata('email'))) ? 'readonly=""' :"" ?> >
+						<input type="email" id="email" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); ?> <?php } ?>" <?= (!empty($this->session->userdata('email'))) ? 'readonly=""' :"" ?> >
 						<label id="email-label" for="email">Email</label>
 					</div>
 				</div>
@@ -441,7 +441,7 @@
 		})
 		setInterval(function () {
 	        $('.custom-error-alert').fadeOut("slow")
-    	}, 7000);
+    	}, 12000);
 
 	});
 	$(document).ready(function(){			

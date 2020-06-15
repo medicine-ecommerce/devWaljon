@@ -83,11 +83,11 @@ $page = $this->uri->segment('2');
                 <ul class="nav side-menu">
                   <li><a href="<?php echo base_url('vendor/vendor_dashboard'); ?>"><i class="fa fa-dashboard"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
                   </li>
-                  <li><a><i class="fa fa-user"></i> Staff <span class="fa fa-chevron-down"></span></a>
+                  <!-- <li><a><i class="fa fa-user"></i> Staff <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="index.html">List </a></li>
                     </ul>
-                  </li>
+                  </li> -->
                   <li><a><i class="fa fa-eraser"></i> Inventory<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a class="<?= ($page=="addSingleProduct")? "active":"" ?>" href="<?php echo base_url('vendor/addSingleProduct'); ?>">Add Product</a></li>
