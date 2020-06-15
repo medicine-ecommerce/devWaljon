@@ -89,7 +89,7 @@ class Admin_model extends MY_model
 	}
 	public function saltCompositionList()
 	{
-		$this->db->select('CONCAT(users.first_name," ",users.last_name) as username,saltComposition.*');
+		$this->db->select('users.full_name as username,saltComposition.*');
 		$this->db->from('saltComposition');
 		$this->db->join('users','users.id = saltComposition.created_by','left');
 		// $this ->db->order_by("FIELD(saltComposition.status,'pending','active','reject')");
