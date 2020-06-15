@@ -50,11 +50,11 @@
                       <!-- <td></td> -->
                       <td><?php echo $value->created_at;?></td>
                       <td>
-                        <span class="status-approve"> 
+                        <!-- <span class="status-approve"> 
                           <a data-toggle="tooltip" data-placement="top" data-original-title="Refill"><i class="fa fa-check"></i></a>
-                        </span> 
+                        </span> --> 
                         <span class="status-cancle">
-                          <a href="<?php echo base_url('vendor/product_delete/'.$value->id); ?>" onclick="return confirm('Are you sure？')" data-toggle="tooltip" data-placement="top" data-original-title="Remove"><i class="fa fa-close"></i></a>
+                          <a href="<?php echo base_url('vendor/product_delete/'.$value->id); ?>" onclick="return confirm('Are you sure？')" data-toggle="tooltip" data-placement="top" data-original-title="Remove"><i class="fa fa-trash"></i></a>
                         </span>
                       </td>  
                     </tr>

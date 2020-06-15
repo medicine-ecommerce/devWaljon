@@ -66,7 +66,7 @@
                                 } elseif ($value->status=='active') {
                                   echo '<span class="approved">Active</span>';
                                 } else {
-                                  echo '<span class="rejected">Rejected</span>';
+                                  echo '<span class="rejected">Deactive</span>';
                                 }?>
                               </td>
                               <td>
@@ -75,10 +75,10 @@
                               <a href="<?php echo base_url('admin/saltComposition_delete/'.$value->id); ?>"><span><i class="fa fa-trash" style="color: red;margin-right: 10px;"></i></span></a>
 
                               <?php if ($value->status=='pending' || $value->status=='reject') { ?>
-                                <a href="<?php echo base_url('admin/saltComposition_status/active/'.$value->id);?>"><span class="approved">Active</span></a>
+                                <a href="<?php echo base_url('admin/saltComposition_status/active/'.$value->id);?>"><span class="approved">Activate</span></a>
                               <?php }
                               if ($value->status=='pending' || $value->status=='active') { ?>
-                                <a href="<?php echo base_url('admin/saltComposition_status/reject/'.$value->id);?>"><span class="rejected">Deactive</span></a>
+                                <a href="<?php echo base_url('admin/saltComposition_status/reject/'.$value->id);?>"><span class="rejected">Deactivate</span></a>
                               <?php } ?>
                             </td>
                             </tr>
@@ -118,9 +118,9 @@
                                     <?php if ($value->status=='pending') {
                                       echo '<span class="pending">Pending</span>';
                                     } elseif ($value->status=='active') {
-                                      echo '<span class="approved">Approved</span>';
+                                      echo '<span class="approved">Active</span>';
                                     } else {
-                                      echo '<span class="rejected">Rejected</span>';
+                                      echo '<span class="rejected">Deactive</span>';
                                     } ?>
                                   </td>
                                   <td>
@@ -128,10 +128,10 @@
                                   <a href="<?php echo base_url('admin/saltComposition_delete/'.$value->id); ?>"><span><i class="fa fa-trash" style="color: red;margin-right: 10px;"></i></span></a>
 
                                   <?php if ($value->status=='pending' || $value->status=='reject') { ?>
-                                    <a href="<?php echo base_url('admin/saltComposition_status/active/'.$value->id);?>"><span class="approved">Active</span></a>
+                                    <a href="<?php echo base_url('admin/saltComposition_status/active/'.$value->id);?>"><span class="approved">Activate</span></a>
                                   <?php }
                                   if ($value->status=='pending' || $value->status=='active') { ?>
-                                    <a href="<?php echo base_url('admin/saltComposition_status/reject/'.$value->id);?>"><span class="rejected">Deactive</span></a>
+                                    <a href="<?php echo base_url('admin/saltComposition_status/reject/'.$value->id);?>"><span class="rejected">Deactivate</span></a>
                                   <?php } ?>
 
                                   <!-- <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
