@@ -97,13 +97,13 @@
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">						
-						<input id="mobile" class="form-control control-float-top mobile-intel" type="tel" minlength="10" maxlength="10" name="mobile" value="<?php echo set_value('medical_phone')?>" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
+						<input id="mobile" class="form-control control-float-top mobile-intel" type="tel" minlength="10" maxlength="11" name="mobile" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" value="<?php if(!empty($this->session->userdata('mobile'))){ ?> <?php  echo $this->session->userdata('mobile'); echo "readonly"; ?> <?php } ?>"<?= (!empty($this->session->userdata('mobile'))) ? 'readonly=""' :"" ?> >
 						<!-- <label for="email">Mobile</label> -->
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="email" id="email" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); ?> <?php } ?>"  readonly="">
+						<input type="email" id="email" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); echo "readonly"; ?> <?php } ?>" <?= (!empty($this->session->userdata('email'))) ? 'readonly=""' :"" ?> >
 						<label id="email-label" for="email">Email</label>
 					</div>
 				</div>
@@ -196,7 +196,7 @@
 				</div>
 				<div class="col-md-6">
 					<div class="form-group label-float-top">
-						<input id="account_number" type="text" class="form-control control-float-top" name="account_number" value="<?php echo set_value('account_number')?>">
+						<input id="account_number" type="text" class="form-control control-float-top" name="account_number" value="<?php echo set_value('account_number')?>" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
 						<label for="Address">Account Number</label>
 					</div>
 				</div>			
@@ -251,7 +251,7 @@
 				</div>			
 				<div class="col-md-6">
 					<div class="form-group label-float-top">
-						<input id="phone" class="form-control control-float-top mobile-intel" type="tel" minlength="10" maxlength="10" name="medical_phone" value="<?php echo set_value('medical_phone')?>" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
+						<input id="phone" class="form-control control-float-top mobile-intel" type="tel" minlength="10" maxlength="11" name="medical_phone" value="<?php echo set_value('medical_phone')?>" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
 						<!-- <label for="Address">Phone</label> -->
 					</div>
 				</div>

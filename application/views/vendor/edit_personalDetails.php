@@ -217,7 +217,7 @@
 				</div>
 				<div class="col-md-6">					
 					<div class="form-group label-float-top">
-						<input type="text" class="form-control control-float-top bank-section" name="account_number" value="<?= !empty($bank_data->account_number) ? $bank_data->account_number :"" ?>">
+						<input type="text" class="form-control control-float-top bank-section" name="account_number" value="<?= !empty($bank_data->account_number) ? $bank_data->account_number :"" ?>" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57">
 						<label for="Address">Account Number</label>
 					</div>
 				</div>			
