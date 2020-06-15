@@ -26,7 +26,7 @@
     <link href="<?php echo base_url(); ?>vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url(); ?>vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    
+     <!-- <link href="<?php echo base_url(); ?>vendors/select2/dist/css/select2.min.css" rel="stylesheet"> -->
 
     <!-- Datatables -->
     <link href="<?php echo base_url(); ?>vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
@@ -70,7 +70,7 @@
                   <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                   <?php
                     if($_SESSION["user_type"]=='vendor' && $status->full_name!=''){ ?>
-                    <a class="dropdown-item"  href="<?php echo base_url('vendor/editPersonalDetails'); ?>"> Profile</a>
+                    <a class="dropdown-item"  href="<?php echo base_url() ?>/vendor/editPersonalDetails/<?= base64_encode($this->session->userdata('user_id')); ?>"> Profile</a>
                   <?php } ?>
                       <a class="dropdown-item"  href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
