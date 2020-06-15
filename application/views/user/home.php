@@ -109,28 +109,21 @@
   <div class="product-slider">
     <div class="owl-slider product-slider" >
       <div id="carousel4" class="owl-carousel product-slider" >
-        <div class="product-default">
-            <figure>
-                <!-- <a href="http://localhost/esperits/home/details/23"> -->
-                    <img class="abc image23"  src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="10631164.jpg">
-                <!-- </a> -->
-            </figure>
-            <div class="product-details">
-                
-                <h2 class="product-title" style="width: 200px; text-align: center;">
-                    <a class="name" rel="23">Seagram’s 100 Pipers Deluxe Blended Scotch Whisky</a>
-                </h2>
-                <div class="price-box">
-                    <span class="price-label price23" rel="2200">2200 </span>
-                </div><!-- End .price-box -->
-                <div class="product-action">
-                    <a href="" class="btn-icon-wish"><i class="icon-heart"></i></a>
-                   <!--  <button class="btn-icon btn-add-cart" data-toggle="modal" data-target="#addCartModal"><i class="icon-bag"></i>ADD TO CART</button> -->
-                    <!-- <a href="" class="btn-icon btn-add-cart" onclick="javascript:addCartModal(23)"><i class="icon-cart"></i>ADD TO CART</a> -->
-                    <!-- <a href="ajax/product-quick-view.html" class="btn-quickview" title="Quick View"><i class="fas fa-external-link-alt"></i></a> --> 
-                </div>
-            </div><!-- End .product-details -->
+        <div class="item">
+          <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+          <div class="product-text">
+            <span class="product-span">Product Name</span>
+            <span class="product-span">100</span>
+            <span class="product-span">200</span>
+          </div>
         </div>
+        <!-- <div class="card">
+          <img src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="Denim Jeans" style="width:100%">
+          <h1>Tailored Jeans</h1>
+          <p class="price">$19.99</p>
+          <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
+          <p><button>Add to Cart</button></p>
+        </div> -->
       </div>
     </div>
   </div>

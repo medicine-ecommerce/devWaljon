@@ -186,12 +186,12 @@ if($product==0){
                     <td>
                       <span>
                         <a href="#" >
-                          <button type="button"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-check"></i></button>
+                          <button type="button"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Refill"><i class="fa fa-pencil"></i></button>
                         </a> 
                       </span> 
                       <span>
                         <a href="<?php echo base_url('vendor/product_delete/'.$row->id); ?>" onclick="return confirm('Are you sure？')" >
-                          <button type="button"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash-o"></i></button>
+                          <button type="button"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove"><i class="fa fa-trash"></i></button>
                         </a>
                       </span>
                     </td>

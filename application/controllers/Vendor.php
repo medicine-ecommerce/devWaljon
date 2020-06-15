@@ -31,7 +31,11 @@ Class Vendor extends MY_Controller {
     {   
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
-            $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[users.email]');
+            if(ctype_digit($this->input->post('email'))){                
+                $this->form_validation->set_rules('email', 'mobile', 'trim|required|is_unique[users.mobile]');    
+            }else{                
+                $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email|is_unique[users.email]');    
+            }                       
             $this->form_validation->set_rules('password', 'password', 'trim|required');            
             
             if($this->input->post('remember_password')){ 
@@ -44,23 +48,40 @@ Class Vendor extends MY_Controller {
             // $this->form_validation->set_rules('company_name', 'Company Name', 'required');
             // $this->form_validation->set_rules('company_address', 'Company addresss', 'required');
            
-            if($this->form_validation->run() == FALSE){ 
+            if($this->form_validation->run() == FALSE){                 
+                print_r(validation_errors());
               $this->session->set_flashdata('error', validation_errors());      
             }
-            else{
-                $data = array('email'=>$this->input->post('email'),
-                              'password'=>md5($this->input->post('password')),
-                              'is_active'=>'0',
-                              'type'=>'vendor',
-                              'created_by'=>'sign_up');  
+            else{                
+                if(ctype_digit($this->input->post('email'))){
+                    $data = array('mobile'=> trim($this->input->post('email')),
+                                  'password'=>md5($this->input->post('password')),
+                                  'is_active'=>'0',
+                                  'type'=>'vendor',
+                                  'created_by'=>'sign_up');  
+                }else{
+                    $data = array('email'=>$this->input->post('email'),
+                                  'password'=>md5($this->input->post('password')),
+                                  'is_active'=>'0',
+                                  'type'=>'vendor',
+                                  'created_by'=>'sign_up');  
+                }
 
                 $last_id = $this->Vendor->VendorRegistration($data);               
+                
                 if ($last_id > 0) {
-                    $data = array('email'=>$this->input->post('email'),
-                                  'vendor_id'=>$last_id,
-                                  'user_id'=>$last_id,
-                                  'user_type'=>'vendor'
-                              );
+                    if(ctype_digit($this->input->post('email'))){
+                        $data = array('mobile'=>trim($this->input->post('email')),
+                                      'user_id'=>$last_id,
+                                      'user_type'=>'vendor'
+                                  );
+                    }else{
+
+                        $data = array('email'=>$this->input->post('email'),
+                                      'user_id'=>$last_id,
+                                      'user_type'=>'vendor'
+                                  );
+                    }
                     $this->session->set_userdata($data);
                     $this->session->set_flashdata('success', 'Your account successfully created ');
                     redirect('/Vendor/personalDetails/', 'refresh');
@@ -81,11 +102,16 @@ Class Vendor extends MY_Controller {
 
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
-            $this->form_validation->set_rules('email', 'Email', 'required|trim');
+
+            if(ctype_digit($this->input->post('email'))){                
+                $this->form_validation->set_rules('email', 'mobile', 'trim|required');    
+            }else{                
+                $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');    
+            }
+            // $this->form_validation->set_rules('email', 'Email', 'required|trim');
             $this->form_validation->set_rules('password', 'Password', 'required|trim');
             
-            if ($this->form_validation->run() == FALSE){          
-                
+            if ($this->form_validation->run() == FALSE){                                          
               $this->session->set_flashdata('error', validation_errors());      
             }
             else{               
@@ -93,23 +119,33 @@ Class Vendor extends MY_Controller {
                     delete_cookie("email");                
                     delete_cookie("password");                
                 }
-
+                // echo $this->input->post('email');
+                // die();
                 $data = array('email'=> $this->input->post('email'),
                             'password' =>md5($this->input->post('password'))
                             );
                 $result = $this->Vendor->login($data);
+               
                 if(!empty($result))
                 {
-                    $data = array('email'=>$result->email,
-                                'vendor_id'=>$result->id,
+                    if(ctype_digit($this->input->post('email'))){
+                        $data = array('mobile'=>trim($result->mobile),                                
                                 'user_id'=>$result->id,
                                 'user_type'=>$result->type);
+                    }else{                        
+                        $data = array('email'=>$result->email,
+                                    'user_id'=>$result->id,
+                                    'user_type'=>$result->type);
+                    }
 
                     $this->session->set_userdata($data);
                     // redirect(base_url('admin/dashboard'));
-                    if(!empty($result->email) && !empty($result->first_name) && !empty($result->last_name) && !empty($result->mobile) && !empty($result->address)){
+                    if(!empty($result->email) && !empty($result->full_name) && !empty($result->mobile) && !empty($result->address) && $result->is_active > 0 ){
                         redirect('/vendor/vendor_dashboard/', 'refresh');
-                    }else{                        
+                    }else if(!empty($result->mobile) && !empty($result->email) && !empty($result->full_name) && $result->is_active == 0 ){
+                        redirect('/vendor/profile_waiting_approval', 'refresh');
+                    }
+                    else{                        
                         redirect('/vendor/personalDetails/', 'refresh');
                     }
                 }
@@ -136,12 +172,14 @@ Class Vendor extends MY_Controller {
         $this->middle = 'personalDetails';
         $this->Vendor();
     }
-    public function editPersonalDetails()
+    public function editPersonalDetails($userId)
     {
+        $user_id = base64_decode($userId);
+
         $this->data['bank'] = $this->Vendor->getData('bank','*','');
-        $this->data['edit_data'] = $this->Vendor->getRowData('users','*',array('id'=>$this->session->userdata('user_id')));
-        $this->data['bank_data'] = $this->Vendor->getRowData('bank_account','*',array('vendor_id'=>$this->session->userdata('user_id')));
-        $this->data['status'] = $this->Vendor->getRowData('users','is_active',array('id'=>$this->session->userdata('user_id')));        
+        $this->data['edit_data'] = $this->Vendor->getRowData('users','*',array('id'=>$user_id));
+        $this->data['bank_data'] = $this->Vendor->getRowData('bank_account','*',array('vendor_id'=>$user_id));
+        $this->data['status'] = $this->Vendor->getRowData('users','is_active',array('id'=>$user_id));        
 
         $this->data['working_experience'] = $this->config->item('working_experience'); 
         $this->data['account_type'] = $this->config->item('account_type'); 
@@ -149,13 +187,13 @@ Class Vendor extends MY_Controller {
         $this->Vendor();
     }
     public function vendor_profile($userId)
-    {
+    {        
         $user_id = base64_decode($userId);
         $msg = '';
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('full_name', 'Full Name', 'required');            
             $this->form_validation->set_rules('email', 'email', 'required');
-            $this->form_validation->set_rules('mobile', 'mobile', 'required|numeric');
+            $this->form_validation->set_rules('mobile', 'mobile', 'trim|required|numeric');
             $this->form_validation->set_rules('company_name', 'Medical Name', 'required');
             $this->form_validation->set_rules('address', 'Addresss', 'required');
             $this->form_validation->set_rules('date_of_birth', 'date_of_birth', 'required');
@@ -172,7 +210,6 @@ Class Vendor extends MY_Controller {
             $this->form_validation->set_rules('ifc_code', 'IFSC Code', 'required');
             $this->form_validation->set_rules('account_type', 'account_type_id', 'required');
             
-            print_r($_POST);
             if (empty($_FILES['licence']['name']) && empty($this->input->post('edit_licence'))) {
                 $msg.= '<p>Please upload your medical licence</p>';
             }            
@@ -243,7 +280,7 @@ Class Vendor extends MY_Controller {
                 // print_r($result);
                 // die();
                 if ($result > 0) {
-                    $this->session->set_flashdata('success', 'Profile successfully Updated');                    
+                    $this->session->set_flashdata('success', 'Profile successfully Updated');
                         redirect($_SERVER['HTTP_REFERER']); 
                 }
             }

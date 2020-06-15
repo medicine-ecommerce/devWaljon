@@ -6,7 +6,14 @@
       <h3>Invertory > Add Product</h3>
     </div>
   </div>
-  <form method="post" enctype="multipart/form-data">
+  <form id="addSingleProduct" method="post" enctype="multipart/form-data" action="<?php echo base_url() ?>/admin/addSingleProduct">
+
+    <div class="custom-error-alert front-end-validation">   
+      <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+      <span class="glyphicon glyphicon-warning-sign"></span>
+      <p id="error-text"></p>
+    </div>
+
     <div class="x_panel add-product">
       <?php if (!empty($this->session->flashdata('error'))) {
             echo '<div class="alert alert-danger">
@@ -34,7 +41,7 @@
               <div class="col-md-12">
                   <div class="col-md-6">
                      <div class="form-group label-float-top">
-                        <select class="form-control control-float-top" name="category_id" onchange="getSubcategory(this.value)">
+                        <select class="form-control control-float-top" id="category_id" name="category_id" onchange="getSubcategory(this.value)">
                            <option></option>
                            <?php if (!empty($category)) {
                              foreach ($category as $key => $value) { ?>
@@ -55,7 +62,7 @@
                   </div>
                   <div class="col-md-4">
                      <div class="form-group label-float-top">
-                        <select class="form-control control-float-top" >
+                        <select class="form-control control-float-top" id="product_form">
                            <option></option>
                            <?php if (!empty($product_form)) {
                              foreach ($product_form as $key => $value) { ?>
@@ -68,7 +75,7 @@
                   </div>
                   <div class="col-md-4">
                      <div class="form-group label-float-top">
-                        <select class="form-control control-float-top" >
+                        <select class="form-control control-float-top" id="manufacturer">
                            <option></option>
                            <?php if (!empty($manufacturer)) {
                              foreach ($manufacturer as $key => $value) { ?>
@@ -82,7 +89,7 @@
                   </div>
                   <div class="col-md-4">
                      <div class="form-group label-float-top">
-                        <select class="form-control control-float-top" name="brand_id" >
+                        <select class="form-control control-float-top" name="brand_id" id="brand">
                            <option></option>
                            <?php if (!empty($brand)) {
                              foreach ($brand as $key => $value) { ?>
@@ -100,11 +107,11 @@
                           <td>
                             <div style="width: 210px;">
                               <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
-                                <input type="text" class="form-control control-float-top" name="quantity[]">
+                                <input type="text" class="form-control control-float-top" id="quantity" name="quantity[]">
                                 <label for="email">Quantity</label>
                               </div>
                               <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
-                                <select name="measurement[]" class="form-control control-float-top states" >
+                                <select name="measurement[]" id="measurement" class="form-control control-float-top states" >
                                   <option>l</option>
                                   <option>gm</option>
                                 </select>
@@ -114,19 +121,19 @@
                            </td>
                            <td  >
                               <div class="form-group label-float-top" style="width: 100px;">
-                                <input type="text" class="form-control control-float-top" name="mrp[]">
+                                <input type="text" class="form-control control-float-top" id="MRP" name="mrp[]">
                                 <label for="email">MRP</label>
                               </div>
                            </td>
                            <td >
                               <div class="form-group label-float-top" style="width: 100px;">
-                                 <input type="text" class="form-control control-float-top"  name="sellprice[]">
+                                 <input type="text" class="form-control control-float-top" id="sellprice" name="sellprice[]">
                                  <label for="email">Sell Price</label>
                               </div>
                            </td>
                            <td >
                               <div class="form-group label-float-top" >
-                                 <input type="date" class="form-control control-float-top" name="expriydate[]">
+                                 <input type="date" class="form-control control-float-top" id="expriydate" name="expriydate[]">
                                  <!--               <label for="email">Expiry Date</label>
                                     -->           
                               </div>
@@ -137,19 +144,19 @@
                   </div>
                   <div class="col-md-12">
                      <div class="form-group label-float-top">
-                        <input type="text" class="form-control control-float-top" name="name">
+                        <input type="text" class="form-control control-float-top" name="name" id="productName">
                         <label for="country">Product Name</label>
                      </div>
                   </div>
                   <div class="col-md-3">
                      <div class="form-group padding-top-bottom-20">
-                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" id="prescriptionRequired">
                         <label for="vehicle1"> Prescription Required</label><br>
                      </div>
                   </div>
                   <div class="col-md-9">
                      <div class="form-group label-float-top">
-                        <input type="text" class="form-control control-float-top" name="salt_composition">
+                        <input type="text" class="form-control control-float-top" name="salt_composition" id="salt_composition">
                         <label for="country">Salt Composition</label>
                      </div>
                   </div>
@@ -264,7 +271,7 @@
         <div class="row"> 
           <div class="col-md-12 padding-top-bottom50">
             <button type="submit" class="btn btn-default submit_button float-right">Cancle</button>   
-            <button type="submit" class="btn btn-default submit_button float-right">Save</button> 
+            <button type="button" id="submit_form" class="btn btn-default submit_button float-right">Save</button> 
           </div>
         </div>
     </div>
@@ -329,7 +336,7 @@
      var i=1;  
      $('#add').click(function(){  
           i++;  
-          $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td> <div style="width: 210px;"><div class="form-group label-float-top" style="width: 100px;display: inline-block;"><input type="text" class="form-control control-float-top" name="quantity[][quantity]"><label for="email">Quantity</label></div><div class="form-group label-float-top" style="width: 100px;display: inline-block;"><select name="measurement[][measurement]" class="form-control control-float-top states" ><option>l</option><option>gm</option></select><label for="country">measurement</label></div></div><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="mrp[][mrp]"><label for="email">MRP</label></div></td><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="sellprice[][sellprice]"><label for="email">Sell Price</label></div></td><td><div class="form-group label-float-top"><input type="date" class="form-control control-float-top" name="expriydate[][expriydate]"></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-custom-rev btn_remove"><i class="fa fa-trash-o"></i></button></td></tr>');  
+          $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td> <div style="width: 210px;"><div class="form-group label-float-top" style="width: 100px;display: inline-block;"><input type="text" id="quantity'+i+'" class="form-control control-float-top" name="quantity[][quantity]"><label for="email">Quantity</label></div><div class="form-group label-float-top" style="width: 100px;display: inline-block;"><select name="measurement[][measurement]" class="form-control control-float-top states" id="measurement'+i+'"><option>l</option><option>gm</option></select><label for="country">measurement</label></div></div><td><div class="form-group label-float-top"><input type="text" id="MRP'+i+'" class="form-control control-float-top" name="mrp[][mrp]"><label for="email">MRP</label></div></td><td><div class="form-group label-float-top"><input type="text" id="sellprice'+i+'" class="form-control control-float-top" name="sellprice[][sellprice]"><label for="email">Sell Price</label></div></td><td><div class="form-group label-float-top"><input type="date" class="form-control control-float-top" name="expriydate[][expriydate]" id="expriydate'+i+'"></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-custom-rev btn_remove"><i class="fa fa-trash-o"></i></button></td></tr>');  
      });
      $(document).on('click', '.btn_remove', function(){  
           var button_id = $(this).attr("id");   
@@ -518,4 +525,88 @@ $(".form-group .form-control").blur(function(){
       $(this).find("label").addClass("active");
       $(this).find("input").focus();    
   });
+
+  $(document).ready(function(){
+      
+    $('.remove-red-alert').click(function() {
+      $('.custom-error-alert').fadeOut("slow")
+    })
+    setInterval(function () {
+      $('.custom-error-alert').fadeOut("slow")
+    }, 5000);
+
+  });
+
+  $(document).ready(function(){ 
+    $('.front-end-validation').hide();
+    $('#submit_form').click(function(argument){     
+      var error                   = '';
+      var category_id             = $("#category_id").val();
+      var subcategory             = $("#subcategory").val();
+      var product_form            = $("#product_form").val();
+      var manufacturer            = $("#manufacturer").val();
+      var brand                   = $("#brand").val();
+      var quantity                = $("#quantity").val();
+      var measurement             = $("#measurement").val();
+      var MRP                     = $("#MRP").val();
+      var sellprice               = $("#sellprice").val();
+      var expriydate              = $("#expriydate").val();
+      var productName             = $("#productName").val();
+      var prescriptionRequired    = $("#prescriptionRequired").val();
+      var salt_composition        = $("#salt_composition").val();
+      var image                   = $("#fileElem").val();
+    
+      if(category_id==''){
+        error += "<p>The Category field is required.</p>";
+      }
+      if(subcategory==''){
+        error += '<p>The Subcategory field is required.</p>';
+      }
+      if(product_form==''){
+        error += '<p>Product Form field is required.</p>';
+      }
+      if(manufacturer==''){
+        error += '<p>Manufacturer is required.</p>';
+      }
+      if(brand==''){
+        error += '<p>Brand is required.</p>';
+      }
+      if(quantity==''){
+        error += '<p>Quantity is required.</p>';
+      }
+      if(measurement==''){
+        error += '<p>Measurement is required.</p>';
+      }
+      if(MRP==''){
+        error += '<p>MRP is required.</p>';
+      }
+      if(sellprice==''){
+        error += '<p>Sell Price is required.</p>';
+      }
+      if(image==''){
+        error += '<p>Product image is required.</p>';
+      }
+      if(expriydate==''){
+        error += '<p>Expriy Date is required.</p>';
+      }
+      if(productName==''){
+        error += '<p>Product Name is required.</p>';
+      }
+      if(prescriptionRequired==''){
+        error += '<p>Prescription Required is required.</p>';
+      }     
+      if(salt_composition==''){
+        error += '<p>Salt Composition is required.</p>';
+      }
+      
+      if(error!=''){        
+        $("#error-text").html(error);     
+        $('.front-end-validation').show();
+        window.scrollTo(0, 0);
+      }else{        
+        $('#addSingleProduct').submit();
+      }
+    });
+
+  })
 </script>

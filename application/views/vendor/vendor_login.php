@@ -6,8 +6,8 @@
     </div>
     <div class="col-md-4">
       <div class="form-content">
-          <img src="<?php echo base_url(); ?>assets/img/snake2.png" class="registration-logo" id="preview">       
-          <p>Medicin Managment</p>
+          <!-- <img src="<?php echo base_url(); ?>assets/img/snake2.png" class="registration-logo" id="preview">       
+          <p>Medicin Managment</p> -->
       </div>             
       <div class="content-box">        
         <h6>Login</h6>
