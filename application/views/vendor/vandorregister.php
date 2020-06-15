@@ -9,9 +9,7 @@
     </div>
     <div class="col-md-4">      
       <form id="registratio_form" method="post" action="<?php echo base_url(); ?>/vendor/vendorregister">
-        <div class="form-content">
-            <img src="<?php echo base_url(); ?>assets/img/snake2.png" class="registration-logo" id="preview">       
-            <p>Medicin Managment</p>
+        <div class="form-content">           
         </div>
         <div class="content-box">
           <h6>Register</h6>
