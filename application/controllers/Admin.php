@@ -440,6 +440,18 @@ Class Admin extends MY_Controller {
         $this->middle = 'home_banner';
         $this->Admin();
     }
+
+    public function removeBannerImage($id)
+    {
+        $this->Admin->deleteData('banner_images',array('id'=>$id));
+    }
+    public function DeactiveBannerImage()
+    {
+        echo $this->input->post('status');
+      echo  $status = ($this->input->post('status')=='true')?'active':'deactive';
+       echo $id = $this->input->post('id');
+        $this->Admin->updateData('banner_images',array('status'=>$status),array('id'=>$id));
+    }
     public function product_category()
     {
         $this->middle = 'product_category';
