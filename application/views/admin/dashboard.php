@@ -265,56 +265,26 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Integration Specialist</td>
-                        <td>Tokyo</td>
-                        <td>55</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Javascript Developer</td>
-                        <td>San Francisco</td>
-                        <td>39</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Software Engineer</td>
-                        <td>Edinburgh</td>
-                        <td>23</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Office Manager</td>
-                        <td>London</td>
-                        <td>30</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>Marketing Designer</td>
-                        <td>London</td>
-                        <td>66</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
+                      <?php 
+                      if (!empty($vendors)) {
+                        $i = 1;
+                        foreach ($vendors as $key => $value) { ?>
+                          <tr>
+                            <td><?php echo $i++; ?></td>
+                            <td><?php echo $value->full_name; ?></td>
+                            <td><?php echo $value->degree; ?></td>
+                            <td><?php echo $value->experience; ?></td>
+                            <td>
+                            <?php if ($value->is_active=='1') {
+                              echo '<span class="approved">Active</span>';
+                            } else {
+                              echo '<span class="rejected">Deactive</span>';
+                            } ?>
+                          </td>
+                          </tr>
+
+                        <?php }
+                      } ?>
                     </tbody>
                   </table>
                 </div>      

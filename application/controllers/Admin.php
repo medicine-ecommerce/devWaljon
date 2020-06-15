@@ -29,6 +29,7 @@ Class Admin extends MY_Controller {
 
     public function dashboard()
     {
+        $this->data['vendors'] = $this->Admin->getData('users','*',array('type'=>'vendor'));
     	$this->middle = 'dashboard';
         $this->Admin();
     }
