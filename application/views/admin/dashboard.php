@@ -7,7 +7,7 @@
               <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="dash-box blue-box">
                   <div class="count pull-left">
-                    <h2>452</h2>
+                    <h2>0</h2>
                     <span class="count_bottom">Doctors</span>
                   </div>
                   <div class="count pull-right">
@@ -18,7 +18,7 @@
               <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="dash-box orange-box">
                   <div class="count pull-left">
-                    <h2>219</h2>
+                    <h2><?php echo $vendorsCount; ?></h2>
                     <span class="count_bottom">Vendors</span>
                   </div>
                   <div class="count pull-right user-icon">
@@ -29,7 +29,7 @@
               <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="dash-box light-green-box">
                   <div class="count pull-left">
-                    <h2>34,989</h2>
+                    <h2>0</h2>
                     <span class="count_bottom">Users</span>
                   </div>
                   <div class="count pull-right user-icon">
@@ -40,7 +40,7 @@
               <div class="col-md-3 col-sm-3 col-xs-6">
                 <div class="dash-box green-box">
                   <div class="count pull-left">
-                    <h2>34,95,819</h2>
+                    <h2>0</h2>
                     <span class="count_bottom">Visitors</span>
                   </div>
                   <div class="count pull-right visitors-icon">
@@ -89,7 +89,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                        <!-- <tr>
                           <td>1</td>
                           <td>Integration Specialist</td>
                           <td>Tokyo</td>
@@ -111,61 +111,12 @@
                           <td><span class="status-shipped">Shipped</span></td>
                         </tr>
                         <tr>
-                          <td>4</td>
-                          <td>Office Manager</td>
-                          <td>London</td>
-                          <td>30</td>
-                          <td><span class="status-progress">In Progress</span></td>
-                        </tr>
-                        <tr>
-                          <td>5</td>
-                          <td>Marketing Designer</td>
-                          <td>London</td>
-                          <td>66</td>
-                          <td><span class="status-consulted">Consulted</span></td>
-                        </tr>
-                        <tr>
-                          <td>6</td>
-                          <td>Marketing Designer</td>
-                          <td>London</td>
-                          <td>66</td>
-                          <td><span class="status-consulted">Consulted</span></td>
-                        </tr>
-                        <tr>
-                          <td>7</td>
-                          <td>Marketing Designer</td>
-                          <td>London</td>
-                          <td>66</td>
-                          <td><span class="status-consulted">Consulted</span></td>
-                        </tr>
-                        <tr>
-                          <td>8</td>
-                          <td>Marketing Designer</td>
-                          <td>London</td>
-                          <td>66</td>
-                          <td><span class="status-consulted">Consulted</span></td>
-                        </tr>
-                        <tr>
-                          <td>9</td>
-                          <td>Marketing Designer</td>
-                          <td>London</td>
-                          <td>66</td>
-                          <td><span class="status-consulted">Consulted</span></td>
-                        </tr>
-                        <tr>
                           <td>10</td>
                           <td>Marketing Designer</td>
                           <td>London</td>
                           <td>66</td>
                           <td><span class="status-consulted">Consulted</span></td>
-                        </tr>
-                        <tr>
-                          <td>11</td>
-                          <td>Marketing Designer</td>
-                          <td>London</td>
-                          <td>66</td>
-                          <td><span class="status-consulted">Consulted</span></td>
-                        </tr>
+                        </tr> -->
                       </tbody>
                     </table>
                   </div>      
@@ -193,7 +144,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <!-- <tr>
                         <td>1</td>
                         <td>Integration Specialist</td>
                         <td>Tokyo</td>
@@ -202,47 +153,7 @@
                           <span class="status-approve"><i class="fa fa-check"></i>
                           </span><span class="status-cancle"><i class="fa fa-close"></i></span>
                         </td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Javascript Developer</td>
-                        <td>San Francisco</td>
-                        <td>39</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Software Engineer</td>
-                        <td>Edinburgh</td>
-                        <td>23</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Office Manager</td>
-                        <td>London</td>
-                        <td>30</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>Marketing Designer</td>
-                        <td>London</td>
-                        <td>66</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
+                      </tr> -->
                     </tbody>
                   </table>
                 </div>      
@@ -265,56 +176,26 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1</td>
-                        <td>Integration Specialist</td>
-                        <td>Tokyo</td>
-                        <td>55</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>Javascript Developer</td>
-                        <td>San Francisco</td>
-                        <td>39</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>Software Engineer</td>
-                        <td>Edinburgh</td>
-                        <td>23</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>4</td>
-                        <td>Office Manager</td>
-                        <td>London</td>
-                        <td>30</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>5</td>
-                        <td>Marketing Designer</td>
-                        <td>London</td>
-                        <td>66</td>
-                        <td><span class="status-Review">Review</span>
-                          <span class="status-approve"><i class="fa fa-check"></i>
-                          </span><span class="status-cancle"><i class="fa fa-close"></i></span>
-                        </td>
-                      </tr>
+                      <?php 
+                      if (!empty($vendors)) {
+                        $i = 1;
+                        foreach ($vendors as $key => $value) { ?>
+                          <tr>
+                            <td><?php echo $i++; ?></td>
+                            <td><?php echo $value->full_name; ?></td>
+                            <td><?php echo $value->degree; ?></td>
+                            <td><?php echo $value->experience; ?></td>
+                            <td>
+                            <?php if ($value->is_active=='1') {
+                              echo '<span class="approved">Active</span>';
+                            } else {
+                              echo '<span class="rejected">Deactive</span>';
+                            } ?>
+                          </td>
+                          </tr>
+
+                        <?php }
+                      } ?>
                     </tbody>
                   </table>
                 </div>      

@@ -66,20 +66,20 @@
                           <?php if ($value->status=='pending') {
                             echo '<span class="pending">Pending</span>';
                           } elseif ($value->status=='active') {
-                            echo '<span class="approved">Approved</span>';
+                            echo '<span class="approved">Active</span>';
                           } else {
-                            echo '<span class="rejected">Rejected</span>';
+                            echo '<span class="rejected">Deactive</span>';
                           } ?>
                         </td>
-                        <td><a href="<?php echo base_url('admin/manufacturer_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-check"></i></span></a>
-                        <a href="<?php echo base_url('admin/manufacturer_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-close"></i></span></a>
+                        <td><a href="<?php echo base_url('admin/manufacturer_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
+                        <a href="<?php echo base_url('admin/manufacturer_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
                         <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
                           <?php if ($value->status=='pending' || $value->status=='reject') { ?>
-                            <a class="dropdown-item" href="<?php echo base_url('admin/manufacturer_status/active/'.$value->id);?>">Approve</a>
+                            <a class="dropdown-item" href="<?php echo base_url('admin/manufacturer_status/active/'.$value->id);?>">Activate</a>
                           <?php }
                           if ($value->status=='pending' || $value->status=='active') { ?>
-                            <a class="dropdown-item" href="<?php echo base_url('admin/manufacturer_status/reject/'.$value->id);?>">Reject</a>
+                            <a class="dropdown-item" href="<?php echo base_url('admin/manufacturer_status/reject/'.$value->id);?>">Deactivate</a>
                           <?php } ?>
                         </div>
                       </td>

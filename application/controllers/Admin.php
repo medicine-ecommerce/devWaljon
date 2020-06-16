@@ -29,6 +29,8 @@ Class Admin extends MY_Controller {
 
     public function dashboard()
     {
+        $this->data['vendorsCount'] = $this->Admin->rowsCount('users','*',array('type'=>'vendor'));
+        $this->data['vendors'] = $this->Admin->getData('users','*',array('type'=>'vendor'));
     	$this->middle = 'dashboard';
         $this->Admin();
     }
@@ -439,6 +441,18 @@ Class Admin extends MY_Controller {
         $this->data['banners'] = $this->Admin->getData('banner_images','*','');
         $this->middle = 'home_banner';
         $this->Admin();
+    }
+
+    public function removeBannerImage($id)
+    {
+        $this->Admin->deleteData('banner_images',array('id'=>$id));
+    }
+    public function DeactiveBannerImage()
+    {
+        echo $this->input->post('status');
+      echo  $status = ($this->input->post('status')=='true')?'active':'deactive';
+       echo $id = $this->input->post('id');
+        $this->Admin->updateData('banner_images',array('status'=>$status),array('id'=>$id));
     }
     public function product_category()
     {
