@@ -80,12 +80,14 @@ class Vendor_model extends MY_model
 		$this->db->join('product_item','product_item.product_id=product.id','left');
 		$this->db->join('manufacturer','manufacturer.id=product.manufacturer_id','left');
 		$this->db->join('product_form','product_form.id=product.product_form_id','left');
-		//$this->db->where('vendor_id',$this->session->userdata('vendor_id'));
-		$query = $this->db->get();
+		if(!empty($this->session->userdata('user_id'))){
+			$this->db->where('product.created_by',$this->session->userdata('user_id'));
+		}
+		$query = $this->db->get();		
 		if($query->num_rows() > 0){
         	return $query->result();
         }else{
-            return  json_encode(array('status'=>0,'message'=>'No record Found'));
+            return  0;
         }	
 		
 	}

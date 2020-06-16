@@ -10,7 +10,7 @@
 <div class="right_col registration-page">
 
 	<div class="green-section alert-section  <?= ($status->is_active)==0 ? "show-section":"hide-section" ?>  " >
-	  <a onclick="redirectToEditProfile()" class="alert-box alert-yellow-box profileverify-alert">
+	  <a class="alert-box alert-yellow-box profileverify-alert">
 	    <span class="alert-icon"><i class="fa fa-exclamation-triangle"></i></span>
 	    <span class="alert-content"><p> Your profile is inactive status please complete you profile.</p></span>
 	  </a>  

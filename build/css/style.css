@@ -1405,6 +1405,12 @@ span.dot {
     border-top: none;
     border-bottom: none;
 }
+input.product_main_img {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    opacity: 0;
+}
 
 /*linking*/
 @media (max-width: 992px) {
