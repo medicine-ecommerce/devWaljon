@@ -46,6 +46,16 @@ class Admin_model extends MY_model
 	{
 		return $this->deleteData('vendors',array('id'=>$id));
 	}
+	public function rowsCount($table,$column,$where) 
+    {
+        $this->db->select($column);
+        if($where){
+            $this->db->where($where);
+        }        
+        $query = $this->db->get($table);
+        return $query->num_rows();   
+    }
+	
 	public function CategoryList()
 	{
 		$this->db->select('users.full_name as username,category.*');

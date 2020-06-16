@@ -159,7 +159,6 @@ Class Vendor extends MY_Controller {
     }
     public function dashboard()
     {
-        
     	$this->middle = 'dashboard';
         $this->Admin();
     }
