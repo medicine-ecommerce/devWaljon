@@ -7,14 +7,19 @@
     <div class="col-md-8"> 
       
     </div>
-    <div class="col-md-4">      
+    <div class="col-md-4">
+      <div class="custom-error-alert front-end-validation">   
+        <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+        <span class="glyphicon glyphicon-warning-sign"></span>
+        <p id="error-text"></p>
+      </div>                  
       <form id="registratio_form" method="post" action="<?php echo base_url(); ?>/vendor/vendorregister">
         <div class="form-content">           
         </div>
         <div class="content-box">
           <h6>Register</h6>
           <div class="form-group">
-            <input type="email" class="form-control transparent-back" name="email" placeholder="Email or Phone" value="<?php echo set_value('email')?>" autocomplete="off">
+            <input type="email" class="form-control transparent-back" id="email" name="email" placeholder="Email or Phone" value="<?php echo set_value('email')?>" autocomplete="off">
           </div>   
           <span class="input-error-message"><?php echo form_error('email', '<div class="error">', '</div>'); ?></span>     
           <div class="form-group">
@@ -55,11 +60,26 @@
     });
   }
   function submitFunction() {
+    var email = $("#email").val();
     var password = $("#txtNewPassword").val();
     var confirmPassword = $("#txtConfirmPassword").val();     
-    if(password==confirmPassword){      
+    if(password==confirmPassword && email!='' && password!=''){      
       $('#registratio_form').submit()
+    }else{
+      $("#error-text").html('Please fill required details');     
+        $('.front-end-validation').show();
+        window.scrollTo(0, 0);
+
     }
   }
+  $(document).ready(function(){ 
+    $('.front-end-validation').hide();
+    $('.remove-red-alert').click(function() {
+        $('.custom-error-alert').fadeOut("slow")
+    })
+    setInterval(function () {
+        $('.custom-error-alert').fadeOut("slow")
+    }, 4000);
+});
 
 </script>
