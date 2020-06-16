@@ -14,7 +14,7 @@
         <div class="content-box">
           <h6>Register</h6>
           <div class="form-group">
-            <input type="email" class="form-control transparent-back" name="email" placeholder="Email or Phone" value="<?php echo set_value('email')?>" autocomplete="off">
+            <input type="email" class="form-control transparent-back" id="email" name="email" placeholder="Email or Phone" value="<?php echo set_value('email')?>" autocomplete="off">
           </div>   
           <span class="input-error-message"><?php echo form_error('email', '<div class="error">', '</div>'); ?></span>     
           <div class="form-group">
@@ -55,9 +55,10 @@
     });
   }
   function submitFunction() {
+    var email = $("#email").val();
     var password = $("#txtNewPassword").val();
     var confirmPassword = $("#txtConfirmPassword").val();     
-    if(password==confirmPassword){      
+    if(password==confirmPassword && email!='' && password!=''){      
       $('#registratio_form').submit()
     }
   }
