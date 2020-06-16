@@ -48,8 +48,8 @@
                       <th>Requested By</th>
                       <th>Requested For</th>
                       <th>Requested On</th>
-                      <th>Status</th>
-                      <th>Action</th>
+                      <th>Status</th>                      
+                      <th>Action</th>                      
                     </tr>
                   </thead>
                   <tbody>
@@ -73,10 +73,14 @@
                         </td>
                         <td>
                           <?php if ($this->session->userdata('user_type')=='vendor' && $value->status=='pending') { ?>
-                            <a href="<?php echo base_url('admin/category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
-                            <a href="<?php echo base_url('admin/category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
+                            <a href="<?php echo base_url('vendor/category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
+                            <a href="<?php echo base_url('vendor/category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
+                            <?php }
+                          else if($this->session->userdata('user_type')=='vendor' && $value->status!='pending'){ ?>
+                            <a class="disable" href="<?php echo base_url('vendor/category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
+                            <a class="disable" href="<?php echo base_url('vendor/category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
                           <?php }
-                          else{ ?>
+                          else if($this->session->userdata('user_type')=='admin'){ ?>
                             <a href="<?php echo base_url('admin/category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-check"></i></span></a>
                             <a href="<?php echo base_url('admin/category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-close"></i></span></a> 
                             <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>

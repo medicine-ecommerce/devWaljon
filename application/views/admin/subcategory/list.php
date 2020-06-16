@@ -70,9 +70,13 @@
                                     } ?>
                                   </td>                                 
                                   <td>
-                                    <?php if ($this->session->userdata('user_type')=='vendor' && $value->status=='pending') { ?>
-                                      <a href="<?php echo base_url('admin/subcategory_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
-                                      <a href="<?php echo base_url('admin/subcategory_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
+                                  <?php if ($this->session->userdata('user_type')=='vendor' && $value->status=='pending') { ?>
+                                      <a href="<?php echo base_url('vendor/subcategory_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
+                                      <a href="<?php echo base_url('vendor/subcategory_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
+                                      <?php }
+                                    else if($this->session->userdata('user_type')=='vendor' && $value->status!='pending') { ?>
+                                        <a class="disable" href="<?php echo base_url('vendor/subcategory_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
+                                        <a class="disable" href="<?php echo base_url('vendor/subcategory_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
                                     <?php }
                                     else{ ?>
                                       <a href="<?php echo base_url('admin/subcategory_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
