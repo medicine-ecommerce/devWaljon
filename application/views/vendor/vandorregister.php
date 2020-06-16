@@ -7,7 +7,12 @@
     <div class="col-md-8"> 
       
     </div>
-    <div class="col-md-4">      
+    <div class="col-md-4">
+      <div class="custom-error-alert front-end-validation">   
+        <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+        <span class="glyphicon glyphicon-warning-sign"></span>
+        <p id="error-text"></p>
+      </div>                  
       <form id="registratio_form" method="post" action="<?php echo base_url(); ?>/vendor/vendorregister">
         <div class="form-content">           
         </div>
@@ -60,7 +65,21 @@
     var confirmPassword = $("#txtConfirmPassword").val();     
     if(password==confirmPassword && email!='' && password!=''){      
       $('#registratio_form').submit()
+    }else{
+      $("#error-text").html('Please fill required details');     
+        $('.front-end-validation').show();
+        window.scrollTo(0, 0);
+
     }
   }
+  $(document).ready(function(){ 
+    $('.front-end-validation').hide();
+    $('.remove-red-alert').click(function() {
+        $('.custom-error-alert').fadeOut("slow")
+    })
+    setInterval(function () {
+        $('.custom-error-alert').fadeOut("slow")
+    }, 4000);
+});
 
 </script>
