@@ -115,11 +115,11 @@ class Admin_model extends MY_model
 	}
 	public function saltCompositionList($id)
 	{
-		$this->db->select('users.full_name as username,saltComposition.*');
-		$this->db->from('saltComposition');
-		$this->db->join('users','users.id = saltComposition.created_by','left');
+		$this->db->select('users.full_name as username,saltcomposition.*');
+		$this->db->from('saltcomposition');
+		$this->db->join('users','users.id = saltcomposition.created_by','left');
 		if(!empty($id) && $this->session->userdata('user_type')=='vendor' ){
-			$this->db->where('saltComposition.created_by',$id);
+			$this->db->where('saltcomposition.created_by',$id);
 		}
 		// $this ->db->order_by("FIELD(saltComposition.status,'pending','active','reject')");
 		return $this->db->get()->result();
