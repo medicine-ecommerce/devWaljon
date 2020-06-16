@@ -7,7 +7,7 @@
               </div>
             </div>
 
-            <div class="col-md-12 col-sm-12 ">
+            <div class="col-md-12 col-sm-12 home-module-pages">
               <div class="x_panel">
                 <div class="x_title">
                   <h2>Product Form<small>List</small></h2>
