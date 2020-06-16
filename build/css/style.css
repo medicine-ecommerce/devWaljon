@@ -1382,6 +1382,33 @@ img.loader-hide{
 }
 /*salt composition*/
 /*linking*/
+.selectBox {
+  position: relative;
+}
+#checkboxes label input {
+  margin: 2px 5px 0px 0px;
+}
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+  margin-bottom: 0px;
+}
+
+#checkboxes label:hover {
+  background-color: #e6ebf1;
+}
 .linking-table{
     width: 80%;
 }

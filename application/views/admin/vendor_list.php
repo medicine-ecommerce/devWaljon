@@ -61,7 +61,7 @@
                                 </td>
                                 <td>
                                   <a href="<?php echo base_url('admin/editPersonalDetails/'.base64_encode($value->id)); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
-                                  <a href="<?php echo base_url('admin/vendor_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-close"></i></span></a>
+                                  <a href="<?php echo base_url('admin/vendor_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
                                   <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
                                   <?php if ($value->is_active=='0') { ?>
