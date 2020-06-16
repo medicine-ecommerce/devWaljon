@@ -1,3 +1,10 @@
+<?php 
+if(!empty($all_products)){
+  $all_products = $all_products;
+}else{
+  $all_products = [];
+}
+?>
   <!-- page content -->
   <div class="right_col" role="main">
     <div class="">
@@ -37,7 +44,7 @@
                   </thead>
                   <tbody>
                     <?php $i = 1;
-                    foreach ($all_products as $value) { ?>
+                    foreach($all_products as $value) { ?>
                     <tr>
                       <td><?php echo $i++; ?></td>
                       <td><?php echo $value->name; ?></td>

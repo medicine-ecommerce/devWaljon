@@ -9,7 +9,7 @@
 <div class="right_col registration-page ">
 
 	<div class="green-section alert-section  <?= ($status->is_active)==0 ? "show-section":"hide-section" ?> " >
-	  <a onclick="redirectToEditProfile()" class="alert-box alert-yellow-box profileverify-alert">
+	  <a class="alert-box alert-yellow-box profileverify-alert">
 	    <span class="alert-icon"><i class="fa fa-exclamation-triangle"></i></span>
 	    <span class="alert-content"><p> Your profile is under review, Our team will get back to you within 72 hours.</p></span>
 	  </a>  
@@ -275,7 +275,7 @@
 				</div>			
 				<div class="col-md-6">
 					<div class="form-group label-float-top">
-						<input id="phone" class="form-control control-float-top mobile-intel" type="tel" minlength="10" maxlength="10" name="medical_phone" value="<?= $edit_data->medical_phone ?>">
+						<input id="phone" class="form-control control-float-top mobile-intel medical-section" type="tel" minlength="10" maxlength="10" name="medical_phone" value="<?= $edit_data->medical_phone ?>">
 						<label for="Address">Phone</label>
 					</div>
 				</div>

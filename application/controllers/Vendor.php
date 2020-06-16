@@ -531,9 +531,10 @@ Class Vendor extends MY_Controller {
         $mail->ClearAddresses();
     }  
     public function bulk_product_update(){
+        echo "<pre>";
+        print_r($_FILES);
+        exit();
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
-            print_r($this->input->post());
-            exit();
         }
     }
     
