@@ -32,15 +32,15 @@
               <ul class="previous-img-gallery">
                 <?php if (!empty($banners)) {
                   foreach ($banners as $key => $value) { ?>
-                    <li class="previous-img">
-                      <span class="remove-img"><i class="fa fa-close"></i></span>
+                    <li class="previous-img" id="img<?php echo $value->id; ?>">
+                      <a href="javascript:voide(0)" onclick="removeImage('<?php echo $value->id; ?>')" class="remove-img"><i class="fa fa-close"></i></a>
                       <span class="gallery-img">
                         <img src="<?php echo base_url('assets/banner-images/'.$value->image); ?>">
                       </span>
                       <div class="home-page-btn">
                         <div class="switch-btn banner-img">
                           <label class="switch">
-                            <input type="checkbox" class="switch-input" name="trending" >
+                            <input type="checkbox" id="swich_input<?php echo $value->id; ?>" onchange="deactiveImage('<?php echo $value->id; ?>')" class="switch-input" name="trending" <?php echo ($value->status=='active')?'checked':''; ?> >
                             <span class="slider round"></span>
                           </label>
                         </div>
@@ -62,6 +62,32 @@
     </div>
   </div>
   <!-- /page content -->
+  <script type="text/javascript">
+    function removeImage(id) {
+      $.ajax({
+          type: "GET",
+          url: '<?php echo base_url('admin/removeBannerImage/'); ?>'+id,
+          success: function(data)
+          {
+            $('#img'+id).remove();
+            // alert(data); // show response from the php script.
+          }
+      });
+    }
+
+    function deactiveImage(id) {
+      $.ajax({
+          type: "post",
+          url: '<?php echo base_url('admin/DeactiveBannerImage'); ?>',
+          data:{id:id,status:$('#swich_input'+id).is(':checked') },
+          success: function(data)
+          {
+          }
+      });
+      
+    }
+    
+  </script>
 
       
 
