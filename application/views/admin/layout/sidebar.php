@@ -101,8 +101,8 @@ $page = $this->uri->segment('2');
                   </li>
                   <li><a><i class="fa fa-home"></i> Orders</a>                   
                   </li>
-                  <li><a><i class="fa fa-cog"></i>Settings</a>                  
-                  </li>
+                  <!-- <li><a><i class="fa fa-cog"></i>Settings</a>                  
+                  </li> -->
                 </ul>
               </div>
             </div>

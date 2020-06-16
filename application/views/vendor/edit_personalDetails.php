@@ -289,8 +289,10 @@
 			<div class="col-md-4 text-right">			
 				<div class="profile-image-section">								
 					<label class="image-title">Please upload licence</label>
-					<div>					
+					<div>	
+					<a target="_blank" href="<?php echo base_url(); ?>assets/licence/<?php echo $edit_data->licence ?>">				
 						<img <?php if($edit_data->licence){ ?> src="<?php echo base_url(); ?>assets/licence/<?php echo $edit_data->licence ?>" <?php }else{ ?>src="<?php echo base_url(); ?>assets/img/prescription.png" <?php } ?>  class="profile-images-custom" id="preview2">		
+					</a>
 					</div>
 					<button type="button" class="btn btn-primary image-upload-button">Upload</button>
 					<input type="file" id="licenceImg" name="licence" class="image-upload-input edit-licence-upload licence-img">

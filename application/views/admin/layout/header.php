@@ -72,10 +72,10 @@
                     if($_SESSION["user_type"]=='vendor' && $status->full_name!=''){ ?>
                     <a class="dropdown-item"  href="<?php echo base_url() ?>/vendor/editPersonalDetails/<?= base64_encode($this->session->userdata('user_id')); ?>"> Profile</a>
                   <?php } ?>
-                      <a class="dropdown-item"  href="javascript:;">
+                      <!-- <a class="dropdown-item"  href="javascript:;">
                         <span class="badge bg-red pull-right">50%</span>
                         <span>Settings</span>
-                      </a>
+                      </a> -->
                     <a class="dropdown-item"  href="javascript:;">Help</a>
                     <?php if($_SESSION["user_type"]=='admin'){ ?>
                       <a class="dropdown-item"  href="<?php echo base_url('admin/logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
