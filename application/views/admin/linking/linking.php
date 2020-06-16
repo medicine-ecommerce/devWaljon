@@ -1,3 +1,4 @@
+
   <!-- page content -->
   <div class="right_col" role="main">
     <div class="">
@@ -42,54 +43,24 @@
                       <td>Featured Brans</td>
                       <td><span class="dot">............</span><img src="<?php echo base_url(); ?>assets/img/link.png" class="link-img"><span class="dot">............</span></td>
                       <td>
-                        <select class="form-control">
-                          <option>Select Brands</option>
-                          <option>Option one</option>
-                          <option>Option two</option>
-                          <option>Option three</option>
-                          <option>Option four</option>
-                        </select>
-                      </td>  
-                    </tr> 
-                    <tr>
-                      <td>Featured Brans</td>
-                      <td><span class="dot">............</span><img src="<?php echo base_url(); ?>assets/img/link.png" class="link-img"><span class="dot">............</span></td>
-                      <td>
-                        <select class="form-control">
-                          <option>Select Brands</option>
-                          <option>Option one</option>
-                          <option>Option two</option>
-                          <option>Option three</option>
-                          <option>Option four</option>
-                        </select>
+                        <div class="multiselect">
+                          <div class="selectBox" onclick="showCheckboxes()">
+                            <select class="form-control">
+                              <option>Select Brands</option>
+                            </select>
+                            <div class="overSelect"></div>
+                          </div>
+                          <div id="checkboxes">
+                            <label for="one">
+                              <input type="checkbox" id="one" />First checkbox</label>
+                            <label for="two">
+                              <input type="checkbox" id="two" />Second checkbox</label>
+                            <label for="three">
+                              <input type="checkbox" id="three" />Third checkbox</label>
+                          </div>
+                        </div>
                       </td>  
                     </tr>
-                    <tr>
-                      <td>Featured Brans</td>
-                      <td><span class="dot">............</span><img src="<?php echo base_url(); ?>assets/img/link.png" class="link-img"><span class="dot">............</span></td>
-                      <td>
-                        <select class="form-control">
-                          <option>Select Brands</option>
-                          <option>Option one</option>
-                          <option>Option two</option>
-                          <option>Option three</option>
-                          <option>Option four</option>
-                        </select>
-                      </td>  
-                    </tr>
-                    <tr>
-                      <td>Featured Brans</td>
-                      <td><span class="dot">............</span><img src="<?php echo base_url(); ?>assets/img/link.png" class="link-img"><span class="dot">............</span></td>
-                      <td>
-                        <select class="form-control">
-                          <option>Select Brands</option>
-                          <option>Option one</option>
-                          <option>Option two</option>
-                          <option>Option three</option>
-                          <option>Option four</option>
-                        </select>
-                      </td>  
-                    </tr> 
                   </tbody>
                 </table>
               </div>
@@ -107,3 +78,19 @@
     </div>
   </div>
   <!-- /page content -->
+<script>
+
+  var expanded = false;
+
+  function showCheckboxes() {
+    var checkboxes = document.getElementById("checkboxes");
+    if (!expanded) {
+      checkboxes.style.display = "block";
+      expanded = true;
+    } else {
+      checkboxes.style.display = "none";
+      expanded = false;
+    }
+  }
+    
+</script>
