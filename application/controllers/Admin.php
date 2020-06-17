@@ -29,6 +29,7 @@ Class Admin extends MY_Controller {
 
     public function dashboard()
     {
+        $this->data['vendorsCount'] = $this->Admin->rowsCount('users','*',array('type'=>'vendor'));
         $this->data['vendors'] = $this->Admin->getData('users','*',array('type'=>'vendor'));
     	$this->middle = 'dashboard';
         $this->Admin();
@@ -209,9 +210,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'category/add';
         $this->Admin();
     }
-    public function category_list()
+    public function category_list($id)
     {
-        $this->data['category'] = $this->Admin->CategoryList();
+        $this->data['category'] = $this->Admin->CategoryList($id);
         $this->middle = 'category/list';
         $this->Admin();
     }
@@ -374,9 +375,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'manufacturer/add';
         $this->Admin();
     }
-    public function manufacturer_list()
+    public function manufacturer_list($id)
     {
-        $this->data['manufacturer'] = $this->Admin->ManufacturerList();
+        $this->data['manufacturer'] = $this->Admin->ManufacturerList($id);
 
         $this->middle = 'manufacturer/list';
         $this->Admin();
@@ -491,9 +492,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'product-form/add';
         $this->Admin();
     }
-    public function product_form_list()
+    public function product_form_list($id)
     {
-        $this->data['product_form'] = $this->Admin->ProducFormList();
+        $this->data['product_form'] = $this->Admin->ProducFormList($id);
         $this->middle = 'product-form/list';
         $this->Admin();
     }
@@ -591,9 +592,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'brand/add';
         $this->Admin();
     }
-    public function brand_list()
+    public function brand_list($id)
     {
-        $this->data['brand'] = $this->Admin->brandList();
+        $this->data['brand'] = $this->Admin->brandList($id);
         $this->middle = 'brand/list';
         $this->Admin();
     }
@@ -682,9 +683,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'saltComposition/add';
         $this->Admin();
     }
-    public function saltComposition_list()
+    public function saltComposition_list($id)
     {
-        $this->data['saltComposition'] = $this->Admin->saltCompositionList();
+        $this->data['saltComposition'] = $this->Admin->saltCompositionList($id);
         $this->middle = 'saltComposition/list';
         $this->Admin();
     }

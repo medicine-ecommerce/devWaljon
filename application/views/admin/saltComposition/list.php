@@ -70,6 +70,17 @@
                                 }?>
                               </td>
                               <td>
+                              <?php if ($this->session->userdata('user_type')=='vendor' && $value->status=='pending') { ?>
+                              <a href="<?php echo base_url('vendor/saltComposition_edit/'.$value->id); ?>"><span><i class="fa fa-pencil" style="color: #007bff;"></i></span></a>
+
+                              <a href="<?php echo base_url('vendor/saltComposition_delete/'.$value->id); ?>"><span><i class="fa fa-trash" style="color: red;margin-right: 10px;"></i></span></a>
+                            <?php }
+                              else if($this->session->userdata('user_type')=='vendor' && $value->status!='pending') { ?>
+                              <a class="disable" href="<?php echo base_url('vendor/saltComposition_edit/'.$value->id); ?>"><span><i class="fa fa-pencil" style="color: #007bff;"></i></span></a>
+
+                              <a class="disable" href="<?php echo base_url('vendor/saltComposition_delete/'.$value->id); ?>"><span><i class="fa fa-trash" style="color: red;margin-right: 10px;"></i></span></a>
+                              <?php }
+                                    else{ ?>
                               <a href="<?php echo base_url('admin/saltComposition_edit/'.$value->id); ?>"><span><i class="fa fa-pencil" style="color: #007bff;"></i></span></a>
 
                               <a href="<?php echo base_url('admin/saltComposition_delete/'.$value->id); ?>"><span><i class="fa fa-trash" style="color: red;margin-right: 10px;"></i></span></a>
@@ -79,7 +90,7 @@
                               <?php }
                               if ($value->status=='pending' || $value->status=='active') { ?>
                                 <a href="<?php echo base_url('admin/saltComposition_status/reject/'.$value->id);?>"><span class="rejected">Deactivate</span></a>
-                              <?php } ?>
+                              <?php } }?>
                             </td>
                             </tr>
                           <?php } 

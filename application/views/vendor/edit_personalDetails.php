@@ -9,7 +9,7 @@
 <div class="right_col registration-page ">
 
 	<div class="green-section alert-section  <?= ($status->is_active)==0 ? "show-section":"hide-section" ?> " >
-	  <a onclick="redirectToEditProfile()" class="alert-box alert-yellow-box profileverify-alert">
+	  <a class="alert-box alert-yellow-box profileverify-alert">
 	    <span class="alert-icon"><i class="fa fa-exclamation-triangle"></i></span>
 	    <span class="alert-content"><p> Your profile is under review, Our team will get back to you within 72 hours.</p></span>
 	  </a>  
@@ -161,13 +161,13 @@
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="date" class="form-control control-float-top working-section" name="working_from" value="<?= !empty($edit_data->working_from) ? date('Y-m-d',strtotime($edit_data->working_from)) : "" ?>">
+						<input type="date" class="form-control control-float-top working-section" name="working_from" id="working_from" onblur="getExperienceYear()" value="<?= !empty($edit_data->working_from) ? date('Y-m-d',strtotime($edit_data->working_from)) : "" ?>">
 						<label for="Address">Working From</label>
 					</div>
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<select class="form-control control-float-top custom-select working-section" name="experience">
+						<select  id="experience" class="form-control control-float-top custom-select working-section" name="experience">
 							
 							<?php 
 								foreach ($working_experience as $key => $value) { ?>
@@ -270,12 +270,12 @@
 				<div class="col-md-6">
 					<div class="form-group label-float-top">
 						<input type="date" class="form-control control-float-top medical-section" name="medical_since" value="<?=  !empty($edit_data->medical_since) ? date('Y-m-d',strtotime($edit_data->medical_since)): "" ?>">
-						<label for="Address">Medical Since</label>
+						<label for="Address">Registration Date</label>
 					</div>
 				</div>			
 				<div class="col-md-6">
 					<div class="form-group label-float-top">
-						<input id="phone" class="form-control control-float-top mobile-intel" type="tel" minlength="10" maxlength="10" name="medical_phone" value="<?= $edit_data->medical_phone ?>">
+						<input id="phone" class="form-control control-float-top mobile-intel medical-section" type="tel" minlength="10" maxlength="10" name="medical_phone" value="<?= $edit_data->medical_phone ?>">
 						<label for="Address">Phone</label>
 					</div>
 				</div>
@@ -289,8 +289,10 @@
 			<div class="col-md-4 text-right">			
 				<div class="profile-image-section">								
 					<label class="image-title">Please upload licence</label>
-					<div>					
+					<div>	
+					<a target="_blank" href="<?php echo base_url(); ?>assets/licence/<?php echo $edit_data->licence ?>">				
 						<img <?php if($edit_data->licence){ ?> src="<?php echo base_url(); ?>assets/licence/<?php echo $edit_data->licence ?>" <?php }else{ ?>src="<?php echo base_url(); ?>assets/img/prescription.png" <?php } ?>  class="profile-images-custom" id="preview2">		
+					</a>
 					</div>
 					<button type="button" class="btn btn-primary image-upload-button">Upload</button>
 					<input type="file" id="licenceImg" name="licence" class="image-upload-input edit-licence-upload licence-img">
@@ -483,8 +485,23 @@
 		$(".form-control").removeClass('medical-section');
 	}
 
-
-
+	var date_diff_indays = function(date1, date2) {
+		dt1 = new Date(date1);
+		dt2 = new Date(date2);
+		return Math.floor((Date.UTC(dt2.getFullYear(), dt2.getMonth(), dt2.getDate()) - Date.UTC(dt1.getFullYear(), dt1.getMonth(), dt1.getDate()) ) /(1000 * 60 * 60 * 24));
+	}
+	
+	function getExperienceYear() {
+		var working_from 	 	= $("#working_from").val();
+		var curentDate1 =  new Date().format('Y-m-d');				
+		if(working_from!=''){			
+			var diffDays = Math.round(date_diff_indays(working_from, curentDate1)/365);								
+			var slectedIndex =  $("#experience").prop('selectedIndex');			
+			$('#experience').find("option:eq("+slectedIndex+")").html(diffDays > 1 ?diffDays +" Years": diffDays +" Year" );
+			$('#experience').val(diffDays);
+			$("#experience").siblings("label").addClass("active");            	        		
+		}
+	}
 </script>
   <script>
 

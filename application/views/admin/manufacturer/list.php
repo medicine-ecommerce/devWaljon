@@ -71,7 +71,18 @@
                             echo '<span class="rejected">Deactive</span>';
                           } ?>
                         </td>
-                        <td><a href="<?php echo base_url('admin/manufacturer_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
+                        <td>
+                        <?php if ($this->session->userdata('user_type')=='vendor' && $value->status=='pending') { ?>
+                        <a href="<?php echo base_url('vendor/manufacturer_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
+                        <a href="<?php echo base_url('vendor/manufacturer_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
+                        <?php }
+                      else if($this->session->userdata('user_type')=='vendor' && $value->status!='pending') { ?>
+                        <a class="disable" href="<?php echo base_url('vendor/manufacturer_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
+                        <a class="disable" href="<?php echo base_url('vendor/manufacturer_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
+
+                      <?php }
+                      else if($this->session->userdata('user_type')=='admin') { ?>
+                        <a href="<?php echo base_url('admin/manufacturer_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
                         <a href="<?php echo base_url('admin/manufacturer_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
                         <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
@@ -82,6 +93,7 @@
                             <a class="dropdown-item" href="<?php echo base_url('admin/manufacturer_status/reject/'.$value->id);?>">Deactivate</a>
                           <?php } ?>
                         </div>
+                      <?php } ?>
                       </td>
                       </tr>
                     <?php } 
