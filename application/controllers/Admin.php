@@ -210,9 +210,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'category/add';
         $this->Admin();
     }
-    public function category_list($id)
+    public function category_list()
     {
-        $this->data['category'] = $this->Admin->CategoryList($id);
+        $this->data['category'] = $this->Admin->CategoryList();
         $this->middle = 'category/list';
         $this->Admin();
     }
@@ -375,7 +375,7 @@ Class Admin extends MY_Controller {
         $this->middle = 'manufacturer/add';
         $this->Admin();
     }
-    public function manufacturer_list($id)
+    public function manufacturer_list()
     {
         $this->data['manufacturer'] = $this->Admin->ManufacturerList($id);
 
@@ -448,10 +448,9 @@ Class Admin extends MY_Controller {
         $this->Admin->deleteData('banner_images',array('id'=>$id));
     }
     public function DeactiveBannerImage()
-    {
-        echo $this->input->post('status');
-      echo  $status = ($this->input->post('status')=='true')?'active':'deactive';
-       echo $id = $this->input->post('id');
+    {        
+        $status = ($this->input->post('status')=='true')?'active':'deactive';
+        $id = $this->input->post('id');
         $this->Admin->updateData('banner_images',array('status'=>$status),array('id'=>$id));
     }
     public function product_category()
@@ -492,9 +491,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'product-form/add';
         $this->Admin();
     }
-    public function product_form_list($id)
+    public function product_form_list()
     {
-        $this->data['product_form'] = $this->Admin->ProducFormList($id);
+        $this->data['product_form'] = $this->Admin->ProducFormList();
         $this->middle = 'product-form/list';
         $this->Admin();
     }
@@ -592,9 +591,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'brand/add';
         $this->Admin();
     }
-    public function brand_list($id)
+    public function brand_list()
     {
-        $this->data['brand'] = $this->Admin->brandList($id);
+        $this->data['brand'] = $this->Admin->brandList();
         $this->middle = 'brand/list';
         $this->Admin();
     }
@@ -683,9 +682,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'saltComposition/add';
         $this->Admin();
     }
-    public function saltComposition_list($id)
+    public function saltComposition_list()
     {
-        $this->data['saltComposition'] = $this->Admin->saltCompositionList($id);
+        $this->data['saltComposition'] = $this->Admin->saltCompositionList();
         $this->middle = 'saltComposition/list';
         $this->Admin();
     }

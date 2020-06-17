@@ -31,7 +31,7 @@
                     <div class="invertory-content text-center">
                       <p>In this process you have to add product one by one. If you want to continue with this process please click on <strong>continue</strong></p>
                     </div>
-                    <button type="button" class="btn active-btn btn-round single-upload-btn">Continue</button> 
+                    <a href="<?php echo base_url($this->session->userdata('user_type').'/addSingleProduct'); ?>" class="btn active-btn btn-round single-upload-btn">Continue</a> 
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6">

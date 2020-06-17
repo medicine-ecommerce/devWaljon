@@ -80,7 +80,7 @@ class Vendor_model extends MY_model
 		$this->db->join('product_item','product_item.product_id=product.id','left');
 		$this->db->join('manufacturer','manufacturer.id=product.manufacturer_id','left');
 		$this->db->join('product_form','product_form.id=product.product_form_id','left');
-		if(!empty($this->session->userdata('user_id'))){
+		if($this->session->userdata('user_type')=='vendor' ){
 			$this->db->where('product.created_by',$this->session->userdata('user_id'));
 		}
 		$query = $this->db->get();		
