@@ -61,6 +61,17 @@
                                     } ?>
                                   </td>
                                   <td>
+                                  <?php if ($this->session->userdata('user_type')=='vendor' && $value->status=='pending') { ?>
+                                    <a href="<?php echo base_url('vendor/product_form_edit/'.$value->id);?>"><span class="status-approve"><i class="fa fa-pencil"></i>
+                                    </span></a>
+                                    <a href="<?php echo base_url('vendor/product_form_delete/'.$value->id); ?>" onclick="return confirm('Are you sure？')"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
+                                  <?php }
+                                  else if($this->session->userdata('user_type')=='vendor' && $value->status!='pending') { ?>
+                                    <a class="disable" href="<?php echo base_url('admin/product_form_edit/'.$value->id);?>"><span class="status-approve"><i class="fa fa-pencil"></i>
+                                    </span></a>
+                                    <a class="disable" href="<?php echo base_url('admin/product_form_delete/'.$value->id); ?>" onclick="return confirm('Are you sure？')"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
+                                  <?php }
+                                  else if($this->session->userdata('user_type')=='admin') { ?>
                                     <a href="<?php echo base_url('admin/product_form_edit/'.$value->id);?>"><span class="status-approve"><i class="fa fa-pencil"></i>
                                     </span></a>
                                     <a href="<?php echo base_url('admin/product_form_delete/'.$value->id); ?>" onclick="return confirm('Are you sure？')"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
@@ -73,6 +84,7 @@
                                         <a class="dropdown-item" href="<?php echo base_url('admin/product_form_status/reject/'.$value->id);?>">Deactivate</a>
                                       <?php } ?>
                                     </div>
+                                  <?php } ?>
                                   </td>
                                 </tr>
 

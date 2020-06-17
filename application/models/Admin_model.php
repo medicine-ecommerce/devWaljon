@@ -56,52 +56,71 @@ class Admin_model extends MY_model
         return $query->num_rows();   
     }
 	
-	public function CategoryList()
+	public function CategoryList($id)
 	{
 		$this->db->select('users.full_name as username,category.*');
 		$this->db->from('category');
 		$this->db->join('users','users.id = category.created_by','left');
+		if(!empty($id) && $this->session->userdata('user_type')=='vendor' ){
+			$this->db->where('category.created_by',$id);
+		}
 		$this ->db->order_by("FIELD(category.status,'pending','active','reject')");
 		return $this->db->get()->result();
 	}
-	public function SubCategoryList()
+	public function SubCategoryList($id=null)
 	{
 		$this->db->select('users.full_name as username,subcategory.*,category.category_name');
 		$this->db->from('subcategory');
 		$this->db->join('category','category.id = subcategory.category_id','left');
 		$this->db->join('users','users.id = subcategory.created_by','left');
+		if(!empty($id) && $this->session->userdata('user_type')=='vendor' ){
+				$this->db->where('subcategory.created_by',$id);
+		}
 		$this ->db->order_by("FIELD(subcategory.status,'pending','active','reject')");
+		
 		return $this->db->get()->result();
 	}
-	public function ManufacturerList()
+	public function ManufacturerList($id)
 	{
 		$this->db->select('users.full_name as username,manufacturer.*');
 		$this->db->from('manufacturer');
 		$this->db->join('users','users.id = manufacturer.created_by','left');
+		if(!empty($id) && $this->session->userdata('user_type')=='vendor' ){
+			$this->db->where('manufacturer.created_by',$id);
+		}
 		$this ->db->order_by("FIELD(manufacturer.status,'pending','active','reject')");
 		return $this->db->get()->result();
 	}
-	public function ProducFormList()
+	public function ProducFormList($id)
 	{
 		$this->db->select('users.full_name as username,product_form.*');
 		$this->db->from('product_form');
 		$this->db->join('users','users.id = product_form.created_by','left');
+		if(!empty($id) && $this->session->userdata('user_type')=='vendor' ){
+			$this->db->where('product_form.created_by',$id);
+		}
 		$this ->db->order_by("FIELD(product_form.status,'pending,active,reject')");
 		return $this->db->get()->result();
 	}
-	public function brandList()
+	public function brandList($id)
 	{
 		$this->db->select('users.full_name as username,brand.*');
 		$this->db->from('brand');
 		$this->db->join('users','users.id = brand.created_by','left');
+		if(!empty($id) && $this->session->userdata('user_type')=='vendor' ){
+			$this->db->where('brand.created_by',$id);
+		}
 		// $this ->db->order_by("FIELD(brand.status,'pending','active','reject')");
 		return $this->db->get()->result();
 	}
-	public function saltCompositionList()
+	public function saltCompositionList($id)
 	{
-		$this->db->select('users.full_name as username,saltComposition.*');
-		$this->db->from('saltComposition');
-		$this->db->join('users','users.id = saltComposition.created_by','left');
+		$this->db->select('users.full_name as username,saltcomposition.*');
+		$this->db->from('saltcomposition');
+		$this->db->join('users','users.id = saltcomposition.created_by','left');
+		if(!empty($id) && $this->session->userdata('user_type')=='vendor' ){
+			$this->db->where('saltcomposition.created_by',$id);
+		}
 		// $this ->db->order_by("FIELD(saltComposition.status,'pending','active','reject')");
 		return $this->db->get()->result();
 	}
