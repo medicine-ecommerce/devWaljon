@@ -262,7 +262,7 @@ Class Admin extends MY_Controller {
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
-    public function subcategory_add()
+    public function home_category_add()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('subcategory_name', 'subcategory name', 'required');
@@ -292,14 +292,14 @@ Class Admin extends MY_Controller {
         $this->middle = 'subcategory/add';
         $this->Admin();
     }
-    public function subcategory_list($id)
-    {        
-        $this->data['subcategory'] = $this->Admin->SubCategoryList($id);
+    public function home_category_list()
+    {
+        $this->data['subcategory'] = $this->Admin->SubCategoryList();
 
         $this->middle = 'subcategory/list';
         $this->Admin();
     }
-    public function subcategory_edit($id)
+    public function home_category_edit($id)
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('subcategory_name', 'subcategory name', 'required');
@@ -314,7 +314,7 @@ Class Admin extends MY_Controller {
                         );
                 $result = $this->Admin->updateData('subcategory',$data,array('id'=>$id));
                 if (!empty($result)) {
-                    $this->session->set_flashdata('success', 'Sub-Category added successfully');                    
+                    $this->session->set_flashdata('success', 'Product category added successfully');                    
                 }
                 else{
                     $this->session->set_flashdata('error','error! Please try again');
@@ -327,17 +327,17 @@ Class Admin extends MY_Controller {
         $this->middle = 'subcategory/add';
         $this->Admin();
     }
-    public function subcategory_delete($id)
+    public function home_category_delete($id)
     {
         $result = $this->Admin->deleteData('subcategory',array('id'=>$id));
         if (!empty($result)) {
-            $this->session->set_flashdata('success', 'Subcategory deleted successfully');
+            $this->session->set_flashdata('success', 'Product category deleted successfully');
         }else{
             $this->session->set_flashdata('error', 'error! Please try again');
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
-    public function subcategory_status($status,$id)
+    public function home_category_status($status,$id)
     {
         $result = $this->Admin->updateData('subcategory',array('status'=>$status),array('id'=>$id));
         if (!empty($result)) {

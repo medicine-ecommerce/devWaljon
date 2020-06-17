@@ -46,8 +46,8 @@ $page = $this->uri->segment('2');
                   </li>
                   <li><a><i class="fa fa-home"></i> Home Module <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a class="sub-item <?= ($page=="category_list")? "active":"" ?>" class="sub-item" href="<?php echo base_url('admin/category_list/'.$_SESSION["user_id"]); ?>">Home Category</a></li>
-                      <li><a class="sub-item <?= ($page=="subcategory_list")? "active":"" ?>" href="<?php echo base_url('admin/subcategory_list/'.$_SESSION["user_id"]); ?>">Sub Category</a></li>
+                      <li><a class="sub-item <?= ($page=="category_list")? "active":"" ?>" class="sub-item" href="<?php echo base_url('admin/category_list'); ?>">Home Category</a></li>
+                      <!-- <li><a class="sub-item <?= ($page=="subcategory_list")? "active":"" ?>" href="<?php echo base_url('admin/subcategory_list'); ?>">Sub Category</a></li> -->
                       <li><a class="sub-item <?= ($page=="home_banners")? "active":"" ?>" href="<?php echo base_url('admin/home_banners'); ?>">Ad Banners</a></li>
                     </ul>
 
@@ -55,12 +55,12 @@ $page = $this->uri->segment('2');
                   <li><a><i class="fa fa-eraser"></i> Inventory<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <!-- <li><a class="sub-item" href="<?php echo base_url('admin/home_category'); ?>">Home Module</a></li> -->
-                      <li><a class="sub-item <?= ($page=="category_list")? "active":"" ?>" href="<?php echo base_url('admin/category_list/'.$_SESSION["user_id"]); ?>">Product Category</a></li>
+                      <li><a class="sub-item <?= ($page=="home_category_list")? "active":"" ?>" href="<?php echo base_url('admin/home_category_list/'.$_SESSION["user_id"]); ?>">Product Category</a></li>
                       <li><a class="sub-item <?= ($page=="brand_list")? "active":"" ?>" href="<?php echo base_url('admin/brand_list/'.$_SESSION["user_id"]); ?>">Brands</a></li>
                       <li><a class="sub-item <?= ($page=="manufacturer_list")? "active":"" ?>" href="<?php echo base_url('admin/manufacturer_list/'.$_SESSION["user_id"]); ?>">Manufacturer</a></li>
                       <li><a class="sub-item <?= ($page=="addSingleProduct")? "active":"" ?>" href="<?php echo base_url('admin/addSingleProduct'); ?>">Add Product</a></li>
                       <li><a class="sub-item <?= ($page=="product_form_list")? "active":"" ?>" href="<?php echo base_url('admin/product_form_list/'.$_SESSION["user_id"]); ?>">Product Form</a></li>
-                      <li><a class="sub-item <?= ($page=="all_product")? "active":"" ?>" href="<?php echo base_url('admin/all_product'); ?>">All Product</a></li>
+                      <!-- <li><a class="sub-item <?= ($page=="all_product")? "active":"" ?>" href="<?php echo base_url('admin/all_product'); ?>">All Product</a></li> -->
                       <li><a class="sub-item <?= ($page=="linking")? "active":"" ?>" href="<?php echo base_url('admin/linking'); ?>">Linking</a></li>
                       <li><a class="sub-item <?= ($page=="saltComposition_list")? "active":"" ?>" href="<?php echo base_url('admin/saltComposition_list/'.$_SESSION["user_id"]); ?>">Salt Composition</a></li>
                       <li><a class="sub-item <?= ($page=="category_list")? "active":"" ?>" href="#">All Inventory</a></li>

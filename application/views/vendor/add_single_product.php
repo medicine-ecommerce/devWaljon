@@ -45,22 +45,22 @@
                            <option></option>
                            <?php if (!empty($category)) {
                              foreach ($category as $key => $value) { ?>
-                              <option value="<?php echo $value->id; ?>"><?php echo $value->category_name; ?></option>
+                              <option value="<?php echo $value->id; ?>"><?php echo $value->subcategory; ?></option>
                             <?php }
                            } ?>
                         </select>
                         <label for="Address">Product Category</label>
                      </div>
                   </div>
-                  <div class="col-md-6">
+                  <!-- <div class="col-md-6">
                      <div class="form-group label-float-top">
                         <select class="form-control control-float-top" id="subcategory">
                            <option></option>
                         </select>
                         <label for="Address">Product SubCategory</label>
                      </div>
-                  </div>
-                  <div class="col-md-4">
+                  </div> -->
+                  <div class="col-md-6">
                      <div class="form-group label-float-top">
                         <select class="form-control control-float-top" id="product_form">
                            <option></option>
@@ -73,7 +73,7 @@
                         <label for="Address">Product Form</label>
                      </div>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                      <div class="form-group label-float-top">
                         <select class="form-control control-float-top" id="manufacturer">
                            <option></option>
@@ -87,7 +87,7 @@
                         <!-- <label for="email">Date Of Birth</label> -->
                      </div>
                   </div>
-                  <div class="col-md-4">
+                  <div class="col-md-6">
                      <div class="form-group label-float-top">
                         <select class="form-control control-float-top" name="brand_id" id="brand">
                            <option></option>
