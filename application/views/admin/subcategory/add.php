@@ -3,10 +3,10 @@
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Add Sub-Category</h3>
+          <h3>Add Product Category</h3>
         </div>
 
-        <div class="title_right">
+        <!-- <div class="title_right">
           <div class="col-md-5 col-sm-5 form-group pull-right top_search">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search for...">
@@ -15,7 +15,7 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="row">
         <div class="col-md-12 col-sm-12">
@@ -31,10 +31,10 @@
           } ?>
           <div class="x_panel">
             <div class="x_content">
-              <form class="" action="<?php echo(!empty($subcategory)) ? base_url('admin/subcategory_edit/'.$subcategory->id) : base_url('admin/subcategory_add') ?>" method="post" novalidate>
-                <span class="section">Add Sub-Category</span>
+              <form class="" action="<?php echo(!empty($subcategory)) ? base_url('admin/home_category_edit/'.$subcategory->id) : base_url('admin/home_category_add') ?>" method="post" novalidate>
+                <span class="section">Add Product Category</span>
                 <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">Category Name<span
+                  <label class="col-form-label col-md-3 col-sm-3  label-align">Home Category <span
                       class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
                     <select class="form-control" name="category_id">
@@ -50,7 +50,7 @@
                   </div>
                 </div>
                 <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">Sub-Category <span
+                  <label class="col-form-label col-md-3 col-sm-3  label-align">Product Category <span
                       class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
                     <input class="form-control"  name="subcategory_name" required="required" value="<?php echo (!empty($subcategory)) ? $subcategory->subcategory: '';?>" />

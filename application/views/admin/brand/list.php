@@ -6,13 +6,13 @@
           <h3>Brands</h3>
         </div>
 
-        <div class="title_right">
+        <!-- <div class="title_right">
           <div class="col-md-6 col-sm-6 form-group pull-right top_search">
             <div class="input-group">
               <input type="text" class="form-control product-form" placeholder="Search ">
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="">
         <div class="col-md-12 col-sm-12 home-module-pages">
