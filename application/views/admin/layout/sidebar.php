@@ -64,6 +64,7 @@ $page = $this->uri->segment('2');
                       <li><a class="sub-item <?= ($page=="linking")? "active":"" ?>" href="<?php echo base_url('admin/linking'); ?>">Linking</a></li>
                       <li><a class="sub-item <?= ($page=="saltComposition_list")? "active":"" ?>" href="<?php echo base_url('admin/saltComposition_list'); ?>">Salt Composition</a></li>
                       <li><a class="sub-item <?= ($page=="all_product")? "active":"" ?>" href="<?php echo base_url('admin/all_product'); ?>">All Inventory</a></li>
+
                     </ul>
                   </li>
                   <li><a><i class="fa fa-home"></i> Orders</a>                   

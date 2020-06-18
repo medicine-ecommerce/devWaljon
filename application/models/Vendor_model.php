@@ -72,18 +72,24 @@ class Vendor_model extends MY_model
 		}
 		
 	}
+
+
 	public function getAllProductData()
 	{		
 		//if(!empty($this->session->userdata('vendor_id'))){			
-		$this->db->select('product.id,product.name,manufacturer.name as manufacturer_name,product_item.mrp,product_item.sale_price,product_item.quantity,product.created_at,product_form.name as product_form,product_item.unit');
+		$this->db->select('product.id,product.name,manufacturer.name as manufacturer_name,category.category_name as category_name,subcategory.subcategory as subcategory_name,product_item.mrp,product_item.sale_price,product_item.quantity,product.created_at,product_form.name as product_form,product_item.unit');
 		$this->db->from('product');
 		$this->db->join('product_item','product_item.product_id=product.id','left');
+		$this->db->join('category','category.id=product.category_id','left');
+		$this->db->join('subcategory','subcategory.id=product.sucategory_id','left');
 		$this->db->join('manufacturer','manufacturer.id=product.manufacturer_id','left');
 		$this->db->join('product_form','product_form.id=product.product_form_id','left');
 		if($this->session->userdata('user_type')=='vendor' ){
 			$this->db->where('product.created_by',$this->session->userdata('user_id'));
 		}
-		$query = $this->db->get();		
+		$query = $this->db->get();
+		// print_r($this->db->last_query());
+		// die();		
 		if($query->num_rows() > 0){
         	return $query->result();
         }else{
