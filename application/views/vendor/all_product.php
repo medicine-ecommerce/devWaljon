@@ -31,10 +31,11 @@ if(!empty($all_products)){
                     <tr>
                       <th>#</th>
                       <th>Product Name</th>
+                      <th>Category</th>
+                      <th>Sub Category</th>
                       <th>Manufacturer</th>
                       <th>MRP</th>
                       <th>Sell Price</th>
-                      <!-- <th>Type</th> -->
                       <th>Form</th>
                       <th>Quantity</th>
                       <!-- <th>Unit Available</th> -->
@@ -48,6 +49,8 @@ if(!empty($all_products)){
                     <tr>
                       <td><?php echo $i++; ?></td>
                       <td><?php echo $value->name; ?></td>
+                      <td><?php echo $value->category_name; ?></td>
+                      <td><?php echo $value->subcategory_name; ?></td>
                       <td><?php echo $value->manufacturer_name; ?></td>
                       <td><i class="fa fa-inr"></i> <?php echo $value->mrp; ?></td>
                       <td><i class="fa fa-inr"></i> <?php echo $value->sale_price; ?></td>
