@@ -682,6 +682,7 @@ Class Admin extends MY_Controller {
         $this->middle = 'saltComposition/add';
         $this->Admin();
     }
+    
     public function saltComposition_list()
     {
         $this->data['saltComposition'] = $this->Admin->saltCompositionList();
