@@ -87,7 +87,9 @@ class Vendor_model extends MY_model
 		if(!empty($this->session->userdata('user_id'))){
 			$this->db->where('product.created_by',$this->session->userdata('user_id'));
 		}
-		$query = $this->db->get();		
+		$query = $this->db->get();
+		// print_r($this->db->last_query());
+		// die();		
 		if($query->num_rows() > 0){
         	return $query->result();
         }else{
