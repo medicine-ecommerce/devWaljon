@@ -16,7 +16,9 @@ Class User extends MY_Controller {
     }
     public function index()
     {
+        $this->load->view('user/layout/header'); 
         $this->load->view('user/home');	
+        $this->load->view('user/layout/footer'); 
     }
     
 }
