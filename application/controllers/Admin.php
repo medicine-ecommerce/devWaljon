@@ -377,7 +377,7 @@ Class Admin extends MY_Controller {
     }
     public function manufacturer_list()
     {
-        $this->data['manufacturer'] = $this->Admin->ManufacturerList($id);
+        $this->data['manufacturer'] = $this->Admin->ManufacturerList();
 
         $this->middle = 'manufacturer/list';
         $this->Admin();

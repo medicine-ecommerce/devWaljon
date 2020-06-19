@@ -62,7 +62,8 @@
                         <?php 
                         if (!empty($category)) {
                           $i = 1;
-                          foreach ($category as $key => $value) { ?>
+                          foreach ($category as $key => $value) {
+                          if($value->status!='pending'){ ?>
                           <tr>
                             <td><?php echo $i++; ?></td>
                             <td><?php echo $value->username; ?></td>
