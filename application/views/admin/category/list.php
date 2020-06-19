@@ -62,7 +62,8 @@
                         <?php 
                         if (!empty($category)) {
                           $i = 1;
-                          foreach ($category as $key => $value) { ?>
+                          foreach ($category as $key => $value) {
+                          if($value->status!='pending'){ ?>
                           <tr>
                             <td><?php echo $i++; ?></td>
                             <td><?php echo $value->username; ?></td>
@@ -98,7 +99,8 @@
                                     <a class="dropdown-item" href="<?php echo base_url('admin/category_status/reject/'.$value->id);?>">Deactivate</a>
                                   <?php } ?>
                                 </div>
-                              <?php } ?> 
+                              <?php } 
+                            }?> 
                             </td>
                             </tr>
                           <?php } 
