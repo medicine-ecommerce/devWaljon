@@ -99,7 +99,8 @@
                                     <a class="dropdown-item" href="<?php echo base_url('admin/category_status/reject/'.$value->id);?>">Deactivate</a>
                                   <?php } ?>
                                 </div>
-                              <?php } ?> 
+                              <?php } 
+                            }?> 
                             </td>
                             </tr>
                           <?php } 
