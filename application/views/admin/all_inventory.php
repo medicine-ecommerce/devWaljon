@@ -10,7 +10,7 @@ if(!empty($all_products)){
     <div class="">
       <div class="page-title">
         <div class="title_left hamburger">
-          <h3 class="product_form_heading">All Product</h3>
+          <h3 class="product_form_heading">All Inventory</h3>
         </div>
 <!-- 
         <div class="title_right">

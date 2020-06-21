@@ -210,9 +210,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'category/add';
         $this->Admin();
     }
-    public function category_list($id)
+    public function category_list()
     {
-        $this->data['category'] = $this->Admin->CategoryList($id);
+        $this->data['category'] = $this->Admin->CategoryList();
         $this->middle = 'category/list';
         $this->Admin();
     }
@@ -262,7 +262,7 @@ Class Admin extends MY_Controller {
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
-    public function subcategory_add()
+    public function home_category_add()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('subcategory_name', 'subcategory name', 'required');
@@ -292,14 +292,14 @@ Class Admin extends MY_Controller {
         $this->middle = 'subcategory/add';
         $this->Admin();
     }
-    public function subcategory_list($id)
-    {        
-        $this->data['subcategory'] = $this->Admin->SubCategoryList($id);
+    public function home_category_list()
+    {
+        $this->data['subcategory'] = $this->Admin->SubCategoryList();
 
         $this->middle = 'subcategory/list';
         $this->Admin();
     }
-    public function subcategory_edit($id)
+    public function home_category_edit($id)
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('subcategory_name', 'subcategory name', 'required');
@@ -314,7 +314,7 @@ Class Admin extends MY_Controller {
                         );
                 $result = $this->Admin->updateData('subcategory',$data,array('id'=>$id));
                 if (!empty($result)) {
-                    $this->session->set_flashdata('success', 'Sub-Category added successfully');                    
+                    $this->session->set_flashdata('success', 'Product category added successfully');                    
                 }
                 else{
                     $this->session->set_flashdata('error','error! Please try again');
@@ -327,17 +327,17 @@ Class Admin extends MY_Controller {
         $this->middle = 'subcategory/add';
         $this->Admin();
     }
-    public function subcategory_delete($id)
+    public function home_category_delete($id)
     {
         $result = $this->Admin->deleteData('subcategory',array('id'=>$id));
         if (!empty($result)) {
-            $this->session->set_flashdata('success', 'Subcategory deleted successfully');
+            $this->session->set_flashdata('success', 'Product category deleted successfully');
         }else{
             $this->session->set_flashdata('error', 'error! Please try again');
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
-    public function subcategory_status($status,$id)
+    public function home_category_status($status,$id)
     {
         $result = $this->Admin->updateData('subcategory',array('status'=>$status),array('id'=>$id));
         if (!empty($result)) {
@@ -375,9 +375,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'manufacturer/add';
         $this->Admin();
     }
-    public function manufacturer_list($id)
+    public function manufacturer_list()
     {
-        $this->data['manufacturer'] = $this->Admin->ManufacturerList($id);
+        $this->data['manufacturer'] = $this->Admin->ManufacturerList();
 
         $this->middle = 'manufacturer/list';
         $this->Admin();
@@ -448,10 +448,9 @@ Class Admin extends MY_Controller {
         $this->Admin->deleteData('banner_images',array('id'=>$id));
     }
     public function DeactiveBannerImage()
-    {
-        echo $this->input->post('status');
-      echo  $status = ($this->input->post('status')=='true')?'active':'deactive';
-       echo $id = $this->input->post('id');
+    {        
+        $status = ($this->input->post('status')=='true')?'active':'deactive';
+        $id = $this->input->post('id');
         $this->Admin->updateData('banner_images',array('status'=>$status),array('id'=>$id));
     }
     public function product_category()
@@ -492,9 +491,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'product-form/add';
         $this->Admin();
     }
-    public function product_form_list($id)
+    public function product_form_list()
     {
-        $this->data['product_form'] = $this->Admin->ProducFormList($id);
+        $this->data['product_form'] = $this->Admin->ProducFormList();
         $this->middle = 'product-form/list';
         $this->Admin();
     }
@@ -592,9 +591,9 @@ Class Admin extends MY_Controller {
         $this->middle = 'brand/add';
         $this->Admin();
     }
-    public function brand_list($id)
+    public function brand_list()
     {
-        $this->data['brand'] = $this->Admin->brandList($id);
+        $this->data['brand'] = $this->Admin->brandList();
         $this->middle = 'brand/list';
         $this->Admin();
     }
@@ -683,9 +682,10 @@ Class Admin extends MY_Controller {
         $this->middle = 'saltComposition/add';
         $this->Admin();
     }
-    public function saltComposition_list($id)
+    
+    public function saltComposition_list()
     {
-        $this->data['saltComposition'] = $this->Admin->saltCompositionList($id);
+        $this->data['saltComposition'] = $this->Admin->saltCompositionList();
         $this->middle = 'saltComposition/list';
         $this->Admin();
     }

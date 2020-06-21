@@ -470,7 +470,7 @@ Class Vendor extends MY_Controller {
             }
             redirect($_SERVER['HTTP_REFERER']);
         }
-        $this->data['category'] = $this->Vendor->getData('category','category_name,id',array('status'=>"active"));
+        $this->data['category'] = $this->Vendor->getData('subcategory','subcategory,id',array('status'=>"active"));
         $this->data['manufacturer'] = $this->Vendor->getData('manufacturer','name,id',array('status'=>"active"));
         $this->data['product_form'] = $this->Vendor->getData('product_form','name,id',array('status'=>"active"));
         $this->data['brand'] = $this->Vendor->getData('brand','brand_name,id',array('status'=>"active"));

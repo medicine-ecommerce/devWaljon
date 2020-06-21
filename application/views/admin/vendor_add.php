@@ -6,7 +6,7 @@
           <h3>Add Vendor</h3>
         </div>
 
-        <div class="title_right">
+        <!-- <div class="title_right">
           <div class="col-md-5 col-sm-5 form-group pull-right top_search">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search for...">
@@ -15,7 +15,7 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="row">
         <div class="col-md-12 col-sm-12 home-module-pages">
@@ -44,7 +44,7 @@
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Address<span
                       class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input class="form-control" class='optional' name="company_address" data-validate-length-range="5,15"
+                    <input class="form-control" class='optional' required="required" name="company_address" data-validate-length-range="5,15"
                       type="text" value="<?php echo (!empty($vendor)) ? $vendor->company_address: '';?>" /></div>
                 </div>
                 <span class="section">Personal Info</span>
