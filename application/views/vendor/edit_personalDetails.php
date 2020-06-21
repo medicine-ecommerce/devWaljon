@@ -114,14 +114,14 @@
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input class="form-control control-float-top personal-section" type="tel" name="mobile" minlength="10" maxlength="10" value="<?= $edit_data->mobile ?>">
+						<input class="form-control control-float-top" id="show_mobile" type="tel" name="mobile" minlength="10" maxlength="10" value="<?= $edit_data->mobile ?>" readonly="">
 						<label for="email">Mobile</label>						
 						<a onclick="updateMobile()" data-toggle="modal" data-target="#mobileUpdate" class="update-text">Update Mobile</a>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input  type="email" class="form-control control-float-top personal-section" name="email" value="<?= $edit_data->email ?>">
+						<input  type="email" class="form-control control-float-top" name="email" value="<?= $edit_data->email ?>" readonly="">
 						<label for="email">Email</label>						
 						<a onclick="updateEmail()" data-toggle="modal" data-target="#emailUpdate" class="update-text">Update Email</a>
 					</div>
@@ -326,7 +326,7 @@
     <div class="modal-content">
       <form id="email_verification" method="post">
 	      <div class="modal-header">
-	        <h4 class="modal-title">Modal Header</h4>
+	        <h4 class="modal-title">Update Email</h4>
 	        <button onclick="closeModel()" type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
@@ -355,7 +355,7 @@
 			
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" onclick="submitEmailFunction(event)" class="btn btn-default " id="email-send-button"></button>
+	        <button type="button" onclick="submitEmailFunction(event)" class="btn btn-default update-email-mobile" id="email-send-button"></button>
 	      </div>
       </form>
     </div>
@@ -369,7 +369,7 @@
     <div class="modal-content">
       <form id="mobile_verification" method="post">
 	      <div class="modal-header">
-	        <h4 class="modal-title">Modal Header</h4>
+	        <h4 class="modal-title">Update Mobile Number</h4>
 	        <button onclick="closeModel()" type="button" class="close" data-dismiss="modal">&times;</button>
 	      </div>
 	      <div class="modal-body">
@@ -377,8 +377,8 @@
 	          <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
 	          <span class="glyphicon glyphicon-warning-sign"></span>
 	        </div>  -->
-	        <p class="text-red" id="error-text-otp"></p>
-	        <p class="text-green" id="success-text"></p><!-- 
+	        <p class="text-red" id="error-text-otp-mobile"></p>
+	        <p class="text-green" id="success-text-mobile"></p><!-- 
 	      	<div class="content-box front-end-success">   
 	          <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
 	          <span class="glyphicon glyphicon-warning-sign"></span>
@@ -398,7 +398,7 @@
 			
 	      </div>
 	      <div class="modal-footer">
-	        <button type="button" onclick="submitMobileFunction(event)" class="btn btn-default " id="mobile-send-button"></button>
+	        <button type="button" onclick="submitMobileFunction(event)" class="btn btn-default update-email-mobile" id="mobile-send-button"></button>
 	      </div>
       </form>
     </div>
@@ -707,19 +707,22 @@
             $('#email-send-button').html('Verify');                   
             $('#success-text').html(data.message);       
             $('.front-end-success').show("slow");       
-            setInterval(function () {
-                $('#success-text').fadeOut("slow");
-            }, 5000);
+            // setInterval(function () {
+            //     $('#success-text').fadeOut("slow");
+            // }, 5000);
 
           }else if(data.stage==3){
-            $('#error-text-otp').html(data.message);       
-            $('.front-end-error-otp').show();
+            $('#error-text-otp').html(data.message);                   
+            $('#error-text-otp').show();
+            $('#success-text').hide();
+
             setInterval(function () {
                 $('#error-text-otp').fadeOut("slow");
             }, 7000);
             
           }else if(data.stage==4){
-              $('#emailUpdate').hide();
+          	location.reload();
+          	$('#emailUpdate').modal('hide');
           }else if(data.status==0){
               $("#error-text").html(data.message);                 
               $('.front-end-error').show();
@@ -760,21 +763,24 @@
             $('.verification-code-section').show("slow");       
             $('.mobile-update-section').hide();                   
             $('#mobile-send-button').html('Verify');       
-            $('#success-text').html(data.message);       
+            $('#success-text-mobile').html(data.message);       
             $('.front-end-success').show("slow");       
-            setInterval(function () {
-                $('#success-text').fadeOut("slow");
-            }, 5000);
+            // setInterval(function () {
+            //     $('#success-text-mobile').fadeOut("slow");
+            // }, 5000);
 
           }else if(data.stage==3){
-            $('#error-text-otp').html(data.message);       
-            $('.front-end-error-otp').show();
+            $('#error-text-otp-mobile').html(data.message);       
+            $('#error-text-otp-mobile').show();
+            $('#success-text-mobile').hide();
+
             setInterval(function () {
-                $('#error-text-otp').fadeOut("slow");
+                $('#error-text-otp-mobile').fadeOut("slow");
             }, 7000);
             
           }else if(data.stage==4){
-              $('#mobileUpdate').hide();
+          		$('#mobileUpdate').modal('hide');
+          		location.reload();
           }else if(data.status==0){
               $("#error-text").html(data.message);                 
               $('.front-end-error').show();
@@ -804,6 +810,7 @@
   <script>
 
     var input_mobile = document.querySelector("#mobile");
+    var show_mobile = document.querySelector("#show_mobile");
     var input = document.querySelector("#phone");
     window.intlTelInput(input, {
     	initialCountry: 'in',
@@ -848,6 +855,15 @@
       // initialCountry: "auto",
       // localizedCountries: { 'de': 'Deutschland' },
       // nationalMode: false,
+      onlyCountries: ['in','us','ch', 'ca', 'do'],
+      preferredCountries: ["in", 'us'],
+      // placeholderNumberType: "MOBILE",
+      // preferredCountries: ['cn', 'jp'],
+      separateDialCode: true,
+      utilsScript: "build/js/utils.js",
+    });
+     window.intlTelInput(show_mobile, {
+    	initialCountry: 'in',      
       onlyCountries: ['in','us','ch', 'ca', 'do'],
       preferredCountries: ["in", 'us'],
       // placeholderNumberType: "MOBILE",

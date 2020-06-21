@@ -661,7 +661,7 @@
 	        }
 	      })
 			
-		}
+	}
 	function checkExistEmail(argument) {
 	 	var email =  $("#email").val();	
 
@@ -681,7 +681,7 @@
 	        }
 	      })
 			
-		}
+	}
 	
 
 </script> 

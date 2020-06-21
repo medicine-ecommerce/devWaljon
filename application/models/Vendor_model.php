@@ -35,6 +35,16 @@ class Vendor_model extends MY_model
             return $query->row();
         }
 	}
+	public function forgotPasswordCheckEmail($where1)
+	{
+		$this->db->select('email');
+		$this->db->from('users');
+		$this->db->where('email',$where1); 		
+		$query = $this->db->get();
+		if($query->num_rows() > 0){
+            return $query->row();
+        }
+	}
 	public function checkExistMobile($where1,$where2)
 	{
 		$this->db->select('email');
