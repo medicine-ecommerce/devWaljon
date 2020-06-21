@@ -95,7 +95,7 @@ $page = $this->uri->segment('2');
                       <li><a class="sub-item <?= ($page=="subcategory_list")? "active":"" ?>" href="<?php echo base_url('vendor/subcategory_list/'.$_SESSION["user_id"]); ?>">Sub Category</a></li>
                       <li><a class="<?= ($page=="category_list")? "active":"" ?>" href="<?php echo base_url('vendor/category_list/'.$_SESSION["user_id"]); ?>">Product Category</a></li>
                       <li><a class="sub-item <?= ($page=="brand_list")? "active":"" ?>" href="<?php echo base_url('vendor/brand_list/'.$_SESSION["user_id"]); ?>">Brands</a></li>
-                      <li><a class="<?= ($page=="vendor_bulk_upload")? "active":"" ?>" href="<?php echo base_url('vendor/vendor_bulk_upload'); ?>">Bulk Upload</a></li>
+                      <!-- <li><a class="<?= ($page=="vendor_bulk_upload")? "active":"" ?>" href="<?php echo base_url('vendor/vendor_bulk_upload'); ?>">Bulk Upload</a></li> -->
                       <li><a class="<?= ($page=="manufacturer_list/")? "active":"" ?>" href="<?php echo base_url('vendor/manufacturer_list/'.$_SESSION["user_id"]); ?>">Manufacturer</a></li>
                       <li><a class="<?= ($page=="product_form_list")? "active":"" ?>" href="<?php echo base_url('vendor/product_form_list/'.$_SESSION["user_id"]); ?>">Product Form</a></li>
                       <li><a class="sub-item <?= ($page=="saltComposition_list")? "active":"" ?>" href="<?php echo base_url('vendor/saltComposition_list/'.$_SESSION["user_id"]); ?>">Salt Composition</a></li>
