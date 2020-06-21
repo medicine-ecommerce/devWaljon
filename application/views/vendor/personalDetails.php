@@ -101,7 +101,9 @@
 						<input onkeyup="checkExistMobile()" id="mobile" class="form-control control-float-top mobile-intel" type="tel" minlength="10" maxlength="11" name="mobile" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" value="<?php if(!empty($this->session->userdata('mobile'))){ ?> <?php  echo $this->session->userdata('mobile'); echo "readonly"; ?> <?php } ?>"<?= (!empty($this->session->userdata('mobile'))) ? 'readonly=""' :"" ?> >
 						<!-- <label for="email">Mobile</label> -->
 							<span class="input-error-message " id="mobile-error"></span>
+							<?php if(!empty($this->session->userdata('mobile'))){ ?>
 							<a onclick="updateMobile()" class="update-text">Update Mobile</a>
+							<?php } ?>
 					</div>
 				</div>
 				<div class="col-md-4">
@@ -109,7 +111,9 @@
 						<input onkeyup="checkExistEmail()" type="email" id="email" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); ?> <?php } ?>" <?= (!empty($this->session->userdata('email'))) ? 'readonly=""' :"" ?>  >
 						<label id="email-label" for="email">Email</label>
 						<span class="input-error-message error-position-ab" id="email-error"></span>
+						<?php if(!empty($this->session->userdata('email'))){ ?> 
 						<a onclick="updateEmail()" class="update-text">Update Email</a>
+						<?php } ?>
 					</div>
 				</div>
 			</div>

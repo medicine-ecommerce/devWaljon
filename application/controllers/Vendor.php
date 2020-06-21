@@ -17,6 +17,24 @@ Class Vendor extends MY_Controller {
         $this->load->model('Excel_import_model');        
         $this->load->library('excel');  
         $this->load->library('upload');
+
+        if (empty($this->session->userdata('user_id'))){ 
+            // Allow some methods?
+            $allowed = array(
+                'forgot_password',
+                'vendorregister',
+                'vendor_login',                                
+                'forgotPassword',                                
+                'createNewPassword',                                
+                'forgotPasswordCheckEmail',                                
+                'checkExistEmail',
+                'checkExistMobile',
+
+                                                           );
+            if (!in_array($this->router->fetch_method(), $allowed)){
+                redirect(base_url('vendor/vendor_login'));
+            }
+        }
       
 
     }
@@ -25,8 +43,9 @@ Class Vendor extends MY_Controller {
     public function index()
     {
         $this->load->helper('cookie');
-    	$this->load->view('vendor/vandorregister');
+    	$this->load->view('vendor/vandorregister');        
     } 
+
     public function forgot_password()
     {        
         $this->load->view('vendor/forgot-password');
