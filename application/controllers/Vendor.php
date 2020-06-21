@@ -20,17 +20,7 @@ Class Vendor extends MY_Controller {
 
         if (empty($this->session->userdata('user_id'))){ 
             // Allow some methods?
-            $allowed = array(
-                'forgot_password',
-                'vendorregister',
-                'vendor_login',                                
-                'forgotPassword',                                
-                'createNewPassword',                                
-                'forgotPasswordCheckEmail',                                
-                'checkExistEmail',
-                'checkExistMobile',
-
-                                                           );
+            $allowed = array('forgot_password','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile');
             if (!in_array($this->router->fetch_method(), $allowed)){
                 redirect(base_url('vendor/vendor_login'));
             }

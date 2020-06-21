@@ -51,11 +51,11 @@
           <p id="success-text"></p>
         </div>      
         <div class="custom-add login-block">          
-          <div class="content-box">
+          <div class="content-box forgot-password-section">
             <div id="registration-section">            
               <h6>Forgot Password</h6>
               <div class="form-group">
-                <input type="email" class="form-control transparent-back" id="email" name="email" placeholder="Email or Phone" onkeyup="checkExistEmail()" autocomplete="off">
+                <input type="email" class="form-control transparent-back" id="email" name="email" placeholder="Enter your registered email" onkeyup="checkExistEmail()" autocomplete="off">
               </div>                           
             </div>
             <div id="verification-section">                                    
@@ -76,7 +76,7 @@
             </div>
 
             
-            <div class="button-division text-center">          
+            <div class="button-division forgot-section text-center">          
               <button type="button" onclick="submitFunction(event)" class="btn btn-primary registration-button" id="send-button"></button>
               <button type="button" onclick="submitPassword(event)" class="btn btn-primary registration-button" id="new-password-button">Submit</button>
             </div>        
