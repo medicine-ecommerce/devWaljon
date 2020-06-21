@@ -5,6 +5,8 @@
 	}
 </style>
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
+<script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <span class="input-error-message"><?php echo form_error('email', '<div class="error">', '</div>'); ?></span>     
 <div class="right_col registration-page ">
 
@@ -41,7 +43,13 @@
 	</div>
 	<?php }?>
 
-	<form method="post" action="<?php echo base_url() ?>/vendor/vendor_profile/<?= base64_encode($this->session->userdata('user_id')); ?>" enctype="multipart/form-data">		
+	<div class="custom-error-alert front-end-validation">		
+		<a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+		<span class="glyphicon glyphicon-warning-sign"></span>
+		<p id="error-text"></p>
+	</div>
+
+	<form id="edit_personal_details" method="post" action="<?php echo base_url() ?>/vendor/vendor_profile/<?= base64_encode($this->session->userdata('user_id')); ?>" enctype="multipart/form-data">		
 		<div class="row padding-bottom20 padding-top50">
 			<div class="col-md-3">
 				<h5>Personal Information </h5>
@@ -106,14 +114,16 @@
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input id="mobile" class="form-control control-float-top personal-section" type="tel" name="mobile" minlength="10" maxlength="10" value="<?= $edit_data->mobile ?>">
-						<label for="email">Mobile</label>
+						<input class="form-control control-float-top personal-section" type="tel" name="mobile" minlength="10" maxlength="10" value="<?= $edit_data->mobile ?>">
+						<label for="email">Mobile</label>						
+						<a onclick="updateMobile()" data-toggle="modal" data-target="#mobileUpdate" class="update-text">Update Mobile</a>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="email" class="form-control control-float-top personal-section" name="email" value="<?= $edit_data->email ?>">
-						<label for="email">Email</label>
+						<input  type="email" class="form-control control-float-top personal-section" name="email" value="<?= $edit_data->email ?>">
+						<label for="email">Email</label>						
+						<a onclick="updateEmail()" data-toggle="modal" data-target="#emailUpdate" class="update-text">Update Email</a>
 					</div>
 				</div>
 			</div>
@@ -264,7 +274,7 @@
 				<div class="col-md-6">
 					 <div class="form-group label-float-top">
 						<input type="text" class="form-control control-float-top medical-section" name="company_name" value="<?= $edit_data->company_name ?>">
-						<label for="Address">Company Name</label>
+						<label for="Address">Medical Name</label>
 					</div>
 				</div>
 				<div class="col-md-6">
@@ -302,10 +312,98 @@
 		</div>	
 		<div class="row"> 
 			<div class="col-md-12 padding-top-bottom50">
-				<button type="submit" class="btn btn-default submit_button float-right">Save</button>		
+				<button type="button" id="submit_form" class="btn btn-default submit_button float-right">Save</button>		
 			</div>
 		</div>
 	</form>
+</div>
+
+
+<div id="emailUpdate" class="modal fade" role="dialog" data-backdrop="static">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <form id="email_verification" method="post">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Modal Header</h4>
+	        <button onclick="closeModel()" type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	      <div class="modal-body">
+	      	<!-- <div class="content-box front-end-error-otp">   
+	          <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+	          <span class="glyphicon glyphicon-warning-sign"></span>
+	        </div>  -->
+	        <p class="text-red" id="error-text-otp"></p>
+	        <p class="text-green" id="success-text"></p><!-- 
+	      	<div class="content-box front-end-success">   
+	          <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+	          <span class="glyphicon glyphicon-warning-sign"></span>
+	        </div>       -->	      	
+	      	<div class="email-update-section">	      		
+				<div class="form-group label-float-top">
+					<input onkeyup="checkExistEmail()" id="email" type="email" class="form-control control-float-top " name="update_email" value="<?= $edit_data->email ?>">
+					<label for="email">Email</label>
+					<span class="input-error-message error-position-ab" id="email-error"></span>					
+				</div>
+			</div>
+			<div class="verification-code-section">				
+				<div class="form-group">
+					<input type="text" minlength="6" maxlength="6" class="form-control control-float-top" id="verification_code" name="verification_code" placeholder="Enter verification code" autocomplete="off">
+				</div>		
+			</div>
+			
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" onclick="submitEmailFunction(event)" class="btn btn-default " id="email-send-button"></button>
+	      </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+<div id="mobileUpdate" class="modal fade" role="dialog" data-backdrop="static">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <form id="mobile_verification" method="post">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Modal Header</h4>
+	        <button onclick="closeModel()" type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	      <div class="modal-body">
+	      	<!-- <div class="content-box front-end-error-otp">   
+	          <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+	          <span class="glyphicon glyphicon-warning-sign"></span>
+	        </div>  -->
+	        <p class="text-red" id="error-text-otp"></p>
+	        <p class="text-green" id="success-text"></p><!-- 
+	      	<div class="content-box front-end-success">   
+	          <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+	          <span class="glyphicon glyphicon-warning-sign"></span>
+	        </div>       -->
+	      	<div class="mobile-update-section">	      		
+		        <div class="form-group label-float-top">
+					<input onkeyup="checkExistMobile()" id="mobile" class="form-control control-float-top " type="tel" name="update_mobile" minlength="10" maxlength="10" value="<?= $edit_data->mobile ?>">
+					<label for="email">Mobile</label>
+					<span class="input-error-message " id="mobile-error"></span>			
+				</div>
+	      	</div>	      	
+			<div class="verification-code-section">				
+				<div class="form-group">
+					<input type="text" minlength="6" maxlength="6" class="form-control control-float-top" id="verification_code" name="verification_code" placeholder="Enter verification code" autocomplete="off">
+				</div>		
+			</div>
+			
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" onclick="submitMobileFunction(event)" class="btn btn-default " id="mobile-send-button"></button>
+	      </div>
+      </form>
+    </div>
+
+  </div>
 </div>
 <!-- data-toggle="modal" data-target="#myModal" -->
  <!-- Modal -->
@@ -384,13 +482,13 @@
 
 	$(document).ready(function(){
 	
-  $(".form-group .form-control").blur(function(){  	
+  		$(".form-group .form-control").blur(function(){  	
 		   if($(this).val()!=""){		   			   		
 			   $(this).siblings("label").addClass("active");
 		   }else{
 			    $(this).siblings("label").removeClass("active");
 		   }
-	  });
+	  	});
 	});	
 	$(document).ready(function(){
 		$(".personal-section").attr("readonly","");
@@ -502,6 +600,206 @@
 			$("#experience").siblings("label").addClass("active");            	        		
 		}
 	}
+	function checkExistMobile(argument) {
+		var mobile 		 		= $("#mobile").val();			
+	 	var mobile =  $("#mobile").val();	 	
+		event.preventDefault();
+	      $.ajax({
+	        url:"<?php echo base_url(); ?>/vendor/checkExistMobile",
+	        method:"POST",
+	        dataType: 'JSON',
+	        data: {mobile: mobile,user_id:"<?= $this->session->userdata('user_id');?>"},	        
+	        success:function(data){                    
+	          if(data.status==1){
+	          	$("#mobile-error").html(data.message);	          	
+	          }else{
+	          	$("#mobile-error").html("");	          	
+	          }
+	          // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+	        }
+	      })
+			
+	}
+	function checkExistEmail(argument) {
+	 	var email =  $("#email").val();		 	
+		event.preventDefault();
+	      $.ajax({
+	        url:"<?php echo base_url(); ?>/vendor/checkExistEmail",
+	        method:"POST",
+	        dataType: 'JSON',
+	        data: {email: email,user_id:"<?= $this->session->userdata('user_id');?>"},	        
+	        success:function(data){                    
+	          if(data.status==1){
+	          	$("#email-error").html(data.message);	          	
+	          }else{
+	          	$("#email-error").html("");	          	
+	          }
+	          // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+	        }
+	      })
+			
+	}
+	function updateEmail(){				
+		$('.email-update-section').show();
+	}
+	function updateMobile(){		
+		$('.mobile-update-section').show();
+	}
+	function closeModel(){
+		$('.email-update-section').hide();
+		$('.mobile-update-section').hide();
+		$('.verification-code-section').hide();
+	}
+
+
+	$(document).ready(function(){
+		$('#mobile-send-button').html('Update');       
+		$('#email-send-button').html('Update');       
+
+
+		$('.email-update-section').hide();
+		$('.mobile-update-section').hide();
+		$('.verification-code-section').hide();
+		$('.front-end-success').hide();
+		$('.front-end-error-otp').hide();
+
+
+
+		$('.front-end-validation').hide();
+		$('#submit_form').click(function(){
+			var email_exist = document.getElementById("email-error").innerHTML;
+			var mobile_exist = document.getElementById("mobile-error").innerHTML;
+			var error = ''
+			if(mobile_exist!=''){
+				error += '<p>Mobile number already exist.</p>';
+			}
+			if(email_exist!=''){
+				error += '<p>The Email already exist.</p>';
+			}
+			if(error!=''){
+				$("#error-text").html(error);			
+				$('.front-end-validation').show();
+				window.scrollTo(0, 0);
+			}else{
+				$('#edit_personal_details').submit();
+			}
+		})
+
+  
+	});	
+
+	function submitEmailFunction(event) {
+    var email = $("#email").val();
+    var email_exist = document.getElementById("email-error").innerHTML;    
+    if(email_exist==''){      
+      
+      event.preventDefault();
+      $.ajax({
+        url:"<?php echo base_url(); ?>/vendor/updateEmail",
+        method:"POST",
+        dataType: 'JSON',
+        data: $("#email_verification").serialize(),        
+        success:function(data){                    
+          if(data.stage==1 || data.stage==2){            
+            $('.verification-code-section').show("slow");                   
+            $('.email-update-section').hide();       
+            // $('.custom-add').addClass("login-block");            
+            $('#email-send-button').html('Verify');                   
+            $('#success-text').html(data.message);       
+            $('.front-end-success').show("slow");       
+            setInterval(function () {
+                $('#success-text').fadeOut("slow");
+            }, 5000);
+
+          }else if(data.stage==3){
+            $('#error-text-otp').html(data.message);       
+            $('.front-end-error-otp').show();
+            setInterval(function () {
+                $('#error-text-otp').fadeOut("slow");
+            }, 7000);
+            
+          }else if(data.stage==4){
+              $('#emailUpdate').hide();
+          }else if(data.status==0){
+              $("#error-text").html(data.message);                 
+              $('.front-end-error').show();
+              setInterval(function () {
+                $('.front-end-error').fadeOut("slow");
+              }, 7000);
+          }
+          // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+        }
+      })
+
+
+
+      // $('#registratio_form').submit()
+    }else{
+      $("#error-text").html('Please fill required details');     
+        $('.front-end-error').show();
+        window.scrollTo(0, 0);
+        setInterval(function () {
+                $('.front-end-error').fadeOut("slow");
+        }, 7000);
+
+    }
+  }
+  function submitMobileFunction(event) {
+    var mobile = $("#mobile").val();
+    var mobile_exist = document.getElementById("mobile-error").innerHTML;    
+    if(mobile_exist==''){      
+      
+      event.preventDefault();
+      $.ajax({
+        url:"<?php echo base_url(); ?>/vendor/updateMobile",
+        method:"POST",
+        dataType: 'JSON',
+        data: $("#mobile_verification").serialize(),        
+        success:function(data){                    
+          if(data.stage==1 || data.stage==2){            
+            $('.verification-code-section').show("slow");       
+            $('.mobile-update-section').hide();                   
+            $('#mobile-send-button').html('Verify');       
+            $('#success-text').html(data.message);       
+            $('.front-end-success').show("slow");       
+            setInterval(function () {
+                $('#success-text').fadeOut("slow");
+            }, 5000);
+
+          }else if(data.stage==3){
+            $('#error-text-otp').html(data.message);       
+            $('.front-end-error-otp').show();
+            setInterval(function () {
+                $('#error-text-otp').fadeOut("slow");
+            }, 7000);
+            
+          }else if(data.stage==4){
+              $('#mobileUpdate').hide();
+          }else if(data.status==0){
+              $("#error-text").html(data.message);                 
+              $('.front-end-error').show();
+              setInterval(function () {
+                $('.front-end-error').fadeOut("slow");
+              }, 7000);
+          }
+          // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+        }
+      })
+
+
+
+      // $('#registratio_form').submit()
+    }else{
+      $("#error-text").html('Please fill required details');     
+        $('.front-end-error').show();
+        window.scrollTo(0, 0);
+        setInterval(function () {
+                $('.front-end-error').fadeOut("slow");
+        }, 7000);
+
+    }
+  }
+	
 </script>
   <script>
 

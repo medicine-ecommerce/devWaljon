@@ -20,9 +20,39 @@ class Vendor_model extends MY_model
 		// echo $this->db->last_query();
 		// die();
 
-		if ($query->num_rows() > 0) {
+		if($query->num_rows() > 0) {
 			return $query->row();
 		}
+	}
+	public function checkExistEmail($where1,$where2)
+	{
+		$this->db->select('email');
+		$this->db->from('users');
+		$this->db->where('email',$where1); 
+		$this->db->where_not_in('id',$where2); 
+		$query = $this->db->get();
+		if($query->num_rows() > 0){
+            return $query->row();
+        }
+	}
+	public function checkExistMobile($where1,$where2)
+	{
+		$this->db->select('email');
+		$this->db->from('users');
+		$this->db->where('mobile',$where1); 
+		$this->db->where_not_in('id',$where2); 
+		$query = $this->db->get();
+		if($query->num_rows() > 0){
+            return $query->row();
+        }
+	}
+	public function updateEmail($where1,$where2)
+	{
+		
+	}
+	public function updateMobile($where1,$where2)
+	{
+		
 	}
 	public function vendorRegistration($data)
 	{

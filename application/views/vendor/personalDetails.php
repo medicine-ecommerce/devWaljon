@@ -1,11 +1,12 @@
+
 <style type="text/css">
 	.nav-md .container.body .right_col {    
     background-color: #fff;
 	}
 </style>
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
-
-
+<script src="<?php echo base_url(); ?>vendors/jquery/dist/jquery.min.js"></script>    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <div class="right_col registration-page">
 
@@ -97,14 +98,18 @@
 				</div>			
 				<div class="col-md-4">
 					<div class="form-group label-float-top">						
-						<input id="mobile" class="form-control control-float-top mobile-intel" type="tel" minlength="10" maxlength="11" name="mobile" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" value="<?php if(!empty($this->session->userdata('mobile'))){ ?> <?php  echo $this->session->userdata('mobile'); echo "readonly"; ?> <?php } ?>"<?= (!empty($this->session->userdata('mobile'))) ? 'readonly=""' :"" ?> >
+						<input onkeyup="checkExistMobile()" id="mobile" class="form-control control-float-top mobile-intel" type="tel" minlength="10" maxlength="11" name="mobile" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" value="<?php if(!empty($this->session->userdata('mobile'))){ ?> <?php  echo $this->session->userdata('mobile'); echo "readonly"; ?> <?php } ?>"<?= (!empty($this->session->userdata('mobile'))) ? 'readonly=""' :"" ?> >
 						<!-- <label for="email">Mobile</label> -->
+							<span class="input-error-message " id="mobile-error"></span>
+							<a onclick="updateMobile()" class="update-text">Update Mobile</a>
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="form-group label-float-top">
-						<input type="email" id="email" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); ?> <?php } ?>" <?= (!empty($this->session->userdata('email'))) ? 'readonly=""' :"" ?> >
+						<input onkeyup="checkExistEmail()" type="email" id="email" class="form-control control-float-top" name="email" value="<?php if(!empty($this->session->userdata('email'))){ ?> <?php  echo $this->session->userdata('email'); ?> <?php } ?>" <?= (!empty($this->session->userdata('email'))) ? 'readonly=""' :"" ?>  >
 						<label id="email-label" for="email">Email</label>
+						<span class="input-error-message error-position-ab" id="email-error"></span>
+						<a onclick="updateEmail()" class="update-text">Update Email</a>
 					</div>
 				</div>
 			</div>
@@ -281,7 +286,7 @@
 	</form>
 </div>
 <!-- data-toggle="modal" data-target="#myModal" -->
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="myModal" role="dialog" data-backdrop="static">
 	<div class="modal-dialog registration-done">
   <!-- Modal content-->
 	  <div class="modal-content welldon-modal">
@@ -407,15 +412,20 @@
 	$(document).ready(function(){
 		var id = document.getElementsByClassName("success_id")[0].value;
 		var prev_url = document.getElementsByClassName("prev_url")[0].value;		
+		var newPURL = prev_url.toLowerCase();		
+		var CurrentOlds =  BaseUrl+''+'vendor/personaldetails';		
+		var Current = CurrentOlds.toLowerCase();
 		
-		if(prev_url!= BaseUrl+''+'/vendor/vendorregister' && prev_url!= BaseUrl+''+'/vendor/vendor_login' && id!='' ){
-				$('#myModal').modal('show'); 
-				$('.registration-page').addClass('blur-background'); 
-				$('.custom-sidebar-col').addClass('blur-background'); 				
-				$('#myModal').modal({
-				    backdrop: 'static',
-				    keyboard: false
-				});
+		if(newPURL!=''){			
+			if(newPURL==Current && id!='' ){
+					$('#myModal').modal('show'); 
+					$('.registration-page').addClass('blur-background'); 
+					$('.custom-sidebar-col').addClass('blur-background'); 				
+					$("#myModal").modal({
+					    backdrop: 'static',
+					    keyboard: false
+					});
+			}
 		}
 		// $('#profile_waiting').click(function(){
 		// 	$('.registration-page').removeClass('blur-background'); 
@@ -434,7 +444,7 @@
 		})
 		setInterval(function () {
 	        $('.custom-success-alert').fadeOut("slow")
-    	}, 7000);
+    	}, 9000);
     	
     	$('.remove-red-alert').click(function() {
 			$('.custom-error-alert').fadeOut("slow")
@@ -519,10 +529,8 @@
 			var ifc_code 	 		= $("#ifc_code").val();
 			var account_type_id 	= $("#account_type_id").val();
 			var profile_image 		= $("#profile_image").val();
-
-
-
-
+			var email_exist = document.getElementById("email-error").innerHTML;
+			var mobile_exist = document.getElementById("mobile-error").innerHTML;
 
 
 			if(full_name==''){
@@ -548,6 +556,12 @@
 			}
 			if(mobile==''){
 				error += '<p>The mobile number field is required.</p>';
+			}
+			if(mobile_exist!=''){
+				error += '<p>Mobile number already exist.</p>';
+			}
+			if(email_exist!=''){
+				error += '<p>The Email already exist.</p>';
 			}
 			if(email==''){
 				error += '<p>The email field is required.</p>';
@@ -619,6 +633,57 @@
 			$("#experience").siblings("label").addClass("active");            	        		
 		}
 	}
+	function updateEmail(){		
+		$("#email").removeAttr("readonly");
+		$("#email").focus();
+	}
+	function updateMobile(){		
+		$("#mobile").removeAttr("readonly");
+		$("#mobile").focus();
+	}
+
+	
+	function checkExistMobile(argument) {
+	 	var mobile =  $("#mobile").val();	 	
+		event.preventDefault();
+	      $.ajax({
+	        url:"<?php echo base_url(); ?>/vendor/checkExistMobile",
+	        method:"POST",
+	        dataType: 'JSON',
+	        data: {mobile: mobile,user_id:"<?= $this->session->userdata('user_id');?>"},	        
+	        success:function(data){                    
+	          if(data.status==1){
+	          	$("#mobile-error").html(data.message);	          	
+	          }else{
+	          	$("#mobile-error").html("");	          	
+	          }
+	          // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+	        }
+	      })
+			
+		}
+	function checkExistEmail(argument) {
+	 	var email =  $("#email").val();	
+
+		event.preventDefault();
+	      $.ajax({
+	        url:"<?php echo base_url(); ?>/vendor/checkExistEmail",
+	        method:"POST",
+	        dataType: 'JSON',
+	        data: {email: email,user_id:"<?= $this->session->userdata('user_id');?>"},	        
+	        success:function(data){                    
+	          if(data.status==1){
+	          	$("#email-error").html(data.message);	          	
+	          }else{
+	          	$("#email-error").html("");	          	
+	          }
+	          // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+	        }
+	      })
+			
+		}
+	
+
 </script> 
     <script>
     var mobile_input = document.querySelector("#mobile");
@@ -645,7 +710,7 @@
       // placeholderNumberType: "MOBILE",
       // preferredCountries: ['cn', 'jp'],
       separateDialCode: true,
-      utilsScript: "build/js/utils.js",
+      utilsScript: BaseUrl+''+"assets/js/utils.js",
     });
 
     var input = document.querySelector("#phone");
@@ -672,6 +737,6 @@
       // placeholderNumberType: "9874589658",
       // preferredCountries: ['cn', 'jp'],
       separateDialCode: true,
-      utilsScript: "build/js/utils.js",
+      utilsScript: BaseUrl+''+"/assets/js/utils.js",
     });
   </script>
