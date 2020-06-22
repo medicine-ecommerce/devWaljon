@@ -14,11 +14,16 @@ Class User extends MY_Controller {
         // $this->load->model('Admin_model');
         $this->load->helper(array('form', 'url'));
     }
+    // public function index()
+    // {
+    //     $this->load->view('user/layout/header'); 
+    //     $this->load->view('user/home');	
+    //     $this->load->view('user/layout/footer'); 
+    // }
     public function index()
     {
-        $this->load->view('user/layout/header'); 
-        $this->load->view('user/home');	
-        $this->load->view('user/layout/footer'); 
+        $this->middle = 'index';
+        $this->User();
     }
     
 }
