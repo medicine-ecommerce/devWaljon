@@ -27,11 +27,9 @@
                       <p>Please download your excel formate before you want to upload your excel file. You can also check the preview of our excel formate before download. To check the preview <a data-toggle="modal" data-target="#excelFormateModal" class="modal-btn">click here</a></p> 
                     </div>
                     <form id="import_form" method="post"  enctype="multipart/form-data">      
-                    <a type="button" href="<?php echo base_url(); ?>assets/bulk_format/" download="products_format.xlsx" class="btn active-btn btn-round Bulk-upload-btn" value="Download" onchange="fileUpload()">Download</a>                    
-
-
-                      <input type="file" name="file" class="bulk-excel-upload">
-                      <button type="submit" id="file_upload"  class="btn active-btn btn-round Bulk-upload-btn"><i class="fa fa-file-excel-o"></i> Upload</button>
+                    <a type="button" href="<?php echo base_url(); ?>assets/bulk_format/products_format.xlsx" download="bulk_product_format" class="btn btn active-btn btn-round" value="Download" onchange="fileUpload()">Download</a>
+                    <input type="file" name="file" class="bulk-excel-upload">
+                    <button type="submit" id="file_upload"  class="btn active-btn btn-round Bulk-upload-btn"><i class="fa fa-file-excel-o"></i> Upload</button>
                       
                     </form>
                   </div>   
@@ -93,7 +91,7 @@
                   <img src="<?php echo base_url(); ?>assets/img/excel-logo.jpg">  
                 </div>
                 <button type="button" class="btn active-btn btn-round" data-dismiss="modal">Cancle</button>
-                <a type="button" href="<?php echo base_url(); ?>assets/bulk_format/" download="products_format.xlsx" class="btn btn active-btn btn-round" value="Download" onchange="fileUpload()">Download Excel</a>                    
+                <a type="button" href="<?php echo base_url(); ?>assets/bulk_format/products_format.xlsx" download="bulk_product_format" class="btn btn active-btn btn-round" value="Download" onchange="fileUpload()">Download Excel</a>                    
                 <!-- <button type="button" class="btn active-btn btn-round"> Download Excel </button> -->
               </div>      
             </div>  
