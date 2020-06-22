@@ -74,7 +74,6 @@ $route['vendor/product_form_list/(:any)'] = 'admin/product_form_list/$1';
 $route['vendor/brand_list/(:any)'] = 'admin/brand_list/$1';
 $route['vendor/saltComposition_list/(:any)'] = 'admin/saltComposition_list/$1';
 $route['vendor/saltComposition_edit/(:any)'] = 'admin/saltComposition_edit/$1';
-$route['vendor/product'] = 'admin/product';
 
 
 

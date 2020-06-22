@@ -91,7 +91,7 @@ $page = $this->uri->segment('2');
                   </li> -->
                   <li><a><i class="fa fa-eraser"></i> Inventory<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a class="<?= ($page=="addSingleProduct")? "active":"" ?>" href="<?php echo base_url('vendor/addSingleProduct'); ?>">Add Product</a></li>
+                      <li><a class="<?= ($page=="addSingleProduct")? "active":"" ?>" href="<?php echo base_url('vendor/inventory'); ?>">Add Product</a></li>
                       <li><a class="sub-item <?= ($page=="subcategory_list")? "active":"" ?>" href="<?php echo base_url('vendor/subcategory_list/'.$_SESSION["user_id"]); ?>">Sub Category</a></li>
                       <li><a class="<?= ($page=="category_list")? "active":"" ?>" href="<?php echo base_url('vendor/category_list/'.$_SESSION["user_id"]); ?>">Product Category</a></li>
                       <li><a class="sub-item <?= ($page=="brand_list")? "active":"" ?>" href="<?php echo base_url('vendor/brand_list/'.$_SESSION["user_id"]); ?>">Brands</a></li>
