@@ -743,8 +743,18 @@ Class Admin extends MY_Controller {
     }  
     public function linking()
     {
+        $this->data['category'] = $this->Admin->getData('category','category_name,id',array('status'=>'active'));
+        $this->data['product_category'] = $this->Admin->getData('subcategory','subcategory,category_id,id',array('status'=>'active'));
         $this->middle = 'linking/linking';
         $this->Admin();
+    }
+    public function ProductLinking()
+    {
+         $cat_id = $this->input->post('cat_id');
+         $subcat_id = $this->input->post('subcat_id');
+        foreach ($subcat_id as $key => $value) {
+            $this->Admin->updateData('subcategory',array('category_id'=>$cat_id),array('id'=>$value));
+        }
     }
 
 }

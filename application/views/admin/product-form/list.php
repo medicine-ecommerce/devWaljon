@@ -57,7 +57,8 @@
                         <?php 
                         if (!empty($product_form)) {
                           $i = 1;
-                          foreach ($product_form as $key => $value) { ?>
+                          foreach ($product_form as $key => $value) { 
+                            if($value->status!='pending'){ ?>
                             <tr>
                               <td><?php echo $i++; ?></td>
                               <td><?php echo $value->username; ?></td>
@@ -99,7 +100,7 @@
                               <?php } ?>
                               </td>
                             </tr>
-
+                          }
                           <?php }
                         } ?>
                         

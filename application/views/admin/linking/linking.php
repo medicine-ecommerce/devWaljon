@@ -7,13 +7,13 @@
           <h3>Inventory > Linking</h3>
         </div>
 
-        <div class="title_right">
+        <!-- <div class="title_right">
           <div class="col-md-6 col-sm-6 form-group pull-right top_search">
             <div class="input-group">
               <input type="text" class="form-control product-form" placeholder="Search ">
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="">
         <div class="col-md-12 col-sm-12 home-module-pages">
@@ -39,28 +39,20 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Featured Brans</td>
-                      <td><span class="dot">............</span><img src="<?php echo base_url(); ?>assets/img/link.png" class="link-img"><span class="dot">............</span></td>
-                      <td>
-                        <div class="multiselect">
-                          <div class="selectBox" onclick="showCheckboxes()">
-                            <select class="form-control">
-                              <option>Select Brands</option>
-                            </select>
-                            <div class="overSelect"></div>
-                          </div>
-                          <div id="checkboxes">
-                            <label for="one">
-                              <input type="checkbox" id="one" />First checkbox</label>
-                            <label for="two">
-                              <input type="checkbox" id="two" />Second checkbox</label>
-                            <label for="three">
-                              <input type="checkbox" id="three" />Third checkbox</label>
-                          </div>
-                        </div>
-                      </td>  
+                    <?php foreach ($category as $key => $value) { ?>
+                    <tr>                      
+                        <td><?php echo $value->category_name ?></td>
+                        <td><span class="dot">............</span><img src="<?php echo base_url(); ?>assets/img/link.png" class="link-img"><span class="dot">............</span></td>
+                        <td>
+                          <select class="multiselect" name="product_category_id" multiple="multiple" data-id="<?php echo $value->id; ?>" >
+                            <?php foreach ($product_category as $key => $value1) { ?>
+                              <option value="<?php echo $value1->id; ?>" <?php echo ($value1->category_id == $value->id)? 'selected':'' ?> ><?php echo $value1->subcategory; ?></option>
+                            <?php } ?>
+                          </select>
+                        </td>                        
                     </tr>
+
+                    <?php } ?>
                   </tbody>
                 </table>
               </div>
@@ -78,19 +70,39 @@
     </div>
   </div>
   <!-- /page content -->
-<script>
-
-  var expanded = false;
-
-  function showCheckboxes() {
-    var checkboxes = document.getElementById("checkboxes");
-    if (!expanded) {
-      checkboxes.style.display = "block";
-      expanded = true;
-    } else {
-      checkboxes.style.display = "none";
-      expanded = false;
+  <script type="text/javascript">
+    var cat_id = '';
+    function UpdateProductCate(cat_id) {
+      alert(cat_id);
+       cat_id = cat_id
+      
     }
-  }
-    
+  </script>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
+<script>
+$(document).ready(function(){
+ $('.multiselect').multiselect({
+  nonSelectedText: 'Select Product category',
+  enableFiltering: true,
+  enableCaseInsensitiveFiltering: true,
+  onChange: function() {
+        var selected = this.$select.val();
+        var catid = this.$select.data("id");
+        $.ajax({
+          type: "POST",
+          url: '<?php echo base_url('admin/ProductLinking'); ?>',
+          data: {cat_id : catid,subcat_id:selected}, // serializes the form's elements.
+          success: function(data)
+          {
+          }
+        });
+        // ...
+    }
+ }); 
+});
 </script>
+        
+ 

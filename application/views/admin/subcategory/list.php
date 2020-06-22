@@ -63,7 +63,8 @@
                         <?php 
                         if (!empty($subcategory)) {
                           $i = 1;
-                          foreach ($subcategory as $key => $value) { ?>
+                          foreach ($subcategory as $key => $value) {
+                          if($value->status!='pending'){ ?>
                             <tr>
                               <td><?php echo $i++; ?></td>
                               <td><?php echo $value->username; ?></td>
@@ -100,6 +101,7 @@
                               </td>
                             </tr>
                           <?php }
+                        }
                         } ?>                            
                       </tbody>
                     </table>

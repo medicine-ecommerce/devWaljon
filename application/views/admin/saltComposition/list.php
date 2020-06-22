@@ -14,13 +14,13 @@
           <h3 class="product_form_heading">Inventory > Salt Composition</h3>
         </div>
 
-        <div class="title_right">
+        <!-- <div class="title_right">
           <div class="col-md-6 col-sm-6 form-group pull-right top_search">
             <div class="input-group">
               <input type="text" class="form-control product-form" placeholder="Search ">
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="">
         <div class="col-md-12 col-sm-12 home-module-pages">
@@ -53,7 +53,8 @@
                         <?php 
                           if (!empty($saltComposition)) {
                             $i = 1;
-                            foreach ($saltComposition as $key => $value) { ?>
+                            foreach ($saltComposition as $key => $value) {
+                            if($value->status=='pending'){ ?>
                             <tr>
                               <td><?php echo $i++; ?></td>
                               <td><span class="brand_img"><img src="<?php echo base_url(); ?>assets/saltComposition-images/<?php echo $value->image ?>" ></span></td>
@@ -93,7 +94,8 @@
                               <?php } }?>
                             </td>
                             </tr>
-                          <?php } 
+                          <?php }
+                          } 
                         }?>
                       </tbody>
                     </table>
