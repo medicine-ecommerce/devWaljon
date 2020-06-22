@@ -38,6 +38,7 @@
           </div>
         </form>
         <p>Don't have an account <a href="<?php echo base_url();?>/Vendor/vendorregister">Register</a> here</p>        
+        <p><a href="<?php echo base_url();?>/Vendor/forgot_password">Forgot Password </a></p>        
       </div>      
     </div>
   </div>

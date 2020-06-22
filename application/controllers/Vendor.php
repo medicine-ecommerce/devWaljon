@@ -17,6 +17,14 @@ Class Vendor extends MY_Controller {
         $this->load->model('Excel_import_model');        
         $this->load->library('excel');  
         $this->load->library('upload');
+
+        if (empty($this->session->userdata('user_id'))){ 
+            // Allow some methods?
+            $allowed = array('forgot_password','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile');
+            if (!in_array($this->router->fetch_method(), $allowed)){
+                redirect(base_url('vendor/vendor_login'));
+            }
+        }
       
 
     }
@@ -25,12 +33,159 @@ Class Vendor extends MY_Controller {
     public function index()
     {
         $this->load->helper('cookie');
-    	$this->load->view('vendor/vandorregister');
+    	$this->load->view('vendor/vandorregister');        
+    } 
+
+    public function forgot_password()
+    {        
+        $this->load->view('vendor/forgot-password');
+    }     
+    public function forgotPassword()
+    {
+
+        if(!empty($this->input->post('email'))){               
+                if(empty($this->input->post('verification_code')) && !empty($this->input->post('email'))){                    
+                    $this->session->set_userdata('temp_verification_code',999999);                    
+                    echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>1));
+                    return;
+
+                }else if(!empty($this->input->post('verification_code'))){
+                    if($this->input->post('verification_code')==$this->session->userdata('temp_verification_code')){                        
+                        echo json_encode(array('status'=>1,'message'=>'updated','stage'=>2));
+                        // $data = array('email'=>$this->input->post('email'));
+                        // $updated = $this->Vendor->updateData('users',$data,array('users.id'=>$this->session->userdata('user_id')));
+                        // if($updated){
+                        //     return;
+                        // }
+                    }else{
+                        echo json_encode(array('status'=>0,'message'=>'Incorrect OTP Code','stage'=>3));
+                        return ;
+
+                    }
+                }
+
+        
+       }
     }   
+    public function createNewPassword()
+    {
+        $this->load->helper('cookie');
+        if(!empty($this->input->post('email'))){                            
+
+                if(!empty($this->input->post('email'))){
+                        
+                        $data = array('password'=>md5($this->input->post('password')));
+                        $updated = $this->Vendor->updateData('users',$data,array('users.email'=>$this->input->post('email')));
+
+                        if($updated){
+                            $data = array('email'=> $this->input->post('email'),
+                            'password' =>md5($this->input->post('password'))
+                            );
+                            delete_cookie("email");                
+                            delete_cookie("password");                
+                            $result = $this->Vendor->login($data);
+                            if(!empty($result))
+                            {
+                                                       
+                                $data = array('email'=>$result->email,
+                                            'user_id'=>$result->id,
+                                            'user_type'=>$result->type);
+                               
+
+                                $this->session->set_userdata($data);
+                                // redirect(base_url('admin/dashboard'));
+                                if(!empty($result->email) && !empty($result->full_name) && !empty($result->mobile) && !empty($result->address) && $result->is_active > 0 ){
+                                    // redirect('/vendor/vendor_dashboard/', 'refresh');
+                                    echo json_encode(array('status'=>1,'stage'=>1));
+                                    return;
+                                }else if(!empty($result->mobile) && !empty($result->email) && !empty($result->full_name) && $result->is_active == 0 ){
+                                    echo json_encode(array('status'=>1,'stage'=>2));
+                                    return;
+                                    // redirect('/vendor/profile_waiting_approval', 'refresh');
+                                }
+                                else{      
+                                    echo json_encode(array('status'=>1,'stage'=>3));
+                                    return;                  
+                                    // redirect('/vendor/personalDetails/', 'refresh');
+                                }
+                            }
+                            // echo json_encode(array('status'=>1,'message'=>'updated'));
+                            // return;
+                        }
+                    }else{
+                        echo json_encode(array('status'=>0,'message'=>'Incorrect OTP Code'));
+                        return ;
+
+                    }
+                }
+
+        
+      
+    }
+    public function updateEmail()
+    {
+
+        if(!empty($this->input->post('update_email'))){                            
+
+                if(empty($this->input->post('verification_code')) && !empty($this->input->post('update_email'))){                    
+                    $this->session->set_userdata('temp_verification_code',999999);                    
+                    echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>2));
+                    return;
+
+                }else if(!empty($this->input->post('verification_code'))){
+                    if($this->input->post('verification_code')==$this->session->userdata('temp_verification_code')){
+                        
+                        $data = array('email'=>$this->input->post('update_email'));
+                        $updated = $this->Vendor->updateData('users',$data,array('users.id'=>$this->session->userdata('user_id')));
+                        if($updated){
+                            echo json_encode(array('status'=>1,'message'=>'updated','stage'=>4));
+                            return;
+                        }
+                    }else{
+                        echo json_encode(array('status'=>0,'message'=>'Incorrect OTP Code','stage'=>3));
+                        return ;
+
+                    }
+                }
+
+        
+       }
+    }   
+     public function updateMobile()
+    {
+
+        if(!empty($this->input->post('update_mobile'))){                            
+
+                if(empty($this->input->post('verification_code')) && !empty($this->input->post('update_mobile'))){                    
+                    $this->session->set_userdata('temp_verification_code',999999);                    
+                    echo  json_encode(array('status'=>1,'message'=>'Verification code sent to your mobile number','stage'=>1));                    
+                    return;
+
+                }else if(!empty($this->input->post('verification_code'))){
+                    if($this->input->post('verification_code')==$this->session->userdata('temp_verification_code')){                        
+                        $data = array('mobile'=>$this->input->post('update_mobile'));   
+                        
+                        $updated = $this->Vendor->updateData('users',$data,array('users.id'=>$this->session->userdata('user_id')));                        
+                        if($updated){
+                            echo json_encode(array('status'=>1,'message'=>'updated','stage'=>4));
+                            return;
+                        }
+                    }else{
+                        echo json_encode(array('status'=>0,'message'=>'Incorrect OTP Code','stage'=>3));
+                        return ;
+
+                    }
+                }
+
+        
+       }
+    } 
     public function vendorregister()
     {   
+
         $this->load->helper('cookie');
         if ($this->input->server('REQUEST_METHOD') == 'POST'){            
+            
             if(ctype_digit($this->input->post('email'))){                
                 $this->form_validation->set_rules('email', 'mobile', 'trim|required|is_unique[users.mobile]');    
             }else{                
@@ -48,28 +203,52 @@ Class Vendor extends MY_Controller {
             // $this->form_validation->set_rules('company_name', 'Company Name', 'required');
             // $this->form_validation->set_rules('company_address', 'Company addresss', 'required');
            
-            if($this->form_validation->run() == FALSE){                 
-                print_r(validation_errors());
+            if($this->form_validation->run() == FALSE){                                 
               $this->session->set_flashdata('error', validation_errors());      
+              echo json_encode(array('status'=>0,'message'=>validation_errors(),'stage'=>0));
+                    return;
+
             }
-            else{                
+            else{ 
+                $registrationBy = '';
                 if(ctype_digit($this->input->post('email'))){
                     $data = array('mobile'=> trim($this->input->post('email')),
                                   'password'=>md5($this->input->post('password')),
                                   'is_active'=>'0',
                                   'type'=>'vendor',
                                   'created_by'=>'sign_up');  
+                    $registrationBy = 'mobile';
                 }else{
                     $data = array('email'=>$this->input->post('email'),
                                   'password'=>md5($this->input->post('password')),
                                   'is_active'=>'0',
                                   'type'=>'vendor',
                                   'created_by'=>'sign_up');  
+                    $registrationBy = 'email';
                 }
 
-                $last_id = $this->Vendor->VendorRegistration($data);               
+                if(empty($this->input->post('verification_code')) && !empty($this->input->post('email')) && $registrationBy=="mobile"){                    
+                    $this->session->set_userdata('temp_verification_code',999999);                    
+                    echo  json_encode(array('status'=>1,'message'=>'Verification code sent to your mobile number','stage'=>1));                    
+                    return;
+
+                }else if(empty($this->input->post('verification_code')) && !empty($this->input->post('email')) && $registrationBy=="email"){                    
+                    $this->session->set_userdata('temp_verification_code',999999);                    
+                    echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>2));
+                    return;
+
+                }else if(!empty($this->input->post('verification_code'))){
+                    if($this->input->post('verification_code')==$this->session->userdata('temp_verification_code')){
+                        $last_id = $this->Vendor->VendorRegistration($data);               
+                    }else{
+                        echo json_encode(array('status'=>0,'message'=>'Incorrect OTP Code','stage'=>3));
+                        return ;
+
+                    }
+                }               
                 
                 if ($last_id > 0) {
+
                     if(ctype_digit($this->input->post('email'))){
                         $data = array('mobile'=>trim($this->input->post('email')),
                                       'user_id'=>$last_id,
@@ -84,7 +263,9 @@ Class Vendor extends MY_Controller {
                     }
                     $this->session->set_userdata($data);
                     $this->session->set_flashdata('success', 'Your account successfully created ');
-                    redirect('/Vendor/personalDetails/', 'refresh');
+                    echo json_encode(array('status'=>1,'stage'=>4));
+                        return;
+                    // redirect('/Vendor/personalDetails/', 'refresh');
                 }
             }            
             //redirect($_SERVER['HTTP_REFERER']); 
@@ -118,6 +299,10 @@ Class Vendor extends MY_Controller {
                 if(empty($this->input->post('remember_password'))){
                     delete_cookie("email");                
                     delete_cookie("password");                
+                }else{
+                        $unexpired_cookie_exp_time = 2147483647 - time();               
+                        set_cookie('email',base64_encode($this->input->post('email')), $unexpired_cookie_exp_time);
+                        set_cookie('password',base64_encode($this->input->post('password')), $unexpired_cookie_exp_time);
                 }
                 // echo $this->input->post('email');
                 // die();
@@ -534,6 +719,45 @@ Class Vendor extends MY_Controller {
         print_r($_FILES);
         exit();
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
+        }
+    }
+    public function checkExistEmail(){        
+
+        if(!empty($this->input->post('email'))){
+            $existEmail = $this->Vendor->checkExistEmail($this->input->post('email'),$this->input->post('user_id'));              
+            if($existEmail){
+                echo  json_encode(array('status'=>1,'message'=>'Email already Exist'));
+                return;
+            }else{
+                echo  json_encode(array('status'=>0,'message'=>'Email not exist'));
+                return;
+            }
+        }
+    }
+    public function checkExistMobile(){        
+
+        if(!empty($this->input->post('mobile'))){
+            $existMobile = $this->Vendor->checkExistMobile($this->input->post('mobile'),$this->input->post('user_id'));              
+            if($existMobile){
+                echo  json_encode(array('status'=>1,'message'=>'Mobile already Exist'));
+                return;
+            }else{
+                echo  json_encode(array('status'=>0,'message'=>'Mobile not exist'));
+                return;
+            }
+        }
+    }
+    public function forgotPasswordCheckEmail(){        
+
+        if(!empty($this->input->post('email'))){                        
+            $existEmail = $this->Vendor->forgotPasswordCheckEmail($this->input->post('email'));             
+            if($existEmail){
+                echo  json_encode(array('status'=>1,'message'=>'Email already Exist'));
+                return;
+            }else{
+                echo  json_encode(array('status'=>0,'message'=>'Email not exist'));
+                return;
+            }
         }
     }
     
