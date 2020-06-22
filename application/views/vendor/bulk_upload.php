@@ -106,9 +106,9 @@ $bulk_data = $bulk_data['uploaded_bulk_data'];
                 </div>
               </div>              
               <div class="col-md-6 padding-top50">
-                <button type="submit" class="btn btn-default submit_button float-right">Next</button>
-                <button type="submit" class="btn btn-default submit_button float-right">Previous</button> 
-                <button type="submit" class="btn btn-default submit_button float-right">Cancle</button>   
+                <button type="button" data-toggle="modal" data-target="#temp-Modal" class="btn btn-default submit_button float-right">Next</button>
+                <button data-toggle="modal" data-target="#temp-Modal" type="button" class="btn btn-default submit_button float-right">Previous</button> 
+                <button data-toggle="modal" data-target="#temp-Modal" type="button" class="btn btn-default submit_button float-right">Cancle</button>   
               </div>
             </div>
           </form>
@@ -254,6 +254,25 @@ $bulk_data = $bulk_data['uploaded_bulk_data'];
           <button type="submit" data-dismiss="modal" class="btn btn-default submit_button float-right">Cancle</button>              
           <button type="submit" class="btn btn-default submit_button float-right">Cancle</button>              
           <button type="button" class="btn btn-default submit_button float-right product-image-save">Save</button> 
+        </div>
+      </div> 
+    </form>
+    </div>
+  </div>
+
+
+  <!-- Temperory modal -->
+
+  <div class="modal fade imageuploadModel" id="temp-Modal" role="dialog">
+    <div class="modal-dialog">             
+      <form method="post" action="<?php echo base_url() ?>/vendor/bulk_update_product" enctype="multipart/form-data">   
+      <!-- Modal content-->
+      <div class="modal-content">        
+        <div class="modal-body text-center">
+           <img src="<?php echo base_url('assets/img/coming-soon.jpg');?>">          
+        </div>
+        <div class="modal-footer">
+          <button type="submit" data-dismiss="modal" class="btn btn-default submit_button float-right">Ok</button>
         </div>
       </div> 
     </form>
