@@ -63,7 +63,8 @@
                         <?php 
                         if (!empty($brand)) {
                           $i = 1;
-                          foreach ($brand as $key => $value) { ?>
+                          foreach ($brand as $key => $value) {
+                          if($value->status!='pending'){ ?>
                           <tr>
                             <td><?php echo $i++; ?></td>
                             <td><span class="brand_img"><img src="<?php echo base_url(); ?>assets/brand-images/<?php echo $value->brand_img ?>" ></span></td>
@@ -93,7 +94,8 @@
                           <?php } ?>
                           </td>
                           </tr>
-                        <?php } 
+                        <?php }
+                        } 
                       }?>
                       </tbody>
                     </table>

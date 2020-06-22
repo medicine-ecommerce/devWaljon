@@ -62,7 +62,8 @@
                         <?php 
                         if (!empty($manufacturer)) {
                           $i = 1;
-                          foreach ($manufacturer as $key => $value) { ?>
+                          foreach ($manufacturer as $key => $value) {
+                          if($value->status!='pending'){ ?>
                           <tr>
                             <td><?php echo $i++; ?></td>
                             <td><?php echo $value->username; ?></td>
@@ -102,7 +103,8 @@
                           <?php } ?>
                           </td>
                           </tr>
-                        <?php } 
+                        <?php }
+                        } 
                       }?>
                       </tbody>
                     </table>
