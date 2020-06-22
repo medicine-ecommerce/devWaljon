@@ -25,5 +25,15 @@ Class User extends MY_Controller {
         $this->middle = 'index';
         $this->User();
     }
+    public function shop()
+    {
+        $this->middle = 'shop';
+        $this->User();
+    }
+    public function product()
+    {
+        $this->middle = 'product';
+        $this->User();
+    }
     
 }
