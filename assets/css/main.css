@@ -97,17 +97,7 @@
     height: 170px!important;
     object-fit: scale-down;
 }
-.product-heading{
 
-  height: 40px;
-  text-align: center;
-  background: linear-gradient(45deg,#44b5e8,#eeefdb)!important;
-  color: white;
-  font-size: 30px;
-  text-align: left;
-  margin-bottom: 20px;
-
-}
 .product-slider .owl-slider{
 
   padding-left: 100px;
@@ -166,11 +156,6 @@
   color: red;
   padding: 25px;
   font-size: 50px;
-}
-.countdown-button{
-  background: linear-gradient(80deg,#4abdde,#2b89e1);
-  margin-top: -25px;
-  margin-left: 55px;
 }
 .countdown-text p {
   color: #f2f2f2;

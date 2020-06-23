@@ -1,0 +1,344 @@
+.cat_menu_container{
+	display: none;
+}
+img.count-down-image {
+    width: 100%;
+}
+.banner-slider .owl-stage-outer.owl-height {
+    height: 450px!important;
+}
+img.mains-slider{
+	height: 450px;
+}
+.brand-section {
+    padding: 50px 0;
+}
+.brand-heading {
+    padding: 35px 0px;
+}
+.brand-section span[aria-label=Previous] {
+    position: absolute;
+    top: -80px;
+    font-size: 35px;
+    margin-left: -50px;
+    color: #7b8284;
+}
+.brand-section span[aria-label=Next] {
+    position: absolute;
+    top: -80px;
+    font-size: 35px;
+    margin-left: 50px;
+    color: #7b8284;
+}
+.icon-slider-section { 
+    background-image: linear-gradient(-90deg, #4c9add,  #54c7ed);
+}
+.icon-slider-section {
+    padding: 70px 0px;
+}
+.icon-heading-section {
+	text-align: center;	
+	color: #fff;
+}
+.icon-heading-section {
+    text-align: center;
+    color: #fff;
+    padding-bottom: 30px;
+}
+.icon-slider-section .owl-item{
+	height: 100px;
+    width: 100px;
+}
+.icon-slider-section .owl-item img {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    background-color: transparent;
+    height: 100px;
+    width: 100px;
+    
+}
+.icon-slider {
+     background:none; 
+}
+.icon-slider-section .owl-item:hover {
+    border: 2px solid #fff;
+    border-radius: 54%;
+    height: 100px;
+    width: 100px;
+}
+.icon-slider-section .owl-item {
+    width: 100px !important;
+    height: 100px !important;
+    margin: 0px 50px;
+}
+img.owl-lazy.icon-slider{
+	width: 100px !important;
+	height: 100px !important;
+}
+.owl-slider.icon-slider {
+    padding: 0px 90px;
+}
+.icon-slider-section span[aria-label=Previous] {
+    position: absolute;
+    top: -130px;
+    font-size: 35px;
+    margin-left: -50px;
+    color: #fff;
+}
+.icon-slider-section span[aria-label=Next] {
+    position: absolute;
+    top: -130px;
+    font-size: 35px;
+    margin-left: 50px;
+    color: #fff;
+}
+.countdown-section {
+    background-image: url(../slider-image/offers_jpg2.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 576px;
+}
+.countdown-section span {
+    font-size: 20px;
+}
+.countdown-section-heading {
+    padding: 40px 0px;
+}
+.offer-block h3 {
+    font-weight: 600;
+    font-size: 25px;
+    color: #787a82;
+}
+.help-text {
+    font-size: 12px;
+}
+.deal-text {
+    font-size: 12px;
+    color: red;
+    margin-top: 90px;
+    margin-bottom: 15px;
+}
+.countdown-clock {
+    background-color: white;
+    width: 220px;
+    height: 115px;
+    margin: 0 auto;
+}
+.countdown-text {
+    color: red;
+    padding: 25px;
+    font-size: 30px;
+}
+.countdown-button {
+    position: absolute;
+    bottom: -10px;
+    padding: 5px 10px;
+    border: none;
+    background-color: #4fa9e2;
+    color: #fff;
+    right: 60px;
+}
+.product-heading {
+    text-align: center;
+    background: linear-gradient(45deg,#44b5e8,#eeefdb)!important;
+    color: white;
+    font-size: 30px;
+    text-align: left;
+    margin-bottom: 20px;
+    padding: 8px 45px;
+}
+.product-slider-section {
+    margin-top: 60px;
+}
+.product-heading img {
+    width: 35px;
+    position: absolute;
+    left: 70px;
+}
+
+.product-slider-block span[aria-label=Previous] {
+    position: absolute;
+    top: -209px;
+    font-size: 31px;
+    margin-left: -50px;
+    color: #fff;
+    background-color: #4ea8e2;
+    width: 31px;
+    padding: 1px 0px;
+    height: 48px;
+}
+.product-slider-block span[aria-label=Next] {
+    position: absolute;
+    top: -209px;
+    font-size: 31px;
+    margin-left: -50px;
+    color: #fff;
+    background-color: #4ea8e2;
+    width: 31px;
+    padding: 1px 0px;
+    height: 48px;
+}
+a span.product-heading-all {
+    position: absolute;
+    right: 200px;
+    font-size: 12px;
+    background-color: #4ea8e2;
+    padding: 11px 18px;
+    color: #fff;
+}
+.product-main-block {
+    width: 100%;
+}
+.product-block {
+    display: inline-block;
+    width: 100%;
+    border-bottom: 1px solid #e2e2e2;
+}
+.product-image-section {
+    width: 40%;
+    float: left;
+    padding: 15px;
+}
+.product-description-section {
+    width: 60%;
+    float: right;
+    border-left: 1px solid #e2e2e2;
+    padding: 8px;
+}
+.product-description-section p {
+    font-size: 14px;
+}
+.product-main-block {
+    width: 100%;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
+}
+.product-price-block {
+    padding: 10px 15px;
+}
+.product-slider .owl-stage-outer.owl-height {
+    height: 180px !important;
+}
+.product-description-section span {
+    font-size: 12px;
+}
+
+/*Button Add Quantity*/
+
+
+.number-input input[type="number"] {
+-webkit-appearance: textfield;
+-moz-appearance: textfield;
+appearance: textfield;
+}
+
+.number-input input[type=number]::-webkit-inner-spin-button,
+.number-input input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+}
+
+.number-input {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.number-input button {
+-webkit-appearance: none;
+background-color: transparent;
+border: none;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+margin: 0;
+position: relative;
+}
+
+.number-input button:before,
+.number-input button:after {
+display: inline-block;
+position: absolute;
+content: '';
+height: 2px;
+transform: translate(-50%, -50%);
+}
+
+.number-input button.plus:after {
+transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.number-input input[type=number] {
+text-align: center;
+}
+
+.number-input.number-input {
+border-radius: .25rem;
+margin-top: -5px;
+}
+
+.number-input.number-input button {
+width: 2.6rem;
+height: .7rem;
+}
+
+.number-input.number-input button.minus {
+/*padding-left: 10px;*/
+}
+
+
+.number-input.number-input input[type=number] {
+    max-width: 28px;
+    padding: .5rem;
+    border: 1px solid #ced4da;
+    font-size: 14px;
+    height: 28px;
+    color: #495057;
+}
+
+@media not all and (min-resolution:.001dpcm) {
+@supports (-webkit-appearance: none) and (stroke-color:transparent) {
+
+.number-input.def-number-input.safari_only button:before,
+.number-input.def-number-input.safari_only button:after {
+margin-top: -.3rem;
+}
+}
+}
+/*Add Quantity End*/
+.add-quantity {
+    float: right;
+}
+.add-quantity button.plus {
+    background-color: #636363;
+    height: 28px;
+    width: 28px;
+    border-radius: 0px 15px 15px 0px;
+}
+.add-quantity button.minus {
+    background-color: #636363;
+    height: 28px;
+    width: 28px;
+    border-radius: 15px 0px 0px 15px;
+}
+.number-input.number-input button:before, .number-input.number-input button:after {
+    width: 1.2rem;
+    background-color: #f9f9f9;
+}
+.add-quantity button:focus {    
+    outline: none;
+}
+.add-quantity input:focus {    
+    outline: none;
+}
+button.btn-default.add-cart-button {
+    padding: 5px 15px;
+    background-color: #ffffff;
+    color: #7fc9e4;
+    border: 2px solid #7fc9e4;
+    border-radius: 20px;
+}
+.product-price-block span {
+    font-size: 20px;
+    font-weight: 600;
+}
