@@ -760,6 +760,12 @@ Class Vendor extends MY_Controller {
             }
         }
     }
+
+    public function product_status($status,$product_id)
+    {
+        $this->Vendor->updateData('product',array('status'=>$status),array('id'=>$product_id));
+        redirect($_SERVER['HTTP_REFERER']);
+    }
     
     // public function vendors()
     // {

@@ -72,7 +72,7 @@ if($product==0){
                 <div> 
                   <div class="count pull-left">
                     <h2>71</h2>
-                    <span class="count_bottom">Cancle Orders</span>
+                    <span class="count_bottom">Cancel Orders</span>
                   </div>
                   <div class="count pull-right user-icon">
                     <i class="fa fa-file-excel-o"></i>
