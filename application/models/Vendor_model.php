@@ -117,7 +117,7 @@ class Vendor_model extends MY_model
 	public function getAllProductData()
 	{		
 		//if(!empty($this->session->userdata('vendor_id'))){			
-		$this->db->select('product.id,product.name,manufacturer.name as manufacturer_name,category.category_name as category_name,subcategory.subcategory as subcategory_name,product_item.mrp,product_item.sale_price,product_item.quantity,product.created_at,product_form.name as product_form,product_item.unit');
+		$this->db->select('product.id,product.name,manufacturer.name as manufacturer_name,category.category_name as category_name,subcategory.subcategory as subcategory_name,product_item.mrp,product_item.sale_price,product_item.quantity,product.created_at,product_form.name as product_form,product_item.unit,product.status');
 		$this->db->from('product');
 		$this->db->join('product_item','product_item.product_id=product.id','left');
 		$this->db->join('category','category.id=product.category_id','left');

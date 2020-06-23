@@ -669,7 +669,7 @@ Class Admin extends MY_Controller {
                     $data['image'] = $uploadedImg['file_name'];
                 }
 
-                $result = $this->Admin->insertData('saltComposition',$data);
+                $result = $this->Admin->insertData('saltcomposition',$data);
                 if (!empty($result)) {
                     $this->session->set_flashdata('success', 'Salt Composition added successfully');                    
                 }
@@ -706,7 +706,7 @@ Class Admin extends MY_Controller {
                     $data['image'] = $uploadedImg['file_name'];
                 }
 
-                $result = $this->Admin->updateData('saltComposition',$data,array('id'=>$id));
+                $result = $this->Admin->updateData('saltcomposition',$data,array('id'=>$id));
                 if (!empty($result)) {
                     $this->session->set_flashdata('success', 'Salt Composition updated successfully');                    
                 }
@@ -722,7 +722,7 @@ Class Admin extends MY_Controller {
     }
     public function saltComposition_delete($id)
     {
-        $result = $this->Admin->deleteData('saltComposition',array('id'=>$id));
+        $result = $this->Admin->deleteData('saltcomposition',array('id'=>$id));
         if (!empty($result)) {
             $this->session->set_flashdata('success', 'saltComposition deleted successfully');
         }else{
@@ -732,7 +732,7 @@ Class Admin extends MY_Controller {
     }
     public function saltComposition_status($status,$id)
     {
-        $result = $this->Admin->updateData('saltComposition',array('status'=>$status),array('id'=>$id));
+        $result = $this->Admin->updateData('saltcomposition',array('status'=>$status),array('id'=>$id));
         if (!empty($result)) {
             $this->session->set_flashdata('success', 'status updated successfully'); 
         }

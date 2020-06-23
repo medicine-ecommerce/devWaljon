@@ -205,7 +205,7 @@
                               <div class="tab-pane fade" id="v-pills-store" role="tabpanel" aria-labelledby="v-pills-store-tab">
                                 <textarea name="how_to_store" style="width: 100%;height: 260px;" class="form-control"></textarea >
                               </div>
-                              <div class="tab-pane fade" id="v-pills-information" role="tabpanel" aria-labelledby="v-pills-information-tab">
+                              <div class="tab-pane fade" id="v-pills-imformation" role="tabpanel" aria-labelledby="v-pills-information-tab">
                                 <textarea name="safety_info" style="width: 100%;height: 260px;" class="form-control"></textarea >
                               </div>
                            </div>
@@ -270,7 +270,7 @@
         </div>
         <div class="row"> 
           <div class="col-md-12 padding-top-bottom50">
-            <button type="submit" class="btn btn-default submit_button float-right">Cancle</button>   
+            <button type="submit" class="btn btn-default submit_button float-right">Cancel</button>   
             <button type="button" id="submit_form" class="btn btn-default submit_button float-right">Save</button> 
           </div>
         </div>

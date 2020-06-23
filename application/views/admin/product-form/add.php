@@ -6,7 +6,7 @@
           <h3>Add Produc Form</h3>
         </div>
 
-        <div class="title_right">
+        <!-- <div class="title_right">
           <div class="col-md-5 col-sm-5 form-group pull-right top_search">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search for...">
@@ -15,7 +15,7 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="row">
         <div class="col-md-12 col-sm-12 home-module-pages">
@@ -32,7 +32,7 @@
           <div class="x_panel">
             <div class="x_content">
               <form class="" action="<?php echo(!empty($product_form)) ? base_url('admin/product_form_edit/'.$product_form->id) : base_url('admin/product_form_add') ?>" method="post" novalidate>
-                <span class="section">Add Produc Form</span>
+                <span class="section">Add Product Form</span>
                 <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align"> Name<span
                       class="required">*</span></label>
