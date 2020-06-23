@@ -18,5 +18,9 @@ Class User extends MY_Controller {
     {
         $this->load->view('user/home');	
     }
+    public function filter()
+    {
+        $this->load->view('user/filter'); 
+    }
     
 }

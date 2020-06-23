@@ -108,22 +108,18 @@
   </div>
   <div class="product-slider">
     <div class="owl-slider product-slider" >
-      <div id="carousel4" class="owl-carousel product-slider" >
-        <div class="item">
-          <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+      <div id="carousel4" class="owl-carousel product-slider" style="">
+        <div class="item box">
+          <img class="owl-lazy" style="padding: 15px;" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
           <div class="product-text">
-            <span class="product-span">Product Name</span>
-            <span class="product-span">100</span>
-            <span class="product-span">200</span>
+            <p class="product-name">Product Name </p>
+            <p class="product-details">Product Name</p>
+            <p class="product-off">20% off</p>
+            <p class="product-price">₹200</p>
+            <!-- <button onclick="myFunction()" class="product-add">Click me</button>
+            <p class="product-add"  id="demo"></p> -->
           </div>
         </div>
-        <!-- <div class="card">
-          <img src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="Denim Jeans" style="width:100%">
-          <h1>Tailored Jeans</h1>
-          <p class="price">$19.99</p>
-          <p>Some text about the jeans. Super slim and comfy lorem ipsum lorem jeansum. Lorem jeamsun denim lorem jeansum.</p>
-          <p><button>Add to Cart</button></p>
-        </div> -->
       </div>
     </div>
   </div>
@@ -133,36 +129,17 @@
   <div class="product-slider">
     <div class="owl-slider product-slider" >
     <div id="carousel5" class="owl-carousel product-slider" >
-      <div class="item">
-        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-      </div>
-        <div class="item">
-        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-      </div>
-        <div class="item">
-        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-      </div>
+      <div class="item box">
+          <img class="owl-lazy" style="padding: 15px;" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+          <div class="product-text">
+            <p class="product-name">Product Name </p>
+            <p class="product-details">Product Name</p>
+            <p class="product-off">20% off</p>
+            <p class="product-price">₹200</p>
+            <!-- <button onclick="myFunction()" class="product-add">Click me</button>
+            <p class="product-add"  id="demo"></p> -->
+          </div>
+        </div>
     </div>
   </div>
   <div class="product-heading">
@@ -171,40 +148,22 @@
   <div class="product-slider">
     <div class="owl-slider product-slider" >
     <div id="carousel6" class="owl-carousel product-slider" >
-      <div class="item">
-        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-      </div>
-        <div class="item">
-        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-      </div>
-        <div class="item">
-        <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-      </div>
-      <div class="item">
-        <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-      </div>
+      <div class="item box">
+          <img class="owl-lazy" style="padding: 15px;" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+          <div class="product-text">
+            <p class="product-name">Product Name </p>
+            <p class="product-details">Product Name</p>
+            <p class="product-off">20% off</p>
+            <p class="product-price">₹200</p>
+            <!-- <button onclick="myFunction()" class="product-add">Click me</button>
+            <p class="product-add"  id="demo"></p> -->
+          </div>
+        </div>
     </div>
   </div>
 </div>
 <script>
+  
   jQuery("#carousel").owlCarousel(
   {
     autoplay: true,
@@ -367,10 +326,7 @@
       
     }
   });
-
-  // Set the date we're counting down to
   var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
-  // Update the count down every 1 second
   var x = setInterval(function() 
   {
 
@@ -396,5 +352,4 @@
       document.getElementById("demo").innerHTML = "EXPIRED";
     }
   }, 1000);
-
 </script>
