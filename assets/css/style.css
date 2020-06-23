@@ -479,7 +479,6 @@ body {
 .chiller-theme .sidebar-footer>a:last-child {
     border-right: none;
 }
-=======
 /*footer css */
 .copyright-sec {
     background: #5d7184;
@@ -562,4 +561,10 @@ a.google-plus {
     margin-bottom: 30px;
 }
 /*footer css */
->>>>>>> 4ad7593d17cdfe22069dbbf295e326128faf0186
+/*category page css*/
+  section.main-page {
+    background: #eef3f8;
+    padding: 50px 0px;
+  }
+/*category page css*/
+

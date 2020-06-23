@@ -1033,7 +1033,7 @@ ul.standard_dropdown.main_nav_dropdown {
 }
 .main_nav_dropdown li
 {
-	padding: 0px 10px 0px 7px;
+	padding: 0px 10px 0px 5px;
     border-right: 1px solid #c7d1da;
 }
 .main_nav_dropdown li:last-child
@@ -3558,7 +3558,7 @@ ul.standard_dropdown.main_nav_dropdown {
 
 .footer
 {
-	padding-top: 52px;
+	/*padding-top: 52px;*/
 	/*padding-bottom: 40px;*/
 }
 .footer .logo_container

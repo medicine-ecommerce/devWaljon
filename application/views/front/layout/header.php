@@ -16,6 +16,8 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/front/plugins/slick-1.8.0/slick.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/front/styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/front/styles/responsive.css">
+	<link href="<?php echo base_url(); ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
 	<title>Medicine</title>
 
