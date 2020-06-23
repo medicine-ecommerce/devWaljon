@@ -29,6 +29,8 @@ Class Admin extends MY_Controller {
 
     public function dashboard()
     {
+        $this->data['vendorsCount'] = $this->Admin->rowsCount('users','*',array('type'=>'vendor'));
+        $this->data['vendors'] = $this->Admin->getData('users','*',array('type'=>'vendor'));
     	$this->middle = 'dashboard';
         $this->Admin();
     }
@@ -260,7 +262,7 @@ Class Admin extends MY_Controller {
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
-    public function subcategory_add()
+    public function home_category_add()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('subcategory_name', 'subcategory name', 'required');
@@ -290,14 +292,14 @@ Class Admin extends MY_Controller {
         $this->middle = 'subcategory/add';
         $this->Admin();
     }
-    public function subcategory_list()
+    public function home_category_list()
     {
         $this->data['subcategory'] = $this->Admin->SubCategoryList();
 
         $this->middle = 'subcategory/list';
         $this->Admin();
     }
-    public function subcategory_edit($id)
+    public function home_category_edit($id)
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('subcategory_name', 'subcategory name', 'required');
@@ -312,7 +314,7 @@ Class Admin extends MY_Controller {
                         );
                 $result = $this->Admin->updateData('subcategory',$data,array('id'=>$id));
                 if (!empty($result)) {
-                    $this->session->set_flashdata('success', 'Sub-Category added successfully');                    
+                    $this->session->set_flashdata('success', 'Product category added successfully');                    
                 }
                 else{
                     $this->session->set_flashdata('error','error! Please try again');
@@ -325,17 +327,17 @@ Class Admin extends MY_Controller {
         $this->middle = 'subcategory/add';
         $this->Admin();
     }
-    public function subcategory_delete($id)
+    public function home_category_delete($id)
     {
         $result = $this->Admin->deleteData('subcategory',array('id'=>$id));
         if (!empty($result)) {
-            $this->session->set_flashdata('success', 'Subcategory deleted successfully');
+            $this->session->set_flashdata('success', 'Product category deleted successfully');
         }else{
             $this->session->set_flashdata('error', 'error! Please try again');
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
-    public function subcategory_status($status,$id)
+    public function home_category_status($status,$id)
     {
         $result = $this->Admin->updateData('subcategory',array('status'=>$status),array('id'=>$id));
         if (!empty($result)) {
@@ -439,6 +441,17 @@ Class Admin extends MY_Controller {
         $this->data['banners'] = $this->Admin->getData('banner_images','*','');
         $this->middle = 'home_banner';
         $this->Admin();
+    }
+
+    public function removeBannerImage($id)
+    {
+        $this->Admin->deleteData('banner_images',array('id'=>$id));
+    }
+    public function DeactiveBannerImage()
+    {        
+        $status = ($this->input->post('status')=='true')?'active':'deactive';
+        $id = $this->input->post('id');
+        $this->Admin->updateData('banner_images',array('status'=>$status),array('id'=>$id));
     }
     public function product_category()
     {
@@ -669,6 +682,7 @@ Class Admin extends MY_Controller {
         $this->middle = 'saltComposition/add';
         $this->Admin();
     }
+    
     public function saltComposition_list()
     {
         $this->data['saltComposition'] = $this->Admin->saltCompositionList();
@@ -729,8 +743,18 @@ Class Admin extends MY_Controller {
     }  
     public function linking()
     {
+        $this->data['category'] = $this->Admin->getData('category','category_name,id',array('status'=>'active'));
+        $this->data['product_category'] = $this->Admin->getData('subcategory','subcategory,category_id,id',array('status'=>'active'));
         $this->middle = 'linking/linking';
         $this->Admin();
+    }
+    public function ProductLinking()
+    {
+         $cat_id = $this->input->post('cat_id');
+         $subcat_id = $this->input->post('subcat_id');
+        foreach ($subcat_id as $key => $value) {
+            $this->Admin->updateData('subcategory',array('category_id'=>$cat_id),array('id'=>$value));
+        }
     }
 
 }

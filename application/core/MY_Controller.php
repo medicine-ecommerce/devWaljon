@@ -37,5 +37,15 @@ class MY_Controller extends CI_Controller
       // $this->load->view('developer/index', $this->template);
 
     }
+    public function User(){      
+
+      $this->template['header']        = $this->load->view('front/layout/header',$this->data);      
+      // $this->template['sidebar']        = $this->load->view('front/layout/sidebar',$this->data);  
+      $this->template['middle']        = $this->load->view('front/'.$this->middle,$this->data);
+      $this->template['footer']        = $this->load->view('front/layout/footer');
+      return  $this->template;
+      // $this->load->view('developer/index', $this->template);
+
+    }
 }
 ?>

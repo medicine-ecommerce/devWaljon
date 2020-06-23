@@ -1382,6 +1382,33 @@ img.loader-hide{
 }
 /*salt composition*/
 /*linking*/
+.selectBox {
+  position: relative;
+}
+#checkboxes label input {
+  margin: 2px 5px 0px 0px;
+}
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+  margin-bottom: 0px;
+}
+
+#checkboxes label:hover {
+  background-color: #e6ebf1;
+}
 .linking-table{
     width: 80%;
 }
@@ -1405,7 +1432,96 @@ span.dot {
     border-top: none;
     border-bottom: none;
 }
-
+input.product_main_img {
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    opacity: 0;
+}
+a.disable {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+}
+.disable {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+}   
+.front-end-success {
+    background-color: #a0e27e;
+    padding: 18px;
+    margin-bottom: 12px;
+    position: absolute;
+}
+.front-end-error{
+    background-color: #ff7070f5;
+    padding: 18px;
+    margin-bottom: 12px;   
+    position: absolute;
+    top: 30px;
+}
+.front-end-error-otp{
+    background-color: #ff7070f5;
+    padding: 18px 0;
+    margin-bottom: 12px;
+    position: absolute;
+}
+.front-end-success p, .front-end-error p, .front-end-error-otp p{
+    font-size: 16px;
+    font-weight: 500;
+}
+.verification-section{
+    padding-top: 70px; 
+}
+.login-block {
+    padding-top: 122px;
+}
+.error-position-ab{
+    position: absolute;
+}
+a.update-text {
+    float: right;
+    font-weight: 600;
+    font-size: 12px;
+    cursor: pointer;
+}
+p.text-red {
+    font-size: 14px;
+    font-weight: 600;
+    color: #f36343;
+    font-style: italic;
+}
+p.text-green{ 
+    font-size: 14px;
+    font-weight: 600;
+    color: green;
+    font-style: italic;
+   
+}
+button.btn.btn-default.update-email-mobile {
+    background-color: #4abdde;
+    color: #fff;
+    border-radius: 20px;
+    padding: 6px 25px;
+}
+button.btn.btn-default.update-email-mobile:hover {
+    background-color: #0a6a86;
+    color: #fff;
+    border-radius: 20px;
+    padding: 6px 25px;
+    box-shadow: -1px 1px 9px rgba(0, 0, 0, 0.2);
+}
+.content-box.forgot-password-section {
+    width: 300;
+    padding: 15px 20px;
+}
+.forgot-section {
+    margin-top: 50px;
+}
+.forgot-password-section .form-group {
+    margin-top: 30px;
+}
 /*linking*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {

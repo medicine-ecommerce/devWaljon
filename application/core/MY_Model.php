@@ -55,8 +55,8 @@ class MY_Model extends CI_Model {
     public function updateData($table,$update_data,$where) {
         $this->db->where($where);
         $this->db->update($table,$update_data); 
-       /*echo $this->db->last_query();
-        print_r($this->db->error());*/
+       // echo $this->db->last_query();
+       //  print_r($this->db->error());
         return $this->db->affected_rows() ;       
 
     }

@@ -17,9 +17,10 @@
           </ul>
         </div>
       </div>
+     
       <div style="margin-bottom: 10px;" style="border-color: #c7d1da;">
         <button class="accordion" >Section 2</button>
-        <div class="panel scrollbar" id="style-default">
+        <div class="panel scrollbar" id="style-1">
           <div>
             <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
             <label class="siderbar-label">hello</label>

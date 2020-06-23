@@ -14,9 +14,26 @@ Class User extends MY_Controller {
         // $this->load->model('Admin_model');
         $this->load->helper(array('form', 'url'));
     }
+    // public function index()
+    // {
+    //     $this->load->view('user/layout/header'); 
+    //     $this->load->view('user/home');	
+    //     $this->load->view('user/layout/footer'); 
+    // }
     public function index()
     {
-        $this->load->view('user/home');	
+        $this->middle = 'index';
+        $this->User();
+    }
+    public function shop()
+    {
+        $this->middle = 'shop';
+        $this->User();
+    }
+    public function product()
+    {
+        $this->middle = 'product';
+        $this->User();
     }
     public function filter()
     {

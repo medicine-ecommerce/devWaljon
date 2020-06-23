@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-12 col-sm-12">
+        <div class="col-md-12 col-sm-12 home-module-pages">
           <?php if (!empty($this->session->flashdata('error'))) {
             echo '<div class="alert alert-danger">
                   '.$this->session->flashdata('error').'

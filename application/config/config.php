@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/devWaljon/';
+$config['base_url'] = 'http://localhost/devWaljon';
 
 /*
 |--------------------------------------------------------------------------
@@ -522,10 +522,7 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 $config['working_experience']= array(
-	array(
-        "key" => '0',
-        "value" => "Select Years",
-    ),
+	
     array(
         "key" => '1',
         "value" => "1 Year",
@@ -565,6 +562,110 @@ $config['working_experience']= array(
     array(
         "key" => '10',
         "value" => "10 Years",
+    ),
+    array(
+        "key" => '11',
+        "value" => "11 Years",
+    ),
+    array(
+        "key" => '12',
+        "value" => "12 Years",
+    ),
+    array(
+        "key" => '13',
+        "value" => "13 Years",
+    ),
+    array(
+        "key" => '14',
+        "value" => "14 Years",
+    ),
+    array(
+        "key" => '15',
+        "value" => "15 Years",
+    ),
+    array(
+        "key" => '15',
+        "value" => "15 Years",
+    ),
+    array(
+        "key" => '16',
+        "value" => "16 Years",
+    ),
+    array(
+        "key" => '17',
+        "value" => "17 Years",
+    ),
+    array(
+        "key" => '18',
+        "value" => "18 Years",
+    ),
+    array(
+        "key" => '19',
+        "value" => "19 Years",
+    ),
+    array(
+        "key" => '20',
+        "value" => "20 Years",
+    ),
+    array(
+        "key" => '21',
+        "value" => "21 Years",
+    ),
+    array(
+        "key" => '22',
+        "value" => "22 Years",
+    ),
+    array(
+        "key" => '23',
+        "value" => "23 Years",
+    ),
+    array(
+        "key" => '24',
+        "value" => "24 Years",
+    ),
+    array(
+        "key" => '25',
+        "value" => "25 Years",
+    ),
+    array(
+        "key" => '26',
+        "value" => "26 Years",
+    ),
+    array(
+        "key" => '27',
+        "value" => "27 Years",
+    ),
+    array(
+        "key" => '28',
+        "value" => "28 Years",
+    ),
+    array(
+        "key" => '29',
+        "value" => "29 Years",
+    ),
+    array(
+        "key" => '30',
+        "value" => "30 Years",
+    ),
+    array(
+        "key" => '31',
+        "value" => "31 Years",
+    ),
+    array(
+        "key" => '32',
+        "value" => "32 Years",
+    ),
+    array(
+        "key" => '33',
+        "value" => "33 Years",
+    ),
+    array(
+        "key" => '34',
+        "value" => "34 Years",
+    ),
+    array(
+        "key" => '35',
+        "value" => "35 Years",
     ),
 );
 $config['account_type']= array(

@@ -43,11 +43,11 @@
     transform: translateY(-50%);
     background: rgba(255, 255, 255, 0.38) !important;
 }
-span {
+/*span {
     font-size: 70px;    
     position: relative;
     top: -5px;
-}
+}*/
 .owl-nav button:focus {
     outline: none;
 }
@@ -285,10 +285,24 @@ span {
     overflow-y: scroll;
     margin-bottom: 25px;
 }
-
-.force-overflow
+#style-1::-webkit-scrollbar-track
 {
-  min-height: 450px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar
+{
+  width: 12px;
+  background-color: #c7d1da;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #c7d1da;
 }
 
 #wrapper

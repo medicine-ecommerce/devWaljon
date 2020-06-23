@@ -54,16 +54,36 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['vendor/category_add'] = 'admin/category_add';
-$route['vendor/category_list'] = 'admin/category_list';
 $route['vendor/manufacturer_add'] = 'admin/manufacturer_add';
-$route['vendor/manufacturer_list'] = 'admin/manufacturer_list';
-$route['vendor/product_form_list'] = 'admin/product_form_list';
+// $route['vendor/product_form_list'] = 'admin/product_form_list';
+$route['vendor/saltComposition_add'] = 'admin/saltComposition_add';
 $route['vendor/product_form_add'] = 'admin/product_form_add';
-$route['vendor/subcategory_list'] = 'admin/subcategory_list';
 $route['vendor/subcategory_add'] = 'admin/subcategory_add';
+$route['vendor/brand_list'] = 'admin/brand_list';
+$route['vendor/brand_add'] = 'admin/brand_add';
+$route['vendor/product_form_edit/(:any)'] = 'admin/product_form_edit/$1';
+$route['vendor/manufacturer_edit/(:any)'] = 'admin/manufacturer_edit/$1';
+$route['vendor/brand_edit/(:any)'] = 'admin/brand_edit/$1';
+$route['vendor/category_edit/(:any)'] = 'admin/category_edit/$1';
+$route['vendor/subcategory_edit/(:any)'] = 'admin/subcategory_edit/$1';
+
+$route['vendor/subcategory_list/(:any)'] = 'admin/subcategory_list/$1';
+$route['vendor/category_list/(:any)'] = 'admin/category_list/$1';
+$route['vendor/manufacturer_list/(:any)'] = 'admin/manufacturer_list/$1';
+$route['vendor/product_form_list/(:any)'] = 'admin/product_form_list/$1';
+$route['vendor/brand_list/(:any)'] = 'admin/brand_list/$1';
+$route['vendor/saltComposition_list/(:any)'] = 'admin/saltComposition_list/$1';
+$route['vendor/saltComposition_edit/(:any)'] = 'admin/saltComposition_edit/$1';
+
+
+
+
+
 
 $route['admin/all_product'] = 'vendor/all_product';
 $route['admin/addSingleProduct'] = 'vendor/addSingleProduct';
 $route['admin/editPersonalDetails/(:any)'] = 'vendor/editPersonalDetails/$1';
 $route['admin/vendor_bulk_upload'] = 'vendor/vendor_bulk_upload';
+$route['admin/product'] = 'vendor/inventory';
+
 

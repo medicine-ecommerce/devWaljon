@@ -31,7 +31,7 @@
                     <div class="invertory-content text-center">
                       <p>In this process you have to add product one by one. If you want to continue with this process please click on <strong>continue</strong></p>
                     </div>
-                    <button type="button" class="btn active-btn btn-round single-upload-btn">Continue</button> 
+                    <a href="<?php echo base_url($this->session->userdata('user_type').'/addSingleProduct'); ?>" class="btn active-btn btn-round single-upload-btn">Continue</a> 
                   </div>
                 </div>
                 <div class="col-md-6 col-sm-6 col-xs-6">
@@ -47,8 +47,9 @@
                     <div class="invertory-content text-center">
                       <p>In this process you can add multiple products at once. You can check the sample file by clicking view sample. Click on continue if you are ready to go with this process.</p> 
                     </div>
-                    <button type="button" class="btn active-btn btn-round">Preview</button>
-                    <button type="button" class="btn active-btn btn-round Bulk-upload-btn"><i class="fa fa-file-excel-o"></i> Upload</button>
+                     <a href="<?php echo base_url($this->session->userdata('user_type').'/vendor_bulk_upload'); ?>" class="btn active-btn btn-round">Continue</a> 
+                    <!-- <button type="button" class="btn active-btn btn-round">Preview</button>
+                    <button type="button" class="btn active-btn btn-round Bulk-upload-btn"><i class="fa fa-file-excel-o"></i> Upload</button> -->
                   </div>   
                 </div>   
               </div>
