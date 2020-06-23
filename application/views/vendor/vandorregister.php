@@ -10,6 +10,7 @@
     </div>
     <div class="col-md-4">      
       <form id="registratio_form" method="post">
+        <input type="hidden" name="type" value="vendor">
         <div class="form-content">           
         </div>
         <div class="content-box front-end-error">   
