@@ -13,7 +13,7 @@
 	<div class="green-section alert-section  <?= ($status->is_active)==0 ? "show-section":"hide-section" ?> " >
 	  <a class="alert-box alert-yellow-box profileverify-alert">
 	    <span class="alert-icon"><i class="fa fa-exclamation-triangle"></i></span>
-	    <span class="alert-content"><p> Your profile is under review, Our team will get back to you within 72 hours.</p></span>
+	    <span class="alert-content"><p>  the profile is not verified yet. Please verify and activate</p></span>
 	  </a>  
 	</div>
 

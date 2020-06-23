@@ -40,5 +40,14 @@ Class User extends MY_Controller {
         $this->middle = 'product';
         $this->User();
     }
-    
+    public function filter()
+    {
+        $this->middle = 'filter';
+        $this->User();
+        // $this->load->view('user/filter'); 
+    }
+    public function filter1()
+    {
+        $this->load->view('user/filter'); 
+    }
 }

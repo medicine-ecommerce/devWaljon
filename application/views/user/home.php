@@ -16,6 +16,26 @@
         <img src="<?php echo base_url('assets/icon/heartrate_for_left.png');  ?>"> Features Brands <img src="<?php echo base_url('assets/icon/heartrate_for_right.png');  ?>">
       </h3>
     </div>
+
+    <img src="<?php echo base_url('assets/slider-image/offers_jpg2.jpg');  ?>">
+    
+  </div>
+  <div class="product-heading" style="background: linear-gradient(45deg,#f1d02b,#eeefdb)!important;">
+    <h4 class="product-heading-h4">New Arrivals</h4>
+  </div>
+  <div class="product-slider">
+    <div class="owl-slider product-slider" >
+      <div id="carousel4" class="owl-carousel product-slider" style="">
+        <div class="item box">
+          <img class="owl-lazy" style="padding: 15px;" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+          <div class="product-text">
+            <p class="product-name">Product Name </p>
+            <p class="product-details">Product Name</p>
+            <p class="product-off">20% off</p>
+            <p class="product-price">₹200</p>
+            <!-- <button onclick="myFunction()" class="product-add">Click me</button>
+            <p class="product-add"  id="demo"></p> -->
+=======
     <div class="brand-slider">
       <div class="owl-slider remove-dots">
         <div id="carousel2" class="owl-carousel remove-dots">
@@ -48,10 +68,50 @@
           </div>
           <div class="item">
             <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
+
           </div>
         </div>
       </div>
     </div>
+
+  </div>
+  <div class="product-heading">
+    <h4 class="product-heading-h4">Winter</h4>
+  </div>
+  <div class="product-slider">
+    <div class="owl-slider product-slider" >
+    <div id="carousel5" class="owl-carousel product-slider" >
+      <div class="item box">
+          <img class="owl-lazy" style="padding: 15px;" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+          <div class="product-text">
+            <p class="product-name">Product Name </p>
+            <p class="product-details">Product Name</p>
+            <p class="product-off">20% off</p>
+            <p class="product-price">₹200</p>
+            <!-- <button onclick="myFunction()" class="product-add">Click me</button>
+            <p class="product-add"  id="demo"></p> -->
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="product-heading">
+    <h4 class="product-heading-h4">Health</h4>
+  </div>
+  <div class="product-slider">
+    <div class="owl-slider product-slider" >
+    <div id="carousel6" class="owl-carousel product-slider" >
+      <div class="item box">
+          <img class="owl-lazy" style="padding: 15px;" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+          <div class="product-text">
+            <p class="product-name">Product Name </p>
+            <p class="product-details">Product Name</p>
+            <p class="product-off">20% off</p>
+            <p class="product-price">₹200</p>
+            <!-- <button onclick="myFunction()" class="product-add">Click me</button>
+            <p class="product-add"  id="demo"></p> -->
+          </div>
+        </div>
+=======
     <div class="icon-slider">
       <h4 style="text-align: center;padding-top: 50px;color: white;"><img src="<?php echo base_url('assets/icon/heartrate_for_left_white.png');  ?>">  Shop By Health Concens  <img src="<?php echo base_url('assets/icon/heartrate_for_right_white.png');  ?>">
       </h4>
@@ -156,6 +216,7 @@
     </div>  
     <div class="product-heading">
       <h4 class="product-heading-h4">Health</h4>
+
     </div>
     <div class="product-slider">
       <div class="owl-slider product-slider" >
@@ -194,6 +255,27 @@
       </div>
     </div>  
   </div>
+
+</div>
+<script>
+  
+  jQuery("#carousel").owlCarousel(
+  {
+    autoplay: true,
+    lazyLoad: true,
+    loop: true,
+    margin: 20,
+               responsiveClass: true,
+    autoHeight: true,
+    autoplayTimeout: 3000,
+    smartSpeed: 800,
+    nav: true,
+    responsive: {
+      0: {
+        items: 1
+      },
+=======
+
 
   <script>
     jQuery("#carousel").owlCarousel(
@@ -355,6 +437,38 @@
           items: 5
         },
 
+
+      
+    }
+  });
+  var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
+  var x = setInterval(function() 
+  {
+
+    // Get today's date and time
+    var now = new Date().getTime();
+      
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+      
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML =  hours + ":"
+    + minutes + ":" + seconds + "";
+      
+    // If the count down is over, write some text 
+    if (distance < 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+    }
+  }, 1000);
+</script>
+=======
         
       }
     });
@@ -389,3 +503,4 @@
     }, 1000);
 
   </script>
+

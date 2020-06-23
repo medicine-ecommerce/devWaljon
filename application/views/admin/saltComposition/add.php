@@ -6,7 +6,7 @@
           <h3>Invertory > Salt Composition</h3>
         </div>
 
-        <div class="title_right">
+        <!-- <div class="title_right">
           <div class="col-md-5 col-sm-5 form-group pull-right top_search">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search for...">
@@ -15,7 +15,7 @@
               </span>
             </div>
           </div>
-        </div>
+        </div> -->
       </div>
       <div class="row">
         <div class="col-md-12 col-sm-12">
@@ -42,7 +42,7 @@
                   </div>
                 </div>
 
-                <div class="field item form-group">
+                <!-- <div class="field item form-group">
                   <label class="col-form-label col-md-3 col-sm-3  label-align">Image</label>
                   <div class="col-md-6 col-sm-6">
                     <div class="profile-image-section">               
@@ -53,7 +53,7 @@
                       <input type="hidden" name="edit_saltComposition_img" value="<?php echo (!empty($saltComposition)) ? $saltComposition->image: ''?>">
                     </div>
                   </div>
-                </div> 
+                </div> --> 
 
                 <div class="ln_solid">
                   <div class="form-group">

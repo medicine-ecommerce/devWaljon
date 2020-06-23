@@ -1,10 +1,4 @@
-<?php 
-if(!empty($all_products)){
-  $all_products = $all_products;
-}else{
-  $all_products = [];
-}
-?>
+
   <!-- page content -->
   <div class="right_col" role="main">
     <div class="">
@@ -38,13 +32,14 @@ if(!empty($all_products)){
                       <th>Sell Price</th>
                       <th>Form</th>
                       <th>Quantity</th>
-                      <!-- <th>Unit Available</th> -->
                       <th>Added On</th>
+                      <th>Status</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
                     <?php $i = 1;
+                    if (!empty($all_products)) {
                     foreach($all_products as $value) { ?>
                     <tr>
                       <td><?php echo $i++; ?></td>
@@ -57,8 +52,14 @@ if(!empty($all_products)){
                       <!-- <td></td> -->
                       <td><?php echo $value->product_form; ?></td>
                       <td><?php echo $value->quantity; ?> (<?php echo $value->unit; ?>)</td>
-                      <!-- <td></td> -->
                       <td><?php echo $value->created_at;?></td>
+                      <td>
+                         <?php if ($value->status=='0') {
+                            echo '<span class="rejected">Deactive</span>';
+                          } else {
+                            echo '<span class="approved">Active</span>';
+                          } ?>
+                      </td>
                       <td>
                         <!-- <span class="status-approve"> 
                           <a data-toggle="tooltip" data-placement="top" data-original-title="Refill"><i class="fa fa-check"></i></a>
@@ -66,9 +67,20 @@ if(!empty($all_products)){
                         <span class="status-cancle">
                           <a href="<?php echo base_url('vendor/product_delete/'.$value->id); ?>" onclick="return confirm('Are you sure？')" data-toggle="tooltip" data-placement="top" data-original-title="Remove"><i class="fa fa-trash"></i></a>
                         </span>
+                        <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
+                          <?php if ($value->status=='0') { ?>
+                            <a class="dropdown-item" href="<?php echo base_url('vendor/product_status/1/'.$value->id);?>">Activate</a>
+                          <?php }
+                          else { ?>
+                            <a class="dropdown-item" href="<?php echo base_url('vendor/product_status/0/'.$value->id);?>">Deactivate</a>
+                          <?php } ?>
+                        </div>
+
                       </td>  
                     </tr>
-                    <?php } ?>
+                    <?php }
+                    } ?>
                   </tbody>
                 </table>
               </div>
