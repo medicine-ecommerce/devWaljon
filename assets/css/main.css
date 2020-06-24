@@ -77,9 +77,9 @@
 .remove-dots .owl-stage-outer.owl-height {
     height: 100px!important;
 }
-.icon-slider{
+/*.icon-slider{
   background: linear-gradient(80deg,#4abdde,#2b89e1);
-}
+}*/
 .icon-slider .owl-slider{
  
   padding-left: 100px;
