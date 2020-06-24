@@ -224,14 +224,14 @@
 .pagination {
   display: inline-block;
       position: absolute;
-    right: 30px;
-    top: 0px;
+    right: 20px;
+    top: -25px;
 }
 .pagination-filter {
   display: inline-block;
       position: absolute;
     right: 230px;
-    top: 0px;
+    top: -25px;
 }
 
 .pagination a {
@@ -267,7 +267,7 @@
 {
     float: left;
     height: 250;
-    width: 189px;
+    width: 160px;
     background: #fff;
     overflow-y: scroll;
     margin-bottom: 25px;
@@ -329,7 +329,6 @@
     font-size: 25px;
     color: #5d7184;
 }
-
 
 
 }

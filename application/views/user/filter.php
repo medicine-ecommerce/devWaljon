@@ -7,7 +7,7 @@
     <div class="col-md-2">
       <div style="margin-bottom: 10px;border-color: #c7d1da;">
         <button class="accordion ">Health Conditions<i class="fas fa-chevron-down"></i></button>
-        <div class="panel scrollbar" id="style-default">
+        <div class="panel scrollbar" id="style-1">
           <ul>
             <li><a href="">Eye Care</a> </li>
             <li><a href="">Liver Care</a> </li>
@@ -59,7 +59,7 @@
       </div>
       <div style="margin-bottom: 10px;">
         <button class="accordion">Section 3</button>
-        <div class="panel scrollbar" id="style-default">
+        <div class="panel scrollbar" id="style-1">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
       </div>
