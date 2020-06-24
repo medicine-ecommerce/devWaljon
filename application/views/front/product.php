@@ -6,22 +6,29 @@
 		    <h3><a>home</a> > <a href="">Health Products</a> > <a href="">Zerodol-P Tablet</a></h3> 
 		  </div>
 			<div class="row">
-				<!-- <?php echo base_url(); ?>assets/front/images -->
-				<!-- <div class="col-lg-2 order-lg-1 order-2">
-					<ul class="image_list">
-						<li data-image="<?php echo base_url(); ?>assets/front/images/single_4.jpg"><img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt=""></li>
-						<li data-image="<?php echo base_url(); ?>assets/front/images/single_2.jpg"><img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt=""></li>
-						<li data-image="<?php echo base_url(); ?>assets/front/images/single_3.jpg"><img src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt=""></li>
-					</ul>
-				</div> -->
-
 				<!-- Selected Image -->
-				<div class="col-lg-4 order-lg-2 order-1">
-					<div class="image_selected"><img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt=""></div>
+				<div class="col-lg-5 order-lg-2 order-1">
+					<div class="image_selected">
+						<img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+					</div>
+					<div class="related-img">
+						<div class="related-img-section">
+							<img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+						</div>
+						<div class="related-img-section">
+							<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
+						</div>	
+						<div class="related-img-section">
+							<img src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="">
+						</div>	
+						<div class="related-img-section">
+							<img src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="">
+						</div>		
+					</div>
 				</div>
 
 				<!-- Description -->
-				<div class="col-lg-8 order-3">
+				<div class="col-lg-7 order-3">
 					<div class="product_description">
 						<div class="product_category">Laptops</div>
 						<div class="product_name">MacBook Air 13</div>
@@ -71,6 +78,67 @@
 
 			</div>
 		</div>
+	</div>
+
+	<div class="info-tabs">
+		<div class="container">
+			<div class="row">
+				<div class="tab-heading">
+					<ul class="nav nav-tabs product_tab" id="myTab" role="tablist">
+			      <li class="product_li">
+			        <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="benefits-tab" data-toggle="tab" href="#benefits" role="tab" aria-controls="benefits" aria-selected="false">Benefits</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="uses-tab" data-toggle="tab" href="#uses" role="tab" aria-controls="uses" aria-selected="true">Uses</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="side-eff-tab" data-toggle="tab" href="#side-eff" role="tab" aria-controls="side-eff" aria-selected="false">Side Effects</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="how-use-tab" data-toggle="tab" href="#how-use" role="tab" aria-controls="how-use" aria-selected="true">How to use</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="how-work-tab" data-toggle="tab" href="#how-work" role="tab" aria-controls="how-work" aria-selected="false">How It Works</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="strong-info-tab" data-toggle="tab" href="#strong-info" role="tab" aria-controls="strong-info" aria-selected="true">Strong Information</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="safety-info-tab" data-toggle="tab" href="#safety-info" role="tab" aria-controls="safety-info" aria-selected="false">Safety Information</a>
+			      </li>
+			    </ul>	
+				</div>
+				<div class="tab-content" id="myTabContent">
+		      <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+		        about
+		      </div>
+		      <div class="tab-pane fade" id="benefits" role="tabpanel" aria-labelledby="benefits-tab">
+		        benefits
+		      </div>
+		      <div class="tab-pane fade" id="uses" role="tabpanel" aria-labelledby="uses-tab">
+		        uses
+		      </div>
+		      <div class="tab-pane fade" id="side-eff" role="tabpanel" aria-labelledby="side-eff-tab">
+		        side-eff
+		      </div>
+		      <div class="tab-pane fade" id="how-use" role="tabpanel" aria-labelledby="how-use-tab">
+		        how-use
+		      </div>
+		      <div class="tab-pane fade" id="how-work" role="tabpanel" aria-labelledby="how-work-tab">
+		        how-work
+		      </div>
+		      <div class="tab-pane fade" id="strong-info" role="tabpanel" aria-labelledby="strong-info-tab">
+		        strong-info
+		      </div>
+		      <div class="tab-pane fade" id="safety-info" role="tabpanel" aria-labelledby="safety-info-tab">
+		        safety-info
+		      </div>
+		    </div>
+		  </div>
+		</div>    
 	</div>
 
 	<!-- Recently Viewed -->
@@ -217,134 +285,6 @@
 						<div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
 						<div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Newsletter -->
-
-	<div class="newsletter">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
-						<div class="newsletter_title_container">
-							<div class="newsletter_icon"><img src="<?php echo base_url(); ?>assets/front/images/send.png" alt=""></div>
-							<div class="newsletter_title">Sign up for Newsletter</div>
-							<div class="newsletter_text"><p>...and receive %20 coupon for first shopping.</p></div>
-						</div>
-						<div class="newsletter_content clearfix">
-							<form action="#" class="newsletter_form">
-								<input type="email" class="newsletter_input" required="required" placeholder="Enter your email address">
-								<button class="newsletter_button">Subscribe</button>
-							</form>
-							<div class="newsletter_unsubscribe_link"><a href="#">unsubscribe</a></div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Footer -->
-
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-lg-3 footer_col">
-					<div class="footer_column footer_contact">
-						<div class="logo_container">
-							<div class="logo"><a href="#">OneTech</a></div>
-						</div>
-						<div class="footer_title">Got Question? Call Us 24/7</div>
-						<div class="footer_phone">+38 068 005 3570</div>
-						<div class="footer_contact_text">
-							<p>17 Princess Road, London</p>
-							<p>Grester London NW18JR, UK</p>
-						</div>
-						<div class="footer_social">
-							<ul>
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-youtube"></i></a></li>
-								<li><a href="#"><i class="fab fa-google"></i></a></li>
-								<li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-2 offset-lg-2">
-					<div class="footer_column">
-						<div class="footer_title">Find it Fast</div>
-						<ul class="footer_list">
-							<li><a href="#">Computers & Laptops</a></li>
-							<li><a href="#">Cameras & Photos</a></li>
-							<li><a href="#">Hardware</a></li>
-							<li><a href="#">Smartphones & Tablets</a></li>
-							<li><a href="#">TV & Audio</a></li>
-						</ul>
-						<div class="footer_subtitle">Gadgets</div>
-						<ul class="footer_list">
-							<li><a href="#">Car Electronics</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-lg-2">
-					<div class="footer_column">
-						<ul class="footer_list footer_list_2">
-							<li><a href="#">Video Games & Consoles</a></li>
-							<li><a href="#">Accessories</a></li>
-							<li><a href="#">Cameras & Photos</a></li>
-							<li><a href="#">Hardware</a></li>
-							<li><a href="#">Computers & Laptops</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-lg-2">
-					<div class="footer_column">
-						<div class="footer_title">Customer Care</div>
-						<ul class="footer_list">
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Order Tracking</a></li>
-							<li><a href="#">Wish List</a></li>
-							<li><a href="#">Customer Services</a></li>
-							<li><a href="#">Returns / Exchange</a></li>
-							<li><a href="#">FAQs</a></li>
-							<li><a href="#">Product Support</a></li>
-						</ul>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</footer>
-
-	<!-- Copyright -->
-
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					
-					<div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
-						<div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</div>
-						<div class="logos ml-sm-auto">
-							<ul class="logos_list">
-								<li><a href="#"><img src="<?php echo base_url(); ?>assets/front/images/logos_1.png" alt=""></a></li>
-								<li><a href="#"><img src="<?php echo base_url(); ?>assets/front/images/logos_2.png" alt=""></a></li>
-								<li><a href="#"><img src="<?php echo base_url(); ?>assets/front/images/logos_3.png" alt=""></a></li>
-								<li><a href="#"><img src="<?php echo base_url(); ?>assets/front/images/logos_4.png" alt=""></a></li>
-							</ul>
-						</div>
 					</div>
 				</div>
 			</div>

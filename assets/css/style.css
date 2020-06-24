@@ -569,4 +569,35 @@ a.google-plus {
 /*category page css*/
 .image_selected {
   border: 1px solid #c7d1da;
+  padding: 15px;
+  border-radius: 10px;
+}
+.image_selected img{
+  width: 100%;
+  height: 250px;
+}
+.product_description {
+  border: 1px solid #c7d1da;
+  padding: 15px;
+  border-radius: 10px; 
+}
+.related-img-section {
+    display: inline-block;
+    width: 99px;
+    height: 100px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    border: 1px solid #c7d1da;
+}
+.related-img-section img{
+    width: 100%;
+    height: 100%;
+}
+.toolbox-left {
+    margin-bottom: 25px;
+}
+.related-img {
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
