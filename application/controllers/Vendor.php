@@ -215,14 +215,14 @@ Class Vendor extends MY_Controller {
                     $data = array('mobile'=> trim($this->input->post('email')),
                                   'password'=>md5($this->input->post('password')),
                                   'is_active'=>'0',
-                                  'type'=>'vendor',
+                                  'type'=>$this->input->post('type'),
                                   'created_by'=>'sign_up');  
                     $registrationBy = 'mobile';
                 }else{
                     $data = array('email'=>$this->input->post('email'),
                                   'password'=>md5($this->input->post('password')),
                                   'is_active'=>'0',
-                                  'type'=>'vendor',
+                                  'type'=>$this->input->post('type'),
                                   'created_by'=>'sign_up');  
                     $registrationBy = 'email';
                 }
@@ -252,13 +252,13 @@ Class Vendor extends MY_Controller {
                     if(ctype_digit($this->input->post('email'))){
                         $data = array('mobile'=>trim($this->input->post('email')),
                                       'user_id'=>$last_id,
-                                      'user_type'=>'vendor'
+                                      'user_type'=>$this->input->post('type')
                                   );
                     }else{
 
                         $data = array('email'=>$this->input->post('email'),
                                       'user_id'=>$last_id,
-                                      'user_type'=>'vendor'
+                                      'user_type'=>$this->input->post('type')
                                   );
                     }
                     $this->session->set_userdata($data);
@@ -307,7 +307,8 @@ Class Vendor extends MY_Controller {
                 // echo $this->input->post('email');
                 // die();
                 $data = array('email'=> $this->input->post('email'),
-                            'password' =>md5($this->input->post('password'))
+                            'password' =>md5($this->input->post('password')),
+                            'type' => $this->input->post('type')
                             );
                 $result = $this->Vendor->login($data);
                
@@ -325,7 +326,10 @@ Class Vendor extends MY_Controller {
 
                     $this->session->set_userdata($data);
                     // redirect(base_url('admin/dashboard'));
-                    if(!empty($result->email) && !empty($result->full_name) && !empty($result->mobile) && !empty($result->address) && $result->is_active > 0 ){
+                    if ($result->type=='user') {
+                        redirect('user/index');
+                    }
+                    elseif(!empty($result->email) && !empty($result->full_name) && !empty($result->mobile) && !empty($result->address) && $result->is_active > 0 ){
                         redirect('/vendor/vendor_dashboard/', 'refresh');
                     }else if(!empty($result->mobile) && !empty($result->email) && !empty($result->full_name) && $result->is_active == 0 ){
                         redirect('/vendor/profile_waiting_approval', 'refresh');

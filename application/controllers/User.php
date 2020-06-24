@@ -40,6 +40,15 @@ Class User extends MY_Controller {
         $this->middle = 'product';
         $this->User();
     }
+    public function signup()
+    {
+        $this->load->view('front/signup');
+    }
+    public function login()
+    {
+        $this->load->helper('cookie');
+        $this->load->view('front/login');
+    }
     public function filter()
     {
         $this->middle = 'filter';
