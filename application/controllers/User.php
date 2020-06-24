@@ -25,6 +25,11 @@ Class User extends MY_Controller {
         $this->middle = 'index';
         $this->User();
     }
+    public function index1()
+    {
+        $this->middle = 'index1';
+        $this->User();
+    }
     public function shop()
     {
         $this->middle = 'shop';
@@ -34,6 +39,15 @@ Class User extends MY_Controller {
     {
         $this->middle = 'product';
         $this->User();
+    }
+    public function signup()
+    {
+        $this->load->view('front/signup');
+    }
+    public function login()
+    {
+        $this->load->helper('cookie');
+        $this->load->view('front/login');
     }
     public function filter()
     {

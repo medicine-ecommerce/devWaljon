@@ -33,6 +33,7 @@
             <label for="vehicle1"> Remember Password</label>
           </div>
           <br>
+          <input type="hidden" name="type" id="user_type" value="vendor">
           <div class="button-division text-center">          
             <button type="button" onclick="submitFunction()" class="btn btn-primary registration-button">Login</button>
           </div>
