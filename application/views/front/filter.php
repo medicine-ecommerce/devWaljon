@@ -3,7 +3,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-2">
-        <div style="margin-bottom: 10px;border-color: #c7d1da;">
+       <!--  <div style="margin-bottom: 10px;border-color: #c7d1da;">
           <button class="accordion ">Health Conditions<i class="fas fa-chevron-down"></i></button>
           <div class="panel scrollbar" id="style-default">
             <ul>
@@ -14,11 +14,14 @@
               <li><a href="">Cardiac Care</a> </li>
             </ul>
           </div>
-        </div>
+        </div> -->
        
         <div style="margin-bottom: 10px;" style="border-color: #c7d1da;">
-          <button class="accordion" >Section 2</button>
+          <button class="accordion" >Brands</button>
           <div class="panel scrollbar" id="style-1">
+            <div>
+              <input type="text" class="form-control" placeholder="Search Brands" style="width: 10%!important;" name=""><span></span>
+            </div>
             <div>
               <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
               <label class="siderbar-label">hello</label>
@@ -55,12 +58,27 @@
             
           </div>
         </div>
-        <div style="margin-bottom: 10px;">
+
+        <div style="margin-bottom: 10px;" style="border-color: #c7d1da;">
+          <button class="accordion" >Discount</button>
+          <div class="panel scrollbar" id="style-1">
+            <div>
+              <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
+              <label class="siderbar-label">hello</label>
+            </div>
+            <div>
+              <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
+              <label class="siderbar-label">hello</label>
+            </div>
+            
+          </div>
+        </div>
+       <!--  <div style="margin-bottom: 10px;">
           <button class="accordion">Section 3</button>
           <div class="panel scrollbar" id="style-default">
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
-        </div>
+        </div> -->
         
       </div>
       <div class="col-md-10">

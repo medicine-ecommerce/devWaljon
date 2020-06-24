@@ -1,27 +1,27 @@
-
 <div class="super_container">
-
-
 	<!-- Single Product -->
 	<div class="single_product">
 		<div class="container">
+			<div class="toolbox-left">
+		    <h3><a>home</a> > <a href="">Health Products</a> > <a href="">Zerodol-P Tablet</a></h3> 
+		  </div>
 			<div class="row">
 				<!-- <?php echo base_url(); ?>assets/front/images -->
-				<div class="col-lg-2 order-lg-1 order-2">
+				<!-- <div class="col-lg-2 order-lg-1 order-2">
 					<ul class="image_list">
 						<li data-image="<?php echo base_url(); ?>assets/front/images/single_4.jpg"><img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt=""></li>
 						<li data-image="<?php echo base_url(); ?>assets/front/images/single_2.jpg"><img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt=""></li>
 						<li data-image="<?php echo base_url(); ?>assets/front/images/single_3.jpg"><img src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt=""></li>
 					</ul>
-				</div>
+				</div> -->
 
 				<!-- Selected Image -->
-				<div class="col-lg-5 order-lg-2 order-1">
+				<div class="col-lg-4 order-lg-2 order-1">
 					<div class="image_selected"><img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt=""></div>
 				</div>
 
 				<!-- Description -->
-				<div class="col-lg-5 order-3">
+				<div class="col-lg-8 order-3">
 					<div class="product_description">
 						<div class="product_category">Laptops</div>
 						<div class="product_name">MacBook Air 13</div>
