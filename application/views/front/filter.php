@@ -19,39 +19,18 @@
         <div style="margin-bottom: 10px;" style="border-color: #c7d1da;">
           <button class="accordion" >Section 2</button>
           <div class="panel scrollbar" id="style-1">
-            <div>
-              <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
-              <label class="siderbar-label">hello</label>
-            </div>
-            <div>
-              <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
-              <label class="siderbar-label">hello</label>
-            </div>
-            <div>
-              <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
-              <label class="siderbar-label">hello</label>
-            </div>
-            <div>
-              <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
-              <label class="siderbar-label">hello</label>
-            </div>
-            <div>
-              <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
-              <label class="siderbar-label">hello</label>
-            </div>
-
-            <div>
-              <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
-              <label class="siderbar-label">hello</label>
-            </div>
-            <div>
-              <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
-              <label class="siderbar-label">hello</label>
-            </div>
-            <div>
-              <input type="checkbox" class="form-control" style="width: 10%!important;" name=""><span></span>
-              <label class="siderbar-label">hello</label>
-            </div>
+            <form class="custom-input">
+    
+              <label class="custom-input__checkbox">
+                  <input type="checkbox" class="custom-input__checkbox">
+                  <span>Label </span>
+              </label>
+              <label class="custom-input__checkbox">
+                  <input type="checkbox" class="custom-input__checkbox">
+                  <span>Label </span>
+              </label>
+              
+          </form>
             
           </div>
         </div>
@@ -69,10 +48,10 @@
             <h3><a>home</a> > <a href="">bac</a></h3> 
           </div>
           <div class="pagination" style="left: 250px;">
-            <a href="#" class="pagination-radius-left">Newest</a>
+            <a href="#" class="pagination-radius-left" style="background: #4abdde;">Newest</a>
             <a href="#">Popular</a>
             <a href="#">Low Price</a>
-            <a href="#" style="border-top-right-radius: 150px;border-bottom-right-radius: 150px;">High Price</a>
+            <a href="#" style="background: #4abdde;border-top-right-radius: 150px;border-bottom-right-radius: 150px;">High Price</a>
           </div>
           <div class="pagination">
             <a href="#" class="pagination-radius-left">&laquo;</a>
