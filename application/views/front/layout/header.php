@@ -103,7 +103,7 @@
 					<div class="col-lg-4 col-12 order-lg-2 order-3 text-lg-left text-right">
 						<div class="header_search">
 							<div class="header_search_content">
-								<div class="header_search_form_container pull-right">
+								<div class="header_search_form_container">
 									<a href="#" class="upload-pres">Upload Prescription</a>
 								</div>
 							</div>
