@@ -55,7 +55,9 @@ Class User extends MY_Controller {
     }
     public function product_category()
     {
-
+        $this->data['sub_category'] = $this->User->getData('subcategory','id,category_id,subcategory,status',array('status'=>'active'));
+        $this->data['brand'] = $this->User->getData('brand','id,brand_name,status',array('status'=>'active'));
+        $this->data['product_form'] = $this->User->getData('product_form','id,name,status',array('status'=>'active'));
         $this->middle = 'filter';
         $this->User();        
     }
