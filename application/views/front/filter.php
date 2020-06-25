@@ -19,7 +19,6 @@
         <div style="margin-bottom: 10px;" style="border-color: #c7d1da;">
           <button class="accordion" >Brands</button>
           <div class="panel scrollbar" id="style-1">
-
             <div>
               <input type="text" class="form-control" placeholder="Search Brands" style="width: 10%!important;" name=""><span></span>
             </div>

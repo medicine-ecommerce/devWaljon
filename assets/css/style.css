@@ -601,3 +601,71 @@ a.google-plus {
     margin-top: 10px;
     margin-bottom: 50px;
 }
+ul.product_tab {
+    font-size: 16px;
+    font-weight: 600;
+}
+.tab-heading {
+    width: 100%;
+}
+div#myTabContent {
+    border-left: 1px solid #2b89e1;
+    border-right: 1px solid #2b89e1;
+    border-bottom: 1px solid #2b89e1;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+    padding: 15px;
+    border-radius: 10px;
+}
+span.product-sub-heading {
+    background: #4abdde;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    padding: 5px 20px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+.info-tabs {
+  margin-bottom: 50px;
+}
+.feedback {
+  margin-bottom: 50px;
+}
+.alternate-brnd{
+  margin-bottom: 50px;
+}
+.customer-feedback-sec {
+    border: 1px solid #c7d1da;
+    border-radius: 10px;
+}
+.customer-feedback-sec h5 {
+    margin: 10px;
+    color: #2b89e1;
+    font-size: 16px;
+}
+.customer-feedback-block {
+    border-bottom: 1px solid #c7d1da;
+    padding: 15px;
+}
+.profile-text {
+    display: inline-block;
+    background: #e0e9f1;
+    padding: 10px;
+    border-radius: 50%;
+    width: 45px;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 45px;
+}
+.profile-details {
+    display: inline-block;
+    margin-left: 10px;
+}
+.profile-details span {
+    display: inline-block;
+}
+.profile-details p {
+    display: inline-block;
+}
