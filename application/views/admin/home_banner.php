@@ -62,6 +62,7 @@
     </div>
   </div>
   <!-- /page content -->
+  <script src="<?php echo base_url(); ?>/vendors/dropzone/dist/min/dropzone.min.js"></script>
   <script type="text/javascript">
     function removeImage(id) {
       $.ajax({
