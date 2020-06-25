@@ -5,7 +5,8 @@
 <div class="container">
   <div class="row" style="margin-right: -100;margin-left: -100px;background-color: #ebf6f9;">
     <div class="col-md-2">
-      <div style="margin-bottom: 10px;border-color: #c7d1da;">
+      <?php //$this->load->view('front/sidebar_filter');?>
+      <!-- <div style="margin-bottom: 10px;border-color: #c7d1da;">
         <button class="accordion ">Health Conditions<i class="fas fa-chevron-down"></i></button>
         <div class="panel scrollbar" id="style-1">
           <ul>
@@ -62,7 +63,7 @@
         <div class="panel scrollbar" id="style-1">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
-      </div>
+      </div> -->
       
     </div>
     <div class="col-md-10">
