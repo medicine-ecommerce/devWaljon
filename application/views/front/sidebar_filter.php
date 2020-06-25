@@ -9,24 +9,11 @@
       </div>
       <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <div class="panel-body category-filter">
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
-          <a href=""><p>category one</p></a> 
+          <?php
+          if(!empty($sub_category)) {
+            foreach ($sub_category as $key => $value) { ?>
+              <a href=""><p><?= $value->subcategory; ?> </p></a>              
+          <?php } } ?>  
         </div>
       </div>
     </div>
@@ -44,20 +31,15 @@
             <input placeholder="Search..." type="text" value="" />
             <div class="underline"></div>   
             <i class="fa fa-search custom-search" aria-hidden="true"></i>
-          </div>
-
-          <div class="form-group">
-            <input type="checkbox" class="search_paramiter_checkbox" >
-            <label for="item" class="flt-checkbox-label">Item</label>
-          </div>
-          <div class="form-group">
-            <input type="checkbox" class="search_paramiter_checkbox" >
-            <label for="item" class="flt-checkbox-label">Item</label>
-          </div>
-          <div class="form-group">
-            <input type="checkbox" class="search_paramiter_checkbox" >
-            <label for="item" class="flt-checkbox-label">Item</label>
-          </div>
+          </div>  
+          <?php
+          if(!empty($brand)) {
+            foreach ($brand as $key => $value) { ?>
+              <div class="form-group">
+                <input type="checkbox" id="brand<?= $value->id ?>" value="<?= $value->id ?>" name="brand_name[]" class="search_paramiter_checkbox" >
+                <label for="brand<?= $value->id ?>" class="flt-checkbox-label"><?= $value->brand_name; ?> </label>
+              </div>              
+          <?php } } ?>  
         </div>
       </div>
     </div>
@@ -104,19 +86,14 @@
             <div class="underline"></div>   
             <i class="fa fa-search custom-search" aria-hidden="true"></i>
           </div>
-
-           <div class="form-group">
-              <input type="checkbox" class="search_paramiter_checkbox" >
-              <label for="item" class="flt-checkbox-label">Item</label>
-            </div>
-            <div class="form-group">
-              <input type="checkbox" class="search_paramiter_checkbox" >
-              <label for="item" class="flt-checkbox-label">Item</label>
-            </div>
-            <div class="form-group">
-              <input type="checkbox" class="search_paramiter_checkbox" >
-              <label for="item" class="flt-checkbox-label">Item</label>
-            </div>
+          <?php
+          if(!empty($product_form)) {
+            foreach ($product_form as $key => $value) { ?>
+              <div class="form-group">
+                <input type="checkbox" id="product_form<?= $value->id ?>" value="<?= $value->id ?>" name="product_form[]" class="search_paramiter_checkbox" >
+                <label for="product_form<?= $value->id ?>" class="flt-checkbox-label"><?= $value->name; ?> </label>
+              </div>              
+          <?php } } ?>            
         </div>
       </div>
     </div>

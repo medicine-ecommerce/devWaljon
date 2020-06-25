@@ -221,12 +221,12 @@
   background-color: white;
   overflow: hidden;
 }
-.pagination {
+/*.pagination {
   display: inline-block;
       position: absolute;
     right: 20px;
     top: -25px;
-}
+}*/
 .pagination-filter {
   display: inline-block;
       position: absolute;

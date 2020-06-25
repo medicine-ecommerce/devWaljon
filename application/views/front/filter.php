@@ -6,26 +6,32 @@
        <?php require_once(APPPATH."views/front/sidebar_filter.php"); ?>
       </div>
       <div class="col-md-9">
-        <div class="toolbox">
-          <div class="toolbox-left">
-            <h3><a>Home</a> > <a href="">bac</a></h3> 
+        <div class="row">
+          <div class="col-md-3">            
+            <h3><a>Home</a> <i class="fa fa-angle-right fa-custom"></i> <a href="">bac</a></h3>           
           </div>
-          <div class="pagination">
-            <a href="#" class="pagination-radius-left" style="background: #4abdde;">Newest</a>
-            <a href="#">Popular</a>
-            <a href="#">Low Price</a>
-            <a href="#" style="background: #4abdde;border-top-right-radius: 150px;border-bottom-right-radius: 150px;">High Price</a>
-          </div>
-          <div class="pagination">
-            <a href="#" class="pagination-radius-left">&laquo;</a>
-            <a href="#">1</a>
-            <a href="#">2</a>
-            <a href="#">3</a>
-            <a href="#">...</a>
-            <a href="#">6</a>
-            <a href="#" style="border-top-right-radius: 150px;border-bottom-right-radius: 150px;">&raquo;</a>
-          </div>
+          <div class="col-md-9">  
+            <div class="left-pagination-section">              
+              <div class="category-pagination left-active">
+                <a class="firt_short" href="#">Newest</a>
+                <a href="#">Popular</a>
+                <a href="#">Low Price</a>
+                <a class="last_short active" href="#">High Price</a>
+              </div>
+              <div class="category-pagination right-pagination-section right-active">
+                <a  href="#"><i class="fa fa-chevron-left"></i></a>
+                <a class="active" href="#">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">...</a>
+                <a href="#">6</a>
+                <a href="#"><i class="fa fa-chevron-right"></i></i></a>
+              </div>
+            </div>
+          </div>          
         </div>
+        <div class="toolbox">                    
+        </div>        
         <div class="row product-section">
           <div class="col-xl-3 col-md-4 col-sm-4 col-xs-12" >
             <div class="product-box">
@@ -265,6 +271,14 @@
           $(this).siblings("input").val("1");
         }
       })
+      $('.left-active a').click(function(){                  
+            $('.left-active a').removeClass("active");
+           $(this).addClass("active");
+      });
+      $('.right-active a').click(function(){                  
+            $('.right-active a').removeClass("active");
+           $(this).addClass("active");
+      });
       
     });
 </script>

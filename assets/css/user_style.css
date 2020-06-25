@@ -648,3 +648,38 @@ p.main-product-name {
 .row.product-section {
     margin-top: 30px;
 }
+.category-paginations a{
+    background: #4abdde;
+    border-top-right-radius: 150px;
+    border-bottom-right-radius: 150px;"
+}
+.category-pagination {
+    float: left;
+}
+.right-pagination-section{
+    float: right;
+}
+.category-pagination a {
+    padding: 10px 15px;
+    background-color: #fff;
+    margin-right: -4px;
+    font-size: 14px;
+    border: 1px solid #dadada;
+    color: #655e5e;
+}
+.category-pagination a:hover, .category-pagination a:active, .category-pagination a:focus {
+    text-decoration: none;
+}
+.category-pagination .firt_short {
+    border-radius: 25px 0px 0px 25px;
+}
+.category-pagination .last_short {
+    border-radius: 0px 25px 25px 0px;
+}
+.category-pagination .active {
+    background-color: #4abdde;
+    color: #fff;
+}
+.left-pagination-section {
+    margin-top: 10px;
+}
