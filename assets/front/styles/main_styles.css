@@ -1723,7 +1723,10 @@ ul.standard_dropdown.main_nav_dropdown {
 {
 	font-size: 16px;
 	font-weight: 500;
-	margin-top: 25px;
+	/*margin-top: 25px;*/
+}
+.product-price-details {
+    margin: 10px 0px 20px;
 }
 .product_price.discount
 {
@@ -1736,10 +1739,30 @@ ul.standard_dropdown.main_nav_dropdown {
 	color: rgba(0,0,0,0.6);
 	margin-left: 10px;
 }
-.product_name
-{
-	margin-top: 4px;
-	overflow: hidden;
+.product_name {
+    margin-top: 4px;
+    font-size: 20px;
+    font-weight: 600;
+    overflow: hidden;
+    display: inline-block;
+}
+button.product_search_button {
+    position: absolute;
+    border: none;
+    background: none;
+    font-size: 18px;
+    right: 10px;
+    top: 5px;
+    color: #333;
+}
+.product_rating {
+    float: right;
+    color: white;
+    font-size: 14px;
+    background: #4dd07b;
+    padding: 5px 10px;
+    width: 65px;
+    border-radius: 50px;
 }
 .product_name div
 {
