@@ -11,7 +11,7 @@ Class User extends MY_Controller {
     {
         parent::__construct();
         $this->load->database();
-        // $this->load->model('Admin_model');
+        $this->load->model('User_model','User');
         $this->load->helper(array('form', 'url'));
     }
     // public function index()
@@ -27,6 +27,10 @@ Class User extends MY_Controller {
     }
     public function index1()
     {
+        $this->data['banner'] = $this->User->getData('banner_images','image',array('status'=>'active'));
+        $this->data['brand'] = $this->User->getData('brand','brand_img,id',array('status'=>'active'));
+        $this->data['product'] = $this->User->HomeProduct();
+        
         $this->middle = 'index1';
         $this->User();
     }
@@ -49,11 +53,13 @@ Class User extends MY_Controller {
         $this->load->helper('cookie');
         $this->load->view('front/login');
     }
-    public function filter()
+    public function product_category()
     {
+        $this->data['sub_category'] = $this->User->getData('subcategory','id,category_id,subcategory,status',array('status'=>'active'));
+        $this->data['brand'] = $this->User->getData('brand','id,brand_name,status',array('status'=>'active'));
+        $this->data['product_form'] = $this->User->getData('product_form','id,name,status',array('status'=>'active'));
         $this->middle = 'filter';
-        $this->User();
-        // $this->load->view('user/filter'); 
+        $this->User();        
     }
     public function filter1()
     {

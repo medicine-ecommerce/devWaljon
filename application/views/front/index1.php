@@ -1,23 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<title>OneTech</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="OneTech shop project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>	
+	
   <div class="main-page-container">   
   	<div class="main-slider-top">
 		<div class="owl-slider">
 	      <div id="carousel" class="owl-carousel banner-slider">
-	        <div class="item">
-	          <img class="owl-lazy mains-slider" data-src="<?php echo base_url('assets/slider-image/banner_bg_jpg.jpg');  ?>" alt="" >
-	        </div>
-	        <div class="item">
-	          <img class="owl-lazy mains-slider" data-src="<?php echo base_url('assets/slider-image/login_bg.png');  ?>" alt="">
-	        </div>        
+          <?php if (!empty($banner)) {
+            foreach ($banner as $key => $value) { ?>
+              <div class="item">
+                <img class="owl-lazy mains-slider" data-src="<?php echo base_url('assets/banner-images/'.$value->image);  ?>" alt="" >
+              </div>
+            <?php }
+          } ?>      
 	      </div>
 	    </div>		
 		<div class="brand-section">  
@@ -29,7 +21,24 @@
 		    <div class="brand-slider">
 		      <div class="owl-slider remove-dots">
 		        <div id="carousel2" class="owl-carousel remove-dots">
+              <?php if (!empty($brand)) {
+                foreach ($brand as $key => $value) { ?>
+                  <div class="item">
+                    <img class="owl-lazy" data-src="<?php echo base_url('assets/brand-images/'.$value->brand_img);?>" alt="">
+                  </div>
+              <?php  }
+              } ?><!-- 
+		          
 		          <div class="item">
+		            <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
+		          </div>
+		          <div class="item">
+		            <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
+		          </div>
+		          <div class="item">
+		            <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
+		          </div>
+		            <div class="item">
 		            <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
 		          </div>
 		          <div class="item">
@@ -46,19 +55,7 @@
 		          </div>
 		          <div class="item">
 		            <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-		          </div>
-		          <div class="item">
-		            <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-		          </div>
-		          <div class="item">
-		            <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-		          </div>
-		            <div class="item">
-		            <img class="owl-lazy" data-src="https://i.pinimg.com/originals/84/67/26/846726299dc5abbeb5d60016f0fb32e9.jpg" alt="">
-		          </div>
-		          <div class="item">
-		            <img class="owl-lazy" data-src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="">
-		          </div>
+		          </div> -->
 		        </div>
 		      </div>
 		    </div>
@@ -123,8 +120,292 @@
       
       <!-- <img src="<?php echo base_url('assets/slider-image/offers_jpg2.jpg');  ?>" class="count-down-image"> -->  
     </div>
-    <div class="product-slider-section">      
-      <div class="product-slider-block slider-arrow">        
+    <div class="product-slider-section"> 
+    <?php if (!empty($product)) {
+      foreach ($product as $key => $value) { ?>
+        <div class="product-slider-block slider-arrow">        
+          <div class="row product-heading">
+            <div class="col-md-6 title-section">            
+              <img src="<?php echo base_url('assets/icon/icon_new_arrivals.png');  ?>" >
+              <h4 class="product-heading-h4"><?php echo $value['category_name']; ?></h4>
+            </div>
+            <div class="col-md-6 all-section">            
+              <a href=""><span class="product-heading-all">View All</span></a>            
+            </div>
+          </div>
+          <div class="product-slider">
+            <div class="owl-slider product-slider" >
+              <div id="carousel<?php echo $key; ?>" class="owl-carousel product-slider" >
+                <?php foreach ($value['category_product'] as $key => $value) { ?>
+                  <div class="item">
+                    <div class="product-main-block">
+                      <div class="product-block">  
+                        <div class="product-image-section">                      
+                          <img src="<?php echo (!empty($value->image))?base_url('assets/product-images/'.$value->image):base_url('assets/front/images/best_2.png');  ?>" >
+                        </div>
+                        <div class="shape">
+                          <span class="offer-text">10% </span><span class="off-text">Off</span>
+                        </div>
+                        <div class="product-description-section">                      
+                          <p><?php echo $value->name; ?></p>
+                          <hr class="inside-form-hr">
+                          <span><?php echo $value->product_form; ?></span> 
+                        </div>
+                      </div>                  
+                      <div class="product-price-block">                  
+                         <span><i class="fa fa-inr" aria-hidden="true"></i> <?php echo $value->sale_price; ?></span> 
+                        <button class="btn-default add-cart-button">ADD</button>
+                        <div class="def-number-input number-input safari_only add-quantity hide-button">
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                          <input class="quantity" min="0" name="quantity" type="number">
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                        </div>
+                      </div>                  
+                    </div>               
+                  </div>
+                <?php } ?>
+                
+                <!-- <div class="item">
+                  <div class="product-main-block">
+                    <div class="product-block">  
+                      <div class="product-image-section">                      
+                        <img src="<?php echo base_url('assets/front/images/best_2.png');  ?>" >
+                      </div>
+                      <div class="shape">
+                        <span class="offer-text">10% </span><span class="off-text">Off</span>
+                      </div>
+                      <div class="product-description-section">                      
+                        <p>product name this is given and 900gm</p>
+                        <hr class="inside-form-hr">
+                        <span>Liquid</span> 
+                      </div>
+                    </div>                  
+                    <div class="product-price-block">                  
+                       <span><i class="fa fa-inr" aria-hidden="true"></i> 198</span> 
+                      <button class="btn-default add-cart-button">ADD</button>
+                      <div class="def-number-input number-input safari_only add-quantity hide-button">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                      </div>
+                    </div>                  
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="product-main-block">
+                    <div class="product-block">  
+                      <div class="product-image-section">                      
+                        <img src="<?php echo base_url('assets/front/images/best_2.png');  ?>" >
+                      </div>
+                      <div class="shape">
+                        <span class="offer-text">10% </span><span class="off-text">Off</span>
+                      </div>
+                      <div class="product-description-section">                      
+                        <p>product name this is given and 900gm</p>
+                        <hr class="inside-form-hr">
+                        <span>Liquid</span> 
+                      </div>
+                    </div>                  
+                    <div class="product-price-block">                  
+                       <span><i class="fa fa-inr" aria-hidden="true"></i> 198</span> 
+                      <button class="btn-default add-cart-button">ADD</button>
+                      <div class="def-number-input number-input safari_only add-quantity hide-button">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                      </div>
+                    </div>                  
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="product-main-block">
+                    <div class="product-block">  
+                      <div class="product-image-section">                      
+                        <img src="<?php echo base_url('assets/front/images/best_2.png');  ?>" >
+                      </div>
+                      <div class="shape">
+                        <span class="offer-text">10% </span><span class="off-text">Off</span>
+                      </div>
+                      <div class="product-description-section">                      
+                        <p>product name this is given and 900gm</p>
+                        <hr class="inside-form-hr">
+                        <span>Liquid</span> 
+                      </div>
+                    </div>                  
+                    <div class="product-price-block">                  
+                       <span><i class="fa fa-inr" aria-hidden="true"></i> 198</span> 
+                      <button class="btn-default add-cart-button">ADD</button>
+                      <div class="def-number-input number-input safari_only add-quantity hide-button">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                      </div>
+                    </div>                  
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="product-main-block">
+                    <div class="product-block">  
+                      <div class="product-image-section">                      
+                        <img src="<?php echo base_url('assets/front/images/best_2.png');  ?>" >
+                      </div>
+                      <div class="shape">
+                        <span class="offer-text">10% </span><span class="off-text">Off</span>
+                      </div>
+                      <div class="product-description-section">                      
+                        <p>product name this is given and 900gm</p>
+                        <hr class="inside-form-hr">
+                        <span>Liquid</span> 
+                      </div>
+                    </div>                  
+                    <div class="product-price-block">                  
+                       <span><i class="fa fa-inr" aria-hidden="true"></i> 198</span> 
+                      <button class="btn-default add-cart-button">ADD</button>
+                      <div class="def-number-input number-input safari_only add-quantity hide-button">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                      </div>
+                    </div>                  
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="product-main-block">
+                    <div class="product-block">  
+                      <div class="product-image-section">                      
+                        <img src="<?php echo base_url('assets/front/images/best_2.png');  ?>" >
+                      </div>
+                      <div class="shape">
+                        <span class="offer-text">10% </span><span class="off-text">Off</span>
+                      </div>
+                      <div class="product-description-section">                      
+                        <p>product name this is given and 900gm</p>
+                        <hr class="inside-form-hr">
+                        <span>Liquid</span> 
+                      </div>
+                    </div>                  
+                    <div class="product-price-block">                  
+                       <span><i class="fa fa-inr" aria-hidden="true"></i> 198</span> 
+                      <button class="btn-default add-cart-button">ADD</button>
+                      <div class="def-number-input number-input safari_only add-quantity hide-button">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                      </div>
+                    </div>                  
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="product-main-block">
+                    <div class="product-block">  
+                      <div class="product-image-section">                      
+                        <img src="<?php echo base_url('assets/front/images/best_2.png');  ?>" >
+                      </div>
+                      <div class="shape">
+                        <span class="offer-text">10% </span><span class="off-text">Off</span>
+                      </div>
+                      <div class="product-description-section">                      
+                        <p>product name this is given and 900gm</p>
+                        <hr class="inside-form-hr">
+                        <span>Liquid</span> 
+                      </div>
+                    </div>                  
+                    <div class="product-price-block">                  
+                       <span><i class="fa fa-inr" aria-hidden="true"></i> 198</span> 
+                      <button class="btn-default add-cart-button">ADD</button>
+                      <div class="def-number-input number-input safari_only add-quantity hide-button">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                      </div>
+                    </div>                  
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="product-main-block">
+                    <div class="product-block">  
+                      <div class="product-image-section">                      
+                        <img src="<?php echo base_url('assets/front/images/best_2.png');  ?>" >
+                      </div>
+                      <div class="shape">
+                        <span class="offer-text">10% </span><span class="off-text">Off</span>
+                      </div>
+                      <div class="product-description-section">                      
+                        <p>product name this is given and 900gm</p>
+                        <hr class="inside-form-hr">
+                        <span>Liquid</span> 
+                      </div>
+                    </div>                  
+                    <div class="product-price-block">                  
+                       <span><i class="fa fa-inr" aria-hidden="true"></i> 198</span> 
+                      <button class="btn-default add-cart-button">ADD</button>
+                      <div class="def-number-input number-input safari_only add-quantity hide-button">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                      </div>
+                    </div>                  
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="product-main-block">
+                    <div class="product-block">  
+                      <div class="product-image-section">                      
+                        <img src="<?php echo base_url('assets/front/images/best_2.png');  ?>" >
+                      </div>
+                      <div class="shape">
+                        <span class="offer-text">10% </span><span class="off-text">Off</span>
+                      </div>
+                      <div class="product-description-section">                      
+                        <p>product name this is given and 900gm</p>
+                        <hr class="inside-form-hr">
+                        <span>Liquid</span> 
+                      </div>
+                    </div>                  
+                    <div class="product-price-block">                  
+                       <span><i class="fa fa-inr" aria-hidden="true"></i> 198</span> 
+                      <button class="btn-default add-cart-button">ADD</button>
+                      <div class="def-number-input number-input safari_only add-quantity hide-button">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                      </div>
+                    </div>                  
+                  </div>
+                </div>
+                <div class="item">
+                  <div class="product-main-block">
+                    <div class="product-block">  
+                      <div class="product-image-section">                      
+                        <img src="<?php echo base_url('assets/front/images/best_2.png');  ?>" >
+                      </div>
+                      <div class="shape">
+                        <span class="offer-text">10% </span><span class="off-text">Off</span>
+                      </div>
+                      <div class="product-description-section">                      
+                        <p>product name this is given and 900gm</p>
+                        <hr class="inside-form-hr">
+                        <span>Liquid</span> 
+                      </div>
+                    </div>                  
+                    <div class="product-price-block">                  
+                       <span><i class="fa fa-inr" aria-hidden="true"></i> 198</span> 
+                      <button class="btn-default add-cart-button">ADD</button>
+                      <div class="def-number-input number-input safari_only add-quantity hide-button">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                        <input class="quantity" min="0" name="quantity" value="1" type="number">
+                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                      </div>
+                    </div>                  
+                  </div>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+    <?php  }
+    } ?>     
+      <!-- <div class="product-slider-block slider-arrow">        
         <div class="row product-heading">
           <div class="col-md-6 title-section">            
             <img src="<?php echo base_url('assets/icon/icon_new_arrivals.png');  ?>" >
@@ -963,7 +1244,7 @@
           <a href=""><span class="product-heading-all">View All</span></a>            
         </div>
       </div>
-       <div class="product-slider">
+      <div class="product-slider">
         <div class="owl-slider product-slider slider-arrow" >
           <div id="carousel7" class="owl-carousel product-slider" >
             <div class="item">
@@ -1228,12 +1509,12 @@
             </div>
           </div>
         </div>
-      </div>  
+      </div>  --> 
     </div>
   </div>
 
   <script>
-    jQuery("#carousel").owlCarousel(
+    jQuery("#carouse0").owlCarousel(
     {
       autoplay: true,
       lazyLoad: true,
@@ -1260,7 +1541,7 @@
         
       }
     });
-    jQuery("#carousel2").owlCarousel(
+    jQuery("#carousel1").owlCarousel(
     {
       autoplay: true,
       lazyLoad: true,
@@ -1287,7 +1568,7 @@
         
       }
     });
-    jQuery("#carousel3").owlCarousel(
+    jQuery("#carousel2").owlCarousel(
     {
       autoplay: true,
       lazyLoad: true,
@@ -1314,7 +1595,7 @@
         
       }
     });
-    jQuery("#carousel4").owlCarousel(
+    jQuery("#carousel3").owlCarousel(
     {
       autoplay: false,
       lazyLoad: true,
@@ -1341,7 +1622,7 @@
         
       }
     });
-    jQuery("#carousel5").owlCarousel(
+    jQuery("#carousel4").owlCarousel(
     {
       autoplay: true,
       lazyLoad: true,
@@ -1395,7 +1676,7 @@
         
       }
     });
-    jQuery("#carousel7").owlCarousel(
+    jQuery("#carousel5").owlCarousel(
     {
       autoplay: true,
       lazyLoad: true,

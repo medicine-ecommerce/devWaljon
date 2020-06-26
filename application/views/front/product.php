@@ -2,66 +2,106 @@
 	<!-- Single Product -->
 	<div class="single_product">
 		<div class="container">
-			<div class="toolbox-left">
-		    <h3><a>home</a> > <a href="">Health Products</a> > <a href="">Zerodol-P Tablet</a></h3> 
-		  </div>
+			<div class="hambergar">	
+				<div class="toolbox-left">
+			    <h3><a>home</a> > <a href="">Health Products</a> > <a href="">Zerodol-P Tablet</a></h3> 
+			  </div>
+			  <div class="pull-right">
+			  	<form action="#">
+						<input type="search" required="required" class="product_search_input" placeholder="Search">
+						<button type="submit" class="product_search_button" value="Submit"><i class="fa fa-search"></i></button>
+					</form>
+			  </div>
+			</div>
 			<div class="row">
-				<!-- <?php echo base_url(); ?>assets/front/images -->
-				<!-- <div class="col-lg-2 order-lg-1 order-2">
-					<ul class="image_list">
-						<li data-image="<?php echo base_url(); ?>assets/front/images/single_4.jpg"><img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt=""></li>
-						<li data-image="<?php echo base_url(); ?>assets/front/images/single_2.jpg"><img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt=""></li>
-						<li data-image="<?php echo base_url(); ?>assets/front/images/single_3.jpg"><img src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt=""></li>
-					</ul>
-				</div> -->
-
 				<!-- Selected Image -->
-				<div class="col-lg-4 order-lg-2 order-1">
-					<div class="image_selected"><img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt=""></div>
+				<div class="col-lg-5 order-lg-2 order-1">
+					<div class="image_selected">
+						<img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+					</div>
+					<div class="related-img">
+						<div class="related-img-section">
+							<img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+						</div>
+						<div class="related-img-section">
+							<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
+						</div>	
+						<div class="related-img-section">
+							<img src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="">
+						</div>	
+						<div class="related-img-section">
+							<img src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="">
+						</div>		
+					</div>
 				</div>
 
 				<!-- Description -->
-				<div class="col-lg-8 order-3">
+				<div class="col-lg-7 order-3">
 					<div class="product_description">
-						<div class="product_category">Laptops</div>
+						<!-- <div class="product_category">Laptops</div> -->
 						<div class="product_name">MacBook Air 13</div>
-						<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
-						<div class="product_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas fermentum. laoreet turpis, nec sollicitudin dolor cursus at. Maecenas aliquet, dolor a faucibus efficitur, nisi tellus cursus urna, eget dictum lacus turpis.</p></div>
+						<div class="product_rating"><i class="fa fa-star"></i>  4.4</div>
+						<div class="date-time">
+							<i class="fa fa-clock-o"></i> <p>03:02 PM, 15 Jan 2020</p>
+						</div>
+						<div class="product-required product-description">
+							<h4>Rx Prescription Required</h4>
+						</div>
+						<div class="product-manufaturer product-description">
+							<h4 class="product-description-heading">Manufaturer : </h4>
+							<p>Lorem ipsum dolor sit amet</p>
+						</div>
+						<div class="product-salt product-description">
+							<h4 class="product-description-heading">Salt Composition : </h4>
+							<p>Lorem ipsum dolor sit amet</p>
+						</div>
+						<div class="product-expdate product-description">
+							<h4 class="product-description-heading">Expiry Date : </h4>
+							<p>04 Aug, 2020</p>
+						</div>
+						<div class="product-AnsQues product-description">
+							<i class='fas fa-arrow-down'></i>
+							<p>105 Answereq Questions</p>
+						</div>
+						<div class="product-alternate-brnd product-description">
+							<i class='fas fa-arrow-down'></i>
+							<p>105 View Alternate Brands</p>
+						</div>
 						<div class="order_info d-flex flex-row">
 							<form action="#">
-								<div class="clearfix" style="z-index: 1000;">
-
-									<!-- Product Quantity -->
-									<div class="product_quantity clearfix">
-										<span>Quantity: </span>
-										<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-										<div class="quantity_buttons">
-											<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
-											<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
+								<div class="product-price-details">
+									<div class="row">
+										<div class="col-md-2">
+											<div class="product_price">
+												<h5 class="product-price-head">Price</h5>
+												<p>MRP 45</p>
+												<h4><i class='fas fa-rupee-sign'></i> 36</h4>
+											</div>
+										</div>
+										<div class="col-md-10">
+											<div class="product_quantity">	
+												<h5 class="product-price-head">Quantity</h5>
+												<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+												<div class="quantity_buttons">
+													<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
+													<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
+												</div>
+												<div class="product-tablets-count">
+													<p>10 Tablets in 1 strip</p>
+												</div>
+											</div>
 										</div>
 									</div>
-
-									<!-- Product Color -->
-									<ul class="product_color">
-										<li>
-											<span>Color: </span>
-											<div class="color_mark_container"><div id="selected_color" class="color_mark"></div></div>
-											<div class="color_dropdown_button"><i class="fas fa-chevron-down"></i></div>
-
-											<ul class="color_list">
-												<li><div class="color_mark" style="background: #999999;"></div></li>
-												<li><div class="color_mark" style="background: #b19c83;"></div></li>
-												<li><div class="color_mark" style="background: #000000;"></div></li>
-											</ul>
-										</li>
-									</ul>
-
 								</div>
-
-								<div class="product_price">$2000</div>
 								<div class="button_container">
-									<button type="button" class="button cart_button">Add to Cart</button>
-									<div class="product_fav"><i class="fas fa-heart"></i></div>
+									<div class="price-total">
+										<p class="total-heading">Total</p>
+										<h4><i class='fas fa-rupee-sign'></i> 36</h4>
+										<p class="price-off">Get 20% off</p>
+									</div>
+									<div class="pull-right">
+										<button type="button" class="button cart_button">Add to Cart</button>
+									</div>
 								</div>
 								
 							</form>
@@ -73,281 +113,351 @@
 		</div>
 	</div>
 
+	<div class="info-tabs">
+		<div class="container">
+			<div class="row">
+				<div class="tab-heading">
+					<ul class="nav nav-tabs product_tab" id="myTab" role="tablist">
+			      <li class="product_li">
+			        <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="benefits-tab" data-toggle="tab" href="#benefits" role="tab" aria-controls="benefits" aria-selected="false">Benefits</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="uses-tab" data-toggle="tab" href="#uses" role="tab" aria-controls="uses" aria-selected="true">Uses</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="side-eff-tab" data-toggle="tab" href="#side-eff" role="tab" aria-controls="side-eff" aria-selected="false">Side Effects</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="how-use-tab" data-toggle="tab" href="#how-use" role="tab" aria-controls="how-use" aria-selected="true">How to use</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="how-work-tab" data-toggle="tab" href="#how-work" role="tab" aria-controls="how-work" aria-selected="false">How It Works</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="strong-info-tab" data-toggle="tab" href="#strong-info" role="tab" aria-controls="strong-info" aria-selected="true">Strong Information</a>
+			      </li>
+			      <li class="product_li">
+			        <a class="nav-link" id="safety-info-tab" data-toggle="tab" href="#safety-info" role="tab" aria-controls="safety-info" aria-selected="false">Safety Information</a>
+			      </li>
+			    </ul>	
+				</div>
+				<div class="tab-content" id="myTabContent">
+		      <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
+		      	<div class="tab-sub-content">	
+		        	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
+		      	</div>
+		      	<div class="tab-sub-content">
+			        <span class="product-sub-heading">Benefits</span>
+			        <ul>
+			        	<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+			        	<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+			        	<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+			        	<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
+			        </ul>
+		      	</div>
+		      	<div class="tab-sub-content">	
+			        <span class="product-sub-heading">How to use</span>
+			        <p>Lorem Ipsum is simply dummy</p>
+		      	</div>
+		      	<div class="tab-sub-content">	
+			        <span class="product-sub-heading">Indication</span>
+			        <p>Lorem Ipsum is simply dummy</p>
+		      	</div>
+		      </div>
+		      <div class="tab-pane fade" id="benefits" role="tabpanel" aria-labelledby="benefits-tab">
+		        benefits
+		      </div>
+		      <div class="tab-pane fade" id="uses" role="tabpanel" aria-labelledby="uses-tab">
+		        uses
+		      </div>
+		      <div class="tab-pane fade" id="side-eff" role="tabpanel" aria-labelledby="side-eff-tab">
+		        side-eff
+		      </div>
+		      <div class="tab-pane fade" id="how-use" role="tabpanel" aria-labelledby="how-use-tab">
+		        how-use
+		      </div>
+		      <div class="tab-pane fade" id="how-work" role="tabpanel" aria-labelledby="how-work-tab">
+		        how-work
+		      </div>
+		      <div class="tab-pane fade" id="strong-info" role="tabpanel" aria-labelledby="strong-info-tab">
+		        strong-info
+		      </div>
+		      <div class="tab-pane fade" id="safety-info" role="tabpanel" aria-labelledby="safety-info-tab">
+		        safety-info
+		      </div>
+		    </div>
+		  </div>
+		</div>    
+	</div>
+
+	<div class="feedback">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7">
+					<div class="product-main-heading">
+						<h4>Frequently Asked Questions</h4>
+					</div>
+					<div class="faq-accordine">
+						<div class="container">
+						  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						    <div class="panel panel-default">
+						      <div class="panel-heading" role="tab" id="headingOne">
+						        <h4 class="panel-title">
+						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						          Collapsible Group Item #1
+						        </a>
+						      </h4>
+						      </div>
+						      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+						        <div class="panel-body">
+						          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+						          on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+						          raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						        </div>
+						      </div>
+						    </div>
+						    <div class="panel panel-default">
+						      <div class="panel-heading" role="tab" id="headingTwo">
+						        <h4 class="panel-title">
+						        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						          Collapsible Group Item #2
+						        </a>
+						      </h4>
+						      </div>
+						      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						        <div class="panel-body">
+						          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+						          on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+						          raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						        </div>
+						      </div>
+						    </div>
+						    <div class="panel panel-default">
+						      <div class="panel-heading" role="tab" id="headingThree">
+						        <h4 class="panel-title">
+						        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						          Collapsible Group Item #3
+						        </a>
+						      </h4>
+						      </div>
+						      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						        <div class="panel-body">
+						          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
+						          on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+						          raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-5">
+					<div class="customer-feedback-sec">
+						<h5>Customer Feedback</h5>
+						<div class="customer-feedback-block">
+							<div class="customer-feedback-content">
+								<div class="profile-text">
+									<h3>AA</h3>
+								</div>	
+								<div class="profile-details">
+									<h3> Atul Tiwari </h3>
+									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
+								</div>
+							</div>
+							<div class="product-detail">
+								<p>Prefect Product</p>
+							</div>
+						</div>
+						<div class="customer-feedback-block">
+							<div class="customer-feedback-content">
+								<div class="profile-text">
+									<h3>AA</h3>
+								</div>	
+								<div class="profile-details">
+									<h3> Atul Tiwari </h3>
+									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
+								</div>
+							</div>
+							<div class="product-detail">
+								<p>Prefect Product</p>
+							</div>
+						</div>
+						<div class="customer-feedback-block">
+							<div class="customer-feedback-content">
+								<div class="profile-text">
+									<h3>AA</h3>
+								</div>	
+								<div class="profile-details">
+									<h3> Atul Tiwari </h3>
+									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
+								</div>
+							</div>
+							<div class="product-detail">
+								<p>Prefect Product</p>
+							</div>
+						</div>
+						<div class="customer-feedback-block">
+							<div class="customer-feedback-content">
+								<div class="profile-text">
+									<h3>AA</h3>
+								</div>	
+								<div class="profile-details">
+									<h3> Atul Tiwari </h3>
+									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
+								</div>
+							</div>
+							<div class="product-detail">
+								<p>Prefect Product</p>
+							</div>
+						</div>
+						<div class="add-comment">
+							<div>
+								<form action="#">
+									<input type="search" required="required" class="product_comment_input" placeholder="Comment Something">
+									<button type="submit" class="product_comment_button" value="Submit"><i class="fa fa-paper-plane"></i></button>
+								</form>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+	</div>
 	<!-- Recently Viewed -->
 
-	<div class="viewed">
+	<div class="alternate-brnd">
 		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="viewed_title_container">
-						<h3 class="viewed_title">Recently Viewed</h3>
-						<div class="viewed_nav_container">
-							<div class="viewed_nav viewed_prev"><i class="fas fa-chevron-left"></i></div>
-							<div class="viewed_nav viewed_next"><i class="fas fa-chevron-right"></i></div>
-						</div>
-					</div>
-
-					<div class="viewed_slider_container">
-						
-						<!-- Recently Viewed Slider -->
-
-						<div class="owl-carousel owl-theme viewed_slider">
-							
-							<!-- Recently Viewed Item -->
-							<div class="owl-item">
-								<div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-									<div class="viewed_image"><img src="<?php echo base_url(); ?>assets/front/images/view_1.jpg" alt=""></div>
-									<div class="viewed_content text-center">
-										<div class="viewed_price">$225<span>$300</span></div>
-										<div class="viewed_name"><a href="#">Beoplay H7</a></div>
-									</div>
-									<ul class="item_marks">
-										<li class="item_mark item_discount">-25%</li>
-										<li class="item_mark item_new">new</li>
-									</ul>
-								</div>
-							</div>
-
-							<!-- Recently Viewed Item -->
-							<div class="owl-item">
-								<div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-									<div class="viewed_image"><img src="<?php echo base_url(); ?>assets/front/images/view_2.jpg" alt=""></div>
-									<div class="viewed_content text-center">
-										<div class="viewed_price">$379</div>
-										<div class="viewed_name"><a href="#">LUNA Smartphone</a></div>
-									</div>
-									<ul class="item_marks">
-										<li class="item_mark item_discount">-25%</li>
-										<li class="item_mark item_new">new</li>
-									</ul>
-								</div>
-							</div>
-
-							<!-- Recently Viewed Item -->
-							<div class="owl-item">
-								<div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-									<div class="viewed_image"><img src="<?php echo base_url(); ?>assets/front/images/view_3.jpg" alt=""></div>
-									<div class="viewed_content text-center">
-										<div class="viewed_price">$225</div>
-										<div class="viewed_name"><a href="#">Samsung J730F...</a></div>
-									</div>
-									<ul class="item_marks">
-										<li class="item_mark item_discount">-25%</li>
-										<li class="item_mark item_new">new</li>
-									</ul>
-								</div>
-							</div>
-
-							<!-- Recently Viewed Item -->
-							<div class="owl-item">
-								<div class="viewed_item is_new d-flex flex-column align-items-center justify-content-center text-center">
-									<div class="viewed_image"><img src="<?php echo base_url(); ?>assets/front/images/view_4.jpg" alt=""></div>
-									<div class="viewed_content text-center">
-										<div class="viewed_price">$379</div>
-										<div class="viewed_name"><a href="#">Huawei MediaPad...</a></div>
-									</div>
-									<ul class="item_marks">
-										<li class="item_mark item_discount">-25%</li>
-										<li class="item_mark item_new">new</li>
-									</ul>
-								</div>
-							</div>
-
-							<!-- Recently Viewed Item -->
-							<div class="owl-item">
-								<div class="viewed_item discount d-flex flex-column align-items-center justify-content-center text-center">
-									<div class="viewed_image"><img src="<?php echo base_url(); ?>assets/front/images/view_5.jpg" alt=""></div>
-									<div class="viewed_content text-center">
-										<div class="viewed_price">$225<span>$300</span></div>
-										<div class="viewed_name"><a href="#">Sony PS4 Slim</a></div>
-									</div>
-									<ul class="item_marks">
-										<li class="item_mark item_discount">-25%</li>
-										<li class="item_mark item_new">new</li>
-									</ul>
-								</div>
-							</div>
-
-							<!-- Recently Viewed Item -->
-							<div class="owl-item">
-								<div class="viewed_item d-flex flex-column align-items-center justify-content-center text-center">
-									<div class="viewed_image"><img src="<?php echo base_url(); ?>assets/front/images/view_6.jpg" alt=""></div>
-									<div class="viewed_content text-center">
-										<div class="viewed_price">$375</div>
-										<div class="viewed_name"><a href="#">Speedlink...</a></div>
-									</div>
-									<ul class="item_marks">
-										<li class="item_mark item_discount">-25%</li>
-										<li class="item_mark item_new">new</li>
-									</ul>
-								</div>
-							</div>
-						</div>
-
-					</div>
-				</div>
+			<div class="product-main-heading">
+				<h4>Alternate Brands</h4>
 			</div>
-		</div>
-	</div>
-
-	<!-- Brands -->
-
-	<div class="brands">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="brands_slider_container">
-						
-						<!-- Brands Slider -->
-
-						<div class="owl-carousel owl-theme brands_slider">
-							
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?php echo base_url(); ?>assets/front/images/brands_1.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?php echo base_url(); ?>assets/front/images/brands_2.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?php echo base_url(); ?>assets/front/images/brands_3.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?php echo base_url(); ?>assets/front/images/brands_4.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?php echo base_url(); ?>assets/front/images/brands_5.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?php echo base_url(); ?>assets/front/images/brands_6.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?php echo base_url(); ?>assets/front/images/brands_7.jpg" alt=""></div></div>
-							<div class="owl-item"><div class="brands_item d-flex flex-column justify-content-center"><img src="<?php echo base_url(); ?>assets/front/images/brands_8.jpg" alt=""></div></div>
-
-						</div>
-						
-						<!-- Brands Slider Navigation -->
-						<div class="brands_nav brands_prev"><i class="fas fa-chevron-left"></i></div>
-						<div class="brands_nav brands_next"><i class="fas fa-chevron-right"></i></div>
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Newsletter -->
-
-	<div class="newsletter">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
-						<div class="newsletter_title_container">
-							<div class="newsletter_icon"><img src="<?php echo base_url(); ?>assets/front/images/send.png" alt=""></div>
-							<div class="newsletter_title">Sign up for Newsletter</div>
-							<div class="newsletter_text"><p>...and receive %20 coupon for first shopping.</p></div>
-						</div>
-						<div class="newsletter_content clearfix">
-							<form action="#" class="newsletter_form">
-								<input type="email" class="newsletter_input" required="required" placeholder="Enter your email address">
-								<button class="newsletter_button">Subscribe</button>
-							</form>
-							<div class="newsletter_unsubscribe_link"><a href="#">unsubscribe</a></div>
+			<div class="alternate-brnd-content">
+				<div class="row">
+					<div class="col-md-3">
+						<div class="alternate-brnd-box">
+							<div class="alternate-brnd-top">
+								<div class="alternate-brnd-top-left">
+									<div class="alternate-brnd-img">
+										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
+									</div>
+									<span class="offer-green">10% <i class='fas fa-arrow-down'></i></span>
+								</div>
+								<div class="alternate-brnd-top-right">
+									<div class="alternate-brnd-details">
+										<div class="alternate-brnd-name">
+											Tablet Name
+										</div>
+										<div class="alternate-brnd-form">
+											Liquied
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="alternate-brnd-bown">
+								<div class="alternate-brnd-bown-left">
+									<p><i class='fas fa-rupee-sign'></i> 36</p>
+								</div>
+								<div class="alternate-brnd-bown-right">
+									<a class="add-cart-btn">Add</a>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- Footer -->
-
-	<footer class="footer">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-lg-3 footer_col">
-					<div class="footer_column footer_contact">
-						<div class="logo_container">
-							<div class="logo"><a href="#">OneTech</a></div>
-						</div>
-						<div class="footer_title">Got Question? Call Us 24/7</div>
-						<div class="footer_phone">+38 068 005 3570</div>
-						<div class="footer_contact_text">
-							<p>17 Princess Road, London</p>
-							<p>Grester London NW18JR, UK</p>
-						</div>
-						<div class="footer_social">
-							<ul>
-								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fab fa-youtube"></i></a></li>
-								<li><a href="#"><i class="fab fa-google"></i></a></li>
-								<li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
-							</ul>
+					<div class="col-md-3">
+						<div class="alternate-brnd-box">
+							<div class="alternate-brnd-top">
+								<div class="alternate-brnd-top-left">
+									<div class="alternate-brnd-img">
+										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
+									</div>
+									<span class="offer-green">10% <i class='fas fa-arrow-down'></i></span>
+								</div>
+								<div class="alternate-brnd-top-right">
+									<div class="alternate-brnd-details">
+										<div class="alternate-brnd-name">
+											Tablet Name
+										</div>
+										<div class="alternate-brnd-form">
+											Liquied
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="alternate-brnd-bown">
+								<div class="alternate-brnd-bown-left">
+									<p><i class='fas fa-rupee-sign'></i> 36</p>
+								</div>
+								<div class="alternate-brnd-bown-right">
+									<a class="add-cart-btn">Add</a>
+								</div>
+							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="col-lg-2 offset-lg-2">
-					<div class="footer_column">
-						<div class="footer_title">Find it Fast</div>
-						<ul class="footer_list">
-							<li><a href="#">Computers & Laptops</a></li>
-							<li><a href="#">Cameras & Photos</a></li>
-							<li><a href="#">Hardware</a></li>
-							<li><a href="#">Smartphones & Tablets</a></li>
-							<li><a href="#">TV & Audio</a></li>
-						</ul>
-						<div class="footer_subtitle">Gadgets</div>
-						<ul class="footer_list">
-							<li><a href="#">Car Electronics</a></li>
-						</ul>
+					<div class="col-md-3">
+						<div class="alternate-brnd-box">
+							<div class="alternate-brnd-top">
+								<div class="alternate-brnd-top-left">
+									<div class="alternate-brnd-img">
+										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
+									</div>
+									<span class="offer-green">10% <i class='fas fa-arrow-down'></i></span>
+								</div>
+								<div class="alternate-brnd-top-right">
+									<div class="alternate-brnd-details">
+										<div class="alternate-brnd-name">
+											Tablet Name
+										</div>
+										<div class="alternate-brnd-form">
+											Liquied
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="alternate-brnd-bown">
+								<div class="alternate-brnd-bown-left">
+									<p><i class='fas fa-rupee-sign'></i> 36</p>
+								</div>
+								<div class="alternate-brnd-bown-right">
+									<a class="add-cart-btn">Add</a>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-
-				<div class="col-lg-2">
-					<div class="footer_column">
-						<ul class="footer_list footer_list_2">
-							<li><a href="#">Video Games & Consoles</a></li>
-							<li><a href="#">Accessories</a></li>
-							<li><a href="#">Cameras & Photos</a></li>
-							<li><a href="#">Hardware</a></li>
-							<li><a href="#">Computers & Laptops</a></li>
-						</ul>
-					</div>
-				</div>
-
-				<div class="col-lg-2">
-					<div class="footer_column">
-						<div class="footer_title">Customer Care</div>
-						<ul class="footer_list">
-							<li><a href="#">My Account</a></li>
-							<li><a href="#">Order Tracking</a></li>
-							<li><a href="#">Wish List</a></li>
-							<li><a href="#">Customer Services</a></li>
-							<li><a href="#">Returns / Exchange</a></li>
-							<li><a href="#">FAQs</a></li>
-							<li><a href="#">Product Support</a></li>
-						</ul>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</footer>
-
-	<!-- Copyright -->
-
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					
-					<div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
-						<div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</div>
-						<div class="logos ml-sm-auto">
-							<ul class="logos_list">
-								<li><a href="#"><img src="<?php echo base_url(); ?>assets/front/images/logos_1.png" alt=""></a></li>
-								<li><a href="#"><img src="<?php echo base_url(); ?>assets/front/images/logos_2.png" alt=""></a></li>
-								<li><a href="#"><img src="<?php echo base_url(); ?>assets/front/images/logos_3.png" alt=""></a></li>
-								<li><a href="#"><img src="<?php echo base_url(); ?>assets/front/images/logos_4.png" alt=""></a></li>
-							</ul>
+					<div class="col-md-3">
+						<div class="alternate-brnd-box">
+							<div class="alternate-brnd-top">
+								<div class="alternate-brnd-top-left">
+									<div class="alternate-brnd-img">
+										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
+									</div>
+									<span class="offer-red">10% <i class='fas fa-arrow-down'></i></span>
+								</div>
+								<div class="alternate-brnd-top-right">
+									<div class="alternate-brnd-details">
+										<div class="alternate-brnd-name">
+											Tablet Name
+										</div>
+										<div class="alternate-brnd-form">
+											Liquied
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="alternate-brnd-bown">
+								<div class="alternate-brnd-bown-left">
+									<p><i class='fas fa-rupee-sign'></i> 36</p>
+								</div>
+								<div class="alternate-brnd-bown-right">
+									<a class="add-cart-btn">Add</a>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</div>	
 		</div>
 	</div>
 </div>

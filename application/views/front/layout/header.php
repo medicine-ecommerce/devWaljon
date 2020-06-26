@@ -16,6 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/front/plugins/slick-1.8.0/slick.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/front/styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/front/styles/responsive.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- Custom -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -103,7 +104,7 @@
 					<div class="col-lg-4 col-12 order-lg-2 order-3 text-lg-left text-right">
 						<div class="header_search">
 							<div class="header_search_content">
-								<div class="header_search_form_container pull-right">
+								<div class="header_search_form_container">
 									<a href="#" class="upload-pres">Upload Prescription</a>
 								</div>
 							</div>
