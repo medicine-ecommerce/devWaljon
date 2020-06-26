@@ -65,4 +65,18 @@ Class User extends MY_Controller {
     {
         $this->load->view('user/filter'); 
     }
+    public function despatch_develory()
+    {
+        $this->load->view('user/despatch'); 
+    }
+    public function despatch_develory1()
+    {
+        $this->middle = 'despatch';
+        $this->User();
+    }
+    public function cart()
+    {
+        $this->middle = 'cart';
+        $this->User();
+    }
 }
