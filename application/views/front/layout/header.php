@@ -37,6 +37,7 @@
 	<link href="<?php echo base_url(); ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
+	
 	<title>Medicine</title>
 
 </head>
@@ -82,7 +83,7 @@
 								<div class="header_search_form_container">
 									<form action="#" class="header_search_form clearfix">
 										<i class="fa fa-location"></i>
-										<input type="search" required="required" class="header_search_input" placeholder="Enter Delivery Location">
+										<input type="search" required="required" class="header_search_input" placeholder="Enter Delivery Location" id="location">
 									</form>
 								</div>
 							</div>
@@ -305,3 +306,16 @@
 		</div>
 
 	</header>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#location").attr("placeholder","");		
+		
+	   google.maps.event.addDomListener(window, 'load', initialize);
+	});
+
+	function initialize() {
+	    var input = document.getElementById('location');
+	    var autocomplete = new google.maps.places.Autocomplete(input);
+	}
+</script>
