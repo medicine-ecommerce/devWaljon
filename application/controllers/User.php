@@ -39,8 +39,9 @@ Class User extends MY_Controller {
         $this->middle = 'shop';
         $this->User();
     }
-    public function product()
+    public function product($id)
     {
+        $this->data['product'] = $this->User->getProductByID($id);
         $this->middle = 'product';
         $this->User();
     }
@@ -64,5 +65,19 @@ Class User extends MY_Controller {
     public function filter1()
     {
         $this->load->view('user/filter'); 
+    }
+    public function despatch_develory()
+    {
+        $this->load->view('user/despatch'); 
+    }
+    public function despatch_develory1()
+    {
+        $this->middle = 'despatch';
+        $this->User();
+    }
+    public function cart()
+    {
+        $this->middle = 'cart';
+        $this->User();
     }
 }
