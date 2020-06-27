@@ -39,8 +39,9 @@ Class User extends MY_Controller {
         $this->middle = 'shop';
         $this->User();
     }
-    public function product()
+    public function product($id)
     {
+        $this->data['product'] = $this->User->getProductByID($id);
         $this->middle = 'product';
         $this->User();
     }

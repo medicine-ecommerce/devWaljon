@@ -4,7 +4,10 @@
 		<div class="container">
 			<div class="hambergar">	
 				<div class="toolbox-left">
-			    <h3><a>home</a> > <a href="">Health Products</a> > <a href="">Zerodol-P Tablet</a></h3> 
+					<?php					
+						$product = $product['product'] ;					
+					 ?>
+			    <h3><a>home</a> > <a href=""><?= $product->category_name; ?></a> > <a href=""><?= $product->name; ?></a></h3> 
 			  </div>
 			  <div class="pull-right">
 			  	<form action="#">
@@ -39,7 +42,7 @@
 				<div class="col-lg-7 order-3">
 					<div class="product_description">
 						<!-- <div class="product_category">Laptops</div> -->
-						<div class="product_name">MacBook Air 13</div>
+						<div class="product_name"><?= $product->name; ?></div>
 						<div class="product_rating"><i class="fa fa-star"></i>  4.4</div>
 						<div class="date-time">
 							<i class="fa fa-clock-o"></i> <p>03:02 PM, 15 Jan 2020</p>
@@ -49,15 +52,15 @@
 						</div>
 						<div class="product-manufaturer product-description">
 							<h4 class="product-description-heading">Manufaturer : </h4>
-							<p>Lorem ipsum dolor sit amet</p>
+							<p><?= $product->manufacturer_name; ?></p>
 						</div>
 						<div class="product-salt product-description">
 							<h4 class="product-description-heading">Salt Composition : </h4>
-							<p>Lorem ipsum dolor sit amet</p>
+							<p><?= $product->salt_composition; ?></p>
 						</div>
 						<div class="product-expdate product-description">
 							<h4 class="product-description-heading">Expiry Date : </h4>
-							<p>04 Aug, 2020</p>
+							<p><?= $product->expiry_date; ?></p>
 						</div>
 						<div class="product-AnsQues product-description">
 							<i class='fas fa-arrow-down'></i>
@@ -74,8 +77,8 @@
 										<div class="col-md-2">
 											<div class="product_price">
 												<h5 class="product-price-head">Price</h5>
-												<p>MRP 45</p>
-												<h4><i class='fas fa-rupee-sign'></i> 36</h4>
+												<p>MRP <?= $product->mrp; ?></p>
+												<h4><i class='fas fa-rupee-sign'></i> <?= $product->sale_price; ?></h4>
 											</div>
 										</div>
 										<div class="col-md-10">
@@ -96,7 +99,7 @@
 								<div class="button_container">
 									<div class="price-total">
 										<p class="total-heading">Total</p>
-										<h4><i class='fas fa-rupee-sign'></i> 36</h4>
+										<h4><i class='fas fa-rupee-sign'></i> <?= $product->sale_price; ?></h4>
 										<p class="price-off">Get 20% off</p>
 									</div>
 									<div class="pull-right">
@@ -147,9 +150,9 @@
 				<div class="tab-content" id="myTabContent">
 		      <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
 		      	<div class="tab-sub-content">	
-		        	<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages.</p>
+		        	<p><?= $product->about_product; ?></p>
 		      	</div>
-		      	<div class="tab-sub-content">
+		      	<!-- <div class="tab-sub-content">
 			        <span class="product-sub-heading">Benefits</span>
 			        <ul>
 			        	<li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
@@ -165,28 +168,28 @@
 		      	<div class="tab-sub-content">	
 			        <span class="product-sub-heading">Indication</span>
 			        <p>Lorem Ipsum is simply dummy</p>
-		      	</div>
+		      	</div> -->
 		      </div>
 		      <div class="tab-pane fade" id="benefits" role="tabpanel" aria-labelledby="benefits-tab">
-		        benefits
+		        <p><?= $product->how_to_use; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="uses" role="tabpanel" aria-labelledby="uses-tab">
-		        uses
+		        <p><?= $product->when_to_use; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="side-eff" role="tabpanel" aria-labelledby="side-eff-tab">
-		        side-eff
+		        <p><?= $product->side_effect; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="how-use" role="tabpanel" aria-labelledby="how-use-tab">
-		        how-use
+		        <p><?= $product->how_to_use; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="how-work" role="tabpanel" aria-labelledby="how-work-tab">
-		        how-work
+		        <p><?= $product->how_to_work; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="strong-info" role="tabpanel" aria-labelledby="strong-info-tab">
-		        strong-info
+		        <p><?= $product->how_to_store; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="safety-info" role="tabpanel" aria-labelledby="safety-info-tab">
-		        safety-info
+		        <p><?= $product->safety_info; ?></p> 		        
 		      </div>
 		    </div>
 		  </div>
