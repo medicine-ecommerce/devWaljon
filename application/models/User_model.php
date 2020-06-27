@@ -58,4 +58,15 @@ class User_model extends MY_model
 			return $result;
 		}
 	}
+	public function getAllProductComments($id)
+	{
+		$this->db->select('product_comment.comments,product_comment.comment_date,users.full_name, users.image');
+		$this->db->from('product_comment');
+		$this->db->join('users','users.id = product_comment.user_id','left');		
+		$this->db->where('product_comment.product_id',$id);		
+		$query = $this->db->get();		
+		if ($query->num_rows() > 0) {
+			echo json_encode(array('status'=>1,'data'=>$query->result()));			
+		}		
+	}
 }

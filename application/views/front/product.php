@@ -260,68 +260,15 @@
 				</div>
 				<div class="col-md-5">
 					<div class="customer-feedback-sec">
-						<h5>Customer Feedback</h5>
-						<div class="customer-feedback-block">
-							<div class="customer-feedback-content">
-								<div class="profile-text">
-									<h3>AA</h3>
-								</div>	
-								<div class="profile-details">
-									<h3> Atul Tiwari </h3>
-									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
-								</div>
-							</div>
-							<div class="product-detail">
-								<p>Prefect Product</p>
-							</div>
-						</div>
-						<div class="customer-feedback-block">
-							<div class="customer-feedback-content">
-								<div class="profile-text">
-									<h3>AA</h3>
-								</div>	
-								<div class="profile-details">
-									<h3> Atul Tiwari </h3>
-									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
-								</div>
-							</div>
-							<div class="product-detail">
-								<p>Prefect Product</p>
-							</div>
-						</div>
-						<div class="customer-feedback-block">
-							<div class="customer-feedback-content">
-								<div class="profile-text">
-									<h3>AA</h3>
-								</div>	
-								<div class="profile-details">
-									<h3> Atul Tiwari </h3>
-									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
-								</div>
-							</div>
-							<div class="product-detail">
-								<p>Prefect Product</p>
-							</div>
-						</div>
-						<div class="customer-feedback-block">
-							<div class="customer-feedback-content">
-								<div class="profile-text">
-									<h3>AA</h3>
-								</div>	
-								<div class="profile-details">
-									<h3> Atul Tiwari </h3>
-									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
-								</div>
-							</div>
-							<div class="product-detail">
-								<p>Prefect Product</p>
-							</div>
+						<h5>Customer Feedback</h5>						
+						<div id="showAllComments">							
 						</div>
 						<div class="add-comment">
 							<div>
-								<form action="#">
-									<input type="search" required="required" class="product_comment_input" placeholder="Comment Something">
-									<button type="submit" class="product_comment_button" value="Submit"><i class="fa fa-paper-plane"></i></button>
+								<form method="post" id="product_comment_byuser">
+									<input type="search" required="required" name="product_comment" class="product_comment_input" placeholder="Comment Something">
+									<input id="get_product_id" type="hidden" name="product_id" value="<?= $product->product_id; ?>">
+									<button type="button" onclick="productComment()" class="product_comment_button" value="Submit"><i class="fa fa-paper-plane"></i></button>
 								</form>
 							</div>
 						</div>
@@ -464,3 +411,67 @@
 		</div>
 	</div>
 </div>
+
+<script type="text/javascript">	
+	getAllComments();
+	function productComment(argument) {		
+		$.ajax({
+	        url:"<?php echo base_url(); ?>/user/product_comment",
+	        method:"POST",
+	        dataType: 'JSON',
+	        data: $("#product_comment_byuser").serialize(),        
+	        success:function(data){  
+
+	        console.log(data)                  
+	        getAllComments();
+	          
+	              // setInterval(function () {
+	              //   $('.front-end-error').fadeOut("slow");
+	              // }, 7000);
+	          
+	          // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+	        }
+	  })
+	}
+	function getAllComments(){
+					var id = $("#get_product_id").val();
+            $.ajax({
+                type: 'post',
+                url: '<?php echo base_url(); ?>/user/getAllProductComments/'+id,                
+                async: false,
+                dataType: 'json',
+                success: function(data){                	
+                	
+                		var data = data.data;
+                    var html = " ";
+                    var i;  
+                    for(i=0; i < data.length ; i++){
+                    	html +='<div class="customer-feedback-block"><div class="customer-feedback-content"><div class="profile-text"><h3>'+
+                    								''+'<img src="<?=base_url();?>assets/img/vendor_profile/'+data[i].image+'" style="width:40px;height:40px;">'+
+                                    '</h3></div><div class="profile-details"><h3>'+data[i].full_name+'</h3><span>Commented at <p>'+data[i].comment_date +'</p></span></div><div class="product-detail"><p>'+data[i].comments +'</p></div></div></div>';
+                    }
+                    $('#showAllComments').html(html);
+                },
+                error: function(){
+                    alert('Could not get Data from Database');
+                }
+            });
+        }
+
+
+</script>
+
+<!-- <div class="customer-feedback-block">
+	<div class="customer-feedback-content">
+		<div class="profile-text">
+			<h3>AA</h3>
+		</div>	
+		<div class="profile-details">
+			<h3> Atul Tiwari </h3>
+			<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
+		</div>
+	</div>
+	<div class="product-detail">
+		<p>Prefect Product</p>
+	</div>
+</div> -->

@@ -118,8 +118,7 @@
 
   function submitFunction(event) {
     var email = $("#email").val();
-    var password = $("#txtNewPassword").val();
-    console.log(isNumber(email));
+    var password = $("#txtNewPassword").val();    
     if(isNumber(email) && (email).length !=10 ){
         $('#error-text-otp').html("Please enter 10 digit mobile number");       
         $('.front-end-error-otp').show();

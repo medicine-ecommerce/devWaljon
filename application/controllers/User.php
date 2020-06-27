@@ -80,4 +80,23 @@ Class User extends MY_Controller {
         $this->middle = 'cart';
         $this->User();
     }
+    public function product_comment()
+    {        
+
+        if(!empty($this->input->post('product_comment'))){
+            $result = $this->User->insertData('product_comment',array('comments'=>$this->input->post('product_comment'),'product_id'=>$this->input->post('product_id'),'user_id'=>$this->session->userdata('user_id')));
+            if($result){
+                echo json_encode(array('status'=>1,'message'=>'Comment inserted'));
+            }else{
+                echo  json_encode(array('status'=>0,'message'=>'Error'));
+            }
+        }
+     
+    }
+    public function getAllProductComments($id)
+    {
+        $data = $this->User->getAllProductComments($id);        
+        return  $data;
+        
+    }
 }
