@@ -1,3 +1,4 @@
+
 <div class="super_container">
 	<!-- Single Product -->
 	<div class="single_product">
@@ -20,20 +21,37 @@
 				<!-- Selected Image -->
 				<div class="col-lg-5 order-lg-2 order-1">
 					<div class="image_selected">
-						<img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+						<div class="img-zoom-lens"></div>
+						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+						<div class="img-zoom-result"></div>
+					</div>
+					<div class="image_selected">
+						<div class="img-zoom-lens"></div>
+						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
+						<div class="img-zoom-result"></div>
+					</div>
+					<div class="image_selected">
+						<div class="img-zoom-lens"></div>
+						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="">
+						<div class="img-zoom-result"></div>
+					</div>
+					<div class="image_selected">
+						<div class="img-zoom-lens"></div>
+						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="">
+						<div id="myresult" class="img-zoom-result"></div>
 					</div>
 					<div class="related-img">
 						<div class="related-img-section">
-							<img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="" onclick="currentSlide(1)">
 						</div>
 						<div class="related-img-section">
-							<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
+							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="" onclick="currentSlide(2)">
 						</div>	
 						<div class="related-img-section">
-							<img src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="">
+							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="" onclick="currentSlide(3)">
 						</div>	
 						<div class="related-img-section">
-							<img src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="">
+							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="" onclick="currentSlide(4)">
 						</div>		
 					</div>
 				</div>
@@ -412,6 +430,7 @@
 	</div>
 </div>
 
+
 <script type="text/javascript">	
 	getAllComments();
 	function productComment(argument) {		
@@ -422,7 +441,6 @@
 	        data: $("#product_comment_byuser").serialize(),        
 	        success:function(data){  
 
-	        console.log(data)                  
 	        getAllComments();
 	          
 	              // setInterval(function () {
@@ -475,3 +493,115 @@
 		<p>Prefect Product</p>
 	</div>
 </div> -->
+
+
+<script>
+	var slideIndex = 1;
+	showSlides(slideIndex);
+
+	function plusSlides(n) {
+	  showSlides(slideIndex += n);
+	}
+
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+
+	function showSlides(n) {
+	  var i;
+	  var slides = document.getElementsByClassName("image_selected");
+	  var dots = document.getElementsByClassName("demo");
+	  var result_div = document.getElementsByClassName("img-zoom-result");
+	 
+	  if (n > slides.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = slides.length}
+	  for (i = 0; i < slides.length; i++) {
+	      slides[i].style.display = "none";
+	  }
+
+	  for (i = 0; i < dots.length; i++) {
+	      dots[i].className = dots[i].className.replace(" active", "");
+	      $(".imgzoom").removeAttr("id");
+	      dots[i].className = dots[i].className.replace(" imgzoom", "");
+	  }
+
+	  for (i = 0; i < result_div.length; i++) {
+	      $(".result1").removeAttr("id");
+	  		result_div[i].className = result_div[i].className.replace(" result1", "");
+	  }
+
+	  slides[slideIndex-1].style.display = "block";
+	  dots[slideIndex-1].className += " active";
+	  dots[slideIndex-1].className += " imgzoom";
+	  $(".imgzoom").attr("id","myimage");
+	  result_div[slideIndex-1].className += " result1";
+	  $(".result1").attr("id","myresult");
+	  //$("#myresult").css("display", "none");
+	  $('.img-zoom-lens').remove();
+
+	  function imageZoom(imgID, resultID) {
+		  var img, lens, result, cx, cy;
+		  img = document.getElementById(imgID);
+		  result = document.getElementById(resultID);
+		  /*create lens:*/
+		  lens = document.createElement("DIV");
+		  lens.setAttribute("class", "img-zoom-lens");
+		  /*insert lens:*/
+		  img.parentElement.insertBefore(lens, img);
+		  /*calculate the ratio between result DIV and lens:*/
+		  cx = result.offsetWidth / lens.offsetWidth;
+		  cy = result.offsetHeight / lens.offsetHeight;
+		  /*set background properties for the result DIV:*/
+		  result.style.backgroundImage = "url('" + img.src + "')";
+		  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+		  /*execute a function when someone moves the cursor over the image, or the lens:*/
+		  lens.addEventListener("mousemove", moveLens);
+		  img.addEventListener("mousemove", moveLens);
+		  /*and also for touch screens:*/
+		  lens.addEventListener("touchmove", moveLens);
+		  img.addEventListener("touchmove", moveLens);
+		  function moveLens(e) {
+		    var pos, x, y;
+		    /*prevent any other actions that may occur when moving over the image:*/
+		    e.preventDefault();
+		    /*get the cursor's x and y positions:*/
+		    pos = getCursorPos(e);
+		    /*calculate the position of the lens:*/
+		    x = pos.x - (lens.offsetWidth / 2);
+		    y = pos.y - (lens.offsetHeight / 2);
+		    /*prevent the lens from being positioned outside the image:*/
+		    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+		    if (x < 0) {x = 0;}
+		    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+		    if (y < 0) {y = 0;}
+		    /*set the position of the lens:*/
+		    lens.style.left = x + "px";
+		    lens.style.top = y + "px";
+		    /*display what the lens "sees":*/
+		    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+		  }
+		  function getCursorPos(e) {
+		    var a, x = 0, y = 0;
+		    e = e || window.event;
+		    /*get the x and y positions of the image:*/
+		    a = img.getBoundingClientRect();
+		    /*calculate the cursor's x and y coordinates, relative to the image:*/
+		    x = e.pageX - a.left;
+		    y = e.pageY - a.top;
+		    /*consider any page scrolling:*/
+		    x = x - window.pageXOffset;
+		    y = y - window.pageYOffset;
+		    return {x : x, y : y};
+		  }
+		}
+			// Initiate zoom effect:
+		imageZoom("myimage", "myresult");
+
+	 //  $(".imgzoom").hover(function(){
+		//   	$("#myresult").css("display", "block");
+		// 	}, function(){
+		// 		$("#myresult").css("display", "none");
+		// });		
+	}
+
+</script>
