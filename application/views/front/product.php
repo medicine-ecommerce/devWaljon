@@ -102,11 +102,16 @@
 										<div class="col-md-10">
 											<div class="product_quantity">	
 												<h5 class="product-price-head">Quantity</h5>
+												<div class="def-number-input number-input safari_only add-quantity  add-quantity-product">
+				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+				                  <input class="quantity" min="0" name="quantity" value="1" type="number">
+				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+				                </div>
 												<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-												<div class="quantity_buttons">
+												<!-- <div class="quantity_buttons">
 													<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
 													<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
-												</div>
+												</div> -->
 												<div class="product-tablets-count">
 													<p>10 Tablets in 1 strip</p>
 												</div>
@@ -496,6 +501,20 @@
 
 
 <script>
+
+	$(document).ready(function(){
+		$('#myresult').hide();
+		$(".image_selected").mouseover(function(){
+			$('#myresult').show();
+		});
+		$(".image_selected").mouseout(function(){
+			 $('#myresult').hide();
+		});
+			// body...
+		
+	});
+
+
 	var slideIndex = 1;
 	showSlides(slideIndex);
 

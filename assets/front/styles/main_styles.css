@@ -3728,3 +3728,13 @@ button.product_search_button {
     height: 400px;
     overflow: scroll;
 }
+div#myresult {
+    position: absolute;
+    top: 10px;
+    left: 537px;
+    z-index: 9;
+    height: 401px;
+}
+.add-quantity-product {
+    position: absolute;
+}
