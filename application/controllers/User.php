@@ -42,6 +42,7 @@ Class User extends MY_Controller {
     public function product($id)
     {
         $this->data['product'] = $this->User->getProductByID($id);
+        $this->data['alternate_product'] = $this->User->getAlternateBrandsByID();
         $this->middle = 'product';
         $this->User();
     }
