@@ -181,18 +181,18 @@
     });
 
 // RESTRICT INPUTS TO NUMBERS ONLY WITH A MIN OF 0 AND A MAX 100
-$('input').on('blur', function(){
+// $('input').on('blur', function(){
 
-    var input = $(this);
-    var value = parseInt($(this).val());
+//     var input = $(this);
+//     var value = parseInt($(this).val());
 
-        if (value < 0 || isNaN(value)) {
-            input.val(0);
-        } else if
-            (value > 100) {
-            input.val(100);
-        }
-});
+//         if (value < 0 || isNaN(value)) {
+//             input.val(0);
+//         } else if
+//             (value > 100) {
+//             input.val(100);
+//         }
+// });
 </script>
 
 

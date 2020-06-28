@@ -1,3 +1,4 @@
+
 <div class="super_container">
 	<!-- Single Product -->
 	<div class="single_product">
@@ -20,20 +21,37 @@
 				<!-- Selected Image -->
 				<div class="col-lg-5 order-lg-2 order-1">
 					<div class="image_selected">
-						<img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+						<div class="img-zoom-lens"></div>
+						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+						<div class="img-zoom-result"></div>
+					</div>
+					<div class="image_selected">
+						<div class="img-zoom-lens"></div>
+						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
+						<div class="img-zoom-result"></div>
+					</div>
+					<div class="image_selected">
+						<div class="img-zoom-lens"></div>
+						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="">
+						<div class="img-zoom-result"></div>
+					</div>
+					<div class="image_selected">
+						<div class="img-zoom-lens"></div>
+						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="">
+						<div id="myresult" class="img-zoom-result"></div>
 					</div>
 					<div class="related-img">
 						<div class="related-img-section">
-							<img src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="" onclick="currentSlide(1)">
 						</div>
 						<div class="related-img-section">
-							<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
+							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="" onclick="currentSlide(2)">
 						</div>	
 						<div class="related-img-section">
-							<img src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="">
+							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="" onclick="currentSlide(3)">
 						</div>	
 						<div class="related-img-section">
-							<img src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="">
+							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="" onclick="currentSlide(4)">
 						</div>		
 					</div>
 				</div>
@@ -84,11 +102,16 @@
 										<div class="col-md-10">
 											<div class="product_quantity">	
 												<h5 class="product-price-head">Quantity</h5>
+												<div class="def-number-input number-input safari_only add-quantity  add-quantity-product">
+				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+				                  <input class="quantity" min="0" name="quantity" value="1" type="number">
+				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+				                </div>
 												<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-												<div class="quantity_buttons">
+												<!-- <div class="quantity_buttons">
 													<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
 													<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
-												</div>
+												</div> -->
 												<div class="product-tablets-count">
 													<p>10 Tablets in 1 strip</p>
 												</div>
@@ -260,68 +283,15 @@
 				</div>
 				<div class="col-md-5">
 					<div class="customer-feedback-sec">
-						<h5>Customer Feedback</h5>
-						<div class="customer-feedback-block">
-							<div class="customer-feedback-content">
-								<div class="profile-text">
-									<h3>AA</h3>
-								</div>	
-								<div class="profile-details">
-									<h3> Atul Tiwari </h3>
-									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
-								</div>
-							</div>
-							<div class="product-detail">
-								<p>Prefect Product</p>
-							</div>
-						</div>
-						<div class="customer-feedback-block">
-							<div class="customer-feedback-content">
-								<div class="profile-text">
-									<h3>AA</h3>
-								</div>	
-								<div class="profile-details">
-									<h3> Atul Tiwari </h3>
-									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
-								</div>
-							</div>
-							<div class="product-detail">
-								<p>Prefect Product</p>
-							</div>
-						</div>
-						<div class="customer-feedback-block">
-							<div class="customer-feedback-content">
-								<div class="profile-text">
-									<h3>AA</h3>
-								</div>	
-								<div class="profile-details">
-									<h3> Atul Tiwari </h3>
-									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
-								</div>
-							</div>
-							<div class="product-detail">
-								<p>Prefect Product</p>
-							</div>
-						</div>
-						<div class="customer-feedback-block">
-							<div class="customer-feedback-content">
-								<div class="profile-text">
-									<h3>AA</h3>
-								</div>	
-								<div class="profile-details">
-									<h3> Atul Tiwari </h3>
-									<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
-								</div>
-							</div>
-							<div class="product-detail">
-								<p>Prefect Product</p>
-							</div>
+						<h5>Customer Feedback</h5>						
+						<div id="showAllComments">							
 						</div>
 						<div class="add-comment">
 							<div>
-								<form action="#">
-									<input type="search" required="required" class="product_comment_input" placeholder="Comment Something">
-									<button type="submit" class="product_comment_button" value="Submit"><i class="fa fa-paper-plane"></i></button>
+								<form method="post" id="product_comment_byuser">
+									<input type="search" required="required" name="product_comment" class="product_comment_input" placeholder="Comment Something">
+									<input id="get_product_id" type="hidden" name="product_id" value="<?= $product->product_id; ?>">
+									<button type="button" onclick="productComment()" class="product_comment_button" value="Submit"><i class="fa fa-paper-plane"></i></button>
 								</form>
 							</div>
 						</div>
@@ -464,3 +434,193 @@
 		</div>
 	</div>
 </div>
+
+
+<script type="text/javascript">	
+	getAllComments();
+	function productComment(argument) {		
+		$.ajax({
+	        url:"<?php echo base_url(); ?>/user/product_comment",
+	        method:"POST",
+	        dataType: 'JSON',
+	        data: $("#product_comment_byuser").serialize(),        
+	        success:function(data){  
+
+	        getAllComments();
+	          
+	              // setInterval(function () {
+	              //   $('.front-end-error').fadeOut("slow");
+	              // }, 7000);
+	          
+	          // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+	        }
+	  })
+	}
+	function getAllComments(){
+					var id = $("#get_product_id").val();
+            $.ajax({
+                type: 'post',
+                url: '<?php echo base_url(); ?>/user/getAllProductComments/'+id,                
+                async: false,
+                dataType: 'json',
+                success: function(data){                	
+                	
+                		var data = data.data;
+                    var html = " ";
+                    var i;  
+                    for(i=0; i < data.length ; i++){
+                    	html +='<div class="customer-feedback-block"><div class="customer-feedback-content"><div class="profile-text"><h3>'+
+                    								''+'<img src="<?=base_url();?>assets/img/vendor_profile/'+data[i].image+'" style="width:40px;height:40px;">'+
+                                    '</h3></div><div class="profile-details"><h3>'+data[i].full_name+'</h3><span>Commented at <p>'+data[i].comment_date +'</p></span></div><div class="product-detail"><p>'+data[i].comments +'</p></div></div></div>';
+                    }
+                    $('#showAllComments').html(html);
+                },
+                error: function(){
+                    alert('Could not get Data from Database');
+                }
+            });
+        }
+
+
+</script>
+
+<!-- <div class="customer-feedback-block">
+	<div class="customer-feedback-content">
+		<div class="profile-text">
+			<h3>AA</h3>
+		</div>	
+		<div class="profile-details">
+			<h3> Atul Tiwari </h3>
+			<span>Commented at <p>03:02 PM, 15 Jan 2020</p></span>
+		</div>
+	</div>
+	<div class="product-detail">
+		<p>Prefect Product</p>
+	</div>
+</div> -->
+
+
+<script>
+
+	$(document).ready(function(){
+		$('#myresult').hide();
+		$(".image_selected").mouseover(function(){
+			$('#myresult').show();
+		});
+		$(".image_selected").mouseout(function(){
+			 $('#myresult').hide();
+		});
+			// body...
+		
+	});
+
+
+	var slideIndex = 1;
+	showSlides(slideIndex);
+
+	function plusSlides(n) {
+	  showSlides(slideIndex += n);
+	}
+
+	function currentSlide(n) {
+	  showSlides(slideIndex = n);
+	}
+
+	function showSlides(n) {
+	  var i;
+	  var slides = document.getElementsByClassName("image_selected");
+	  var dots = document.getElementsByClassName("demo");
+	  var result_div = document.getElementsByClassName("img-zoom-result");
+	 
+	  if (n > slides.length) {slideIndex = 1}
+	  if (n < 1) {slideIndex = slides.length}
+	  for (i = 0; i < slides.length; i++) {
+	      slides[i].style.display = "none";
+	  }
+
+	  for (i = 0; i < dots.length; i++) {
+	      dots[i].className = dots[i].className.replace(" active", "");
+	      $(".imgzoom").removeAttr("id");
+	      dots[i].className = dots[i].className.replace(" imgzoom", "");
+	  }
+
+	  for (i = 0; i < result_div.length; i++) {
+	      $(".result1").removeAttr("id");
+	  		result_div[i].className = result_div[i].className.replace(" result1", "");
+	  }
+
+	  slides[slideIndex-1].style.display = "block";
+	  dots[slideIndex-1].className += " active";
+	  dots[slideIndex-1].className += " imgzoom";
+	  $(".imgzoom").attr("id","myimage");
+	  result_div[slideIndex-1].className += " result1";
+	  $(".result1").attr("id","myresult");
+	  //$("#myresult").css("display", "none");
+	  $('.img-zoom-lens').remove();
+
+	  function imageZoom(imgID, resultID) {
+		  var img, lens, result, cx, cy;
+		  img = document.getElementById(imgID);
+		  result = document.getElementById(resultID);
+		  /*create lens:*/
+		  lens = document.createElement("DIV");
+		  lens.setAttribute("class", "img-zoom-lens");
+		  /*insert lens:*/
+		  img.parentElement.insertBefore(lens, img);
+		  /*calculate the ratio between result DIV and lens:*/
+		  cx = result.offsetWidth / lens.offsetWidth;
+		  cy = result.offsetHeight / lens.offsetHeight;
+		  /*set background properties for the result DIV:*/
+		  result.style.backgroundImage = "url('" + img.src + "')";
+		  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+		  /*execute a function when someone moves the cursor over the image, or the lens:*/
+		  lens.addEventListener("mousemove", moveLens);
+		  img.addEventListener("mousemove", moveLens);
+		  /*and also for touch screens:*/
+		  lens.addEventListener("touchmove", moveLens);
+		  img.addEventListener("touchmove", moveLens);
+		  function moveLens(e) {
+		    var pos, x, y;
+		    /*prevent any other actions that may occur when moving over the image:*/
+		    e.preventDefault();
+		    /*get the cursor's x and y positions:*/
+		    pos = getCursorPos(e);
+		    /*calculate the position of the lens:*/
+		    x = pos.x - (lens.offsetWidth / 2);
+		    y = pos.y - (lens.offsetHeight / 2);
+		    /*prevent the lens from being positioned outside the image:*/
+		    if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+		    if (x < 0) {x = 0;}
+		    if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+		    if (y < 0) {y = 0;}
+		    /*set the position of the lens:*/
+		    lens.style.left = x + "px";
+		    lens.style.top = y + "px";
+		    /*display what the lens "sees":*/
+		    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+		  }
+		  function getCursorPos(e) {
+		    var a, x = 0, y = 0;
+		    e = e || window.event;
+		    /*get the x and y positions of the image:*/
+		    a = img.getBoundingClientRect();
+		    /*calculate the cursor's x and y coordinates, relative to the image:*/
+		    x = e.pageX - a.left;
+		    y = e.pageY - a.top;
+		    /*consider any page scrolling:*/
+		    x = x - window.pageXOffset;
+		    y = y - window.pageYOffset;
+		    return {x : x, y : y};
+		  }
+		}
+			// Initiate zoom effect:
+		imageZoom("myimage", "myresult");
+
+	 //  $(".imgzoom").hover(function(){
+		//   	$("#myresult").css("display", "block");
+		// 	}, function(){
+		// 		$("#myresult").css("display", "none");
+		// });		
+	}
+
+</script>
