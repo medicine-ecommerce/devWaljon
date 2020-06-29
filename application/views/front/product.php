@@ -268,9 +268,11 @@
 				</div>
 				<div class="col-md-5">
 					<div class="customer-feedback-sec">
-						<h5>Customer Feedback</h5>						
-						<div id="showAllComments">							
-						</div>
+						<h5>Customer Feedback</h5>
+						<div class="scroll-div">	
+							<div id="showAllComments">							
+							</div>
+						</div>						
 						<div class="add-comment">
 							<div>
 								<form method="post" id="product_comment_byuser">
