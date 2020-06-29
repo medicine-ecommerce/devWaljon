@@ -3724,7 +3724,7 @@ button.product_search_button {
 {
 	margin-right: 0px;
 }	
-.customer-feedback-sec {
+.scroll-div {
     height: 400px;
     overflow: scroll;
 }
