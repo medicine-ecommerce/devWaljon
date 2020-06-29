@@ -35,11 +35,12 @@ class User_model extends MY_model
 	}
 	public function getProductByID($id)
 	{
-		$this->db->select('product.*,brand.brand_name,brand.status,manufacturer.name as manufacturer_name,manufacturer.status,category.category_name,category.status,subcategory.subcategory,subcategory.status,product_form.name as product_form,product_form.status,product_item.*');
+		$this->db->select('product.*,brand.brand_name,brand.status,manufacturer.name as manufacturer_name,manufacturer.status,category.category_name,category.status,subcategory.subcategory,subcategory.status,product_form.name as product_form,saltcomposition.name as saltcomposition_name, product_form.status,product_item.*');
 		$this->db->from('product');
 		$this->db->join('product_item','product_item.product_id = product.id');		
 		$this->db->join('product_form','product_form.id = product.product_form_id','left');
 		$this->db->join('manufacturer','manufacturer.id = product.manufacturer_id','left');
+		$this->db->join('saltcomposition','saltcomposition.id = product.salt_composition_id','left');
 		$this->db->join('category','category.id = product.category_id','left');
 		$this->db->join('subcategory','subcategory.id = product.sucategory_id','left');
 		$this->db->join('brand','brand.id = product.brand_id','left');

@@ -5,10 +5,10 @@
 		<div class="container">
 			<div class="hambergar">	
 				<div class="toolbox-left">
-					<?php					
-						$product = $product['product'] ;					
+					<?php								
+						$product_item = $product['product'];											
 					 ?>
-			    <h3><a>home</a> > <a href=""><?= $product->category_name; ?></a> > <a href=""><?= $product->name; ?></a></h3> 
+			    <h3><a>home</a> > <a href=""><?= $product_item->category_name; ?></a> > <a href=""><?= $product_item->name; ?></a></h3> 
 			  </div>
 			  <div class="pull-right">
 			  	<form action="#">
@@ -20,39 +20,24 @@
 			<div class="row">
 				<!-- Selected Image -->
 				<div class="col-lg-5 order-lg-2 order-1">
-					<div class="image_selected">
+					<?php 					
+					if(!empty($product["product_images"])){
+					foreach($product["product_images"] as $main_value) { ?>					
+					 <div class="image_selected">
 						<div class="img-zoom-lens"></div>
-						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+						<img class="demo cursor" src="<?php echo base_url().$main_value->image; ?>" alt="" height="200">
 						<div class="img-zoom-result"></div>
-					</div>
-					<div class="image_selected">
-						<div class="img-zoom-lens"></div>
-						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
-						<div class="img-zoom-result"></div>
-					</div>
-					<div class="image_selected">
-						<div class="img-zoom-lens"></div>
-						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="">
-						<div class="img-zoom-result"></div>
-					</div>
-					<div class="image_selected">
-						<div class="img-zoom-lens"></div>
-						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="">
-						<div id="myresult" class="img-zoom-result"></div>
-					</div>
+					</div> 
+					<?php  } } ?>					 
 					<div class="related-img">
-						<div class="related-img-section">
-							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="" onclick="currentSlide(1)">
-						</div>
-						<div class="related-img-section">
-							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="" onclick="currentSlide(2)">
-						</div>	
-						<div class="related-img-section">
-							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="" onclick="currentSlide(3)">
-						</div>	
-						<div class="related-img-section">
-							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="" onclick="currentSlide(4)">
-						</div>		
+					<?php								
+					$slide_id = 1;
+						if(!empty($product["product_images"])){
+						foreach($product["product_images"] as $gallary_image) { ?>					
+						 <div class="related-img-section">
+							<img class="demo cursor" src="<?php echo base_url().$gallary_image->image; ?>" alt="" onclick="currentSlide(<?= $slide_id; ?>)">
+						</div> 
+					<?php $slide_id += 1; } } ?>				
 					</div>
 				</div>
 
@@ -60,7 +45,7 @@
 				<div class="col-lg-7 order-3">
 					<div class="product_description">
 						<!-- <div class="product_category">Laptops</div> -->
-						<div class="product_name"><?= $product->name; ?></div>
+						<div class="product_name"><?= $product_item->name; ?></div>
 						<div class="product_rating"><i class="fa fa-star"></i>  4.4</div>
 						<div class="date-time">
 							<i class="fa fa-clock-o"></i> <p>03:02 PM, 15 Jan 2020</p>
@@ -70,15 +55,15 @@
 						</div>
 						<div class="product-manufaturer product-description">
 							<h4 class="product-description-heading">Manufaturer : </h4>
-							<p><?= $product->manufacturer_name; ?></p>
+							<p><?= $product_item->manufacturer_name; ?></p>
 						</div>
 						<div class="product-salt product-description">
 							<h4 class="product-description-heading">Salt Composition : </h4>
-							<p><?= $product->salt_composition; ?></p>
+							<p><?= $product_item->saltcomposition_name; ?></p>
 						</div>
 						<div class="product-expdate product-description">
 							<h4 class="product-description-heading">Expiry Date : </h4>
-							<p><?= $product->expiry_date; ?></p>
+							<p><?= $product_item->expiry_date; ?></p>
 						</div>
 						<div class="product-AnsQues product-description">
 							<i class='fas fa-arrow-down'></i>
@@ -95,8 +80,8 @@
 										<div class="col-md-2">
 											<div class="product_price">
 												<h5 class="product-price-head">Price</h5>
-												<p>MRP <?= $product->mrp; ?></p>
-												<h4><i class='fas fa-rupee-sign'></i> <?= $product->sale_price; ?></h4>
+												<p>MRP <?= $product_item->mrp; ?></p>
+												<h4><i class='fas fa-rupee-sign'></i> <?= $product_item->sale_price; ?></h4>
 											</div>
 										</div>
 										<div class="col-md-10">
@@ -104,7 +89,7 @@
 												<h5 class="product-price-head">Quantity</h5>
 												<div class="def-number-input number-input safari_only add-quantity  add-quantity-product">
 				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-				                  <input class="quantity" min="0" name="quantity" value="1" type="number">
+				                  <input class="quantity" min="1" name="quantity" value="1" type="number">
 				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
 				                </div>
 												<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
@@ -122,7 +107,7 @@
 								<div class="button_container">
 									<div class="price-total">
 										<p class="total-heading">Total</p>
-										<h4><i class='fas fa-rupee-sign'></i> <?= $product->sale_price; ?></h4>
+										<h4><i class='fas fa-rupee-sign'></i> <?= $product_item->sale_price; ?></h4>
 										<p class="price-off">Get 20% off</p>
 									</div>
 									<div class="pull-right">
@@ -173,7 +158,7 @@
 				<div class="tab-content" id="myTabContent">
 		      <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
 		      	<div class="tab-sub-content">	
-		        	<p><?= $product->about_product; ?></p>
+		        	<p><?= $product_item->about_product; ?></p>
 		      	</div>
 		      	<!-- <div class="tab-sub-content">
 			        <span class="product-sub-heading">Benefits</span>
@@ -194,25 +179,25 @@
 		      	</div> -->
 		      </div>
 		      <div class="tab-pane fade" id="benefits" role="tabpanel" aria-labelledby="benefits-tab">
-		        <p><?= $product->how_to_use; ?></p> 
+		        <p><?= $product_item->how_to_use; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="uses" role="tabpanel" aria-labelledby="uses-tab">
-		        <p><?= $product->when_to_use; ?></p> 
+		        <p><?= $product_item->when_to_use; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="side-eff" role="tabpanel" aria-labelledby="side-eff-tab">
-		        <p><?= $product->side_effect; ?></p> 
+		        <p><?= $product_item->side_effect; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="how-use" role="tabpanel" aria-labelledby="how-use-tab">
-		        <p><?= $product->how_to_use; ?></p> 
+		        <p><?= $product_item->how_to_use; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="how-work" role="tabpanel" aria-labelledby="how-work-tab">
-		        <p><?= $product->how_to_work; ?></p> 
+		        <p><?= $product_item->how_to_work; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="strong-info" role="tabpanel" aria-labelledby="strong-info-tab">
-		        <p><?= $product->how_to_store; ?></p> 
+		        <p><?= $product_item->how_to_store; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="safety-info" role="tabpanel" aria-labelledby="safety-info-tab">
-		        <p><?= $product->safety_info; ?></p> 		        
+		        <p><?= $product_item->safety_info; ?></p> 		        
 		      </div>
 		    </div>
 		  </div>
@@ -227,7 +212,7 @@
 						<h4>Frequently Asked Questions</h4>
 					</div>
 					<div class="faq-accordine">
-						<div class="container">
+						<div class="containers">
 						  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 						    <div class="panel panel-default">
 						      <div class="panel-heading" role="tab" id="headingOne">
@@ -290,7 +275,7 @@
 							<div>
 								<form method="post" id="product_comment_byuser">
 									<input type="search" required="required" name="product_comment" class="product_comment_input" placeholder="Comment Something">
-									<input id="get_product_id" type="hidden" name="product_id" value="<?= $product->product_id; ?>">
+									<input id="get_product_id" type="hidden" name="product_id" value="<?= $product_item->product_id; ?>">
 									<button type="button" onclick="productComment()" class="product_comment_button" value="Submit"><i class="fa fa-paper-plane"></i></button>
 								</form>
 							</div>
@@ -307,12 +292,9 @@
 			<div class="product-main-heading">
 				<h4>Alternate Brands</h4>
 			</div>
-			<?php if (!empty($alternate_product)) { { ?>
         <div class="product-slider-block slider-arrow alternate-slider-arrow">        
           <div class="row alternate-product">
-            <div class="col-md-6 title-section">            
-              <!-- <img src="<?php echo base_url('assets/icon/icon_new_arrivals.png');  ?>" >
-              <h4 class="product-heading-h4"><?php echo $value['category_name']; ?></h4> -->
+            <div class="col-md-6 title-section">                          
             </div>
             <div class="col-md-6 all-section">            
               <a href=""><span class="product-heading-all">View All</span></a>            
@@ -321,12 +303,14 @@
           <div class="product-slider">
             <div class="owl-slider-alternate" >
               <div id="carousel5" class="owl-carousel product-slider" >
-                <?php foreach ($alternate_product as $key => $value) { ?>
+                <?php 
+                if(!empty($alternate_product)){
+                foreach ($alternate_product as $key => $value) { ?>
                   <div class="item">
                     <div class="product-main-block">
                       <div class="product-block">  
-                        <div class="product-image-section">                      
-                          <img src="<?php echo (!empty($value->image))?base_url('assets/product-images/'.$value->image):base_url('assets/front/images/best_2.png');  ?>" >
+                        <div class="product-image-section">                                              	
+                          <img src="<?php echo (!empty($value->image))? base_url().$value->image : base_url('assets/front/images/best_2.png');  ?>" >
                         </div>
                         <div class="shape">
                           <span class="offer-text">10% </span><span class="off-text">Off</span>
@@ -348,13 +332,11 @@
                       </div>                  
                     </div>               
                   </div>
-                <?php } ?>              
+                <?php } } ?>              
               </div>
             </div>
           </div>
         </div>
-    <?php  
-    } }?>  			
 		</div>
 	</div>
 </div>
@@ -428,10 +410,14 @@
 
 	$(document).ready(function(){
 		$('#myresult').hide();
+		$('.img-zoom-lens').hide();
+
 		$(".image_selected").mouseover(function(){
+			$('.img-zoom-lens').show();
 			$('#myresult').show();
 		});
 		$(".image_selected").mouseout(function(){
+			$('.img-zoom-lens').hide();
 			 $('#myresult').hide();
 		});
 			// body...
@@ -558,6 +544,7 @@
       autoplayTimeout: 6000,
       smartSpeed: 800,
       nav: true,
+      navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
       responsive: {
         0: {
           items: 1
@@ -574,6 +561,14 @@
         
       }
     });
+	var owl = $("#carousel5");                 
+
+	$('#carousel5 .item').on('mouseover',function(e){
+	    owl.trigger('stop.owl.autoplay');
+	})
+	$('#carousel5 .item').on('mouseleave',function(e){
+	    owl.trigger('play.owl.autoplay');
+	})
 
 	$(document).ready(function(){      
       $('.add-cart-button').click(function(){

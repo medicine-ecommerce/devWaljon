@@ -717,4 +717,7 @@ p.main-product-name {
     border-radius: 2px;
     right: 125px;
 }
+.faq-accordine .panel-body {
+    font-size: 14px;
+}
 
