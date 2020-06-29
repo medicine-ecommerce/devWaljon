@@ -3734,6 +3734,7 @@ div#myresult {
     left: 537px;
     z-index: 9;
     height: 401px;
+    width: 300px;
 }
 .add-quantity-product {
     position: absolute;
