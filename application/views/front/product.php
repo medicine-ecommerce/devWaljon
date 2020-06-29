@@ -130,7 +130,7 @@
 			<div class="row">
 				<div class="tab-heading">
 					<ul class="nav nav-tabs product_tab" id="myTab" role="tablist">
-			      <li class="product_li">
+			      <li class="product_li1">
 			        <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About</a>
 			      </li>
 			      <li class="product_li">
@@ -452,8 +452,8 @@
 		  /*insert lens:*/
 		  img.parentElement.insertBefore(lens, img);
 		  /*calculate the ratio between result DIV and lens:*/
-		  cx = result.offsetWidth / lens.offsetWidth;
-		  cy = result.offsetHeight / lens.offsetHeight;
+		  cx = '300' / lens.offsetWidth;
+		  cy = '401' / lens.offsetHeight;
 		  /*set background properties for the result DIV:*/
 		  result.style.backgroundImage = "url('" + img.src + "')";
 		  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
@@ -463,6 +463,7 @@
 		  /*and also for touch screens:*/
 		  lens.addEventListener("touchmove", moveLens);
 		  img.addEventListener("touchmove", moveLens);
+
 		  function moveLens(e) {
 		    var pos, x, y;
 		    /*prevent any other actions that may occur when moving over the image:*/
@@ -483,6 +484,7 @@
 		    /*display what the lens "sees":*/
 		    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
 		  }
+
 		  function getCursorPos(e) {
 		    var a, x = 0, y = 0;
 		    e = e || window.event;
@@ -498,13 +500,7 @@
 		  }
 		}
 			// Initiate zoom effect:
-		imageZoom("myimage", "myresult");
-
-	 //  $(".imgzoom").hover(function(){
-		//   	$("#myresult").css("display", "block");
-		// 	}, function(){
-		// 		$("#myresult").css("display", "none");
-		// });		
+		imageZoom("myimage", "myresult");		
 	}
 
 	jQuery("#carousel5").owlCarousel(
