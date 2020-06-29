@@ -124,31 +124,11 @@
 <script src="<?php echo base_url(); ?>assets/front/plugins/slick-1.8.0/slick.js"></script>
 <script src="<?php echo base_url(); ?>assets/front/plugins/easing/easing.js"></script>
 <script src="<?php echo base_url(); ?>assets/front/js/custom.js"></script>
-<script type="text/javascript">
-  $('.visibility-cart').on('click',function(){
-       
-  var $btn =  $(this);
-  var $cart = $('.cart');
-  console.log($btn);
-  
-  if ($btn.hasClass('is-open')) {
-     $btn.removeClass('is-open');
-     $btn.text('O')
-     $cart.removeClass('is-open');     
-     $cart.addClass('is-closed');
-     $btn.addClass('is-closed');
-  } else {
-     $btn.addClass('is-open');
-     $btn.text('X')
-     $cart.addClass('is-open');     
-     $cart.removeClass('is-closed');
-     $btn.removeClass('is-closed');
-  }
+
 
                   
-});
+<script type="text/javascript">
 
-    // SHOPPING CART PLUS OR MINUS
     $('a.qty-minus').on('click', function(e) {
         e.preventDefault();
         var $this = $(this);

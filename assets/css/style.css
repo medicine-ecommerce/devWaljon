@@ -672,12 +672,10 @@ span.product-sub-heading {
 }
 .info-tabs {
   margin-bottom: 50px;
+  margin-top: 50px;
 }
 .feedback {
   margin-bottom: 30px;
-}
-.alternate-brnd{
-  margin-bottom: 50px;
 }
 .customer-feedback-sec {
     border: 1px solid #c7d1da;
@@ -975,4 +973,20 @@ a.add-cart-btn {
   /*set the size of the result div:*/
   width: 300px;
   height: 300px;
+}
+
+li.product_li1 {
+    font-size: 20px;
+    background: none;
+    border-top-left-radius: 10px;
+    border-left: 1px solid #2b89e1 !important;
+    border-bottom: 1px solid #2b89e1 !important;
+    border-top: 1px solid #c7d1da;
+}
+
+li.product_li1 a{
+    background: none !important;
+    border-radius: 10px;
+    border: none !important;
+    padding-right: 30px;
 }

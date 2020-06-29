@@ -3724,7 +3724,7 @@ button.product_search_button {
 {
 	margin-right: 0px;
 }	
-.customer-feedback-sec {
+.scroll-div {
     height: 400px;
     overflow: scroll;
 }
@@ -3734,7 +3734,11 @@ div#myresult {
     left: 537px;
     z-index: 9;
     height: 401px;
+    width: 300px;
 }
 .add-quantity-product {
     position: absolute;
+}
+.panel-default>.panel-heading a[aria-expanded="true"] {
+    background-color: #fff !important;
 }

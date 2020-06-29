@@ -66,7 +66,7 @@
 	    	</div>
 
 	      <div class="owl-slider icon-slider" >
-	        <div id="carousel3" class="owl-carousel icon-slider" >
+	        <div id="carousel3" class="owl-carousel icon-slider remove-dots" >
 	          <div class="item">
 	            <img class="owl-lazy icon-slider " data-src="<?php echo base_url('assets/icon/icon_white_cardiac.png');  ?>" alt="">
 	          </div>
@@ -1589,7 +1589,7 @@
         },
 
         1024: {
-          items: 5
+          items: 4
         },
 
         
@@ -1616,7 +1616,7 @@
         },
 
         1024: {
-          items: 5
+          items: 4
         },
 
         

@@ -58,11 +58,12 @@ class User_model extends MY_model
 	}
 	public function getProductByID($id)
 	{
-		$this->db->select('product.*,brand.brand_name,brand.status,manufacturer.name as manufacturer_name,manufacturer.status,category.category_name,category.status,subcategory.subcategory,subcategory.status,product_form.name as product_form,product_form.status,product_item.*');
+		$this->db->select('product.*,brand.brand_name,brand.status,manufacturer.name as manufacturer_name,manufacturer.status,category.category_name,category.status,subcategory.subcategory,subcategory.status,product_form.name as product_form,saltcomposition.name as saltcomposition_name, product_form.status,product_item.*');
 		$this->db->from('product');
 		$this->db->join('product_item','product_item.product_id = product.id');		
 		$this->db->join('product_form','product_form.id = product.product_form_id','left');
 		$this->db->join('manufacturer','manufacturer.id = product.manufacturer_id','left');
+		$this->db->join('saltcomposition','saltcomposition.id = product.salt_composition_id','left');
 		$this->db->join('category','category.id = product.category_id','left');
 		$this->db->join('subcategory','subcategory.id = product.sucategory_id','left');
 		$this->db->join('brand','brand.id = product.brand_id','left');
@@ -76,6 +77,12 @@ class User_model extends MY_model
 		$this->db->where('product_images.product_id',$id);		
 		$query = $this->db->get();
 		$result['product_images'] = $query->result();			
+
+		$this->db->select('question.id,question.question,question.answer');
+		$this->db->from('question');		
+		$this->db->where('question.product_id',$id);		
+		$query = $this->db->get();
+		$result['question'] = $query->result();			
 
 		if ($query->num_rows() > 0) {
 			return $result;
@@ -92,4 +99,21 @@ class User_model extends MY_model
 			echo json_encode(array('status'=>1,'data'=>$query->result()));			
 		}		
 	}
+	public function getAlternateBrandsByID()
+	{					
+		$this->db->select('product.name,product.id as product_id,image,sale_price,product_form.name as product_form');
+		$this->db->from('product');
+		$this->db->join('product_images','product_images.product_id = product.id','left');
+		$this->db->join('product_item','product_item.product_id = product.id');
+		$this->db->join('product_form','product_form.id = product.product_form_id','left');
+		$this->db->limit(8);
+		$query_product = $this->db->get();
+		if ($query_product->num_rows() > 0) {
+			$return = $query_product->result();
+			return $return;
+		}
+	}
+
+
+
 }

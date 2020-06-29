@@ -43,6 +43,7 @@ Class User extends MY_Controller {
     public function product($id)
     {
         $this->data['product'] = $this->User->getProductByID($id);
+        $this->data['alternate_product'] = $this->User->getAlternateBrandsByID();        
         $this->middle = 'product';
         $this->User();
     }
@@ -98,12 +99,11 @@ Class User extends MY_Controller {
     {
         $this->load->view('user/filter'); 
     }
-    public function despatch_develory()
-    {
-        $this->load->view('user/despatch'); 
-    }
     public function despatch_develory1()
     {
+        $this->data['user_address'] = $this->User->getData('user_address','address', array('user_id' => '2' ));
+        $this->data['user_address_row'] = $this->User->getRowData('user_address','address', array('user_id' => '2' ));
+   // print_r($this->data);die();
         $this->middle = 'despatch';
         $this->User();
     }
@@ -112,6 +112,13 @@ Class User extends MY_Controller {
         $this->middle = 'cart';
         $this->User();
     }
+
+    public function orderListing()
+    {
+        $this->middle = 'order_listing';
+        $this->User();
+    }
+
     public function product_comment()
     {        
 

@@ -683,3 +683,44 @@ p.main-product-name {
 .left-pagination-section {
     margin-top: 10px;
 }
+.alternate-slider-arrow span[aria-label=Previous] {
+    position: absolute;
+    top: -331px;
+    font-size: 35px;
+    margin-left: -50px;
+    color: #fff;
+    background-color: #4ea8e2;
+    width: 31px;
+    padding: 0px;
+    height: 41px;
+    line-height: 0.8;
+    border-radius: 2px;
+}
+.alternate-slider-arrow span[aria-label=Next] {
+    position: absolute;
+    top: -331px;
+    font-size: 35px;
+    margin-left: -50px;
+    color: #fff;
+    background-color: #4ea8e2;
+    width: 31px;
+    padding: 0px;
+    height: 41px;
+    line-height: 0.8;
+    border-radius: 2px;   
+}
+.owl-slider-alternate {
+    margin-top: 40px;
+}
+.alternate-product span.product-heading-all {
+    padding: 10px 20px;
+    border-radius: 2px;
+    right: 125px;
+}
+.faq-accordine .panel-body {
+    font-size: 14px;
+}
+
+.owl-carousel .owl-dots {
+    display: none;
+}

@@ -27,6 +27,7 @@ Class Admin extends MY_Controller {
     	$this->load->view('admin/login');
     }    
 
+
     public function dashboard()
     {
         $this->data['vendorsCount'] = $this->Admin->rowsCount('users','*',array('type'=>'vendor'));

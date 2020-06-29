@@ -5,10 +5,11 @@
 		<div class="container">
 			<div class="hambergar">	
 				<div class="toolbox-left">
-					<?php					
-						$product = $product['product'] ;					
+					<?php			
+						$question = $product['question'];											
+						$product_item = $product['product'];											
 					 ?>
-			    <h3><a>home</a> > <a href=""><?= $product->category_name; ?></a> > <a href=""><?= $product->name; ?></a></h3> 
+			    <h3><a>home</a> > <a href=""><?= $product_item->category_name; ?></a> > <a href=""><?= $product_item->name; ?></a></h3> 
 			  </div>
 			  <div class="pull-right">
 			  	<form action="#">
@@ -20,39 +21,24 @@
 			<div class="row">
 				<!-- Selected Image -->
 				<div class="col-lg-5 order-lg-2 order-1">
-					<div class="image_selected">
+					<?php 					
+					if(!empty($product["product_images"])){
+					foreach($product["product_images"] as $main_value) { ?>					
+					 <div class="image_selected">
 						<div class="img-zoom-lens"></div>
-						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="">
+						<img class="demo cursor" src="<?php echo base_url().$main_value->image; ?>" alt="" height="200">
 						<div class="img-zoom-result"></div>
-					</div>
-					<div class="image_selected">
-						<div class="img-zoom-lens"></div>
-						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
-						<div class="img-zoom-result"></div>
-					</div>
-					<div class="image_selected">
-						<div class="img-zoom-lens"></div>
-						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="">
-						<div class="img-zoom-result"></div>
-					</div>
-					<div class="image_selected">
-						<div class="img-zoom-lens"></div>
-						<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="">
-						<div id="myresult" class="img-zoom-result"></div>
-					</div>
+					</div> 
+					<?php  } } ?>					 
 					<div class="related-img">
-						<div class="related-img-section">
-							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_4.jpg" alt="" onclick="currentSlide(1)">
-						</div>
-						<div class="related-img-section">
-							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="" onclick="currentSlide(2)">
-						</div>	
-						<div class="related-img-section">
-							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_3.jpg" alt="" onclick="currentSlide(3)">
-						</div>	
-						<div class="related-img-section">
-							<img class="demo cursor" src="<?php echo base_url(); ?>assets/front/images/single_1.jpg" alt="" onclick="currentSlide(4)">
-						</div>		
+					<?php								
+					$slide_id = 1;
+						if(!empty($product["product_images"])){
+						foreach($product["product_images"] as $gallary_image) { ?>					
+						 <div class="related-img-section">
+							<img class="demo cursor" src="<?php echo base_url().$gallary_image->image; ?>" alt="" onclick="currentSlide(<?= $slide_id; ?>)">
+						</div> 
+					<?php $slide_id += 1; } } ?>				
 					</div>
 				</div>
 
@@ -60,7 +46,7 @@
 				<div class="col-lg-7 order-3">
 					<div class="product_description">
 						<!-- <div class="product_category">Laptops</div> -->
-						<div class="product_name"><?= $product->name; ?></div>
+						<div class="product_name"><?= $product_item->name; ?></div>
 						<div class="product_rating"><i class="fa fa-star"></i>  4.4</div>
 						<div class="date-time">
 							<i class="fa fa-clock-o"></i> <p>03:02 PM, 15 Jan 2020</p>
@@ -70,15 +56,15 @@
 						</div>
 						<div class="product-manufaturer product-description">
 							<h4 class="product-description-heading">Manufaturer : </h4>
-							<p><?= $product->manufacturer_name; ?></p>
+							<p><?= $product_item->manufacturer_name; ?></p>
 						</div>
 						<div class="product-salt product-description">
 							<h4 class="product-description-heading">Salt Composition : </h4>
-							<p><?= $product->salt_composition; ?></p>
+							<p><?= $product_item->saltcomposition_name; ?></p>
 						</div>
 						<div class="product-expdate product-description">
 							<h4 class="product-description-heading">Expiry Date : </h4>
-							<p><?= $product->expiry_date; ?></p>
+							<p><?= $product_item->expiry_date; ?></p>
 						</div>
 						<div class="product-AnsQues product-description">
 							<i class='fas fa-arrow-down'></i>
@@ -95,8 +81,8 @@
 										<div class="col-md-2">
 											<div class="product_price">
 												<h5 class="product-price-head">Price</h5>
-												<p>MRP <?= $product->mrp; ?></p>
-												<h4><i class='fas fa-rupee-sign'></i> <?= $product->sale_price; ?></h4>
+												<p>MRP <?= $product_item->mrp; ?></p>
+												<h4><i class='fas fa-rupee-sign'></i> <?= $product_item->sale_price; ?></h4>
 											</div>
 										</div>
 										<div class="col-md-10">
@@ -104,7 +90,7 @@
 												<h5 class="product-price-head">Quantity</h5>
 												<div class="def-number-input number-input safari_only add-quantity  add-quantity-product">
 				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-				                  <input class="quantity" min="0" name="quantity" value="1" type="number">
+				                  <input class="quantity" min="1" name="quantity" value="1" type="number">
 				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
 				                </div>
 												<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
@@ -122,7 +108,7 @@
 								<div class="button_container">
 									<div class="price-total">
 										<p class="total-heading">Total</p>
-										<h4><i class='fas fa-rupee-sign'></i> <?= $product->sale_price; ?></h4>
+										<h4><i class='fas fa-rupee-sign'></i> <?= $product_item->sale_price; ?></h4>
 										<p class="price-off">Get 20% off</p>
 									</div>
 									<div class="pull-right">
@@ -144,7 +130,7 @@
 			<div class="row">
 				<div class="tab-heading">
 					<ul class="nav nav-tabs product_tab" id="myTab" role="tablist">
-			      <li class="product_li">
+			      <li class="product_li1">
 			        <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">About</a>
 			      </li>
 			      <li class="product_li">
@@ -173,7 +159,7 @@
 				<div class="tab-content" id="myTabContent">
 		      <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
 		      	<div class="tab-sub-content">	
-		        	<p><?= $product->about_product; ?></p>
+		        	<p><?= $product_item->about_product; ?></p>
 		      	</div>
 		      	<!-- <div class="tab-sub-content">
 			        <span class="product-sub-heading">Benefits</span>
@@ -194,25 +180,25 @@
 		      	</div> -->
 		      </div>
 		      <div class="tab-pane fade" id="benefits" role="tabpanel" aria-labelledby="benefits-tab">
-		        <p><?= $product->how_to_use; ?></p> 
+		        <p><?= $product_item->how_to_use; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="uses" role="tabpanel" aria-labelledby="uses-tab">
-		        <p><?= $product->when_to_use; ?></p> 
+		        <p><?= $product_item->when_to_use; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="side-eff" role="tabpanel" aria-labelledby="side-eff-tab">
-		        <p><?= $product->side_effect; ?></p> 
+		        <p><?= $product_item->side_effect; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="how-use" role="tabpanel" aria-labelledby="how-use-tab">
-		        <p><?= $product->how_to_use; ?></p> 
+		        <p><?= $product_item->how_to_use; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="how-work" role="tabpanel" aria-labelledby="how-work-tab">
-		        <p><?= $product->how_to_work; ?></p> 
+		        <p><?= $product_item->how_to_work; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="strong-info" role="tabpanel" aria-labelledby="strong-info-tab">
-		        <p><?= $product->how_to_store; ?></p> 
+		        <p><?= $product_item->how_to_store; ?></p> 
 		      </div>
 		      <div class="tab-pane fade" id="safety-info" role="tabpanel" aria-labelledby="safety-info-tab">
-		        <p><?= $product->safety_info; ?></p> 		        
+		        <p><?= $product_item->safety_info; ?></p> 		        
 		      </div>
 		    </div>
 		  </div>
@@ -227,70 +213,43 @@
 						<h4>Frequently Asked Questions</h4>
 					</div>
 					<div class="faq-accordine">
-						<div class="container">
+						<div class="containers">
 						  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-						    <div class="panel panel-default">
-						      <div class="panel-heading" role="tab" id="headingOne">
-						        <h4 class="panel-title">
-						        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-						          Collapsible Group Item #1
-						        </a>
-						      </h4>
-						      </div>
-						      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-						        <div class="panel-body">
-						          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-						          on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-						          raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-						        </div>
-						      </div>
-						    </div>
-						    <div class="panel panel-default">
-						      <div class="panel-heading" role="tab" id="headingTwo">
-						        <h4 class="panel-title">
-						        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-						          Collapsible Group Item #2
-						        </a>
-						      </h4>
-						      </div>
-						      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-						        <div class="panel-body">
-						          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-						          on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-						          raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-						        </div>
-						      </div>
-						    </div>
-						    <div class="panel panel-default">
-						      <div class="panel-heading" role="tab" id="headingThree">
-						        <h4 class="panel-title">
-						        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-						          Collapsible Group Item #3
-						        </a>
-						      </h4>
-						      </div>
-						      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-						        <div class="panel-body">
-						          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird
-						          on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-						          raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-						        </div>
-						      </div>
-						    </div>
+						    
+						    <?php 					
+								if(!empty($question)){
+								foreach($question as $Qvalue) { ?>					
+									<div class="panel panel-default">
+							      <div class="panel-heading" role="tab" id="headingOne<?= $Qvalue->id; ?>">
+							        <h4 class="panel-title">
+							        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?= $Qvalue->id; ?>" aria-expanded="<?= (count($question)) < 1 ? "true":"false"  ?>" aria-controls="collapseOne">
+							          <?= $Qvalue->question; ?> 
+							        </a>
+							      </h4>
+							      </div>
+							      <div id="collapseOne<?= $Qvalue->id; ?>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne<?= $Qvalue->id; ?>">
+							        <div class="panel-body">
+							          <?= $Qvalue->answer; ?> 
+							        </div>
+							      </div>
+							    </div>								 
+								<?php  } } ?>					 
 						  </div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-5">
 					<div class="customer-feedback-sec">
-						<h5>Customer Feedback</h5>						
-						<div id="showAllComments">							
-						</div>
+						<h5>Customer Feedback</h5>
+						<div class="scroll-div">	
+							<div id="showAllComments">							
+							</div>
+						</div>						
 						<div class="add-comment">
 							<div>
 								<form method="post" id="product_comment_byuser">
 									<input type="search" required="required" name="product_comment" class="product_comment_input" placeholder="Comment Something">
-									<input id="get_product_id" type="hidden" name="product_id" value="<?= $product->product_id; ?>">
+									<input id="get_product_id" type="hidden" name="product_id" value="<?= $product_item->product_id; ?>">
 									<button type="button" onclick="productComment()" class="product_comment_button" value="Submit"><i class="fa fa-paper-plane"></i></button>
 								</form>
 							</div>
@@ -299,7 +258,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>	
 	<!-- Recently Viewed -->
 
 	<div class="alternate-brnd">
@@ -307,130 +266,51 @@
 			<div class="product-main-heading">
 				<h4>Alternate Brands</h4>
 			</div>
-			<div class="alternate-brnd-content">
-				<div class="row">
-					<div class="col-md-3">
-						<div class="alternate-brnd-box">
-							<div class="alternate-brnd-top">
-								<div class="alternate-brnd-top-left">
-									<div class="alternate-brnd-img">
-										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
-									</div>
-									<span class="offer-green">10% <i class='fas fa-arrow-down'></i></span>
-								</div>
-								<div class="alternate-brnd-top-right">
-									<div class="alternate-brnd-details">
-										<div class="alternate-brnd-name">
-											Tablet Name
-										</div>
-										<div class="alternate-brnd-form">
-											Liquied
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="alternate-brnd-bown">
-								<div class="alternate-brnd-bown-left">
-									<p><i class='fas fa-rupee-sign'></i> 36</p>
-								</div>
-								<div class="alternate-brnd-bown-right">
-									<a class="add-cart-btn">Add</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="alternate-brnd-box">
-							<div class="alternate-brnd-top">
-								<div class="alternate-brnd-top-left">
-									<div class="alternate-brnd-img">
-										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
-									</div>
-									<span class="offer-green">10% <i class='fas fa-arrow-down'></i></span>
-								</div>
-								<div class="alternate-brnd-top-right">
-									<div class="alternate-brnd-details">
-										<div class="alternate-brnd-name">
-											Tablet Name
-										</div>
-										<div class="alternate-brnd-form">
-											Liquied
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="alternate-brnd-bown">
-								<div class="alternate-brnd-bown-left">
-									<p><i class='fas fa-rupee-sign'></i> 36</p>
-								</div>
-								<div class="alternate-brnd-bown-right">
-									<a class="add-cart-btn">Add</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="alternate-brnd-box">
-							<div class="alternate-brnd-top">
-								<div class="alternate-brnd-top-left">
-									<div class="alternate-brnd-img">
-										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
-									</div>
-									<span class="offer-green">10% <i class='fas fa-arrow-down'></i></span>
-								</div>
-								<div class="alternate-brnd-top-right">
-									<div class="alternate-brnd-details">
-										<div class="alternate-brnd-name">
-											Tablet Name
-										</div>
-										<div class="alternate-brnd-form">
-											Liquied
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="alternate-brnd-bown">
-								<div class="alternate-brnd-bown-left">
-									<p><i class='fas fa-rupee-sign'></i> 36</p>
-								</div>
-								<div class="alternate-brnd-bown-right">
-									<a class="add-cart-btn">Add</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="alternate-brnd-box">
-							<div class="alternate-brnd-top">
-								<div class="alternate-brnd-top-left">
-									<div class="alternate-brnd-img">
-										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
-									</div>
-									<span class="offer-red">10% <i class='fas fa-arrow-down'></i></span>
-								</div>
-								<div class="alternate-brnd-top-right">
-									<div class="alternate-brnd-details">
-										<div class="alternate-brnd-name">
-											Tablet Name
-										</div>
-										<div class="alternate-brnd-form">
-											Liquied
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="alternate-brnd-bown">
-								<div class="alternate-brnd-bown-left">
-									<p><i class='fas fa-rupee-sign'></i> 36</p>
-								</div>
-								<div class="alternate-brnd-bown-right">
-									<a class="add-cart-btn">Add</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>	
+        <div class="product-slider-block slider-arrow alternate-slider-arrow">        
+          <div class="row alternate-product">
+            <div class="col-md-6 title-section">                          
+            </div>
+            <div class="col-md-6 all-section">            
+              <a href=""><span class="product-heading-all">View All</span></a>            
+            </div>
+          </div>
+          <div class="product-slider">
+            <div class="owl-slider-alternate" >
+              <div id="carousel5" class="owl-carousel product-slider" >
+                <?php 
+                if(!empty($alternate_product)){
+                foreach ($alternate_product as $key => $value) { ?>
+                  <div class="item">
+                    <div class="product-main-block">
+                      <div class="product-block">  
+                        <div class="product-image-section">                                              	
+                          <img src="<?php echo (!empty($value->image))? base_url().$value->image : base_url('assets/front/images/best_2.png');  ?>" >
+                        </div>
+                        <div class="shape">
+                          <span class="offer-text">10% </span><span class="off-text">Off</span>
+                        </div>
+                        <div class="product-description-section">                      
+                          <p><?php echo $value->name; ?></p>
+                          <hr class="inside-form-hr">
+                          <span><?php echo $value->product_form; ?></span> 
+                        </div>
+                      </div>                  
+                      <div class="product-price-block">                  
+                         <span><i class="fa fa-inr" aria-hidden="true"></i> <?php echo $value->sale_price; ?></span> 
+                        <button class="btn-default add-cart-button">ADD</button>
+                        <div class="def-number-input number-input safari_only add-quantity hide-button">
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                          <input class="quantity" min="0" value="1" name="quantity" type="number">
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                        </div>
+                      </div>                  
+                    </div>               
+                  </div>
+                <?php } } ?>              
+              </div>
+            </div>
+          </div>
+        </div>
 		</div>
 	</div>
 </div>
@@ -504,10 +384,14 @@
 
 	$(document).ready(function(){
 		$('#myresult').hide();
+		$('.img-zoom-lens').hide();
+
 		$(".image_selected").mouseover(function(){
+			$('.img-zoom-lens').show();
 			$('#myresult').show();
 		});
 		$(".image_selected").mouseout(function(){
+			$('.img-zoom-lens').hide();
 			 $('#myresult').hide();
 		});
 			// body...
@@ -568,8 +452,8 @@
 		  /*insert lens:*/
 		  img.parentElement.insertBefore(lens, img);
 		  /*calculate the ratio between result DIV and lens:*/
-		  cx = result.offsetWidth / lens.offsetWidth;
-		  cy = result.offsetHeight / lens.offsetHeight;
+		  cx = '300' / lens.offsetWidth;
+		  cy = '401' / lens.offsetHeight;
 		  /*set background properties for the result DIV:*/
 		  result.style.backgroundImage = "url('" + img.src + "')";
 		  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
@@ -579,6 +463,7 @@
 		  /*and also for touch screens:*/
 		  lens.addEventListener("touchmove", moveLens);
 		  img.addEventListener("touchmove", moveLens);
+
 		  function moveLens(e) {
 		    var pos, x, y;
 		    /*prevent any other actions that may occur when moving over the image:*/
@@ -599,6 +484,7 @@
 		    /*display what the lens "sees":*/
 		    result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
 		  }
+
 		  function getCursorPos(e) {
 		    var a, x = 0, y = 0;
 		    e = e || window.event;
@@ -614,13 +500,64 @@
 		  }
 		}
 			// Initiate zoom effect:
-		imageZoom("myimage", "myresult");
-
-	 //  $(".imgzoom").hover(function(){
-		//   	$("#myresult").css("display", "block");
-		// 	}, function(){
-		// 		$("#myresult").css("display", "none");
-		// });		
+		imageZoom("myimage", "myresult");		
 	}
+
+	jQuery("#carousel5").owlCarousel(
+    {
+      autoplay: true,
+      dots:false,
+      lazyLoad: true,
+      loop: true,
+      margin: 20,
+      responsiveClass: true,
+      autoHeight: true,
+      autoplayTimeout: 6000,
+      smartSpeed: 800,
+      nav: true,
+      // navText: ['<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'],
+      responsive: {
+        0: {
+          items: 1
+        },
+
+        600: {
+          items: 3
+        },
+
+        1024: {
+          items: 4
+        },
+
+        
+      }
+    });
+	var owl = $("#carousel5");                 
+
+	$('#carousel5 .item').on('mouseover',function(e){
+	    owl.trigger('stop.owl.autoplay');
+	})
+	$('#carousel5 .item').on('mouseleave',function(e){
+	    owl.trigger('play.owl.autoplay');
+	})
+
+	$(document).ready(function(){      
+      $('.add-cart-button').click(function(){
+        $(this).addClass("hide-button");
+        $(this).siblings("div").removeClass("hide-button");
+        $(this).siblings("input").val("1");
+        // $(this).siblings("div").addClass("show-button");
+
+      });
+      $('.minus').click(function(){        
+        if($(this).siblings("input").val()==0){          
+          $(this).parent().addClass("hide-button");
+          $(this).parents('.product-price-block').find(".add-cart-button").addClass("show-button");
+          $(this).parents('.product-price-block').find(".add-cart-button").removeClass("hide-button");
+          $(this).siblings("input").val("1");
+        }
+      })
+      
+    });
 
 </script>
