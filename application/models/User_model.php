@@ -33,6 +33,29 @@ class User_model extends MY_model
 			return $return;
 		}
 	}
+	public function getAllProductWithLimit($offset,$limit)
+	{
+
+		$this->db->select('product.name as product_name,product.about_product,product_images.image as product_image,product_item.sale_price,product_item.offerprice,product.id as product_id');
+		$this->db->from('product');
+		$this->db->join('product_images','product_images.product_id = product.id');
+		$this->db->join('product_item','product_item.product_id = product.id');
+		$this->db->limit($offset,$limit);
+		$query = $this->db->get();
+		echo $this->db->last_query();
+		return $query->result();
+
+	}
+	public function getAllProduct()
+	{
+		$this->db->select('product.name as product_name,product.about_product,product_images.image as product_image,product_item.sale_price,product_item.offerprice,product.id as product_id');
+		$this->db->from('product');
+		$this->db->join('product_images','product_images.product_id = product.id');
+		$this->db->join('product_item','product_item.product_id = product.id');
+		$query = $this->db->get();
+		return $query->num_rows();
+
+	}
 	public function getProductByID($id)
 	{
 		$this->db->select('product.*,brand.brand_name,brand.status,manufacturer.name as manufacturer_name,manufacturer.status,category.category_name,category.status,subcategory.subcategory,subcategory.status,product_form.name as product_form,product_form.status,product_item.*');
