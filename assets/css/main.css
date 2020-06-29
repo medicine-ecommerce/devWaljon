@@ -114,9 +114,20 @@
 .product-slider .owl-nav button.owl-prev{
       margin-left: 96%;
       top: -42px;
+      background: #fff0 !important;
+      border-color: #ffffff14;
+}
+.remove-dots .owl-nav button.owl-prev{
+      background: #fff0 !important;
+      border-color: #ffffff14;
+}
+.remove-dots .owl-nav button.owl-next {
+    background: #fff0 !important;
+    border-color: #ffffff14;
 }
 .product-slider .owl-nav button.owl-next {
-   
+    background: #fff0 !important;
+    border-color: #ffffff14;
     top: -42px;
 }
 .product-slider .span{
