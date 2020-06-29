@@ -3738,3 +3738,6 @@ div#myresult {
 .add-quantity-product {
     position: absolute;
 }
+.panel-default>.panel-heading a[aria-expanded="true"] {
+    background-color: #fff !important;
+}

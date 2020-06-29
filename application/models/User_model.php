@@ -55,6 +55,12 @@ class User_model extends MY_model
 		$query = $this->db->get();
 		$result['product_images'] = $query->result();			
 
+		$this->db->select('question.id,question.question,question.answer');
+		$this->db->from('question');		
+		$this->db->where('question.product_id',$id);		
+		$query = $this->db->get();
+		$result['question'] = $query->result();			
+
 		if ($query->num_rows() > 0) {
 			return $result;
 		}

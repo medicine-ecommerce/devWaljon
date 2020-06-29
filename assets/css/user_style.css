@@ -721,3 +721,6 @@ p.main-product-name {
     font-size: 14px;
 }
 
+.owl-carousel .owl-dots {
+    display: none;
+}
