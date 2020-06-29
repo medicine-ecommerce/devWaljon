@@ -3723,4 +3723,18 @@ button.product_search_button {
 .logos_list li:last-child
 {
 	margin-right: 0px;
+}	
+.scroll-div {
+    height: 400px;
+    overflow: scroll;
+}
+div#myresult {
+    position: absolute;
+    top: 10px;
+    left: 537px;
+    z-index: 9;
+    height: 401px;
+}
+.add-quantity-product {
+    position: absolute;
 }
