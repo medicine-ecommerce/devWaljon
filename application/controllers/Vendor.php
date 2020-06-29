@@ -530,9 +530,11 @@ Class Vendor extends MY_Controller {
                         'category_id'=>$this->input->post('category_id'),
                         'sucategory_id'=>$this->input->post('sucategory_id'),
                         'manufacturer_id'=>$this->input->post('manufacturer_id'),
+                        'brand_id'=>$this->input->post('brand_id'),
+                        
                         'name'=>$this->input->post('name'),
                         'product_form_id'=>$this->input->post('product_form_id'),
-                        'salt_composition'=>$this->input->post('salt_composition'),
+                        'salt_composition_id'=>$this->input->post('salt_composition_id'),
                         'about_product'=>$this->input->post('about_product'),
                         'side_effect'=>$this->input->post('side_effect'),
                         'when_to_use'=>$this->input->post('when_to_use'),
@@ -540,18 +542,30 @@ Class Vendor extends MY_Controller {
                         'how_to_work'=>$this->input->post('how_to_work'),
                         'how_to_store'=>$this->input->post('how_to_store'),
                         'safety_info'=>$this->input->post('safety_info'),
+                        'status'=>'1',
                         'created_at'=>date('Y-m-d H:i:s'));
              $lastProductID = $this->Vendor->insertData('product',$data);
             if ($lastProductID) {
                 foreach ($this->input->post('mrp') as $key => $value) {
+                    print_r($this->input->post('mrp'));
                     $dataItem = array('product_id'=>$lastProductID,
                                 'mrp'=>$this->input->post('mrp')[$key],
                                 'sale_price'=>$this->input->post('sellprice')[$key],
                                 'unit'=>$this->input->post('unit')[$key],
                                 'quantity'=>$this->input->post('quantity')[$key],
+                                'offerprice'=>$this->input->post('offerprice')[$key],
                                 'expiry_date'=>$this->input->post('expiry_date')[$key]);
                         $lastID = $this->Vendor->insertData('product_item',$dataItem);
                 }
+
+                foreach ($this->input->post('faq_question') as $key => $value) {
+                    $dataItem1 = array('product_id'=>$lastProductID,
+                                'question'=>$this->input->post('faq_question')[$key],
+                                'answar'=>$this->input->post('faq_answar')[$key]);
+                        $lastID = $this->Vendor->insertData('question',$dataItem1);
+                }
+
+                
                 if (!empty($this->input->post('base64image'))) {
                     $base64image = $this->input->post('base64image');
                     foreach ($base64image as $key => $value) {
@@ -576,6 +590,7 @@ Class Vendor extends MY_Controller {
         $this->data['manufacturer'] = $this->Vendor->getData('manufacturer','name,id',array('status'=>"active"));
         $this->data['product_form'] = $this->Vendor->getData('product_form','name,id',array('status'=>"active"));
         $this->data['brand'] = $this->Vendor->getData('brand','brand_name,id',array('status'=>"active"));
+        $this->data['salt_composition'] = $this->Vendor->getData('saltcomposition','name,id',array('status'=>"active"));
         $this->middle = 'add_single_product';
         $this->Vendor();
     }

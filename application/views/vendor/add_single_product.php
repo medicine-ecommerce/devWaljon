@@ -62,7 +62,7 @@
                   </div> -->
                   <div class="col-md-6">
                      <div class="form-group label-float-top">
-                        <select class="form-control control-float-top" id="product_form">
+                        <select class="form-control control-float-top" name="product_form_id" id="product_form">
                            <option></option>
                            <?php if (!empty($product_form)) {
                              foreach ($product_form as $key => $value) { ?>
@@ -75,7 +75,7 @@
                   </div>
                   <div class="col-md-6">
                      <div class="form-group label-float-top">
-                        <select class="form-control control-float-top" id="manufacturer">
+                        <select class="form-control control-float-top" name="manufacturer_id" id="manufacturer">
                            <option></option>
                            <?php if (!empty($manufacturer)) {
                              foreach ($manufacturer as $key => $value) { ?>
@@ -132,7 +132,13 @@
                               </div>
                            </td>
                            <td >
-                              <div class="form-group label-float-top" >
+                              <div class="form-group label-float-top" style="width: 100px;">
+                                 <input type="text" class="form-control control-float-top" id="sellprice" name="offerprice[]">
+                                 <label for="email">Offer Price</label>
+                              </div>
+                           </td>
+                           <td >
+                              <div class="form-group label-float-top" style="width: 100px;">
                                  <input type="date" class="form-control control-float-top" id="expriydate" name="expriydate[]">
                                  <!--               <label for="email">Expiry Date</label>
                                     -->           
@@ -156,7 +162,14 @@
                   </div>
                   <div class="col-md-9">
                      <div class="form-group label-float-top">
-                        <input type="text" class="form-control control-float-top" name="salt_composition" id="salt_composition">
+                        <select class="form-control control-float-top" name="salt_composition_id" id="brand">
+                           <option></option>
+                           <?php if (!empty($salt_composition)) {
+                             foreach ($salt_composition as $key => $value) { ?>
+                              <option value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                            <?php }
+                           } ?>
+                        </select>
                         <label for="country">Salt Composition</label>
                      </div>
                   </div>
@@ -229,9 +242,9 @@
                         <tr>
                            <td>
                               <div class="form-group label-float-top" >
-                                 <input type="text" class="form-control control-float-top" name="faq_question">
+                                 <input type="text" class="form-control control-float-top" name="faq_question[]">
                                  <label for="email">What is the product for ?</label>
-                                 <textarea class="form-control faq-textarea" rows="5" placeholder="About this product"></textarea>
+                                 <textarea class="form-control faq-textarea" rows="5" placeholder="About this product" name="faq_answar[]"></textarea>
                               </div>
                            </td>
                            <td style="width: 5%;"><button type="button" name="add2" id="add2" class="btn addMore-btn"><i class="fa fa-plus"></i></button></td>
@@ -336,7 +349,7 @@
      var i=1;  
      $('#add').click(function(){  
           i++;  
-          $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td> <div style="width: 210px;"><div class="form-group label-float-top" style="width: 100px;display: inline-block;"><input type="text" id="quantity'+i+'" class="form-control control-float-top" name="quantity[][quantity]"><label for="email">Quantity</label></div><div class="form-group label-float-top" style="width: 100px;display: inline-block;"><select name="measurement[][measurement]" class="form-control control-float-top states" id="measurement'+i+'"><option>l</option><option>gm</option></select><label for="country">measurement</label></div></div><td><div class="form-group label-float-top"><input type="text" id="MRP'+i+'" class="form-control control-float-top" name="mrp[][mrp]"><label for="email">MRP</label></div></td><td><div class="form-group label-float-top"><input type="text" id="sellprice'+i+'" class="form-control control-float-top" name="sellprice[][sellprice]"><label for="email">Sell Price</label></div></td><td><div class="form-group label-float-top"><input type="date" class="form-control control-float-top" name="expriydate[][expriydate]" id="expriydate'+i+'"></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-custom-rev btn_remove"><i class="fa fa-trash-o"></i></button></td></tr>');  
+          $('#dynamic_field').append('<tr id="row'+i+'" class="dynamic-added"><td> <div style="width: 210px;"><div class="form-group label-float-top" style="width: 100px;display: inline-block;"><input type="text" id="quantity'+i+'" class="form-control control-float-top" name="quantity[]"><label for="email">Quantity</label></div><div class="form-group label-float-top" style="width: 100px;display: inline-block;"><select name="measurement[]" class="form-control control-float-top states" id="measurement'+i+'"><option>l</option><option>gm</option></select><label for="country">measurement</label></div></div><td><div class="form-group label-float-top"><input type="text" id="MRP'+i+'" class="form-control control-float-top" name="mrp[]"><label for="email">MRP</label></div></td><td><div class="form-group label-float-top"><input type="text" id="sellprice'+i+'" class="form-control control-float-top" name="sellprice[]"><label for="email">Sell Price</label></div></td><td ><div class="form-group label-float-top" style="width: 100px;"><input type="text" class="form-control control-float-top" id="offerprice'+i+'" name="offerprice[]"><label for="email">Offer Price</label> </div></td><td><div class="form-group label-float-top" style="width: 100px;"><input type="date" class="form-control control-float-top" name="expriydate[]" id="expriydate'+i+'"></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-custom-rev btn_remove"><i class="fa fa-trash-o"></i></button></td></tr>');  
      });
      $(document).on('click', '.btn_remove', function(){  
           var button_id = $(this).attr("id");   
@@ -347,7 +360,7 @@
      var i=1;  
      $('#add2').click(function(){  
           i++;  
-          $('#dynamic_field2').append('<tr id="row'+i+'" class="dynamic-added"><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="faq_question"><label for="email">What is the product for ?</label><textarea class="form-control faq-textarea" rows="5" placeholder="About this product"></textarea></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-custom-rev btn_remove"><i class="fa fa-trash-o"></i></button></td></tr>');  
+          $('#dynamic_field2').append('<tr id="row'+i+'" class="dynamic-added"><td><div class="form-group label-float-top"><input type="text" class="form-control control-float-top" name="faq_question[]"><label for="email">What is the product for ?</label><textarea class="form-control faq-textarea" rows="5" placeholder="About this product" name="faq_answar[]"></textarea></div></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-custom-rev btn_remove"><i class="fa fa-trash-o"></i></button></td></tr>');  
      });
      $(document).on('click', '.btn_remove', function(){  
           var button_id = $(this).attr("id");   

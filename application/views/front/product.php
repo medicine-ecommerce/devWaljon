@@ -102,11 +102,16 @@
 										<div class="col-md-10">
 											<div class="product_quantity">	
 												<h5 class="product-price-head">Quantity</h5>
+												<div class="def-number-input number-input safari_only add-quantity  add-quantity-product">
+				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+				                  <input class="quantity" min="0" name="quantity" value="1" type="number">
+				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+				                </div>
 												<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
-												<div class="quantity_buttons">
+												<!-- <div class="quantity_buttons">
 													<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
 													<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
-												</div>
+												</div> -->
 												<div class="product-tablets-count">
 													<p>10 Tablets in 1 strip</p>
 												</div>
@@ -296,7 +301,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>	
 	<!-- Recently Viewed -->
 
 	<div class="alternate-brnd">
@@ -304,130 +309,54 @@
 			<div class="product-main-heading">
 				<h4>Alternate Brands</h4>
 			</div>
-			<div class="alternate-brnd-content">
-				<div class="row">
-					<div class="col-md-3">
-						<div class="alternate-brnd-box">
-							<div class="alternate-brnd-top">
-								<div class="alternate-brnd-top-left">
-									<div class="alternate-brnd-img">
-										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
-									</div>
-									<span class="offer-green">10% <i class='fas fa-arrow-down'></i></span>
-								</div>
-								<div class="alternate-brnd-top-right">
-									<div class="alternate-brnd-details">
-										<div class="alternate-brnd-name">
-											Tablet Name
-										</div>
-										<div class="alternate-brnd-form">
-											Liquied
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="alternate-brnd-bown">
-								<div class="alternate-brnd-bown-left">
-									<p><i class='fas fa-rupee-sign'></i> 36</p>
-								</div>
-								<div class="alternate-brnd-bown-right">
-									<a class="add-cart-btn">Add</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="alternate-brnd-box">
-							<div class="alternate-brnd-top">
-								<div class="alternate-brnd-top-left">
-									<div class="alternate-brnd-img">
-										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
-									</div>
-									<span class="offer-green">10% <i class='fas fa-arrow-down'></i></span>
-								</div>
-								<div class="alternate-brnd-top-right">
-									<div class="alternate-brnd-details">
-										<div class="alternate-brnd-name">
-											Tablet Name
-										</div>
-										<div class="alternate-brnd-form">
-											Liquied
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="alternate-brnd-bown">
-								<div class="alternate-brnd-bown-left">
-									<p><i class='fas fa-rupee-sign'></i> 36</p>
-								</div>
-								<div class="alternate-brnd-bown-right">
-									<a class="add-cart-btn">Add</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="alternate-brnd-box">
-							<div class="alternate-brnd-top">
-								<div class="alternate-brnd-top-left">
-									<div class="alternate-brnd-img">
-										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
-									</div>
-									<span class="offer-green">10% <i class='fas fa-arrow-down'></i></span>
-								</div>
-								<div class="alternate-brnd-top-right">
-									<div class="alternate-brnd-details">
-										<div class="alternate-brnd-name">
-											Tablet Name
-										</div>
-										<div class="alternate-brnd-form">
-											Liquied
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="alternate-brnd-bown">
-								<div class="alternate-brnd-bown-left">
-									<p><i class='fas fa-rupee-sign'></i> 36</p>
-								</div>
-								<div class="alternate-brnd-bown-right">
-									<a class="add-cart-btn">Add</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="alternate-brnd-box">
-							<div class="alternate-brnd-top">
-								<div class="alternate-brnd-top-left">
-									<div class="alternate-brnd-img">
-										<img src="<?php echo base_url(); ?>assets/front/images/single_2.jpg" alt="">
-									</div>
-									<span class="offer-red">10% <i class='fas fa-arrow-down'></i></span>
-								</div>
-								<div class="alternate-brnd-top-right">
-									<div class="alternate-brnd-details">
-										<div class="alternate-brnd-name">
-											Tablet Name
-										</div>
-										<div class="alternate-brnd-form">
-											Liquied
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="alternate-brnd-bown">
-								<div class="alternate-brnd-bown-left">
-									<p><i class='fas fa-rupee-sign'></i> 36</p>
-								</div>
-								<div class="alternate-brnd-bown-right">
-									<a class="add-cart-btn">Add</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>	
+			<?php if (!empty($alternate_product)) { { ?>
+        <div class="product-slider-block slider-arrow alternate-slider-arrow">        
+          <div class="row alternate-product">
+            <div class="col-md-6 title-section">            
+              <!-- <img src="<?php echo base_url('assets/icon/icon_new_arrivals.png');  ?>" >
+              <h4 class="product-heading-h4"><?php echo $value['category_name']; ?></h4> -->
+            </div>
+            <div class="col-md-6 all-section">            
+              <a href=""><span class="product-heading-all">View All</span></a>            
+            </div>
+          </div>
+          <div class="product-slider">
+            <div class="owl-slider-alternate" >
+              <div id="carousel5" class="owl-carousel product-slider" >
+                <?php foreach ($alternate_product as $key => $value) { ?>
+                  <div class="item">
+                    <div class="product-main-block">
+                      <div class="product-block">  
+                        <div class="product-image-section">                      
+                          <img src="<?php echo (!empty($value->image))?base_url('assets/product-images/'.$value->image):base_url('assets/front/images/best_2.png');  ?>" >
+                        </div>
+                        <div class="shape">
+                          <span class="offer-text">10% </span><span class="off-text">Off</span>
+                        </div>
+                        <div class="product-description-section">                      
+                          <p><?php echo $value->name; ?></p>
+                          <hr class="inside-form-hr">
+                          <span><?php echo $value->product_form; ?></span> 
+                        </div>
+                      </div>                  
+                      <div class="product-price-block">                  
+                         <span><i class="fa fa-inr" aria-hidden="true"></i> <?php echo $value->sale_price; ?></span> 
+                        <button class="btn-default add-cart-button">ADD</button>
+                        <div class="def-number-input number-input safari_only add-quantity hide-button">
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                          <input class="quantity" min="0" value="1" name="quantity" type="number">
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                        </div>
+                      </div>                  
+                    </div>               
+                  </div>
+                <?php } ?>              
+              </div>
+            </div>
+          </div>
+        </div>
+    <?php  
+    } }?>  			
 		</div>
 	</div>
 </div>
@@ -498,6 +427,20 @@
 
 
 <script>
+
+	$(document).ready(function(){
+		$('#myresult').hide();
+		$(".image_selected").mouseover(function(){
+			$('#myresult').show();
+		});
+		$(".image_selected").mouseout(function(){
+			 $('#myresult').hide();
+		});
+			// body...
+		
+	});
+
+
 	var slideIndex = 1;
 	showSlides(slideIndex);
 
@@ -605,5 +548,52 @@
 		// 		$("#myresult").css("display", "none");
 		// });		
 	}
+
+	jQuery("#carousel5").owlCarousel(
+    {
+      autoplay: true,
+      lazyLoad: true,
+      loop: true,
+      margin: 20,
+      responsiveClass: true,
+      autoHeight: true,
+      autoplayTimeout: 6000,
+      smartSpeed: 800,
+      nav: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+
+        600: {
+          items: 3
+        },
+
+        1024: {
+          items: 4
+        },
+
+        
+      }
+    });
+
+	$(document).ready(function(){      
+      $('.add-cart-button').click(function(){
+        $(this).addClass("hide-button");
+        $(this).siblings("div").removeClass("hide-button");
+        $(this).siblings("input").val("1");
+        // $(this).siblings("div").addClass("show-button");
+
+      });
+      $('.minus').click(function(){        
+        if($(this).siblings("input").val()==0){          
+          $(this).parent().addClass("hide-button");
+          $(this).parents('.product-price-block').find(".add-cart-button").addClass("show-button");
+          $(this).parents('.product-price-block').find(".add-cart-button").removeClass("hide-button");
+          $(this).siblings("input").val("1");
+        }
+      })
+      
+    });
 
 </script>

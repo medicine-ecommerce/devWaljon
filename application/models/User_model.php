@@ -69,4 +69,21 @@ class User_model extends MY_model
 			echo json_encode(array('status'=>1,'data'=>$query->result()));			
 		}		
 	}
+	public function getAlternateBrandsByID()
+	{					
+		$this->db->select('product.name,product.id as product_id,image,sale_price,product_form.name as product_form');
+		$this->db->from('product');
+		$this->db->join('product_images','product_images.product_id = product.id','left');
+		$this->db->join('product_item','product_item.product_id = product.id');
+		$this->db->join('product_form','product_form.id = product.product_form_id','left');
+		$this->db->limit(8);
+		$query_product = $this->db->get();
+		if ($query_product->num_rows() > 0) {
+			$return = $query_product->result();
+			return $return;
+		}
+	}
+
+
+
 }
