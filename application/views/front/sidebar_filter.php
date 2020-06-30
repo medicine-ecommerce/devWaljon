@@ -1,3 +1,4 @@
+<form id="filter">
   <div class="panel-group filter-sidebar-section" id="accordionMenu" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default category-panel">
       <div class="panel-heading" role="tab" id="headingOne">
@@ -103,6 +104,7 @@
     </div>
     
   </div>
+</form>
 
   <!-- <input type="text"  onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
  -->

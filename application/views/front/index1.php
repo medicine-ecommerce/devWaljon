@@ -66,7 +66,7 @@
 	    	</div>
 
 	      <div class="owl-slider icon-slider" >
-	        <div id="carousel3" class="owl-carousel icon-slider" >
+	        <div id="carousel3" class="owl-carousel icon-slider remove-dots" >
 	          <div class="item">
 	            <img class="owl-lazy icon-slider " data-src="<?php echo base_url('assets/icon/icon_white_cardiac.png');  ?>" alt="">
 	          </div>
@@ -1514,6 +1514,33 @@
   </div>
 
   <script>
+    jQuery("#carousel").owlCarousel(
+    {
+      autoplay: true,
+      lazyLoad: true,
+      loop: true,
+      margin: 20,
+                 responsiveClass: true,
+      autoHeight: true,
+      autoplayTimeout: 3000,
+      smartSpeed: 800,
+      nav: true,
+      responsive: {
+        0: {
+          items: 1
+        },
+
+        600: {
+          items: 3
+        },
+
+        1024: {
+          items: 1
+        },
+
+        
+      }
+    });
     jQuery("#carouse0").owlCarousel(
     {
       autoplay: true,

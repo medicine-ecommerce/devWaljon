@@ -13,6 +13,7 @@ Class User extends MY_Controller {
         $this->load->database();
         $this->load->model('User_model','User');
         $this->load->helper(array('form', 'url'));
+         $this->load->library('ajax_pagination'); 
     }
     // public function index()
     // {
@@ -60,8 +61,39 @@ Class User extends MY_Controller {
         $this->data['sub_category'] = $this->User->getData('subcategory','id,category_id,subcategory,status',array('status'=>'active'));
         $this->data['brand'] = $this->User->getData('brand','id,brand_name,status',array('status'=>'active'));
         $this->data['product_form'] = $this->User->getData('product_form','id,name,status',array('status'=>'active'));
+        
         $this->middle = 'filter';
         $this->User();        
+    }
+    public function ajaxFilterData($rowno)
+    {
+        // Row per page
+        $rowperpage = 2;
+        // Row position
+        if($rowno != 0){
+          $rowno = ($rowno-1) * $rowperpage;
+        }
+        // All records count
+        $allcount = $this->User->getAllProduct();
+
+        // Get records
+        $users_record = $this->User->getAllProductWithLimit($rowno,$rowperpage);
+     
+        // Pagination Configuration
+        $config['target']      = '#dataList'; 
+        $config['base_url'] = base_url().'/user/ajaxFilterData';
+        $config['use_page_numbers'] = TRUE;
+        $config['total_rows'] = $allcount;
+        $config['per_page'] = $rowperpage;
+        $config['link_func']   = 'searchFilter'; 
+
+        // Initialize
+        $this->ajax_pagination->initialize($config); 
+     
+        $data['pagination'] = $this->ajax_pagination->create_links();
+
+        $data['product'] = $this->User->getAllProductWithLimit($rowno,$rowperpage);
+        return $this->load->view('front/product_item',$data);
     }
     public function filter1()
     {
