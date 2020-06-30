@@ -268,11 +268,11 @@ section
 3. Header
 *********************************/
 
-.header
-{
-	position: relative;
-	width: 100%;
-	z-index: 10;
+.header {
+    position: relative;
+    width: 100%;
+    z-index: 10;
+    box-shadow: -1px 6px 12px rgba(0, 0, 0, 0.06);
 }
 
 /*********************************
@@ -494,7 +494,7 @@ section
 {
 	font-size: 14px;
     font-weight: 400;
-	line-height: 70px;
+	line-height: 50px;
  	color: #627688;
 	-webkit-transition: all 200ms ease;
 	-moz-transition: all 200ms ease;
