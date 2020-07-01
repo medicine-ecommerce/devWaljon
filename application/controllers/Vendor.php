@@ -553,7 +553,7 @@ Class Vendor extends MY_Controller {
                                 'unit'=>$this->input->post('unit')[$key],
                                 'quantity'=>$this->input->post('quantity')[$key],
                                 'offerprice'=>$this->input->post('offerprice')[$key],
-                                'expiry_date'=>$this->input->post('expiry_date')[$key]);
+                                'expiry_date'=>$this->input->post('expriydate')[$key]);
                         $lastID = $this->Vendor->insertData('product_item',$dataItem);
                 }
 
@@ -620,6 +620,9 @@ Class Vendor extends MY_Controller {
                         'safety_info'=>$this->input->post('safety_info'),
                         'status'=>'1',
                         'created_at'=>date('Y-m-d H:i:s'));
+            // echo "<pre>";
+            // print_r($data);
+            // exit();
              $this->Vendor->updateData('product',$data,array('id'=>$id));            
             
                 foreach ($this->input->post('mrp') as $key => $value) {                    
@@ -670,17 +673,14 @@ Class Vendor extends MY_Controller {
         $this->Vendor();
     }
     public function delete_productImages(){
-        
 
-        if (!empty($this->input->post('id'))) {                                    
-            
+        if (!empty($this->input->post('id'))) {                                                
             if(file_exists('assets/product-images/'.$this->input->post('image_name'))){
             $result = unlink('assets/product-images/'.$this->input->post('image_name'));
                 if($result){
                     if(!empty($this->input->post('id'))){
                         $deleted =  $this->Vendor->deleteData('product_images',array('id'=>$this->input->post('id')));
-                        echo json_encode(array('status'=>1,'keyWord'=>'Image deleted'));
-                        return;
+                        
                     }
                     echo json_encode(array('status'=>1,'keyWord'=>'Image deleted'));
                     return;
@@ -689,8 +689,8 @@ Class Vendor extends MY_Controller {
                     return;
                 }
             }else{
-            echo json_encode(array('status'=>0));
-            return;
+                echo json_encode(array('status'=>0));
+                return;
             }
         }
     }
