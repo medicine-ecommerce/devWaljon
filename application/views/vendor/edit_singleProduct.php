@@ -7,8 +7,10 @@
     </div>
   </div>
    <?php    
+    $productImages = $product['product_images'];
     $question = $product['question'];
     $product_item = $product['product'];
+    
     ?>
   <form id="addSingleProduct" method="post" enctype="multipart/form-data" action="<?php echo base_url() ?>/admin/edit_singleProduct/<?= base64_encode("23"); ?>">
 
@@ -116,8 +118,9 @@
                               </div>
                               <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
                                 <select name="measurement[]" id="measurement" class="form-control control-float-top states" >
-                                  <option>l</option>
-                                  <option>gm</option>
+                                  <option value="1">kg</option>
+                                  <option value="2">gm</option>
+                                  <option value="3">ltr</option>
                                 </select>
                                 <label for="country">measurement</label>
                               </div>
@@ -143,9 +146,9 @@
                            </td>
                            <td >
                               <div class="form-group label-float-top" style="width: 100px;">
-                                 <input type="date" class="form-control control-float-top" id="expriydate" name="expriydate[]">
-                                 <!--               <label for="email">Expiry Date</label>
-                                    -->           
+                                 <input type="date" class="form-control control-float-top" id="expriydate" name="expriydate[]" value="<?= $product_item->expiry_date; ?>">
+                                  <label for="email">Expiry Date</label>
+                                    
                               </div>
                            </td>
                            <td style="width: 5%;"><button type="button" name="add" id="add" class="btn addMore-btn"><i class="fa fa-plus"></i></button></td>
@@ -245,18 +248,22 @@
                      <table class="table no-border-table append-table" id="dynamic_field2">
                       <?php           
                       if(!empty($question)){
+                        $i =1 ;
                       foreach($question as $Qvalue) { ?>  
                         <tr>
                            <td>
                               <div class="form-group label-float-top" >
-                                 <input type="text" class="form-control control-float-top" name="faq_question[]" value="<?= $Qvalue->question; ?>">
+                                 <input type="text" class="form-control control-float-top question_input" name="faq_question[]" value="<?= $Qvalue->question; ?>">
                                  <label for="email">What is the product for ?</label>
-                                 <textarea class="form-control faq-textarea" rows="5" placeholder="About this product" name="faq_answar[]"><?= $Qvalue->answer; ?> </textarea>
+                                 <textarea type="text" class="form-control faq-textarea answer_input" rows="5" placeholder="About this product" name="faq_answar[]"><?= $Qvalue->answer; ?> </textarea>
+                                 <input type="hidden" name="question_id[]" value="<?= $Qvalue->question_id; ?>">
                               </div>
                            </td>
+                          <?php if($i==1){ ?>
                            <td style="width: 5%;"><button type="button" name="add2" id="add2" class="btn addMore-btn"><i class="fa fa-plus"></i></button></td>
+                          <?php } ?>
                         </tr>
-                        <?php  } } ?>          
+                        <?php $i+=1; } } ?>          
                      </table>
                 </div>
             </div>  
@@ -272,6 +279,17 @@
                     <img src="<?php echo base_url(); ?>assets/img/imgpsh_fullsize_anim.png" style="width:100%">
                   </div>
                 </div>
+                  <?php                    
+                  if(!empty($productImages)){                    
+                  foreach($productImages as $Qvalue) { ?>  
+                  <div class="preview-box edit-images">
+                    <div class="defaultSlides">
+                      <a onclick="deleteProductImages(<?= $Qvalue->product_image_id ?>)" class="close-icon"><i class="fa fa-times" aria-hidden="true"></i></a>
+                      <img src="<?php echo base_url().$Qvalue->image; ?> " style="width:100%">
+                    </div>
+                  </div>
+                  <?php } }?>
+                  
                 <div class="upload-img-sec">
                   <div class="img-upload">
                   </div>
@@ -335,10 +353,10 @@
        }
       });
   }); 
-    $(".label-float-top").click(function(){
-      $(this).find("label").addClass("active");
-      $(this).find("input").focus();    
-    });
+    // $(".label-float-top").click(function(){
+    //   $(this).find("label").addClass("active");
+    //   $(this).find("input").focus();    
+    // });
 
 
 
@@ -566,7 +584,7 @@ $(".form-group .form-control").blur(function(){
   //   });
   $(".label-float-top").click(function(){
       $(this).find("label").addClass("active");
-      $(this).find("input").focus();    
+      // $(this).find("input").focus();    
   });
 
   $(document).ready(function(){
@@ -597,7 +615,7 @@ $(".form-group .form-control").blur(function(){
       var productName             = $("#productName").val();
       var prescriptionRequired    = $("#prescriptionRequired").val();
       var salt_composition        = $("#salt_composition").val();
-      var image                   = $("#fileElem").val();
+      // var image                   = $("#fileElem").val();
     
       if(category_id==''){
         error += "<p>The Category field is required.</p>";
@@ -626,9 +644,9 @@ $(".form-group .form-control").blur(function(){
       if(sellprice==''){
         error += '<p>Sell Price is required.</p>';
       }
-      if(image==''){
-        error += '<p>Product image is required.</p>';
-      }
+      // if(image==''){
+      //   error += '<p>Product image is required.</p>';
+      // }
       if(expriydate==''){
         error += '<p>Expriy Date is required.</p>';
       }
@@ -650,7 +668,32 @@ $(".form-group .form-control").blur(function(){
         $('#addSingleProduct').submit();
       }
     });
+    $('.question_input').click(function(){
+      $(this).focus();    
+    })
+    $('.answer_input').click(function(){
+      $(this).focus();    
+    })
 
   })
+
+  function deleteProductImages(id) {   
+    alert(id);
+    $.ajax({
+          url:"<?php echo base_url(); ?>/vendor/delete_productImages",
+          method:"POST",
+          dataType: 'JSON',
+          data: {id:id},        
+          success:function(data){  
+             
+            
+                // setInterval(function () {
+                //   $('.front-end-error').fadeOut("slow");
+                // }, 7000);
+            
+            // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+          }
+    })
+  }
 
 </script>

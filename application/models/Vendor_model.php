@@ -181,14 +181,14 @@ class Vendor_model extends MY_model
 		$query = $this->db->get();
 		$result['product'] = $query->row();			
 
-		$this->db->select('product.id,product_images.image');
+		$this->db->select('product.id,product_images.id as product_image_id,product_images.image');
 		$this->db->from('product_images');
 		$this->db->join('product','product_images.product_id = product.id');
 		$this->db->where('product_images.product_id',$id);		
 		$query = $this->db->get();
 		$result['product_images'] = $query->result();			
 
-		$this->db->select('question.id,question.question,question.answer');
+		$this->db->select('question.id as question_id,question.question,question.answer');
 		$this->db->from('question');		
 		$this->db->where('question.product_id',$id);		
 		$query = $this->db->get();
