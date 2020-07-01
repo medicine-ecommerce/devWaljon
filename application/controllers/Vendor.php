@@ -671,7 +671,29 @@ Class Vendor extends MY_Controller {
         $this->Vendor();
     }
     public function delete_productImages(){
-       echo  $this->input->post('id');
+        
+
+        if (!empty($this->input->post('id'))) {                                    
+            
+            if(file_exists('assets/product-images/'.$this->input->post('image_name'))){
+            $result = unlink('assets/product-images/'.$this->input->post('image_name'));
+                if($result){
+                    if(!empty($this->input->post('id'))){
+                        $deleted =  $this->Vendor->deleteData('product_images',array('id'=>$this->input->post('id')));
+                        echo json_encode(array('status'=>1,'keyWord'=>'Image deleted'));
+                        return;
+                    }
+                    echo json_encode(array('status'=>1,'keyWord'=>'Image deleted'));
+                    return;
+                }else{
+                    echo json_encode(array('status'=>0));
+                    return;
+                }
+            }else{
+            echo json_encode(array('status'=>0));
+            return;
+            }
+        }
     }
 
 

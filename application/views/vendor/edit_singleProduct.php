@@ -284,7 +284,7 @@
                   foreach($productImages as $Qvalue) { ?>  
                   <div class="preview-box edit-images">
                     <div class="defaultSlides">
-                      <a onclick="deleteProductImages(<?= $Qvalue->product_image_id ?>)" class="close-icon"><i class="fa fa-times" aria-hidden="true"></i></a>
+                      <a onclick="deleteProductImages(<?= $Qvalue->product_image_id ?>,'<?= $Qvalue->image; ?>')" class="close-icon"><i class="fa fa-times" aria-hidden="true"></i></a>
                       <img src="<?php echo base_url().$Qvalue->image; ?> " style="width:100%">
                     </div>
                   </div>
@@ -677,16 +677,22 @@ $(".form-group .form-control").blur(function(){
 
   })
 
-  function deleteProductImages(id) {   
-    alert(id);
+  function deleteProductImages(id,name) {   
+    var outputFirst = name.split(/[/]+/).pop();
+
+    // var output = outputFirst.split(/[.]+/).pop();    
+    // var imageName  = name.split(/[/]+/).pop().slice(0, name.split(/[/]+/).pop().indexOf("."));
+    // alert(outputFirst.slice(0, outputFirst.indexOf(".")))
+    // name.substring(name.indexOf(char) + 1);
+
     $.ajax({
           url:"<?php echo base_url(); ?>/vendor/delete_productImages",
           method:"POST",
           dataType: 'JSON',
-          data: {id:id},        
-          success:function(data){  
-             
-            
+          data: {id:id,image_name:outputFirst},        
+          success:function(data){                            
+            console.log(data);
+             location.reload();            
                 // setInterval(function () {
                 //   $('.front-end-error').fadeOut("slow");
                 // }, 7000);
