@@ -9,9 +9,12 @@ class User_model extends MY_model
 
 	public function HomeProduct()
 	{
-		$this->db->select('category_name,id');
+		$this->db->select('category_name,category.id');
 		$this->db->from('category');
-		$this->db->where('status','active');
+		$this->db->where('category.status','active');
+		$this->db->join('subcategory','subcategory.category_id = category.id');
+		$this->db->join('product','product.category_id = subcategory.id');
+		$this->db->group_by('category.id');
 		$this->db->limit('5');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
