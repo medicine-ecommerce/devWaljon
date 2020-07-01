@@ -35,14 +35,35 @@ class User_model extends MY_model
 	}
 	public function getAllProductWithLimit($offset,$limit)
 	{
-
 		$this->db->select('product.name as product_name,product.about_product,product_images.image as product_image,product_item.sale_price,product_item.offerprice,product.id as product_id');
 		$this->db->from('product');
-		$this->db->join('product_images','product_images.product_id = product.id');
+		$this->db->join('product_images','product_images.product_id = product.id','left');
 		$this->db->join('product_item','product_item.product_id = product.id');
-		$this->db->limit($offset,$limit);
+		if (!empty($this->input->post('product_form'))) {
+			$this->db->where_in('product_form_id',$this->input->post('product_form'));
+		}
+		if (!empty($this->input->post('brand_id'))) {
+			$this->db->where_in('brand_id',$this->input->post('brand_id'));
+		}
+		if (!empty($this->input->post('product_category_id'))) {
+			$this->db->where_in('category_id',$this->input->post('product_category_id'));
+		}
+		
+		$this->db->limit($limit,$offset);
+		if (!empty($this->input->post('sortby')) && $this->input->post('sortby')=='lowest') {
+			$this->db->order_by('sale_price','asc');
+		}
+		elseif (!empty($this->input->post('sortby')) && $this->input->post('sortby')=='highest') {
+			$this->db->order_by('sale_price','desc');
+		}
+		elseif (!empty($this->input->post('sortby')) && $this->input->post('sortby')=='newest') {
+			$this->db->order_by('product.id','desc');
+		}
+		else{
+			$this->db->order_by('product.id','desc');
+		}
 		$query = $this->db->get();
-		echo $this->db->last_query();
+		//echo $this->db->last_query(); 
 		return $query->result();
 
 	}
@@ -50,8 +71,17 @@ class User_model extends MY_model
 	{
 		$this->db->select('product.name as product_name,product.about_product,product_images.image as product_image,product_item.sale_price,product_item.offerprice,product.id as product_id');
 		$this->db->from('product');
-		$this->db->join('product_images','product_images.product_id = product.id');
+		$this->db->join('product_images','product_images.product_id = product.id','left');
 		$this->db->join('product_item','product_item.product_id = product.id');
+		if (!empty($this->input->post('product_form'))) {
+			$this->db->where_in('product_form_id',$this->input->post('product_form'));
+		}
+		if (!empty($this->input->post('brand_id'))) {
+			$this->db->where_in('brand_id',$this->input->post('brand_id'));
+		}
+		if (!empty($this->input->post('product_category_id'))) {
+			$this->db->where_in('category_id',$this->input->post('product_category_id'));
+		}
 		$query = $this->db->get();
 		return $query->num_rows();
 
