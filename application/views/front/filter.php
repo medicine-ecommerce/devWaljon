@@ -80,4 +80,37 @@
       });
       
     });
+  function addToCart(id){    
+    // var quantity = $('#quantity').val();   
+    alert(id);
+    var quantity = 1 ;    
+    
+     $.ajax({
+          url:"<?php echo base_url(); ?>/user/add_to_cart",
+          method:"POST",
+          dataType: 'JSON',
+          data: {id:id,quantity:quantity},        
+          success:function(data){                                         
+            console.log(data);
+            $(".cart-quantity").text(data.quantity);
+            $(".cart-quantity").addClass("show-cart");
+          }
+    })
+
+  }
+  function updateCart(id,type){   
+    
+    $.ajax({
+          url:"<?php echo base_url(); ?>/user/add_to_cart",
+          method:"POST",
+          dataType: 'JSON',
+          data: {id:id,quantity:type.value},        
+          success:function(data){                                        
+            console.log(data);
+            $(".cart-quantity").text(data.quantity);
+            $(".cart-quantity").addClass("show-cart");
+          }
+    })
+
+  }
 </script>

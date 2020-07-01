@@ -167,9 +167,10 @@ Class User extends MY_Controller {
             );            
             $catInsert = $this->cart->insert($data);  
             $quantity = count($this->cart->contents());
+
             
             if($catInsert){
-                echo json_encode(array('status'=>1,'message'=>'Product Added','quantity'=>$quantity));
+                echo json_encode(array('status'=>1,'message'=>'Product Added','quantity'=>$quantity,'cart'=>$this->cart->contents()));
                 return;
             }
     }
