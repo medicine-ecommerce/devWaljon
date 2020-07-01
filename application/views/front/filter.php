@@ -31,6 +31,15 @@
       });
   }
  searchFilter(0);
+ $('input[type=checkbox]').change(function () {
+    searchFilter(0);
+ });
+
+ function sortBy(val) {
+   $('input[name=sortby]').val(val);
+   searchFilter(0);
+ }
+
   var acc = document.getElementsByClassName("accordion");
   var i;
 

@@ -5,12 +5,12 @@
           <div class="col-md-9">  
             <div class="left-pagination-section">              
               <div class="category-pagination left-active">
-                <a class="firt_short" href="#">Newest</a>
-                <a href="#">Popular</a>
-                <a href="#">Low Price</a>
-                <a class="last_short active" href="#">High Price</a>
+                <a class="firt_short active" href="#" onclick="sortBy('newest')">Newest</a>
+                <a href="#" onclick="sortBy('newest')">Popular</a>
+                <a href="#" onclick="sortBy('lowest')">Low Price</a>
+                <a class="last_short " href="#" onclick="sortBy('highest')">High Price</a>
               </div>
-              <div class="category-pagination right-pagination-section right-active">
+              <!-- <div class="category-pagination right-pagination-section right-active">
                 <a  href="#"><i class="fa fa-chevron-left"></i></a>
                 <a class="active" href="#">1</a>
                 <a href="#">2</a>
@@ -18,7 +18,7 @@
                 <a href="#">...</a>
                 <a href="#">6</a>
                 <a href="#"><i class="fa fa-chevron-right"></i></a>
-              </div>
+              </div> -->
             </div>
           </div>          
         </div>
@@ -27,17 +27,17 @@
         <div class="row product-section">  
                  
          <?php if (!empty($product)) {
-           foreach ($product as $key => $value) { ?>
+           foreach ($product as $key => $value) {   ?>
             <div class="col-xl-3 col-md-4 col-sm-4 col-xs-12" >
               <div class="product-box">
-                <img class="product-image" src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg">              
+                <img class="product-image" src="<?php echo ($value->product_image) ? base_url($value->product_image):'http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg'?>">              
                 <div class="text-center">                
-                  <p class="main-product-name">Product Name</p>
-                  <p class="product-description">Product Description</p>
+                  <p class="main-product-name"><?php echo $value->product_name;?></p>
+                  <p class="product-description"><?php echo $value->about_product;?></p>
                 </div>
-                <div class="product-price-category">                                      
-                  <span class="offer-price-text">10% off</span>
-                  <p class="product-sell-price">200</p>
+                <div class="product-price-category">
+                  <?php echo ($value->offerprice > 0)?'<span class="offer-price-text">'.$value->offerprice.'% off</span>':'';?>
+                  <p class="product-sell-price"><?php echo $value->sale_price;?></p>
 
                   <button class="btn-default add-cart-button-category">ADD</button>
                   <div class="def-number-input number-input safari_only add-quantity  add-quantity-category hide-button">
@@ -50,7 +50,8 @@
             </div>
           <?php }
          } ?>
-<?php echo $pagination; ?> 
+
         </div>
+        <?php echo $pagination; ?> 
 
  

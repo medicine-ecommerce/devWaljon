@@ -111,7 +111,7 @@
                                 <label for="email">Quantity</label>
                               </div>
                               <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
-                                <select name="measurement[]" id="measurement" class="form-control control-float-top states" >
+                                <select name="unit[]" id="measurement" class="form-control control-float-top states" >
                                   <option>l</option>
                                   <option>gm</option>
                                 </select>

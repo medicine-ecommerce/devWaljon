@@ -547,7 +547,6 @@ Class Vendor extends MY_Controller {
              $lastProductID = $this->Vendor->insertData('product',$data);
             if ($lastProductID) {
                 foreach ($this->input->post('mrp') as $key => $value) {
-                    print_r($this->input->post('mrp'));
                     $dataItem = array('product_id'=>$lastProductID,
                                 'mrp'=>$this->input->post('mrp')[$key],
                                 'sale_price'=>$this->input->post('sellprice')[$key],
