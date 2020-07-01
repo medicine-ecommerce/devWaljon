@@ -136,6 +136,7 @@ class User_model extends MY_model
 		$this->db->join('product_images','product_images.product_id = product.id','left');
 		$this->db->join('product_item','product_item.product_id = product.id');
 		$this->db->join('product_form','product_form.id = product.product_form_id','left');
+		$this->db->group_by('product.id');
 		$this->db->limit(8);
 		$query_product = $this->db->get();
 		if ($query_product->num_rows() > 0) {
