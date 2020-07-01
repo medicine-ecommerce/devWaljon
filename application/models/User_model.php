@@ -40,13 +40,29 @@ class User_model extends MY_model
 		$this->db->join('product_images','product_images.product_id = product.id','left');
 		$this->db->join('product_item','product_item.product_id = product.id');
 		if (!empty($this->input->post('product_form'))) {
+			$this->db->group_start();
 			$this->db->where_in('product_form_id',$this->input->post('product_form'));
+			$this->db->group_end();
 		}
 		if (!empty($this->input->post('brand_id'))) {
+			$this->db->group_start();
 			$this->db->where_in('brand_id',$this->input->post('brand_id'));
+			$this->db->group_end();
 		}
 		if (!empty($this->input->post('product_category_id'))) {
+			$this->db->group_start();
 			$this->db->where_in('category_id',$this->input->post('product_category_id'));
+			$this->db->group_end();
+		}
+		if (!empty($this->input->post('discount'))) {
+			
+			foreach ($this->input->post('discount') as $key => $value) {
+				$explode = explode('-',$value);
+				$this->db->or_group_start();
+				$this->db->or_where('offerprice >= '.$explode[0].' and offerprice <='.$explode[1]);
+				$this->db->group_end();
+			}
+			
 		}
 		
 		$this->db->limit($limit,$offset);
@@ -69,18 +85,34 @@ class User_model extends MY_model
 	}
 	public function getAllProduct()
 	{
-		$this->db->select('product.name as product_name,product.about_product,product_images.image as product_image,product_item.sale_price,product_item.offerprice,product.id as product_id');
+		$this->db->select('product.id as product_id');
 		$this->db->from('product');
 		$this->db->join('product_images','product_images.product_id = product.id','left');
 		$this->db->join('product_item','product_item.product_id = product.id');
 		if (!empty($this->input->post('product_form'))) {
+			$this->db->group_start();
 			$this->db->where_in('product_form_id',$this->input->post('product_form'));
+			$this->db->group_end();
 		}
 		if (!empty($this->input->post('brand_id'))) {
+			$this->db->group_start();
 			$this->db->where_in('brand_id',$this->input->post('brand_id'));
+			$this->db->group_end();
 		}
 		if (!empty($this->input->post('product_category_id'))) {
+			$this->db->group_start();
 			$this->db->where_in('category_id',$this->input->post('product_category_id'));
+			$this->db->group_end();
+		}
+		if (!empty($this->input->post('discount'))) {
+			
+			foreach ($this->input->post('discount') as $key => $value) {
+				$explode = explode('-',$value);
+				$this->db->or_group_start();
+				$this->db->or_where('offerprice >= '.$explode[0].' and offerprice <='.$explode[1]);
+				$this->db->group_end();
+			}
+			
 		}
 		$query = $this->db->get();
 		return $query->num_rows();

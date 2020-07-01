@@ -69,17 +69,15 @@
         <div class="panel-body category-filter-radio">          
 
           <div class="form-group">
-            <input type="checkbox" class="search_paramiter_checkbox" >
-            <label for="item" class="flt-checkbox-label">Item</label>
+            <input type="checkbox" class="search_paramiter_checkbox" value="0-10" name="discount[]">
+            <label for="item" class="flt-checkbox-label">Less Than 10%</label>
           </div>
-          <div class="form-group">
-            <input type="checkbox" class="search_paramiter_checkbox" >
-            <label for="item" class="flt-checkbox-label">Item</label>
-          </div>
-          <div class="form-group">
-            <input type="checkbox" class="search_paramiter_checkbox" >
-            <label for="item" class="flt-checkbox-label">Item</label>
-          </div>
+          <?php for ($i=10; $i < 110 ; $i+=10) {  ?>
+            <div class="form-group">
+              <input type="checkbox" value="<?php echo $i.'-'.($i+10) ?>" name="discount[]" class="search_paramiter_checkbox" >
+              <label for="item" class="flt-checkbox-label"><?php echo $i.'% and above';?></label>
+            </div>
+          <?php } ?>
         </div>
       </div>
     </div>
