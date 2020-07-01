@@ -141,7 +141,7 @@
                     <div class="product-main-block">
                       <div class="product-block">  
                         <div class="product-image-section">                      
-                          <img src="<?php echo (!empty($value->image))?base_url('assets/product-images/'.$value->image):base_url('assets/front/images/best_2.png');  ?>" >
+                          <img src="<?php echo (!empty($value->image))?base_url($value->image):base_url('assets/front/images/best_2.png');  ?>" >
                         </div>
                         <div class="shape">
                           <span class="offer-text">10% </span><span class="off-text">Off</span>
