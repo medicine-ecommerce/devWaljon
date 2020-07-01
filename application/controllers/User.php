@@ -13,7 +13,7 @@ Class User extends MY_Controller {
         $this->load->database();
         $this->load->model('User_model','User');
         $this->load->helper(array('form', 'url'));
-         $this->load->library('ajax_pagination'); 
+        $this->load->library('ajax_pagination'); 
     }
     // public function index()
     // {
@@ -118,6 +118,11 @@ Class User extends MY_Controller {
         $this->middle = 'order_listing';
         $this->User();
     }
+    public function profile()
+    {
+        $this->middle = 'profile';
+        $this->User();
+    }
 
     public function product_comment()
     {        
@@ -138,4 +143,5 @@ Class User extends MY_Controller {
         return  $data;
         
     }
+
 }
