@@ -13,7 +13,7 @@ Class User extends MY_Controller {
         $this->load->database();
         $this->load->model('User_model','User');
         $this->load->helper(array('form', 'url'));
-        $this->load->library('ajax_pagination'); 
+        $this->load->library(array('ajax_pagination','cart')); 
     }
     // public function index()
     // {
@@ -142,6 +142,37 @@ Class User extends MY_Controller {
         $data = $this->User->getAllProductComments($id);        
         return  $data;
         
+    }
+    public function add_to_cart(){
+
+
+        
+        if(!empty($this->input->post('id')))            
+
+            $product = $this->User->getData('product','id,name,category_id,brand_id',array('id'=>$this->input->post('id')));
+            $category = $this->User->getData('subcategory','subcategory',array('id'=>$product[0]->category_id ));
+            $brand = $this->User->getData('brand','brand_name',array('id'=>$product[0]->brand_id ));
+            $price = $this->User->getData('product_item','sale_price',array('product_id'=>$product[0]->id ));
+            $product_image = $this->User->getData('product_images','image',array('product_id'=>$this->input->post('id')));
+
+            $data = array(                    
+                    'id'     => $this->input->post('id'),
+                    'qty'     => $this->input->post('quantity'),
+                    'price'   =>$price[0]->sale_price,
+                    'name'    => $product[0]->name, 
+                    'product_id'=>$product[0]->id, 
+                    'image'=>$product_image[0]->image,
+                    'category_name'=>$category[0]->subcategory,
+                    'brand_name'=>$brand[0]->brand_name,
+            );            
+            $catInsert = $this->cart->insert($data);  
+            $quantity = count($this->cart->contents());
+
+            
+            if($catInsert){
+                echo json_encode(array('status'=>1,'message'=>'Product Added','quantity'=>$quantity,'cart'=>$this->cart->contents()));
+                return;
+            }
     }
 
 }

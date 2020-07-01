@@ -13,11 +13,11 @@
                   <?php echo ($value->offerprice > 0)?'<span class="offer-price-text">'.$value->offerprice.'% off</span>':'';?>
                   <p class="product-sell-price"><?php echo $value->sale_price;?></p>
 
-                  <button class="btn-default add-cart-button-category">ADD</button>
+                  <button class="btn-default add-cart-button-category" onclick="addToCart(<?= $value->product_id ?>)">ADD</button>
                   <div class="def-number-input number-input safari_only add-quantity  add-quantity-category hide-button">
-                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCart(<?= $value->product_id; ?>,this.parentNode.querySelector('input[value]'))" class="minus"></button>
                     <input class="quantity" min="0" name="quantity" value="1" type="number">
-                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                    <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart(<?= $value->product_id; ?>,this.parentNode.querySelector('input[value]'))" class="plus"></button>
                   </div>
                 </div> 
               </div>

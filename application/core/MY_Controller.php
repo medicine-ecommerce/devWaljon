@@ -37,7 +37,12 @@ class MY_Controller extends CI_Controller
       // $this->load->view('developer/index', $this->template);
 
     }
-    public function User(){      
+    public function User(){  
+
+      if(!empty($this->cart->contents())){
+          $this->data['cart_quantity'] = count($this->cart->contents());        
+      }      
+      
 
       $this->template['header']        = $this->load->view('front/layout/header',$this->data);      
       // $this->template['sidebar']        = $this->load->view('front/layout/sidebar',$this->data);  

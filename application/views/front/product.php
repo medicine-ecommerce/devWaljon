@@ -89,9 +89,9 @@
 											<div class="product_quantity">	
 												<h5 class="product-price-head">Quantity</h5>
 												<div class="def-number-input number-input safari_only add-quantity  add-quantity-product">
-				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-				                  <input class="quantity" min="1" name="quantity" value="1" type="number">
-				                  <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+				                  <button type="button"  onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCart(<?= $product_item->product_id; ?>,this.parentNode.querySelector('input[value]'))" class="minus"></button>
+				                  <input class="quantity" min="1" id="quantity" name="quantity" value="1" type="number">
+				                  <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart(<?= $product_item->product_id; ?>,this.parentNode.querySelector('input[value]'))" class="plus"></button>
 				                </div>
 												<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
 												<!-- <div class="quantity_buttons">
@@ -112,7 +112,7 @@
 										<p class="price-off">Get 20% off</p>
 									</div>
 									<div class="pull-right">
-										<button type="button" class="button cart_button">Add to Cart</button>
+										<button type="button" class="button cart_button" onclick="addToCart(<?= $product_item->product_id; ?>,'single')">Add to Cart</button>
 									</div>
 								</div>
 								
@@ -277,7 +277,7 @@
           <div class="product-slider">
             <div class="owl-slider-alternate" >
               <div id="carousel5" class="owl-carousel product-slider" >
-                <?php 
+                <?php                 
                 if(!empty($alternate_product)){
                 foreach ($alternate_product as $key => $value) { ?>
                   <div class="item">
@@ -297,11 +297,11 @@
                       </div>                  
                       <div class="product-price-block">                  
                          <span><i class="fa fa-inr" aria-hidden="true"></i> <?php echo $value->sale_price; ?></span> 
-                        <button class="btn-default add-cart-button">ADD</button>
+                        <button class="btn-default add-cart-button" onclick="addToCart(<?= $value->product_id ?>,'slider')">ADD</button>
                         <div class="def-number-input number-input safari_only add-quantity hide-button">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCart(<?= $value->product_id; ?>,this.parentNode.querySelector('input[value]'))" class="minus"></button>
                           <input class="quantity" min="0" value="1" name="quantity" type="number">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart(<?= $value->product_id; ?>,this.parentNode.querySelector('input[value]'))" class="plus"></button>
                         </div>
                       </div>                  
                     </div>               
@@ -560,4 +560,34 @@
       
     });
 
+	function addToCart(id,type){		
+		// var quantity = $('#quantity').val();		
+		var quantity = 1 ;		
+		
+		 $.ajax({
+          url:"<?php echo base_url(); ?>/user/add_to_cart",
+          method:"POST",
+          dataType: 'JSON',
+          data: {id:id,quantity:quantity},        
+          success:function(data){                                         
+            $(".cart-quantity").text(data.quantity);
+            $(".cart-quantity").addClass("show-cart");
+          }
+    })
+
+	}
+	function updateCart(id,type){		
+		
+		$.ajax({
+          url:"<?php echo base_url(); ?>/user/add_to_cart",
+          method:"POST",
+          dataType: 'JSON',
+          data: {id:id,quantity:type.value},        
+          success:function(data){                                        
+            $(".cart-quantity").text(data.quantity);
+            $(".cart-quantity").addClass("show-cart");
+          }
+    })
+
+	}
 </script>
