@@ -283,7 +283,7 @@
                   if(!empty($productImages)){                    
                   foreach($productImages as $Qvalue) { ?>  
                   <div class="preview-box edit-images">
-                    <div class="defaultSlides">
+                    <div class="defaultSlides editDefaultSlides">
                       <a onclick="deleteProductImages(<?= $Qvalue->product_image_id ?>,'<?= $Qvalue->image; ?>')" class="close-icon"><i class="fa fa-times" aria-hidden="true"></i></a>
                       <img src="<?php echo base_url().$Qvalue->image; ?> " style="width:100%">
                     </div>
