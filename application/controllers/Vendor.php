@@ -553,7 +553,7 @@ Class Vendor extends MY_Controller {
                                 'unit'=>$this->input->post('unit')[$key],
                                 'quantity'=>$this->input->post('quantity')[$key],
                                 'offerprice'=>$this->input->post('offerprice')[$key],
-                                'expiry_date'=>$this->input->post('expiry_date')[$key]);
+                                'expiry_date'=>$this->input->post('expriydate')[$key]);
                         $lastID = $this->Vendor->insertData('product_item',$dataItem);
                 }
 
