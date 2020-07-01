@@ -38,7 +38,7 @@ class User_model extends MY_model
 	}
 	public function getAllProductWithLimit($offset,$limit)
 	{
-		$this->db->select('product.name as product_name,product.about_product,product_images.image as product_image,product_item.sale_price,product_item.offerprice,product.id as product_id');
+		$this->db->select('product.name as product_name,LEFT(product.about_product,50) as about_product,product_images.image as product_image,product_item.sale_price, product_item.offerprice,product.id as product_id');
 		$this->db->from('product');
 		$this->db->join('product_images','product_images.product_id = product.id','left');
 		$this->db->join('product_item','product_item.product_id = product.id');
