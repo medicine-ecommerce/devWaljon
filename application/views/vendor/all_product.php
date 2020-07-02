@@ -75,6 +75,7 @@
                           else { ?>
                             <a class="dropdown-item" href="<?php echo base_url('vendor/product_status/0/'.$value->id);?>">Deactivate</a>
                           <?php } ?>
+                          <a class="dropdown-item" href="<?php echo base_url('vendor/edit_singleProduct/'.($value->id));?>">Edit</a>
                         </div>
 
                       </td>  

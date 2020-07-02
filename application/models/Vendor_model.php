@@ -168,33 +168,25 @@ class Vendor_model extends MY_model
 	}
 	public function getProductByID($id)
 	{
-		$this->db->select('product.*,brand.brand_name,brand.status,manufacturer.name as manufacturer_name,manufacturer.status,category.category_name,category.status,subcategory.subcategory,subcategory.status,product_form.name as product_form,saltcomposition.name as saltcomposition_name, product_form.status,product_item.*');
+		$this->db->select('product.*,product.id as product_id,product_item.*');
 		$this->db->from('product');
 		$this->db->join('product_item','product_item.product_id = product.id');		
-		$this->db->join('product_form','product_form.id = product.product_form_id','left');
+		/*$this->db->join('product_form','product_form.id = product.product_form_id','left');
 		$this->db->join('manufacturer','manufacturer.id = product.manufacturer_id','left');
 		$this->db->join('saltcomposition','saltcomposition.id = product.salt_composition_id','left');
 		$this->db->join('category','category.id = product.category_id','left');
 		$this->db->join('subcategory','subcategory.id = product.sucategory_id','left');
-		$this->db->join('brand','brand.id = product.brand_id','left');
+		$this->db->join('brand','brand.id = product.brand_id','left');*/
 		$this->db->where('product.id',$id);		
 		$query = $this->db->get();
-		$result['product'] = $query->row();			
-
-		$this->db->select('product.id,product_images.id as product_image_id,product_images.image');
-		$this->db->from('product_images');
-		$this->db->join('product','product_images.product_id = product.id');
-		$this->db->where('product_images.product_id',$id);		
-		$query = $this->db->get();
-		$result['product_images'] = $query->result();			
-
-		$this->db->select('question.id as question_id,question.question,question.answer');
-		$this->db->from('question');		
-		$this->db->where('question.product_id',$id);		
-		$query = $this->db->get();
-		$result['question'] = $query->result();			
-
 		if ($query->num_rows() > 0) {
+			$result = $query->row();		
+
+			$this->db->select('product_images.id as product_image_id,product_images.image');
+			$this->db->from('product_images');
+			$this->db->where('product_images.product_id',$id);		
+			$query1 = $this->db->get();
+			$result->product_images= $query1->result();		
 			return $result;
 		}
 	}
