@@ -101,6 +101,9 @@ Class User extends MY_Controller {
     }
     public function checkout()
     {
+        if(empty($this->session->userdata('user_id'))){
+            redirect(base_url('user/vendor_login'));
+        }
         // $this->data['user_address'] = $this->User->getData('user_address','address', array('user_id' => '2' ));
         // $this->data['user_address_row'] = $this->User->getRowData('user_address','address', array('user_id' => '2' ));
         // print_r($this->data);die();

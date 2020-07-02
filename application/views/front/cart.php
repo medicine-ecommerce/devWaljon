@@ -36,12 +36,21 @@
          </div>         
       </div>  
       <?php }}else{ echo "No product in cart"; } ?>
-      <div class="cart-total">
-        <span class="heading-total">Total Item</span><br><br>
+      <div class="cart-total cart-total-left">
+        <span class="heading-total">Total Item - <span class="total-qty"><?php echo count($this->cart->contents()); ?> </span> </span><br><br>
         <span class="heading-total">Total </span> 
-      </div>   
+      </div>         
     </div>
-    <a href="#" class="btn btn-update">Update cart</a>
+    <div class="row update-button">      
+      <div class="col-md-12">        
+        <a href="<?php echo base_url('user/checkout');?>" class="btn btn-update">Checkout</a>
+      </div>
+    </div>
+    <div class="row checkout-button">      
+      <div class="col-md-12">        
+        <a href="#" class="btn btn-update" onclick="location.reload();">Update cart</a>
+      </div>
+    </div>
   </div>    
 </div>
   
