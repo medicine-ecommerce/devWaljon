@@ -317,6 +317,23 @@ span.cart-quantity {
 .show-cart{
     display: block;
 }
+/*.cart-quantity {
+    float: none;
+}*/
+.cart-heading{
+    text-align: -webkit-center;
+}
+.cart-content{
+    text-align: center;
+}
+
+.cart-content .layout-inline > * {
+    display: inline-flex;       
+    float: none; 
+}
+.cart-update-quantity {
+    margin-top: 30px;
+}
 
 @media not all and (min-resolution:.001dpcm) {
 @supports (-webkit-appearance: none) and (stroke-color:transparent) {

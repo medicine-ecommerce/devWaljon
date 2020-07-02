@@ -23,8 +23,8 @@
                                 </div>
                             </div> 
                             <div >
-                                <label class="fieldlabels"><?php echo $user_address_row->address;?></label> 
-                                <input type="hidden" name="address_1" value="<?php echo $user_address_row->address;?>">
+                                <label class="fieldlabels"><!-- <?php echo $user_address_row->address;?> --></label> 
+                                <input type="hidden" name="address_1" value="<?php // echo $user_address_row->address;?>">
                                 <input type="checkbox" name="address" style="margin-left: -48%;"  placeholder="Address" class="form-control" />
                                 <button type="button" id="btn" class="flex-c-m stext-101 cl0 bg1 hov-btn1 p-lr-15 trans-04 ">Add new address</button>
                                     <br/><br/>
@@ -39,10 +39,10 @@
                             <div >
                                <select name="address" class="form-control" style="width: 50%;">
                                 <option>Select Your Address</option>
-                                <?php foreach ($user_address as $row => $value) {
+                                <?php //foreach ($user_address as $row => $value) {
                                 ?>
-                                <option class="form-control"><?php echo $value->address ?></option>
-                                <?php }?>
+                                <option class="form-control"><!-- <?php echo $value->address ?> --></option>
+                                <?php// }?>
                                 </select>
                             </div>
                             
