@@ -77,13 +77,11 @@ $route['vendor/saltComposition_edit/(:any)'] = 'admin/saltComposition_edit/$1';
 
 
 
-
-
-
 $route['admin/all_product'] = 'vendor/all_product';
 $route['admin/addSingleProduct'] = 'vendor/addSingleProduct';
 $route['admin/editPersonalDetails/(:any)'] = 'vendor/editPersonalDetails/$1';
 $route['admin/vendor_bulk_upload'] = 'vendor/vendor_bulk_upload';
 $route['admin/product'] = 'vendor/inventory';
 
+$route['admin/edit_singleProduct/(:any)'] = 'vendor/edit_singleProduct/$1';
 

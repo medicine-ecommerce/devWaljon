@@ -298,6 +298,25 @@ height: .7rem;
     height: 28px;
     color: #495057;
 }
+span.cart-quantity {
+    position: absolute;
+    top: 5px;
+    left: 14px;
+    font-size: 14px;
+    background-color: #4abdde;
+    color: #fff;
+    width: 25px;
+    height: 25px;
+    margin: 0px;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+.hide-cart{
+    display: none;
+}
+.show-cart{
+    display: block;
+}
 
 @media not all and (min-resolution:.001dpcm) {
 @supports (-webkit-appearance: none) and (stroke-color:transparent) {

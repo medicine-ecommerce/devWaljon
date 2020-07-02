@@ -547,21 +547,20 @@ Class Vendor extends MY_Controller {
              $lastProductID = $this->Vendor->insertData('product',$data);
             if ($lastProductID) {
                 foreach ($this->input->post('mrp') as $key => $value) {
-                    print_r($this->input->post('mrp'));
                     $dataItem = array('product_id'=>$lastProductID,
                                 'mrp'=>$this->input->post('mrp')[$key],
                                 'sale_price'=>$this->input->post('sellprice')[$key],
                                 'unit'=>$this->input->post('unit')[$key],
                                 'quantity'=>$this->input->post('quantity')[$key],
                                 'offerprice'=>$this->input->post('offerprice')[$key],
-                                'expiry_date'=>$this->input->post('expiry_date')[$key]);
+                                'expiry_date'=>$this->input->post('expriydate')[$key]);
                         $lastID = $this->Vendor->insertData('product_item',$dataItem);
                 }
 
                 foreach ($this->input->post('faq_question') as $key => $value) {
                     $dataItem1 = array('product_id'=>$lastProductID,
                                 'question'=>$this->input->post('faq_question')[$key],
-                                'answar'=>$this->input->post('faq_answar')[$key]);
+                                'answer'=>$this->input->post('faq_answar')[$key]);
                         $lastID = $this->Vendor->insertData('question',$dataItem1);
                 }
 
@@ -599,6 +598,105 @@ Class Vendor extends MY_Controller {
     {
         $this->Vendor->upload('file','product-images');
     }
+    public function edit_singleProduct($id)
+    {
+        $id = base64_decode($id);
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $data = array('upload_source'=>'single_upload',
+                        'created_by' =>$this->session->userdata('user_id'),
+                        'category_id'=>$this->input->post('category_id'),                        
+                        'manufacturer_id'=>$this->input->post('manufacturer_id'),
+                        'brand_id'=>$this->input->post('brand_id'),
+                        
+                        'name'=>$this->input->post('name'),
+                        'product_form_id'=>$this->input->post('product_form_id'),
+                        'salt_composition_id'=>$this->input->post('salt_composition_id'),
+                        'about_product'=>$this->input->post('about_product'),
+                        'side_effect'=>$this->input->post('side_effect'),
+                        'when_to_use'=>$this->input->post('when_to_use'),
+                        'how_to_use'=>$this->input->post('how_to_use'),
+                        'how_to_work'=>$this->input->post('how_to_work'),
+                        'how_to_store'=>$this->input->post('how_to_store'),
+                        'safety_info'=>$this->input->post('safety_info'),
+                        'status'=>'1',
+                        'created_at'=>date('Y-m-d H:i:s'));
+            // echo "<pre>";
+            // print_r($data);
+            // exit();
+             $this->Vendor->updateData('product',$data,array('id'=>$id));            
+            
+                foreach ($this->input->post('mrp') as $key => $value) {                    
+                    $dataItem = array('mrp'=>$this->input->post('mrp')[$key],
+                                'sale_price'=>$this->input->post('sellprice')[$key],
+                                'unit'=>$this->input->post('measurement')[$key],
+                                'quantity'=>$this->input->post('quantity')[$key],
+                                'offerprice'=>$this->input->post('offerprice')[$key],
+                                'expiry_date'=>$this->input->post('expriydate')[$key]);
+                    $this->Vendor->updateData('product_item',$dataItem,array('product_id'=>$id));
+                }
+               
+                foreach ($this->input->post('faq_answar') as $key => $value) {
+                                        
+                    $dataItem1 = array('question'=>trim($this->input->post('faq_question')[$key]),
+                                'answer'=>trim($this->input->post('faq_answar')[$key]));                        
+
+                    $this->Vendor->updateData('question',$dataItem1,array('product_id'=>$id,'id'=>$this->input->post('question_id')[$key]));
+                }                                                
+                if (!empty($this->input->post('base64image'))) {
+                    $base64image = $this->input->post('base64image');
+                    foreach ($base64image as $key => $value) {
+                        $data = $value;
+                        list($type, $data) = explode(';', $data);
+                        list(, $data)      = explode(',', $data);
+                        $data = base64_decode($data);
+                        $path = 'assets/product-images/'.date('YmdHis').'.png';
+                        file_put_contents($path, $data);
+                        $this->Vendor->insertData('product_images',array('product_id'=>$id,'image'=>$path));
+                    }
+                }
+                $this->session->set_flashdata('success', 'Product updated successfully'); 
+            // }
+            // else{
+            //     $this->session->set_flashdata('error', 'error! Please try again'); 
+                
+            // }
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        
+        $this->data['product'] = $this->Vendor->getProductByID($id);
+        $this->data['category'] = $this->Vendor->getData('subcategory','subcategory,id',array('status'=>"active"));
+        $this->data['manufacturer'] = $this->Vendor->getData('manufacturer','name,id',array('status'=>"active"));
+        $this->data['product_form'] = $this->Vendor->getData('product_form','name,id',array('status'=>"active"));
+        $this->data['brand'] = $this->Vendor->getData('brand','brand_name,id',array('status'=>"active"));
+        $this->data['salt_composition'] = $this->Vendor->getData('saltcomposition','name,id',array('status'=>"active"));
+        $this->middle = 'edit_singleProduct';
+        $this->Vendor();
+    }
+    public function delete_productImages(){
+
+        if (!empty($this->input->post('id'))) {                                                
+            if(file_exists('assets/product-images/'.$this->input->post('image_name'))){
+            $result = unlink('assets/product-images/'.$this->input->post('image_name'));
+                if($result){
+                    if(!empty($this->input->post('id'))){
+                        $deleted =  $this->Vendor->deleteData('product_images',array('id'=>$this->input->post('id')));
+                        
+                    }
+                    echo json_encode(array('status'=>1,'keyWord'=>'Image deleted'));
+                    return;
+                }else{
+                    echo json_encode(array('status'=>0));
+                    return;
+                }
+            }else{
+                echo json_encode(array('status'=>0));
+                return;
+            }
+        }
+    }
+
+
+
      public function import_data()
     {
         if(isset($_FILES["file"]["name"]))

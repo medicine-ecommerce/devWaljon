@@ -1,20 +1,31 @@
 <form id="filter">
   <div class="panel-group filter-sidebar-section" id="accordionMenu" role="tablist" aria-multiselectable="true">
+    <input type="hidden" name="sortby" value="">
     <div class="panel panel-default category-panel">
-      <div class="panel-heading" role="tab" id="headingOne">
+      <div class="panel-heading" role="tab" id="headingTwo">
         <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordionMenu" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionMenu" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
           Health Conditions
         </a>
       </h4>
       </div>
-      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-        <div class="panel-body category-filter">
-          <?php
-          if(!empty($sub_category)) {
-            foreach ($sub_category as $key => $value) { ?>
-              <a href=""><p><?= $value->subcategory; ?> </p></a>              
-          <?php } } ?>  
+      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body category-filter-radio">
+          <div class="seacrh-section">            
+            <input id="brandInput" onkeyup="brandFilter()" placeholder="Search..." type="text" value="" />
+            <div class="underline"></div>   
+            <i class="fa fa-search custom-search" aria-hidden="true"></i>
+          </div>  
+          <div id="brandDiv">            
+            <?php
+            if(!empty($sub_category)) {
+              foreach ($sub_category as $key => $value) { ?>
+                <div class="form-group">
+                  <input type="checkbox" id="product_category_<?= $value->id ?>" value="<?= $value->id ?>" name="product_category_id[]" class="search_paramiter_checkbox" >
+                  <label for="product_category_<?= $value->id ?>" class="flt-checkbox-label"><?= $value->subcategory; ?> </label>
+                </div>              
+            <?php } } ?>  
+          </div>
         </div>
       </div>
     </div>
@@ -38,7 +49,7 @@
             if(!empty($brand)) {
               foreach ($brand as $key => $value) { ?>
                 <div class="form-group">
-                  <input type="checkbox" id="brand<?= $value->id ?>" value="<?= $value->id ?>" name="brand_name[]" class="search_paramiter_checkbox" >
+                  <input type="checkbox" id="brand<?= $value->id ?>" value="<?= $value->id ?>" name="brand_id[]" class="search_paramiter_checkbox" >
                   <label for="brand<?= $value->id ?>" class="flt-checkbox-label"><?= $value->brand_name; ?> </label>
                 </div>              
             <?php } } ?>  
@@ -49,26 +60,24 @@
     <div class="panel panel-default category-panel">
       <div class="panel-heading" role="tab" id="headingThree">
         <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionMenu" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Descount
-        </a>
-      </h4>
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordionMenu" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            Descount
+          </a>
+        </h4>
       </div>
       <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
         <div class="panel-body category-filter-radio">          
 
           <div class="form-group">
-            <input type="checkbox" class="search_paramiter_checkbox" >
-            <label for="item" class="flt-checkbox-label">Item</label>
+            <input type="checkbox" class="search_paramiter_checkbox" value="0-10" name="discount[]">
+            <label for="item" class="flt-checkbox-label">Less Than 10%</label>
           </div>
-          <div class="form-group">
-            <input type="checkbox" class="search_paramiter_checkbox" >
-            <label for="item" class="flt-checkbox-label">Item</label>
-          </div>
-          <div class="form-group">
-            <input type="checkbox" class="search_paramiter_checkbox" >
-            <label for="item" class="flt-checkbox-label">Item</label>
-          </div>
+          <?php for ($i=10; $i < 110 ; $i+=10) {  ?>
+            <div class="form-group">
+              <input type="checkbox" value="<?php echo $i.'-'.($i+10) ?>" name="discount[]" class="search_paramiter_checkbox" >
+              <label for="item" class="flt-checkbox-label"><?php echo $i.'% and above';?></label>
+            </div>
+          <?php } ?>
         </div>
       </div>
     </div>
