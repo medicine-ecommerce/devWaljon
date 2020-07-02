@@ -74,8 +74,11 @@
     display: none;
 }
 
-.remove-dots .owl-stage-outer.owl-height {
-    height: 100px!important;
+.remove-dots .owl-stage-outer.owl-height .owl-stage .owl-item .item{
+    height: 100px !important;
+}
+.remove-dots .owl-stage-outer.owl-height .owl-stage .owl-item .item img{
+    height: 100% !important;
 }
 /*.icon-slider{
   background: linear-gradient(80deg,#4abdde,#2b89e1);
