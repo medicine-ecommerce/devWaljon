@@ -1058,3 +1058,82 @@ li.product_li1 a{
   .order-table{
     margin:30px 0px;
   }
+ /* profile*/
+   .upload-btn-img {
+        position: relative;
+        overflow: hidden;
+        display: inline-block;
+    }
+
+    .upload-btn-img input[type=file] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+    }
+
+    .img-thumbnail {
+        opacity: 1;
+        transition: opacity .25s ease-in-out;
+        -moz-transition: opacity .25s ease-in-out;
+        -webkit-transition: opacity .25s ease-in-out;
+        cursor: pointer;
+        width: 160px; height: 160px; 
+        object-fit:cover;
+        border-radius: 50%;
+    }
+
+    .upload-btn-img:hover .img-thumbnail {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+    .upload-btn-img:hover input {
+        cursor: pointer;
+    }
+    .input-update{
+      height: 40px;
+      border: 1px solid #ccc!important;
+    }
+  label.fieldlabels {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .profile-tabs a {
+    font-size: 16px;
+    font-weight: 600;
+    background: #ffffff;
+    margin: 10px 0px;
+    box-shadow: 3px 3px 2px #ebebeb;
+    border: 1px solid #dee2e6 !important;
+  }
+  .profile-tabs a.nav-link.active{
+    background: #f4f4f4;
+    border-left: 5px solid #808080;
+  }
+  .nav-tabs.profile-tabs {
+    border: none !important;
+  }
+  div#v-pills-tabContent {
+    padding: 20px;
+    border: 1px solid #f4f4f4;
+  }
+  .profile-tab-heading {
+    text-align: center;
+      padding: 10px;
+  }
+  .submit-btn {
+    margin: 30px auto;
+    text-align: center;
+  }
+  .submit-btn button.btn.btn-primary {
+    background: #4abdde;
+    border: none;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .chg-psw-input{
+    margin: 5px 0px;
+  }
