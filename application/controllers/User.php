@@ -41,8 +41,7 @@ Class User extends MY_Controller {
         $this->User();
     }
     public function product($id)
-    {
-        // $this->cart->destroy();
+    {        
         $this->data['product'] = $this->User->getProductByID($id);
         $this->data['alternate_product'] = $this->User->getAlternateBrandsByID();        
         $this->middle = 'product';
@@ -166,9 +165,8 @@ Class User extends MY_Controller {
                     'category_name'=>$category[0]->subcategory,
                     'brand_name'=>$brand[0]->brand_name,
             );            
-            $catInsert = $this->cart->insert($data);  
+            $catInsert = $this->cart->insert($data);              
             $quantity = count($this->cart->contents());
-
             
             if($catInsert){
                 echo json_encode(array('status'=>1,'message'=>'Product Added','quantity'=>$quantity,'cart'=>$this->cart->contents()));
@@ -177,31 +175,29 @@ Class User extends MY_Controller {
     }
     public function update_cart(){
 
-
-        
         if(!empty($this->input->post('id')))            
-
-            $product = $this->User->getData('product','id,name,category_id,brand_id',array('id'=>$this->input->post('id')));
-            $category = $this->User->getData('subcategory','subcategory',array('id'=>$product[0]->category_id ));
-            $brand = $this->User->getData('brand','brand_name',array('id'=>$product[0]->brand_id ));
-            $price = $this->User->getData('product_item','sale_price',array('product_id'=>$product[0]->id ));
-            $product_image = $this->User->getData('product_images','image',array('product_id'=>$this->input->post('id')));
-
-            $data = array(                    
-                    'id'     => $this->input->post('id'),
-                    'qty'     => $this->input->post('quantity'),
-                    'price'   =>$price[0]->sale_price,
-                    'name'    => $product[0]->name, 
-                    'product_id'=>$product[0]->id, 
-                    'image'=>$product_image[0]->image,
-                    'category_name'=>$category[0]->subcategory,
-                    'brand_name'=>$brand[0]->brand_name,
-            );            
-            $catInsert = $this->cart->insert($data);  
+            $rowId = "";
+            foreach ($this->cart->contents() as $key => $value) {
+                foreach ($value as $value1) {                    
+                    if($value1==$this->input->post('id')){
+                        $rowId = $key;
+                    }
+                }                          
+            }
+            if($this->input->post('type')=="minus"){                
+                $data = array(                    
+                        'rowid'=> $rowId,
+                        'qty'  => $this->input->post('quantity'),
+                );            
+            }else{
+                $data = array(                    
+                        'rowid'=> $rowId,
+                        'qty'     => $this->input->post('quantity'),
+                );           
+            }
+            $catUpdate = $this->cart->update($data);  
             $quantity = count($this->cart->contents());
-
-            
-            if($catInsert){
+            if($catUpdate){
                 echo json_encode(array('status'=>1,'message'=>'Product Added','quantity'=>$quantity,'cart'=>$this->cart->contents()));
                 return;
             }

@@ -154,11 +154,11 @@
                       </div>                  
                       <div class="product-price-block">                  
                          <span><i class="fa fa-inr" aria-hidden="true"></i> <?php echo $value->sale_price; ?></span> 
-                        <button class="btn-default add-cart-button">ADD</button>
+                        <button class="btn-default add-cart-button" onclick="addToCart(<?= $value->product_id ?>)">ADD</button>
                         <div class="def-number-input number-input safari_only add-quantity hide-button">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()" class="minus"></button>
-                          <input class="quantity" min="0" name="quantity" type="number">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()" class="plus"></button>
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCart(<?= $value->product_id; ?>,this.parentNode.querySelector('input[value]'),'minus')" class="minus"></button>
+                          <input class="quantity" min="0" value="1" name="quantity" type="number">
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart(<?= $value->product_id; ?>,this.parentNode.querySelector('input[value]'),'plus')" class="plus"></button>
                         </div>
                       </div>                  
                     </div>               
@@ -1541,6 +1541,13 @@
         
       }
     });
+    var owl = $("#carousel");                 
+    $('#carousel .item').on('mouseover',function(e){
+        owl.trigger('stop.owl.autoplay');
+    })
+    $('#carousel .item').on('mouseleave',function(e){
+        owl.trigger('play.owl.autoplay');
+    })
     jQuery("#carouse0").owlCarousel(
     {
       autoplay: true,
@@ -1568,6 +1575,13 @@
         
       }
     });
+    var owl = $("#carouse0");                 
+    $('#carouse0 .item').on('mouseover',function(e){
+        owl.trigger('stop.owl.autoplay');
+    })
+    $('#carouse0 .item').on('mouseleave',function(e){
+        owl.trigger('play.owl.autoplay');
+    })
     jQuery("#carousel1").owlCarousel(
     {
       autoplay: true,
@@ -1595,6 +1609,13 @@
         
       }
     });
+    var owl1 = $("#carousel1");                 
+    $('#carousel1 .item').on('mouseover',function(e){
+        owl1.trigger('stop.owl.autoplay');
+    })
+    $('#carousel1 .item').on('mouseleave',function(e){
+        owl1.trigger('play.owl.autoplay');
+    })
     jQuery("#carousel2").owlCarousel(
     {
       autoplay: true,
@@ -1622,6 +1643,13 @@
         
       }
     });
+    var owl2= $("#carousel2");                 
+    $('#carousel2 .item').on('mouseover',function(e){
+        owl2.trigger('stop.owl.autoplay');
+    })
+    $('#carousel2 .item').on('mouseleave',function(e){
+        owl2.trigger('play.owl.autoplay');
+    })
     jQuery("#carousel3").owlCarousel(
     {
       autoplay: false,
@@ -1649,6 +1677,13 @@
         
       }
     });
+    var owl3 = $("#carousel3");                 
+    $('#carousel3 .item').on('mouseover',function(e){
+        owl3.trigger('stop.owl.autoplay');
+    })
+    $('#carousel3 .item').on('mouseleave',function(e){
+        owl3.trigger('play.owl.autoplay');
+    })
     jQuery("#carousel4").owlCarousel(
     {
       autoplay: true,
@@ -1676,6 +1711,13 @@
         
       }
     });
+    var owl4 = $("#carousel4");                 
+    $('#carousel4 .item').on('mouseover',function(e){
+        owl4.trigger('stop.owl.autoplay');
+    })
+    $('#carousel4 .item').on('mouseleave',function(e){
+        owl4.trigger('play.owl.autoplay');
+    })
     jQuery("#carousel6").owlCarousel(
     {
       autoplay: true,
@@ -1703,6 +1745,13 @@
         
       }
     });
+    var owl5 = $("#carousel6");                 
+    $('#carousel6 .item').on('mouseover',function(e){
+        owl5.trigger('stop.owl.autoplay');
+    })
+    $('#carousel6 .item').on('mouseleave',function(e){
+        owl5.trigger('play.owl.autoplay');
+    })
     jQuery("#carousel5").owlCarousel(
     {
       autoplay: true,
@@ -1730,6 +1779,13 @@
         
       }
     });
+    var owl6 = $("#carousel5");                 
+    $('#carousel5 .item').on('mouseover',function(e){
+        owl6.trigger('stop.owl.autoplay');
+    })
+    $('#carousel5 .item').on('mouseleave',function(e){
+        owl6.trigger('play.owl.autoplay');
+    })
 
     // Set the date we're counting down to
     var countDownDate = new Date("Jan 5, 2021 15:37:25").getTime();
@@ -1777,6 +1833,8 @@
     });
 
   </script>
+
+
 
 </body>
 
