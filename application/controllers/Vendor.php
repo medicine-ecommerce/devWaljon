@@ -600,14 +600,13 @@ Class Vendor extends MY_Controller {
     }
     public function edit_singleProduct($id)
     {
-        $id = base64_decode($id);
+        $id = ($id);
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $data = array('upload_source'=>'single_upload',
                         'created_by' =>$this->session->userdata('user_id'),
                         'category_id'=>$this->input->post('category_id'),                        
                         'manufacturer_id'=>$this->input->post('manufacturer_id'),
-                        'brand_id'=>$this->input->post('brand_id'),
-                        
+                        'brand_id'=>$this->input->post('brand_id'),                        
                         'name'=>$this->input->post('name'),
                         'product_form_id'=>$this->input->post('product_form_id'),
                         'salt_composition_id'=>$this->input->post('salt_composition_id'),
@@ -620,9 +619,10 @@ Class Vendor extends MY_Controller {
                         'safety_info'=>$this->input->post('safety_info'),
                         'status'=>'1',
                         'created_at'=>date('Y-m-d H:i:s'));
-            // echo "<pre>";
-            // print_r($data);
-            // exit();
+            /*echo "<pre>";
+            print_r($data);
+            echo $id;
+            exit();*/
              $this->Vendor->updateData('product',$data,array('id'=>$id));            
             
                 foreach ($this->input->post('mrp') as $key => $value) {                    
@@ -635,13 +635,14 @@ Class Vendor extends MY_Controller {
                     $this->Vendor->updateData('product_item',$dataItem,array('product_id'=>$id));
                 }
                
-                foreach ($this->input->post('faq_answar') as $key => $value) {
+                /*foreach ($this->input->post('faq_answar') as $key => $value) {
                                         
                     $dataItem1 = array('question'=>trim($this->input->post('faq_question')[$key]),
                                 'answer'=>trim($this->input->post('faq_answar')[$key]));                        
 
                     $this->Vendor->updateData('question',$dataItem1,array('product_id'=>$id,'id'=>$this->input->post('question_id')[$key]));
-                }                                                
+                }  */   
+
                 if (!empty($this->input->post('base64image'))) {
                     $base64image = $this->input->post('base64image');
                     foreach ($base64image as $key => $value) {
@@ -649,7 +650,7 @@ Class Vendor extends MY_Controller {
                         list($type, $data) = explode(';', $data);
                         list(, $data)      = explode(',', $data);
                         $data = base64_decode($data);
-                        $path = 'assets/product-images/'.date('YmdHis').'.png';
+                        $path = 'assets/product-images/'.date('YmdHis').$key.'.png';
                         file_put_contents($path, $data);
                         $this->Vendor->insertData('product_images',array('product_id'=>$id,'image'=>$path));
                     }

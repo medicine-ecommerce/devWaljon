@@ -6,13 +6,7 @@
       <h3>Invertory > Add Product</h3>
     </div>
   </div>
-   <?php    
-    $productImages = $product['product_images'];
-    $question = $product['question'];
-    $product_item = $product['product'];
-    
-    ?>
-  <form id="addSingleProduct" method="post" enctype="multipart/form-data" action="<?php echo base_url() ?>/admin/edit_singleProduct/<?= base64_encode("23"); ?>">
+  <form id="addSingleProduct" method="post" enctype="multipart/form-data" action="<?php echo base_url() ?>/admin/edit_singleProduct/<?php echo $product->product_id ; ?>">
 
     <div class="custom-error-alert front-end-validation">   
       <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
@@ -51,7 +45,7 @@
                            <option></option>
                            <?php if (!empty($category)) {
                              foreach ($category as $key => $value) { ?>
-                              <option <?php if($product_item->subcategory == $value->subcategory){ echo "selected"; } ?> value="<?php echo $value->id; ?>"><?php echo $value->subcategory; ?></option>
+                              <option <?php if($product->category_id == $value->id){ echo "selected"; } ?> value="<?php echo $value->id; ?>"><?php echo $value->subcategory; ?></option>
                             <?php }
                            } ?>
                         </select>
@@ -72,7 +66,7 @@
                            <option></option>
                            <?php if (!empty($product_form)) {
                              foreach ($product_form as $key => $value) { ?>
-                              <option <?php if($product_item->product_form == $value->name){ echo "selected"; } ?> value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                              <option <?php if($product->product_form_id == $value->id){ echo "selected"; } ?> value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
                             <?php }
                            } ?>
                         </select>
@@ -85,7 +79,7 @@
                            <option></option>
                            <?php if (!empty($manufacturer)) {
                              foreach ($manufacturer as $key => $value) { ?>
-                              <option <?php if($product_item->manufacturer_name == $value->name){ echo "selected"; } ?>  value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                              <option <?php if($product->manufacturer_id == $value->id){ echo "selected"; } ?>  value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
                             <?php }
                            } ?>
                         </select>
@@ -99,7 +93,7 @@
                            <option></option>
                            <?php if (!empty($brand)) {
                              foreach ($brand as $key => $value) { ?>
-                              <option <?php if($product_item->brand_name == $value->brand_name){ echo "selected"; } ?> value="<?php echo $value->id; ?>"><?php echo $value->brand_name; ?></option>
+                              <option <?php if($product->brand_id == $value->id){ echo "selected"; } ?> value="<?php echo $value->id; ?>"><?php echo $value->brand_name; ?></option>
                             <?php }
                            } ?>
                         </select>
@@ -113,7 +107,7 @@
                           <td>
                             <div style="width: 210px;">
                               <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
-                                <input type="text" class="form-control control-float-top" id="quantity" name="quantity[]" value="<?= $product_item->quantity; ?> ">
+                                <input type="text" class="form-control control-float-top" id="quantity" name="quantity[]" value="<?= $product->quantity; ?> ">
                                 <label for="email">Quantity</label>
                               </div>
                               <div class="form-group label-float-top" style="width: 100px;display: inline-block;"> 
@@ -128,25 +122,25 @@
                            </td>
                            <td  >
                               <div class="form-group label-float-top" style="width: 100px;">
-                                <input type="text" class="form-control control-float-top" id="MRP" name="mrp[]" value="<?= $product_item->mrp; ?> ">
+                                <input type="text" class="form-control control-float-top" id="MRP" name="mrp[]" value="<?= $product->mrp; ?> ">
                                 <label for="email">MRP</label>
                               </div>
                            </td>
                            <td >
                               <div class="form-group label-float-top" style="width: 100px;">
-                                 <input type="text" class="form-control control-float-top" id="sellprice" name="sellprice[]" value="<?= $product_item->sale_price; ?> ">
+                                 <input type="text" class="form-control control-float-top" id="sellprice" name="sellprice[]" value="<?= $product->sale_price; ?> ">
                                  <label for="email">Sell Price</label>
                               </div>
                            </td>
                            <td >
                               <div class="form-group label-float-top" style="width: 100px;">
-                                 <input type="text" class="form-control control-float-top" id="sellprice" name="offerprice[]" value="<?= $product_item->sale_price; ?> ">
+                                 <input type="text" class="form-control control-float-top" id="sellprice" name="offerprice[]" value="<?= $product->sale_price; ?> ">
                                  <label for="email">Offer Price</label>
                               </div>
                            </td>
                            <td >
                               <div class="form-group label-float-top" style="width: 100px;">
-                                 <input type="date" class="form-control control-float-top" id="expriydate" name="expriydate[]" value="<?= $product_item->expiry_date; ?>">
+                                 <input type="date" class="form-control control-float-top" id="expriydate" name="expriydate[]" value="<?= $product->expiry_date; ?>">
                                   <label for="email">Expiry Date</label>
                                     
                               </div>
@@ -157,7 +151,7 @@
                   </div>
                   <div class="col-md-12">
                      <div class="form-group label-float-top">
-                        <input type="text" class="form-control control-float-top" name="name" id="productName" value="<?= $product_item->name; ?>">
+                        <input type="text" class="form-control control-float-top" name="name" id="productName" value="<?= $product->name; ?>">
                         <label for="country">Product Name</label>
                      </div>
                   </div>
@@ -173,7 +167,7 @@
                            <option></option>
                            <?php if (!empty($salt_composition)) {
                              foreach ($salt_composition as $key => $value) { ?>
-                              <option <?php if($product_item->saltcomposition_name == $value->name){ echo "selected"; } ?> value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
+                              <option <?php if($product->saltcomposition_name == $value->name){ echo "selected"; } ?> value="<?php echo $value->id; ?>"><?php echo $value->name; ?></option>
                             <?php }
                            } ?>
                         </select>
@@ -208,25 +202,25 @@
                         <div class="col-md-9">
                            <div class="tab-content" id="v-pills-tabContent">
                               <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                                <textarea name="about_product" style="width: 100%;height: 260px;" class="form-control" ><?= $product_item->about_product; ?></textarea >
+                                <textarea name="about_product" style="width: 100%;height: 260px;" class="form-control" ><?= $product->about_product; ?></textarea >
                               </div>
                               <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
-                                <textarea name="side_effect" style="width: 100%;height: 260px;" class="form-control" ><?= $product_item->side_effect; ?></textarea >
+                                <textarea name="side_effect" style="width: 100%;height: 260px;" class="form-control" ><?= $product->side_effect; ?></textarea >
                               </div>
                               <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-                                <textarea name="when_to_use" style="width: 100%;height: 260px;" class="form-control" ><?= $product_item->when_to_use; ?></textarea >
+                                <textarea name="when_to_use" style="width: 100%;height: 260px;" class="form-control" ><?= $product->when_to_use; ?></textarea >
                               </div>
                               <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
-                                <textarea name="how_to_use" style="width: 100%;height: 260px;" class="form-control" ><?= $product_item->how_to_use; ?></textarea >
+                                <textarea name="how_to_use" style="width: 100%;height: 260px;" class="form-control" ><?= $product->how_to_use; ?></textarea >
                               </div>
                               <div class="tab-pane fade" id="v-pills-use" role="tabpanel" aria-labelledby="v-pills-use-tab">
-                                <textarea name="how_to_work" style="width: 100%;height: 260px;" class="form-control" ><?= $product_item->how_to_work; ?></textarea >
+                                <textarea name="how_to_work" style="width: 100%;height: 260px;" class="form-control" ><?= $product->how_to_work; ?></textarea >
                               </div>
                               <div class="tab-pane fade" id="v-pills-store" role="tabpanel" aria-labelledby="v-pills-store-tab">
-                                <textarea name="how_to_store" style="width: 100%;height: 260px;" class="form-control" ><?= $product_item->how_to_store; ?></textarea >
+                                <textarea name="how_to_store" style="width: 100%;height: 260px;" class="form-control" ><?= $product->how_to_store; ?></textarea >
                               </div>
                               <div class="tab-pane fade" id="v-pills-imformation" role="tabpanel" aria-labelledby="v-pills-information-tab">
-                                <textarea name="safety_info" style="width: 100%;height: 260px;" class="form-control" ><?= $product_item->safety_info; ?></textarea >
+                                <textarea name="safety_info" style="width: 100%;height: 260px;" class="form-control" ><?= $product->safety_info; ?></textarea >
                               </div>
                            </div>
                         </div>
@@ -235,14 +229,14 @@
                   </div>
                </div>
             </div>
-            <div class="row padding-top-bottom-20">
+            <!-- <div class="row padding-top-bottom-20">
                <div class="col-md-4">
                   <h6>Frequently Asked Question</h6>
                </div>
                <div class="col-md-8">
                   <hr class="custom-form-hr">
                </div> 
-            </div>
+            </div> -->
             <div class="row">
               <div class="col-md-12">
                      <table class="table no-border-table append-table" id="dynamic_field2">
@@ -280,8 +274,8 @@
                   </div>
                 </div>
                   <?php                    
-                  if(!empty($productImages)){                    
-                  foreach($productImages as $Qvalue) { ?>  
+                  if(!empty($product->product_images)){                    
+                  foreach($product->product_images as $Qvalue) { ?>  
                   <div class="preview-box edit-images">
                     <div class="defaultSlides editDefaultSlides">
                       <a onclick="deleteProductImages(<?= $Qvalue->product_image_id ?>,'<?= $Qvalue->image; ?>')" class="close-icon"><i class="fa fa-times" aria-hidden="true"></i></a>
