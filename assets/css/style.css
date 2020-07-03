@@ -1094,6 +1094,8 @@ li.product_li1 a{
     }
     .input-update{
       height: 40px;
+      font-size: 14px;
+      background: #fff !important;
       border: 1px solid #ccc!important;
     }
   label.fieldlabels {
@@ -1136,4 +1138,22 @@ li.product_li1 a{
   }
   .chg-psw-input{
     margin: 5px 0px;
+  }
+  a.update-text {
+    font-size: 12px;
+    float: right;
+    cursor: pointer;
+    font-weight: 500;
+    color: #4abdde !important;
+  }
+  .iti.iti--allow-dropdown.iti--separate-dial-code {
+    width: 100%;
+  }
+  button.close {
+    font-size: 22px !important;
+  }
+  button#mobile-send-button {
+    background: #4abdde;
+    border: none;
+    box-shadow: none;
   }

@@ -34,6 +34,8 @@
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<script src="<?php echo base_url('assets/owlcarousel/jquery.min.js');?>"></script>
 		<script src="<?php echo base_url('assets/owlcarousel/owl.carousel.js');?>"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.css" rel="stylesheet">
+   	 	<script src="<?php echo base_url(); ?>assets/js/intlTelInput.js"></script>
 	<!--  -->
 	<link href="<?php echo base_url(); ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css');?>">
