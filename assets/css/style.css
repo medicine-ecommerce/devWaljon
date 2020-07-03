@@ -1119,7 +1119,14 @@ li.product_li1 a{
   }
   div#v-pills-tabContent {
     padding: 20px;
+    background: #f1f1f1;
     border: 1px solid #f4f4f4;
+  }
+  div#Profile {
+    background: #f1f1f1;
+  }
+  div#Password {
+    background: #f1f1f1;
   }
   .profile-tab-heading {
     text-align: center;
