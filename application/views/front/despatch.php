@@ -1,4 +1,4 @@
-
+<script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
 
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -16,83 +16,17 @@
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                     </div> <br> <!-- fieldsets -->
                     <fieldset>
-                        <div class="form-card">
-                            <div class="row">
-                                <div class="col-7">
-                                    <h2 class="fs-title">Delivery Address</h2>
-                                </div>
-                            </div> 
-                            <div >
-                                <label class="fieldlabels"><!-- <?php echo $user_address_row->address;?> --></label> 
-                                <input type="hidden" name="address_1" value="<?php // echo $user_address_row->address;?>">
-                                <input type="checkbox" name="address" style="margin-left: -48%;"  placeholder="Address" class="form-control" />
-                                <button type="button" id="btn" class="flex-c-m stext-101 cl0 bg1 hov-btn1 p-lr-15 trans-04 ">Add new address</button>
-                                    <br/><br/>
-                                    <div id="element">
-                                       <h4>Add a new address</h4>                            
-                                        <label for="password">Pincode</label>
-                                        <input id="pin" name="pin" type="text" style="width: 50%;" class="form-control " minlength="6" maxlength="6">
-                                        <label for="password">Full Address</label>
-                                        <input id="address" name="address" style="width: 50%;" type="text" class="form-control "> 
-                                    </div>
-                            </div>
-                            <div >
-                               <select name="address" class="form-control" style="width: 50%;">
-                                <option>Select Your Address</option>
-                                <?php //foreach ($user_address as $row => $value) {
-                                ?>
-                                <option class="form-control"><!-- <?php echo $value->address ?> --></option>
-                                <?php// }?>
-                                </select>
-                            </div>
-                            
-                        </div> 
-                        <input type="button" name="next" class="next action-button" value="Next" />
-                    </fieldset>
-                    
-                    <fieldset>
-                        <div class="form-card">
-                            <div class="row">
-                                <div class="col-7">
-                                    <h2 class="fs-title">Payment Mode</h2>
-                                </div>
-                            </div> 
-                            <div>
-                                <label>Online</label> 
-                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control" value="online" required="">
-                                <label>Cash On Delivery</label>
-                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control" value="cod" required=""> 
-                            </div>
-                        </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
-                    </fieldset>
-                    <fieldset>
-                        <div class="form-card">
-                            <div class="row">
-                                <div class="col-7">
-                                    <h2 class="fs-title">Finish:</h2>
-                                </div>
-                               
-                            </div> <!-- <br><br>
- -->                            <!-- <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
-                            <div class="row justify-content-center">
-                                <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
-                            </div> <br><br>
-                            <div class="row justify-content-center">
-                                <div class="col-7 text-center">
-                                    <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
-                                </div>
-                            </div> -->
-                            <div class="table checkout-pages">
-                                <div class="layout-inline cart-heading row th ">
+                        <div class="table checkout-pages">
+                                  <div class="layout-inline cart-heading row th ">
                                     <div class="col col-pro">Product</div>
-                                        <div class="col col-price align-center "> 
-                                          Price
-                                        </div>
-                                        <div class="col col-qty align-center">QTY</div>
-                                        <div class="col">VAT</div>
-                                        <div class="col">Total</div>
+                                    <div class="col col-price align-center "> 
+                                      Price
                                     </div>
-                                    <?php       
+                                    <div class="col col-qty align-center">QTY</div>
+                                    <div class="col">VAT</div>
+                                    <div class="col">Total</div>
+                                  </div>
+                                  <?php       
                                   if(!empty($this->cart->contents())){ 
                                   foreach ($this->cart->contents() as $value) { ?>
                                   <div class="layout-inline cart-content row">        
@@ -123,6 +57,102 @@
                                     <span class="heading-total">Total </span> 
                                   </div>   
                                 </div>
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    
+                    <fieldset>
+                      <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Delivery Address</h2>
+                                </div>
+                            </div> 
+                            <div >
+                                <label class="fieldlabels"><!-- <?php echo $user_address_row->address;?> --></label> 
+                                <!-- <input type="hidden" name="address_1" value="<?php // echo $user_address_row->address;?>">
+                                <input type="checkbox" name="address" style="margin-left: -48%;"  placeholder="Address" class="form-control" /> -->
+                                <button type="button" id="btn" class="flex-c-m stext-101 cl0 bg1 hov-btn1 p-lr-15 trans-04 ">Add new address</button>
+                                    <br/><br/>
+                                    <div id="element">
+                                       <h4>Add a new address</h4> 
+                                       <div class="col-md-4">
+                                            <div class="form-group label-float-top">
+                                                <select name="country" class="form-control control-float-top custom-select countries" id="countryId" value="<?php echo set_value('country')?>">
+                                                    <option></option>
+                                                </select>
+                                                <label for="email">Country</label>                  
+                                            </div>
+                                        </div> 
+                                        <div class="col-md-4">
+                                            <div class="form-group label-float-top find-state">
+                                                <select name="state" class="form-control control-float-top custom-select states" id="stateId" value="<?php echo set_value('state')?>">                      
+                                                </select>       
+                                                <label class="custom-state" for="country">State</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                             <div class="form-group label-float-top">
+                                                <select name="city" class="form-control control-float-top custom-select cities" id="cityId" value="<?php echo set_value('city')?>">                     
+                                                </select>
+                                                <label for="country">City</label>
+                                            </div>
+                                        </div>
+                                        <label for="password">Address</label>
+                                        <input type="text" name="address" class="form-control" name="Address">
+
+                                        <!--                             
+                                        <label for="password">Pincode</label>
+                                        <input id="pin" name="pin" type="text" style="width: 50%;" class="form-control " minlength="6" maxlength="6">
+                                        <label for="password">Full Address</label>
+                                        <input id="address" name="address" style="width: 50%;" type="text" class="form-control ">  -->
+                                    </div>
+                            </div>
+                            <div id="element2">
+                               <select name="address_id" id="address_id" class="form-control" style="width: 50%;">
+                                <option value="">Select Your Address</option>
+                                <?php foreach ($user_address as $row => $value) {
+                                ?>
+                                <option value="<?php echo $value->id; ?>"> <?php echo $value->address.' '.$value->state.' '.$value->country; ?> </option>
+                                <?php }?>
+                                </select>
+                            </div>
+                            
+                        </div> 
+                        <input type="button" name="next" onclick="submitAddress()" class="next action-button" value="Next" />
+
+                          <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                    </fieldset>
+                    <fieldset>
+                      <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Payment Mode</h2>
+                                </div>
+                            </div> 
+                            <div>
+                                <label>Online</label> 
+                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control" value="online" required="">
+                                <label>Cash On Delivery</label>
+                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control" value="cod" required=""> 
+                            </div>
+                        </div>
+                        <div class="form-card">
+                            <div class="row">
+                                <div class="col-7">
+                                    <h2 class="fs-title">Finish:</h2>
+                                </div>
+                               
+                            </div> <!-- <br><br>
+ -->                            <!-- <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+                            <div class="row justify-content-center">
+                                <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
+                            </div> <br><br>
+                            <div class="row justify-content-center">
+                                <div class="col-7 text-center">
+                                    <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
+                                </div>
+                            </div> -->
+                            
                             <input type="button" name="next" class="next action-button" value="Submit" />
 
                         </div>
@@ -221,6 +251,7 @@
              $( "#address" ).attr("required", "true");
            
       $('#element').show();
+      $('#element2').hide();
 
 
 
@@ -233,5 +264,18 @@
         }
     });
 
+    function submitAddress() {
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo base_url('user/SaveUserAdddress/'); ?>',
+            data: $("#msform").serialize(),
+            beforeSend: function(){
+              $('.loading').show();
+            },
+            success: function(html){
+                $('#address_id').val(html);
+            }
+        });
+    }
    
 </script>

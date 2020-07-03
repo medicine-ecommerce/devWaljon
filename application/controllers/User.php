@@ -101,11 +101,11 @@ Class User extends MY_Controller {
     }
     public function checkout()
     {
-        if(empty($this->session->userdata('user_id'))){
+        /*if(empty($this->session->userdata('user_id'))){
             redirect(base_url('user/vendor_login'));
-        }
+        }*/
         // $this->data['user_address'] = $this->User->getData('user_address','address', array('user_id' => '2' ));
-        // $this->data['user_address_row'] = $this->User->getRowData('user_address','address', array('user_id' => '2' ));
+        $this->data['user_address'] = $this->User->getData('user_address','id,address,state,country', array('user_id' => $this->session->userdata('user_id') ));
         // print_r($this->data);die();
         $this->middle = 'despatch';
         $this->User();
@@ -204,6 +204,15 @@ Class User extends MY_Controller {
                 echo json_encode(array('status'=>1,'message'=>'Product Added','quantity'=>$quantity,'cart'=>$this->cart->contents()));
                 return;
             }
+    }
+    public function SaveUserAdddress()
+    {        
+        $array = array('country'=>$this->input->post('country'),
+                        'city'=>$this->input->post('city'),
+                        'state'=>$this->input->post('state'),
+                        'address'=>$this->input->post('address'),
+                        'user_id'=>$this->session->userdata('user_id'));
+        echo $this->User->insertData('user_address',$array);
     }
 
 }
