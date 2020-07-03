@@ -75,11 +75,13 @@
 								<div class="main_nav_menu">
 									<ul class="standard_dropdown header-image">
 										<li>
-											<img src="<?php echo base_url(); ?>assets/user-profile-image/<?= $profile->image; ?>" alt="" class="header-profile-img">
+											<div class="head-profile-img">	
+												<img src="<?php echo base_url(); ?>assets/user-profile-image/<?= $profile->image; ?>" alt="" class="header-profile-img">
+											</div>
 											<ul class="user-menu">
-												<li><a href="#">My Account</a></li>
-												<li><a href="#">My Orders</a></li>
-												<li><a href="#">Logout </a></li>
+												<li><a href="<?php echo base_url('user/profile');?>">Your Profile</a></li>
+												<li><a href="<?php echo base_url('user/orderListing');?>">Your Order</a></li>
+												<li><a href="<?php echo base_url('user/logout');?>">Logout</a></li>
 											</ul>
 										</li>
 									</ul>				
