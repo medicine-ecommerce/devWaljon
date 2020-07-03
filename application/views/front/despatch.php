@@ -23,8 +23,8 @@
                                 </div>
                             </div> 
                             <div >
-                                <label class="fieldlabels"><?php echo $user_address_row->address;?></label> 
-                                <input type="hidden" name="address_1" value="<?php echo $user_address_row->address;?>">
+                                <label class="fieldlabels"><!-- <?php echo $user_address_row->address;?> --></label> 
+                                <input type="hidden" name="address_1" value="<?php // echo $user_address_row->address;?>">
                                 <input type="checkbox" name="address" style="margin-left: -48%;"  placeholder="Address" class="form-control" />
                                 <button type="button" id="btn" class="flex-c-m stext-101 cl0 bg1 hov-btn1 p-lr-15 trans-04 ">Add new address</button>
                                     <br/><br/>
@@ -39,10 +39,10 @@
                             <div >
                                <select name="address" class="form-control" style="width: 50%;">
                                 <option>Select Your Address</option>
-                                <?php foreach ($user_address as $row => $value) {
+                                <?php //foreach ($user_address as $row => $value) {
                                 ?>
-                                <option class="form-control"><?php echo $value->address ?></option>
-                                <?php }?>
+                                <option class="form-control"><!-- <?php echo $value->address ?> --></option>
+                                <?php// }?>
                                 </select>
                             </div>
                             
@@ -82,44 +82,47 @@
                                     <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
                                 </div>
                             </div> -->
-                            <div class="table">
-                              <div class="layout-inline row th">
-                                <div class="col col-pro">Product</div>
-                                <div class="col col-price align-center "> 
-                                  Price
+                            <div class="table checkout-pages">
+                                <div class="layout-inline cart-heading row th ">
+                                    <div class="col col-pro">Product</div>
+                                        <div class="col col-price align-center "> 
+                                          Price
+                                        </div>
+                                        <div class="col col-qty align-center">QTY</div>
+                                        <div class="col">VAT</div>
+                                        <div class="col">Total</div>
+                                    </div>
+                                    <?php       
+                                  if(!empty($this->cart->contents())){ 
+                                  foreach ($this->cart->contents() as $value) { ?>
+                                  <div class="layout-inline cart-content row">        
+                                    <div class="col col-pro layout-inline">
+                                      <img style="width: 50%;" src="<?= base_url().$value['image']; ?>" alt="kitten" />
+                                      <p><?= $value['name']; ?></p>
+                                    </div>        
+                                    <div class="col col-price col-numeric align-center ">
+                                      <p><i class='fas fa-rupee-sign'></i> <?= $value['price']; ?></p>
+                                    </div>
+                                    <div class="col col-qty layout-inline">
+                                      <div class="def-number-input number-input safari_only add-quantity cart-update-quantity">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCart(<?= $value['id']; ?>,this.parentNode.querySelector('input[value]'),'minus')" class="minus"></button>
+                                        <input class="quantity" min="0" value="<?= $value['qty']; ?>" name="quantity" type="number">
+                                        <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart(<?= $value['id']; ?>,this.parentNode.querySelector('input[value]'),'plus')" class="plus"></button>
+                                      </div>          
+                                    </div>        
+                                    <div class="col col-vat col-numeric">
+                                      <p><i class='fas fa-rupee-sign'></i> 2.95</p>          
+                                    </div>
+                                     <div class="col col-total col-numeric">  
+                                       <p><i class='fas fa-rupee-sign'></i><?= $value['subtotal'] ?></p>
+                                     </div>         
+                                  </div>  
+                                  <?php }}else{ echo "No product in cart"; } ?>
+                                  <div class="cart-total">
+                                    <span class="heading-total">Total Item <span><?php  ?> </span> </span><br><br>
+                                    <span class="heading-total">Total </span> 
+                                  </div>   
                                 </div>
-                                <div class="col col-qty align-center">QTY</div>
-                                <div class="col">VAT</div>
-                                <div class="col">Total</div>
-                              </div>
-                               <div class="layout-inline row">
-                                
-                                <div class="col col-pro layout-inline">
-                                  <img style="width: 50%;" src="http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg" alt="kitten" />
-                                  <p>Curious Little Begger</p>
-                                </div>
-                                
-                                <div class="col col-price col-numeric align-center ">
-                                  <p>₹59.99</p>
-                                </div>
-
-                                <div class="col col-qty layout-inline">
-                                    <input type="numeric" value="3" readonly="" style="margin-top: 20px;" />
-                                </div>
-                                
-                                <div class="col col-vat col-numeric">
-                                  <p>₹2.95</p>          
-                                </div>
-                                 <div class="col col-total col-numeric">  
-                                   <p>₹182.95</p>
-                                 </div>         
-                              </div>
-                          
-                               <div class="cart-total">
-                                 <span class="heading-total">Total Item</span><br><br>
-                                 <span class="heading-total">Total </span> 
-                                 </div>   
-                            </div>
                             <input type="button" name="next" class="next action-button" value="Submit" />
 
                         </div>

@@ -159,7 +159,38 @@
 
         $input.val(value);
     });
+    function addToCart(id,type){		
+		// var quantity = $('#quantity').val();		
+		var quantity = 1 ;		
+		
+		 $.ajax({
+          url:"<?php echo base_url(); ?>/user/add_to_cart",
+          method:"POST",
+          dataType: 'JSON',
+          data: {id:id,quantity:quantity},        
+          success:function(data){                                         
+            $(".cart-quantity").text(data.quantity);
+            $(".cart-quantity").addClass("show-cart");
+          }
+    })
 
+	}
+	 function updateCart(id,quantity,type){       
+
+      $.ajax({
+            url:"<?php echo base_url(); ?>/user/update_cart",
+            method:"POST",
+            dataType: 'JSON',
+            data: {id:id,quantity:quantity.value,type:type},        
+            success:function(data){                                                    
+              if(data.quantity > 0){              
+                $(".cart-quantity").text(data.quantity);
+                $(".cart-quantity").addClass("show-cart");
+              }
+            }
+      })
+
+    }
 // RESTRICT INPUTS TO NUMBERS ONLY WITH A MIN OF 0 AND A MAX 100
 // $('input').on('blur', function(){
 

@@ -89,9 +89,9 @@
 											<div class="product_quantity">	
 												<h5 class="product-price-head">Quantity</h5>
 												<div class="def-number-input number-input safari_only add-quantity  add-quantity-product">
-				                  <button type="button"  onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCart(<?= $product_item->product_id; ?>,this.parentNode.querySelector('input[value]'))" class="minus"></button>
+				                  <button type="button"  onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCart(<?= $product_item->product_id; ?>,this.parentNode.querySelector('input[value]'),'minus')" class="minus"></button>
 				                  <input class="quantity" min="1" id="quantity" name="quantity" value="1" type="number">
-				                  <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart(<?= $product_item->product_id; ?>,this.parentNode.querySelector('input[value]'))" class="plus"></button>
+				                  <button type="button" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart(<?= $product_item->product_id; ?>,this.parentNode.querySelector('input[value]'),'plus')" class="plus"></button>
 				                </div>
 												<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
 												<!-- <div class="quantity_buttons">
@@ -299,9 +299,9 @@
                          <span><i class="fa fa-inr" aria-hidden="true"></i> <?php echo $value->sale_price; ?></span> 
                         <button class="btn-default add-cart-button" onclick="addToCart(<?= $value->product_id ?>,'slider')">ADD</button>
                         <div class="def-number-input number-input safari_only add-quantity hide-button">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCart(<?= $value->product_id; ?>,this.parentNode.querySelector('input[value]'))" class="minus"></button>
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCart(<?= $value->product_id; ?>,this.parentNode.querySelector('input[value]'),'minus')" class="minus"></button>
                           <input class="quantity" min="0" value="1" name="quantity" type="number">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart(<?= $value->product_id; ?>,this.parentNode.querySelector('input[value]'))" class="plus"></button>
+                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart(<?= $value->product_id; ?>,this.parentNode.querySelector('input[value]'),'plus')" class="plus"></button>
                         </div>
                       </div>                  
                     </div>               
@@ -558,36 +558,5 @@
         }
       })
       
-    });
-
-	function addToCart(id,type){		
-		// var quantity = $('#quantity').val();		
-		var quantity = 1 ;		
-		
-		 $.ajax({
-          url:"<?php echo base_url(); ?>/user/add_to_cart",
-          method:"POST",
-          dataType: 'JSON',
-          data: {id:id,quantity:quantity},        
-          success:function(data){                                         
-            $(".cart-quantity").text(data.quantity);
-            $(".cart-quantity").addClass("show-cart");
-          }
-    })
-
-	}
-	function updateCart(id,type){		
-		
-		$.ajax({
-          url:"<?php echo base_url(); ?>/user/add_to_cart",
-          method:"POST",
-          dataType: 'JSON',
-          data: {id:id,quantity:type.value},        
-          success:function(data){                                        
-            $(".cart-quantity").text(data.quantity);
-            $(".cart-quantity").addClass("show-cart");
-          }
-    })
-
-	}
+    });	
 </script>
