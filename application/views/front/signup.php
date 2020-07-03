@@ -132,7 +132,7 @@
     if(password==confirmPassword && email!='' && password!=''){      
        event.preventDefault();
       $.ajax({
-        url:"<?php echo base_url(); ?>/vendor/vendorregister",
+        url:"<?php echo base_url(); ?>/user/signup_code",
         method:"POST",
         dataType: 'JSON',
         data: $("#registratio_form").serialize(),        
@@ -159,7 +159,7 @@
                 $('.front-end-error-otp').fadeOut("slow");
             }, 7000);
             
-          }else if(data.stage==4){
+          }else if(data.stage==4){            
               window.location.href = "<?php echo base_url() ?>user/index";                     
           }else if(data.status==0){
               $("#error-text").html(data.message);                 

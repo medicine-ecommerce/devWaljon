@@ -66,8 +66,22 @@
 							<div class="top_bar_user">
 								<a href="<?php echo base_url('user/cart');?>" class="top_bar_cart"><i class="fa fa-cart-plus"></i></a>
 								<span class="cart-quantity <?php if(!empty($cart_quantity)){ echo "show-cart";}else{ echo  "hide-cart" ;} ?> "> <?php if(!empty($cart_quantity)){ echo $cart_quantity; } ?> </span>
-								<div class="top_bar_user_content"><a href="#">Login</a></div>
-								<div class="top_bar_user_content"><a href="#">Register</a></div>
+								<?php if(empty($this->session->userdata('user_type'))){ ?>
+									<div class="top_bar_user_content"><a href="#">Login</a></div>
+									<div class="top_bar_user_content"><a href="#">Register</a></div>
+								<?php } ?> 				
+								<div class="main_nav_menu">
+									<ul class="standard_dropdown header-image">
+										<li>
+											<img src="<?php echo base_url(); ?>assets/user-profile-image/<?= $profile->image; ?>" alt="" class="header-profile-img">
+											<ul class="user-menu">
+												<li><a href="#">Menu Item </a></li>
+												<li><a href="#">Menu Item </a></li>
+												<li><a href="#">Menu Item </a></li>
+											</ul>
+										</li>
+									</ul>				
+								</div>									
 							</div>
 						</div>
 					</div>

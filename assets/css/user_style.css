@@ -341,6 +341,10 @@ span.cart-quantity {
 .update-button{
     float: right;
 }
+img.header-profile-img {
+    width: 30px;
+    border-radius: 25px;
+}
 
 @media not all and (min-resolution:.001dpcm) {
 @supports (-webkit-appearance: none) and (stroke-color:transparent) {
