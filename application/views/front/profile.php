@@ -19,7 +19,7 @@
                 <div class="upload-btn-img">
                     <img src="https://tricityescaperooms.com/wp-content/uploads/2018/01/person-placeholder-male-5.jpg"
                         class="img-thumbnail p-0 m-0" style="" alt="user profile image">
-                    <input type="file" name="myfile[]" onchange="showThumbnail(this)" />
+                    <input type="file" name="profile_image" onchange="showThumbnail(this)" />
                 </div>
               </div>
               <div class="col-md-9">

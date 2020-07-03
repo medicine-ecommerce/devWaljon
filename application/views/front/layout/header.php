@@ -77,9 +77,9 @@
 										<li>
 											<img src="<?php echo base_url(); ?>assets/user-profile-image/<?= $profile->image; ?>" alt="" class="header-profile-img">
 											<ul class="user-menu">
-												<li><a href="#">Menu Item </a></li>
-												<li><a href="#">Menu Item </a></li>
-												<li><a href="#">Menu Item </a></li>
+												<li><a href="#">My Account</a></li>
+												<li><a href="#">My Orders</a></li>
+												<li><a href="#">Logout </a></li>
 											</ul>
 										</li>
 									</ul>				

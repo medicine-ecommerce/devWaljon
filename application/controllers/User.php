@@ -56,7 +56,7 @@ Class User extends MY_Controller {
         $this->load->helper('cookie');
         $this->load->view('front/login');
     }
-    
+
     // public function login_code(){
 
 
@@ -194,6 +194,37 @@ Class User extends MY_Controller {
     {
         $this->middle = 'profile';
         $this->User();
+    }
+    public function update_profile(){
+
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+
+                $this->form_validation->set_rules('full_name', 'First Name', 'trim|required');            
+                $this->form_validation->set_rules('last_name', 'Last Name', 'trim');
+                $this->form_validation->set_rules('mobile', 'mobile', 'trim|required|numeric');
+                $this->form_validation->set_rules('email', 'Email', 'required');
+                $this->form_validation->set_rules('address', 'Addresss', 'required');
+                if ($this->form_validation->run() == FALSE){                    
+                    $this->session->set_flashdata('error', validation_errors());      
+                }else{
+
+                    if(!empty($_FILES['profile_image'])){
+                        $uploadedImg = $this->Vendor->upload("profile_image","user-profile");
+                    }
+                    $data = array(                            
+                            'last_name'=>$this->input->post('last_name'),
+                            'full_name'=>$this->input->post('full_name'),
+                            'email'=>$this->input->post('email'),
+                            'mobile'=>$this->input->post('mobile'),
+                            'image'=>!empty($uploadedImg['file_name']) ? $uploadedImg['file_name'] : $this->input->post('edit_profile_image'),
+                            'licence'=>!empty($uploadedLicence['file_name']) ? $uploadedLicence['file_name'] : $this->input->post('edit_licence')
+                        );
+                    $addressData = array('address'=>$this->input->post('address'),
+                                        'user_id'=>$this->session->set_userdata('user_id'),
+                )
+                }
+
+        }
     }
 
     public function product_comment()
