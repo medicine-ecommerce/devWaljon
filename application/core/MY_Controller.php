@@ -41,7 +41,10 @@ class MY_Controller extends CI_Controller
 
       if(!empty($this->cart->contents())){
           $this->data['cart_quantity'] = count($this->cart->contents());        
-      }      
+      }  
+      if($this->session->userdata('user_type')=='user'){    
+          $this->data['profile'] = $this->User->getRowData('users','created_at,full_name,last_name,image',array('id'=>$this->session->userdata('user_id')));        
+      }
       
 
       $this->template['header']        = $this->load->view('front/layout/header',$this->data);      

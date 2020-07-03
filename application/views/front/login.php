@@ -4,7 +4,7 @@
 <link href="<?php echo base_url(); ?>vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<section class="container-fluid login_content">
+<section class="container-fluid user-login-content">
   <div class="row">
     <div class="col-md-8">       
     </div>
@@ -20,7 +20,7 @@
       </div>            
       <div class="content-box">        
         <h6>Login</h6>
-        <form id="login_form" method="post" action="<?php echo base_url();?>/vendor/vendorLogin">
+        <form id="login_form" method="post" action="<?php echo base_url();?>/user/login_code">
           <div class="form-group">
             <input type="text" id="email" class="form-control transparent-back <?php if ($this->session->flashdata('error')) { echo "input-red-border" ?>  <?php } ?> " name="email" placeholder="Email or Phone" value="<?php if (get_cookie('email')) { echo base64_decode(get_cookie('email')); } ?>">
           </div>        
@@ -38,8 +38,8 @@
             <button type="button" onclick="submitFunction()" class="btn btn-primary registration-button">Login</button>
           </div>
         </form>
-        <p>Don't have an account <a href="<?php echo base_url();?>/Vendor/vendorregister">Register</a> here</p>        
-        <p><a href="<?php echo base_url();?>/Vendor/forgot_password">Forgot Password </a></p>        
+        <p>Don't have an account <a href="<?php echo base_url();?>/user/signup">Register</a> here</p>        
+        <p><a href="<?php echo base_url();?>/user/forgot_password">Forgot Password </a></p>        
       </div>      
     </div>
   </div>

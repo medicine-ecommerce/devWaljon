@@ -34,6 +34,8 @@
 		<script src='https://kit.fontawesome.com/a076d05399.js'></script>
 		<script src="<?php echo base_url('assets/owlcarousel/jquery.min.js');?>"></script>
 		<script src="<?php echo base_url('assets/owlcarousel/owl.carousel.js');?>"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/css/intlTelInput.css" rel="stylesheet">
+   	 	<script src="<?php echo base_url(); ?>assets/js/intlTelInput.js"></script>
 	<!--  -->
 	<link href="<?php echo base_url(); ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css');?>">
@@ -66,8 +68,24 @@
 							<div class="top_bar_user">
 								<a href="<?php echo base_url('user/cart');?>" class="top_bar_cart"><i class="fa fa-cart-plus"></i></a>
 								<span class="cart-quantity <?php if(!empty($cart_quantity)){ echo "show-cart";}else{ echo  "hide-cart" ;} ?> "> <?php if(!empty($cart_quantity)){ echo $cart_quantity; } ?> </span>
-								<div class="top_bar_user_content"><a href="#">Login</a></div>
-								<div class="top_bar_user_content"><a href="#">Register</a></div>
+								<?php if(empty($this->session->userdata('user_type'))){ ?>
+									<div class="top_bar_user_content"><a href="#">Login</a></div>
+									<div class="top_bar_user_content"><a href="#">Register</a></div>
+								<?php } ?> 				
+								<div class="main_nav_menu">
+									<ul class="standard_dropdown header-image">
+										<li>
+											<div class="head-profile-img">	
+												<img src="<?php echo base_url(); ?>assets/user-profile-image/<?= $profile->image; ?>" alt="" class="header-profile-img">
+											</div>
+											<ul class="user-menu">
+												<li><a href="<?php echo base_url('user/profile');?>">Your Profile</a></li>
+												<li><a href="<?php echo base_url('user/orderListing');?>">Your Order</a></li>
+												<li><a href="<?php echo base_url('user/logout');?>">Logout</a></li>
+											</ul>
+										</li>
+									</ul>				
+								</div>									
 							</div>
 						</div>
 					</div>
