@@ -178,13 +178,15 @@
           dataType: 'JSON',
           data: $("#forgot_form").serialize(),        
           success:function(data){                        
-            if(data.status==1 && data.stage==1){
+            
+            if(data.status==1 && data.stage==1 && data.type=='vendor'){
                 window.location.href = "<?php echo base_url() ?>vendor/vendor_dashboard";        
-            }else if(data.status==1 && data.stage==2){
+            }else if(data.status==1 && data.stage==2 && data.type=='vendor'){
                 window.location.href = "<?php echo base_url() ?>vendor/profile_waiting_approval";        
-            }
-            else if(data.status==1 && data.stage==3){
+            }else if(data.status==1 && data.stage==3 && data.type=='vendor'){
                 window.location.href = "<?php echo base_url() ?>vendor/personalDetails";        
+            }else if(data.status==1 && data.type=='user'){
+                window.location.href = "<?php echo base_url() ?>user/index";        
             }
           // if(data.status==1){            
           //     window.location.href = "<?php echo base_url() ?>vendor/vendor_dashboard";        

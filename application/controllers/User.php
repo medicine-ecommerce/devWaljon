@@ -13,7 +13,7 @@ Class User extends MY_Controller {
         $this->load->database();
         $this->load->model('User_model','User');
         $this->load->helper(array('form', 'url'));
-        $this->load->library(array('ajax_pagination','cart')); 
+        $this->load->library(array('ajax_pagination','cart','form_validation')); 
     }
     // public function index()
     // {
@@ -56,7 +56,7 @@ Class User extends MY_Controller {
         $this->load->helper('cookie');
         $this->load->view('front/login');
     }
-    
+
     // public function login_code(){
 
 
@@ -174,7 +174,7 @@ Class User extends MY_Controller {
         //     redirect(base_url('user/login'));
         // }
         // $this->data['user_address'] = $this->User->getData('user_address','address', array('user_id' => '2' ));
-        // $this->data['user_address_row'] = $this->User->getRowData('user_address','address', array('user_id' => '2' ));
+        $this->data['user_address'] = $this->User->getData('user_address','id,address,state,country', array('user_id' => $this->session->userdata('user_id') ));
         // print_r($this->data);die();
         $this->middle = 'despatch';
         $this->User();
@@ -191,9 +191,63 @@ Class User extends MY_Controller {
         $this->User();
     }
     public function profile()
-    {
+    {        
+
+        $this->data['edit_data'] = $this->User->getRowData('users','*',array('id'=>$this->session->userdata('user_id')));
+        $this->data['address'] = $this->User->getRowData('user_address','address',array('user_id'=>$this->session->userdata('user_id')));
         $this->middle = 'profile';
         $this->User();
+    }
+    public function update_profile($userId){
+        $user_id = base64_decode($userId);
+        
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+                
+                if(empty($this->input->post('password'))){                    
+                    $this->form_validation->set_rules('full_name', 'First Name', 'trim|required');            
+                    $this->form_validation->set_rules('last_name', 'Last Name', 'trim');
+                    $this->form_validation->set_rules('mobile', 'mobile', 'trim|required|numeric');
+                    $this->form_validation->set_rules('email', 'Email', 'required');
+                    $this->form_validation->set_rules('address', 'Addresss', 'required');
+                    if ($this->form_validation->run() == FALSE){                    
+                        $this->session->set_flashdata('error', validation_errors());      
+                    }else{
+
+                        if(!empty($_FILES['profile_image'])){
+                            $uploadedImg = $this->User->upload("profile_image","user-profile");
+                        }
+                        $data = array(                            
+                                'last_name'=>$this->input->post('last_name'),
+                                'full_name'=>$this->input->post('full_name'),
+                                'email'=>$this->input->post('email'),
+                                'mobile'=>$this->input->post('mobile'),
+                                'address'=>$this->input->post('address'),
+                                'image'=>!empty($uploadedImg['file_name']) ? $uploadedImg['file_name'] : $this->input->post('edit_profile_image'),
+                            );
+                        $addressData = array('address'=>$this->input->post('address'),
+                                            'user_id'=>$user_id);
+                        $result1 = $this->User->updateData('users',$data,array('id'=>$user_id));
+
+                        $result = $this->User->insertData('user_address',$addressData);
+                        if($result1){
+                            $this->session->set_flashdata('success', 'Your profile updated ');
+                            redirect($_SERVER['HTTP_REFERER']); 
+                        }
+                }
+                    // $exist = $this->Vendor->getData('user_address','id',array('user_id'=>$user_id));
+                    // if(empty($exist)){
+                    // }
+
+
+                }else if(!empty($this->input->post('password'))){
+                        $result2 = $this->User->updateData('users',array('password'=>md5($this->input->post('password'))),array('id'=>$user_id));
+                        if($result2){
+                            $this->session->set_flashdata('success', 'Your password updated ');
+                            redirect($_SERVER['HTTP_REFERER']); 
+                        }
+                }
+
+        }
     }
 
     public function product_comment()
@@ -273,6 +327,21 @@ Class User extends MY_Controller {
                 echo json_encode(array('status'=>1,'message'=>'Product Added','quantity'=>$quantity,'cart'=>$this->cart->contents()));
                 return;
             }
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        redirect(base_url('user/login'));
+    }
+    public function SaveUserAdddress()
+    {        
+        $array = array('country'=>$this->input->post('country'),
+                        'city'=>$this->input->post('city'),
+                        'state'=>$this->input->post('state'),
+                        'address'=>$this->input->post('address'),
+                        'user_id'=>$this->session->userdata('user_id'));
+        echo $this->User->insertData('user_address',$array);
     }
 
 }

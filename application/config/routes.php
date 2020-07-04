@@ -86,8 +86,9 @@ $route['admin/product'] = 'vendor/inventory';
 $route['admin/edit_singleProduct/(:any)'] = 'vendor/edit_singleProduct/$1';
 
 
-$route['user/login_code'] = 'vendor/vendor_login';
+$route['user/login_code'] = 'vendor/vendorLogin';
 $route['user/signup_code'] = 'vendor/vendorregister';
+$route['user/forgot_password'] = 'vendor/forgot_password';
 
 
 

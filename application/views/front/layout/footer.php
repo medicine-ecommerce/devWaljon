@@ -191,6 +191,26 @@
       })
 
     }
+    $(document).ready(function(){
+		// var id = document.getElementsByClassName("hid_id")[0].value;
+		// if(id!=''){
+		// 	$('#error-myModal').modal('show'); 
+		// }					
+		$('.remove-alert').click(function() {
+			$('.custom-success-alert').fadeOut("slow")
+		})
+		setInterval(function () {
+	        $('.custom-success-alert').fadeOut("slow")
+    	}, 9000);
+    	
+    	$('.remove-red-alert').click(function() {
+			$('.custom-error-alert').fadeOut("slow")
+		})
+		setInterval(function () {
+	        $('.custom-error-alert').fadeOut("slow")
+    	}, 12000);
+
+	});
 // RESTRICT INPUTS TO NUMBERS ONLY WITH A MIN OF 0 AND A MAX 100
 // $('input').on('blur', function(){
 

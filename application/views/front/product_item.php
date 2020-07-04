@@ -11,7 +11,7 @@
                 </div>
                 <div class="product-price-category">
                   <?php echo ($value->offerprice > 0)?'<span class="offer-price-text">'.$value->offerprice.'% off</span>':'';?>
-                  <p class="product-sell-price"><?php echo $value->sale_price;?></p>
+                  <p class="product-sell-price"><i class="fa fa-inr" aria-hidden="true"></i><?php echo $value->sale_price;?></p>
 
                   <button class="btn-default add-cart-button-category" onclick="addToCart(<?= $value->product_id ?>)">ADD</button>
                   <div class="def-number-input number-input safari_only add-quantity  add-quantity-category hide-button">

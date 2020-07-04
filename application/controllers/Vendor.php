@@ -20,7 +20,7 @@ Class Vendor extends MY_Controller {
 
         if (empty($this->session->userdata('user_id'))){ 
             // Allow some methods?
-            $allowed = array('forgot_password','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile');
+            $allowed = array('forgot_password','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile','vendorLogin');
             if (!in_array($this->router->fetch_method(), $allowed)){
                 redirect(base_url('vendor/vendor_login'));
             }
@@ -96,15 +96,15 @@ Class Vendor extends MY_Controller {
                                 // redirect(base_url('admin/dashboard'));
                                 if(!empty($result->email) && !empty($result->full_name) && !empty($result->mobile) && !empty($result->address) && $result->is_active > 0 ){
                                     // redirect('/vendor/vendor_dashboard/', 'refresh');
-                                    echo json_encode(array('status'=>1,'stage'=>1));
+                                    echo json_encode(array('status'=>1,'stage'=>1,'type'=>$result->type));
                                     return;
                                 }else if(!empty($result->mobile) && !empty($result->email) && !empty($result->full_name) && $result->is_active == 0 ){
-                                    echo json_encode(array('status'=>1,'stage'=>2));
+                                    echo json_encode(array('status'=>1,'stage'=>2,'type'=>$result->type));
                                     return;
                                     // redirect('/vendor/profile_waiting_approval', 'refresh');
                                 }
                                 else{      
-                                    echo json_encode(array('status'=>1,'stage'=>3));
+                                    echo json_encode(array('status'=>1,'stage'=>3,'type'=>$result->type));
                                     return;                  
                                     // redirect('/vendor/personalDetails/', 'refresh');
                                 }
@@ -899,5 +899,83 @@ Class Vendor extends MY_Controller {
     {
         $this->session->sess_destroy();
         redirect(base_url('vendor/vendor_login'));
+    }
+    ///////////////////// BULK FOR ANY OTHER
+
+     public function import_data_test()
+    {
+        if(isset($_FILES["file"]["name"]))
+        {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PHPExcel_IOFactory::load($path);
+            foreach($object->getWorksheetIterator() as $worksheet)
+            {
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                for($row=2; $row<=$highestRow; $row++)
+                {
+                    $product_id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+                //     $product_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                //     $Manufacturer = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+                //     $product_form = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+                //     $varieties = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+                //     $unit = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+                //     $mrp = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+                //     $sale_price = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+                //     $quantity = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
+                // $prescription = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
+                    
+                    ///////////// MANUFACTURER CREATE AND UPDATE
+                    // $manufacturerExist = $this->Vendor->getRowData('manufacturer','id',array('name'=>$Manufacturer));
+                    // if($manufacturerExist){
+                    //     $manufacturer_id = $manufacturerExist->id;
+                    // }else{
+                    //     $manufacturer_id = $this->Vendor->insertData('manufacturer',array('name'=>$Manufacturer));
+                    // }
+                    // ///////////// PRODUCT FORM CREATE AND UPDATE
+                    // $productFormExist = $this->Vendor->getRowData('product_form','id',array('name'=>$product_form));
+                    // if($productFormExist){
+                    //     $product_form = $productFormExist->id;
+                    // }else{
+                    //     $product_form = $this->Vendor->insertData('product_form',array('name'=>$product_form));
+                    // }
+
+                    // $productdata = array('name'          =>  $product_name,
+                    //                 'manufacturer_id'    =>  $manufacturer_id,
+                    //                 'product_form_id'    =>  $product_form,
+                    //                 'varieties'          =>  $varieties,
+                    //                 'prescription'       =>  $prescription,
+                    //                 'created_by'         =>  $this->session->userdata('user_id'),
+                    //                 'upload_source'      =>  "bulk_upload");                               
+                    // $product_last_id = $this->Vendor->insertData('product',$productdata);
+
+                    $productItemData = array( 'product_sku_id'   =>  $product_id,
+                                    'product_id'     =>  $product_last_id,
+                                    'unit'           =>  $unit,
+                                    'mrp'            =>  $mrp,
+                                    'sale_price'     =>  $sale_price,
+                                    'quantity'       =>  $quantity);
+
+                    if($product_last_id){
+                     $this->Vendor->insertData('product_item',$productItemData);
+                    }
+                }
+                
+            //$this->Vendor->bulkData($data);
+            echo 'Data Imported successfully';
+            }
+        }
+    }
+    public function bulk_upload_test()
+    {
+        $this->data['category'] = $this->Vendor->getData('category','*','');
+        $this->data['bulk_data'] = $this->Vendor->getUploadedBulkData();                
+        $this->middle = 'bulk_upload';
+        $this->Vendor();
+    } 
+    public function vendor_bulk_upload_test()
+    {
+        $this->middle = 'vendor_bulk_upload';
+        $this->Vendor();
     }
 }

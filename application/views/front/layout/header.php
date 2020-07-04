@@ -71,12 +71,14 @@
 								<?php if(empty($this->session->userdata('user_type'))){ ?>
 									<div class="top_bar_user_content"><a href="#">Login</a></div>
 									<div class="top_bar_user_content"><a href="#">Register</a></div>
-								<?php } ?> 				
+								<?php } ?> 
+								<?php 
+								if(!empty($this->session->userdata('user_type'))){ ?>				
 								<div class="main_nav_menu">
 									<ul class="standard_dropdown header-image">
 										<li>
 											<div class="head-profile-img">	
-												<img src="<?php echo base_url(); ?>assets/user-profile-image/<?= $profile->image; ?>" alt="" class="header-profile-img">
+												<img src="<?= !empty($profile->image) ? base_url()."assets/user-profile/".$profile->image : base_url()."assets/img/dummy_images.png" ?>" alt="" class="header-profile-img">
 											</div>
 											<ul class="user-menu">
 												<li><a href="<?php echo base_url('user/profile');?>">Your Profile</a></li>
@@ -85,7 +87,8 @@
 											</ul>
 										</li>
 									</ul>				
-								</div>									
+								</div>	
+								<?php } ?>								
 							</div>
 						</div>
 					</div>
@@ -326,6 +329,24 @@
 		</div>
 
 	</header>
+	<div class="container">		
+		<?php if($this->session->flashdata('success')){ ?>
+	    <div class="custom-success-alert">    
+	      <a class="remove-alert"> <span class="glyphicon glyphicon-remove custom-remove"></span></a>
+	      <p>   
+	        <span class="glyphicon glyphicon-ok-sign"></span>
+	        <?= $this->session->flashdata('success');?> 
+	      </p>
+	    </div>
+	    <?php }?>
+	    <?php if($this->session->flashdata('error')){ ?>
+	    <div class="custom-error-alert">    
+	      <a class="remove-red-alert"><span class="glyphicon glyphicon-remove custom-remove"></span></a>
+	      <span class="glyphicon glyphicon-warning-sign"></span>
+	      <?= $this->session->flashdata('error');?> 
+	    </div>
+	    <?php }?>
+	</div>
 
 <script type="text/javascript">
 	$(document).ready(function () {
