@@ -20,7 +20,7 @@ Class Vendor extends MY_Controller {
 
         if (empty($this->session->userdata('user_id'))){ 
             // Allow some methods?
-            $allowed = array('forgot_password','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile');
+            $allowed = array('forgot_password','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile','vendorLogin');
             if (!in_array($this->router->fetch_method(), $allowed)){
                 redirect(base_url('vendor/vendor_login'));
             }
@@ -96,15 +96,15 @@ Class Vendor extends MY_Controller {
                                 // redirect(base_url('admin/dashboard'));
                                 if(!empty($result->email) && !empty($result->full_name) && !empty($result->mobile) && !empty($result->address) && $result->is_active > 0 ){
                                     // redirect('/vendor/vendor_dashboard/', 'refresh');
-                                    echo json_encode(array('status'=>1,'stage'=>1));
+                                    echo json_encode(array('status'=>1,'stage'=>1,'type'=>$result->type));
                                     return;
                                 }else if(!empty($result->mobile) && !empty($result->email) && !empty($result->full_name) && $result->is_active == 0 ){
-                                    echo json_encode(array('status'=>1,'stage'=>2));
+                                    echo json_encode(array('status'=>1,'stage'=>2,'type'=>$result->type));
                                     return;
                                     // redirect('/vendor/profile_waiting_approval', 'refresh');
                                 }
                                 else{      
-                                    echo json_encode(array('status'=>1,'stage'=>3));
+                                    echo json_encode(array('status'=>1,'stage'=>3,'type'=>$result->type));
                                     return;                  
                                     // redirect('/vendor/personalDetails/', 'refresh');
                                 }
