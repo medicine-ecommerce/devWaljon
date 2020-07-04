@@ -144,6 +144,8 @@ img.owl-lazy.icon-slider{
     background: linear-gradient(45deg,#ffe57c,#efefef)!important;
     color: white;
     font-size: 30px;
+    margin-left: 0px !important;
+    width: 100%;
     text-align: left;
     margin-bottom: 20px;
     padding: 20px 45px;

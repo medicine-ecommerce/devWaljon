@@ -1,5 +1,3 @@
-
-
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -21,31 +19,30 @@
                                 <div class="col-7">
                                     <h2 class="fs-title">Delivery Address</h2>
                                 </div>
-                            </div> 
-                            <div >
-                                <label class="fieldlabels"><!-- <?php echo $user_address_row->address;?> --></label> 
-                                <input type="hidden" name="address_1" value="<?php // echo $user_address_row->address;?>">
-                                <input type="checkbox" name="address" style="margin-left: -48%;"  placeholder="Address" class="form-control" />
-                                <button type="button" id="btn" class="flex-c-m stext-101 cl0 bg1 hov-btn1 p-lr-15 trans-04 ">Add new address</button>
-                                    <br/><br/>
-                                    <div id="element">
-                                       <h4>Add a new address</h4>                            
-                                        <label for="password">Pincode</label>
-                                        <input id="pin" name="pin" type="text" style="width: 50%;" class="form-control " minlength="6" maxlength="6">
-                                        <label for="password">Full Address</label>
-                                        <input id="address" name="address" style="width: 50%;" type="text" class="form-control "> 
-                                    </div>
                             </div>
                             <div >
-                               <select name="address" class="form-control" style="width: 50%;">
+                               <select name="address" class="form-control input-update" style="width: 50%;">
                                 <option>Select Your Address</option>
                                 <?php //foreach ($user_address as $row => $value) {
                                 ?>
                                 <option class="form-control"><!-- <?php echo $value->address ?> --></option>
                                 <?php// }?>
                                 </select>
+                            </div> 
+                            <br/><br/>
+                            <div >
+                                <input type="hidden" name="address_1">
+                                <!-- <input type="checkbox" name="address" style="margin-left: -48%;"  placeholder="Address" class="form-control" /> -->
+                                <button type="button" id="btn" class="btn btn-primary add-address">Add new address</button>
+                                    <br/><br/>
+                                    <div id="element" class="address-div">
+                                       <h4>Add a new address</h4>                            
+                                        <label for="password" class="fieldlabels chg-psw-input">Pincode</label>
+                                        <input id="pin" name="pin" type="text" class="form-control input-update" minlength="6" maxlength="6">
+                                        <label for="password" class="fieldlabels chg-psw-input">Full Address</label>
+                                        <input id="address" name="address" type="text" class="form-control input-update"> 
+                                    </div>
                             </div>
-                            
                         </div> 
                         <input type="button" name="next" class="next action-button" value="Next" />
                     </fieldset>
@@ -57,13 +54,14 @@
                                     <h2 class="fs-title">Payment Mode</h2>
                                 </div>
                             </div> 
-                            <div>
-                                <label>Online</label> 
-                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control" value="online" required="">
-                                <label>Cash On Delivery</label>
-                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control" value="cod" required=""> 
+                            <div class="address-div">
+                                <label class="fieldlabels chg-psw-input">Online</label> 
+                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control input-border-none" value="online" required="">
+                                <label class="fieldlabels chg-psw-input">Cash On Delivery</label>
+                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control input-border-none" value="cod" required=""> 
                             </div>
-                        </div> <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
+                        </div> 
+                        <input type="button" name="next" class="next action-button" value="Next" /> <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     <fieldset>
                         <div class="form-card">
