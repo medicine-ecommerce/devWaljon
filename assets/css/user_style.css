@@ -424,7 +424,57 @@ p a{
 .main-product-name a:hover{    
     text-decoration: none;
 }
+.tab-content{
+    min-height: 220px;
+}
+.profile-text{
+    padding: 3px !important;
+}
+.questions-body {
+    border-top: none !important;
+    padding: 5px 30px !important;
+}
+.panel-questions {
+    padding: 0 !important;
+    margin: 10px 0px !important;
+    border: 1px solid #D2C8C8;
+    border-top: 1px solid #d2c8c8 !important;
+}
+.panel-questions.panel-default>.panel-heading a[aria-expanded="true"]:after {
+    content: "\2212";
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+    background-color: #eff3f1;
+    padding: 5px;
+    border: 1px solid #d6d1d1;
+    border-radius: 24px;
+    font-weight: lighter;
+    font-size: 11px;
+}
+.panel-questions.panel-default>.panel-heading a[aria-expanded="false"]:after {
+    content: "\002b";
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+    padding: 5px;
+    border: 1px solid #d6d1d1;
+    border-radius: 24px;
+    font-weight: lighter;
+    font-size: 11px;
+    background-color: #eff3f1;
 
+}
+.panel-title {
+    margin-bottom: 5px;
+}
+.shape.product-page-shape{
+    width: 115px;
+}
+button.product_comment_button:focus {
+    outline: none;
+}
+button.product_comment_button:hover {
+    font-size: 19px;     
+}
 
 @media not all and (min-resolution:.001dpcm) {
 @supports (-webkit-appearance: none) and (stroke-color:transparent) {

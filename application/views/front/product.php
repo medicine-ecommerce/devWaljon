@@ -34,11 +34,15 @@
 					<?php								
 					$slide_id = 1;
 						if(!empty($product["product_images"])){
-						foreach($product["product_images"] as $gallary_image) { ?>					
+						foreach($product["product_images"] as $gallary_image) { 
+						if($slide_id < 5){ ?>					
+
 						 <div class="related-img-section">
 							<img class="demo cursor" src="<?php echo base_url().$gallary_image->image; ?>" alt="" onclick="currentSlide(<?= $slide_id; ?>)">
 						</div> 
-					<?php $slide_id += 1; } } ?>				
+
+					<?php }
+					$slide_id += 1; } }?>				
 					</div>
 				</div>
 
@@ -68,11 +72,11 @@
 						</div>
 						<div class="product-AnsQues product-description">
 							<i class='fas fa-arrow-down'></i>
-							<p>105 Answereq Questions</p>
+							<p><a href="#questionsSection">105 Answereq Questions</a></p>
 						</div>
 						<div class="product-alternate-brnd product-description">
 							<i class='fas fa-arrow-down'></i>
-							<p>105 View Alternate Brands</p>
+							<p><a href="#alternateBrands">105 View Alternate Brands</a></p>
 						</div>
 						<div class="order_info d-flex flex-row">
 							<form action="#">
@@ -205,7 +209,7 @@
 		</div>    
 	</div>
 
-	<div class="feedback">
+	<div class="feedback" id="questionsSection">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-7">
@@ -216,24 +220,26 @@
 						<div class="containers">
 						  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 						    
-						    <?php 					
+						    <?php 	
+						    	$Qcount = 1;				
 								if(!empty($question)){
 								foreach($question as $Qvalue) { ?>					
-									<div class="panel panel-default">
+									<div class="panel panel-default panel-questions">
 							      <div class="panel-heading" role="tab" id="headingOne<?= $Qvalue->id; ?>">
 							        <h4 class="panel-title">
 							        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne<?= $Qvalue->id; ?>" aria-expanded="<?= (count($question)) < 1 ? "true":"false"  ?>" aria-controls="collapseOne">
-							          <?= $Qvalue->question; ?> 
+							          <?php echo $Qcount.". ";
+							           echo $Qvalue->question; ?> 
 							        </a>
 							      </h4>
 							      </div>
 							      <div id="collapseOne<?= $Qvalue->id; ?>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne<?= $Qvalue->id; ?>">
-							        <div class="panel-body">
+							        <div class="panel-body questions-body">
 							          <?= $Qvalue->answer; ?> 
 							        </div>
 							      </div>
 							    </div>								 
-								<?php  } } ?>					 
+								<?php $Qcount+=1;  } } ?>					 
 						  </div>
 						</div>
 					</div>
@@ -248,7 +254,7 @@
 						<div class="add-comment">
 							<div>
 								<form method="post" id="product_comment_byuser">
-									<input type="search" required="required" name="product_comment" class="product_comment_input" placeholder="Comment Something">
+									<input id="comment_input" type="search" required="required" name="product_comment" class="product_comment_input" placeholder="Comment Something">
 									<input id="get_product_id" type="hidden" name="product_id" value="<?= $product_item->product_id; ?>">
 									<button type="button" onclick="productComment()" class="product_comment_button" value="Submit"><i class="fa fa-paper-plane"></i></button>
 								</form>
@@ -261,7 +267,7 @@
 	</div>	
 	<!-- Recently Viewed -->
 
-	<div class="alternate-brnd">
+	<div class="alternate-brnd" id="alternateBrands">
 		<div class="container">
 			<div class="product-main-heading">
 				<h4>Alternate Brands</h4>
@@ -288,7 +294,7 @@
 	                          <img src="<?php echo (!empty($value->image))? base_url().$value->image : base_url('assets/front/images/best_2.png');  ?>" >
 	                      	</a>
                         </div>
-                        <div class="shape">
+                        <div class="shape product-page-shape">
                           <span class="offer-text">10% </span><span class="off-text">Off</span>
                         </div>
                         <div class="product-description-section">                      
@@ -329,7 +335,8 @@
 	        success:function(data){  
 	        if(data.stage==0){
 	          window.location.href = "<?php echo base_url() ?>user/login";        
-	        }
+	        }	        
+	        $("#comment_input").val("");
 
 	        getAllComments();
 	          
@@ -353,9 +360,12 @@
                 		var data = data.data;
                     var html = " ";
                     var i;  
-                    for(i=0; i < data.length ; i++){
+                    for(i=0; i < data.length ; i++){                    	
+                    	if(data[i].image==""){
+                    		data[i].image = 'dummy_images.png';
+                    	}
                     	html +='<div class="customer-feedback-block"><div class="customer-feedback-content"><div class="profile-text"><h3>'+
-                    								''+'<img src="<?=base_url();?>assets/img/vendor_profile/'+data[i].image+'" style="width:40px;height:40px;">'+
+                    								''+'<img src="<?=base_url();?>assets/user-profile/'+data[i].image+'" style="width:40px;height:40px;">'+
                                     '</h3></div><div class="profile-details"><h3>'+data[i].full_name+'</h3><span>Commented at <p>'+data[i].comment_date +'</p></span></div><div class="product-detail"><p>'+data[i].comments +'</p></div></div></div>';
                     }
                     $('#showAllComments').html(html);
