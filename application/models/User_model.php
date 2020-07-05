@@ -179,6 +179,34 @@ class User_model extends MY_model
 			return $return;
 		}
 	}
+	public function getCategoryData()
+	{	
+
+		$this->db->select('main_category.id as main_category_id, main_category.category_name');		
+		$this->db->from('main_category');
+		$this->db->where('main_category.status','active');
+		$this->db->join('category','category.main_category_id = main_category.id');		
+		$this->db->group_by('main_category.id');		
+		//$this->db->limit('8');
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			$result = $query->result();		
+
+			foreach ($result as $key => $value) {
+				$return[$key]['main_category_id'] = $value->main_category_id;
+				$return[$key]['category_name'] = $value->category_name;
+				$this->db->select('category.id as category_id, category.category_name');				
+				$this->db->from('category');
+				$this->db->where('main_category_id',$value->main_category_id);
+				// $this->db->limit(8);
+				$query_product = $this->db->get();
+				if ($query_product->num_rows() > 0) {
+					$return[$key]['sub_category'] = $query_product->result();
+				}
+			}			
+			return $return;
+		}			
+	}
 
 
 

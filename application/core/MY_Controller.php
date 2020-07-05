@@ -46,7 +46,7 @@ class MY_Controller extends CI_Controller
       if($this->session->userdata('user_type')=='user'){    
           $this->data['profile'] = $this->User->getRowData('users','created_at,full_name,last_name,image',array('id'=>$this->session->userdata('user_id')));        
       }
-      $this->data['product_subcategory'] = $this->Custom->getCategoryData();        
+      $this->data['product_subcategory'] = $this->User->getCategoryData();        
       
 
       $this->template['header']        = $this->load->view('front/layout/header',$this->data);      
