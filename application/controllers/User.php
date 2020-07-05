@@ -117,9 +117,9 @@ Class User extends MY_Controller {
     }
     public function checkout()
     {
-        // if(empty($this->session->userdata('user_id'))){
-        //     redirect(base_url('user/login'));
-        // }
+        if(empty($this->session->userdata('user_id'))){
+            redirect(base_url('user/login'));
+        }
         // $this->data['user_address'] = $this->User->getData('user_address','address', array('user_id' => '2' ));
         $this->data['user_address'] = $this->User->getData('user_address','id,address,state,country', array('user_id' => $this->session->userdata('user_id') ));
         // print_r($this->data);die();
