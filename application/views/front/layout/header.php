@@ -69,8 +69,8 @@
 								<a href="<?php echo base_url('user/cart');?>" class="top_bar_cart"><i class="fa fa-cart-plus"></i></a>
 								<span class="cart-quantity <?php if(!empty($cart_quantity)){ echo "show-cart";}else{ echo  "hide-cart" ;} ?> "> <?php if(!empty($cart_quantity)){ echo $cart_quantity; } ?> </span>
 								<?php if(empty($this->session->userdata('user_type'))){ ?>
-									<div class="top_bar_user_content"><a href="#">Login</a></div>
-									<div class="top_bar_user_content"><a href="#">Register</a></div>
+									<div class="top_bar_user_content"><a href="<?php echo base_url();?>/user/login">Login</a></div>
+									<div class="top_bar_user_content"><a href="<?php echo base_url();?>/user/signup">Register</a></div>
 								<?php } ?> 
 								<?php 
 								if(!empty($this->session->userdata('user_type'))){ ?>				
@@ -142,18 +142,23 @@
 				<div class="row">
 					<div class="col">						
 						<div class="main_nav_content d-flex flex-row">
-							<!-- Main Nav Menu -->
+							<!-- Main Nav Menu -->							
 							<div class="main_nav_menu">
 								<ul class="standard_dropdown main_nav_dropdown">
+									<?php									
+									if(!empty($product_subcategory)){ 
+										foreach ($product_subcategory as $key => $value) { ?>
+									
 									<li class="hassubs">
-										<a href="#">Winter Care <i class="fas fa-chevron-up"></i></a>
+										<a href="#"><?= $value['category_name']; ?> <i class="fas fa-chevron-up"></i></a>
 										<ul>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
+											<?php foreach ($value['sub_category'] as $value1) { ?>
+											<li><a href="<?php echo base_url('user/category/'.base64_encode($value['main_category_id'])."/".base64_encode($value1->category_id)); ?>"><?= $value1->category_name; ?></a></li>
+											<?php } ?>
 										</ul>
 									</li>
-									<li class="hassubs">
+									<?php } } ?>
+									<!-- <li class="hassubs">
 										<a href="#">Featured<i class="fas fa-chevron-up"></i></a>
 										<ul>
 											<li><a href="#">Menu Item </a></li>
@@ -216,7 +221,7 @@
 											<li><a href="#">Menu Item </a></li>
 											<li><a href="#">Menu Item </a></li>
 										</ul>
-									</li>
+									</li> -->
 									<!-- <li class="hassubs">
 										<a href="#">Pages<i class="fas fa-chevron-down"></i></a>
 										<ul>
@@ -244,7 +249,7 @@
 					</div>
 				</div>
 			</div>
-		</nav>		
+		</nav>				
 		<!-- Menu -->
 		<div class="page_menu">
 			<div class="container">

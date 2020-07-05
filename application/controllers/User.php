@@ -21,12 +21,12 @@ Class User extends MY_Controller {
     //     $this->load->view('user/home');	
     //     $this->load->view('user/layout/footer'); 
     // }
+    // public function index()
+    // {
+    //     $this->middle = 'index';
+    //     $this->User();
+    // }
     public function index()
-    {
-        $this->middle = 'index';
-        $this->User();
-    }
-    public function index1()
     {
         $this->data['banner'] = $this->User->getData('banner_images','image',array('status'=>'active'));
         $this->data['brand'] = $this->User->getData('brand','brand_img,id',array('status'=>'active'));
@@ -41,8 +41,9 @@ Class User extends MY_Controller {
         $this->User();
     }
     public function product($id)
-    {        
-        $this->data['product'] = $this->User->getProductByID($id);
+    {   
+        $productId = base64_decode($id);          
+        $this->data['product'] = $this->User->getProductByID($productId);
         $this->data['alternate_product'] = $this->User->getAlternateBrandsByID();        
         $this->middle = 'product';
         $this->User();
@@ -56,75 +57,21 @@ Class User extends MY_Controller {
         $this->load->helper('cookie');
         $this->load->view('front/login');
     }
+    public function category()
+    {   
+        $mainCategoryId = base64_decode($this->uri->segment(3));        
+        $CategoryId = base64_decode($this->uri->segment(4));        
+        $this->data['selected_category_id'] = $CategoryId;
+        $this->data['category'] = $this->User->getData('category','id,main_category_id,category_name,status',array('main_category_id'=>$mainCategoryId));
+        $this->data['main_category'] = $this->User->getRowData('main_category','category_name',array('id'=>$mainCategoryId));
+        $this->data['brand'] = $this->User->getData('brand','id,brand_name,status',array('status'=>'active'));
+        $this->data['product_form'] = $this->User->getData('product_form','id,name,status',array('status'=>'active'));
+        
+        $this->middle = 'category';
+        $this->User();        
+    }
 
-    // public function login_code(){
-
-
-    //     $this->load->helper('cookie');
-    //     if ($this->input->server('REQUEST_METHOD') == 'POST'){            
-
-    //         if(ctype_digit($this->input->post('email'))){                
-    //             $this->form_validation->set_rules('email', 'mobile', 'trim|required');    
-    //         }else{                
-    //             $this->form_validation->set_rules('email', 'email', 'trim|required|valid_email');    
-    //         }
-    //         // $this->form_validation->set_rules('email', 'Email', 'required|trim');
-    //         $this->form_validation->set_rules('password', 'Password', 'required|trim');
-            
-    //         if ($this->form_validation->run() == FALSE){                                          
-    //           $this->session->set_flashdata('error', validation_errors());      
-    //         }
-    //         else{               
-    //             if(empty($this->input->post('remember_password'))){
-    //                 delete_cookie("email");                
-    //                 delete_cookie("password");                
-    //             }else{
-    //                     $unexpired_cookie_exp_time = 2147483647 - time();               
-    //                     set_cookie('email',base64_encode($this->input->post('email')), $unexpired_cookie_exp_time);
-    //                     set_cookie('password',base64_encode($this->input->post('password')), $unexpired_cookie_exp_time);
-    //             }
-    //             // echo $this->input->post('email');
-    //             // die();
-    //             $data = array('email'=> $this->input->post('email'),
-    //                         'password' =>md5($this->input->post('password')),
-    //                         'type' => $this->input->post('type')
-    //                         );
-    //             $result = $this->Vendor->login($data);
-               
-    //             if(!empty($result))
-    //             {
-    //                 if(ctype_digit($this->input->post('email'))){
-    //                     $data = array('mobile'=>trim($result->mobile),                                
-    //                             'user_id'=>$result->id,
-    //                             'user_type'=>$result->type);
-    //                 }else{                        
-    //                     $data = array('email'=>$result->email,
-    //                                 'user_id'=>$result->id,
-    //                                 'user_type'=>$result->type);
-    //                 }
-
-    //                 $this->session->set_userdata($data);
-    //                 // redirect(base_url('admin/dashboard'));
-    //                 if ($result->type=='user') {
-    //                     redirect('user/index');
-    //                 }
-    //                 elseif(!empty($result->email) && !empty($result->full_name) && !empty($result->mobile) && !empty($result->address) && $result->is_active > 0 ){
-    //                     redirect('/vendor/vendor_dashboard/', 'refresh');
-    //                 }else if(!empty($result->mobile) && !empty($result->email) && !empty($result->full_name) && $result->is_active == 0 ){
-    //                     redirect('/vendor/profile_waiting_approval', 'refresh');
-    //                 }
-    //                 else{                        
-    //                     redirect('/vendor/personalDetails/', 'refresh');
-    //                 }
-    //             }
-    //             else
-    //             {
-    //                 $this->session->set_flashdata('error', 'Incorrect Username or password');
-    //                 redirect($_SERVER['HTTP_REFERER']);    
-    //             }
-    //         } 
-    //     }           
-    // }
+   
     public function product_category()
     {
         $this->data['sub_category'] = $this->User->getData('subcategory','id,category_id,subcategory,status',array('status'=>'active'));
@@ -252,6 +199,10 @@ Class User extends MY_Controller {
 
     public function product_comment()
     {        
+        if(empty($this->session->userdata('user_id'))){
+            echo  json_encode(array('status'=>0,'message'=>'Error','stage'=>0));
+            return;
+        }
 
         if(!empty($this->input->post('product_comment'))){
             $result = $this->User->insertData('product_comment',array('comments'=>$this->input->post('product_comment'),'product_id'=>$this->input->post('product_id'),'user_id'=>$this->session->userdata('user_id')));

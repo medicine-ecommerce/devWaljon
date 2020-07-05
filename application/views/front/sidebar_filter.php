@@ -1,5 +1,5 @@
 <form id="filter">
-  <div class="panel-group filter-sidebar-section" id="accordionMenu" role="tablist" aria-multiselectable="true">
+  <div class="panel-group filter-sidebar-section" id="accordionMenus" role="tablist" aria-multiselectable="true">
     <input type="hidden" name="sortby" value="">
     <div class="panel panel-default category-panel">
       <div class="panel-heading" role="tab" id="headingTwo">
@@ -21,7 +21,7 @@
             if(!empty($sub_category)) {
               foreach ($sub_category as $key => $value) { ?>
                 <div class="form-group">
-                  <input type="checkbox" id="product_category_<?= $value->id ?>" value="<?= $value->id ?>" name="product_category_id[]" class="search_paramiter_checkbox" >
+                  <input type="checkbox"  id="product_category_<?= $value->id ?>" value="<?= $value->id ?>" name="product_category_id[]" class="search_paramiter_checkbox" <?php if(!empty($selected_category_id)){ if($selected_category_id==$value->id){ echo "checked"; } }?> >
                   <label for="product_category_<?= $value->id ?>" class="flt-checkbox-label"><?= $value->subcategory; ?> </label>
                 </div>              
             <?php } } ?>  
@@ -176,6 +176,9 @@
         }
     }
 }
+$(document).ready(function(){
+  $('.collapse').collapse()
+});
 
 
 </script>

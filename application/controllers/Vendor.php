@@ -18,14 +18,14 @@ Class Vendor extends MY_Controller {
         $this->load->library('excel');  
         $this->load->library('upload');
 
-        if (empty($this->session->userdata('user_id'))){ 
-            // Allow some methods?
-            $allowed = array('forgot_password','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile','vendorLogin');
-            if (!in_array($this->router->fetch_method(), $allowed)){
-                redirect(base_url('vendor/vendor_login'));
-            }
-        }
-      
+        
+      // if (empty($this->session->userdata('user_id'))){ 
+      //       // Allow some methods?
+      //       $allowed = array('forgot_password','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile','vendorLogin');
+      //       if (!in_array($this->router->fetch_method(), $allowed)){
+      //           redirect(base_url('vendor/vendor_login'));
+      //       }
+      //   }
 
     }
 
@@ -915,7 +915,7 @@ Class Vendor extends MY_Controller {
                 for($row=2; $row<=$highestRow; $row++)
                 {
                     $product_id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-                //     $product_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                    $product_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
                 //     $Manufacturer = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
                 //     $product_form = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
                 //     $varieties = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
@@ -949,16 +949,20 @@ Class Vendor extends MY_Controller {
                     //                 'upload_source'      =>  "bulk_upload");                               
                     // $product_last_id = $this->Vendor->insertData('product',$productdata);
 
-                    $productItemData = array( 'product_sku_id'   =>  $product_id,
-                                    'product_id'     =>  $product_last_id,
-                                    'unit'           =>  $unit,
-                                    'mrp'            =>  $mrp,
-                                    'sale_price'     =>  $sale_price,
-                                    'quantity'       =>  $quantity);
+                    // $productItemData = array( 'created_by'   =>  1,
+                    //                 'category_name'     =>  $product_id,
+                    //                 'status'           =>  'active');
 
-                    if($product_last_id){
-                     $this->Vendor->insertData('product_item',$productItemData);
-                    }
+                    //  $this->Vendor->insertData('category',$productItemData);
+
+                     $productItemData = array( 'created_by'   =>  1,
+                                    'category_id'     =>  $product_id,
+                                    'subcategory'     =>  $product_name,
+                                    'status'     =>  'active');
+
+                     $this->Vendor->insertData('subcategory',$productItemData);
+                    // if($product_last_id){
+                    // }
                 }
                 
             //$this->Vendor->bulkData($data);
@@ -975,7 +979,7 @@ Class Vendor extends MY_Controller {
     } 
     public function vendor_bulk_upload_test()
     {
-        $this->middle = 'vendor_bulk_upload';
+        $this->middle = 'vendor_bulk_upload_test';
         $this->Vendor();
     }
 }

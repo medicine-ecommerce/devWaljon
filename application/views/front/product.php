@@ -283,14 +283,16 @@
                   <div class="item">
                     <div class="product-main-block">
                       <div class="product-block">  
-                        <div class="product-image-section">                                              	
-                          <img src="<?php echo (!empty($value->image))? base_url().$value->image : base_url('assets/front/images/best_2.png');  ?>" >
+                        <div class="product-image-section">                                              
+	                        <a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>">	
+	                          <img src="<?php echo (!empty($value->image))? base_url().$value->image : base_url('assets/front/images/best_2.png');  ?>" >
+	                      	</a>
                         </div>
                         <div class="shape">
                           <span class="offer-text">10% </span><span class="off-text">Off</span>
                         </div>
                         <div class="product-description-section">                      
-                          <p><?php echo $value->name; ?></p>
+                          <p><a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>">	<?php echo $value->name; ?></a></p>
                           <hr class="inside-form-hr">
                           <span><?php echo $value->product_form; ?></span> 
                         </div>
@@ -325,6 +327,9 @@
 	        dataType: 'JSON',
 	        data: $("#product_comment_byuser").serialize(),        
 	        success:function(data){  
+	        if(data.stage==0){
+	          window.location.href = "<?php echo base_url() ?>user/login";        
+	        }
 
 	        getAllComments();
 	          
@@ -356,7 +361,7 @@
                     $('#showAllComments').html(html);
                 },
                 error: function(){
-                    alert('Could not get Data from Database');
+                    //alert('Could not get Data from Database');
                 }
             });
         }
