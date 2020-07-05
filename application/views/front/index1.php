@@ -114,16 +114,16 @@
       </div>
     </div>
     <div class="product-slider-section"> 
-    <?php if (!empty($product)) {
+    <?php if (!empty($product)) {      
       foreach ($product as $key => $value) { ?>
-        <div class="product-slider-block slider-arrow">        
+        <div class="product-slider-block slider-arrow">                  
           <div class="row product-heading">
             <div class="col-md-6 title-section">            
               <img src="<?php echo base_url('assets/icon/icon_new_arrivals.png');  ?>" >
               <h4 class="product-heading-h4"><?php echo $value['category_name']; ?></h4>
             </div>
             <div class="col-md-6 all-section">            
-              <a href=""><span class="product-heading-all">View All</span></a>            
+              <a href="<?php echo base_url('user/category/'.base64_encode($value['category_id'])."/".base64_encode($value['category_id'])); ?>"><span class="product-heading-all">View All</span></a>            
             </div>
           </div>
           <div class="product-slider">
@@ -1308,7 +1308,42 @@
     $('#carousel .item').on('mouseleave',function(e){
         owl.trigger('play.owl.autoplay');
     })
-    jQuery("#carouse0").owlCarousel(
+    // jQuery("#carousel0").owlCarousel(
+    // {
+    //   autoplay: true,
+    //   lazyLoad: true,
+    //   loop: true,
+    //   margin: 20,
+    //              responsiveClass: true,
+    //   autoHeight: true,
+    //   autoplayTimeout: 3000,
+    //   smartSpeed: 800,
+    //   nav: true,
+    //   responsive: {
+    //     0: {
+    //       items: 1
+    //     },
+
+    //     600: {
+    //       items: 3
+    //     },
+
+    //     1024: {
+    //       items: 1
+    //     },
+
+        
+    //   }
+    // });
+    // var owl = $("#carousel0");                 
+    // $('#carousel0 .item').on('mouseover',function(e){
+    //     owl.trigger('stop.owl.autoplay');
+    // })
+    // $('#carousel0 .item').on('mouseleave',function(e){
+    //     owl.trigger('play.owl.autoplay');
+    // })
+
+    jQuery("#carousel0").owlCarousel(
     {
       autoplay: true,
       lazyLoad: true,
@@ -1329,19 +1364,22 @@
         },
 
         1024: {
-          items: 1
+          items: 4
         },
 
         
       }
     });
-    var owl = $("#carouse0");                 
-    $('#carouse0 .item').on('mouseover',function(e){
-        owl.trigger('stop.owl.autoplay');
+    var owl1 = $("#carousel0");                 
+    $('#carousel0 .item').on('mouseover',function(e){
+        owl1.trigger('stop.owl.autoplay');
     })
-    $('#carouse0 .item').on('mouseleave',function(e){
-        owl.trigger('play.owl.autoplay');
+    $('#carousel0 .item').on('mouseleave',function(e){
+        owl1.trigger('play.owl.autoplay');
     })
+
+
+
     jQuery("#carousel1").owlCarousel(
     {
       autoplay: true,

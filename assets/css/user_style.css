@@ -475,6 +475,9 @@ button.product_comment_button:focus {
 button.product_comment_button:hover {
     font-size: 19px;     
 }
+.all-section a{
+    z-index: 999;
+}
 
 @media not all and (min-resolution:.001dpcm) {
 @supports (-webkit-appearance: none) and (stroke-color:transparent) {
