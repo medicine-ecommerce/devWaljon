@@ -8,9 +8,9 @@
                 <form id="msform" method="post" action="<?php echo base_url(''); ?>">
                     <!-- progressbar -->
                     <ul id="progressbar">
-                        <li class="active" id="account"><strong>Delivery Address</strong></li>
-                        <li id="payment"><strong>Payment</strong></li>
-                        <li id="confirm"><strong>Finish</strong></li>
+                        <li class="active" id="account"><strong>Product Details</strong></li>
+                        <li id="payment"><strong>Delivery Address</strong></li>
+                        <li id="confirm"><strong>Payment</strong></li>
                     </ul>
                     <div class="progress">
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
@@ -66,39 +66,46 @@
                                 <div class="col-7">
                                     <h2 class="fs-title">Delivery Address</h2>
                                 </div>
+                            </div>
+                             <div id="element2">
+                               <select name="address_id" id="address_id" class="form-control input-update" style="width: 50%;">
+                                <option value="">Select Your Address</option>
+                                <?php foreach ($user_address as $row => $value) {
+                                ?>
+                                <option value="<?php echo $value->id; ?>"> <?php echo $value->address.' '.$value->state.' '.$value->country; ?> </option>
+                                <?php }?>
+                                </select>
                             </div> 
+                            <br/><br/>
                             <div >
-                                <label class="fieldlabels"><!-- <?php echo $user_address_row->address;?> --></label> 
-                                <!-- <input type="hidden" name="address_1" value="<?php // echo $user_address_row->address;?>">
-                                <input type="checkbox" name="address" style="margin-left: -48%;"  placeholder="Address" class="form-control" /> -->
-                                <button type="button" id="btn" class="flex-c-m stext-101 cl0 bg1 hov-btn1 p-lr-15 trans-04 ">Add new address</button>
+                                <button type="button" id="btn" class="btn btn-primary add-address">Add new address</button>
                                     <br/><br/>
-                                    <div id="element">
+                                    <div id="element" class="address-div">
                                        <h4>Add a new address</h4> 
                                        <div class="col-md-4">
                                             <div class="form-group label-float-top">
-                                                <select name="country" class="form-control control-float-top custom-select countries" id="countryId" value="<?php echo set_value('country')?>">
+                                                <label for="email" class="fieldlabels chg-psw-input">Country</label>                  
+                                                <select name="country" class="form-control input-update" id="countryId" value="<?php echo set_value('country')?>">
                                                     <option></option>
                                                 </select>
-                                                <label for="email">Country</label>                  
                                             </div>
                                         </div> 
                                         <div class="col-md-4">
                                             <div class="form-group label-float-top find-state">
-                                                <select name="state" class="form-control control-float-top custom-select states" id="stateId" value="<?php echo set_value('state')?>">                      
+                                                <label class="fieldlabels chg-psw-input" for="country">State</label>
+                                                <select name="state" class="form-control input-update" id="stateId" value="<?php echo set_value('state')?>">                      
                                                 </select>       
-                                                <label class="custom-state" for="country">State</label>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                              <div class="form-group label-float-top">
-                                                <select name="city" class="form-control control-float-top custom-select cities" id="cityId" value="<?php echo set_value('city')?>">                     
+                                                <label for="country" class="fieldlabels chg-psw-input">City</label>
+                                                <select name="city" class="form-control input-update" id="cityId" value="<?php echo set_value('city')?>">                     
                                                 </select>
-                                                <label for="country">City</label>
                                             </div>
                                         </div>
-                                        <label for="password">Address</label>
-                                        <input type="text" name="address" class="form-control" name="Address">
+                                        <label for="password" class="fieldlabels chg-psw-input">Address</label>
+                                        <input type="text" name="address" class="form-control input-update" name="Address">
 
                                         <!--                             
                                         <label for="password">Pincode</label>
@@ -106,17 +113,7 @@
                                         <label for="password">Full Address</label>
                                         <input id="address" name="address" style="width: 50%;" type="text" class="form-control ">  -->
                                     </div>
-                            </div>
-                            <div id="element2">
-                               <select name="address_id" id="address_id" class="form-control" style="width: 50%;">
-                                <option value="">Select Your Address</option>
-                                <?php foreach ($user_address as $row => $value) {
-                                ?>
-                                <option value="<?php echo $value->id; ?>"> <?php echo $value->address.' '.$value->state.' '.$value->country; ?> </option>
-                                <?php }?>
-                                </select>
-                            </div>
-                            
+                            </div>                            
                         </div> 
                         <input type="button" name="next" onclick="submitAddress()" class="next action-button" value="Next" />
 
@@ -130,20 +127,22 @@
                                 </div>
                             </div> 
                             <div>
-                                <label>Online</label> 
-                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control" value="online" required="">
-                                <label>Cash On Delivery</label>
-                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control" value="cod" required=""> 
+                                <label class="fieldlabels chg-psw-input">Online</label> 
+                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control input-border-none" value="online" required="">
+                                <label class="fieldlabels chg-psw-input">Cash On Delivery</label>
+                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control input-border-none" value="cod" required=""> 
                             </div>
                         </div>
-                        <div class="form-card">
+                        <!-- <div class="form-card">
                             <div class="row">
                                 <div class="col-7">
                                     <h2 class="fs-title">Finish:</h2>
                                 </div>
                                
-                            </div> <!-- <br><br>
- -->                            <!-- <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> <br>
+                            </div> 
+                            <br><br>
+                            <h2 class="purple-text text-center"><strong>SUCCESS !</strong></h2> 
+                            <br>
                             <div class="row justify-content-center">
                                 <div class="col-3"> <img src="https://i.imgur.com/GwStPmg.png" class="fit-image"> </div>
                             </div> <br><br>
@@ -151,11 +150,11 @@
                                 <div class="col-7 text-center">
                                     <h5 class="purple-text text-center">You Have Successfully Signed Up</h5>
                                 </div>
-                            </div> -->
+                            </div>
                             
                             <input type="button" name="next" class="next action-button" value="Submit" />
 
-                        </div>
+                        </div> -->
                     </fieldset>
                 </form>
             </div>
