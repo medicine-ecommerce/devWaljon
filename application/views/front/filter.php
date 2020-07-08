@@ -29,10 +29,11 @@
               </div> -->
             </div>
           </div>          
-        </div>
-        <div class="toolbox">                    
-        </div>
-        <div class="row product-section" id="dataList">  
+        
+          <!-- <div class="toolbox">                    
+          </div> -->
+          <div class="row product-section" id="dataList">  
+          </div>
         </div>
       </div>
     </div>
@@ -40,6 +41,7 @@
 </section>
 
 <script>
+
   function searchFilter(page_num){
       page_num = page_num?page_num:0;
       var keywords = $('#keywords').val();

@@ -84,7 +84,7 @@ Class User extends MY_Controller {
     public function ajaxFilterData($rowno)
     {
         // Row per page
-        $rowperpage = 50;
+        $rowperpage = 5;
         // Row position
         if($rowno != 0){
           $rowno = ($rowno-1) * $rowperpage;
@@ -102,6 +102,21 @@ Class User extends MY_Controller {
         $config['total_rows'] = $allcount;
         $config['per_page'] = $rowperpage;
         $config['link_func']   = 'searchFilter'; 
+
+        $config['full_tag_open']    = '<div class="category-pagination category-pagination-section"><nav><ul class="pagination product-category-pagination"><p class="productCount">';
+        $config['full_tag_close']   = '</p></ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link"><a class="active">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></a></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tag_close']   = '<span aria-hidden="true"></span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tag_close']   = '</span></li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tag_close']  = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tag_close']   = '</span></li>';
 
         // Initialize
         $this->ajax_pagination->initialize($config); 
