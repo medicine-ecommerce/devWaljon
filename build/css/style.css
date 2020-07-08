@@ -80,6 +80,9 @@ h5.dashboard-head {
     color: white;
     border-radius: 5px;
 }
+.order-heading{
+    margin: 10px 0px;
+}
 .blue-box{
     background-image: linear-gradient(to right, #89cdf4, #749ccd);
 }

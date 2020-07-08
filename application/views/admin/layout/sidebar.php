@@ -64,10 +64,15 @@ $page = $this->uri->segment('2');
                       <li><a class="sub-item <?= ($page=="linking")? "active":"" ?>" href="<?php echo base_url('admin/linking'); ?>">Linking</a></li>
                       <li><a class="sub-item <?= ($page=="saltComposition_list")? "active":"" ?>" href="<?php echo base_url('admin/saltComposition_list'); ?>">Salt Composition</a></li>
                       <li><a class="sub-item <?= ($page=="all_product")? "active":"" ?>" href="<?php echo base_url('admin/all_product'); ?>">All Inventory</a></li>
-
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-home"></i> Orders</a>                   
+                  <li><a><i class="fa fa-home"></i> Orders <span class="fa fa-chevron-down"></span></a> 
+                    <ul class="nav child_menu">
+                      <li><a class="sub-item <?= ($page=="pending_orders")? "active":"" ?>" href="<?php echo base_url('admin/pending_orders'); ?>">Pending Orders</a></li>
+                      <li><a class="sub-item <?= ($page=="deliver_orders")? "active":"" ?>" href="<?php echo base_url('admin/deliver_orders'); ?>">Delivered Orders</a></li>
+                      <li><a class="sub-item <?= ($page=="cancle_orders")? "active":"" ?>" href="<?php echo base_url('admin/cancle_orders'); ?>">Cancle Orders</a></li>
+                      <li><a class="sub-item <?= ($page=="all_orders")? "active":"" ?>" class="sub-item" href="<?php echo base_url('admin/all_orders'); ?>">All Orders</a></li>
+                    </ul>                  
                   </li>
                   <li><a><i class="fa fa-cog"></i>Settings</a>                  
                   </li>
