@@ -778,5 +778,10 @@ Class Admin extends MY_Controller {
         $this->middle = 'orders/all_orders';
         $this->Admin();
     }
+    public function order_view()
+    {
+        $this->middle = 'orders/order_view';
+        $this->Admin();
+    }
 
 }

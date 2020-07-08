@@ -52,7 +52,7 @@
     outline: none;
 }
 .banner-slider .owl-stage-outer.owl-height{
-  height: 300px!important;
+  height: 450px!important;
 }
 .brand-heading{
   text-align: center;
@@ -717,6 +717,18 @@ a.qty:hover {
 
 .transition {
   transition: all 0.3s ease-in-out;
+}
+
+@media (min-width: 1900px){ 
+  .container {
+      max-width: 1840px;
+  }
+}
+
+@media (min-width: 1366px){ 
+  .container {
+      max-width: 1280px;
+  }
 }
 
 @media screen and ( max-width: 755px) {
