@@ -758,4 +758,30 @@ Class Admin extends MY_Controller {
         }
     }
 
+    public function pending_orders()
+    {
+        $this->middle = 'orders/pending_orders';
+        $this->Admin();
+    }
+    public function deliver_orders()
+    {
+        $this->middle = 'orders/deliver_orders';
+        $this->Admin();
+    }
+    public function cancle_orders()
+    {
+        $this->middle = 'orders/cancle_orders';
+        $this->Admin();
+    }
+    public function all_orders()
+    {
+        $this->middle = 'orders/all_orders';
+        $this->Admin();
+    }
+    public function order_view()
+    {
+        $this->middle = 'orders/order_view';
+        $this->Admin();
+    }
+
 }

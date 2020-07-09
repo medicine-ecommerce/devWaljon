@@ -1177,3 +1177,16 @@ li.product_li1 a{
   input.form-control.input-border-none {
     box-shadow: none;
   }
+  .productCount{
+    display: none;
+  }
+  .category-pagination.category-pagination-section {
+    position: absolute;
+    top: -90px;
+    right: 15px;
+  }
+  .pagination>li>a, .pagination>li>span {
+    padding: 0px 0px !important;
+    border: none !important;
+    background: none !important;
+  }
