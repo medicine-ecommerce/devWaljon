@@ -210,7 +210,7 @@ class User_model extends MY_model
 
 	public function orderList()
 	{
-		$this->db->select('order_number,created_at,delivery_date,status');
+		$this->db->select('order_number,created_at,delivery_date,status,id');
 		$this->db->from('orders');
 		$this->db->where('user_id',$this->session->userdata('user_id'));
 		$query = $this->db->get();
@@ -218,6 +218,24 @@ class User_model extends MY_model
 			return $query->result();
 		}
 
+	}
+	public function OrderView($id)
+	{
+		$this->db->select('orders.*,orders.id as order_id,user_address.*');
+		$this->db->from('orders');
+		$this->db->where('orders.id',$id);
+		$this->db->join('user_address','user_address.id = orders.address_id');
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			$data = (array) $query->row();
+			$this->db->select('order_item.*,product.name as product_name,(select product_images.image from product_images where product_id = product.id) as product_image');
+			$this->db->from('order_item');
+			$this->db->join('product_item','product_item.id = order_item.item_id');
+			$this->db->join('product','product.id = product_item.product_id');
+			$this->db->where('order_id',$data['order_id']);
+			$data['item'] = $this->db->get()->result();
+		}
+		return $data;
 	}
 
 

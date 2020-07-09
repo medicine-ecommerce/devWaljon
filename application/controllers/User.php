@@ -154,8 +154,12 @@ Class User extends MY_Controller {
         $this->middle = 'order_listing';
         $this->User();
     }
-    public function orderView()
+    public function orderView($id)
     {
+        $this->data['order'] = $this->User->OrderView($id);
+       /* echo "<pre>";
+        print_r($this->data['order']);
+        exit();*/
         $this->middle = 'order_view';
         $this->User();
     }
@@ -336,5 +340,4 @@ Class User extends MY_Controller {
         }
 
     }
-
 }

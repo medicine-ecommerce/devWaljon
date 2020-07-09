@@ -6,11 +6,11 @@
         <h4>Order Details</h4>
         <ul>
           <li>
-            Ordered on 29 June 2020
+            Ordered on <?php echo date('d F Y H:i A',strtotime($order['created_at'])); ?>
           </li>
           <li> | </li>
           <li>
-            Order #1001
+            Order #<?php echo $order['order_number']; ?>
           </li>
         </ul>
       </div>   
@@ -22,7 +22,7 @@
                 <h4>Shipping Address</h4>
               </div>
               <p>Name</p>
-              <p>Address</p>
+              <p>Address: <?php echo $order['address'].', '.$order['city'].' '.$order['state'].'<br>'.$order['country']; ?></p>
             </div>
           </div>
           <div class="col-md-4">
@@ -30,7 +30,7 @@
               <div class="order-head">
                 <h4>Payment Method</h4>
               </div>
-              <p>Method name</p>
+              <p><?php echo strtoupper($order['payment_method']); ?></p>
             </div>
           </div>
           <div class="col-md-4">
@@ -53,21 +53,25 @@
           <h4 class="deliver-date">Delivered - 26/2/2020</h4>
         </div>
         <div class="card-box table-responsive">                
-          <table class="table order-detail-table">
+          <table class="table">
             <tbody>
+              <?php foreach ($order['item'] as $key => $value) { ?>                
               <tr>
                 <td style="width: 15%">
                   <div class="order-product-img">
-                    <img src="<?php echo base_url(); ?>assets/brand-images/da1d850aff1b5994c62200e0d3e34ffa.jpg">
+                    <img src="<?php echo ($value->product_image) ? $value->product_image : base_url('assets/brand-images/da1d850aff1b5994c62200e0d3e34ffa.jpg'); ?>">
                   </div>
                 </td>
                 <td>
                   <div class="order-product-detail">
-                    <h6 class="order-product-name"> name</h6>
-                    <p>Price- <i class="fa fa-inr"></i> 2000/-</p>
+                    <h6 class="order-product-name"> <?php echo $value->product_name; ?></h6>
+                    <p>Price- <i class="fa fa-inr"></i> <?php echo $value->price; ?>/-</p>
                   </div>
                 </td>
+                <td><?php echo $value->qty; ?></td>
+                <td><?php echo $value->subtotal; ?></td>
               </tr>
+              <?php } ?>
             </tbody>
           </table>
         </div>
