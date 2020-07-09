@@ -58,7 +58,7 @@
 				<div class="row">
 					<div class="col d-flex flex-row main-header-section">
 						<div class="top_bar_logo">
-							
+							<img src="<?php echo base_url(); ?>assets/img/logo.png">
 						</div>
 						<div class="top_bar_contact_btn">
 							<a href="#">Medicine</a>
