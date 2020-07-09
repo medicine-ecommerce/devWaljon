@@ -107,8 +107,8 @@
 							<div class="header_search_content">
 								<div class="header_search_form_container">
 									<form action="#" class="header_search_form clearfix">
-										<i class="fa fa-location"></i>
-										<input type="search" required="required" class="header_search_input" placeholder="<?php echo "&#xe567;";  ?> Enter Delivery Location" id="location">
+										<span class="location-logo"><i class="fa fa-map-marker"></i></i></span>
+										<input type="search" required="required" class="header_search_input" placeholder="Enter Delivery Location" id="location">
 									</form>
 								</div>
 							</div>

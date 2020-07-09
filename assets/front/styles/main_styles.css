@@ -592,6 +592,7 @@ a.upload-pres {
 	/*width: calc((100% - 50px) * 0.601);*/
 	height: 100%;
 	line-height: 50px;
+	font-size: 16px;
 	border: none !important;
 	outline: none !important;
 	padding-left: 26px;
