@@ -155,7 +155,22 @@ body {
   font-size: 20px;
 }
 /*--------------------sidebar-header----------------------*/
-
+.top_bar_logo {
+    width: 50px;
+    height: 45px;
+    margin-right: 10px;
+}
+.top_bar_logo img{
+    width: 100%;
+    height: 100%;
+}
+span.location-logo {
+    font-size: 20px;
+    margin: 2px 8px;
+    color: #5d7184;
+    z-index: 999;
+    position: absolute;
+}
 .sidebar-wrapper .sidebar-header {
   padding: 20px;
   overflow: hidden;
