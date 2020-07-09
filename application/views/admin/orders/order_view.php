@@ -71,24 +71,24 @@
                   <h4 class="deliver-date">Delivered - 26/2/2020</h4>
                 </div>
                 <div class="card-box table-responsive">                
-                <table class="table order-detail-table">
-                  <tbody>
-                    <tr>
-                      <td style="width: 15%">
-                        <div class="order-product-img">
-                          <img src="<?php echo base_url(); ?>assets/brand-images/da1d850aff1b5994c62200e0d3e34ffa.jpg">
-                        </div>
-                      </td>
-                      <td>
-                        <div class="order-product-detail">
-                          <h6 class="order-product-name"> name</h6>
-                          <p>Price- <i class="fa fa-inr"></i> 2000/-</p>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+                  <table class="table order-detail-table">
+                    <tbody>
+                      <tr>
+                        <td style="width: 15%">
+                          <div class="order-product-img">
+                            <img src="<?php echo base_url(); ?>assets/brand-images/da1d850aff1b5994c62200e0d3e34ffa.jpg">
+                          </div>
+                        </td>
+                        <td>
+                          <div class="order-product-detail">
+                            <h6 class="order-product-name"> name</h6>
+                            <p>Price- <i class="fa fa-inr"></i> 2000/-</p>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>            
               
             </div>
