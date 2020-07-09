@@ -2,10 +2,21 @@
   <div class="main-page-container">   
   	<div class="main-slider-top">
 		<div class="owl-slider">
-	      <div id="carousel" class="owl-carousel banner-slider">
-          <?php if (!empty($banner)) {
+	      
+
+
+        <div id="carousel" class="owl-carousel banner-slider">
+          <?php 
+          $i=1;
+          if (!empty($banner)) {
             foreach ($banner as $key => $value) { ?>
               <div class="item">
+              <?php if($i==1){ ?>
+                <p class="slider-text">All Medial at one place</p>
+                <p class="slider-sub-text">For your better health</p>
+                <p class="slider-paragraph">Lorem Ipsum is simply dummy text of the printing and typesetting <br> industry. Lorem Ipsum has been the industry's standard dummy text.</p>
+                <button type="button" class="btn-default slider-buy-now">Buy Now</button>
+              <?php } $i+=1 ;?>
                 <img class="owl-lazy mains-slider" data-src="<?php echo base_url('assets/banner-images/'.$value->image);  ?>" alt="" >
               </div>
             <?php }
@@ -1280,7 +1291,7 @@
       lazyLoad: true,
       loop: true,
       margin: 20,
-                 responsiveClass: true,
+      responsiveClass: true,
       autoHeight: true,
       autoplayTimeout: 3000,
       smartSpeed: 800,
