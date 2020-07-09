@@ -1190,3 +1190,61 @@ li.product_li1 a{
     border: none !important;
     background: none !important;
   }
+
+  /*order page*/
+.order-date-detail ul {
+    list-style: none;
+    padding: 0px;
+}
+.order-date-detail ul li{
+    display: inline-block;
+}
+.order-date-detail ul li {
+    display: inline-block;
+    font-size: 14px;
+    padding: 0px 10px 0px 0px;
+}
+.order-detail {
+    border: 1px solid;
+    padding: 15px;
+    margin: 20px 0px 30px;
+    border-radius: 10px;
+}
+.order-head h4 {
+    font-size: 16px;
+    font-weight: 600;
+}
+.order-content p {
+    margin-bottom: 5px;
+}
+span.order-sum {
+    color: #73879c;
+    width: 125px;
+    display: inline-block;
+}
+.price-details p span {
+    color: #73879c;
+}
+.deliver-date{
+    font-size: 20px;
+    font-weight: 600;
+}
+.order-product-img {
+    width: 120px;
+    height: 120px;
+}
+.order-product-img img{
+    width: 100%;
+    height: 100%;
+}
+.order-date-detail h4 {
+    font-size: 25px;
+}
+table.table.order-detail-table {
+    background: #eef3f8;
+    margin-top: 15px;
+}
+h6.order-product-name {
+    font-size: 16px;
+}
+/*order page*/
