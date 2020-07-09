@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- Custom -->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ9GyWMzIoUSeTvXLg8YatVBOt9UCwkB8&libraries=places"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -40,6 +41,7 @@
 	<link href="<?php echo base_url(); ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
 	<title>Medicine</title>
 
@@ -54,7 +56,7 @@
 		<div class="top_bar">
 			<div class="container">
 				<div class="row">
-					<div class="col d-flex flex-row">
+					<div class="col d-flex flex-row main-header-section">
 						<div class="top_bar_logo">
 							
 						</div>
@@ -106,7 +108,7 @@
 								<div class="header_search_form_container">
 									<form action="#" class="header_search_form clearfix">
 										<i class="fa fa-location"></i>
-										<input type="search" required="required" class="header_search_input" placeholder="Enter Delivery Location" id="location">
+										<input type="search" required="required" class="header_search_input" placeholder="<?php echo "&#xe567;";  ?> Enter Delivery Location" id="location">
 									</form>
 								</div>
 							</div>
@@ -139,8 +141,8 @@
 		<!-- Main Navigation -->
 		<nav class="main_nav">
 			<div class="container">
-				<div class="row">
-					<div class="col">						
+				<div class="row menu-section">
+					<div class="col menu-column">						
 						<div class="main_nav_content d-flex flex-row">
 							<!-- Main Nav Menu -->							
 							<div class="main_nav_menu">
@@ -149,7 +151,7 @@
 									if(!empty($product_subcategory)){ 
 										foreach ($product_subcategory as $key => $value) { ?>
 									
-									<li class="hassubs">
+									<li class="hassubs">										
 										<a href="#"><?= $value['category_name']; ?> <i class="fas fa-chevron-up"></i></a>
 										<ul>
 											<?php foreach ($value['sub_category'] as $value1) { ?>
@@ -355,7 +357,7 @@
 
 <script type="text/javascript">
 	$(document).ready(function () {
-		$("#location").attr("placeholder","");		
+		// $("#location").attr("placeholder","Enter Delivery Location");		
 		
 	   google.maps.event.addDomListener(window, 'load', initialize);
 	});

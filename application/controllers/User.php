@@ -154,6 +154,11 @@ Class User extends MY_Controller {
         $this->middle = 'order_listing';
         $this->User();
     }
+    public function orderView()
+    {
+        $this->middle = 'order_view';
+        $this->User();
+    }
     public function profile()
     {        
 

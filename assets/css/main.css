@@ -719,6 +719,7 @@ a.qty:hover {
   transition: all 0.3s ease-in-out;
 }
 
+
 @media (min-width: 1900px){ 
   .container {
       max-width: 1840px;
