@@ -17,9 +17,9 @@
           <li class="product_li1">
             <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">Panding Order</a>
           </li>
-          <li class="product_li">
+          <!-- <li class="product_li">
             <a class="nav-link" id="benefits-tab" data-toggle="tab" href="#benefits" role="tab" aria-controls="benefits" aria-selected="false">Order History</a>
-          </li>
+          </li> -->
           <li class="product_li">
             <a class="nav-link" id="uses-tab" data-toggle="tab" href="#uses" role="tab" aria-controls="uses" aria-selected="true">All Product List</a>
           </li>
@@ -35,25 +35,32 @@
             <table class="table-shopping-cart">
               <tbody>
                 <tr class="table_head">
-                  <th class="column-1">Product Image</th>
+                  <!-- <th class="column-1">Product Image</th>
                   <th class="column-2">Product Name</th>
                   <th class="column-5">Price</th>
-                  <th class="column-3">Quantity</th>
-                  <th class="column-5">Total</th>
+                  <th class="column-3">Quantity</th> -->
+                  <th class="column-5">No.</th>
+                  <th class="column-5">Order Number</th>
                   <th class="column-5">Order Date</th>
                   <th class="column-5">Order Status</th>
-                  <th class="column-5">Delivery Date</th>
-                  <th class="column-5">Delivery Status</th>
+                  <!-- <th class="column-5">Delivery Date</th>
+                  <th class="column-5">Delivery Status</th> -->
                   <th class="column-5">Cancel &amp; Return </th>
                 </tr>
                 <tr class="table_row">
-                  <td class="column-1">
+                  <!-- <td class="column-1">
                     <div class="how-itemcart1">
                       <img src="http://waljon.com/assets/images/product/1550308345.png" alt="IMG">
                     </div> 
                   </td>
                   <td class="column-2">OSCAR X ZONE APPAREL PARFUM SPRAY (100ml) </td>
-                  <td class="column-5"> 350 </td>
+                  <td class="column-5"> 350 </td> -->
+                  <?php if (!empty($order_listing)) {
+                    $i= 1;
+                    foreach ($order_listing as $key => $value) { ?>
+                      <td class="column-3">1 </td>
+                  <?php  }
+                  } ?>
                   <td class="column-3">1 </td>
                   <td class="column-5"> <i class="fa fa-inr" aria-hidden="true"></i>350</td>
                   <td class="column-5">30:12:2019 </td>

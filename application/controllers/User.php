@@ -117,9 +117,9 @@ Class User extends MY_Controller {
     }
     public function checkout()
     {
-        if(empty($this->session->userdata('user_id'))){
+       /* if(empty($this->session->userdata('user_id'))){
             redirect(base_url('user/login'));
-        }
+        }*/
         // $this->data['user_address'] = $this->User->getData('user_address','address', array('user_id' => '2' ));
         $this->data['user_address'] = $this->User->getData('user_address','id,address,state,country', array('user_id' => $this->session->userdata('user_id') ));
         // print_r($this->data);die();
@@ -134,6 +134,8 @@ Class User extends MY_Controller {
 
     public function orderListing()
     {
+        $this->data['order_list'] = $this->User->orderList();
+        
         $this->middle = 'order_listing';
         $this->User();
     }
@@ -293,6 +295,26 @@ Class User extends MY_Controller {
                         'address'=>$this->input->post('address'),
                         'user_id'=>$this->session->userdata('user_id'));
         echo $this->User->insertData('user_address',$array);
+    }
+    public function placeorder()
+    {
+        $array = array('user_id'=>$this->session->userdata('user_id'),
+                        'order_number'=> date('Ymdhis'),
+                        'address_id'=>$this->input->post('address_id'),
+                        'created_at'=>date('Y-m-d H:i:s'));
+        $lastID = $this->User->insertData('orders',$array);
+        if ($lastID) {
+          $item = $this->cart->contents();
+            foreach ($item as $key => $value) {
+              $data = array('order_id'=>$lastID,
+                          'item_id'=>$value['id'],
+                          'qty'=>$value['qty'],
+                          'price'=>$value['price'],
+                          'subtotal'=>$value['subtotal']);
+              $this->User->insertData('order_item',$data);                
+            }
+        }
+
     }
 
 }

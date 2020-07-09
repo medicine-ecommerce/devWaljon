@@ -208,6 +208,18 @@ class User_model extends MY_model
 		}			
 	}
 
+	public function orderList()
+	{
+		$this->db->select('order_number,created_at,delivery_date,status');
+		$this->db->from('orders');
+		$this->db->where('user_id',$this->session->userdata('user_id'));
+		$query = $this->db->get();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		}
+
+	}
+
 
 
 }

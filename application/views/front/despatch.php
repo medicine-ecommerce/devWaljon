@@ -5,7 +5,7 @@
         <div class="col-md-10">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2 id="heading">Sign Up Your User Account</h2>
-                <form id="msform" method="post" action="<?php echo base_url(''); ?>">
+                <form id="msform" method="post" action="<?php echo base_url('user/placeorder'); ?>">
                     <!-- progressbar -->
                     <ul id="progressbar">
                         <li class="active" id="account"><strong>Product Details</strong></li>
@@ -85,7 +85,7 @@
                                        <div class="col-md-4">
                                             <div class="form-group label-float-top">
                                                 <label for="email" class="fieldlabels chg-psw-input">Country</label>                  
-                                                <select name="country" class="form-control input-update" id="countryId" value="<?php echo set_value('country')?>">
+                                                <select name="country" class="form-control input-update countries" id="countryId" value="<?php echo set_value('country')?>">
                                                     <option></option>
                                                 </select>
                                             </div>
@@ -93,14 +93,14 @@
                                         <div class="col-md-4">
                                             <div class="form-group label-float-top find-state">
                                                 <label class="fieldlabels chg-psw-input" for="country">State</label>
-                                                <select name="state" class="form-control input-update" id="stateId" value="<?php echo set_value('state')?>">                      
+                                                <select name="state" class="form-control input-update states" id="stateId" value="<?php echo set_value('state')?>">                      
                                                 </select>       
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                              <div class="form-group label-float-top">
                                                 <label for="country" class="fieldlabels chg-psw-input">City</label>
-                                                <select name="city" class="form-control input-update" id="cityId" value="<?php echo set_value('city')?>">                     
+                                                <select name="city" class="form-control input-update cities" id="cityId" value="<?php echo set_value('city')?>">                     
                                                 </select>
                                             </div>
                                         </div>
@@ -130,7 +130,8 @@
                                 <label class="fieldlabels chg-psw-input">Online</label> 
                                 <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control input-border-none" value="online" required="">
                                 <label class="fieldlabels chg-psw-input">Cash On Delivery</label>
-                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control input-border-none" value="cod" required=""> 
+                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control input-border-none" value="cod" required="">
+                                <input type="submit"  name="next" class="next action-button" value="Submit" /> 
                             </div>
                         </div>
                         <!-- <div class="form-card">
