@@ -182,7 +182,7 @@ class User_model extends MY_model
 	public function getCategoryData()
 	{	
 
-		$this->db->select('main_category.id as main_category_id, main_category.category_name');		
+		$this->db->select('main_category.id as main_category_id, main_category.category_name as main_category_name');		
 		$this->db->from('main_category');
 		$this->db->where('main_category.status','active');
 		$this->db->join('category','category.main_category_id = main_category.id');		
@@ -193,8 +193,9 @@ class User_model extends MY_model
 			$result = $query->result();		
 
 			foreach ($result as $key => $value) {
-				$return[$key]['main_category_id'] = $value->main_category_id;
-				$return[$key]['category_name'] = $value->category_name;
+				// $return[$key]['main_category_id'] = $value->main_category_id;
+				// $return[$key]['category_name'] = $value->category_name;
+				$return[$key] = (array)$value;
 				$this->db->select('category.id as category_id, category.category_name');				
 				$this->db->from('category');
 				$this->db->where('main_category_id',$value->main_category_id);
@@ -202,8 +203,26 @@ class User_model extends MY_model
 				$query_product = $this->db->get();
 				if ($query_product->num_rows() > 0) {
 					$return[$key]['sub_category'] = $query_product->result();
+					
+					foreach ($return[$key]['sub_category'] as $key1 => $value1) {
+						// $return[$key]['main_category_id'] = $value->main_category_id;
+						// $return[$key]['category_name'] = $value->category_name;
+						$return[$key]['sub_category'] = (array)$value1;
+						$this->db->select('subcategory.id as nested_category_id, subcategory.subcategory as nested_category_name');				
+						$this->db->from('subcategory');
+						$this->db->where('category_id',$value1->category_id);
+						// $this->db->limit(8);
+						$query_product1 = $this->db->get();
+						if ($query_product1->num_rows() > 0) {
+							$return[$key]['sub_category']['nested_category'][$key1] = $query_product1->result();
+						}
+					}
+
 				}
-			}			
+			}	
+			// echo "<pre>";
+			// print_r($return);		
+			// exit();
 			return $return;
 		}			
 	}
