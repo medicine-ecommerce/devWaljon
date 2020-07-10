@@ -1268,3 +1268,82 @@ h6.order-product-name {
     font-size: 16px;
 }
 /*order page*/
+/*user prescription*/
+a.upload-pres {
+    background: white;
+    margin: 0 auto 20px;
+    display: block;
+    width: 100%;
+}
+span.upload-img {
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+}
+span.upload-img img{
+    width: 100%;
+    height: 100%;
+}
+span.upload-name {
+    display: inline-block;
+    margin-left: 20px;
+}
+.show-upload {
+    display: inline-block;
+}
+.upload-div {
+    margin: 0 auto;
+    width: 80%;
+}
+.show-upload {
+    display: inline-block;
+    width: 100%;
+    border-top: 1px solid;
+}
+.show-upload h5{
+  font-size: 18px;
+  margin: 20px 0px;
+}
+.show-upload-img {
+  display: inline-block;
+  width: 70px;
+  height: 70px;
+}
+.show-upload-img img{
+    width: 100%;
+    height: 100%;
+}
+.show-upload-name{
+  display: inline-block;
+  margin-left: 20px;
+}
+.show-upload-content {
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+}
+ul.guide-content-ul li {
+    list-style: disc;
+    font-size: 14px;
+}
+.guide-content {
+    margin: 20px;
+}
+button.upload-continue-btn {
+    font-weight: 600;
+    background: #76929e;
+    font-size: 16px;
+    color: white;
+    border: none;
+    padding: 10px 35px;
+    border-radius: 5px;
+}
+.guide-img {
+    height: 362px;
+}
+.guide-img img{
+    height: 100%;
+}
+/*user prescription*/
