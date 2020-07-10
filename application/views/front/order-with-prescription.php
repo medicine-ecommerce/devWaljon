@@ -81,7 +81,29 @@
             </div>
           </div>
         </div>
-      </div>             
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="order-date-detail">
+            <a class="back-btn">← Back to options</a>
+            <h4>Saved Prescriptions (3 selected)</h4>
+          </div>
+          <div class="order-detail">
+            <div class="upload-img-sec">
+              <ul>
+                <li class="uplod-prec-img">
+                  <input type="checkbox" name="select" class="check-presc">
+                  <img src="<?php echo base_url();?>assets/img/file.png">
+                </li>
+              </ul>
+            </div>  
+          </div> 
+          <div class="upload-continue">
+            <button class="upload-continue-btn">Continue</button>
+          </div>
+        </div>
+      </div>               
     </div>
   </div> 
 </section>
