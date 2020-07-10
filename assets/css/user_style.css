@@ -114,16 +114,18 @@ img.owl-lazy.icon-slider{
     font-size: 12px;
 }
 .deal-text {
-    font-size: 12px;
+    font-size: 14px;
     color: red;
     margin-top: 90px;
     margin-bottom: 15px;
 }
 .countdown-clock {
     background-color: white;
-    width: 220px;
+    width: 240px;
     height: 115px;
+    text-align: center;
     margin: 0 auto;
+    border-radius: 10px;
 }
 .countdown-text {
     color: red;
@@ -132,12 +134,13 @@ img.owl-lazy.icon-slider{
 }
 .countdown-button {
     position: absolute;
-    bottom: -10px;
+    bottom: -20px;
     padding: 5px 10px;
     border: none;
     background-color: #4fa9e2;
     color: #fff;
-    right: 60px;
+    right: 80px;
+    font-size: 14px;
 }
 .product-heading {
     text-align: center;

@@ -506,6 +506,7 @@ span.location-logo {
 .footer-content {
     background-image: url(../img/footer_bg_jpg.jpg);
     background-size: cover;
+    padding: 50px 0px;
 }
 .ft-box.text-center {
     padding: 30px;
@@ -722,6 +723,9 @@ span.product-sub-heading {
     display: inline-block;
     margin-left: 10px;
 }
+.profile-details h3{
+   font-size: 16px;
+}
 .profile-details span {
     display: inline-block;
 }
@@ -933,6 +937,7 @@ a.add-cart-btn {
 .panel-default>.panel-heading a {
   display: block;
   padding: 10px 15px;
+  font-size: 14px;
 }
 
 .panel-default>.panel-heading a:after {

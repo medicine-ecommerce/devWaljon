@@ -5,7 +5,7 @@
 					
 					</div>
 					<div class="col-md-8">
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col-md-4">
 								<div class="ft-box text-center">
 									<div class="ft-logo">
@@ -45,7 +45,7 @@
 									</div>
 								</div>	
 							</div>
-						</div>
+						</div> -->
 						<div class="other-section">
 							<div class="os-content">
 								<span class="ft-os-heading">Know Us</span>	

@@ -58,10 +58,12 @@
 				<div class="row">
 					<div class="col d-flex flex-row main-header-section">
 						<div class="top_bar_logo">
-							<img src="<?php echo base_url(); ?>assets/img/logo.png">
+							<a href="<?php echo base_url('user');?>">
+								<img src="<?php echo base_url(); ?>assets/img/logo.png">
+							</a>
 						</div>
 						<div class="top_bar_contact_btn">
-							<a href="#">Medicine</a>
+							<a href="<?php echo base_url('user');?>">Medicine</a>
 							<a href="#">Consult A Doctor</a>
 							<a href="#">Book Appointment</a>
 						</div>
