@@ -154,11 +154,23 @@
 										foreach ($product_subcategory as $key => $value) { ?>
 									
 									<li class="hassubs">										
-										<a href="#"><?= $value['category_name']; ?> <i class="fas fa-chevron-up"></i></a>
+										<a href="#"><?= $value['main_category_name']; ?> <i class="fas fa-chevron-up"></i></a>
 										<ul>
-											<?php foreach ($value['sub_category'] as $value1) { ?>
+											<?php 
+											if(!empty($value['sub_category'])){
+												foreach ($value['sub_category'] as $value1) { 
+											 ?>
+											 <!-- <li><a href=""><?= $value1['category_name']; ?></a></li> -->
+											<?php } } ?>
+											<!-- <?php foreach ($value['sub_category'] as $value1) { ?>
 											<li><a href="<?php echo base_url('user/category/'.base64_encode($value['main_category_id'])."/".base64_encode($value1->category_id)); ?>"><?= $value1->category_name; ?></a></li>
-											<?php } ?>
+											<?php 
+											if(!empty($value1['nested_category'])){
+											 foreach ($value1['nested_category'] as $value2) { ?>
+											
+											<li><a href="<?php echo base_url('user/category/'.base64_encode($value['main_category_id'])."/".base64_encode($value1->category_id)); ?>"><?= $value1->category_name; ?></a></li>
+											<?php } }?>
+											<?php } ?> -->
 										</ul>
 									</li>
 									<?php } } ?>
