@@ -17,9 +17,9 @@
           <li class="product_li1">
             <a class="nav-link active" id="about-tab" data-toggle="tab" href="#about" role="tab" aria-controls="about" aria-selected="true">Panding Order</a>
           </li>
-          <li class="product_li">
+          <!-- <li class="product_li">
             <a class="nav-link" id="benefits-tab" data-toggle="tab" href="#benefits" role="tab" aria-controls="benefits" aria-selected="false">Order History</a>
-          </li>
+          </li> -->
           <li class="product_li">
             <a class="nav-link" id="uses-tab" data-toggle="tab" href="#uses" role="tab" aria-controls="uses" aria-selected="true">All Product List</a>
           </li>
@@ -35,105 +35,32 @@
             <table class="table-shopping-cart">
               <tbody>
                 <tr class="table_head">
-                  <th class="column-1">Product Image</th>
+                  <!-- <th class="column-1">Product Image</th>
                   <th class="column-2">Product Name</th>
                   <th class="column-5">Price</th>
-                  <th class="column-3">Quantity</th>
-                  <th class="column-5">Total</th>
+                  <th class="column-3">Quantity</th> -->
+                  <th class="column-5">No.</th>
+                  <th class="column-5">Order Number</th>
                   <th class="column-5">Order Date</th>
                   <th class="column-5">Order Status</th>
-                  <th class="column-5">Delivery Date</th>
-                  <th class="column-5">Delivery Status</th>
+                  <th class="column-5">View Order</th>  
+                  <!-- <th class="column-5">Delivery Date</th>
+                  <th class="column-5">Delivery Status</th> -->
                   <th class="column-5">Cancel &amp; Return </th>
                 </tr>
-                <tr class="table_row">
-                  <td class="column-1">
-                    <div class="how-itemcart1">
-                      <img src="http://waljon.com/assets/images/product/1550308345.png" alt="IMG">
-                    </div> 
-                  </td>
-                  <td class="column-2">OSCAR X ZONE APPAREL PARFUM SPRAY (100ml) </td>
-                  <td class="column-5"> 350 </td>
-                  <td class="column-3">1 </td>
-                  <td class="column-5"> <i class="fa fa-inr" aria-hidden="true"></i>350</td>
-                  <td class="column-5">30:12:2019 </td>
-                  <td class="column-5"><span style="color: #f16134de;">Awaiting   </span></td>
-                  <td class="column-5"> </td>
-                  <td class="column-5">Pending</td>
-                  <td class="column-5"></td>
-                </tr>
-                <tr class="table_row">
-                  <td class="column-1">
-                    <div class="how-itemcart1">
-                      <img src="http://waljon.com/assets/images/product/1550308345.png" alt="IMG">
-                    </div> 
-                  </td>
-                  <td class="column-2">OSCAR X ZONE APPAREL PARFUM SPRAY (100ml) </td>
-                  <td class="column-5"> 350 </td>
-                  <td class="column-3">1 </td>
-                  <td class="column-5"> <i class="fa fa-inr" aria-hidden="true"></i>350</td>
-                  <td class="column-5">30:12:2019 </td>
-                  <td class="column-5"><span style="color: #f16134de;">Awaiting</span></td>
-                  <td class="column-5"> </td>
-                  <td class="column-5">Pending</td>
-                  <td class="column-5"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <div class="tab-pane fade" id="benefits" role="tabpanel" aria-labelledby="benefits-tab">
-          <div class="product-main-heading">
-            <h4>Order History</h4>
-          </div>
-          <div class="order-table"> 
-            <table class="table-shopping-cart">
-              <tbody>
-                <tr class="table_head">
-                  <th class="column-1">Product Image</th>
-                  <th class="column-2">Product Name</th>
-                  <th class="column-5">Price</th>
-                  <th class="column-3">Quantity</th>
-                  <th class="column-5">Total</th>
-                  <th class="column-5">Order Date</th>
-                  <th class="column-5">Order Status</th>
-                  <th class="column-5">Delivery Date</th>
-                  <th class="column-5">Delivery Status</th>
-                  <th class="column-5">Cancel &amp; Return </th>
-                  <th class="column-5">Cancel &amp; Medicine </th>
-                </tr>
-                <tr class="table_row">
-                  <td class="column-1">
-                    <div class="how-itemcart1">
-                      <img src="http://waljon.com/assets/images/product/1550308345.png" alt="IMG">
-                    </div> 
-                  </td>
-                  <td class="column-2">OSCAR X ZONE APPAREL PARFUM SPRAY (100ml) </td>
-                  <td class="column-5"> 350 </td>
-                  <td class="column-3">1 </td>
-                  <td class="column-5"> <i class="fa fa-inr" aria-hidden="true"></i>350</td>
-                  <td class="column-5">30:12:2019 </td>
-                  <td class="column-5"><span style="color: #f16134de;">Awaiting   </span></td>
-                  <td class="column-5"> </td>
-                  <td class="column-5">Pending</td>
-                  <td class="column-5"></td>
-                </tr>
-                <tr class="table_row">
-                  <td class="column-1">
-                    <div class="how-itemcart1">
-                      <img src="http://waljon.com/assets/images/product/1550308345.png" alt="IMG">
-                    </div> 
-                  </td>
-                  <td class="column-2">OSCAR X ZONE APPAREL PARFUM SPRAY (100ml) </td>
-                  <td class="column-5"> 350 </td>
-                  <td class="column-3">1 </td>
-                  <td class="column-5"> <i class="fa fa-inr" aria-hidden="true"></i>350</td>
-                  <td class="column-5">30:12:2019 </td>
-                  <td class="column-5"><span style="color: #f16134de;">Awaiting</span></td>
-                  <td class="column-5"> </td>
-                  <td class="column-5">Pending</td>
-                  <td class="column-5"></td>
-                </tr>
+                <?php if (!empty($order_list)) {
+                    $i= 1;
+                    foreach ($order_list as $key => $value) { ?>                    
+                    <tr class="table_row">
+                      <td class="column-3"><?php echo $i; ?> </td>
+                      <td class="column-3"><?php echo $value->order_number; ?> </td>
+                      <td class="column-3"><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?> </td>
+                      <td class="column-3"><?php echo ucfirst($value->status); ?> </td>
+                      <td class="column-3"><a href="<?php echo base_url('user/orderView/'.$value->id); ?>">View Order</a></td>
+                      <td class="column-5"></td>
+                    </tr>
+                  <?php  }
+                  } ?>
               </tbody>
             </table>
           </div>
@@ -146,50 +73,37 @@
             <table class="table-shopping-cart">
               <tbody>
                 <tr class="table_head">
-                  <th class="column-1">Product Image</th>
+                  <!-- <th class="column-1">Product Image</th>
                   <th class="column-2">Product Name</th>
                   <th class="column-5">Price</th>
-                  <th class="column-3">Quantity</th>
-                  <th class="column-5">Total</th>
+                  <th class="column-3">Quantity</th> -->
+                  <th class="column-5">No.</th>
+                  <th class="column-5">Order Number</th>
                   <th class="column-5">Order Date</th>
                   <th class="column-5">Order Status</th>
                   <th class="column-5">Delivery Date</th>
                   <th class="column-5">Delivery Status</th>
+                  <th class="column-5">View Order</th>                  
                   <th class="column-5">Cancel &amp; Return </th>
-                  <th class="column-5">Cancel &amp; Medicine </th>
                 </tr>
-                <tr class="table_row">
-                  <td class="column-1">
-                    <div class="how-itemcart1">
-                      <img src="http://waljon.com/assets/images/product/1550308345.png" alt="IMG">
-                    </div> 
-                  </td>
-                  <td class="column-2">OSCAR X ZONE APPAREL PARFUM SPRAY (100ml) </td>
-                  <td class="column-5"> 350 </td>
-                  <td class="column-3">1 </td>
-                  <td class="column-5"> <i class="fa fa-inr" aria-hidden="true"></i>350</td>
-                  <td class="column-5">30:12:2019 </td>
-                  <td class="column-5"><span style="color: #f16134de;">Awaiting   </span></td>
-                  <td class="column-5"> </td>
-                  <td class="column-5">Pending</td>
-                  <td class="column-5"></td>
-                </tr>
-                <tr class="table_row">
-                  <td class="column-1">
-                    <div class="how-itemcart1">
-                      <img src="http://waljon.com/assets/images/product/1550308345.png" alt="IMG">
-                    </div> 
-                  </td>
-                  <td class="column-2">OSCAR X ZONE APPAREL PARFUM SPRAY (100ml) </td>
-                  <td class="column-5"> 350 </td>
-                  <td class="column-3">1 </td>
-                  <td class="column-5"> <i class="fa fa-inr" aria-hidden="true"></i>350</td>
-                  <td class="column-5">30:12:2019 </td>
-                  <td class="column-5"><span style="color: #f16134de;">Awaiting</span></td>
-                  <td class="column-5"> </td>
-                  <td class="column-5">Pending</td>
-                  <td class="column-5"></td>
-                </tr>
+                <?php if (!empty($order_list)) {
+                    $i= 1;
+                    foreach ($order_list as $key => $value) {
+                    if ($value->status=='Pending') {
+                     ?>                    
+                    <tr class="table_row">
+                      <td class="column-3"><?php echo $i; ?> </td>
+                      <td class="column-3"><?php echo $value->order_number; ?> </td>
+                      <td class="column-3"><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?> </td>
+                      <td class="column-3"><?php echo ucfirst($value->status); ?> </td>
+                      <td class="column-3"><a href="<?php echo base_url('user/orderView/'.$value->id); ?>">View Order</a></td>
+                      <td class="column-5"></td>
+                      <td class="column-5"></td>
+                      <td class="column-5"></td>
+                    </tr>
+                  <?php  }
+                    }
+                  } ?>
               </tbody>
             </table>
           </div>
