@@ -538,6 +538,14 @@ button.btn-default.slider-buy-now:hover {
 .brand-section img.owl-lazy{
     width: 200px;
 }
+a.sub-category-name {
+    font-size: 16px !important;
+    font-weight: 600;
+    color: black !important;
+}
+/*.div-float-right {
+    display: table-cell;
+}*/
 
 @media not all and (min-resolution:.001dpcm) {
 @supports (-webkit-appearance: none) and (stroke-color:transparent) {
