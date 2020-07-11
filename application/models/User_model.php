@@ -220,9 +220,9 @@ class User_model extends MY_model
 
 				}
 			}	
-			echo "<pre>";
+/*			echo "<pre>";
 			print_r($return);		
-			exit();
+			exit();*/
 			return $return;
 		}			
 	}
