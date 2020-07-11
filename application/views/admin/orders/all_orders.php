@@ -25,65 +25,35 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th>Image</th>
+                      <th>Order Number</th>
                       <th>Order By</th>
-                      <th>Order For</th>
+                      <th>Mobile</th>
                       <th>Order On</th>
-                      <th>Order Date</th>
-                      <th>Product Quantity</th>
-                      <th>Total Price</th>
-                      <th>Address</th>
+                      <th>Order status</th>
                       <th>Action</th>
                     </tr>
                   </thead>
                     <tbody>
                     <?php 
-                    if (!empty($category)) {
+                    if (!empty($orders)) {
                       $i = 1;
-                      foreach ($category as $key => $value) {
-                      if($value->status!='pending'){ ?>
+                      foreach ($orders as $key => $value) { ?>
                       <tr>
                         <td><?php echo $i++; ?></td>
-                        <td><?php echo $value->image; ?></td>
-                        <td><?php echo $value->username; ?></td>
-                        <td><?php echo $value->category_name; ?></td>
+                        <td><?php echo $value->order_number; ?></td>
+                        <td><?php echo $value->full_name; ?></td>
+                        <td><?php echo $value->mobile; ?></td>
                         <td><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?></td>
-                        <td><?php echo $i++; ?></td>
-                        <td><?php echo $value->username; ?></td>
-                        <td><?php echo $value->category_name; ?></td>
                         <td>
                           <?php if ($value->status=='pending') {
                             echo '<span class="pending">Pending</span>';
                           } elseif ($value->status=='active') {
                             echo '<span class="approved">Active</span>';
                           } else {
-                            echo '<span class="rejected">Deactive</span>';
+                            echo '<span class="rejected">Canceled</span>';
                           } ?>
                         </td>
-                        <td>
-                          <?php if ($this->session->userdata('user_type')=='vendor' && $value->status=='pending') { ?>
-                            <a href="<?php echo base_url('vendor/category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
-                            <a href="<?php echo base_url('vendor/category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
-                            <?php }
-                          else if($this->session->userdata('user_type')=='vendor' && $value->status!='pending'){ ?>
-                            <a class="disable" href="<?php echo base_url('vendor/category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
-                            <a class="disable" href="<?php echo base_url('vendor/category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
-                          <?php }
-                          else if($this->session->userdata('user_type')=='admin'){ ?>
-                            <a href="<?php echo base_url('admin/category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
-                            <a href="<?php echo base_url('admin/category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a> 
-                            <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
-                              <?php if ($value->status=='pending' || $value->status=='reject') { ?>
-                                <a class="dropdown-item" href="<?php echo base_url('admin/category_status/active/'.$value->id);?>">Activate</a>
-                              <?php }
-                              if ($value->status=='pending' || $value->status=='active') { ?>
-                                <a class="dropdown-item" href="<?php echo base_url('admin/category_status/reject/'.$value->id);?>">Deactivate</a>
-                              <?php } ?>
-                            </div>
-                          <?php } 
-                        }?> 
-                        </td>
+                        <td><a href="<?php echo base_url('admin/order_view/'.$value->order_id); ?>"><span class="pending">View Order</span></a></td>
                         </tr>
                       <?php } 
                     }?>
