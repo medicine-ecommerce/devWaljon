@@ -1465,6 +1465,7 @@
       lazyLoad: true,
       loop: true,
       margin: 20,
+      items : 5,
       responsiveClass: true,
       autoHeight: true,
       autoplayTimeout: 4000,
@@ -1478,12 +1479,9 @@
         600: {
           items: 3
         },
-
         1024: {
           items: 4
-        },
-
-        
+        },   
       }
     });
     var owl3 = $("#carousel3");                 

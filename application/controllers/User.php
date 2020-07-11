@@ -163,6 +163,13 @@ Class User extends MY_Controller {
         $this->middle = 'order_view';
         $this->User();
     }
+
+    public function order_with_prescription()
+    {
+        $this->middle = 'order-with-prescription';
+        $this->User();
+    }
+
     public function profile()
     {        
 

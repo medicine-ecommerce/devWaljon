@@ -104,8 +104,10 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <label for="password" class="fieldlabels chg-psw-input">Address</label>
-                                        <input type="text" name="address" class="form-control input-update" name="Address">
+                                        <div class="col-md-12">   
+                                            <label for="password" class="fieldlabels chg-psw-input">Address</label>
+                                            <input type="text" name="address" class="form-control input-update" name="Address">
+                                        </div>
 
                                         <!--                             
                                         <label for="password">Pincode</label>

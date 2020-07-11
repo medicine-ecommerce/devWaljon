@@ -155,89 +155,30 @@
 									
 									<li class="hassubs">										
 										<a href="#"><?= $value['main_category_name']; ?> <i class="fas fa-chevron-up"></i></a>
-										<ul>
-											<?php 
+										<ul class="ul-menu">
+
+											<?php  
+											$i = 1;											
 											if(!empty($value['sub_category'])){
-												foreach ($value['sub_category'] as $value1) { 
-											 ?>
-											 <!-- <li><a href=""><?= $value1['category_name']; ?></a></li> -->
-											<?php } } ?>
-											<!-- <?php foreach ($value['sub_category'] as $value1) { ?>
-											<li><a href="<?php echo base_url('user/category/'.base64_encode($value['main_category_id'])."/".base64_encode($value1->category_id)); ?>"><?= $value1->category_name; ?></a></li>
-											<?php 
-											if(!empty($value1['nested_category'])){
-											 foreach ($value1['nested_category'] as $value2) { ?>
-											
-											<li><a href="<?php echo base_url('user/category/'.base64_encode($value['main_category_id'])."/".base64_encode($value1->category_id)); ?>"><?= $value1->category_name; ?></a></li>
-											<?php } }?>
-											<?php } ?> -->
-										</ul>
+												foreach ($value['sub_category'] as $value1) {  ?>
+													<!-- <div class="<?php if($i < 4){ echo "div-float-left"; }else{ echo "div-float-right"; }  ?> "> -->
+													<div class="div-float-right">
+
+											 		<li><a href="<?php echo base_url('user/category/'.base64_encode($value['main_category_id'])."/".base64_encode($value1['category_id'])); ?>"  class="sub-category-name"><?= $value1['category_name']; ?></a></li>
+											 <?php 
+												if(!empty($value1['nested_category'])){
+													foreach ($value1['nested_category'] as $value2) {  ?>
+
+													<li><a href="<?php echo base_url('user/category/'.base64_encode($value['main_category_id'])."/".base64_encode($value1['category_id'])); ?>"><?= $value2->nested_category_name; ?></a></li>
+
+													<?php 
+													$i+= 1;
+													  } } ?>		
+													</div>
+												<?php } } ?>											
+										</ul>										
 									</li>
-									<?php } } ?>
-									<!-- <li class="hassubs">
-										<a href="#">Featured<i class="fas fa-chevron-up"></i></a>
-										<ul>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-										</ul>
-									</li>
-									<li class="hassubs">
-										<a href="#">Fitness & Supplements <i class="fas fa-chevron-up"></i></a>
-										<ul>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-										</ul>
-									</li>
-									<li class="hassubs">
-										<a href="#">Diabetes<i class="fas fa-chevron-up"></i></a>
-										<ul>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-										</ul>
-									</li>
-									<li class="hassubs">
-										<a href="#">Healthcare Devices <i class="fas fa-chevron-up"></i></a>
-										<ul>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-										</ul>
-									</li>
-									<li class="hassubs">
-										<a href="#">Personal Care<i class="fas fa-chevron-up"></i></a>
-										<ul>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-										</ul>
-									</li>
-									<li class="hassubs">
-										<a href="#">Health Conditions <i class="fas fa-chevron-up"></i></a>
-										<ul>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-										</ul>
-									</li>
-									<li class="hassubs">
-										<a href="#">Ayurveda Products<i class="fas fa-chevron-up"></i></a>
-										<ul>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-										</ul>
-									</li>
-									<li class="hassubs">
-										<a href="#">Homeopathy<i class="fas fa-chevron-up"></i></a>
-										<ul>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-											<li><a href="#">Menu Item </a></li>
-										</ul>
-									</li> -->
+									<?php } } ?>									
 									<!-- <li class="hassubs">
 										<a href="#">Pages<i class="fas fa-chevron-down"></i></a>
 										<ul>
@@ -380,4 +321,5 @@
 	    var input = document.getElementById('location');
 	    var autocomplete = new google.maps.places.Autocomplete(input);
 	}
+	
 </script>
