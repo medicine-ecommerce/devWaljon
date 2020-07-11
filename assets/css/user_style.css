@@ -547,6 +547,37 @@ a.sub-category-name {
     display: table-cell;
 }*/
 
+#limheight {
+    height: 400px; /*your fixed height*/    
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 5;
+}
+
+#limheight li {
+    display: inline-block; /*necessary*/
+}
+
+.menu-float-right ul.ul-menu {
+    left: -800px;
+}
+.main_nav_dropdown .ul-menu li{
+    border-right:none;
+}
+.standard_dropdown li.ul-menu li a{
+    border-bottom:none;
+}
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    height: auto;
+  }
+}
+/*test*/
+
 @media not all and (min-resolution:.001dpcm) {
 @supports (-webkit-appearance: none) and (stroke-color:transparent) {
 

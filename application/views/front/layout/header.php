@@ -151,12 +151,12 @@
 								<ul class="standard_dropdown main_nav_dropdown">
 									<?php									
 									if(!empty($product_subcategory)){ 
+										$c = 1;
 										foreach ($product_subcategory as $key => $value) { ?>
 									
-									<li class="hassubs">										
+									<li class="hassubs <?php if($c > 5){ echo "menu-float-right"; } ?> ">				
 										<a href="#"><?= $value['main_category_name']; ?> <i class="fas fa-chevron-up"></i></a>
-										<ul class="ul-menu">
-
+										<ul class="ul-menu" id="limheight">
 											<?php  
 											$i = 1;											
 											if(!empty($value['sub_category'])){
@@ -178,7 +178,8 @@
 												<?php } } ?>											
 										</ul>										
 									</li>
-									<?php } } ?>									
+									<?php $c+=1;
+									 } } ?>									
 									<!-- <li class="hassubs">
 										<a href="#">Pages<i class="fas fa-chevron-down"></i></a>
 										<ul>
