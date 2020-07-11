@@ -240,7 +240,7 @@ class User_model extends MY_model
 	}
 	public function OrderView($id)
 	{
-		$this->db->select('orders.*,orders.id as order_id,user_address.*');
+		$this->db->select('orders.*,orders.id as order_id,user_address.*,(select sum(subtotal) from order_item where order_id=orders.id) as order_subtotal');
 		$this->db->from('orders');
 		$this->db->where('orders.id',$id);
 		$this->db->join('user_address','user_address.id = orders.address_id');
