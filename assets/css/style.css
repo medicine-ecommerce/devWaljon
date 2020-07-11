@@ -1270,10 +1270,8 @@ h6.order-product-name {
 /*order page*/
 /*user prescription*/
 .upload-pres {
-    background: white;
     margin: 0 auto 20px;
     display: block;
-    width: 100%;
 }
 span.upload-img {
     display: inline-block;
@@ -1411,6 +1409,7 @@ p.medicine-price {
 }
 .back-white{
   background: white !important;
+  width: 100%;
 }
 input.upload-new-pres {
     height: 70px;
@@ -1438,4 +1437,38 @@ a.cross-img-upload {
     border-radius: 50%;
     font-size: 14px;
 }
+.slider-img .slider {
+  margin: 0 auto;
+}
+
+.slick-list {
+    padding-left: 0px!important;  /*half partial*/
+}
+
+.slider-img .slider img {
+  margin: 10px;
+  padding: 2%;
+  width: 100%;
+  height:100%;
+  position: relative;
+  text-align: center;
+}
+ul.slick-dots li {
+    display: inline-block;
+}
+ul.slick-dots li button{
+   border: 1px solid #ababab;
+    background: #ddd;
+    padding: 5px 8px;
+    color: #000;
+    font-size: 12px;
+    margin-right: 5px;
+    font-weight: 600;
+}
+ul.slick-dots li.slick-active button{
+    border: 1px solid #4abdde !important;
+    background: #4abdde !important;
+    color: #fff !important;
+}
+
 /*user prescription*/
