@@ -15,6 +15,7 @@ class User_model extends MY_model
 		$this->db->join('subcategory','subcategory.category_id = category.id');
 		$this->db->join('product','product.category_id = subcategory.id');
 		$this->db->group_by('category.id');
+		$this->db->order_by('category.id','desc');
 		$this->db->limit('5');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
@@ -219,11 +220,7 @@ class User_model extends MY_model
 					}
 
 				}
-			}	
-
-			// echo "<pre>";
-			// print_r($return);		
-			// exit();
+			}
 			return $return;
 		}			
 	}
@@ -241,7 +238,7 @@ class User_model extends MY_model
 	}
 	public function OrderView($id)
 	{
-		$this->db->select('orders.*,orders.id as order_id,user_address.*');
+		$this->db->select('orders.*,orders.id as order_id,user_address.*,(select sum(subtotal) from order_item where order_id=orders.id) as order_subtotal');
 		$this->db->from('orders');
 		$this->db->where('orders.id',$id);
 		$this->db->join('user_address','user_address.id = orders.address_id');

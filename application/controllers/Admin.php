@@ -773,13 +773,15 @@ Class Admin extends MY_Controller {
         $this->middle = 'orders/cancle_orders';
         $this->Admin();
     }
-    public function all_orders()
+    public function orders($status='')
     {
+        $this->data['orders'] = $this->Admin->GetAllOrders($status);
         $this->middle = 'orders/all_orders';
         $this->Admin();
     }
-    public function order_view()
+    public function order_view($id)
     {
+        $this->data['order'] = $this->Admin->OrderView($id);
         $this->middle = 'orders/order_view';
         $this->Admin();
     }
