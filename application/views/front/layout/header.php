@@ -156,8 +156,8 @@
 										$c = 1;
 										foreach ($product_subcategory as $key => $value) { ?>
 									
-									<li class="hassubs <?php if($c > 5){ echo "menu-float-right"; } ?> ">				
-										<a href="#"><?= $value['main_category_name']; ?> <i class="fas fa-chevron-up"></i></a>
+									<li class="hassubs <?php if($c==5){ echo "menu-float-right05"; } ?> ">				
+										<a href="#" class="main-menu-n"><?= $value['main_category_name']; ?> <i class="fas fa-chevron-up"></i></a>
 										<ul class="ul-menu" id="limheight">
 											<?php  
 											$i = 1;											
@@ -324,5 +324,15 @@
 	    var input = document.getElementById('location');
 	    var autocomplete = new google.maps.places.Autocomplete(input);
 	}
+	$(document).ready(function () {
+		$('.ul-menu').mouseover(function(){
+			$(this).parents('.hassubs').find('.main-menu-n').addClass("main-menu-name");
+		});
+		$('.ul-menu').mouseleave(function(){
+			$(this).parents('.hassubs').find('.main-menu-n').removeClass("main-menu-name");
+		});
+	});
+
+
 	
 </script>

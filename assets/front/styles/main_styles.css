@@ -359,7 +359,7 @@ section
 .standard_dropdown li
 {
 	display: inline-block;
-	position: relative;
+	/*position: relative;*/
 	height: 40px;
 }
 .standard_dropdown li li

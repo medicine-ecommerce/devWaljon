@@ -418,7 +418,7 @@ button.btn.btn-primary.submit_button.btn-disable {
     padding: 0px 18px;    
 }
 .standard_dropdown li a:hover {
-    color: #0e8ce4;
+    color: #4abdde;
     text-decoration: none;
 }
 p a{
@@ -539,35 +539,77 @@ button.btn-default.slider-buy-now:hover {
     width: 200px;
 }
 a.sub-category-name {
-    font-size: 16px !important;
-    font-weight: 600;
-    color: black !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    color: #4abdde !important;
+}
+.main-menu-name {
+    color: #4abdde !important;
+    font-weight: 400 !important;
+    font-size: 14px;
 }
 /*.div-float-right {
     display: table-cell;
 }*/
 
 #limheight {
-    height: 400px; /*your fixed height*/    
+    height: auto; 
     -webkit-column-count: 3;
     -moz-column-count: 3;
-    column-count: 5;
+    column-count: 4;
+    width: 85%;
+    min-height: 250px;
+    left: 10%;
+    /*list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(132px, 1fr)); */
 }
+/*.limheight-col2 #limheight{
+    height: auto; 
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    column-count: 2;
+
+}
+li.hassubs.limheight-col2 .ul-menu {
+    margin-left: -370px;
+}
+.limheight-col3 #limheight{
+    height: auto; 
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+
+}
+li.hassubs.limheight-col3 .ul-menu {
+    margin-left: -370px;
+}*/
+/*.ul-menu {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}*/
 
 #limheight li {
     display: inline-block; /*necessary*/
 }
 
-.menu-float-right ul.ul-menu {
-    left: -800px;
-}
+/*.menu-float-right ul.ul-menu {
+    left: -650px;
+}*/
 .main_nav_dropdown .ul-menu li{
     border-right:none;
 }
 .standard_dropdown li.ul-menu li a{
     border-bottom:none;
 }
-
+.row.custom-row {
+    position: absolute;
+    background-color: aquamarine;
+    width: 1010px;
+    left: 15px;
+    /* height: auto; */
+}
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
