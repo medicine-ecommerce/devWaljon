@@ -153,12 +153,12 @@
 								<ul class="standard_dropdown main_nav_dropdown">
 									<?php									
 									if(!empty($product_subcategory)){ 
+										$c = 1;
 										foreach ($product_subcategory as $key => $value) { ?>
 									
-									<li class="hassubs">										
-										<a href="#"><?= $value['main_category_name']; ?> <i class="fas fa-chevron-up"></i></a>
-										<ul class="ul-menu">
-
+									<li class="hassubs <?php if($c==5){ echo "menu-float-right05"; } ?> ">				
+										<a href="#" class="main-menu-n"><?= $value['main_category_name']; ?> <i class="fas fa-chevron-up"></i></a>
+										<ul class="ul-menu" id="limheight">
 											<?php  
 											$i = 1;											
 											if(!empty($value['sub_category'])){
@@ -180,7 +180,8 @@
 												<?php } } ?>											
 										</ul>										
 									</li>
-									<?php } } ?>									
+									<?php $c+=1;
+									 } } ?>									
 									<!-- <li class="hassubs">
 										<a href="#">Pages<i class="fas fa-chevron-down"></i></a>
 										<ul>
@@ -323,5 +324,15 @@
 	    var input = document.getElementById('location');
 	    var autocomplete = new google.maps.places.Autocomplete(input);
 	}
+	$(document).ready(function () {
+		$('.ul-menu').mouseover(function(){
+			$(this).parents('.hassubs').find('.main-menu-n').addClass("main-menu-name");
+		});
+		$('.ul-menu').mouseleave(function(){
+			$(this).parents('.hassubs').find('.main-menu-n').removeClass("main-menu-name");
+		});
+	});
+
+
 	
 </script>

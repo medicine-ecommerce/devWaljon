@@ -15,6 +15,7 @@ class User_model extends MY_model
 		$this->db->join('subcategory','subcategory.category_id = category.id');
 		$this->db->join('product','product.category_id = subcategory.id');
 		$this->db->group_by('category.id');
+		$this->db->order_by('category.id','desc');
 		$this->db->limit('5');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
