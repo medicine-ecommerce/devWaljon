@@ -1,13 +1,14 @@
         
-                 
          <?php          
           if (!empty($product)) {
            foreach ($product as $key => $value) {   ?>
-            <div class="col-xl-3 col-md-4 col-sm-4 col-xs-12" >
+            <div class="col-xl-3 col-md-4 col-sm-4 col-xs-12">
               <div class="product-box">
-                <a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>">
-                  <img class="product-image" src="<?php echo ($value->product_image) ? base_url($value->product_image):'http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg'?>">              
-                </a>
+                <div class="product-cat-img">  
+                  <a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>">
+                    <img class="product-image" src="<?php echo ($value->product_image) ? base_url($value->product_image):'http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg'?>">              
+                  </a>
+                </div>
                 <div class="text-center">                
                   <p class="main-product-name"><a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>"><?php echo $value->product_name;?></a></p>
                   <p class="product-description"><?php echo $value->about_product;?></p>
@@ -26,8 +27,16 @@
               </div>
             </div>
           <?php }
-         } ?>
-
+         }else{ ?>
+            <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="empty-category">
+                <div class="empty-img">
+                  <img src="<?php echo base_url('assets/img/no_product_5.png'); ?>">
+                </div>
+                <h4>Currenty there is no product in this category</h4>
+              </div>
+            </div>
+         <?php } ?>
         </div>
         <?php echo $pagination; ?> 
 

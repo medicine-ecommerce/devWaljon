@@ -167,7 +167,14 @@ Class User extends MY_Controller {
 
     public function order_with_prescription()
     {
+        $this->data['prescription'] = $this->User->getData('order_prescription','prescription',array('user_id'=>$this->session->userdata('user_id')));
         $this->middle = 'order-with-prescription';
+        $this->User();
+    }
+    public function saved_prescription()
+    {
+        $this->data['prescription'] = $this->User->getData('order_prescription','prescription',array('user_id'=>$this->session->userdata('user_id')));
+        $this->middle = 'saved_prescription';
         $this->User();
     }
 
@@ -359,5 +366,14 @@ Class User extends MY_Controller {
 
         $data['productOne'] = json_decode($this->User->getSearchProduct());                
         $this->load->view('front/search-priscription-product',$data);
+    }
+    public function AjaxSavePrescription()
+    {
+        if (!empty($_FILES['file'])) {
+            $data = $this->User->upload('file','prescription');
+            $insertData = array('prescription' => 'assets/prescription/'.$data['file_name'],
+                'user_id'=> $this->session->userdata('user_id'));
+            $this->User->insertData('order_prescription',$insertData);
+        }
     }
 }

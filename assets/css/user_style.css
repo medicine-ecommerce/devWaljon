@@ -207,7 +207,12 @@ a span.product-heading-all {
 .product-image-section {
     width: 45%;
     float: left;
-    padding: 15px;
+    height: 110px;
+    padding: 5px;
+}
+.product-image-section a img{
+    width: 100%;
+    height: 100%;
 }
 .product-description-section {
     width: 55%;
@@ -231,6 +236,14 @@ a span.product-heading-all {
 }
 .product-description-section span {
     font-size: 12px;
+}
+.product-cat-img {
+    width: 100%;
+    height: 200px;
+}
+.product-cat-img a img{
+    width: 100%;
+    height: 100%;
 }
 
 /*Button Add Quantity*/
@@ -560,6 +573,7 @@ a.sub-category-name {
     width: 85%;
     min-height: 250px;
     left: 10%;
+    padding: 10px;
     /*list-style-type: none;
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(132px, 1fr)); */
@@ -589,11 +603,26 @@ li.hassubs.limheight-col3 .ul-menu {
   flex-direction: column;
   flex-wrap: wrap;
 }*/
-
+p.Concens-name{
+    color: white;
+    text-align: center;
+}
 #limheight li {
     display: inline-block; /*necessary*/
+    height: 30px;
 }
-
+#limheight li a{
+    line-height: 20px;
+}
+.brand-heading h3 {
+    font-size: 26px;
+}
+.icon-heading-section h4{
+    font-size: 26px;
+}
+.countdown-section-heading span{
+    font-size: 26px;
+}
 /*.menu-float-right ul.ul-menu {
     left: -650px;
 }*/
@@ -946,8 +975,10 @@ p.product-sell-price {
 p.main-product-name {
     font-size: 14px;
     font-weight: 600;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 0px;
+    height: 70px;
+    line-height: normal;
 }
 .add-quantity-category {
     float: right;
@@ -958,7 +989,9 @@ p.main-product-name {
 }
 .product-box{
     padding: 10px;
+    height: 325px;
     margin-bottom: 25px;
+    width: 100%;
 }
 .product-box img {
     width: 120px;
@@ -1044,4 +1077,20 @@ p.main-product-name {
 
 .owl-carousel .owl-dots {
     display: none;
+}
+.empty-img {
+    width: 650px;
+    height: 300px;
+    margin: 0 auto;
+}
+.empty-img img{
+    width: 100%;
+    height: 100%;
+}
+.empty-category {
+    margin: 50px auto;
+    text-align: center;
+    border: 1px solid #727272;
+    width: 80%;
+    padding: 20px;
 }

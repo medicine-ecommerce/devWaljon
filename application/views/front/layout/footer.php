@@ -51,7 +51,7 @@
 								<span class="ft-os-heading">Know Us</span>	
 								<span class="ft-os">
 									<span class="round"> About Us	</span>
-									<span class="round"> Contect Us	</span>
+									<span class="round"> Contact Us	</span>
 									<span class="round"> Press Coverage	</span>
 									<span class="round"> Business Partnership	</span>
 									<span class="round"> Careers	</span>
