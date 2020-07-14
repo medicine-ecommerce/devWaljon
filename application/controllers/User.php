@@ -81,6 +81,7 @@ Class User extends MY_Controller {
         $this->middle = 'filter';
         $this->User();        
     }
+
     public function ajaxFilterData($rowno)
     {
         // Row per page
@@ -352,5 +353,11 @@ Class User extends MY_Controller {
             }
         }
 
+    }    
+    public function getSearchProduct()
+    {
+
+        $data['productOne'] = json_decode($this->User->getSearchProduct());                
+        $this->load->view('front/search-priscription-product',$data);
     }
 }

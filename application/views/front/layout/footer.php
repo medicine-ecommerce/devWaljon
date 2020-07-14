@@ -160,7 +160,10 @@
         $input.val(value);
     });
     function addToCart(id,type){		
-		// var quantity = $('#quantity').val();		
+		// var quantity = $('#quantity').val();				
+	    $(this).addClass("hide-button");
+	    $(this).siblings("div").removeClass("hide-button");
+	    $(this).siblings("input").val("1");
 		var quantity = 1 ;		
 		
 		 $.ajax({
