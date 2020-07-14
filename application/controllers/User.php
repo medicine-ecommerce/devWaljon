@@ -166,13 +166,13 @@ Class User extends MY_Controller {
 
     public function order_with_prescription()
     {
-        $this->data['prescription'] = $this->User->getData('order_prescription','prescription',array('user_id'=>$this->session->userdata('user_id')));
+        $this->data['prescription'] = $this->User->getData('order_prescription','prescription',array('user_id'=>$this->session->userdata('user_id'),'is_active'=>1));
         $this->middle = 'order-with-prescription';
         $this->User();
     }
     public function saved_prescription()
     {
-        $this->data['prescription'] = $this->User->getData('order_prescription','prescription',array('user_id'=>$this->session->userdata('user_id')));
+        $this->data['prescription'] = $this->User->getData('order_prescription','prescription,id,is_active',array('user_id'=>$this->session->userdata('user_id')));
         $this->middle = 'saved_prescription';
         $this->User();
     }
@@ -368,5 +368,14 @@ Class User extends MY_Controller {
                 'user_id'=> $this->session->userdata('user_id'));
             $this->User->insertData('order_prescription',$insertData);
         }
+    }
+    public function UpdatePrescription($id,$status)
+    {
+        $this->User->updateData('order_prescription',array('is_active'=>$status),array('id'=>$id));
+    }
+    public function AjaxUpdatePrescriptionSession()
+    {
+        $this->session->set_userdata('prescription_short_desc',$this->input->post('prescription_short_desc'));
+        echo true;
     }
 }
