@@ -77,30 +77,38 @@
 	    	</div>
 
 	      <div class="owl-slider icon-slider" >
-	        <div id="carousel3" class="owl-carousel icon-slider remove-dots" >
+	        <div id="carousel3" class="owl-carousel remove-dots" >
 	          <div class="item">
-	            <img class="owl-lazy icon-slider " data-src="<?php echo base_url('assets/icon/icon_white_cardiac.png');  ?>" alt="">
+	            <img class="owl-lazy icon-slider " data-src="<?php echo base_url('assets/icon/icon_white_cardiac.png');?>" alt="">
+              <p class="Concens-name">Cardiac Care</p>
 	          </div>
 	          <div class="item">
-	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_diabetes.png');  ?>" alt="">
+	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_diabetes.png');?>" alt="">
+              <p class="Concens-name">Diabetes Care</p>
 	          </div>
 	          <div class="item">
 	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_eye.png');  ?>" alt="">
+              <p class="Concens-name">Eye Care</p>
 	          </div>
 	          <div class="item">
-	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_jointpain.png');  ?>" alt="">
+	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_jointpain.png');?>" alt="">
+              <p class="Concens-name">Joint Pain</p>
 	          </div>
 	            <div class="item">
-	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_kidney.png');  ?>" alt="">
+	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_kidney.png');?>" alt="">
+              <p class="Concens-name">Kidney Care</p>
 	          </div>
 	          <div class="item">
-	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_liver.png');  ?>" alt="">
+	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_liver.png');?>" alt="">
+              <p class="Concens-name">Liver Care</p>
 	          </div>
 	          <div class="item">
-	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_personal.png');  ?>" alt="">
+	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_personal.png');?>" alt="">
+              <p class="Concens-name">Personal Care</p>
 	          </div>
 	          <div class="item">
-	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_stomach.png');  ?>" alt="">
+	            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_stomach.png'); ?>" alt="">
+              <p class="Concens-name">Stomach Care</p>
 	          </div>
 	        </div>
 	      </div>
@@ -108,7 +116,7 @@
 	</div>
     <div class="countdown-section">
       <div class="countdown-section-heading text-center">
-        <span><img src="<?php echo base_url('assets/icon/heartrate_for_left.png');  ?>"> Features Brands <img src="<?php echo base_url('assets/icon/heartrate_for_right.png');  ?>"></span>
+        <span><img src="<?php echo base_url('assets/icon/heartrate_for_left.png');  ?>"> Offers <img src="<?php echo base_url('assets/icon/heartrate_for_right.png');  ?>"></span>
       </div>
       <div class="row offer-block">
         <div class="col-md-6 offer-block text-center">
@@ -1459,13 +1467,14 @@
     $('#carousel2 .item').on('mouseleave',function(e){
         owl2.trigger('play.owl.autoplay');
     })
+     
     jQuery("#carousel3").owlCarousel(
     {
-      autoplay: false,
+      autoplay: true,
       lazyLoad: true,
       loop: true,
-      margin: 20,
-      items : 5,
+      margin: 50,
+      items : 6,
       responsiveClass: true,
       autoHeight: true,
       autoplayTimeout: 4000,
@@ -1481,7 +1490,7 @@
         },
         1024: {
           items: 4
-        },   
+        }  
       }
     });
     var owl3 = $("#carousel3");                 

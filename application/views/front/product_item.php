@@ -1,9 +1,8 @@
         
-                 
          <?php          
           if (!empty($product)) {
            foreach ($product as $key => $value) {   ?>
-            <div class="col-xl-3 col-md-4 col-sm-4 col-xs-12" >
+            <div class="col-xl-3 col-md-4 col-sm-4 col-xs-12">
               <div class="product-box">
                 <div class="product-cat-img">  
                   <a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>">
@@ -28,8 +27,16 @@
               </div>
             </div>
           <?php }
-         } ?>
-
+         }else{ ?>
+            <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="empty-category">
+                <div class="empty-img">
+                  <img src="<?php echo base_url('assets/img/no_product_5.png'); ?>">
+                </div>
+                <h4>Currenty there is no product in this category</h4>
+              </div>
+            </div>
+         <?php } ?>
         </div>
         <?php echo $pagination; ?> 
 

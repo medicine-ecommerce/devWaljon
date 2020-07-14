@@ -51,7 +51,7 @@
 								<span class="ft-os-heading">Know Us</span>	
 								<span class="ft-os">
 									<span class="round"> About Us	</span>
-									<span class="round"> Contect Us	</span>
+									<span class="round"> Contact Us	</span>
 									<span class="round"> Press Coverage	</span>
 									<span class="round"> Business Partnership	</span>
 									<span class="round"> Careers	</span>
@@ -160,7 +160,10 @@
         $input.val(value);
     });
     function addToCart(id,type){		
-		// var quantity = $('#quantity').val();		
+		// var quantity = $('#quantity').val();				
+	    $(this).addClass("hide-button");
+	    $(this).siblings("div").removeClass("hide-button");
+	    $(this).siblings("input").val("1");
 		var quantity = 1 ;		
 		
 		 $.ajax({

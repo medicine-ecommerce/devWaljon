@@ -134,7 +134,7 @@
             <div class="order-detail">
               <div> 
                 <div class="show-upload-content">
-                  <div class="show-upload-name">  
+                  <div class="show-upload-name"> 
                     <input type="radio" id="Order" name="prescription_short_desc" value="Order everything as per prescription" checked>
                     <label for="Order">Order everything as per prescription</label>
                   </div>
@@ -163,54 +163,16 @@
                   </div>
                 </div>
               </div>
-              <!-- <div class="add-medicines-sec">
+              <div class="add-medicines-sec section-block-none" id="search-product-sec">
                 <a class="back-btn">← Back to options</a>
                 <div class="Search-medicine">
-                  <input type="text" name="" placeholder="Enter Medicine Name">
+                  <input type="text" id="search_input" name="search_input" onkeyup="getSearchProduct()" placeholder="Enter Medicine Name">
                 </div>
                 <div class="search-result">
-                  <div class="search-result-data">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <h5>Medicine Name</h5>
-                        <p></p>
-                        <p class="tablet-count">strip of 10 capsules</p>
-                      </div>
-                      <div class="col-md-4">
-                        <p class="medicine-price">MRP <strong><i class="fa fa-rupee"></i> 26</strong></p>
-                        <p class="medicine-price"><span class="offer-tag">12% off</span> <span>MRP <s><i class="fa fa-rupee"></i>29.73</s></span></p>
-                        <button class="btn-default add-cart-button float-left" onclick="addToCart()">ADD</button>
-                        <div class="def-number-input number-input safari_only add-quantity hide-button">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCart()" class="minus"></button>
-                          <input class="quantity" min="0" value="1" name="quantity" type="number">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart()" class="plus"></button>
-                        </div>
-                      </div>
-                    </div>
-                    <hr>
-                  </div>
-                  <div class="search-result-data">
-                    <div class="row">
-                      <div class="col-md-8">
-                        <h5>Medicine Name</h5>
-                        <p></p>
-                        <p class="tablet-count">strip of 10 capsules</p>
-                      </div>
-                      <div class="col-md-4">
-                        <p class="medicine-price">MRP <strong><i class="fa fa-rupee"></i> 26</strong></p>
-                        <p class="medicine-price"><span class="offer-tag">12% off</span> <span>MRP <s><i class="fa fa-rupee"></i>29.73</s></span></p>
-                        <button class="btn-default add-cart-button float-left" onclick="addToCart()">ADD</button>
-                        <div class="def-number-input number-input safari_only add-quantity hide-button">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepDown(); updateCart()" class="minus"></button>
-                          <input class="quantity" min="0" value="1" name="quantity" type="number">
-                          <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart()" class="plus"></button>
-                        </div>
-                      </div>
-                    </div>
-                    <hr>
-                  </div>
+                  <div id="dataList">  
+                 </div>              
                 </div>
-              </div> -->
+              </div>
             </div> 
             <p class="note-tag"><strong>Note:</strong>We dispense full strips of tablets/capsules</p>
             <div class="upload-continue">
@@ -251,22 +213,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.js"></script>
 
 <script>
-$(document).ready(function(){      
-  $('.add-cart-button').click(function(){
-    $(this).addClass("hide-button");
-    $(this).siblings("div").removeClass("hide-button");
-    // $(this).siblings("div").addClass("show-button");
-  });
-
-  $('.minus').click(function(){        
-    if($(this).siblings("input").val()==0){          
-      $(this).parent().addClass("hide-button");
-      $(this).parents('.product-price-block').find(".add-cart-button").addClass("show-button");
-      $(this).parents('.product-price-block').find(".add-cart-button").removeClass("hide-button");
+$(document).ready(function(){
+  $('.search-dron').click(function(){    
+    if($(this).attr("id")=='Search'){
+        $('#search-product-sec').removeClass("section-block-none");
+    }else{
+        $('#search-product-sec').addClass("section-block-none");
     }
+
   })
 });
-
 
 var $carousel = $('.slider');
 
@@ -298,6 +254,35 @@ setSlideVisibility();
 $carousel.on('afterChange', function() {
   setSlideVisibility();
 });
+
+function getSearchProduct(){
+    if($("#search_input").val()==''){
+    }
+    
+    var keywords = $("#search_input").val()
+
+
+      var keyword = $("#search_input").val();
+        $.ajax({
+            type: 'post',
+            data:{keyword:keyword},
+            url: '<?php echo base_url(); ?>/user/getSearchProduct/',                
+            async: false,            
+            success: function(response){               
+              if(keywords==''){
+                $('#dataList').html('');
+              }else{
+                $('#dataList').html(response);
+              }
+
+            },
+            error: function(){
+                //alert('Could not get Data from Database');
+            }
+        });
+}
+
+
 
 function readURL(input) {
     var formData = new FormData($("#form")[0]);
