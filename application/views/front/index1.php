@@ -161,7 +161,7 @@
                           <span class="offer-text">10% </span><span class="off-text">Off</span>
                         </div>
                         <div class="product-description-section">                      
-                          <p class="main-product-name"><a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>"><?php echo $value->name; ?></a></p>
+                          <p class="main-product-name"><a data-toggle="tooltip" title="<?php echo $value->name; ?>"  href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>"><?php echo $value->name; ?></a></p>
                           <hr class="inside-form-hr">
                           <span><?php echo $value->product_form; ?></span> 
                         </div>
@@ -1648,7 +1648,12 @@
       
     });
 
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip();   
+    });
+
   </script>
+
 
 
 
