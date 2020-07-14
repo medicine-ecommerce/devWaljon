@@ -53,7 +53,7 @@
                       if (!empty($prescription)) {
                          foreach ($prescription as $key => $value) { ?>
                         <li class="uplod-img-prse">
-                          <a class="cross-img-upload"><i class="fa fa-close"></i></a>
+                          <!-- <a class="cross-img-upload"><i class="fa fa-close"></i></a> -->
                           <img src="<?php echo base_url($value->prescription); ?>">
                         </li>
                       <?php   }
