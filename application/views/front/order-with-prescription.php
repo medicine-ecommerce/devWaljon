@@ -53,7 +53,7 @@
                       if (!empty($prescription)) {
                          foreach ($prescription as $key => $value) { ?>
                         <li class="uplod-img-prse">
-                          <a class="cross-img-upload"><i class="fa fa-close"></i></a>
+                          <!-- <a class="cross-img-upload"><i class="fa fa-close"></i></a> -->
                           <img src="<?php echo base_url($value->prescription); ?>">
                         </li>
                       <?php   }
@@ -134,14 +134,14 @@
             <div class="order-detail">
               <div class="upload-type-radio"> 
                 <div class="show-upload-content">
-                  <div class="show-upload-name">  
-                    <input type="radio" id="Order" class="search-dron" name="drone" value="" checked>
+                  <div class="show-upload-name"> 
+                    <input type="radio" id="Order" name="prescription_short_desc" value="Order everything as per prescription" checked>
                     <label for="Order">Order everything as per prescription</label>
                   </div>
                 </div>
                 <div class="show-upload-content">
                   <div class="show-upload-name">
-                    <input type="radio" id="Search" class="search-dron" name="drone" >
+                    <input type="radio" id="Search" name="prescription_short_desc" value="Search and add medicines to cart" >
                     <label for="Search">Search and add medicines to cart</label>
                     <p>There are 2 items added in your cart</p>
                     <button class="add-medicines">Add Medicines</button>
@@ -149,7 +149,7 @@
                 </div> 
                 <div class="show-upload-content">
                   <div class="show-upload-name">
-                    <input type="radio" id="Call" class="search-dron" name="drone" value="" >
+                    <input type="radio" id="Call" name="prescription_short_desc" value="Call me for details" >
                     <label for="Call">Call me for details </label>
                   </div>
                 </div> 
@@ -176,7 +176,7 @@
             </div> 
             <p class="note-tag"><strong>Note:</strong>We dispense full strips of tablets/capsules</p>
             <div class="upload-continue">
-              <button class="upload-continue-btn">Continue</button>
+              <button  type="button" class="upload-continue-btn" onclick="redirect()">Continue</button>
             </div>
           </div>
           <div class="col-md-5">
@@ -326,4 +326,25 @@ $("#continue_btn").click(function(){
 });
 $('#step2').hide();
 
+function redirect() {
+  var formData = new FormData($("#form")[0]);
+   
+
+    $.ajax({
+      url: '<?php echo base_url('user/AjaxUpdatePrescriptionSession');?>',
+      type:'POST',
+      data: formData,
+      dataType: 'JSON',
+      contentType: false,
+      cache: false, 
+      processData:false,
+      success:function(result){
+        console.log($('input[name=prescription_short_desc]').val());
+        window.location.href = '<?php echo base_url('user/checkout');?>'
+      },
+      error:function(status){
+        // console.log(status.responseText);
+      }
+    });
+}
 </script>

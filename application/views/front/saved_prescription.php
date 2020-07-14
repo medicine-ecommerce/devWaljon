@@ -17,7 +17,7 @@
                   if (!empty($prescription)) {
                      foreach ($prescription as $key => $value) { ?>
                     <li class="uplod-prec-img">
-                      <input type="checkbox" name="select" class="check-presc">
+                      <input type="checkbox" name="select" onchange="update('<?php echo $value->id; ?>',$(this))" class="check-presc" <?php echo ($value->is_active) ?'checked':'' ?>>
                       <img src="<?php echo base_url($value->prescription); ?>">
                     </li>
                   <?php   }
@@ -26,7 +26,7 @@
             </div>  
           </div> 
           <div class="upload-continue">
-            <button class="upload-continue-btn">Continue</button>
+            <a href="<?php echo base_url('user/order_with_prescription'); ?>" class="upload-continue-btn">Continue</a>
           </div>
         </div>
       </div>
@@ -86,4 +86,16 @@ $carousel.on('afterChange', function() {
   setSlideVisibility();
 });
 
+function update(id,val) {
+  
+  if(val.is(':checked')) {
+    var status = 1;
+  }
+  else{
+    var status = 0;
+  }
+  $.get("<?php echo base_url('user/UpdatePrescription/');?>"+id+"/"+status, function(data, status){
+    
+  });
+}
 </script>
