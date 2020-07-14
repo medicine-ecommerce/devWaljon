@@ -5,7 +5,7 @@ foreach ($productOne as $key => $value) { ?>
 	<div class="col-md-8">
 	  <h5><?= $value->name; ?>  </h5>
 	  <p></p>
-	  <p class="tablet-count">strip of 10 capsules</p>
+	  <p class="tablet-count"><?= $value->category_name; ?> </p>
 	</div>
 	<div class="col-md-4">
 	  <p class="medicine-price">MRP <strong><i class="fa fa-rupee"></i> <?= $value->sale_price; ?></strong></p>

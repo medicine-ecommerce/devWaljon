@@ -135,13 +135,13 @@
               <div> 
                 <div class="show-upload-content">
                   <div class="show-upload-name">  
-                    <input type="radio" id="Order" name="drone" value="" checked>
+                    <input type="radio" id="Order" class="search-dron" name="drone" value="" checked>
                     <label for="Order">Order everything as per prescription</label>
                   </div>
                 </div>
                 <div class="show-upload-content">
                   <div class="show-upload-name">
-                    <input type="radio" id="Search" name="drone" value="" >
+                    <input type="radio" id="Search" class="search-dron" name="drone" >
                     <label for="Search">Search and add medicines to cart</label>
                     <p>There are 2 items added in your cart</p>
                     <button class="add-medicines">Add Medicines</button>
@@ -149,7 +149,7 @@
                 </div> 
                 <div class="show-upload-content">
                   <div class="show-upload-name">
-                    <input type="radio" id="Call" name="drone" value="" >
+                    <input type="radio" id="Call" class="search-dron" name="drone" value="" >
                     <label for="Call">Call me for details </label>
                   </div>
                 </div> 
@@ -163,7 +163,7 @@
                   </div>
                 </div>
               </div>
-              <div class="add-medicines-sec">
+              <div class="add-medicines-sec section-block-none" id="search-product-sec">
                 <a class="back-btn">← Back to options</a>
                 <div class="Search-medicine">
                   <input type="text" id="search_input" name="search_input" onkeyup="getSearchProduct()" placeholder="Enter Medicine Name">
@@ -213,7 +213,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.js"></script>
 
 <script>
+$(document).ready(function(){
+  $('.search-dron').click(function(){    
+    if($(this).attr("id")=='Search'){
+        $('#search-product-sec').removeClass("section-block-none");
+    }else{
+        $('#search-product-sec').addClass("section-block-none");
+    }
 
+  })
+});
 
 var $carousel = $('.slider');
 

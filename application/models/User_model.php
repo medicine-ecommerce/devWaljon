@@ -256,9 +256,10 @@ class User_model extends MY_model
 	}
 	public function getSearchProduct()
 	{		
-		$this->db->select('product.id,product.name,product_item.mrp,product_item.sale_price,product_item.offerprice');
+		$this->db->select('product.id,product.name,product_item.mrp,product_item.sale_price,product_item.offerprice,category.category_name');
 		$this->db->from('product');
 		$this->db->join('product_item','product_item.product_id = product.id');		
+		$this->db->join('category','category.id = product.category_id','left');
 		$this->db->like('product.name', $this->input->post('keyword'));
 		$query = $this->db->get();		
 		// $this->db->get();		
