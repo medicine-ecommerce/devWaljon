@@ -12,11 +12,11 @@
       <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
         <div class="panel-body category-filter-radio">
           <div class="seacrh-section">            
-            <input id="brandInput" onkeyup="brandFilter()" placeholder="Search..." type="text" value="" />
+            <input id="categoryInput" onkeyup="categoryFilter()" placeholder="Search..." type="text" value="" />
             <div class="underline"></div>   
             <i class="fa fa-search custom-search" aria-hidden="true"></i>
           </div>  
-          <div id="brandDiv">            
+          <div id="categoryDiv">            
             <?php
             if(!empty($sub_category)) {
               foreach ($sub_category as $key => $value) { ?>
@@ -165,6 +165,22 @@
     input = document.getElementById("brandInput");
     filter = input.value.toUpperCase();
     ul = document.getElementById("brandDiv");
+    li = ul.getElementsByTagName("div");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("label")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+function categoryFilter() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("categoryInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("categoryDiv");
     li = ul.getElementsByTagName("div");
     for (i = 0; i < li.length; i++) {
         a = li[i].getElementsByTagName("label")[0];
