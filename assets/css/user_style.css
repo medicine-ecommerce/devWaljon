@@ -46,8 +46,10 @@ img.mains-slider{
     padding-bottom: 30px;
 }
 .icon-slider-section .owl-item{
-	height: 100px;
-    width: 100px;
+	box-shadow: none;
+    border: none;
+    background: transparent;
+    background-color: transparent; 
 }
 .icon-slider-section .owl-item img {
     box-shadow: none;
@@ -55,23 +57,35 @@ img.mains-slider{
     background: transparent;
     background-color: transparent;
     height: 100px;
-    width: 100px;
-    
+    width: 100px;   
+}
+.icon-slider-section .owl-item .item {
+    box-shadow: none;
+    border: none;
+    background: transparent;
+    background-color: transparent; 
+}
+div#carousel3 {
+    width: 80%;
+    margin: 0 auto;
+}
+div#carousel3 .owl-stage-outer.owl-height{
+   height: 145px !important;
 }
 .icon-slider {
      background:none; 
 }
-.icon-slider-section .owl-item:hover {
+.icon-slider-section .owl-item img:hover {
     border: 2px solid #fff;
-    border-radius: 54%;
+    border-radius: 50%;
     height: 100px;
     width: 100px;
 }
-.icon-slider-section .owl-item {
+/*.icon-slider-section .owl-item {
     width: 100px !important;
     height: 100px !important;
     margin: 0px 50px;
-}
+}*/
 img.owl-lazy.icon-slider{
 	width: 100px !important;
 	height: 100px !important;
