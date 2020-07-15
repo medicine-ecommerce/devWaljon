@@ -132,7 +132,7 @@
               <h4>Medicines</h4>
             </div>
             <div class="order-detail">
-              <div> 
+              <div class="upload-type-radio"> 
                 <div class="show-upload-content">
                   <div class="show-upload-name"> 
                     <input type="radio" id="Order" name="prescription_short_desc" value="Order everything as per prescription" checked>
@@ -164,7 +164,7 @@
                 </div>
               </div>
               <div class="add-medicines-sec section-block-none" id="search-product-sec">
-                <a class="back-btn">← Back to options</a>
+                <a class="back-btn back-to-option">← Back to options</a>
                 <div class="Search-medicine">
                   <input type="text" id="search_input" name="search_input" onkeyup="getSearchProduct()" placeholder="Enter Medicine Name">
                 </div>
@@ -217,10 +217,18 @@ $(document).ready(function(){
   $('.search-dron').click(function(){    
     if($(this).attr("id")=='Search'){
         $('#search-product-sec').removeClass("section-block-none");
+        $('.upload-type-radio').addClass("section-block-none");
+
     }else{
         $('#search-product-sec').addClass("section-block-none");
     }
 
+  })
+  $('.back-to-option').click(function(){
+        $('.upload-type-radio').removeClass("section-block-none");    
+        $('#search-product-sec').addClass("section-block-none");
+        $(".search-dron").removeAttr("checked");
+        $("#Order").attr("checked","");
   })
 });
 
