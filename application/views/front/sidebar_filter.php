@@ -1,4 +1,5 @@
 <form id="filter">
+  <input type="hidden" name="key" value="<?php echo $this->input->get('filter');?>">
   <div class="panel-group filter-sidebar-section" id="accordionMenus" role="tablist" aria-multiselectable="true">
     <input type="hidden" name="sortby" value="">
     <div class="panel panel-default category-panel">

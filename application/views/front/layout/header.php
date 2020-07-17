@@ -44,9 +44,39 @@
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/main.css');?>">
 	<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css');?>">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	
+		<link rel="stylesheet" href="<?php echo base_url('assets/js/jquery.typeahead.css');?>">
+
 	<title>Medicine</title>
 
+<style>
+.tt-query {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+	color: #999999;
+}
+.tt-menu {
+	background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	border-radius: 8px;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+	margin-top: 12px;
+	padding: 8px 0;
+	width: 422px;
+}
+.tt-suggestion {
+	font-size: 22px;  /* Set suggestion dropdown font size */
+	padding: 3px 20px;
+}
+.tt-suggestion:hover {
+	cursor: pointer;
+	background-color: #0097CF;
+	color: #FFFFFF;
+}
+.tt-suggestion p {
+	margin: 0;
+}
+</style>
 </head>
 <body>
 	<!-- Header -->
@@ -122,10 +152,17 @@
 						<div class="header_search">
 							<div class="header_search_content">
 								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Search for Medicine">
-										<button type="submit" class="header_search_button trans_300" value="Submit"><i class="fa fa-search"></i></button>
+									<form class="header_search_form clearfix">
+									    <div class="typeahead__container">
+								            <input class="header_search_input" name="text" placeholder="Search" autocomplete="off">
+								            <button type="submit" class="header_search_button trans_300" value="Submit"><i class="fa fa-search"></i></button>
+									    </div>
 									</form>
+									<!-- <form action="#" class="header_search_form clearfix">
+										<input type="search" required="required" class="header_search_input typeahead" placeholder="Search for Medicine">
+
+										<button type="submit" class="header_search_button trans_300" value="Submit"><i class="fa fa-search"></i></button>
+									</form> -->
 								</div>
 							</div>
 						</div>

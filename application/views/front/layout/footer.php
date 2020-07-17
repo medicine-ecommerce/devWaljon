@@ -113,6 +113,8 @@
 			</div>
 		</footer>
 <script src="<?php echo base_url(); ?>assets/front/js/jquery-3.3.1.min.js"></script>
+<script src="<?php echo base_url(); ?>assets/js/jquery.typeahead.js"></script>
+
 <script src="<?php echo base_url(); ?>assets/front/styles/bootstrap4/popper.js"></script>
 <script src="<?php echo base_url(); ?>assets/front/styles/bootstrap4/bootstrap.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/front/plugins/greensock/TweenMax.min.js"></script>
@@ -125,7 +127,47 @@
 <script src="<?php echo base_url(); ?>assets/front/plugins/easing/easing.js"></script>
 <script src="<?php echo base_url(); ?>assets/front/js/custom.js"></script>
 
-
+<script>
+$.typeahead({
+    input: '.header_search_input',
+    minLength: 1,
+    order: "asc",
+    offset: true,
+    hint: true,
+    source: {
+        ajax: {
+            type: "POST",
+            url: "<?php echo base_url('user/search'); ?>",
+            data: {
+                key: $('.header_search_input').val()
+            }
+        }
+    },
+    callback: {
+        onClick: function (node, a, item, event) {
+        	window.location.href = '<?php echo base_url('user/product_category?filter=')?>'+item.display;
+ 
+            console.log(node)
+            console.log(a)
+            console.log(item)
+            console.log(event)
+ 
+            console.log('onClick function triggered');
+ 
+        },
+        onSubmit: function (node, form, item, event) {
+ 
+            console.log(node)
+            console.log(form)
+            console.log(item)
+            console.log(event)
+ 
+            console.log('onSubmit override function triggered');
+ 
+        }
+    }
+});  
+</script>
                   
 <script type="text/javascript">
 

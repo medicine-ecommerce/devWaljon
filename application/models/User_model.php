@@ -68,6 +68,9 @@ class User_model extends MY_model
 			}
 			
 		}
+		if (!empty($this->input->post('key'))) {
+			$this->db->like('product.name',$this->input->post('key'));
+		}
 		
 		$this->db->limit($rowperpage, $rowno); 
 		if (!empty($this->input->post('sortby')) && $this->input->post('sortby')=='lowest') {

@@ -385,4 +385,24 @@ Class User extends MY_Controller {
         $this->session->set_userdata('prescription_short_desc',$this->input->post('prescription_short_desc'));
         echo true;
     }
+    public function search()
+    {
+        header('Content-Type: application/json');
+        $this->db->select('product.name');
+        $this->db->from('product');
+        $query = $this->db->get();
+        $arr = array_column($query->result_array(),"name");
+
+ 
+        echo json_encode($arr);
+ 
+        /*echo json_encode(
+            array(
+                "Acura", "Audi", "BMW", "Buick", "Cadillac", "Chevrolet", "Dodge", "Chrysler", "Ford", "GMC", "Hyunday",
+                "Infinity", "Jaguar", "Jeep", "Kia Motors", "Land Rover", "Lexus", "Lincoln", "Mazda", "Mercedes-benz",
+                "Mitsubishi", "Nissan", "Pontiac", "Porsche", "Saab", "Saturn", "Scion", "Subaru", "Suzuki", "Toyota",
+                "Honda", "Hummer", "Mercury", "Mini", "Volkswagen", "Volvo"
+            )
+        );*/
+    }
 }
