@@ -236,6 +236,8 @@ a span.product-heading-all {
 }
 .product-description-section p {
     font-size: 14px;
+    min-height: 65px;
+    max-height: 90px;
 }
 .product-main-block {
     width: 100%;
@@ -1006,7 +1008,7 @@ p.main-product-name {
 }
 .product-box{
     padding: 10px;
-    height: 325px;
+    height: 350px;
     margin-bottom: 25px;
     width: 100%;
 }
@@ -1018,6 +1020,7 @@ p.main-product-name {
 }
 .row.product-section {
     margin-top: 30px;
+    width: 100%;
 }
 .category-paginations a{
     background: #4abdde;
