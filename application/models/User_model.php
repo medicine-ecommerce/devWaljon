@@ -37,7 +37,7 @@ class User_model extends MY_model
 			return $return;
 		}
 	}
-	public function getAllProductWithLimit($rowno,$rowperpage)
+	public function getAllProductWithLimit($rowperpage, $rowno)
 	{
 		$this->db->select('product.name as product_name,LEFT(product.about_product,50) as about_product,product_images.image as product_image,product_item.sale_price, product_item.offerprice,product.id as product_id');
 		$this->db->from('product_item');

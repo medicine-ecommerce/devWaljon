@@ -38,12 +38,17 @@
             </div>
          <?php } ?>
         </div>
-        <?php echo $pagination; ?> 
+        <span id='pagination'><?php echo $pagination; ?> </span>
+        
 
 
 <script>
 
-
+$('#pagination').on('click','a',function(e){
+       e.preventDefault(); 
+       var pageno = $(this).attr('data-ci-pagination-page');
+       searchFilter(pageno);
+     });
   /*var acc = document.getElementsByClassName("accordion");
   var i;
 

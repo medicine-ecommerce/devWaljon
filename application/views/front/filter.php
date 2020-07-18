@@ -42,6 +42,7 @@
 
 <script>
 
+
   function searchFilter(page_num){
       page_num = page_num?page_num:0;
       var keywords = $('#keywords').val();
