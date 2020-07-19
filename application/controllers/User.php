@@ -14,6 +14,8 @@ Class User extends MY_Controller {
         $this->load->model('User_model','User');
         $this->load->helper(array('form', 'url'));
         $this->load->library(array('ajax_pagination','cart','form_validation')); 
+               $this->load->library('pagination');
+
     }
     // public function index()
     // {
@@ -84,9 +86,8 @@ Class User extends MY_Controller {
 
     public function ajaxFilterData($rowno)
     {
-        // Row per page
-        $rowperpage = 5;
-        // Row position
+        $rowperpage = 16;
+ 
         if($rowno != 0){
           $rowno = ($rowno-1) * $rowperpage;
         }
@@ -94,15 +95,15 @@ Class User extends MY_Controller {
         $allcount = $this->User->getAllProduct();
 
         // Get records
-        $users_record = $this->User->getAllProductWithLimit($rowno,$rowperpage);
+        $data['product'] = $this->User->getAllProductWithLimit($rowperpage, $rowno);
      
         // Pagination Configuration
-        $config['target']      = '#dataList'; 
+        //$config['target']      = '#dataList'; 
         $config['base_url'] = base_url().'/user/ajaxFilterData';
         $config['use_page_numbers'] = TRUE;
         $config['total_rows'] = $allcount;
         $config['per_page'] = $rowperpage;
-        $config['link_func']   = 'searchFilter'; 
+        //$config['link_func']   = 'searchFilter'; 
 
         $config['full_tag_open']    = '<div class="category-pagination category-pagination-section"><nav><ul class="pagination product-category-pagination"><p class="productCount">';
         $config['full_tag_close']   = '</p></ul></nav></div>';
@@ -120,11 +121,11 @@ Class User extends MY_Controller {
         $config['last_tag_close']   = '</span></li>';
 
         // Initialize
-        $this->ajax_pagination->initialize($config); 
+        $this->pagination->initialize($config); 
      
-        $data['pagination'] = $this->ajax_pagination->create_links();
+        $data['pagination'] = $this->pagination->create_links();
 
-        $data['product'] = $this->User->getAllProductWithLimit($rowno,$rowperpage);
+        //$data['product'] = $this->User->getAllProductWithLimit($rowno,$rowperpage);
         return $this->load->view('front/product_item',$data);
     }
     public function filter1()
