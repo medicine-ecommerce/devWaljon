@@ -1052,7 +1052,11 @@ p.main-product-name {
 }
 .category-pagination .active {
     background-color: #4abdde;
-    color: #fff;
+    color: #fff !important;
+    cursor: pointer;
+}
+a.last_short {
+    color: #655e5e !important;
 }
 .left-pagination-section {
     margin-top: 10px;
@@ -1113,4 +1117,7 @@ p.main-product-name {
     border: 1px solid #727272;
     width: 80%;
     padding: 20px;
+}
+ul.typeahead__list {
+    margin-top: 40px !important;
 }
