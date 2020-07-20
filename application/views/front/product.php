@@ -11,12 +11,12 @@
 					 ?>
 			    <h3><a>home</a> > <a href=""><?= $product_item->category_name; ?></a> > <a href=""><?= $product_item->name; ?></a></h3> 
 			  </div>
-			  <div class="pull-right">
+			  <!-- <div class="pull-right">
 			  	<form action="#">
 						<input type="search" required="required" class="product_search_input" placeholder="Search">
 						<button type="submit" class="product_search_button" value="Submit"><i class="fa fa-search"></i></button>
 					</form>
-			  </div>
+			  </div> -->
 			</div>
 			<div class="row">
 				<!-- Selected Image -->
