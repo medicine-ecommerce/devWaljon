@@ -1202,7 +1202,7 @@ li.product_li1 a{
   }
   .category-pagination.category-pagination-section {
     position: absolute;
-    top: -90px;
+    top: -80px;
     right: 15px;
   }
   .pagination>li>a, .pagination>li>span {
