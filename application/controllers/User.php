@@ -16,6 +16,13 @@ Class User extends MY_Controller {
         $this->load->library(array('ajax_pagination','cart','form_validation')); 
                $this->load->library('pagination');
 
+        if (empty($this->session->userdata('user_id'))){ 
+            // Allow some methods?
+            $allowed = array('shop','signup','login','category','product_category','filter1','getSearchProduct','product','index','ajaxFilterData','search','getAllProductComments','product_comment','cart','add_to_cart','update_cart');
+            if (!in_array($this->router->fetch_method(), $allowed)){
+                redirect(base_url('user/login'));
+            }
+        }       
     }
     // public function index()
     // {
@@ -269,9 +276,7 @@ Class User extends MY_Controller {
         
     }
     public function add_to_cart(){
-
-
-        
+  
         if(!empty($this->input->post('id')))            
 
             $product = $this->User->getData('product','id,name,category_id,brand_id',array('id'=>$this->input->post('id')));

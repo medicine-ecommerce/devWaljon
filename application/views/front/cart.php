@@ -16,7 +16,7 @@
       <div class="layout-inline cart-content row">        
         <div class="col col-pro layout-inline">
           <img style="width: 50%;" src="<?= base_url().$value['image']; ?>" alt="kitten" />
-          <p><?= $value['name']; ?></p>
+          <p class="cart-product-name"><?= $value['name']; ?></p>
         </div>        
         <div class="col col-price col-numeric align-center ">
           <p><i class='fas fa-rupee-sign'></i> <?= $value['price']; ?></p>
