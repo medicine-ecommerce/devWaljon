@@ -44,6 +44,7 @@ Class User extends MY_Controller {
         $this->data['banner'] = $this->User->getData('banner_images','image',array('status'=>'active'));
         $this->data['brand'] = $this->User->getData('brand','brand_img,id',array('status'=>'active'));
         $this->data['product'] = $this->User->HomeProduct();
+        $this->data['home_module'] = $this->User->getRowData('home_module','*',array('id'=>1));
         
         $this->middle = 'index1';
         $this->User();
@@ -445,6 +446,7 @@ Class User extends MY_Controller {
                         'TXNSTATUS'=>'failed');
           $this->User->updateData('orders',$array,array('order_number'=>$paramList['ORDERID']));
         }
+        $this->cart->destroy();
       }
       else{
         redirect(base_url('user/cart'));

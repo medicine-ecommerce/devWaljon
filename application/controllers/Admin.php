@@ -454,10 +454,20 @@ Class Admin extends MY_Controller {
         $id = $this->input->post('id');
         $this->Admin->updateData('banner_images',array('status'=>$status),array('id'=>$id));
     }
-    public function product_category()
+    public function home_module()
     {
-        $this->middle = 'product_category';
+        $this->data['home_module'] = $this->Admin->getRowData('home_module','*',array('id'=>1));
+        $this->middle = 'home_module/index';
         $this->Admin();
+    }
+    public function UpdateHomeModule()
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $array = array('feature_brand' => (!empty($this->input->post('feature_brand')))?1:0,
+                          'shop_by_health' => (!empty($this->input->post('shop_by_health')))?1:0,
+                          'offers' => (!empty($this->input->post('offers')))?1:0);
+            $this->Admin->updateData('home_module',$array,array('id'=>1));
+        }
     }
     public function logout()
     {   

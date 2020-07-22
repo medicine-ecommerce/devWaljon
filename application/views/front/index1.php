@@ -1,7 +1,7 @@
 	
   <div class="main-page-container">   
   	<div class="main-slider-top">
-		<div class="owl-slider">
+  		<div class="owl-slider">
         <div id="carousel" class="owl-carousel banner-slider">
           <?php 
           $i=1;
@@ -18,17 +18,18 @@
               </div>
             <?php }
           } ?>      
-	      </div>
-	    </div>		
-		<div class="brand-section">  
-		    <div class="brand-heading">
-		      <h3 style="color: #545c5e;">
-		        <img src="<?php echo base_url('assets/icon/heartrate_for_left.png');  ?>"> Features Brands <img src="<?php echo base_url('assets/icon/heartrate_for_right.png');  ?>">
-		      </h3>
-		    </div>
-		    <div class="brand-slider">
-		      <div class="owl-slider remove-dots">
-		        <div id="carousel2" class="owl-carousel remove-dots">
+        </div>
+      </div>
+    <?php if ($home_module->feature_brand > 0) { ?>
+      <div class="brand-section">  
+        <div class="brand-heading">
+          <h3 style="color: #545c5e;">
+            <img src="<?php echo base_url('assets/icon/heartrate_for_left.png');  ?>"> Features Brands <img src="<?php echo base_url('assets/icon/heartrate_for_right.png');  ?>">
+          </h3>
+        </div>
+        <div class="brand-slider">
+          <div class="owl-slider remove-dots">
+            <div id="carousel2" class="owl-carousel remove-dots">
               <?php if (!empty($brand)) {
                 foreach ($brand as $key => $value) { ?>
                   <div class="item">
@@ -36,91 +37,57 @@
                   </div>
               <?php  }
               } ?>
-		        </div>
-		      </div>
-		    </div>
-		</div>
-    <div class="icon-slider-section">
-    	<div class="icon-heading-section">	    		
-      	<h4><img src="<?php echo base_url('assets/icon/heartrate_for_left_white.png');  ?>">  Shop By Health Concens  <img src="<?php echo base_url('assets/icon/heartrate_for_right_white.png');  ?>"></h4>
-    	</div>
-
-      <div class="owl-slider" >
-        <div id="carousel3" class="owl-carousel remove-dots" >
-          <div class="item">
-            <img class="owl-lazy icon-slider " data-src="<?php echo base_url('assets/icon/icon_white_cardiac.png');?>" alt="">
-            <p class="Concens-name">Cardiac Care</p>
-          </div>
-          <div class="item">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_diabetes.png');?>" alt="">
-            <p class="Concens-name">Diabetes Care</p>
-          </div>
-          <div class="item">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_eye.png');  ?>" alt="">
-            <p class="Concens-name">Eye Care</p>
-          </div>
-          <div class="item">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_jointpain.png');?>" alt="">
-            <p class="Concens-name">Joint Pain</p>
-          </div>
-            <div class="item">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_kidney.png');?>" alt="">
-            <p class="Concens-name">Kidney Care</p>
-          </div>
-          <div class="item">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_liver.png');?>" alt="">
-            <p class="Concens-name">Liver Care</p>
-          </div>
-          <div class="item">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_personal.png');?>" alt="">
-            <p class="Concens-name">Personal Care</p>
-          </div>
-          <div class="item">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_stomach.png'); ?>" alt="">
-            <p class="Concens-name">Stomach Care</p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- <div class="">
-      <div class="owl-slider">
-        <div id="carousel20" class="owl-carousel remove-dots">
-          <div class="item" style="background: black;">
-            <img class="owl-lazy icon-slider " data-src="<?php echo base_url('assets/icon/icon_white_cardiac.png');?>" alt="">
-            <p class="Concens-name">Cardiac Care</p>
-          </div>
-          <div class="item" style="background: black;">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_diabetes.png');?>" alt="">
-            <p class="Concens-name">Diabetes Care</p>
-          </div>
-          <div class="item" style="background: black;">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_eye.png');  ?>" alt="">
-            <p class="Concens-name">Eye Care</p>
-          </div>
-          <div class="item" style="background: black;">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_jointpain.png');?>" alt="">
-            <p class="Concens-name">Joint Pain</p>
-          </div>
-            <div class="item" style="background: black;">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_kidney.png');?>" alt="">
-            <p class="Concens-name">Kidney Care</p>
-          </div>
-          <div class="item" style="background: black;">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_liver.png');?>" alt="">
-            <p class="Concens-name">Liver Care</p>
-          </div>
-          <div class="item" style="background: black;">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_personal.png');?>" alt="">
-            <p class="Concens-name">Personal Care</p>
-          </div>
-          <div class="item" style="background: black;">
-            <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_stomach.png'); ?>" alt="">
-            <p class="Concens-name">Stomach Care</p>
+    <?php } ?>
+    <?php if ($home_module->shop_by_health > 0) { ?>
+      <div class="icon-slider-section">
+      	<div class="icon-heading-section">	    		
+        	<h4><img src="<?php echo base_url('assets/icon/heartrate_for_left_white.png');  ?>">  Shop By Health Concens  <img src="<?php echo base_url('assets/icon/heartrate_for_right_white.png');  ?>"></h4>
+      	</div>
+
+        <div class="owl-slider" >
+          <div id="carousel3" class="owl-carousel remove-dots" >
+            <div class="item">
+              <img class="owl-lazy icon-slider " data-src="<?php echo base_url('assets/icon/icon_white_cardiac.png');?>" alt="">
+              <p class="Concens-name">Cardiac Care</p>
+            </div>
+            <div class="item">
+              <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_diabetes.png');?>" alt="">
+              <p class="Concens-name">Diabetes Care</p>
+            </div>
+            <div class="item">
+              <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_eye.png');  ?>" alt="">
+              <p class="Concens-name">Eye Care</p>
+            </div>
+            <div class="item">
+              <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_jointpain.png');?>" alt="">
+              <p class="Concens-name">Joint Pain</p>
+            </div>
+              <div class="item">
+              <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_kidney.png');?>" alt="">
+              <p class="Concens-name">Kidney Care</p>
+            </div>
+            <div class="item">
+              <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_liver.png');?>" alt="">
+              <p class="Concens-name">Liver Care</p>
+            </div>
+            <div class="item">
+              <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_personal.png');?>" alt="">
+              <p class="Concens-name">Personal Care</p>
+            </div>
+            <div class="item">
+              <img class="owl-lazy icon-slider" data-src="<?php echo base_url('assets/icon/icon_white_stomach.png'); ?>" alt="">
+              <p class="Concens-name">Stomach Care</p>
+            </div>
           </div>
         </div>
-      </div>  
-    </div> -->
-	</div>
+      </div>
+    <?php } ?>
+	  </div>
+    <?php if ($home_module->offers > 0) { ?>
     <div class="countdown-section">
       <div class="countdown-section-heading text-center">
         <span><img src="<?php echo base_url('assets/icon/heartrate_for_left.png');  ?>"> Offers <img src="<?php echo base_url('assets/icon/heartrate_for_right.png');  ?>"></span>
@@ -139,6 +106,7 @@
         </div>
       </div>
     </div>
+    <?php } ?>
     <div class="product-slider-section"> 
     <?php if (!empty($product)) {      
       foreach ($product as $key => $value) { ?>

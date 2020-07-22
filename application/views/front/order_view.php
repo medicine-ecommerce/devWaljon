@@ -12,6 +12,10 @@
           <li>
             Order #<?php echo $order['order_number']; ?>
           </li>
+          <li> | </li>
+          <li>
+            <?php echo strtoupper($order['status']); ?>
+          </li>
         </ul>
       </div>   
       <div class="order-detail">
@@ -39,10 +43,10 @@
                 <h4>Order Summary</h4>
               </div>
               <div class="price-details"> 
-                <p><span class="order-sum"> Item(s) Subtotal : </span> <span><i class="fa fa-inr"></i> <?php echo $order['order_subtotal']; ?> </span></p>
+                <p><span class="order-sum"> Item(s) Subtotal : </span> <span><i class="fa fa-inr"></i> <?php echo $order['total_amount']; ?> </span></p>
                 <p><span class="order-sum"> Shipping : </span> <span><i class="fa fa-inr"></i> 0</span></p>
-                <p><span class="order-sum"> Total : </span> <span><i class="fa fa-inr"></i> <?php echo $order['order_subtotal']; ?> </span></p>
-                <p><span class="order-sum"> <strong>Grand Total : </strong> </span> <span><strong><i class="fa fa-inr"></i> <?php echo $order['order_subtotal']; ?> </strong></span></p>
+                <p><span class="order-sum"> Total : </span> <span><i class="fa fa-inr"></i> <?php echo $order['total_amount']; ?> </span></p>
+                <p><span class="order-sum"> <strong>Grand Total : </strong> </span> <span><strong><i class="fa fa-inr"></i> <?php echo $order['total_amount']; ?> </strong></span></p>
               </div>
             </div>
           </div>

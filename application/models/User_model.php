@@ -242,14 +242,14 @@ class User_model extends MY_model
 	}
 	public function OrderView($id)
 	{
-		$this->db->select('orders.*,orders.id as order_id,user_address.*,(select sum(subtotal) from order_item where order_id=orders.id) as order_subtotal');
+		$this->db->select('orders.*,orders.id as order_id,user_address.*,total_amount');
 		$this->db->from('orders');
 		$this->db->where('orders.id',$id);
 		$this->db->join('user_address','user_address.id = orders.address_id');
 		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
 			$data = (array) $query->row();
-			$this->db->select('order_item.*,product.name as product_name,(select product_images.image from product_images where product_id = product.id) as product_image');
+			$this->db->select('order_item.*,product.name as product_name,(select product_images.image from product_images where product_id = product.id limit 1) as product_image');
 			$this->db->from('order_item');
 			$this->db->join('product_item','product_item.id = order_item.item_id');
 			$this->db->join('product','product.id = product_item.product_id');
