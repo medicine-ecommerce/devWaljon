@@ -15,6 +15,10 @@ Class User extends MY_Controller {
         $this->load->helper(array('form', 'url'));
         $this->load->library(array('ajax_pagination','cart','form_validation')); 
                $this->load->library('pagination');
+        $loginMethod = array('cart','checkout');
+        if (empty($this->session->userdata('user_id')) && in_array($this->router->fetch_method(), $loginMethod)) {
+            redirect(base_url('user'));
+        }
 
         // if (empty($this->session->userdata('user_id'))){ 
         //     // Allow some methods?
@@ -147,7 +151,7 @@ Class User extends MY_Controller {
         // $this->data['user_address'] = $this->User->getData('user_address','address', array('user_id' => '2' ));
         $this->data['user_address'] = $this->User->getData('user_address','id,address,state,country', array('user_id' => $this->session->userdata('user_id') ));
         // print_r($this->data);die();
-        $this->middle = 'despatch';
+        $this->middle = 'checkout';
         $this->User();
     }
     public function cart()
@@ -155,7 +159,12 @@ Class User extends MY_Controller {
         $this->middle = 'cart';
         $this->User();
     }
-
+    public function form()
+    {
+       
+        $this->middle = 'form.php';
+        $this->User();
+    }
     public function orderListing()
     {
         $this->data['order_list'] = $this->User->orderList();
@@ -357,13 +366,15 @@ Class User extends MY_Controller {
     public function placeorder()
     {
         $array = array('user_id'=>$this->session->userdata('user_id'),
-                        'order_number'=> date('Ymdhis'),
+                        'order_number'=> 'ORDER'. rand(10000,99999999),
                         'address_id'=>$this->input->post('address_id'),
                         'created_at'=>date('Y-m-d H:i:s'));
         $lastID = $this->User->insertData('orders',$array);
         if ($lastID) {
           $item = $this->cart->contents();
+          $total = 0;
             foreach ($item as $key => $value) {
+              $total = $total + $value['subtotal'];
               $data = array('order_id'=>$lastID,
                           'item_id'=>$value['id'],
                           'qty'=>$value['qty'],
@@ -371,9 +382,74 @@ Class User extends MY_Controller {
                           'subtotal'=>$value['subtotal']);
               $this->User->insertData('order_item',$data);                
             }
+            $this->User->updateData('orders',array('total_amount'=>$total),array('id'=>$lastID));
+            if ($this->input->post('payment_mode')=='online') {
+              $data = array('ORDER_ID'=>$array['order_number'],
+                            'CUST_ID'=>$this->session->userdata('user_id'),
+                            'TXN_AMOUNT'=>$total);
+              $this->PaytmPostForm($data);
+            }
         }
 
-    }    
+    } 
+
+    function PaytmPostForm($data)
+    {
+
+        // following files need to be included
+        require_once(APPPATH . "/third_party/paytmlib/config_paytm.php");
+        require_once(APPPATH . "/third_party/paytmlib/encdec_paytm.php");
+
+        $checkSum = "";
+        $paramList = array();
+
+        // Create an array having all required parameters for creating checksum.
+        $paramList["CALLBACK_URL"] = base_url('user/PaytmResponse');
+        $paramList["MID"] = $this->config->item('PAYTM_MERCHANT_MID');
+        $paramList["ORDER_ID"] = $data['ORDER_ID'];
+        $paramList["CUST_ID"] = $data['CUST_ID'];
+        $paramList["INDUSTRY_TYPE_ID"] = 'Retail';
+        $paramList["CHANNEL_ID"] = $this->config->item('PAYTM_CHANNEL_ID');
+        $paramList["TXN_AMOUNT"] = $data['TXN_AMOUNT'];
+        $paramList["WEBSITE"] = $this->config->item('PAYTM_MERCHANT_WEBSITE');
+        $checkSum = getChecksumFromArray($paramList,$this->config->item('PAYTM_MERCHANT_KEY'));
+        echo "<center><h1>Please do not refresh this page...</h1></center>
+            <form method='post' action='".$this->config->item('PAYTM_TXN_URL')."' name='f1'>";
+            foreach($paramList as $name => $value) {
+              echo '<input type="hidden" name="' . $name .'" value="' . $value .'">';
+            }
+            echo "<input type='hidden' name='CHECKSUMHASH' value='". $checkSum . "'>
+            <script type='text/javascript'>
+             document.f1.submit();
+            </script>
+            </form>";
+     }
+    public function PaytmResponse()
+    {
+      if ($this->input->server('REQUEST_METHOD') == 'POST'){
+        $paytmChecksum = "";
+        $paramList = array();
+        $isValidChecksum = "FALSE";
+
+        $paramList = $_POST;
+        if ($paramList['STATUS']=='TXN_SUCCESS') {
+          $array = array('TXNDATE'=>$paramList['TXNDATE'],
+                        'TXNID'=>$paramList['TXNID'],
+                        'TXNSTATUS'=>'success');
+          $this->User->updateData('orders',$array,array('order_number'=>$paramList['ORDERID']));
+        }
+        else{
+          $array = array('TXNDATE'=>(!empty($paramList['TXNDATE']))?$paramList['TXNDATE']:date('Y-m-d H:i:s'),
+                        'TXNID'=>$paramList['TXNID'],
+                        'RESPMSG'=>$paramList['RESPMSG'],
+                        'TXNSTATUS'=>'failed');
+          $this->User->updateData('orders',$array,array('order_number'=>$paramList['ORDERID']));
+        }
+      }
+      else{
+        redirect(base_url('user/cart'));
+      }
+    }   
     public function getSearchProduct()
     {
 
@@ -417,5 +493,17 @@ Class User extends MY_Controller {
                 "Honda", "Hummer", "Mercury", "Mini", "Volkswagen", "Volvo"
             )
         );*/
+    }
+
+    public function paymentSuccess()
+    {
+        $this->middle = 'paymentSuccess';
+        $this->User();
+    }
+
+    public function paymentFailed()
+    {
+        $this->middle = 'paymentFailed';
+        $this->User();
     }
 }
