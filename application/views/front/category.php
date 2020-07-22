@@ -72,5 +72,9 @@ $('.left-active a').click(function(){
             $('.right-active a').removeClass("active");
            $(this).addClass("active");
       });
+
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+      });
   
 </script>

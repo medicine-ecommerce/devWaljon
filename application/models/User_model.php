@@ -23,7 +23,7 @@ class User_model extends MY_model
 			foreach ($result as $key => $value) {
 				$return[$key]['category_id'] = $value->id;
 				$return[$key]['category_name'] = $value->category_name;
-				$this->db->select('product.name,product.id as product_id,image,sale_price,product_form.name as product_form');
+				$this->db->select('LEFT(product.name, 80) as name,product.name as product_full_name ,product.id as product_id,image,sale_price,product_form.name as product_form');
 				$this->db->from('product');
 				$this->db->join('product_images','product_images.product_id = product.id','left');
 				$this->db->join('product_item','product_item.product_id = product.id');
@@ -39,7 +39,7 @@ class User_model extends MY_model
 	}
 	public function getAllProductWithLimit($rowperpage, $rowno)
 	{
-		$this->db->select('product.name as product_name,LEFT(product.about_product,50) as about_product,product_images.image as product_image,product_item.sale_price, product_item.offerprice,product.id as product_id');
+		$this->db->select('LEFT(product.name, 80) as product_name,product.name as product_full_name,LEFT(product.about_product,50) as about_product,product_images.image as product_image,product_item.sale_price, product_item.offerprice,product.id as product_id');
 		$this->db->from('product_item');
 		$this->db->join('product','product_item.product_id = product.id');
 		$this->db->join('product_images','product_images.product_id = product.id','left');
@@ -128,7 +128,7 @@ class User_model extends MY_model
 	}
 	public function getProductByID($id)
 	{
-		$this->db->select('product.*,brand.brand_name,brand.status,manufacturer.name as manufacturer_name,manufacturer.status,category.category_name,category.status,subcategory.subcategory,subcategory.status,product_form.name as product_form,saltcomposition.name as saltcomposition_name, product_form.status,product_item.*');
+		$this->db->select('product.*,LEFT(product.name, 80) as name,product.name as product_full_name, brand.brand_name,brand.status,manufacturer.name as manufacturer_name,manufacturer.status,category.category_name,category.status,subcategory.subcategory,subcategory.status,product_form.name as product_form,saltcomposition.name as saltcomposition_name, product_form.status,product_item.*');
 		$this->db->from('product');
 		$this->db->join('product_item','product_item.product_id = product.id');		
 		$this->db->join('product_form','product_form.id = product.product_form_id','left');
@@ -171,7 +171,7 @@ class User_model extends MY_model
 	}
 	public function getAlternateBrandsByID()
 	{					
-		$this->db->select('product.name,product.id as product_id,image,sale_price,product_form.name as product_form');
+		$this->db->select('LEFT(product.name, 80) as name,product.name as product_full_name,product.id as product_id,image,sale_price,product_form.name as product_form');
 		$this->db->from('product');
 		$this->db->join('product_images','product_images.product_id = product.id','left');
 		$this->db->join('product_item','product_item.product_id = product.id');
@@ -260,7 +260,7 @@ class User_model extends MY_model
 	}
 	public function getSearchProduct()
 	{		
-		$this->db->select('product.id,product.name,product_item.mrp,product_item.sale_price,product_item.offerprice,category.category_name');
+		$this->db->select('product.id,LEFT(product.name, 80) as name ,product_item.mrp,product_item.sale_price,product_item.offerprice,category.category_name');
 		$this->db->from('product');
 		$this->db->join('product_item','product_item.product_id = product.id');		
 		$this->db->join('category','category.id = product.category_id','left');

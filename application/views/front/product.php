@@ -50,7 +50,7 @@
 				<div class="col-lg-7 order-3">
 					<div class="product_description">
 						<!-- <div class="product_category">Laptops</div> -->
-						<div class="product_name"><?= $product_item->name; ?></div>
+						<div class="product_name"><?= $product_item->product_full_name; ?></div>
 						<div class="product_rating"><i class="fa fa-star"></i>  4.4</div>
 						<div class="date-time">
 							<i class="fa fa-clock-o"></i> <p>03:02 PM, 15 Jan 2020</p>
@@ -298,7 +298,11 @@
                           <span class="offer-text">10% </span><span class="off-text">Off</span>
                         </div>
                         <div class="product-description-section">                      
-                          <p><a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>">	<?php echo $value->name; ?></a></p>
+                          <p><a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>">	<?php echo $value->name; ?></a>
+                          	<?php if(strlen($value->name) > 79 ){ ?>
+		                      <a class="tool-tip-custom" data-toggle="tooltip" title="<?php echo $value->product_full_name; ?>" href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>"> ...</a> 
+		                    <?php } ?>
+                          </p>
                           <hr class="inside-form-hr">
                           <span><?php echo $value->product_form; ?></span> 
                         </div>

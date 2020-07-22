@@ -10,7 +10,11 @@
                   </a>
                 </div>
                 <div class="text-center">                
-                  <p class="main-product-name"><a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>"><?php echo $value->product_name;?></a></p>
+                  <p class="main-product-name"><a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>"><?php echo $value->product_name;?></a>
+                    <?php if(strlen($value->product_name) > 79 ){ ?>
+                      <a class="tool-tip-custom" data-toggle="tooltip" title="<?php echo $value->product_full_name; ?>" href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>"> ...</a> 
+                    <?php } ?>
+                  </p>
                   <p class="product-description"><?php echo $value->about_product;?></p>
                 </div>
                 <div class="product-price-category">
@@ -82,6 +86,9 @@ $('#pagination').on('click','a',function(e){
       
       
     });
+  $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();   
+      });
 </script>
 
  
