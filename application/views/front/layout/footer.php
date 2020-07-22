@@ -260,11 +260,10 @@ $.typeahead({
 	        $('.custom-error-alert').fadeOut("slow")
     	}, 12000);
 
-		 var elem = $(".main-product-name");
-		    if(elem){
-		        if (elem.text().length > 60)
-		                elem.text(elem.text().substr(0,60)).append("<b> ...</b>");
-		 }
+		
+		$(document).ready(function(){
+	      $('[data-toggle="tooltip"]').tooltip();   
+	    });
     	//
     	//  $(document).ready(function(){
 	    //   $('[data-toggle="tooltip"]').tooltip();   
