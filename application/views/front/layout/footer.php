@@ -232,6 +232,11 @@ $.typeahead({
                 $(".cart-quantity").text(data.quantity);
                 $(".cart-quantity").addClass("show-cart");
               }
+              var page = "<?php echo $this->uri->segment(2); ?>";
+              if(page=='checkout'){
+              	location.reload();              	
+              }
+            
             }
       })
 
