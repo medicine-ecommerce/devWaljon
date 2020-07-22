@@ -49,9 +49,6 @@ class MY_Model extends CI_Model {
         $this->db->delete($table);
     }             
 
-    
-                    
-
     public function updateData($table,$update_data,$where) {
         $this->db->where($where);
         $this->db->update($table,$update_data); 

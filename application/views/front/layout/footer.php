@@ -220,7 +220,7 @@ $.typeahead({
     })
 
 	}
-	 function updateCart(id,quantity,type){       
+	function updateCart(id,quantity,type){     
 
       $.ajax({
             url:"<?php echo base_url(); ?>/user/update_cart",

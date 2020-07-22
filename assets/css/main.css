@@ -636,9 +636,22 @@
 
 .col-numeric p {
   font: bold 1.8em helvetica;
-  padding: 35px;
+  padding: 35px 0px 35px 35px;
+  display: inline-block;
 }
-
+p.remove-product {
+    padding: 0px;
+    margin: 35px 0px 35px 35px;
+    background: red;
+    color: white;
+    cursor: pointer;
+    padding: 0px 4px 1px;
+    border-radius: 50%;
+}
+p.remove-product a{
+    color: white !important;
+    font-size: 14px;
+}
 .col-total p {
   color: #12c8b1;
 }
