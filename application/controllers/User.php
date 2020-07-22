@@ -20,6 +20,13 @@ Class User extends MY_Controller {
             redirect(base_url('user'));
         }
 
+        // if (empty($this->session->userdata('user_id'))){ 
+        //     // Allow some methods?
+        //     $allowed = array('shop','signup','login','category','product_category','filter1','getSearchProduct','product','index','ajaxFilterData','search','getAllProductComments','product_comment','cart','add_to_cart','update_cart');
+        //     if (!in_array($this->router->fetch_method(), $allowed)){
+        //         redirect(base_url('user/login'));
+        //     }
+        // }       
     }
     // public function index()
     // {
@@ -278,9 +285,7 @@ Class User extends MY_Controller {
         
     }
     public function add_to_cart(){
-
-
-        
+  
         if(!empty($this->input->post('id')))            
 
             $product = $this->User->getData('product','id,name,category_id,brand_id',array('id'=>$this->input->post('id')));
@@ -323,7 +328,13 @@ Class User extends MY_Controller {
                         'rowid'=> $rowId,
                         'qty'  => $this->input->post('quantity'),
                 );            
-            }else{
+            }else if($this->input->post('type')=="remove"){                
+                $data = array(                    
+                        'rowid'=> $rowId,
+                        'qty'  => 0,
+                ); 
+            }
+            else{
                 $data = array(                    
                         'rowid'=> $rowId,
                         'qty'     => $this->input->post('quantity'),
@@ -331,8 +342,9 @@ Class User extends MY_Controller {
             }
             $catUpdate = $this->cart->update($data);  
             $quantity = count($this->cart->contents());
-            if($catUpdate){
+            if($catUpdate){                    
                 echo json_encode(array('status'=>1,'message'=>'Product Added','quantity'=>$quantity,'cart'=>$this->cart->contents()));
+                
                 return;
             }
     }
@@ -481,5 +493,17 @@ Class User extends MY_Controller {
                 "Honda", "Hummer", "Mercury", "Mini", "Volkswagen", "Volvo"
             )
         );*/
+    }
+
+    public function paymentSuccess()
+    {
+        $this->middle = 'paymentSuccess';
+        $this->User();
+    }
+
+    public function paymentFailed()
+    {
+        $this->middle = 'paymentFailed';
+        $this->User();
     }
 }

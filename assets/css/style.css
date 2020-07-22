@@ -1186,6 +1186,7 @@ li.product_li1 a{
   }
   div#element {
     padding: 20px;
+    display: flow-root;
     margin-bottom: 50px;
     background: #f1f1f1;
   }

@@ -23,8 +23,8 @@
           <p><?php echo $i++; ?></p>          
         </div>        
         <div class="col col-pro layout-inline">
-          <img style="width: 50%;" src="<?= base_url().$value['image']; ?>">
-          <p><?= $value['name']; ?></p>
+          <img style="width: 50%;" src="<?= base_url().$value['image']; ?>" >
+          <p class="cart-product-name"><?= $value['name']; ?></p>
         </div>        
         <div class="col col-price col-numeric align-center ">
           <p><i class='fas fa-rupee-sign'></i> <?= $value['price']; ?></p>

@@ -18,17 +18,15 @@ Class Vendor extends MY_Controller {
         $this->load->library('excel');  
         $this->load->library('upload');
 
-        
-      // if (empty($this->session->userdata('user_id'))){ 
-      //       // Allow some methods?
-      //       $allowed = array('forgot_password','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile','vendorLogin');
-      //       if (!in_array($this->router->fetch_method(), $allowed)){
-      //           redirect(base_url('vendor/vendor_login'));
-      //       }
-      //   }
+        if (empty($this->session->userdata('user_id'))){ 
+            // Allow some methods?
+            $allowed = array('forgot_password','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile','vendorLogin');
+            if (!in_array($this->router->fetch_method(), $allowed)){
+                redirect(base_url('vendor/vendor_login'));
+            }
+        }
 
     }
-
 
     public function index()
     {

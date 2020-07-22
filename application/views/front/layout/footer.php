@@ -220,7 +220,7 @@ $.typeahead({
     })
 
 	}
-	 function updateCart(id,quantity,type){       
+	function updateCart(id,quantity,type){     
 
       $.ajax({
             url:"<?php echo base_url(); ?>/user/update_cart",
@@ -232,6 +232,11 @@ $.typeahead({
                 $(".cart-quantity").text(data.quantity);
                 $(".cart-quantity").addClass("show-cart");
               }
+              var page = "<?php echo $this->uri->segment(2); ?>";
+              if(page=='checkout'){
+              	location.reload();              	
+              }
+            
             }
       })
 
