@@ -417,4 +417,16 @@ Class User extends MY_Controller {
             )
         );*/
     }
+
+    public function paymentSuccess()
+    {
+        $this->middle = 'paymentSuccess';
+        $this->User();
+    }
+
+    public function paymentFailed()
+    {
+        $this->middle = 'paymentFailed';
+        $this->User();
+    }
 }
