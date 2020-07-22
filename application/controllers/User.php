@@ -319,10 +319,10 @@ Class User extends MY_Controller {
                         'rowid'=> $rowId,
                         'qty'  => $this->input->post('quantity'),
                 );            
-            }else if($this->input->post('type')=="remove"){
+            }else if($this->input->post('type')=="remove"){                
                 $data = array(                    
                         'rowid'=> $rowId,
-                        'qty'  => $this->input->post('quantity'),
+                        'qty'  => 0,
                 ); 
             }
             else{
@@ -333,8 +333,9 @@ Class User extends MY_Controller {
             }
             $catUpdate = $this->cart->update($data);  
             $quantity = count($this->cart->contents());
-            if($catUpdate){
+            if($catUpdate){                    
                 echo json_encode(array('status'=>1,'message'=>'Product Added','quantity'=>$quantity,'cart'=>$this->cart->contents()));
+                
                 return;
             }
     }
