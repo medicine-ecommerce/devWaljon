@@ -1,10 +1,33 @@
+<style type="text/css">
+    .custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #007bff;
+    background-color: #007bff;
+    width: 20px !important;
+    height: 20px !important;
+}
+.custom-control-label::after {
+    position: absolute;
+    top: .25rem;
+    left: -1.5rem;
+    display: block;    
+    content: "";
+    background: no-repeat 50%/50% 50%;
+    width: 20px !important;
+    height: 20px !important;
+}
+.custom-control-label::before{
+    background-color: #007bff;
+    width: 20px !important;
+    height: 20px !important;   
+}
+</style>
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
 
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
-              <?php if (!empty($this->cart->contents())) { ?>
                 <h2 id="heading">Sign Up Your User Account</h2>
                 <form id="msform" method="post" action="<?php echo base_url('user/placeorder'); ?>">
                     <!-- progressbar -->
@@ -162,19 +185,6 @@
                         </div> -->
                     </fieldset>
                 </form>
-              <?php }else{ ?>    
-                <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="empty-category">
-                    <div class="empty-img">
-                      <img src="<?php echo base_url('assets/img/empty-cart.png'); ?>">
-                    </div>
-                    <div class="payment-btn">
-                      <a href="">Back to Store</a>
-                    </div>
-                   <!--  <h4>Currenty there is no product in your cart</h4> -->
-                  </div>
-                </div>
-              <?php } ?>  
             </div>
         </div>
     </div>

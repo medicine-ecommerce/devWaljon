@@ -858,7 +858,43 @@ p.Concens-name{
 span.product-heading-all {
     z-index: 999;
 }
-
+.checkout-content {
+    border: 1px solid #f3f3f3;
+    margin: 15px auto;
+}
+.progress {
+    height: 7px;
+}
+button.add-address {
+    box-shadow: none;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    border: none;
+}
+button.add-address:hover {
+    background-color: #118db1;
+    transition: 0.3s ease-in-out;
+}
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #007bff;
+    background-color: #007bff;
+    width: 20px !important;
+    height: 20px !important;
+}
+.custom-control-label::after {
+    position: absolute;
+    top: .25rem;
+    left: -1.5rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    content: "";
+    background: no-repeat 50%/50% 50%;
+    width: 20px !important;
+    height: 20px !important;
+}
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
