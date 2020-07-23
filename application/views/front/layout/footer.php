@@ -233,7 +233,7 @@ $.typeahead({
                 $(".cart-quantity").addClass("show-cart");
               }
               var page = "<?php echo $this->uri->segment(2); ?>";
-              if(page=='checkout'){
+              if(page=='checkout' || page=='cart'){
               	location.reload();              	
               }
             
