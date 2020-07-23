@@ -895,6 +895,29 @@ button.add-address:hover {
     width: 20px !important;
     height: 20px !important;
 }
+.cart-content-section {
+    border: 1px solid #eaeaea;
+    padding: 20px 10px;
+    margin: 70px auto !important;
+}
+a.btn.btn-update-cart{
+    width: 100px;
+    background: #4abdde;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 0px 10px 5px;
+    float: right;
+    transition: 0.3s ease-in-out;
+    box-shadow: none;
+}
+a.btn.btn-update-cart:hover{
+    background-color: #118db1;
+    transition: 0.3s ease-in-out;
+}
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {

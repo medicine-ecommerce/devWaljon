@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="cart transition is-open"> 
+  <div class="cart transition is-open cart-content-section"> 
 
   <?php if (!empty($this->cart->contents())) { ?> 
     <div class="table">
@@ -55,7 +55,7 @@
     </div>
     <div class="row update-button">      
       <div class="col-md-12">        
-        <a href="<?php echo base_url('user/checkout');?>" class="btn btn-update">Checkout</a>
+        <a href="<?php echo base_url('user/checkout');?>" class="btn btn-update-cart ">Checkout</a>
       </div>
     </div>
   <?php }else{ ?>    
