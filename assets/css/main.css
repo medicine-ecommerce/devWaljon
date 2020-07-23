@@ -773,14 +773,15 @@ a.qty:hover {
     border: 5px solid #4abdde;
     margin: 0;
     background-color: #4abdde;
+    padding: 30px 60px;
 }
 .heading-total
 {
-  position: absolute;
-    right: 150px;
-    font-size: 20px;
-    color: #fff;
-    font-weight: bold;
+
+  font-size: 20px;
+  color: #fff;
+  float: right;
+  font-weight: bold;
 }
 
 
