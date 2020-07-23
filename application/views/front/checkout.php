@@ -96,14 +96,15 @@
                                   <img src="<?php echo base_url('assets/img/empty-cart.png'); ?>">
                                 </div>
                                 <div class="payment-btn">
-                                  <a href="">Back to Store</a>
+                                  <a href="<?php echo base_url()."/user"; ?>">Back to Store</a>
                                 </div>
                                <!--  <h4>Currenty there is no product in your cart</h4> -->
                               </div>
                             </div>
                           <?php } ?>
-
-                        <input type="button" name="next" class="next action-button" value="Next" />
+                          <?php if(!empty($this->cart->contents())){  ?>
+                            <input type="button" name="next" class="next action-button" value="Next" />
+                          <?php } ?>
                     </fieldset>
                     
                     <fieldset>
