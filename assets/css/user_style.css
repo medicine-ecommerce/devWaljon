@@ -411,15 +411,22 @@ height: .7rem;
     height: 28px;
     color: #495057;
 }
+.footer-content .row{
+    margin: 0px;
+}
+.copyright-sec .row{
+    margin: 0px;
+}
 span.cart-quantity {
     position: absolute;
-    top: 5px;
+    top: 0px;
     left: 14px;
     font-size: 14px;
     background-color: #4abdde;
     color: #fff;
     width: 25px;
     height: 25px;
+    line-height: 1.5;
     margin: 0px;
     padding: 2px 8px;
     border-radius: 20px;

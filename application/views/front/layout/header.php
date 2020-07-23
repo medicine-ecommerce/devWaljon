@@ -102,8 +102,9 @@
 
 						<div class="top_bar_content ml-auto">
 							<div class="top_bar_user">
-								<a href="<?php echo base_url('user/cart');?>" class="top_bar_cart"><i class="fa fa-cart-plus"></i></a>
-								<span class="cart-quantity <?php if(!empty($cart_quantity)){ echo "show-cart";}else{ echo  "hide-cart" ;} ?> "> <?php if(!empty($cart_quantity)){ echo $cart_quantity; } ?> </span>
+								<a href="<?php echo base_url('user/cart');?>" class="top_bar_cart"><i class="fa fa-cart-plus"></i>
+									<span class="cart-quantity <?php if(!empty($cart_quantity)){ echo "show-cart";}else{ echo  "hide-cart" ;} ?> "> <?php if(!empty($cart_quantity)){ echo $cart_quantity; } ?> </span>
+								</a>
 								<?php if(empty($this->session->userdata('user_type'))){ ?>
 									<div class="top_bar_user_content"><a href="<?php echo base_url();?>/user/login">Login</a></div>
 									<div class="top_bar_user_content"><a href="<?php echo base_url();?>/user/signup">Register</a></div>
