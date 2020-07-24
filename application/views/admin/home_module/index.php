@@ -51,33 +51,44 @@
                   </form>                  
                 </div>
               </div> 
-              <!-- <div class="row">
-                <div class="col-md-3 col-sm-3 col-xs-6">
-                  <div class="home-page-head">
-                    <h4>Product Category</h4>
-                  </div>
-                  <div class="home-page-content">
-                    <p class="home-page-box">Trending Profucts</p>
-                    <p class="home-page-box">New Arivals</p>
-                  </div>
-                </div>
-                <div class="col-md-9 col-sm-9 col-xs-6">
-                  <div class="home-page-btn product-cat-btn">
-                    <div class="switch-btn">
-                      <label class="switch">
-                        <input type="checkbox" class="switch-input" name="trending" >
-                        <span class="slider round"></span>
-                      </label>
+              <div class="row">
+                <form action="<?php echo base_url('admin/add_home_category'); ?>" method="post" style="width:100%">
+                  <div class="col-md-3 col-sm-3 col-xs-6">
+                    <div class="home-page-head">
+                      <h4>Product Category</h4>
                     </div>
-                    <div class="switch-btn">
-                      <label class="switch">
-                        <input type="checkbox" class="switch-input" name="new_arivals" checked>
-                        <span class="slider round"></span>
-                      </label>
+                    <div class="home-page-content">
+                      <?php 
+                      if (!empty($home_category)) {
+                        foreach ($home_category as $key => $value) {
+                          echo '<p class="home-page-box">'.$value->home_category.'</p>';
+                        } 
+                      }
+                       ?>
+                      <input type="text" name="home_category" placeholder="Enter category name" class="form-control ">
                     </div>
                   </div>
-                </div>
-              </div> -->
+                  <div class="col-md-9 col-sm-9 col-xs-6">                  
+                    <div class="home-page-btn product-cat-btn">
+                      <?php 
+                      if (!empty($home_category)) {
+                        foreach ($home_category as $key => $value) { ?>
+                          <div class="switch-btn">
+                            <label class="switch">
+                              <input type="checkbox" class="switch-input" name="is_active_category" <?php echo ($value->status=='active') ? 'checked':''; ?> onchange="UpdateHomeCategory(this,'<?php echo $value->id; ?>')" >
+                              <span class="slider round"></span>
+                            </label>
+                          </div>
+                      <?php  } 
+                      }
+                       ?>
+                      <div class="switch-btn">
+                        <input type="submit" class="btn btn-success" value="Add" name="">
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
               <!-- <div class="pull-right">
                 <div class="submit-btn">
                   <button type="button" class="btn previous-btn">Previous</button>
@@ -102,6 +113,16 @@
           }
       });
     })
+    function UpdateHomeCategory(th,id) {
+      var category = ($(th).is(':checked')) ? 'active' : 'deactive'      
+      $.ajax({
+          type: "post",
+          url: "<?php echo base_url('admin/update_home_category'); ?>",
+          data: {id: id, category : category },
+          success: function (data) {
+          }
+      });
+    }
   </script>
 
       

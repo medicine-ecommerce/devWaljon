@@ -184,7 +184,7 @@ Class Admin extends MY_Controller {
         $this->Admin();
          //$this->load->view('admin/product_add');
     }
-    public function category_add()
+    public function parent_category_add()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('category_name', 'category', 'required');
@@ -198,6 +198,86 @@ Class Admin extends MY_Controller {
                             'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
                             'created_at'=> date('Y-m-d H:i:s')
                         );
+                $result = $this->Admin->insertData('main_category',$data);
+                if (!empty($result)) {
+                    $this->session->set_flashdata('success', 'Parent Category added successfully');                    
+                }
+                else{
+                    $this->session->set_flashdata('error','error! Please try again');
+                }
+                redirect($_SERVER['HTTP_REFERER']); 
+            }
+        }
+        $this->middle = 'parent-category/add';
+        $this->Admin();
+    }
+    public function parent_category_list()
+    {
+        $this->data['category'] = $this->Admin->ParentCategoryList();
+        $this->middle = 'parent-category/list';
+        $this->Admin();
+    }
+    public function parent_category_edit($id)
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $this->form_validation->set_rules('category_name', 'category', 'required');
+            if ($this->form_validation->run() == FALSE){ 
+              $this->session->set_flashdata('error', validation_errors());      
+            }
+            else{
+                $data = array(
+                            'category_name'=>$this->input->post('category_name')
+                        );
+                $result = $this->Admin->updateData('main_category',$data,array('id'=>$id));
+                if (!empty($result)) {
+                    $this->session->set_flashdata('success', 'Category updated successfully');                    
+                }
+                else{
+                    $this->session->set_flashdata('error','error! Please try again');
+                }
+                redirect($_SERVER['HTTP_REFERER']); 
+            }
+        }
+        $this->data['category'] = $this->Admin->getRowData('main_category','*',array('id'=>$id));
+        $this->middle = 'parent-category/add';
+        $this->Admin();
+    }
+    public function parent_category_delete($id)
+    {
+        $result = $this->Admin->deleteData('main_category',array('id'=>$id));
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'Category deleted successfully');
+        }else{
+            $this->session->set_flashdata('error', 'error! Please try again');
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function parent_category_status($status,$id)
+    {
+        $result = $this->Admin->updateData('main_category',array('status'=>$status),array('id'=>$id));
+        if (!empty($result)) {
+            $this->session->set_flashdata('success', 'status updated successfully'); 
+        }
+        else{
+            $this->session->set_flashdata('error', 'error! Please try again'); 
+        }
+        redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function category_add()
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $this->form_validation->set_rules('category_name', 'category', 'required');
+            if ($this->form_validation->run() == FALSE){ 
+              $this->session->set_flashdata('error', validation_errors());      
+            }
+            else{
+                $data = array(
+                            'category_name'=>$this->input->post('category_name'),
+                            'created_by'=> $this->session->userdata('user_id'),
+                            'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
+                            'main_category_id' =>$this->input->post('main_category_id'),
+                            'created_at'=> date('Y-m-d H:i:s')
+                        );
                 $result = $this->Admin->insertData('category',$data);
                 if (!empty($result)) {
                     $this->session->set_flashdata('success', 'Category added successfully');                    
@@ -208,6 +288,7 @@ Class Admin extends MY_Controller {
                 redirect($_SERVER['HTTP_REFERER']); 
             }
         }
+        $this->data['parentCategory'] = $this->Admin->getData('main_category','*',array('status'=>'active'));
         $this->middle = 'category/add';
         $this->Admin();
     }
@@ -226,7 +307,8 @@ Class Admin extends MY_Controller {
             }
             else{
                 $data = array(
-                            'category_name'=>$this->input->post('category_name')
+                            'category_name'=>$this->input->post('category_name'),
+                            'main_category_id' =>$this->input->post('main_category_id')
                         );
                 $result = $this->Admin->updateData('category',$data,array('id'=>$id));
                 if (!empty($result)) {
@@ -238,6 +320,7 @@ Class Admin extends MY_Controller {
                 redirect($_SERVER['HTTP_REFERER']); 
             }
         }
+        $this->data['parentCategory'] = $this->Admin->getData('main_category','*',array('status'=>'active'));
         $this->data['category'] = $this->Admin->getRowData('category','*',array('id'=>$id));
         $this->middle = 'category/add';
         $this->Admin();
@@ -263,7 +346,8 @@ Class Admin extends MY_Controller {
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
-    public function home_category_add()
+
+    public function subcategory_add()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('subcategory_name', 'subcategory name', 'required');
@@ -293,14 +377,14 @@ Class Admin extends MY_Controller {
         $this->middle = 'subcategory/add';
         $this->Admin();
     }
-    public function home_category_list()
+    public function subcategory_list()
     {
         $this->data['subcategory'] = $this->Admin->SubCategoryList();
 
         $this->middle = 'subcategory/list';
         $this->Admin();
     }
-    public function home_category_edit($id)
+    public function subcategory_edit($id)
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('subcategory_name', 'subcategory name', 'required');
@@ -328,7 +412,7 @@ Class Admin extends MY_Controller {
         $this->middle = 'subcategory/add';
         $this->Admin();
     }
-    public function home_category_delete($id)
+    public function subcategory_delete($id)
     {
         $result = $this->Admin->deleteData('subcategory',array('id'=>$id));
         if (!empty($result)) {
@@ -338,7 +422,7 @@ Class Admin extends MY_Controller {
         }
         redirect($_SERVER['HTTP_REFERER']);
     }
-    public function home_category_status($status,$id)
+    public function subcategory_status($status,$id)
     {
         $result = $this->Admin->updateData('subcategory',array('status'=>$status),array('id'=>$id));
         if (!empty($result)) {
@@ -457,6 +541,7 @@ Class Admin extends MY_Controller {
     public function home_module()
     {
         $this->data['home_module'] = $this->Admin->getRowData('home_module','*',array('id'=>1));
+        $this->data['home_category'] = $this->Admin->getData('home_category','*','');
         $this->middle = 'home_module/index';
         $this->Admin();
     }
@@ -467,6 +552,26 @@ Class Admin extends MY_Controller {
                           'shop_by_health' => (!empty($this->input->post('shop_by_health')))?1:0,
                           'offers' => (!empty($this->input->post('offers')))?1:0);
             $this->Admin->updateData('home_module',$array,array('id'=>1));
+        }
+    }
+    public function add_home_category()
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $result = $this->Admin->insertData('home_category',array('home_category'=>$this->input->post('home_category')));
+            if (!empty($result)) {
+                $this->session->set_flashdata('success', 'Home Category added successfully'); 
+            }
+            else{
+                $this->session->set_flashdata('error','error! Please try again');
+            }
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+    public function update_home_category()
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $result = $this->Admin->updateData('home_category',array('status'=>$this->input->post('category')),array('id'=>$this->input->post('id')));
+            
         }
     }
     public function logout()

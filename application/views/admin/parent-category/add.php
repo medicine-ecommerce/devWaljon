@@ -3,7 +3,7 @@
     <div class="">
       <div class="page-title">
         <div class="title_left">
-          <h3>Add Category</h3>
+          <h3>Add Parent Category</h3>
         </div>
 
         <!-- <div class="title_right">
@@ -32,23 +32,11 @@
           ?>
           <div class="x_panel">
             <div class="x_content">
-              <form class="" action="<?php echo(!empty($category)) ? base_url('admin/category_edit/'.$category->id) : base_url('admin/category_add') ?>" method="post" novalidate>
-                <span class="section">Add Category</span>
+              <form class="" action="<?php echo(!empty($category)) ? base_url('admin/parent_category_edit/'.$category->id) : base_url('admin/parent_category_add') ?>" method="post" novalidate>
+                <span class="section">Add Parent Category</span>
+                
                 <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">Parent Category<span
-                      class="required">*</span></label>
-                  <div class="col-md-6 col-sm-6">
-                    <select class="form-control" name="main_category_id">
-                      <?php  if (!empty($parentCategory)) {
-                        foreach ($parentCategory as $key => $value) { ?>
-                          <option value="<?php echo $value->id; ?>" <?php echo ($value->id == $category->main_category_id) ?'selected':'' ?>><?php echo $value->category_name; ?></option>
-                      <?php  }
-                      } ?>
-                    </select>
-                  </div>
-                </div>
-                <div class="field item form-group">
-                  <label class="col-form-label col-md-3 col-sm-3  label-align">Category Name<span
+                  <label class="col-form-label col-md-3 col-sm-3  label-align">Parent Category Name<span
                       class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
                     <input class="form-control"  name="category_name" required="required" value="<?php echo (!empty($category)) ? $category->category_name: '';?>" />

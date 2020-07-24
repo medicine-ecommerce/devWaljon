@@ -431,20 +431,36 @@ Class User extends MY_Controller {
         $paytmChecksum = "";
         $paramList = array();
         $isValidChecksum = "FALSE";
-
         $paramList = $_POST;
         if ($paramList['STATUS']=='TXN_SUCCESS') {
           $array = array('TXNDATE'=>$paramList['TXNDATE'],
                         'TXNID'=>$paramList['TXNID'],
+                        'PAYMENTMODE'=>$paramList['PAYMENTMODE'],
+                        'BANKNAME'=>$paramList['BANKNAME'],
+                        'GATEWAYNAME'=>$paramList['GATEWAYNAME'],                        
                         'TXNSTATUS'=>'success');
           $this->User->updateData('orders',$array,array('order_number'=>$paramList['ORDERID']));
+          $array['ORDERID'] = $paramList['ORDERID'];
+          $array['TXNAMOUNT'] = $paramList['TXNAMOUNT'];
+          
+          $this->data['result'] = $array;
+          $this->middle = 'paymentSuccess';
+          $this->User();
         }
         else{
           $array = array('TXNDATE'=>(!empty($paramList['TXNDATE']))?$paramList['TXNDATE']:date('Y-m-d H:i:s'),
                         'TXNID'=>$paramList['TXNID'],
                         'RESPMSG'=>$paramList['RESPMSG'],
+                        'PAYMENTMODE'=>$paramList['PAYMENTMODE'],
+                        'BANKNAME'=>$paramList['BANKNAME'],
+                        'GATEWAYNAME'=>$paramList['GATEWAYNAME'],
                         'TXNSTATUS'=>'failed');
           $this->User->updateData('orders',$array,array('order_number'=>$paramList['ORDERID']));
+          $array['ORDERID'] = $paramList['ORDERID'];
+          $array['TXNAMOUNT'] = $paramList['TXNAMOUNT'];
+          $this->data['result'] = $array;
+          $this->middle = 'paymentFailed';
+          $this->User();
         }
         $this->cart->destroy();
       }
