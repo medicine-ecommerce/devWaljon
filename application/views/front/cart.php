@@ -1,5 +1,7 @@
 <div class="container">
-  <div class="cart transition is-open">    
+  <div class="cart transition is-open cart-content-section"> 
+
+  <?php if (!empty($this->cart->contents())) { ?> 
     <div class="table">
       <div class="layout-inline cart-heading row th ">
         <div class="col col-pro"> No.</div>
@@ -41,6 +43,7 @@
         </div> -->
          <div class="col col-total col-numeric">  
            <p><i class='fas fa-rupee-sign'></i><?php echo $value['subtotal'] ?></p>
+           <p class="remove-product"><a onclick="updateCart(<?= $value['id']; ?>,'0','remove')" ><i class='fa fa-close'></i></a></p>
          </div>         
       </div>  
       <?php }
@@ -52,14 +55,23 @@
     </div>
     <div class="row update-button">      
       <div class="col-md-12">        
-        <a href="<?php echo base_url('user/checkout');?>" class="btn btn-update">Checkout</a>
+        <a href="<?php echo base_url('user/checkout');?>" class="btn btn-update-cart ">Checkout</a>
       </div>
     </div>
-    <!-- <div class="row checkout-button">      
-      <div class="col-md-12">        
-        <a href="#" class="btn btn-update" onclick="location.reload();">Update cart</a>
+  <?php }else{ ?>    
+    <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="empty-category">
+        <div class="empty-img">
+          <img src="<?php echo base_url('assets/img/empty-cart.png'); ?>">
+        </div>
+        <div class="payment-btn">
+          <a href="">Back to Store</a>
+        </div>
+       <!--  <h4>Currenty there is no product in your cart</h4> -->
       </div>
-    </div> -->
+    </div>
+  <?php } ?>
+
   </div>    
 </div>
   

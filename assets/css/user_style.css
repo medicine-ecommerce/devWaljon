@@ -411,15 +411,22 @@ height: .7rem;
     height: 28px;
     color: #495057;
 }
+.footer-content .row{
+    margin: 0px;
+}
+.copyright-sec .row{
+    margin: 0px;
+}
 span.cart-quantity {
     position: absolute;
-    top: 5px;
+    top: 0px;
     left: 14px;
     font-size: 14px;
     background-color: #4abdde;
     color: #fff;
     width: 25px;
     height: 25px;
+    line-height: 1.5;
     margin: 0px;
     padding: 2px 8px;
     border-radius: 20px;
@@ -858,7 +865,66 @@ p.Concens-name{
 span.product-heading-all {
     z-index: 999;
 }
-
+.checkout-content {
+    border: 1px solid #f3f3f3;
+    margin: 15px auto;
+}
+.progress {
+    height: 7px;
+}
+button.add-address {
+    box-shadow: none;
+    font-size: 16px;
+    transition: 0.3s ease-in-out;
+    font-weight: 600;
+    border: none;
+}
+button.add-address:hover {
+    background-color: #118db1;
+    transition: 0.3s ease-in-out;
+}
+.custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #007bff;
+    background-color: #007bff;
+    width: 20px !important;
+    height: 20px !important;
+}
+.custom-control-label::after {
+    position: absolute;
+    top: .25rem;
+    left: -1.5rem;
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    content: "";
+    background: no-repeat 50%/50% 50%;
+    width: 20px !important;
+    height: 20px !important;
+}
+.cart-content-section {
+    border: 1px solid #eaeaea;
+    padding: 20px 10px;
+    margin: 70px auto !important;
+}
+a.btn.btn-update-cart{
+    width: 100px;
+    background: #4abdde;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 3px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 0px 10px 5px;
+    float: right;
+    transition: 0.3s ease-in-out;
+    box-shadow: none;
+}
+a.btn.btn-update-cart:hover{
+    background-color: #118db1;
+    transition: 0.3s ease-in-out;
+}
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {

@@ -1,8 +1,32 @@
+<style type="text/css">
+    .custom-control-input:checked~.custom-control-label::before {
+    color: #fff;
+    border-color: #007bff;
+    background-color: #007bff;
+    width: 16px !important;
+    height: 16px !important;
+}
+.custom-control-label::after {
+    position: absolute;
+    top: .25rem;
+    left: -1.5rem;
+    display: block;    
+    content: "";
+    background: no-repeat 50%/50% 50%;
+    width: 16px !important;
+    height: 16px !important;
+}
+.custom-control-label::before{
+    
+    width: 16px !important;
+    height: 16px !important;   
+}
+</style>
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 checkout-content">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2 id="heading">Sign Up Your User Account</h2>
                 <form id="msform" method="post" action="<?php echo base_url('user/placeorder'); ?>">
@@ -16,18 +40,22 @@
                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100"></div>
                     </div> <br> <!-- fieldsets -->
                     <fieldset>
+                        <?php  if(!empty($this->cart->contents())){ 
+                            $i = 1;
+                            $total = 0; ?>
                         <div class="table checkout-pages">
                           <div class="layout-inline cart-heading row th ">
                             <div class="col">NO.</div>
                             <div class="col col-pro">Product</div>
                             <div class="col col-price align-center ">Price</div>
                             <div class="col col-qty align-center">QTY</div>
+                            <div class="col">VAT</div>                            
                             <div class="col">Total</div>
                           </div>
                           <?php  
                           $total = 0;     
                           if(!empty($this->cart->contents())){ 
-                            $i = 1;                            
+                            $i = 1;
                           foreach ($this->cart->contents() as $value) {
                           $total = $total + $value['subtotal']; ?>
                           <div class="layout-inline cart-content row">
@@ -49,19 +77,37 @@
                                 <input class="quantity" min="0" value="<?= $value['qty']; ?>" name="quantity" type="number">
                                 <button onclick="this.parentNode.querySelector('input[type=number]').stepUp(); updateCart(<?= $value['id']; ?>,this.parentNode.querySelector('input[value]'),'plus')" class="plus"></button>
                               </div>          
+                            </div>                            
+                            <div class="col col-vat col-numeric">
+                                <p><i class='fas fa-rupee-sign'></i> 2.95</p>          
                             </div>
                             <div class="col col-total col-numeric">  
                                <p><i class='fas fa-rupee-sign'></i><?= $value['subtotal'] ?></p>
-                            </div>         
+                               <p class="remove-product"><a onclick="updateCart(<?= $value['id']; ?>,'0','remove')" ><i class='fa fa-close'></i></a></p>
+                            </div>
                           </div>  
-                          <?php }
-                          } else{ echo "No product in cart"; } ?>
+                          <?php } ?>
                           <div class="cart-total">
                             <!-- <span class="heading-total">Total Item <span><?php  ?> </span> </span><br><br> -->
-                            <span class="heading-total">Total = <?php echo $total; ?> </span> 
+                            <span class="heading-total">Total - <?php echo $total; ?> </span> 
                           </div>   
                         </div>
-                        <input type="button" name="next" class="next action-button" value="Next" />
+                        <?php } else{ $total=''; ?>    
+                            <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+                              <div class="empty-category">
+                                <div class="empty-img">
+                                  <img src="<?php echo base_url('assets/img/empty-cart.png'); ?>">
+                                </div>
+                                <div class="payment-btn">
+                                  <a href="<?php echo base_url()."/user"; ?>">Back to Store</a>
+                                </div>
+                               <!--  <h4>Currenty there is no product in your cart</h4> -->
+                              </div>
+                            </div>
+                          <?php } ?>
+                          <?php if(!empty($this->cart->contents())){  ?>
+                            <input type="button" name="next" class="next action-button" value="Next" />
+                          <?php } ?>
                     </fieldset>
                     
                     <fieldset>
@@ -126,10 +172,18 @@
                             </div> 
                             <div>
                                 <label class="fieldlabels chg-psw-input">Online</label> 
-                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control input-border-none" value="online" required="">
+                                <div class="custom-control custom-radio payment-radio">
+                                  <input type="radio" class="custom-control-input" id="customRadio" name="payment_mode" value="online" required="">
+                                  <label class="custom-control-label" for="customRadio"></label>
+                                </div>  
+                            </br>
                                 <label class="fieldlabels chg-psw-input">Cash On Delivery</label>
-                                <input type="radio"  style="margin-left: -48%;" name="payment_mode" class="form-control input-border-none" value="cod" required="">
-                                <input type="submit"  name="next" class="next action-button" value="Submit" /> 
+                                <div class="custom-control custom-radio payment-radio">
+                                  <input type="radio" class="custom-control-input" id="customRadio1" name="payment_mode" value="cod" required="">
+                                  <label class="custom-control-label" for="customRadio1"></label>
+                                </div>  
+                               
+                                <input type="submit"  name="next" class="next action-button" value="Submit" />  
                             </div>
                         </div>
                         <!-- <div class="form-card">
