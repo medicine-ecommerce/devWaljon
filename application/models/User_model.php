@@ -203,6 +203,7 @@ class User_model extends MY_model
 				$return[$key] = (array)$value;
 				$this->db->select('category.id as category_id, category.category_name');				
 				$this->db->from('category');
+				$this->db->where('category.status','active');
 				$this->db->where('main_category_id',$value->main_category_id);
 				// $this->db->limit(8);
 				$query_product = $this->db->get();
@@ -215,6 +216,7 @@ class User_model extends MY_model
 						$return[$key]['sub_category'][$key1] = (array)$value1;
 						$this->db->select('subcategory.id as nested_category_id, subcategory.subcategory as nested_category_name');				
 						$this->db->from('subcategory');
+						$this->db->where('subcategory.status','active');
 						$this->db->where('category_id',$value1->category_id);
 						// $this->db->limit(8);
 						$query_product1 = $this->db->get();
