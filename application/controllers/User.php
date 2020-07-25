@@ -15,9 +15,17 @@ Class User extends MY_Controller {
         $this->load->helper(array('form', 'url'));
         $this->load->library(array('ajax_pagination','cart','form_validation')); 
                $this->load->library('pagination');
-        $loginMethod = array('cart','checkout');
-        if (empty($this->session->userdata('user_id')) && in_array($this->router->fetch_method(), $loginMethod)) {
-            redirect(base_url('user'));
+        $loginMethod = 'checkout';
+        // array('cart','checkout');
+        //(empty($this->session->userdata('user_id')) && in_array($this->router->fetch_method(), $loginMethod))
+
+        if (empty($this->session->userdata('user_id')) && ($this->router->fetch_method() == $loginMethod)) {
+            if(!empty($this->cart->contents())){
+                $this->session->set_userdata('state','checkout');
+                redirect(base_url('user/login'));
+            }else{
+                redirect(base_url('user'));
+            }
         }
 
         // if (empty($this->session->userdata('user_id'))){ 
