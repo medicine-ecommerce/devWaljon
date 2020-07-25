@@ -17,7 +17,7 @@ Class User extends MY_Controller {
                $this->load->library('pagination');
         $loginMethod = array('cart','checkout');
         if (empty($this->session->userdata('user_id')) && in_array($this->router->fetch_method(), $loginMethod)) {
-            redirect(base_url('user'));
+            redirect(base_url('user/login'));
         }
 
         // if (empty($this->session->userdata('user_id'))){ 
@@ -145,9 +145,9 @@ Class User extends MY_Controller {
     }
     public function checkout()
     {
-       /* if(empty($this->session->userdata('user_id'))){
-            redirect(base_url('user/login'));
-        }*/
+        // if(empty($this->session->userdata('user_id'))){
+        //     redirect(base_url('user/login'));
+        // }
         // $this->data['user_address'] = $this->User->getData('user_address','address', array('user_id' => '2' ));
         $this->data['user_address'] = $this->User->getData('user_address','id,address,state,country', array('user_id' => $this->session->userdata('user_id') ));
         // print_r($this->data);die();
@@ -156,6 +156,9 @@ Class User extends MY_Controller {
     }
     public function cart()
     {
+        // if(empty($this->session->userdata('user_id'))){
+        //     redirect(base_url('user/login'));
+        // }
         $this->middle = 'cart';
         $this->User();
     }
