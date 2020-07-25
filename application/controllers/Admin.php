@@ -859,8 +859,8 @@ Class Admin extends MY_Controller {
     }  
     public function linking()
     {
-        $this->data['category'] = $this->Admin->getData('category','category_name,id',array('status'=>'active'));
-        $this->data['product_category'] = $this->Admin->getData('subcategory','subcategory,category_id,id',array('status'=>'active'));
+        $this->data['main_category'] = $this->Admin->getData('main_category','category_name,id',array('status'=>'active'));
+        $this->data['home_category'] = $this->Admin->getData('home_category','home_category,id,main_category_id',array('status'=>'active'));
         $this->middle = 'linking/linking';
         $this->Admin();
     }
@@ -868,9 +868,7 @@ Class Admin extends MY_Controller {
     {
          $cat_id = $this->input->post('cat_id');
          $subcat_id = $this->input->post('subcat_id');
-        foreach ($subcat_id as $key => $value) {
-            $this->Admin->updateData('subcategory',array('category_id'=>$cat_id),array('id'=>$value));
-        }
+         $this->Admin->updateData('home_category',array('main_category_id'=>implode(',',$subcat_id)),array('id'=>$cat_id));
     }
 
     public function pending_orders()

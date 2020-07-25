@@ -9,17 +9,39 @@ class User_model extends MY_model
 
 	public function HomeProduct()
 	{
-		$this->db->select('category_name,category.id');
-		$this->db->from('category');
-		$this->db->where('category.status','active');
-		$this->db->join('subcategory','subcategory.category_id = category.id');
-		$this->db->join('product','product.category_id = subcategory.id');
-		$this->db->group_by('category.id');
-		$this->db->order_by('category.id','desc');
-		$this->db->limit('5');
+		$this->db->select("home_category,
+			(
+            SELECT 
+              CONCAT('[',GROUP_CONCAT('{\"name\":\"',LEFT(product.name, 80),'\",
+              			\"product_full_name\":\"',product.name,'\",
+              			\"product_id\":\"',product.id,'\",
+              			\"image\":\"',product_images.image,'\",
+              			\"sale_price\":\"',product_item.sale_price,'\",
+              			\"product_form\":\"',product_form.name, '\" }'),']')  
+            FROM product
+              JOIN product_images on product_images.product_id = product.id 
+              JOIN product_item ON product_item.product_id =  product.id 
+              JOIN product_form ON product_form.id =  product.product_form_id
+              JOIN subcategory ON subcategory.id =  product.sucategory_id  
+              JOIN category ON category.id =  subcategory.category_id  
+              JOIN main_category ON main_category.id =  category.main_category_id  
+            WHERE
+                 FIND_IN_SET(main_category.id,home_category.main_category_id)
+        ) as product");
+		$this->db->from('home_category');
+		$this->db->where('home_category.status','active');
+		//$this->db->join('subcategory','subcategory.category_id = category.id');
+		//$this->db->join('product','product.category_id = subcategory.id');
+		//$this->db->group_by('category.id');
+		//$this->db->order_by('category.id','desc');
+		//$this->db->limit('5');
 		$query = $this->db->get();
+		
 		if ($query->num_rows() > 0) {
-			$result = $query->result();
+			return $result = $query->result();
+			/*echo "<pre>";
+			print_r($result);
+			exit();
 			foreach ($result as $key => $value) {
 				$return[$key]['category_id'] = $value->id;
 				$return[$key]['category_name'] = $value->category_name;
@@ -32,9 +54,9 @@ class User_model extends MY_model
 				$query_product = $this->db->get();
 				if ($query_product->num_rows() > 0) {
 					$return[$key]['category_product'] = $query_product->result();
-				}
-			}
-			return $return;
+				}*/
+			//}
+			//return $return;
 		}
 	}
 	public function getAllProductWithLimit($rowperpage, $rowno)

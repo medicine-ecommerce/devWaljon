@@ -45,7 +45,7 @@ Class User extends MY_Controller {
         $this->data['brand'] = $this->User->getData('brand','brand_img,id',array('status'=>'active'));
         $this->data['product'] = $this->User->HomeProduct();
         $this->data['home_module'] = $this->User->getRowData('home_module','*',array('id'=>1));
-        
+       
         $this->middle = 'index1';
         $this->User();
     }

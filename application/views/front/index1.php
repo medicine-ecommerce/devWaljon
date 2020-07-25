@@ -109,21 +109,23 @@
     <?php } ?>
     <div class="product-slider-section"> 
     <?php if (!empty($product)) {      
-      foreach ($product as $key => $value) { ?>
+      foreach ($product as $key => $value) { 
+        $productData = json_decode($value->product);
+        ?>
         <div class="product-slider-block slider-arrow">                  
           <div class="row product-heading">
             <div class="col-md-6 title-section">            
               <img src="<?php echo base_url('assets/icon/icon_new_arrivals.png');  ?>" >
-              <h4 class="product-heading-h4"><?php echo $value['category_name']; ?></h4>
+              <h4 class="product-heading-h4"><?php echo $value->home_category; ?></h4>
             </div>
             <div class="col-md-6 all-section">            
-              <a href="<?php echo base_url('user/category/'.base64_encode($value['category_id'])."/".base64_encode($value['category_id'])); ?>"><span class="product-heading-all">View All</span></a>            
+              <a href="<?php echo base_url('user/category/'.base64_encode($value->home_category)."/".base64_encode($value->home_category)); ?>"><span class="product-heading-all">View All</span></a>            
             </div>
           </div>
           <div class="product-slider">
             <div class="owl-slider product-slider" >
               <div id="carousel<?php echo $key; ?>" class="owl-carousel product-slider" >
-                <?php foreach ($value['category_product'] as $key => $value) { ?>
+                <?php foreach ($productData as $key => $value) { ?>
                   <div class="item">
                     <div class="product-main-block">
                       <div class="product-block">  
