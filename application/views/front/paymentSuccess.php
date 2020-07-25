@@ -14,19 +14,19 @@
 							<tbody>
 								<tr>
 									<td class="left-td">ORDERID</td>
-									<td class="right-td">78912654</td>
+									<td class="right-td">#<?php echo $result['ORDERID']; ?></td>
 								</tr>
 								<tr>
 									<td class="left-td">TXN AMOUNT</td>
-									<td class="right-td">7898545</td>
+									<td class="right-td"><?php echo $result['TXNAMOUNT']; ?></td>
 								</tr>
 								<tr>
 									<td class="left-td">STATUS</td>
-									<td class="right-td">Success</td>
+									<td class="right-td"><?php echo $result['TXNSTATUS']; ?></td>
 								</tr>
 								<tr>
 									<td class="left-td">TXN DATE</td>
-									<td class="right-td">20/12/20</td>
+									<td class="right-td"><?php echo date('M d,Y',strtotime($result['TXNDATE'])); ?></td>
 								</tr>
 							</tbody>
 						</table>

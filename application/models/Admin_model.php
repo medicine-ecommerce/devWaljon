@@ -55,12 +55,25 @@ class Admin_model extends MY_model
         $query = $this->db->get($table);
         return $query->num_rows();   
     }
+
+    public function ParentCategoryList()
+	{
+		$this->db->select('users.full_name as username,main_category.*');
+		$this->db->from('main_category');
+		$this->db->join('users','users.id = main_category.created_by','left');
+		if($this->session->userdata('user_type')=='vendor' ){
+			$this->db->where('main_category.created_by',$this->session->userdata('user_id'));
+		}
+		$this ->db->order_by("FIELD(main_category.status,'pending','active','reject')");
+		return $this->db->get()->result();
+	}
 	
 	public function CategoryList()
 	{
-		$this->db->select('users.full_name as username,category.*');
+		$this->db->select('users.full_name as username,category.id,category.category_name,category.status,main_category.category_name as main_category,category.created_at');
 		$this->db->from('category');
 		$this->db->join('users','users.id = category.created_by','left');
+		$this->db->join('main_category','main_category.id = category.main_category_id');
 		if($this->session->userdata('user_type')=='vendor' ){
 			$this->db->where('category.created_by',$this->session->userdata('user_id'));
 		}

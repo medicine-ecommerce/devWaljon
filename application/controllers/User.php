@@ -44,6 +44,7 @@ Class User extends MY_Controller {
         $this->data['banner'] = $this->User->getData('banner_images','image',array('status'=>'active'));
         $this->data['brand'] = $this->User->getData('brand','brand_img,id',array('status'=>'active'));
         $this->data['product'] = $this->User->HomeProduct();
+        $this->data['home_module'] = $this->User->getRowData('home_module','*',array('id'=>1));
         
         $this->middle = 'index1';
         $this->User();
@@ -433,21 +434,38 @@ Class User extends MY_Controller {
         $paytmChecksum = "";
         $paramList = array();
         $isValidChecksum = "FALSE";
-
         $paramList = $_POST;
         if ($paramList['STATUS']=='TXN_SUCCESS') {
           $array = array('TXNDATE'=>$paramList['TXNDATE'],
                         'TXNID'=>$paramList['TXNID'],
+                        'PAYMENTMODE'=>$paramList['PAYMENTMODE'],
+                        'BANKNAME'=>$paramList['BANKNAME'],
+                        'GATEWAYNAME'=>$paramList['GATEWAYNAME'],                        
                         'TXNSTATUS'=>'success');
           $this->User->updateData('orders',$array,array('order_number'=>$paramList['ORDERID']));
+          $array['ORDERID'] = $paramList['ORDERID'];
+          $array['TXNAMOUNT'] = $paramList['TXNAMOUNT'];
+          
+          $this->data['result'] = $array;
+          $this->middle = 'paymentSuccess';
+          $this->User();
         }
         else{
           $array = array('TXNDATE'=>(!empty($paramList['TXNDATE']))?$paramList['TXNDATE']:date('Y-m-d H:i:s'),
                         'TXNID'=>$paramList['TXNID'],
                         'RESPMSG'=>$paramList['RESPMSG'],
+                        'PAYMENTMODE'=>$paramList['PAYMENTMODE'],
+                        'BANKNAME'=>$paramList['BANKNAME'],
+                        'GATEWAYNAME'=>$paramList['GATEWAYNAME'],
                         'TXNSTATUS'=>'failed');
           $this->User->updateData('orders',$array,array('order_number'=>$paramList['ORDERID']));
+          $array['ORDERID'] = $paramList['ORDERID'];
+          $array['TXNAMOUNT'] = $paramList['TXNAMOUNT'];
+          $this->data['result'] = $array;
+          $this->middle = 'paymentFailed';
+          $this->User();
         }
+        $this->cart->destroy();
       }
       else{
         redirect(base_url('user/cart'));

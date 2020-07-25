@@ -5,13 +5,13 @@
         <div class="title_left">
         <ul class="nav nav-tabs product_tab" id="myTab" role="tablist">
           <li class="product_li">
-            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Category</a>
+            <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Parent Category</a>
           </li>
           <li class="product_li">
             <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Requests</a>
           </li>
         </ul>
-          <h3 class="product_form_heading">Category</h3>
+          <h3 class="product_form_heading">Parent Category</h3>
         </div>
 
         <!-- <div class="title_right">
@@ -40,10 +40,10 @@
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div class="pull-right">
                     <?php if($_SESSION["user_type"]=='admin'){ ?>
-                      <a href="<?php echo base_url('admin/category_add'); ?>" class="btn btn-primary">Add Category</a> 
+                      <a href="<?php echo base_url('admin/parent_category_add'); ?>" class="btn btn-primary">Add Category</a> 
                     <?php }
                     elseif($_SESSION["user_type"]=='vendor'){ ?>
-                      <a href="<?php echo base_url('vendor/category_add'); ?>" class="btn btn-primary">Add Category</a> 
+                      <a href="<?php echo base_url('vendor/parent_category_add'); ?>" class="btn btn-primary">Add Category</a> 
                     <?php } ?>  
                   </div>                  
                   <div class="card-box table-responsive">                
@@ -53,7 +53,6 @@
                           <th>#</th>
                           <th>Created By</th>
                           <th>Parent Category</th>
-                          <th>Category</th>
                           <th>Created On</th>
                           <th>Status</th>
                           <th>Action</th>
@@ -68,8 +67,7 @@
                           <tr>
                             <td><?php echo $i++; ?></td>
                             <td><?php echo $value->username; ?></td>
-                            <th><?php echo $value->main_category;?></th>
-                            <td><?php echo $value->category_name; ?></td>
+                            <th><?php echo $value->category_name;?></th>
                             <td><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?></td>
                             <td>
                               <?php if ($value->status=='pending') {
@@ -82,23 +80,23 @@
                             </td>
                             <td>
                               <?php if ($this->session->userdata('user_type')=='vendor' && $value->status=='pending') { ?>
-                                <a href="<?php echo base_url('vendor/category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
-                                <a href="<?php echo base_url('vendor/category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
+                                <a href="<?php echo base_url('vendor/parent_category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
+                                <a href="<?php echo base_url('vendor/parent_category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
                                 <?php }
                               else if($this->session->userdata('user_type')=='vendor' && $value->status!='pending'){ ?>
-                                <a class="disable" href="<?php echo base_url('vendor/category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
-                                <a class="disable" href="<?php echo base_url('vendor/category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
+                                <a class="disable" href="<?php echo base_url('vendor/parent_category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
+                                <a class="disable" href="<?php echo base_url('vendor/parent_category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a>
                               <?php }
                               else if($this->session->userdata('user_type')=='admin'){ ?>
-                                <a href="<?php echo base_url('admin/category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
-                                <a href="<?php echo base_url('admin/category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a> 
+                                <a href="<?php echo base_url('admin/parent_category_edit/'.$value->id); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
+                                <a href="<?php echo base_url('admin/parent_category_delete/'.$value->id); ?>"><span class="status-cancle"><i class="fa fa-trash"></i></span></a> 
                                 <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
                                   <?php if ($value->status=='pending' || $value->status=='reject') { ?>
-                                    <a class="dropdown-item" href="<?php echo base_url('admin/category_status/active/'.$value->id);?>">Activate</a>
+                                    <a class="dropdown-item" href="<?php echo base_url('admin/parent_category_status/active/'.$value->id);?>">Activate</a>
                                   <?php }
                                   if ($value->status=='pending' || $value->status=='active') { ?>
-                                    <a class="dropdown-item" href="<?php echo base_url('admin/category_status/reject/'.$value->id);?>">Deactivate</a>
+                                    <a class="dropdown-item" href="<?php echo base_url('admin/parent_category_status/reject/'.$value->id);?>">Deactivate</a>
                                   <?php } ?>
                                 </div>
                               <?php } 
@@ -119,7 +117,6 @@
                           <th>#</th>
                           <th>Requested By</th>
                           <th>Parent Category</th>
-                          <th>Category</th>
                           <th>Requested On</th>
                           <th>Status</th>
                           <th>Action</th>
@@ -134,8 +131,7 @@
                               <tr>
                                 <td><?php echo $i++; ?></td>
                                 <td><?php echo $value->username; ?></td>
-                                <th><?php echo $value->main_category;?></th>
-                                <td><?php echo $value->category_name; ?></td>
+                                <th><?php echo $value->category_name;?></th>
                                 <td><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?></td>
                                 <td>
                                   <?php if ($value->status=='pending') {
@@ -152,10 +148,10 @@
                                     <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
                                       <?php if ($value->status=='pending' || $value->status=='reject') { ?>
-                                        <a class="dropdown-item" href="<?php echo base_url('admin/category_status/active/'.$value->id);?>">Activate</a>
+                                        <a class="dropdown-item" href="<?php echo base_url('admin/parent_category_status/active/'.$value->id);?>">Activate</a>
                                       <?php }
                                       if ($value->status=='pending' || $value->status=='active') { ?>
-                                        <a class="dropdown-item" href="<?php echo base_url('admin/category_status/reject/'.$value->id);?>">Deactivate</a>
+                                        <a class="dropdown-item" href="<?php echo base_url('admin/parent_category_status/reject/'.$value->id);?>">Deactivate</a>
                                       <?php } ?>
                                     </div>
                                   <?php } ?> 
