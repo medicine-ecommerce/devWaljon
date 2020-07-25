@@ -261,8 +261,13 @@ Class Vendor extends MY_Controller {
                     }
                     $this->session->set_userdata($data);
                     $this->session->set_flashdata('success', 'Your account successfully created ');
-                    echo json_encode(array('status'=>1,'stage'=>4));
-                        return;
+                    
+                    if(!empty($this->session->userdata('state'))){
+                        echo json_encode(array('status'=>1,'stage'=>4,'state'=>$this->session->userdata('state')));
+                    }else{
+                        echo json_encode(array('status'=>1,'stage'=>4));
+                    }
+                    return;
                     // redirect('/Vendor/personalDetails/', 'refresh');
                 }
             }            
@@ -325,7 +330,12 @@ Class Vendor extends MY_Controller {
                     $this->session->set_userdata($data);
                     // redirect(base_url('admin/dashboard'));
                     if ($result->type=='user') {
-                        redirect('user/index');
+                        // redirect('user/index');
+                        if(!empty($this->session->userdata('state')) && $this->session->userdata('state') == 'checkout'){
+                            redirect('user/checkout');
+                        }else{
+                            redirect('user/index');
+                        }
                     }
                     elseif(!empty($result->email) && !empty($result->full_name) && !empty($result->mobile) && !empty($result->address) && $result->is_active > 0 ){
                         redirect('/vendor/vendor_dashboard/', 'refresh');
