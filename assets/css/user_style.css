@@ -925,6 +925,14 @@ a.btn.btn-update-cart:hover{
     background-color: #118db1;
     transition: 0.3s ease-in-out;
 }
+i.fa.fa-star.fa-fw.active-starts {
+    color: #4dd07b;
+}
+p.rate-here-text {
+    color: #2b89e4;
+    margin-bottom: 0;
+    font-weight: 500;
+}
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
