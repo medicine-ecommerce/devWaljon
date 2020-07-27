@@ -159,8 +159,12 @@
                 $('.front-end-error-otp').fadeOut("slow");
             }, 7000);
             
-          }else if(data.stage==4){            
-              window.location.href = "<?php echo base_url() ?>user/index";                     
+          }else if(data.stage==4){ 
+              if(data.state == 'checkout'){
+                window.location.href = "<?php echo base_url() ?>user/checkout";                     
+              }else{
+                window.location.href = "<?php echo base_url() ?>user/index";
+              }          
           }else if(data.status==0){
               $("#error-text").html(data.message);                 
               $('.front-end-error').show();

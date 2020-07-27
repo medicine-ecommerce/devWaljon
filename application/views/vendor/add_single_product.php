@@ -41,7 +41,7 @@
               <div class="col-md-12">
                   <div class="col-md-6">
                      <div class="form-group label-float-top">
-                        <select class="form-control control-float-top" id="category_id" name="category_id" onchange="getSubcategory(this.value)">
+                        <select class="form-control control-float-top" id="category_id" name="sucategory_id" onchange="getSubcategory(this.value)">
                            <option></option>
                            <?php if (!empty($category)) {
                              foreach ($category as $key => $value) { ?>

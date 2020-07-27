@@ -39,14 +39,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <?php foreach ($category as $key => $value) { ?>
+                    <?php foreach ($home_category as $key => $value) { ?>
                     <tr>                      
-                        <td><?php echo $value->category_name ?></td>
+                        <td><?php echo $value->home_category ?></td>
                         <td><span class="dot">............</span><img src="<?php echo base_url(); ?>assets/img/link.png" class="link-img"><span class="dot">............</span></td>
                         <td>
                           <select class="multiselect" name="product_category_id" multiple="multiple" data-id="<?php echo $value->id; ?>" >
-                            <?php foreach ($product_category as $key => $value1) { ?>
-                              <option value="<?php echo $value1->id; ?>" <?php echo ($value1->category_id == $value->id)? 'selected':'' ?> ><?php echo $value1->subcategory; ?></option>
+                            <?php foreach ($main_category as $key => $value1) { ?>
+                              <option value="<?php echo $value1->id; ?>" <?php echo (in_array($value1->id, explode(',', $value->main_category_id))) ? 'selected' : '' ?>  ><?php echo $value1->category_name; ?></option>
                             <?php } ?>
                           </select>
                         </td>                        

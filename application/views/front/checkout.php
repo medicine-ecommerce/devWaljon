@@ -53,7 +53,6 @@
                             <div class="col">Total</div>
                           </div>
                           <?php  
-                          
                           foreach ($this->cart->contents() as $value) {
                           $total = $total + $value['subtotal']; ?>
                           <div class="layout-inline cart-content row">
