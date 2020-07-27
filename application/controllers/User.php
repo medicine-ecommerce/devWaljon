@@ -531,10 +531,12 @@ Class User extends MY_Controller {
     public function itemRatings()
     {       
         
+        
         if ($this->input->server('REQUEST_METHOD') == 'POST'){              
             if(!empty($this->session->userdata('user_id'))){                
                 
                 $existId = $this->User->getRowData('rating','id',array('id'=>$this->input->post('rating_id'))); 
+                
                 if(empty($existId)){                
                     $result = $this->User->insertData('rating',array('product_id'=>$this->input->post('product_id'),'rating'=>$this->input->post('rating'),'user_id'=>$this->session->userdata('user_id')));
                     if($result){
@@ -543,12 +545,12 @@ Class User extends MY_Controller {
                         echo  json_encode(array('status'=>0,'message'=>'Error'));
                     }
                 }            
-                else{
-                    $result1 = $this->User->updateData('rating',array('product_id'=>$this->input->post('product_id'),'rating'=>$this->input->post('rating')),array('id'=>$existId->id));
+                else{                    
+                    $result1 = $this->User->updateData('rating',array('product_id'=>$this->input->post('product_id'),'rating'=>$this->input->post('rating')),array('id'=>$existId->id,'user_id'=>$this->session->userdata('user_id')));
                     if($result1){
                         echo json_encode(array('status'=>1,'message'=>'Rating updated'));
                     }else{
-                        echo  json_encode(array('status'=>0,'message'=>'Error'));
+                        echo  json_encode(array('status'=>0,'message'=>'Not Updated Error'));
                     }
                 }
             }else{

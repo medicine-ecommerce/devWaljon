@@ -667,11 +667,13 @@ function starRating(rating,product_id) {
 	        dataType: 'JSON',
 	        data: {rating_id:rating_id,rating:rating,product_id:product_id},        
 	        success:function(data){  	        	        	
-	        	console.log(data);
-	        	if(status==0){
+	        	console.log(data.status);
+	        	if(data.status==1){
+	        		location.reload();
+	        	}
+	        	if(data.status==0){
 	        		window.location.href = "<?php echo base_url() ?>user/login";        
 	        	}
-	        	//location.reload();
 	        }
 	  })
 }
