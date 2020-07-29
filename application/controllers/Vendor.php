@@ -539,6 +539,7 @@ Class Vendor extends MY_Controller {
                         'sucategory_id'=>$this->input->post('sucategory_id'),
                         'manufacturer_id'=>$this->input->post('manufacturer_id'),
                         'brand_id'=>$this->input->post('brand_id'),
+                        'country'=>$this->input->post('country'),
                         
                         'name'=>$this->input->post('name'),
                         'product_form_id'=>$this->input->post('product_form_id'),
