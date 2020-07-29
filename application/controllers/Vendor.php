@@ -383,13 +383,14 @@ Class Vendor extends MY_Controller {
         $this->Vendor();
     }
     public function vendor_profile($userId)
-    {        
+    {   
+        
         $user_id = base64_decode($userId);
         $msg = '';
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('full_name', 'Full Name', 'required');            
             $this->form_validation->set_rules('email', 'email', 'required');
-            $this->form_validation->set_rules('mobile', 'mobile', 'trim|required|numeric');
+            $this->form_validation->set_rules('mobile', 'mobile', 'trim|required');
             $this->form_validation->set_rules('company_name', 'Medical Name', 'required');
             $this->form_validation->set_rules('address', 'Addresss', 'required');
             $this->form_validation->set_rules('date_of_birth', 'date_of_birth', 'required');

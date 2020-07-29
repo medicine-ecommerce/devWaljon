@@ -628,7 +628,13 @@
 	
 	function getExperienceYear() {
 		var working_from 	 	= $("#working_from").val();
-		var curentDate1 =  new Date().format('Y-m-d');				
+		var currentDate = new Date()
+		var day = currentDate.getDate()
+		var month = currentDate.getMonth() + 1
+		var year = currentDate.getFullYear()
+		
+		var curentDate1 =  year+ "-" + month + "-" +day
+		
 		if(working_from!=''){			
 			var diffDays = Math.round(date_diff_indays(working_from, curentDate1)/365);								
 			var slectedIndex =  $("#experience").prop('selectedIndex');			

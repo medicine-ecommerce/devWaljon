@@ -1,4 +1,3 @@
-
 <div class="super_container">
 	<!-- Single Product -->
 	<div class="single_product">
@@ -45,13 +44,12 @@
 					$slide_id += 1; } }?>				
 					</div>
 				</div>
-
 				<!-- Description -->
 				<div class="col-lg-7 order-3">
 					<div class="product_description">
 						<!-- <div class="product_category">Laptops</div> -->
 						<div class="product_name"><?= $product_item->product_full_name; ?></div>
-						<div class="product_rating"><i class="fa fa-star"></i>  4.4</div>
+						<div class="product_rating"><i class="fa fa-star"></i> <?php if(!empty($rating)){ echo number_format($rating->rating_average,1); } ?></div>
 						<div class="date-time">
 							<i class="fa fa-clock-o"></i> <p>03:02 PM, 15 Jan 2020</p>
 						</div>
@@ -245,7 +243,29 @@
 					</div>
 				</div>
 				<div class="col-md-5">
-					<div class="customer-feedback-sec">
+						<!--  Rating-->
+					<div class="customer-feedback-sec">						
+						<div class='rating-stars product-rating-section'>
+						    <ul id='stars'>
+						      <li class='star' title='Poor' data-value='1' onclick="starRating(1,<?= $product_item->product_id; ?>)">
+						        <i class='fa fa-star fa-fw <?php if($user_rating->rating >=1){ echo "active-starts"; } ?> '></i>
+						      </li>
+						      <li class='star' title='Fair' data-value='2' onclick="starRating(2,<?= $product_item->product_id; ?>)">
+						        <i class='fa fa-star fa-fw <?php if($user_rating->rating >=2){ echo "active-starts"; } ?>'></i>
+						      </li>
+						      <li class='star' title='Good' data-value='3' onclick="starRating(3,<?= $product_item->product_id; ?>)">
+						        <i class='fa fa-star fa-fw <?php if($user_rating->rating >=3){ echo "active-starts"; } ?>'></i>
+						      </li>
+						      <li class='star' title='Excellent' data-value='4' onclick="starRating(4,<?= $product_item->product_id; ?>)">
+						        <i class='fa fa-star fa-fw <?php if($user_rating->rating >=4){ echo "active-starts"; } ?>'></i>
+						      </li>
+						      <li class='star' title='WOW!!!' data-value='5' onclick="starRating(5,<?= $product_item->product_id; ?>)">
+						        <i class='fa fa-star fa-fw <?php if($user_rating->rating >=5){ echo "active-starts"; } ?>'></i>
+						      </li>
+						    </ul>
+							<p class="rate-here-text">Rate Here</p>
+						</div>
+						<hr>
 						<h5>Customer Feedback</h5>
 						<div class="scroll-div">	
 							<div id="showAllComments">							
@@ -326,7 +346,7 @@
 		</div>
 	</div>
 </div>
-
+<input type="hidden" name="rating_id" id="rating_id" value="<?php if(!empty($user_rating->rating_id)){ echo $rating->rating_id; } ?>">
 
 <script type="text/javascript">	
 	getAllComments();
@@ -578,4 +598,83 @@
       })
       
     });	
+    // Rating
+    $(document).ready(function(){
+  
+  /* 1. Visualizing things on Hover - See next part for action on click */
+  $('#stars li').on('mouseover', function(){
+    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+   
+    // Now highlight all the stars that's not after the current hovered star
+    $(this).parent().children('li.star').each(function(e){
+      if (e < onStar) {
+        $(this).addClass('hover');
+      }
+      else {
+        $(this).removeClass('hover');
+      }
+    });
+    
+  }).on('mouseout', function(){
+    $(this).parent().children('li.star').each(function(e){
+      $(this).removeClass('hover');
+    });
+  });
+  
+  
+  /* 2. Action to perform on click */
+  $('#stars li').on('click', function(){
+    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+    var stars = $(this).parent().children('li.star');
+    
+    for (i = 0; i < stars.length; i++) {
+      $(stars[i]).removeClass('selected');
+    }
+    
+    for (i = 0; i < onStar; i++) {
+      $(stars[i]).addClass('selected');
+    }
+    
+    // JUST RESPONSE (Not needed)
+    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+    var msg = "";
+    if (ratingValue > 1) {
+        msg = "Thanks! You rated this " + ratingValue + " stars.";
+    }
+    else {
+        msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
+    }
+    responseMessage(msg);
+    
+  });
+  
+  
+});
+
+
+function responseMessage(msg) {
+  $('.success-box').fadeIn(200);  
+  $('.success-box div.text-message').html("<span>" + msg + "</span>");
+}
+function starRating(rating,product_id) {
+		
+	  //	var item_id = $('#item_id').val();				
+	 	var rating_id = $('#rating_id').val();						
+		//$('#give_rating').append('item_id',item_id);
+		$.ajax({
+	        url:"<?php echo base_url(); ?>/User/itemRatings",
+	        method:"POST",
+	        dataType: 'JSON',
+	        data: {rating_id:rating_id,rating:rating,product_id:product_id},        
+	        success:function(data){  	        	        	
+	        	console.log(data.status);
+	        	if(data.status==1){
+	        		location.reload();
+	        	}
+	        	if(data.status==0){
+	        		window.location.href = "<?php echo base_url() ?>user/login";        
+	        	}
+	        }
+	  })
+}
 </script>

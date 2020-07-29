@@ -15,6 +15,7 @@ Class User extends MY_Controller {
         $this->load->helper(array('form', 'url'));
         $this->load->library(array('ajax_pagination','cart','form_validation')); 
                $this->load->library('pagination');
+
         $loginMethod = 'checkout';
         // array('cart','checkout');
         //(empty($this->session->userdata('user_id')) && in_array($this->router->fetch_method(), $loginMethod))
@@ -26,6 +27,7 @@ Class User extends MY_Controller {
             }else{
                 redirect(base_url('user'));
             }
+
         }
 
         // if (empty($this->session->userdata('user_id'))){ 
@@ -67,7 +69,10 @@ Class User extends MY_Controller {
         $productId = base64_decode($id);          
         $this->data['product'] = $this->User->getProductByID($productId);
         $this->data['alternate_product'] = $this->User->getAlternateBrandsByID();        
-        $this->middle = 'product';
+        //$this->data['rating'] = $this->User->getProductRatingByID($productId);
+        $this->data['rating'] =  $this->User->getRowData('rating','rating.id as rating_id,rating,AVG(rating) as rating_average',array('product_id'=>$productId));
+        $this->data['user_rating'] =  $this->User->getRowData('rating','rating.id as rating_id,rating,AVG(rating) as rating_average',array('product_id'=>$productId,'user_id'=>$this->session->userdata('user_id')));
+        $this->middle = 'product';                
         $this->User();
     }
     public function signup()
@@ -154,9 +159,9 @@ Class User extends MY_Controller {
     }
     public function checkout()
     {
-       /* if(empty($this->session->userdata('user_id'))){
-            redirect(base_url('user/login'));
-        }*/
+        // if(empty($this->session->userdata('user_id'))){
+        //     redirect(base_url('user/login'));
+        // }
         // $this->data['user_address'] = $this->User->getData('user_address','address', array('user_id' => '2' ));
         $this->data['user_address'] = $this->User->getData('user_address','id,address,state,country', array('user_id' => $this->session->userdata('user_id') ));
         // print_r($this->data);die();
@@ -165,6 +170,9 @@ Class User extends MY_Controller {
     }
     public function cart()
     {
+        // if(empty($this->session->userdata('user_id'))){
+        //     redirect(base_url('user/login'));
+        // }
         $this->middle = 'cart';
         $this->User();
     }
@@ -520,7 +528,41 @@ Class User extends MY_Controller {
             )
         );*/
     }
+    public function itemRatings()
+    {       
+        
+        
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){              
+            if(!empty($this->session->userdata('user_id'))){                
+                
+                $existId = $this->User->getRowData('rating','id',array('id'=>$this->input->post('rating_id'))); 
+                
+                if(empty($existId)){                
+                    $result = $this->User->insertData('rating',array('product_id'=>$this->input->post('product_id'),'rating'=>$this->input->post('rating'),'user_id'=>$this->session->userdata('user_id')));
+                    if($result){
+                        echo json_encode(array('status'=>1,'message'=>'Rating Saved'));
+                    }else{
+                        echo  json_encode(array('status'=>0,'message'=>'Error'));
+                    }
+                }            
+                else{                    
+                    $result1 = $this->User->updateData('rating',array('product_id'=>$this->input->post('product_id'),'rating'=>$this->input->post('rating')),array('id'=>$existId->id,'user_id'=>$this->session->userdata('user_id')));
+                    if($result1){
+                        echo json_encode(array('status'=>1,'message'=>'Rating updated'));
+                    }else{
+                        echo  json_encode(array('status'=>0,'message'=>'Not Updated Error'));
+                    }
+                }
+            }else{
+                echo  json_encode(array('status'=>0,'message'=>'please Login'));
+            }
+            
 
+        }
+        
+        // $data['ratings'] = json_decode($this->Homes->getItemRating());                
+        // $this->load->view('website/single-item-star-rating',$data);
+    }
     public function paymentSuccess()
     {
         $this->middle = 'paymentSuccess';

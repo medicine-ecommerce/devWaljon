@@ -206,6 +206,7 @@ class User_model extends MY_model
 			return $return;
 		}
 	}
+	
 	public function getCategoryData()
 	{	
 
