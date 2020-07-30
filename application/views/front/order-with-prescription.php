@@ -2,7 +2,7 @@
 <section class="main-page">
   <div class="container">
     <div class="order-view">  
-      <form id="form">
+      <form id="form" action="<?php echo base_url('user/AjaxSavePrescription'); ?>">
         <div class="row" id="step1">
           <div class="col-md-5">
             <div class="order-date-detail">
@@ -25,7 +25,7 @@
                   </span>
                 </a>
               </div>
-              <div class="upload-div">
+              <!-- <div class="upload-div">
                 <a href="<?php echo base_url('user/saved_prescription'); ?>" class="upload-pres back-white">
                   <span class="upload-img">
                     <img src="<?php echo base_url();?>assets/img/file.png">
@@ -34,7 +34,7 @@
                     <p>Saved Prescription</p>
                   </span>
                 </a>
-              </div>  
+              </div> -->  
              <!--  <hr> -->
               <div class="show-upload">
                 <h5>Attached Prescription</h5>
@@ -50,14 +50,14 @@
                   <div class="upload-img-sec">
                     <ul id="attach-preview">
                       <?php 
-                      if (!empty($prescription)) {
+                      /*if (!empty($prescription)) {
                          foreach ($prescription as $key => $value) { ?>
                         <li class="uplod-img-prse">
                           <!-- <a class="cross-img-upload"><i class="fa fa-close"></i></a> -->
                           <img src="<?php echo base_url($value->prescription); ?>">
                         </li>
                       <?php   }
-                       } ?>
+                       }*/ ?>
                       <!-- <li class="uplod-img-prse">
                         <a class="cross-img-upload"><i class="fa fa-close"></i></a>
                         <img src="<?php echo base_url();?>assets/img/file.png">
@@ -67,9 +67,9 @@
                 </div>
               </div>
             </div> 
-            <div class="upload-continue">
-              <button type="button" id="continue_btn" class="upload-continue-btn">Continue</button>
-            </div>
+            <!-- <div class="upload-continue">
+              <button type="submit" id="continue_btn" class="upload-continue-btn">Submit </button>
+            </div> -->
           </div>
           <div class="col-md-7">
             <div class="order-date-detail">
@@ -312,6 +312,7 @@ function readURL(input) {
       processData:false,
       success:function(result){
         console.log(result);
+        alert('Prescription uploaded successfully')
       },
       error:function(status){
         // console.log(status.responseText);

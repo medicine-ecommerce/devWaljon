@@ -172,7 +172,7 @@
 						<div class="header_search">
 							<div class="header_search_content">
 								<div class="header_search_form_container">
-									<a href="#" class="upload-pres">Upload Prescription</a>
+									<a href="<?php echo base_url('user/order_with_prescription');?>" class="upload-pres">Upload Prescription</a>
 								</div>
 							</div>
 						</div>

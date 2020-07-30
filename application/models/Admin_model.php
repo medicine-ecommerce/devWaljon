@@ -168,6 +168,17 @@ class Admin_model extends MY_model
 		}
 		return $data;
 	}
+	public function PrescriptionList()
+	{
+		$this->db->select('users.full_name as username,users.auto_login,order_prescription.prescription, order_prescription.created_at');
+		$this->db->from('order_prescription');
+		$this->db->join('users','users.id = order_prescription.user_id','left');
+		/*if($this->session->userdata('user_type')=='vendor' ){
+			$this->db->where('saltcomposition.created_by',$this->session->userdata('user_id'));
+		}*/
+		// $this ->db->order_by("FIELD(saltComposition.status,'pending','active','reject')");
+		return $this->db->get()->result();
+	}
 }
 
 ?>

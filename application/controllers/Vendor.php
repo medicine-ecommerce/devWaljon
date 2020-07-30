@@ -246,19 +246,30 @@ Class Vendor extends MY_Controller {
                 }               
                 
                 if ($last_id > 0) {
-
-                    if(ctype_digit($this->input->post('email'))){
-                        $data = array('mobile'=>trim($this->input->post('email')),
-                                      'user_id'=>$last_id,
-                                      'user_type'=>$this->input->post('type')
-                                  );
-                    }else{
-
-                        $data = array('email'=>$this->input->post('email'),
-                                      'user_id'=>$last_id,
-                                      'user_type'=>$this->input->post('type')
-                                  );
+                    
+                    if ($this->input->post('type')=='user') {
+                        if(ctype_digit($this->input->post('email'))){
+                            $data = array('mobile'=>trim($result->mobile),                                
+                                    'userID'=>$result->id,
+                                    'userType'=>$result->type);
+                        }else{                        
+                            $data = array('email'=>$result->email,
+                                        'userID'=>$result->id,
+                                        'userType'=>$result->type);
+                        }
                     }
+                    else{
+                        if(ctype_digit($this->input->post('email'))){
+                            $data = array('mobile'=>trim($result->mobile),                                
+                                    'user_id'=>$result->id,
+                                    'user_type'=>$result->type);
+                        }else{                        
+                            $data = array('email'=>$result->email,
+                                        'user_id'=>$result->id,
+                                        'user_type'=>$result->type);
+                        }
+                    }
+
                     $this->session->set_userdata($data);
                     $this->session->set_flashdata('success', 'Your account successfully created ');
                     
@@ -317,15 +328,29 @@ Class Vendor extends MY_Controller {
                
                 if(!empty($result))
                 {
-                    if(ctype_digit($this->input->post('email'))){
-                        $data = array('mobile'=>trim($result->mobile),                                
-                                'user_id'=>$result->id,
-                                'user_type'=>$result->type);
-                    }else{                        
-                        $data = array('email'=>$result->email,
+                    if ($this->input->post('type')=='user') {
+                        if(ctype_digit($this->input->post('email'))){
+                            $data = array('mobile'=>trim($result->mobile),                                
+                                    'userID'=>$result->id,
+                                    'userType'=>$result->type);
+                        }else{                        
+                            $data = array('email'=>$result->email,
+                                        'userID'=>$result->id,
+                                        'userType'=>$result->type);
+                        }
+                    }
+                    else{
+                        if(ctype_digit($this->input->post('email'))){
+                            $data = array('mobile'=>trim($result->mobile),                                
                                     'user_id'=>$result->id,
                                     'user_type'=>$result->type);
+                        }else{                        
+                            $data = array('email'=>$result->email,
+                                        'user_id'=>$result->id,
+                                        'user_type'=>$result->type);
+                        }
                     }
+                    
 
                     $this->session->set_userdata($data);
                     // redirect(base_url('admin/dashboard'));

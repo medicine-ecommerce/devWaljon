@@ -898,5 +898,38 @@ Class Admin extends MY_Controller {
         $this->middle = 'orders/order_view';
         $this->Admin();
     }
+    public function prescription_list()
+    {
+        $this->data['prescription'] = $this->Admin->PrescriptionList();
+        $this->middle = 'prescription/list';
+        $this->Admin();
+    }
+    public function UserAutoLogin($id)
+    {
+        $result = $this->Admin->getRowData('users','type,id,email',array('auto_login'=>$id));
+        if (!empty($result) && $this->session->userdata('user_type')=='admin') {
+            $data = array('email'=>$result->email,
+                        'userID'=>$result->id,
+                        'userType'=>$result->type);
+            $this->session->set_userdata($data);
+            redirect(base_url('user/product_category'));
+            
+        }
+        else{
+            $this->session->set_flashdata('error', 'error! invalid login');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        
+    }
+    public function UpdateAutoLogin()
+    {
+        $this->db->select('id,email');
+        $this->db->from('users');
+        $data = $this->db->get()->result();
+        foreach ($data as $key => $value) {
+            $auto_login= sha1($value->id.$value->email.date('YmdHis'));
+            $this->Admin->updateData('users',array('auto_login'=>$auto_login),array('id'=>$value->id));
+        }
+    }
 
 }
