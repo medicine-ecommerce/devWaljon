@@ -251,7 +251,7 @@ Class User extends MY_Controller {
                         $result = $this->User->insertData('user_address',$addressData);
                         if($result1){
                             $this->session->set_flashdata('success', 'Your profile updated ');
-                            redirect($_SERVER['HTTP_REFERER']); 
+                            
                         }
                 }
                     // $exist = $this->Vendor->getData('user_address','id',array('user_id'=>$user_id));
@@ -266,6 +266,7 @@ Class User extends MY_Controller {
                             redirect($_SERVER['HTTP_REFERER']); 
                         }
                 }
+                redirect($_SERVER['HTTP_REFERER']); 
 
         }
     }
