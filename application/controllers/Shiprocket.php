@@ -62,10 +62,10 @@ Class Shiprocket extends MY_Controller {
 	            	return ;
 				}
 			}else{
-					echo json_encode(array('status'=>0,'data'=>'order Exist'));
+					echo json_encode(array('status'=>0,'msg'=>'order Exist'));
 			}  
 		}else{
-				echo json_encode(array('status'=>0,'data'=>'failed'));
+				echo json_encode(array('status'=>0,'msg'=>'Could not place order'));
 				return ;
 		}
 

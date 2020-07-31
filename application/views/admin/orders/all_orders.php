@@ -186,7 +186,7 @@
                 clearInput();
               }else{
                 clearInput();
-                $('#error-mssg').text('Order Already Shipped');
+                $('#error-mssg').text(data.msg);
               }
               // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
             }
