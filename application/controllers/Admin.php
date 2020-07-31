@@ -898,5 +898,24 @@ Class Admin extends MY_Controller {
         $this->middle = 'orders/order_view';
         $this->Admin();
     }
+    // public function shiping_order()
+    // {   
+    //     $this->load->helper('shiproket_helper');        
+    //     $data['shipping_order'] = $this->Admin->shippingOrderData($this->input->post('order_id'));        
+    //     $this->orderPlaceToShipping($data['shipping_order']);
+    //     //$this->load->view('admin/shiping_order',$data);
+    //     // $this->Admin();
+    // }
+    public function invoice()
+    {   
+        $this->load->view('admin/invoice_generate');
+        // $this->Admin();
+    }
+    public function shiping_auth()
+    {        
+        // $this->middle = 'shipping_auth';
+        $this->load->view('admin/shipping_auth');
+        // $this->Admin();
+    }
 
 }

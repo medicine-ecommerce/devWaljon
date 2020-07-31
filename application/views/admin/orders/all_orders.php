@@ -53,7 +53,7 @@
                             echo '<span class="rejected">Canceled</span>';
                           } ?>
                         </td>
-                        <td><a href="<?php echo base_url('admin/order_view/'.$value->order_id); ?>"><span class="pending">View Order</span></a></td>
+                        <td><a href="<?php echo base_url('admin/order_view/'.$value->order_id); ?>"><span class="pending">View Order</span></a><br><a class="ship-now" onclick="showModelForShipping(<?= $value->order_id; ?>)">Ship Now</a> </td>
                         </tr>
                       <?php } 
                     }?>
@@ -68,5 +68,130 @@
   </div>
   <!-- /page content -->
 
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <form id="order_shipping" method="post">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Box Dimention</h4>
+          <button type="button" onclick="clearInput()" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">                
+                 <input type="number" class="form-control custom-input" id="length" placeholder="Length in cms" name="length" required="">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                 <input type="number" class="form-control custom-input" id="breadth" placeholder="Breadth in cms" name="breadth" required="">
+              </div>              
+            </div>            
+            <div class="col-md-6">
+              <div class="form-group">
+                 <input type="number" class="form-control custom-input" id="height" placeholder="Height in cms" name="height" required="">
+              </div>              
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                 <input type="number" class="form-control custom-input" id="weight" placeholder="Weight in cms" name="weight" required="">
+              </div>              
+            </div>            
+            <input type="hidden" name="order_id" id="order_id">
+          </div>
+          <span class="error-block" id="error-mssg"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" onclick="orderShipping()" class="btn btn-default ship-now">Ship Now</button>
+        </div>
+      </div>
+      </form>      
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="successModal" role="dialog">
+    <div class="modal-dialog registration-done shipping-done">
+    <!-- Modal content-->
+      <div class="modal-content welldon-modal">
+        <div >
+        <img src="<?php echo base_url(); ?>assets/img/shipping-truck.gif" class="shipping-image" id="preview">
+        <h1> Order Placed</h1>   
+        <p>Congratulations your order shipping done</p>
+          <!-- <h4 class="modal-title">Modal Header</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        </div>
+        <div class="modal-body">
+          
+        </div>
+        <div class="text-center">
+          <button type="button" class="btn btn-default submit_button" ><a href="https://app.shiprocket.in/orders/processing?page=1&perPage=15&shop=&ids=&rto=" target="_blank">View Order</a></button>
+
+          <button type="button" class="btn btn-default submit_button cancel_buton" data-dismiss="modal">Close</button>
+        </div>
+      </div>  
+    </div>
+  </div>
+  
+
       
 
+<script type="text/javascript">
+  function showModelForShipping(id){
+        $('#order_id').val(id);
+        $('#myModal').modal('show');
+        
+
+  }
+  function clearInput() {    
+        $('#length').val('');
+        $('#breadth').val('');
+        $('#height').val('');
+        $('#weight').val('');
+        $('#error-mssg').text('');
+  }
+  
+  function orderShipping(){
+    var length = $('#length').val();
+    var breadth = $('#breadth').val();
+    var height = $('#height').val();
+    var weight = $('#weight').val();
+
+    var valid = true;
+    if(length=='' || breadth=='' || height=='' || weight==''){
+        valid = false;
+        $('#error-mssg').text('Please add all required details');
+        return false;
+    }else if(length < 0.5 || breadth < 0.5 || height < 0.5 ){
+        $('#error-mssg').text('The value of the item in cms. Must be more than 0.5.');
+        valid = false;
+        return false;
+    }
+
+    if(valid){
+      $('#error-mssg').text('');
+      $.ajax({
+            url:"<?php echo base_url() ?>/shiprocket/shiping_order",
+            method:"POST",
+            dataType: 'JSON',
+            data: $("#order_shipping").serialize(),        
+            success:function(data){                    
+                 
+              if(data.status==1){
+                $('#myModal').modal('hide');
+                $('#successModal').modal('show');
+                clearInput();
+              }else{
+                clearInput();
+                $('#error-mssg').text('Order Already Shipped');
+              }
+              // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+            }
+      })      
+    }
+  }
+
+</script>
