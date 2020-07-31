@@ -168,6 +168,7 @@ class Admin_model extends MY_model
 		}
 		return $data;
 	}
+
 	public function shippingOrderData($id){
 		$this->db->select('orders.order_number as order_id,orders.created_at as order_date,
 			users.full_name as billing_customer_name,users.last_name as billing_last_name,users.email as billing_email,users.mobile as billing_phone,user_address.address as billing_address,user_address.city as billing_city, user_address.pin_code as billing_pincode,user_address.state as billing_state,user_address.country as billing_country, 
@@ -199,6 +200,18 @@ class Admin_model extends MY_model
 			$data['order_items'] = $this->db->get()->result();
 		}
 		return $data;
+
+	}
+	public function PrescriptionList()
+	{
+		$this->db->select('users.full_name as username,users.auto_login,order_prescription.prescription, order_prescription.created_at');
+		$this->db->from('order_prescription');
+		$this->db->join('users','users.id = order_prescription.user_id','left');
+		/*if($this->session->userdata('user_type')=='vendor' ){
+			$this->db->where('saltcomposition.created_by',$this->session->userdata('user_id'));
+		}*/
+		// $this ->db->order_by("FIELD(saltComposition.status,'pending','active','reject')");
+		return $this->db->get()->result();
 
 	}
 }

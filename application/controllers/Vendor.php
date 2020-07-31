@@ -246,19 +246,30 @@ Class Vendor extends MY_Controller {
                 }               
                 
                 if ($last_id > 0) {
-
-                    if(ctype_digit($this->input->post('email'))){
-                        $data = array('mobile'=>trim($this->input->post('email')),
-                                      'user_id'=>$last_id,
-                                      'user_type'=>$this->input->post('type')
-                                  );
-                    }else{
-
-                        $data = array('email'=>$this->input->post('email'),
-                                      'user_id'=>$last_id,
-                                      'user_type'=>$this->input->post('type')
-                                  );
+                    
+                    if ($this->input->post('type')=='user') {
+                        if(ctype_digit($this->input->post('email'))){
+                            $data = array('mobile'=>trim($result->mobile),                                
+                                    'user_id'=>$result->id,
+                                    'user_type'=>$result->type);
+                        }else{                        
+                            $data = array('email'=>$result->email,
+                                        'user_id'=>$result->id,
+                                        'user_type'=>$result->type);
+                        }
                     }
+                    else{
+                        if(ctype_digit($this->input->post('email'))){
+                            $data = array('mobile'=>trim($result->mobile),                                
+                                    'user_id'=>$result->id,
+                                    'user_type'=>$result->type);
+                        }else{                        
+                            $data = array('email'=>$result->email,
+                                        'user_id'=>$result->id,
+                                        'user_type'=>$result->type);
+                        }
+                    }
+
                     $this->session->set_userdata($data);
                     $this->session->set_flashdata('success', 'Your account successfully created ');
                     
@@ -317,15 +328,29 @@ Class Vendor extends MY_Controller {
                
                 if(!empty($result))
                 {
-                    if(ctype_digit($this->input->post('email'))){
-                        $data = array('mobile'=>trim($result->mobile),                                
-                                'user_id'=>$result->id,
-                                'user_type'=>$result->type);
-                    }else{                        
-                        $data = array('email'=>$result->email,
+                    if ($this->input->post('type')=='user') {
+                        if(ctype_digit($this->input->post('email'))){
+                            $data = array('mobile'=>trim($result->mobile),                                
                                     'user_id'=>$result->id,
                                     'user_type'=>$result->type);
+                        }else{                        
+                            $data = array('email'=>$result->email,
+                                        'user_id'=>$result->id,
+                                        'user_type'=>$result->type);
+                        }
                     }
+                    else{
+                        if(ctype_digit($this->input->post('email'))){
+                            $data = array('mobile'=>trim($result->mobile),                                
+                                    'user_id'=>$result->id,
+                                    'user_type'=>$result->type);
+                        }else{                        
+                            $data = array('email'=>$result->email,
+                                        'user_id'=>$result->id,
+                                        'user_type'=>$result->type);
+                        }
+                    }
+                    
 
                     $this->session->set_userdata($data);
                     // redirect(base_url('admin/dashboard'));
@@ -368,9 +393,9 @@ Class Vendor extends MY_Controller {
         $this->middle = 'personalDetails';
         $this->Vendor();
     }
-    public function editPersonalDetails($userId)
+    public function editPersonalDetails($user_id)
     {
-        $user_id = base64_decode($userId);
+        $user_id = base64_decode($user_id);
 
         $this->data['bank'] = $this->Vendor->getData('bank','*','');
         $this->data['edit_data'] = $this->Vendor->getRowData('users','*',array('id'=>$user_id));
@@ -382,10 +407,10 @@ Class Vendor extends MY_Controller {
         $this->middle = 'edit_personalDetails';
         $this->Vendor();
     }
-    public function vendor_profile($userId)
+    public function vendor_profile($user_id)
     {   
         
-        $user_id = base64_decode($userId);
+        $user_id = base64_decode($user_id);
         $msg = '';
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
             $this->form_validation->set_rules('full_name', 'Full Name', 'required');            
@@ -540,6 +565,7 @@ Class Vendor extends MY_Controller {
                         'sucategory_id'=>$this->input->post('sucategory_id'),
                         'manufacturer_id'=>$this->input->post('manufacturer_id'),
                         'brand_id'=>$this->input->post('brand_id'),
+                        'country'=>$this->input->post('country'),
                         
                         'name'=>$this->input->post('name'),
                         'product_form_id'=>$this->input->post('product_form_id'),

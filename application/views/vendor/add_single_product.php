@@ -154,6 +154,15 @@
                         <label for="country">Product Name</label>
                      </div>
                   </div>
+                  <div class="col-md-12">
+                     <div class="form-group label-float-top">
+                        <select name="country" class="form-control control-float-top countries" id="countryId" value="<?php echo set_value('country')?>">
+                            <option></option>
+                        </select>
+                        <label for="country">Country</label>
+                     </div>
+                  </div>
+                  
                   <div class="col-md-3">
                      <div class="form-group padding-top-bottom-20">
                         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" id="prescriptionRequired">

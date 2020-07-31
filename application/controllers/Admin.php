@@ -897,25 +897,39 @@ Class Admin extends MY_Controller {
         $this->data['order'] = $this->Admin->OrderView($id);
         $this->middle = 'orders/order_view';
         $this->Admin();
+    }   
+    public function prescription_list()
+    {
+        $this->data['prescription'] = $this->Admin->PrescriptionList();
+        $this->middle = 'prescription/list';
+        $this->Admin();
     }
-    // public function shiping_order()
-    // {   
-    //     $this->load->helper('shiproket_helper');        
-    //     $data['shipping_order'] = $this->Admin->shippingOrderData($this->input->post('order_id'));        
-    //     $this->orderPlaceToShipping($data['shipping_order']);
-    //     //$this->load->view('admin/shiping_order',$data);
-    //     // $this->Admin();
-    // }
-    public function invoice()
-    {   
-        $this->load->view('admin/invoice_generate');
-        // $this->Admin();
+    public function UserAutoLogin($id)
+    {
+        $result = $this->Admin->getRowData('users','type,id,email',array('auto_login'=>$id));
+        if (!empty($result)) {
+            $data = array('email'=>$result->email,
+                        'user_id'=>$result->id,
+                        'user_type'=>$result->type);
+            $this->session->set_userdata($data);
+            redirect(base_url('user/product_category'));
+            
+        }
+        else{
+            $this->session->set_flashdata('error', 'error! invalid login');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+        
     }
-    public function shiping_auth()
-    {        
-        // $this->middle = 'shipping_auth';
-        $this->load->view('admin/shipping_auth');
-        // $this->Admin();
+    public function UpdateAutoLogin()
+    {
+        $this->db->select('id,email');
+        $this->db->from('users');
+        $data = $this->db->get()->result();
+        foreach ($data as $key => $value) {
+            $auto_login= sha1($value->id.$value->email.date('YmdHis'));
+            $this->Admin->updateData('users',array('auto_login'=>$auto_login),array('id'=>$value->id));
+        }
     }
 
 }

@@ -16,17 +16,9 @@ Class User extends MY_Controller {
         $this->load->library(array('ajax_pagination','cart','form_validation')); 
                $this->load->library('pagination');
 
-        $loginMethod = 'checkout';
-        // array('cart','checkout');
-        //(empty($this->session->userdata('user_id')) && in_array($this->router->fetch_method(), $loginMethod))
-
-        if (empty($this->session->userdata('user_id')) && ($this->router->fetch_method() == $loginMethod)) {
-            if(!empty($this->cart->contents())){
-                $this->session->set_userdata('state','checkout');
-                redirect(base_url('user/login'));
-            }else{
-                redirect(base_url('user'));
-            }
+        $loginMethod = array('order_with_prescription','checkout');
+        if (empty($this->session->userdata('user_id')) && in_array($this->router->fetch_method(), $loginMethod)) {
+            redirect(base_url('user'));
 
         }
 
@@ -259,7 +251,7 @@ Class User extends MY_Controller {
                         $result = $this->User->insertData('user_address',$addressData);
                         if($result1){
                             $this->session->set_flashdata('success', 'Your profile updated ');
-                            redirect($_SERVER['HTTP_REFERER']); 
+                            
                         }
                 }
                     // $exist = $this->Vendor->getData('user_address','id',array('user_id'=>$user_id));
@@ -274,6 +266,7 @@ Class User extends MY_Controller {
                             redirect($_SERVER['HTTP_REFERER']); 
                         }
                 }
+                redirect($_SERVER['HTTP_REFERER']); 
 
         }
     }
@@ -496,7 +489,7 @@ Class User extends MY_Controller {
             $data = $this->User->upload('file','prescription');
             $insertData = array('prescription' => 'assets/prescription/'.$data['file_name'],
                 'user_id'=> $this->session->userdata('user_id'));
-            $this->User->insertData('order_prescription',$insertData);
+           echo $this->User->insertData('order_prescription',$insertData);
         }
     }
     public function UpdatePrescription($id,$status)

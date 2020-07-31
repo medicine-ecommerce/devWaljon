@@ -82,6 +82,7 @@ $page = $this->uri->segment('2');
                       <li><a class="sub-item <?= ($page=="all_orders")? "active":"" ?>" class="sub-item" href="<?php echo base_url('admin/orders'); ?>">All Orders</a></li>
                     </ul>                  
                   </li>
+                  <li><a href="<?php echo base_url('admin/prescription_list'); ?>"><i class="fa fa-cog"></i>Upload Prescription</a>
                   <li><a><i class="fa fa-cog"></i>Settings</a>                  
                   </li>
                 </ul>
