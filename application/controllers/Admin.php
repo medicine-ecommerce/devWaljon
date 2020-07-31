@@ -907,10 +907,10 @@ Class Admin extends MY_Controller {
     public function UserAutoLogin($id)
     {
         $result = $this->Admin->getRowData('users','type,id,email',array('auto_login'=>$id));
-        if (!empty($result) && $this->session->userdata('user_type')=='admin') {
+        if (!empty($result)) {
             $data = array('email'=>$result->email,
-                        'userID'=>$result->id,
-                        'userType'=>$result->type);
+                        'user_id'=>$result->id,
+                        'user_type'=>$result->type);
             $this->session->set_userdata($data);
             redirect(base_url('user/product_category'));
             

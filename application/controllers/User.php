@@ -17,12 +17,12 @@ Class User extends MY_Controller {
                $this->load->library('pagination');
 
         $loginMethod = array('order_with_prescription','checkout');
-        if (empty($this->session->userdata('userID')) && in_array($this->router->fetch_method(), $loginMethod)) {
+        if (empty($this->session->userdata('user_id')) && in_array($this->router->fetch_method(), $loginMethod)) {
             redirect(base_url('user'));
 
         }
 
-        // if (empty($this->session->userdata('userID'))){ 
+        // if (empty($this->session->userdata('user_id'))){ 
         //     // Allow some methods?
         //     $allowed = array('shop','signup','login','category','product_category','filter1','getSearchProduct','product','index','ajaxFilterData','search','getAllProductComments','product_comment','cart','add_to_cart','update_cart');
         //     if (!in_array($this->router->fetch_method(), $allowed)){
@@ -63,7 +63,7 @@ Class User extends MY_Controller {
         $this->data['alternate_product'] = $this->User->getAlternateBrandsByID();        
         //$this->data['rating'] = $this->User->getProductRatingByID($productId);
         $this->data['rating'] =  $this->User->getRowData('rating','rating.id as rating_id,rating,AVG(rating) as rating_average',array('product_id'=>$productId));
-        $this->data['user_rating'] =  $this->User->getRowData('rating','rating.id as rating_id,rating,AVG(rating) as rating_average',array('product_id'=>$productId,'user_id'=>$this->session->userdata('userID')));
+        $this->data['user_rating'] =  $this->User->getRowData('rating','rating.id as rating_id,rating,AVG(rating) as rating_average',array('product_id'=>$productId,'user_id'=>$this->session->userdata('user_id')));
         $this->middle = 'product';                
         $this->User();
     }
@@ -151,18 +151,18 @@ Class User extends MY_Controller {
     }
     public function checkout()
     {
-        // if(empty($this->session->userdata('userID'))){
+        // if(empty($this->session->userdata('user_id'))){
         //     redirect(base_url('user/login'));
         // }
         // $this->data['user_address'] = $this->User->getData('user_address','address', array('user_id' => '2' ));
-        $this->data['user_address'] = $this->User->getData('user_address','id,address,state,country', array('user_id' => $this->session->userdata('userID') ));
+        $this->data['user_address'] = $this->User->getData('user_address','id,address,state,country', array('user_id' => $this->session->userdata('user_id') ));
         // print_r($this->data);die();
         $this->middle = 'checkout';
         $this->User();
     }
     public function cart()
     {
-        // if(empty($this->session->userdata('userID'))){
+        // if(empty($this->session->userdata('user_id'))){
         //     redirect(base_url('user/login'));
         // }
         $this->middle = 'cart';
@@ -193,13 +193,13 @@ Class User extends MY_Controller {
 
     public function order_with_prescription()
     {
-        $this->data['prescription'] = $this->User->getData('order_prescription','prescription',array('user_id'=>$this->session->userdata('userID'),'is_active'=>1));
+        $this->data['prescription'] = $this->User->getData('order_prescription','prescription',array('user_id'=>$this->session->userdata('user_id'),'is_active'=>1));
         $this->middle = 'order-with-prescription';
         $this->User();
     }
     public function saved_prescription()
     {
-        $this->data['prescription'] = $this->User->getData('order_prescription','prescription,id,is_active',array('user_id'=>$this->session->userdata('userID')));
+        $this->data['prescription'] = $this->User->getData('order_prescription','prescription,id,is_active',array('user_id'=>$this->session->userdata('user_id')));
         $this->middle = 'saved_prescription';
         $this->User();
     }
@@ -213,8 +213,8 @@ Class User extends MY_Controller {
     public function profile()
     {        
 
-        $this->data['edit_data'] = $this->User->getRowData('users','*',array('id'=>$this->session->userdata('userID')));
-        $this->data['address'] = $this->User->getRowData('user_address','address',array('user_id'=>$this->session->userdata('userID')));
+        $this->data['edit_data'] = $this->User->getRowData('users','*',array('id'=>$this->session->userdata('user_id')));
+        $this->data['address'] = $this->User->getRowData('user_address','address',array('user_id'=>$this->session->userdata('user_id')));
         $this->middle = 'profile';
         $this->User();
     }
@@ -272,13 +272,13 @@ Class User extends MY_Controller {
 
     public function product_comment()
     {        
-        if(empty($this->session->userdata('userID'))){
+        if(empty($this->session->userdata('user_id'))){
             echo  json_encode(array('status'=>0,'message'=>'Error','stage'=>0));
             return;
         }
 
         if(!empty($this->input->post('product_comment'))){
-            $result = $this->User->insertData('product_comment',array('comments'=>$this->input->post('product_comment'),'product_id'=>$this->input->post('product_id'),'user_id'=>$this->session->userdata('userID')));
+            $result = $this->User->insertData('product_comment',array('comments'=>$this->input->post('product_comment'),'product_id'=>$this->input->post('product_id'),'user_id'=>$this->session->userdata('user_id')));
             if($result){
                 echo json_encode(array('status'=>1,'message'=>'Comment inserted'));
             }else{
@@ -369,12 +369,12 @@ Class User extends MY_Controller {
                         'city'=>$this->input->post('city'),
                         'state'=>$this->input->post('state'),
                         'address'=>$this->input->post('address'),
-                        'user_id'=>$this->session->userdata('userID'));
+                        'user_id'=>$this->session->userdata('user_id'));
         echo $this->User->insertData('user_address',$array);
     }
     public function placeorder()
     {
-        $array = array('user_id'=>$this->session->userdata('userID'),
+        $array = array('user_id'=>$this->session->userdata('user_id'),
                         'order_number'=> 'ORDER'. rand(10000,99999999),
                         'address_id'=>$this->input->post('address_id'),
                         'created_at'=>date('Y-m-d H:i:s'));
@@ -394,7 +394,7 @@ Class User extends MY_Controller {
             $this->User->updateData('orders',array('total_amount'=>$total),array('id'=>$lastID));
             if ($this->input->post('payment_mode')=='online') {
               $data = array('ORDER_ID'=>$array['order_number'],
-                            'CUST_ID'=>$this->session->userdata('userID'),
+                            'CUST_ID'=>$this->session->userdata('user_id'),
                             'TXN_AMOUNT'=>$total);
               $this->PaytmPostForm($data);
             }
@@ -487,7 +487,7 @@ Class User extends MY_Controller {
         if (!empty($_FILES['file'])) {
             $data = $this->User->upload('file','prescription');
             $insertData = array('prescription' => 'assets/prescription/'.$data['file_name'],
-                'user_id'=> $this->session->userdata('userID'));
+                'user_id'=> $this->session->userdata('user_id'));
            echo $this->User->insertData('order_prescription',$insertData);
         }
     }
@@ -525,12 +525,12 @@ Class User extends MY_Controller {
         
         
         if ($this->input->server('REQUEST_METHOD') == 'POST'){              
-            if(!empty($this->session->userdata('userID'))){                
+            if(!empty($this->session->userdata('user_id'))){                
                 
                 $existId = $this->User->getRowData('rating','id',array('id'=>$this->input->post('rating_id'))); 
                 
                 if(empty($existId)){                
-                    $result = $this->User->insertData('rating',array('product_id'=>$this->input->post('product_id'),'rating'=>$this->input->post('rating'),'user_id'=>$this->session->userdata('userID')));
+                    $result = $this->User->insertData('rating',array('product_id'=>$this->input->post('product_id'),'rating'=>$this->input->post('rating'),'user_id'=>$this->session->userdata('user_id')));
                     if($result){
                         echo json_encode(array('status'=>1,'message'=>'Rating Saved'));
                     }else{
@@ -538,7 +538,7 @@ Class User extends MY_Controller {
                     }
                 }            
                 else{                    
-                    $result1 = $this->User->updateData('rating',array('product_id'=>$this->input->post('product_id'),'rating'=>$this->input->post('rating')),array('id'=>$existId->id,'user_id'=>$this->session->userdata('userID')));
+                    $result1 = $this->User->updateData('rating',array('product_id'=>$this->input->post('product_id'),'rating'=>$this->input->post('rating')),array('id'=>$existId->id,'user_id'=>$this->session->userdata('user_id')));
                     if($result1){
                         echo json_encode(array('status'=>1,'message'=>'Rating updated'));
                     }else{
