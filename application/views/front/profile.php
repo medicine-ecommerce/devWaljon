@@ -41,7 +41,7 @@
                   </div>
                   <div class="col-md-6">
                     <label class="fieldlabels chg-psw-input">Mobile Number</label>
-                    <input class="form-control input-update" id="show_mobile" type="tel" name="mobile" minlength="10" maxlength="10" value="<?= $edit_data->mobile; ?>" readonly="">
+                    <input class="form-control input-update" id="show_mobile" type="tel" name="mobile" minlength="10" maxlength="10" value="<?= $edit_data->mobile; ?>" <?php if(!empty($edit_data->mobile)){ echo "readonly"; }?> >
                     <?php if(!empty($edit_data->mobile)){ ?>
                     <a onclick="updateMobile()" data-toggle="modal" data-target="#mobileUpdate" class="update-text">Update Mobile Number</a>
                     <?php } ?>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="col-md-12">
                   <label class="fieldlabels">Address</label>
-                  <textarea name="address" class="form-control" rows="6" cols="50"><?= $edit_data->email; ?> </textarea >
+                  <textarea name="address" class="form-control" rows="6" cols="50"><?= $edit_data->address; ?> </textarea >
                 </div>
                 <div class="submit-btn">
                   <button class="btn btn-primary">Submit</button>
