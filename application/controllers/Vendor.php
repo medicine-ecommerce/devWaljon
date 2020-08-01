@@ -355,6 +355,33 @@ Class Vendor extends MY_Controller {
                     $this->session->set_userdata($data);
                     // redirect(base_url('admin/dashboard'));
                     if ($result->type=='user') {
+                      $this->db->select('temp_order.price,temp_order.qty,temp_order.item_id as id,
+                          (select product.name from product where product.id = temp_order.product_id ) as name,
+                          (select product_images.image from product_images where product_images.product_id = temp_order.product_id limit 1 ) as image
+                          ');
+                        $this->db->from('temp_order');
+                        $this->db->where('user_id',$this->session->userdata('user_id'));
+                        $que = $this->db->get();
+                        if ($que->num_rows() > 0) {
+                          $result = $que->result();
+                          foreach ($result as $key => $value) {
+                            $data = array(                    
+                                    'id'     => $value->id,
+                                    'qty'     => $value->qty,
+                                    'price'   => $value->price,
+                                    'name'    => $value->name,
+                                    'image'=> (!empty($value->image)) ? $value->image :''
+                            );            
+                            $catInsert = $this->cart->insert($data); 
+                          }
+                          /*echo "<pre>";
+                          print_r($result);
+                          $catInsert = $this->cart->insert($result); 
+                          echo "<pre>";
+                          print_r($this->cart->contents());
+                          exit();*/
+                        }
+                        
                         // redirect('user/index');
                         if(!empty($this->session->userdata('state')) && $this->session->userdata('state') == 'checkout'){
                             redirect('user/checkout');

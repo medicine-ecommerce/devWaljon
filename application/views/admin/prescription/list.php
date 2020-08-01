@@ -68,7 +68,7 @@
                             <td><?php echo $value->username; ?></td>
                             <td><a href="<?php echo base_url($value->prescription); ?>" target="_blank"><span class="approved">View</span> </a></td>
                             <td><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?></td>
-                            <td><a href="<?php echo base_url('admin/UserAutoLogin/'.$value->auto_login);?>"><span class="status-approve">Add Item</span></a></td>
+                            <td><a href="<?php echo base_url('admin/AddPrescriptionItem/'.$value->user_id);?>"><span class="status-approve">Add Item</span></a></td>
                             
                             </tr>
                           <?php } 
