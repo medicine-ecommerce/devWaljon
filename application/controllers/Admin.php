@@ -931,6 +931,7 @@ Class Admin extends MY_Controller {
             $this->Admin->updateData('users',array('auto_login'=>$auto_login),array('id'=>$value->id));
         }
     }
+    
     public function AddPrescriptionItem($user_id)
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
