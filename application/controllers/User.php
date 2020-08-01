@@ -310,12 +310,22 @@ Class User extends MY_Controller {
                     'price'   =>$price[0]->sale_price,
                     'name'    => $product[0]->name, 
                     'product_id'=>$product[0]->id, 
-                    'image'=>$product_image[0]->image,
+                    'image'=>(!empty($product_image[0]->image)) ? $product_image[0]->image :'',
                     'category_name'=>$category[0]->subcategory,
                     'brand_name'=>$brand[0]->brand_name,
             );            
             $catInsert = $this->cart->insert($data);              
             $quantity = count($this->cart->contents());
+            if (!empty($this->session->userdata('user_id'))) {
+              $array = array('user_id'=>$this->session->userdata('user_id'),
+                            'item_id'=>$this->input->post('id'),
+                            'product_id'=>$product[0]->id,
+                            'qty'=>$this->input->post('quantity'),
+                            'price'=>$price[0]->sale_price,
+                            'subtotal'=>($price[0]->sale_price * $this->input->post('quantity')));
+              $this->User->insertData('temp_order',$array);
+            }
+            
             
             if($catInsert){
                 echo json_encode(array('status'=>1,'message'=>'Product Added','quantity'=>$quantity,'cart'=>$this->cart->contents()));
@@ -323,7 +333,6 @@ Class User extends MY_Controller {
             }
     }
     public function update_cart(){
-
         if(!empty($this->input->post('id')))            
             $rowId = "";
             foreach ($this->cart->contents() as $key => $value) {
@@ -337,21 +346,31 @@ Class User extends MY_Controller {
                 $data = array(                    
                         'rowid'=> $rowId,
                         'qty'  => $this->input->post('quantity'),
-                );            
+                );
+                             
             }else if($this->input->post('type')=="remove"){                
                 $data = array(                    
                         'rowid'=> $rowId,
                         'qty'  => 0,
                 ); 
+                if (!empty($this->session->userdata('user_id'))) {
+                  $this->User->deleteData('temp_order',array('user_id'=>$this->session->userdata('user_id'),'item_id'=>$this->input->post('id')));
+                }                
             }
             else{
                 $data = array(                    
                         'rowid'=> $rowId,
                         'qty'     => $this->input->post('quantity'),
-                );           
+                );  
             }
             $catUpdate = $this->cart->update($data);  
             $quantity = count($this->cart->contents());
+            if (!empty($this->session->userdata('user_id')) && $this->input->post('type')!="remove") {
+              $result = $this->User->getRowData('temp_order','*',array('user_id'=>$this->session->userdata('user_id'),'item_id'=>$this->input->post('id')));
+
+              $this->User->updateData('temp_order',array('qty'=> $this->input->post('quantity'),'subtotal'=>($result->price * $this->input->post('quantity'))),array('user_id'=>$this->session->userdata('user_id'),'item_id'=>$this->input->post('id')));
+                
+            }
             if($catUpdate){                    
                 echo json_encode(array('status'=>1,'message'=>'Product Added','quantity'=>$quantity,'cart'=>$this->cart->contents()));
                 
@@ -411,6 +430,7 @@ Class User extends MY_Controller {
                     $this->orderPlaced();
                     if($this->input->post('payment_mode')!='online'){
                         $this->cart->destroy();
+                        $this->User->deleteData('temp_order',array('user_id'=>$this->session->userdata('user_id')));
                     }
                 }
             }
@@ -473,6 +493,8 @@ Class User extends MY_Controller {
           $this->User->updateData('orders',$array,array('order_number'=>$paramList['ORDERID']));
           $array['ORDERID'] = $paramList['ORDERID'];
           $array['TXNAMOUNT'] = $paramList['TXNAMOUNT'];
+          $this->cart->destroy();
+          $this->User->deleteData('temp_order',array('user_id'=>$this->session->userdata('user_id')));
           
           $this->data['result'] = $array;
           $this->middle = 'paymentSuccess';
