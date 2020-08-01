@@ -29,7 +29,7 @@ Class Shiprocket extends MY_Controller {
 		$orderData['breadth'] = $this->input->post('breadth');
 		$orderData['height'] = $this->input->post('height');
 		$orderData['weight'] = $this->input->post('weight');
-        
+
 		$curl = curl_init();
 
 		curl_setopt_array($curl, array(
@@ -103,9 +103,10 @@ Class Shiprocket extends MY_Controller {
 			"Content-Type: application/json",
 			"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
 			$response = curl_exec($curl);
-			curl_close($id);
-			$invoice = json_decode($response);
-			return $invoice->invoice_url;
+			curl_close($curl);
+			echo $response;
+			// $invoice = json_decode($response);
+			// return $invoice->invoice_url;
 		}
         //$this->orderPlaceToShipping($data['shipping_order']);
 
