@@ -66,6 +66,7 @@ Class Shiprocket extends MY_Controller {
 					echo json_encode(array('status'=>0,'msg'=>'order Exist'));
 			}  
 		}else{
+				echo $response;
 				echo json_encode(array('status'=>0,'msg'=>'Could not place order'));
 				return ;
 		}
