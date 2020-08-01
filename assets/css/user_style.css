@@ -994,6 +994,16 @@ button.btn.btn-default.cancel-button {
 .modal-body.image-content {
     padding: 25px 0;
 }
+a.canel-order {
+    background-color: #ff4a2d;
+    color: #fff;
+    padding: 5px 11px;
+    border-radius: 3px;
+}
+a.canel-order:hover {
+    text-decoration: none;
+    color: #fff;
+}
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {

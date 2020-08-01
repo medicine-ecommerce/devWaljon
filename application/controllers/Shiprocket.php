@@ -78,25 +78,34 @@ Class Shiprocket extends MY_Controller {
     public function shiping_cancel($id)
     {   
     	
-        $curl = curl_init();
-		curl_setopt_array($curl, array(
-		CURLOPT_URL =>"https://apiv2.shiprocket.in/v1/external/orders/cancel",
-		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_ENCODING =>"",
-		CURLOPT_MAXREDIRS =>10,
-		CURLOPT_TIMEOUT =>0,
-		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_HTTP_VERSION =>CURL_HTTP_VERSION_1_1,
-		CURLOPT_CUSTOMREQUEST => "POST",
-		CURLOPT_POSTFIELDS =>'{
-		  "ids": ["'.$data.'"]}',
-		CURLOPT_HTTPHEADER =>array(
-		"Content-Type: application/json",
-		"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
-		$response = curl_exec($curl);
-		curl_close($id);
-		$invoice = json_decode($response);
-		return $invoice->invoice_url;
+    	
+    	$orderNumber = $this->Admin->getRowData('orders','order_number',array('id'=>$id)); 
+
+    	$shippingOrderNumber = $this->Admin->getRowData('shiprocket_order','shiprocket_order_id',array('order_id'=>$orderNumber->order_number)); 
+
+    	
+    	if(!empty($shippingOrderNumber)){
+
+	        $curl = curl_init();
+			curl_setopt_array($curl, array(
+			CURLOPT_URL =>"https://apiv2.shiprocket.in/v1/external/orders/cancel",
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING =>"",
+			CURLOPT_MAXREDIRS =>10,
+			CURLOPT_TIMEOUT =>0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION =>CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "POST",
+			CURLOPT_POSTFIELDS =>'{
+			  "ids": ["'.$shippingOrderNumber->shiprocket_order_id.'"]}',
+			CURLOPT_HTTPHEADER =>array(
+			"Content-Type: application/json",
+			"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
+			$response = curl_exec($curl);
+			curl_close($id);
+			$invoice = json_decode($response);
+			return $invoice->invoice_url;
+		}
         //$this->orderPlaceToShipping($data['shipping_order']);
 
         //$this->load->view('admin/shiping_order',$data);

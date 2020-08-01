@@ -57,7 +57,7 @@
                       <td class="column-3"><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?> </td>
                       <td class="column-3"><?php echo ucfirst($value->status); ?> </td>
                       <td class="column-3"><a href="<?php echo base_url('user/orderView/'.$value->id); ?>">View Order</a></td>
-                      <td class="column-5"></td>
+                      <td class="column-5"><a href="<?php echo base_url('shiprocket/shiping_cancel/'.$value->id); ?>" class="canel-order">Cancel Order</a> </td>
                     </tr>
                   <?php  }
                   } ?>
