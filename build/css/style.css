@@ -1595,9 +1595,9 @@ span.order-sum {
     height: 100%;
 }
 a.ship-now {
-    background-color: #2a3f54;
+    background-color: #c5a11e;
     color: #fff !important;
-    padding: 5px 10px;
+    padding: 5px 22px;
     border-radius: 3px;
     margin: 9px auto;
     cursor: pointer;
@@ -1633,6 +1633,12 @@ img.shipping-image {
 .submit_button a {
     color: #fff;
     font-size: 15px;
+}
+a.order-shipped {
+    background-color: #37a950;
+    color: #fff !important;
+    padding: 5px 8px;
+    border-radius: 3px;
 }
 /*order page*/
 @media (max-width: 992px) {

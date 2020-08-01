@@ -76,9 +76,10 @@ Class Shiprocket extends MY_Controller {
         //$this->load->view('admin/shiping_order',$data);
         // $this->Admin();
     }
-    public function shiping_cancel($id)
+    public function shiping_cancel()
     {   
     	
+    	$id = $this->input->post('order_number');
     	
     	$orderNumber = $this->Admin->getRowData('orders','order_number',array('id'=>$id)); 
 
@@ -104,8 +105,15 @@ Class Shiprocket extends MY_Controller {
 			"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
 			$response = curl_exec($curl);
 			curl_close($curl);
-			echo $response;
-			// $invoice = json_decode($response);
+			
+			$ordersCancel = json_decode($response);
+			if($ordersCancel->status_code=='200'){
+				echo json_encode(array('status'=>1,'message'=>$ordersCancel->message));
+	            return ;
+			}else{
+				echo json_encode(array('status'=>0,'message'=>$ordersCancel->message));
+	            return ;
+			}
 			// return $invoice->invoice_url;
 		}
         //$this->orderPlaceToShipping($data['shipping_order']);

@@ -25,5 +25,11 @@
     $(document).ready(function(){
         $('#successModal').modal('show');
     });
+
+    $(window).click(function(e) {
+      if(e.target.id=='successModal'){
+          window.location.href = "<?php echo base_url() ?>user/orderListing";        
+      }
+    });
     
   </script>
