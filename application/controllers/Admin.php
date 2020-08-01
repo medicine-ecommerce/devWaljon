@@ -931,5 +931,27 @@ Class Admin extends MY_Controller {
             $this->Admin->updateData('users',array('auto_login'=>$auto_login),array('id'=>$value->id));
         }
     }
+    public function AddPrescriptionItem($user_id)
+    {
+        if ($this->input->server('REQUEST_METHOD') == 'POST'){
+            $itemData = $this->Admin->getRowData('product_item','*',array('id'=>$this->input->post('item_id')));
+            $array = array('user_id'=>$user_id,
+                            'item_id'=>$itemData->id,
+                            'product_id'=>$itemData->product_id,
+                            'qty'=>$this->input->post('quantity'),
+                            'price'=>$itemData->sale_price,
+                            'subtotal'=>($itemData->sale_price * $this->input->post('quantity')));
+            $this->Admin->insertData('temp_order',$array);
+            $this->session->set_flashdata('success', 'Item Added to cart');
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+
+        $this->db->select('product.name as product_name,product_item.id as item_id,sale_price');
+        $this->db->from('product_item');
+        $this->db->join('product','product.id = product_item.product_id');
+        $this->data['product'] = $this->db->get()->result();
+        $this->middle = 'prescription/add_item';
+        $this->Admin();
+    }
 
 }
