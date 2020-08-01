@@ -365,44 +365,66 @@ Class User extends MY_Controller {
         redirect(base_url('user/login'));
     }
     public function SaveUserAdddress()
-    {        
-        $array = array('country'=>$this->input->post('country'),
-                        'city'=>$this->input->post('city'),
-                        'state'=>$this->input->post('state'),
-                        'pin_code'=>$this->input->post('pin_code'),
-                        'address'=>$this->input->post('address'),
-                        'user_id'=>$this->session->userdata('user_id'));
-        echo $this->User->insertData('user_address',$array);
+    {     
+        if(!empty($this->input->post('pin_code'))){
+
+            $array = array('country'=>$this->input->post('country'),
+                            'city'=>$this->input->post('city'),
+                            'state'=>$this->input->post('state'),
+                            'pin_code'=>$this->input->post('pin_code'),
+                            'address'=>$this->input->post('address'),
+                            'user_id'=>$this->session->userdata('user_id'));
+            echo $this->User->insertData('user_address',$array);
+        }
+
     }
     public function placeorder()
     {
-        $array = array('user_id'=>$this->session->userdata('user_id'),
-                        'order_number'=> 'ORDER'. rand(10000,99999999),
-                        'address_id'=>$this->input->post('address_id'),
-                        'created_at'=>date('Y-m-d H:i:s'));
-        $lastID = $this->User->insertData('orders',$array);
-        if ($lastID) {
-          $item = $this->cart->contents();
-          $total = 0;
-            foreach ($item as $key => $value) {
-              $total = $total + $value['subtotal'];
-              $data = array('order_id'=>$lastID,
-                          'item_id'=>$value['id'],
-                          'qty'=>$value['qty'],
-                          'price'=>$value['price'],
-                          'subtotal'=>$value['subtotal']);
-              $this->User->insertData('order_item',$data);                
-            }
-            $this->User->updateData('orders',array('total_amount'=>$total),array('id'=>$lastID));
-            if ($this->input->post('payment_mode')=='online') {
-              $data = array('ORDER_ID'=>$array['order_number'],
-                            'CUST_ID'=>$this->session->userdata('user_id'),
-                            'TXN_AMOUNT'=>$total);
-              $this->PaytmPostForm($data);
+
+        if(!empty($this->input->post('new_address_id'))){  
+
+            $array = array('user_id'=>$this->session->userdata('user_id'),
+                            'order_number'=> 'ORDER'. rand(10000,99999999),
+                            'address_id'=>$this->input->post('new_address_id'),
+                            'created_at'=>date('Y-m-d H:i:s'));
+            $lastID = $this->User->insertData('orders',$array);
+            if ($lastID) {
+              $item = $this->cart->contents();
+              $total = 0;
+                foreach ($item as $key => $value) {
+                  $total = $total + $value['subtotal'];
+                  $data = array('order_id'=>$lastID,
+                              'item_id'=>$value['id'],
+                              'qty'=>$value['qty'],
+                              'price'=>$value['price'],
+                              'subtotal'=>$value['subtotal']);
+                  $this->User->insertData('order_item',$data);                
+                }
+                $orderPlaceSuccess = $this->User->updateData('orders',array('total_amount'=>$total),array('id'=>$lastID));
+                if ($this->input->post('payment_mode')=='online') {
+                  $data = array('ORDER_ID'=>$array['order_number'],
+                                'CUST_ID'=>$this->session->userdata('user_id'),
+                                'TXN_AMOUNT'=>$total);
+                  $this->PaytmPostForm($data);
+                }
+                if($orderPlaceSuccess){
+                    $this->orderPlaced();
+                    if($this->input->post('payment_mode')!='online'){
+                        $this->cart->destroy();
+                    }
+
+                }
             }
         }
 
     } 
+    function orderPlaced()
+    {
+        $this->middle = 'order_placed';
+        $this->User();
+
+    }
+
 
     function PaytmPostForm($data)
     {

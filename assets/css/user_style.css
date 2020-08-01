@@ -965,6 +965,35 @@ p.rate-here-text {
     margin-bottom: 0;
     font-weight: 500;
 }
+img.success-order-image {
+    width: 150px;
+}
+.modal-dialog.registration-done.order-success-modal {
+    width: 320px;
+}
+.text-center.succes-buttons {
+    padding: 20px 0px;
+}
+button.btn.btn-default.view-order-button {
+    background-color: #4abdde;
+    border: none;
+    box-shadow: none;
+}
+.view-order-button a{
+    color: #fff;
+}
+button.btn.btn-default.cancel-button {
+    background-color: #4abdde;
+    border: none;
+    box-shadow: none;
+    margin-right: 5px;
+}
+.cancel-button a{
+    color: #fff;
+}
+.modal-body.image-content {
+    padding: 25px 0;
+}
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {

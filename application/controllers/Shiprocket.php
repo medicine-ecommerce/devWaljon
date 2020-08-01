@@ -13,6 +13,7 @@ Class Shiprocket extends MY_Controller {
         $this->load->model('Admin_model','Admin');
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
+
         // if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
         //     redirect(base_url('admin'));
         // }
@@ -43,7 +44,7 @@ Class Shiprocket extends MY_Controller {
 		CURLOPT_POSTFIELDS =>json_encode($orderData),
 		CURLOPT_HTTPHEADER =>array(
 		"Content-Type: application/json",
-		"Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjY1MzY1MCwiaXNzIjoiaHR0cHM6Ly9hcGl2Mi5zaGlwcm9ja2V0LmluL3YxL2V4dGVybmFsL2F1dGgvbG9naW4iLCJpYXQiOjE1OTYwMzgzMDEsImV4cCI6MTU5NjkwMjMwMSwibmJmIjoxNTk2MDM4MzAxLCJqdGkiOiJHd3BiOTQ1bWx6T05zTU5PIn0.dxAU0-34hnHNsXZs1EhVEebY2wn8ChEY8vDYT3J_QIc"),));
+		"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
 		$response = curl_exec($curl);
 		curl_close($curl);
 		$responseShipping = json_decode($response);
@@ -74,6 +75,34 @@ Class Shiprocket extends MY_Controller {
         //$this->load->view('admin/shiping_order',$data);
         // $this->Admin();
     }
+    public function shiping_cancel($id)
+    {   
+    	
+        $curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_URL =>"https://apiv2.shiprocket.in/v1/external/orders/cancel",
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING =>"",
+		CURLOPT_MAXREDIRS =>10,
+		CURLOPT_TIMEOUT =>0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION =>CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_POSTFIELDS =>'{
+		  "ids": ["'.$data.'"]}',
+		CURLOPT_HTTPHEADER =>array(
+		"Content-Type: application/json",
+		"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
+		$response = curl_exec($curl);
+		curl_close($id);
+		$invoice = json_decode($response);
+		return $invoice->invoice_url;
+        //$this->orderPlaceToShipping($data['shipping_order']);
+
+        //$this->load->view('admin/shiping_order',$data);
+        // $this->Admin();
+    }
+
     public function invoice($data)
     {   
     	
@@ -91,7 +120,7 @@ Class Shiprocket extends MY_Controller {
 		  "ids": ["'.$data.'"]}',
 		CURLOPT_HTTPHEADER =>array(
 		"Content-Type: application/json",
-		"Authorization:Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjY1MzY1MCwiaXNzIjoiaHR0cHM6Ly9hcGl2Mi5zaGlwcm9ja2V0LmluL3YxL2V4dGVybmFsL2F1dGgvbG9naW4iLCJpYXQiOjE1OTYwMzgzMDEsImV4cCI6MTU5NjkwMjMwMSwibmJmIjoxNTk2MDM4MzAxLCJqdGkiOiJHd3BiOTQ1bWx6T05zTU5PIn0.dxAU0-34hnHNsXZs1EhVEebY2wn8ChEY8vDYT3J_QIc"),));
+		"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
 		$response = curl_exec($curl);
 		curl_close($curl);
 		$invoice = json_decode($response);

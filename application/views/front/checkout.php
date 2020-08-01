@@ -115,12 +115,13 @@
                           </div>
                         </div>
                         <div id="element2">
-                          <select name="address_id" id="address_id" class="form-control input-update" style="width: 50%;">
+                          <select name="address_id" id="address_id" onchange="getAddressId()" class="form-control input-update" style="width: 50%;">
                             <?php foreach ($user_address as $row => $value) {
                             ?>
                             <option value="<?php echo $value->id; ?>"> <?php echo $value->address.' '.$value->state.' '.$value->country; ?> </option>
                             <?php }?>
                           </select>
+                          <input type="hidden"  name="new_address_id" id="new_address_id">
                         </div> 
                         <br/><br/>
                         <div>
@@ -152,11 +153,11 @@
                             </div>
                             <div class="col-md-6">   
                               <label for="password" class="fieldlabels chg-psw-input">Pin Code</label>
-                              <input required="" type="text" minlength="6" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" maxlength="6" class="form-control input-update" name="pin_code">
+                              <input required="" type="text" id="pin_code" minlength="6" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" maxlength="6" class="form-control input-update" name="pin_code">
                             </div>
                             <div class="col-md-6">   
                               <label for="password" class="fieldlabels chg-psw-input">Address</label>
-                              <input type="text" name="address" class="form-control input-update" name="Address">
+                              <input type="text" name="address" class="form-control input-update" id="AddressID">
                             </div>
                           </div>
                         </div>                            
@@ -171,6 +172,7 @@
                                     <h2 class="fs-title">Payment Mode</h2>
                                 </div>
                             </div> 
+                            
                             <div>
                                 <label class="fieldlabels chg-psw-input">Online</label> 
                                 <div class="custom-control custom-radio payment-radio">
@@ -224,6 +226,7 @@
         var current = 1;
         var steps = $("fieldset").length;
 
+       
         setProgressBar(current);
 
         $(".next").click(function(){
@@ -298,12 +301,26 @@
     $(document).ready(function()
     {
         $('#element').hide();
+        $('#new_address_id').val($('#address_id').val())
+        //$(".bulk-img-main").removeAttr("id");
+
+        $("#countryId").removeAttr("required");
+        $("#stateId" ).removeAttr("required");
+        $("#cityId" ).removeAttr("required");
+        $("#pin_code" ).removeAttr("required");
+        $("#AddressID" ).removeAttr("required");
+
         $('#btn').click(function(){
 
-             $( "#pin" ).attr("required", "true");
-             $( "#address" ).attr("required", "true");
-           
+            if($("#element").hasClass("new-address-enable")){
+
+                 $( "#pin" ).attr("required", "true");
+                 $( "#address" ).attr("required", "true");
+               
+            }
+
       $('#element').show();
+      $('#element').addClass("new-address-enable");      
       $('#element2').hide();
 
 
@@ -318,17 +335,40 @@
     });
 
     function submitAddress() {
-        $.ajax({
-            type: 'POST',
-            url: '<?php echo base_url('user/SaveUserAdddress/'); ?>',
-            data: $("#msform").serialize(),
-            beforeSend: function(){
-              $('.loading').show();
-            },
-            success: function(html){
-                $('#address_id').val(html);
+        
+        
+        var isEnable = $("#element").hasClass("new-address-enable") 
+        
+        if(isEnable){
+            var countryId = $('#countryId').val();
+            var stateId = $('#stateId').val();
+            var cityId = $('#cityId').val();
+            var pin_code = $('#pin_code').val();
+            var Address = $('#AddressID').val();
+            
+            if(countryId=='' || stateId=='' || cityId=='' || pin_code=='' || Address==''){
+                alert('Fiels required');
+                return false;
             }
-        });
+
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url('user/SaveUserAdddress/'); ?>',
+                data: $("#msform").serialize(),
+                beforeSend: function(){
+                  $('.loading').show();
+                },
+                success: function(html){
+                    // $('#address_id').val(html);
+                    $('#new_address_id').val(html)
+                }
+            });
+        }
+    }
+    function getAddressId(){
+        
+        $('#new_address_id').val($('#address_id').val())
+        
     }
    
 </script>
