@@ -150,7 +150,11 @@
                                 </select>
                               </div>
                             </div>
-                            <div class="col-md-12">   
+                            <div class="col-md-6">   
+                              <label for="password" class="fieldlabels chg-psw-input">Pin Code</label>
+                              <input required="" type="text" minlength="6" onkeypress="return (event.charCode == 8 || event.charCode == 0) ? null : event.charCode >= 48 && event.charCode <= 57" maxlength="6" class="form-control input-update" name="pin_code">
+                            </div>
+                            <div class="col-md-6">   
                               <label for="password" class="fieldlabels chg-psw-input">Address</label>
                               <input type="text" name="address" class="form-control input-update" name="Address">
                             </div>

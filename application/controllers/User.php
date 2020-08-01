@@ -369,6 +369,7 @@ Class User extends MY_Controller {
         $array = array('country'=>$this->input->post('country'),
                         'city'=>$this->input->post('city'),
                         'state'=>$this->input->post('state'),
+                        'pin_code'=>$this->input->post('pin_code'),
                         'address'=>$this->input->post('address'),
                         'user_id'=>$this->session->userdata('user_id'));
         echo $this->User->insertData('user_address',$array);
