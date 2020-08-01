@@ -204,7 +204,7 @@ class Admin_model extends MY_model
 	}
 	public function PrescriptionList()
 	{
-		$this->db->select('users.full_name as username,users.auto_login,order_prescription.prescription, order_prescription.created_at');
+		$this->db->select('users.full_name as username,users.id as user_id,order_prescription.prescription, order_prescription.created_at');
 		$this->db->from('order_prescription');
 		$this->db->join('users','users.id = order_prescription.user_id','left');
 		/*if($this->session->userdata('user_type')=='vendor' ){

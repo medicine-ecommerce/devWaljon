@@ -412,7 +412,6 @@ Class User extends MY_Controller {
                     if($this->input->post('payment_mode')!='online'){
                         $this->cart->destroy();
                     }
-
                 }
             }
         }
