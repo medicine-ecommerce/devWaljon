@@ -139,7 +139,7 @@ class Admin_model extends MY_model
 	}
 	public function GetAllOrders($status)
 	{
-		$this->db->select('users. full_name,users.mobile,orders.created_at,orders.status, orders.order_number,orders.id as order_id, shiprocket_order.id as shiprocket_id ');
+		$this->db->select('users. full_name,users.mobile,orders.created_at,orders.status, orders.order_number,orders.id as order_id, shiprocket_order.id as shiprocket_id, shiprocket_order.order_status  ');
 		$this->db->from('orders');
 		if (!empty($status)) {
 			$this->db->where('orders.status',$status);

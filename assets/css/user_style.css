@@ -995,13 +995,36 @@ button.btn.btn-default.cancel-button {
     padding: 25px 0;
 }
 a.canel-order {
-    background-color: #ff4a2d;
+    background-color: #d6ae1b;
+    color: #fff;
+    padding: 5px 16px;
+    border-radius: 3px;
+    color: #fff !important;
+    cursor: pointer;
+}
+a.canel-order:hover {
+    text-decoration: none;
+    color: #fff;
+}
+a.caneled-order {
+    background-color: #b90c0c;
+    color: #fff;
+    padding: 5px 9px;
+    border-radius: 3px;
+    color: #fff !important;
+}
+a.caneled-order:hover {
+    text-decoration: none;
+    color: #fff;
+}
+a.ongoing-order {
+    background-color: #37a545;
     color: #fff;
     padding: 5px 11px;
     border-radius: 3px;
     color: #fff !important;
 }
-a.canel-order:hover {
+a.ongoing-order:hover {
     text-decoration: none;
     color: #fff;
 }

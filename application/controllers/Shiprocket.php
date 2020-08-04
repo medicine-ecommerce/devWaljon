@@ -108,6 +108,8 @@ Class Shiprocket extends MY_Controller {
 			
 			$ordersCancel = json_decode($response);
 			if($ordersCancel->status_code=='200'){
+							
+				$this->Admin->updateData('shiprocket_order',array('order_status'=>'cancel'),array('shiprocket_order_id'=>$shippingOrderNumber->shiprocket_order_id));
 				echo json_encode(array('status'=>1,'message'=>$ordersCancel->message));
 	            return ;
 			}else{
