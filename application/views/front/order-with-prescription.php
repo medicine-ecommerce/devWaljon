@@ -25,7 +25,7 @@
                   </span>
                 </a>
               </div>
-              <!-- <div class="upload-div">
+              <div class="upload-div">
                 <a href="<?php echo base_url('user/saved_prescription'); ?>" class="upload-pres back-white">
                   <span class="upload-img">
                     <img src="<?php echo base_url();?>assets/img/file.png">
@@ -34,7 +34,7 @@
                     <p>Saved Prescription</p>
                   </span>
                 </a>
-              </div> -->  
+              </div>  
              <!--  <hr> -->
               <div class="show-upload">
                 <h5>Attached Prescription</h5>

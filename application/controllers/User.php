@@ -16,7 +16,7 @@ Class User extends MY_Controller {
         $this->load->library(array('ajax_pagination','cart','form_validation')); 
                $this->load->library('pagination');
 
-        $loginMethod = array('order_with_prescription','checkout');
+        $loginMethod = array('order_with_prescription','checkout','UpdatePrescription');
         if (empty($this->session->userdata('user_id')) && in_array($this->router->fetch_method(), $loginMethod)) {
             redirect(base_url('user'));
 
@@ -538,7 +538,8 @@ Class User extends MY_Controller {
     }
     public function UpdatePrescription($id,$status)
     {
-        $this->User->updateData('order_prescription',array('is_active'=>$status),array('id'=>$id));
+        //$this->User->updateData('order_prescription',array('is_active'=>$status),array('id'=>$id));
+        $this->User->deleteData('order_prescription',array('id'=>$id));
     }
     public function AjaxUpdatePrescriptionSession()
     {
