@@ -24,7 +24,7 @@
               <div class="row">
                 <div class="col-md-3">
                   <div class="upload-btn-img">
-                      <img <?php if(!empty($edit_data->image)){ ?>src="<?php echo base_url(); ?>assets/user-profile/<?= $profile->image; ?>" <?php }else { ?>  src="https://tricityescaperooms.com/wp-content/uploads/2018/01/person-placeholder-male-5.jpg" <?php } ?>
+                      <img <?php if(!empty($edit_data->image)){ ?>src="<?php echo base_url(); ?>assets/user-profile/<?= $profile->image; ?>" <?php }else { ?>  src="<?php echo base_url(); ?>assets/img/dummy_images.png" <?php } ?>
                           class="img-thumbnail p-0 m-0" style="" alt="user profile image">
                       <input type="file" name="profile_image" onchange="showThumbnail(this)" />
                       <input type="hidden" name="edit_profile_image" value="<?php echo $edit_data->image ?>">

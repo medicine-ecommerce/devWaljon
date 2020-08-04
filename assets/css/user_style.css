@@ -999,6 +999,7 @@ a.canel-order {
     color: #fff;
     padding: 5px 11px;
     border-radius: 3px;
+    color: #fff !important;
 }
 a.canel-order:hover {
     text-decoration: none;

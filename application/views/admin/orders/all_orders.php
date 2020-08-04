@@ -1,3 +1,4 @@
+
   <!-- page content -->
   <div class="right_col" role="main">
     <div class="">
@@ -53,7 +54,13 @@
                             echo '<span class="rejected">Canceled</span>';
                           } ?>
                         </td>
-                        <td><a href="<?php echo base_url('admin/order_view/'.$value->order_id); ?>"><span class="pending">View Order</span></a><br><a class="ship-now" onclick="showModelForShipping(<?= $value->order_id; ?>)">Ship Now</a> </td>
+                        <td><a href="<?php echo base_url('admin/order_view/'.$value->order_id); ?>"><span class="pending">View Order</span></a><br>
+                          <?php if(empty($value->shiprocket_id)){ ?>
+                          <a class="ship-now" onclick="showModelForShipping(<?= $value->order_id; ?>)">Ship Now</a>
+                          <?php }else{ ?>
+                            <a class="order-shipped">Order Shipped</a>
+                          <?php } ?>
+                           </td>
                         </tr>
                       <?php } 
                     }?>

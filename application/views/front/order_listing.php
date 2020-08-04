@@ -57,9 +57,9 @@
                       <td class="column-3"><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?> </td>
                       <td class="column-3"><?php echo ucfirst($value->status); ?> </td>
                       <td class="column-3"><a href="<?php echo base_url('user/orderView/'.$value->id); ?>">View Order</a></td>
-                      <td class="column-5"><a href="<?php echo base_url('shiprocket/shiping_cancel/'.$value->id); ?>" class="canel-order">Cancel Order</a> </td>
+                      <td class="column-5"><a onclick="orderCancel(<?= $value->id; ?>)" class="canel-order">Cancel Order</a> </td>
                     </tr>
-                  <?php  }
+                  <?php $i+=1; } 
                   } ?>
               </tbody>
             </table>
@@ -101,8 +101,8 @@
                       <td class="column-5"></td>
                       <td class="column-5"></td>
                     </tr>
-                  <?php  }
-                    }
+                  <?php  } 
+                    } ;
                   } ?>
               </tbody>
             </table>
@@ -112,3 +112,48 @@
     </div>
   </div>    
 </div>
+<div class="modal fade" id="cancelOrder" role="dialog">
+    <div class="modal-dialog registration-done order-success-modal">
+    <!-- Modal content-->
+      <div class="modal-content welldon-modal">
+          <!-- <h4 class="modal-title">Modal Header</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button> -->
+        
+        <div class="modal-body image-content">
+          <div class="text-center">
+          <img src="<?php echo base_url(); ?>assets/img/Cancel-Order.png" class="success-order-image" id="preview">
+          <h1 id="pass-message"></h1>   
+          <p id="sub-pass-message"></p>
+        </div>
+        <div class="text-center succes-buttons">
+          <button type="button" class="btn btn-default submit_button cancel-button" data-dismiss="modal" >OK</button>
+        </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+<script type="text/javascript">
+  function orderCancel(id){
+        
+    $.ajax({
+              url:"<?php echo base_url() ?>/shiprocket/shiping_cancel",
+              method:"POST",
+              dataType: 'JSON',
+              data: {order_number:id},        
+              success:function(data){                    
+                   
+                if(data.status==1){                                    
+                  $('#cancelOrder').modal('show');
+                  $('#pass-message').text('Order Canceled')
+                  $('#sub-pass-message').text('Your order has been successfully Canceled')
+
+                }else{
+                  $('#cancelOrder').modal('show');
+                  $('#pass-message').text('Order Already Canceled')                  
+                }
+                // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+              }
+        })
+  }
+
+</script>
