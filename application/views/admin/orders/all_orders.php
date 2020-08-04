@@ -57,6 +57,8 @@
                         <td><a href="<?php echo base_url('admin/order_view/'.$value->order_id); ?>"><span class="pending">View Order</span></a><br>
                           <?php if(empty($value->shiprocket_id)){ ?>
                           <a class="ship-now" onclick="showModelForShipping(<?= $value->order_id; ?>)">Ship Now</a>
+                        <?php }else if($value->order_status == "cancel"){ ?>
+                            <a class="order-canceled">Order Canceled</a>                          
                           <?php }else{ ?>
                             <a class="order-shipped">Order Shipped</a>
                           <?php } ?>

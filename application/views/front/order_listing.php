@@ -57,7 +57,17 @@
                       <td class="column-3"><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?> </td>
                       <td class="column-3"><?php echo ucfirst($value->status); ?> </td>
                       <td class="column-3"><a href="<?php echo base_url('user/orderView/'.$value->id); ?>">View Order</a></td>
-                      <td class="column-5"><a onclick="orderCancel(<?= $value->id; ?>)" class="canel-order">Cancel Order</a> </td>
+                      
+                      <td class="column-5">
+                      <?php if(empty($value->order_status)){ ?>
+                        <a onclick="orderCancel(<?= $value->id; ?>)" class="canel-order">Cancel Order</a> 
+                      <?php }else if($value->order_status=="cancel"){ ?>
+                        <a class="caneled-order">Order Canceled</a> 
+                      <?php }else if($value->order_status=="ongoing"){ ?>
+                        <a class="ongoing-order">Order Shipped</a> 
+                      <?php } ?>
+                      </td>
+
                     </tr>
                   <?php $i+=1; } 
                   } ?>
