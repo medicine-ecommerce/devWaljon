@@ -48,6 +48,7 @@
                 </div>
                 <div class="upload-img">
                   <div class="upload-img-sec">
+                    
                     <ul id="attach-preview">
                       <?php 
                       /*if (!empty($prescription)) {
@@ -297,7 +298,7 @@ function readURL(input) {
     if (input.files && input.files[0]) {
       var reader = new FileReader();
       reader.onload = function(e) {
-        $('#attach-preview').append('<li class="uplod-img-prse"><a class="cross-img-upload"><i class="fa fa-close"></i></a> <img src="'+e.target.result+'"></li>');
+        $('#attach-preview').append('<li class="uplod-img-prse"><img id="loader" src="<?php echo base_url('assets/img/loader.gif');?>" style="position: absolute;background: #00000078;"><img src="'+e.target.result+'"></li>');
       }
       reader.readAsDataURL(input.files[0]);
     }
@@ -310,8 +311,11 @@ function readURL(input) {
       contentType: false,
       cache: false, 
       processData:false,
+      beforeSend: function() {
+         
+       },
       success:function(result){
-        console.log(result);
+         $("#loader").hide();
         alert('Prescription uploaded successfully')
       },
       error:function(status){
