@@ -1471,5 +1471,91 @@ ul.slick-dots li.slick-active button{
     background: #4abdde !important;
     color: #fff !important;
 }
+.close-prescription{
+  position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 20px !important;
+    color: red;
+    background: #fff;
+}
 
 /*user prescription*/
+
+
+/*invoice*/
+  section.invoice-sec {
+      width: 900px;
+      margin: 50px auto;
+  }
+  .bot-border {
+    margin: 10px 0px;
+    border-top: 1px dashed #828282;
+    padding: 5px 0px;
+    font-size: 13px;
+  }
+  .bot-border .col-md-6:nth-child(2) {
+    border-left: 1px dashed #828282;
+  }
+  .invoice-adress p {
+    font-size: 13px;
+    line-height: 1.5;
+    word-spacing: 5px;
+    color: #212529;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .invoice-adress {
+    width: 70%;
+  }
+  .gst-info {
+    font-size: 13px;
+  }
+  .bill-list li {
+    list-style: inside;
+    font-size: 13px;
+  }
+  .bill-name {
+    text-align: right;
+    margin-top: 25px;
+  }
+  .bill-name h5{
+    font-size: 16px;
+  }
+  .bill-name p{
+    font-size: 13px;
+    font-style: italic;
+  }
+  .price-details table{
+    width: 100%;
+  }
+  .price-details table thead{
+    border-bottom: 1px dashed #000;
+    line-height: 25px;
+  }
+  .tax-details table{
+    width: 100%;
+  }
+  .tax-details table {
+    width: 100%;
+    border: 1px solid #727272;
+    margin-top: 40px;
+  }
+  .tax-details table tr{
+    border: 1px solid #727272;
+  }
+  .total-savings {
+    text-align: center;
+  }
+  p.invoice-details-heading {
+    font-size: 13px;
+    margin-bottom: 0px;
+    color: black;
+    text-decoration: underline;
+    font-weight: 600;
+  }
+  p.invoice-details-content {
+    font-size: 13px;
+    margin-bottom: 0px;
+  }
+/*invoice*/

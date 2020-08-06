@@ -17,7 +17,9 @@
                   if (!empty($prescription)) {
                      foreach ($prescription as $key => $value) { ?>
                     <li class="uplod-prec-img">
-                      <input type="checkbox" name="select" onchange="update('<?php echo $value->id; ?>',$(this))" class="check-presc" <?php echo ($value->is_active) ?'checked':'' ?>>
+                      <a href="javascript:void(0)"  onclick="return confirm('Are you sure？')" onclick="update('<?php echo $value->id; ?>',$(this))"><i class="fa fa-close close-prescription"></i></a>
+
+                      <!-- <input type="checkbox" name="select" onchange="update('<?php echo $value->id; ?>',$(this))" class="check-presc" <?php echo ($value->is_active) ?'checked':'' ?>> -->
                       <img src="<?php echo base_url($value->prescription); ?>">
                     </li>
                   <?php   }
@@ -95,7 +97,7 @@ function update(id,val) {
     var status = 0;
   }
   $.get("<?php echo base_url('user/UpdatePrescription/');?>"+id+"/"+status, function(data, status){
-    
+    val.parents('li').remove();
   });
 }
 </script>
