@@ -55,16 +55,19 @@
                       <td class="column-3"><?php echo $i; ?> </td>
                       <td class="column-3"><?php echo $value->order_number; ?> </td>
                       <td class="column-3"><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?> </td>
-                      <td class="column-3"><?php echo ucfirst($value->status); ?> </td>
+                      <!-- <td class="column-3"><?php echo ucfirst($value->status); ?> </td> -->
+                      <td class="column-3"><?php if($value->status=='pending'){ echo "Pending"; }else if($value->status=="on_shipping"){ echo "On The Way"; }else if($value->status=="cancel"){ echo "Order Canceled"; }else if($value->status=="return"){ echo "Return";  }else if($value->status=="delivered"){ echo "Delivered"; } ?> </td>
                       <td class="column-3"><a href="<?php echo base_url('user/orderView/'.$value->id); ?>">View Order</a></td>
                       
                       <td class="column-5">
-                      <?php if(empty($value->order_status)){ ?>
-                        <a onclick="orderCancel(<?= $value->id; ?>)" class="canel-order">Cancel Order</a> 
-                      <?php }else if($value->order_status=="cancel"){ ?>
-                        <a class="caneled-order">Order Canceled</a> 
-                      <?php }else if($value->order_status=="ongoing"){ ?>
-                        <a class="ongoing-order">Order Shipped</a> 
+                      <?php if($value->status=='pending' || $value->status=='on_shipping'){ ?>
+                        <a onclick="orderCancel(<?= $value->id; ?>)" class="canel-order">Cancel</a> 
+                      <?php }else if($value->status=="delivered"){ ?>
+                        <a onclick="orderReturn(<?= $value->id; ?>)" class="return-order">Return</a>
+                      <?php }else if($value->status=="cancel"){ ?>
+                        <a class="order-canceled">Canceled</a>
+                      <?php }else if($value->status=="return"){ ?>
+                        <a class="order-return">Returned</a>
                       <?php } ?>
                       </td>
 
@@ -77,7 +80,7 @@
         </div>
         <div class="tab-pane fade" id="uses" role="tabpanel" aria-labelledby="uses-tab">
           <div class="product-main-heading">
-            <h4>All Product List</h4>
+            <h4>All Product List</h4>            
           </div>
           <div class="order-table"> 
             <table class="table-shopping-cart">
@@ -98,15 +101,15 @@
                 </tr>
                 <?php if (!empty($order_list)) {
                     $i= 1;
-                    foreach ($order_list as $key => $value) {
-                    if ($value->status=='Pending') {
+                    foreach ($order_list as $key1 => $value1) {
+                    if ($value1->status=='Pending') {
                      ?>                    
                     <tr class="table_row">
                       <td class="column-3"><?php echo $i; ?> </td>
-                      <td class="column-3"><?php echo $value->order_number; ?> </td>
-                      <td class="column-3"><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?> </td>
-                      <td class="column-3"><?php echo ucfirst($value->status); ?> </td>
-                      <td class="column-3"><a href="<?php echo base_url('user/orderView/'.$value->id); ?>">View Order</a></td>
+                      <td class="column-3"><?php echo $value1->order_number; ?> </td>
+                      <td class="column-3"><?php echo date('d F Y H:i A',strtotime($value1->created_at)); ?> </td>
+                      <td class="column-3"><?php echo ucfirst($value1->status); ?> </td>
+                      <td class="column-3"><a href="<?php echo base_url('user/orderView/'.$value1->id); ?>">View Order</a></td>
                       <td class="column-5"></td>
                       <td class="column-5"></td>
                       <td class="column-5"></td>
@@ -136,13 +139,14 @@
           <p id="sub-pass-message"></p>
         </div>
         <div class="text-center succes-buttons">
-          <button type="button" class="btn btn-default submit_button cancel-button" data-dismiss="modal" >OK</button>
+          <button type="button" class="btn btn-default submit_button cancel-button" id="closeOrder" data-dismiss="modal" >OK</button>
         </div>
         </div>
       </div>  
     </div>
   </div>
-<script type="text/javascript">
+<script type="text/javascript"> 
+
   function orderCancel(id){
         
     $.ajax({
@@ -165,5 +169,27 @@
               }
         })
   }
+  function orderReturn(id){
+        
+    $.ajax({
+              url:"<?php echo base_url() ?>/shiprocket/shiping_order_return",
+              method:"POST",
+              dataType: 'JSON',
+              data: {order_number:id},        
+              success:function(data){                    
+                   
+                if(data.status==1){                                    
+                  $('#cancelOrder').modal('show');
+                  $('#pass-message').text('Order Canceled')
+                  $('#sub-pass-message').text('Your order has been successfully Canceled')
 
+                }else{
+                  $('#cancelOrder').modal('show');
+                  $('#pass-message').text('Order Already Canceled')                  
+                }
+                // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+              }
+        })
+  }
+  
 </script>

@@ -1646,6 +1646,34 @@ a.order-canceled {
     padding: 5px 5px;
     border-radius: 3px;
 }
+a.order-cancel {
+    background-color: #ec7f21;
+    padding: 4px 20px;
+    border-radius: 3px;
+    color: #fff !important;
+    cursor: pointer;
+}
+span.cancel-ordr {
+    color: #b3a9a3;
+}
+img.success-order-image {
+    width: 150px;
+}
+p.no-shipping {
+    margin-bottom: 0;
+    color: #71847f;
+}
+
+a.order-return {
+    background-color: #ff482b;
+    padding: 4px 20px;
+    border-radius: 3px;
+    color: #fff !important;
+    cursor: pointer;
+}
+span.return-ord {
+    color: #fd701f;
+}
 /*order page*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {
