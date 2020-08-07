@@ -64,7 +64,7 @@ Class Admin extends MY_Controller {
                             'company_name'      =>$this->input->post('company_name'),
                             'company_address'   =>$this->input->post('company_address'),
                             'full_name'        =>$this->input->post('full_name'),
-                            //'last_name'         =>$this->input->post('last_name'),
+                            'created_by'        =>'admin',
                             'email'             =>$this->input->post('email'),
                             'mobile'            =>$this->input->post('mobile'),
                             'password'          => md5('123456'),
@@ -117,7 +117,7 @@ Class Admin extends MY_Controller {
 
     public function vendor_status($status,$id)
     {
-        $result =$this->Admin->updateData('users',array('is_active'=>$status),array('id'=>$id));
+        $result =$this->Admin->updateData('users',array('status'=>$status),array('id'=>$id));
         if (!empty($result)) {
             $this->session->set_flashdata('success', 'status updated successfully'); 
         }
@@ -769,6 +769,10 @@ Class Admin extends MY_Controller {
             $this->session->set_flashdata('error', 'error! Please try again'); 
         }
         redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function isFeatureBrand()
+    {
+        $result = $this->Admin->updateData('brand',array('is_feature_brand'=>$this->input->post('is_feature_brand')),array('id'=>$this->input->post('id')));
     }
 
     public function saltComposition_add()

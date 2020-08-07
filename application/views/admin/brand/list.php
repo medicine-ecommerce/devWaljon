@@ -56,6 +56,7 @@
                           <th>Brand Name</th>
                           <th>Description</th>
                           <th>Status</th>
+                          <th>Featured Brands</th>
                           <th>Action</th>
                         </tr>
                       </thead>  
@@ -80,8 +81,13 @@
                                 echo '<span class="rejected">Inactivate</span>';
                               } ?>
                             </td>
+                            <td> <label class="switch">
+                              <input type="checkbox" class="switch-input" name="is_feature" onchange="isFeatureBrand(this)" data-id="<?php echo $value->id;?>" <?php echo ($value->is_feature_brand) ? 'checked' :'' ?>>
+                              <span class="slider round"></span>
+                            </label></td>
                             <td>
                             <?php  if($this->session->userdata('user_type')=='admin') { ?>
+                            <a href="<?php echo base_url('admin/brand_edit/'.($value->id)); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
                             <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
                               <?php if ($value->status=='pending' || $value->status=='reject') { ?>
@@ -138,6 +144,7 @@
                             </td>
                             <td>
                             <?php if($this->session->userdata('user_type')=='admin') { ?>
+                            <a href="<?php echo base_url('admin/brand_edit/'.($value->id)); ?>"><span class="status-approve"><i class="fa fa-pencil"></i></span></a>
                             <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
                               <?php if ($value->status=='pending' || $value->status=='reject') { ?>
@@ -171,4 +178,15 @@
   $(document).ready(function() {
     $('#example').DataTable();
   } );
+
+  function isFeatureBrand(th) {
+    var ch = ($(th).is(':checked')) ? '1' : '0'      
+    $.ajax({
+        type: "post",
+        url: "<?php echo base_url('admin/isFeatureBrand'); ?>",
+        data:{is_feature_brand: ch , id:$(th).data('id')},
+        success: function (data) {
+        }
+    });
+  }
 </script>

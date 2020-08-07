@@ -44,7 +44,7 @@ Class User extends MY_Controller {
     public function index()
     {
         $this->data['banner'] = $this->User->getData('banner_images','image',array('status'=>'active'));
-        $this->data['brand'] = $this->User->getData('brand','brand_img,id',array('status'=>'active'));
+        $this->data['brand'] = $this->User->getData('brand','brand_img,id',array('is_feature_brand'=>'1'));
         $this->data['product'] = $this->User->HomeProduct();
         $this->data['home_module'] = $this->User->getRowData('home_module','*',array('id'=>1));
        
