@@ -904,11 +904,20 @@ button.add-address:hover {
 }
 .cart-content-section {
     border: 1px solid #eaeaea;
-    padding: 20px 10px;
-    margin: 70px auto !important;
+    border-radius: 8px;
+    margin: 50px auto !important;
+}
+.cart.transition.is-open.cart-content-section.total-tcart-table {
+    width: 40%;
+    float: right;
+    margin: 0px auto 50px !important;
+}
+.layout-inline.cart-content.row {
+    border: 1px solid #eaeaea;
 }
 a.btn.btn-update-cart{
-    width: 100px;
+    width: 180px;
+    font-size: 16px;
     background: #4abdde;
     font-weight: bold;
     color: white;
@@ -916,7 +925,7 @@ a.btn.btn-update-cart{
     border-radius: 3px;
     cursor: pointer;
     padding: 10px 5px;
-    margin: 10px 0px 10px 5px;
+    margin: 10px;
     float: right;
     transition: 0.3s ease-in-out;
     box-shadow: none;
@@ -1027,6 +1036,27 @@ a.ongoing-order {
 a.ongoing-order:hover {
     text-decoration: none;
     color: #fff;
+}
+a.order-canceled {
+    background-color: #dfe6e6;
+    color: #8a8c8c !important;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: not-allowed;
+}
+a.order-return {
+    background-color: #dfe6e6;
+    color: #8a8c8c !important;
+    padding: 4px 12px;
+    border-radius: 3px;
+    cursor: not-allowed;
+}
+a.return-order {
+    background-color: #ff5200;
+    color: #fff !important;
+    padding: 5px 19px;
+    border-radius: 3px;
+    cursor: pointer;
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */

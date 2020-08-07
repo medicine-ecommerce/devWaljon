@@ -612,4 +612,9 @@ Class User extends MY_Controller {
         $this->middle = 'paymentFailed';
         $this->User();
     }
+    public function invoice()
+    {
+        $this->middle = 'invoice';
+        $this->User();
+    }
 }
