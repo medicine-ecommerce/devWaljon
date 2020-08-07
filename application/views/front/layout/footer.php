@@ -283,6 +283,11 @@ $.typeahead({
 //             input.val(100);
 //         }
 // });
+$(window).click(function(e) {          
+  if(e.target.id=='cancelOrder' || e.target.id=='closeOrder'){
+      location.reload();        
+   }
+});
 </script>
 
 

@@ -1,4 +1,3 @@
-
   <!-- page content -->
   <div class="right_col" role="main">
     <div class="">
@@ -50,17 +49,26 @@
                             echo '<span class="pending">Pending</span>';
                           } elseif ($value->status=='active') {
                             echo '<span class="approved">Active</span>';
+                          }elseif ($value->status=='delivered') {
+                            echo '<span class="approved">Delivered</span>';
+                          }elseif ($value->status=='on_shipping') {
+                            echo '<span class="approved">Order Shipped</span>';
+                          }elseif ($value->status=='cancel') {
+                            echo '<span class="cancel-ordr">Order Canceled</span>';
+                            if(empty($value->shiprocket_order_id)){ echo "<p class='no-shipping'>No Shipping</p>"; }
+                          }elseif ($value->status=='return') {
+                            echo '<span class="return-ord">Order Return</span>';
                           } else {
                             echo '<span class="rejected">Canceled</span>';
                           } ?>
                         </td>
                         <td><a href="<?php echo base_url('admin/order_view/'.$value->order_id); ?>"><span class="pending">View Order</span></a><br>
-                          <?php if(empty($value->shiprocket_id)){ ?>
+                          <?php if($value->status=='pending'){ ?>
                           <a class="ship-now" onclick="showModelForShipping(<?= $value->order_id; ?>)">Ship Now</a>
-                        <?php }else if($value->order_status == "cancel"){ ?>
-                            <a class="order-canceled">Order Canceled</a>                          
-                          <?php }else{ ?>
-                            <a class="order-shipped">Order Shipped</a>
+                        <?php }else if($value->status == "on_shipping"){ ?>
+                            <a onclick="orderCancel(<?= $value->order_id; ?>)" class="order-cancel">Cancel</a>
+                        <?php }else if($value->status == "delivered"){ ?>
+                            <a onclick="returnOrder(<?= $value->order_id; ?>)" class="order-return">Return</a>                          
                           <?php } ?>
                            </td>
                         </tr>
@@ -139,7 +147,23 @@
         <div class="text-center">
           <button type="button" class="btn btn-default submit_button" ><a href="https://app.shiprocket.in/orders/processing?page=1&perPage=15&shop=&ids=&rto=" target="_blank">View Order</a></button>
 
-          <button type="button" class="btn btn-default submit_button cancel_buton" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-default submit_button cancel_buton" id="close-admin-success" data-dismiss="modal">Close</button>
+        </div>
+      </div>  
+    </div>
+  </div>
+  <div class="modal fade" id="cancelOrder" role="dialog">
+    <div class="modal-dialog registration-done order-success-modal">    
+      <div class="modal-content welldon-modal">        
+        <div class="modal-body image-content">
+          <div class="text-center">
+          <img src="<?php echo base_url(); ?>assets/img/Cancel-Order.png" class="success-order-image" id="preview">
+          <h1 id="pass-message"></h1>   
+          <p id="sub-pass-message"></p>
+        </div>
+        <div class="text-center succes-buttons">
+          <button type="button" class="btn btn-default submit_button cancel-button" id="closeOrder" data-dismiss="modal" >OK</button>
+        </div>
         </div>
       </div>  
     </div>
@@ -202,5 +226,26 @@
       })      
     }
   }
+  function orderCancel(id){
+        
+    $.ajax({
+              url:"<?php echo base_url() ?>/shiprocket/shiping_cancel",
+              method:"POST",
+              dataType: 'JSON',
+              data: {order_number:id},        
+              success:function(data){                    
+                   
+                if(data.status==1){                                    
+                  $('#cancelOrder').modal('show');
+                  $('#pass-message').text('Order Canceled')
+                  $('#sub-pass-message').text('Your order has been successfully Canceled')
 
+                }else{
+                  $('#cancelOrder').modal('show');
+                  $('#pass-message').text('Order Already Canceled')                  
+                }
+                // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+              }
+        })
+  }
 </script>

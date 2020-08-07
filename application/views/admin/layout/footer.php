@@ -37,3 +37,12 @@
    <!--  <script src="<?php echo base_url(); ?>vendors/select2/dist/js/select2.full.min.js" type="4ab41406c87f1a08f7eb842c-text/javascript"></script> -->
   </body>
 </html>
+<script type="text/javascript">
+      $(window).click(function(e) {          
+          if(e.target.id=='successModal' || e.target.id=='close-admin-success' || e.target.id=='cancelOrder' || e.target.id=='closeOrder'){
+              location.reload();        
+                  //window.location.href = "<?php echo base_url() ?>user/orderListing";
+           }
+      });
+      
+</script>
