@@ -1078,6 +1078,13 @@ li.product_li1 a{
   .order-table{
     margin:30px 0px;
   }
+  .cart-page-heading {
+    margin-top: 50px;
+  }
+  .cart-page-heading h4{
+    color: #444;
+    font-size: 25px;
+  }
  /* profile*/
    .upload-btn-img {
         position: relative;
