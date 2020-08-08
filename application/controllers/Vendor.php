@@ -772,23 +772,18 @@ Class Vendor extends MY_Controller {
                 $highestColumn = $worksheet->getHighestColumn();
                 for($row=2; $row<=$highestRow; $row++)
                 {
-                    $product_id = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-                    $product_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-                    $Manufacturer = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-                    $product_form = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-                    $varieties = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-                    $unit = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-                    $mrp = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-                    $sale_price = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
-                    $quantity = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
-                $prescription = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
+                    $brand_name = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+                    $brand_description = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                    
                     
                     ///////////// MANUFACTURER CREATE AND UPDATE
-                    $manufacturerExist = $this->Vendor->getRowData('manufacturer','id',array('name'=>$Manufacturer));
-                    if($manufacturerExist){
-                        $manufacturer_id = $manufacturerExist->id;
+                    $brandExist = $this->Vendor->getRowData('brand','id',array('name'=>$brand_name));
+                    if($brandExist){
+                        
                     }else{
-                        $manufacturer_id = $this->Vendor->insertData('manufacturer',array('name'=>$Manufacturer));
+                        $data = array('brand_name'=>$brand_name,
+                                    'manufacturer_id'=>$brand_description);
+                        $brand_id = $this->Vendor->insertData('manufacturer',$data);
                     }
                     ///////////// PRODUCT FORM CREATE AND UPDATE
                     $productFormExist = $this->Vendor->getRowData('product_form','id',array('name'=>$product_form));

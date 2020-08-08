@@ -29,10 +29,12 @@
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div class="pull-right">
-                    <?php if($_SESSION["user_type"]=='admin'){ ?>
+                    <?php if($_SESSION["user_type"]=='admin'){ ?>                      
+                      <a href="<?php echo base_url('admin/saltComposition_bulk'); ?>" class="btn btn-primary">Upload Bulk Salt Composition</a> 
                       <a href="<?php echo base_url('admin/saltComposition_add'); ?>" class="btn btn-primary">Add Salt Composition</a> 
                     <?php }
-                    elseif($_SESSION["user_type"]=='vendor'){ ?>
+                    elseif($_SESSION["user_type"]=='vendor'){ ?>                      
+                      <a href="<?php echo base_url('vendor/saltComposition_bulk'); ?>" class="btn btn-primary">Upload Bulk Salt Composition</a> 
                       <a href="<?php echo base_url('vendor/saltComposition_add'); ?>" class="btn btn-primary">Add Salt Composition</a> 
                     <?php } ?>  
                   </div>
@@ -40,8 +42,7 @@
                     <table id="datatable-responsive" class="table user-detail-table" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Image</th>
+                          <th>#</th>                          
                           <th>Salt Composition Name</th>
                           <th>Created by</th>
                           <th>Created on</th>
@@ -50,14 +51,13 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php 
+                        <?php
                           if (!empty($saltComposition)) {
                             $i = 1;
                             foreach ($saltComposition as $key => $value) {
-                            if($value->status=='pending'){ ?>
+                            if($value->status=='active'){ ?>
                             <tr>
-                              <td><?php echo $i++; ?></td>
-                              <td><span class="brand_img"><img src="<?php echo base_url(); ?>assets/saltComposition-images/<?php echo $value->image ?>" ></span></td>
+                              <td><?php echo $i++; ?></td>                              
                               <td><?php echo $value->name; ?></td>
                               <td><?php echo $value->username; ?></td>
                               <td><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?></td>
@@ -106,8 +106,7 @@
                     <table id="example" class="table user-detail-table" cellspacing="0" width="100%">
                       <thead>
                         <tr>
-                          <th>#</th>
-                          <th>Image</th>
+                          <th>#</th>                          
                           <th>Requested By</th>
                           <th>Requested For</th>
                           <th>Requested On</th>
@@ -122,8 +121,7 @@
                             foreach ($saltComposition as $key => $value) { 
                               if($value->status=='pending'){?>
                                 <tr>
-                                  <td><?php echo $i++; ?></td>
-                                  <td><span class="brand_img"><img src="<?php echo base_url(); ?>assets/saltComposition-images/<?php echo $value->image ?>" ></span></td>
+                                  <td><?php echo $i++; ?></td>                                  
                                   <td><?php echo $value->username; ?></td>
                                   <td><?php echo $value->name; ?></td>
                                   <td><?php echo date('d F Y H:i A',strtotime($value->created_at)); ?></td>

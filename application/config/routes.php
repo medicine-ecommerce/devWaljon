@@ -75,6 +75,21 @@ $route['vendor/brand_list/(:any)'] = 'admin/brand_list/$1';
 $route['vendor/saltComposition_list/(:any)'] = 'admin/saltComposition_list/$1';
 $route['vendor/saltComposition_edit/(:any)'] = 'admin/saltComposition_edit/$1';
 
+$route['vendor/brand_bulk'] = 'admin/brand_bulk';
+$route['vendor/upload_brand_bulk'] = 'admin/upload_brand_bulk';
+$route['vendor/brand_bulk_update'] = 'admin/brand_bulk_update';
+$route['vendor/saltComposition_bulk'] = 'admin/saltComposition_bulk';
+$route['vendor/upload_saltComposition_bulk'] = 'admin/upload_saltComposition_bulk';
+$route['vendor/manufacturer_bulk'] = 'admin/manufacturer_bulk';
+$route['vendor/upload_manufacturer_bulk'] = 'admin/upload_manufacturer_bulk';
+$route['vendor/product_form_bulk'] = 'admin/product_form_bulk';
+$route['vendor/upload_product_form_bulk'] = 'admin/upload_product_form_bulk';
+
+
+// $route['vendor/brand_add'] = 'admin/brand_add';
+// $route['vendor/brand_add'] = 'admin/brand_add';
+
+
 
 
 $route['admin/all_product'] = 'vendor/all_product';

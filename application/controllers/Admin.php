@@ -13,6 +13,8 @@ Class Admin extends MY_Controller {
         $this->load->model('Admin_model','Admin');
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
+        $this->load->model('Excel_import_model');        
+        $this->load->library('excel'); 
         // if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
         //     redirect(base_url('admin'));
         // }
@@ -467,6 +469,58 @@ Class Admin extends MY_Controller {
         $this->middle = 'manufacturer/list';
         $this->Admin();
     }
+    public function manufacturer_bulk()
+    {
+        //$this->data['brand'] = $this->Admin->brandList();
+        $this->middle = 'manufacturer/manufacturer_bulk';
+        $this->Admin();
+    }
+     public function upload_manufacturer_bulk()
+    {
+        if(isset($_FILES["file"]["name"]))
+        {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PHPExcel_IOFactory::load($path);
+            foreach($object->getWorksheetIterator() as $worksheet)
+            {
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                for($row=2; $row<=$highestRow; $row++)
+                {
+                    $manufacturer_name = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+                    
+                    ///////////// MANUFACTURER CREATE AND UPDATE
+                    $manufacturerExist = $this->Admin->getRowData('manufacturer','id',array('name'=>$manufacturer_name));
+                    if(empty($manufacturerExist)){
+                        $data = array('name'=>$manufacturer_name,                                    
+                                    'created_by'=>$this->session->userdata('user_id'),
+                                    'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
+                                    'insert_source'=>'bulk_insert',
+                                    'created_at'=> date('Y-m-d H:i:s'));
+                        $manufacturer_id = $this->Admin->insertData('manufacturer',$data);
+                    }                    
+                }
+                if(!empty($manufacturer_id)){                    
+                    echo  json_encode(array('status'=>1,'msg'=>'Data Imported successfully'));
+                    return ;
+                }else{
+                    echo json_encode(array('status'=>0,'msg'=>'Exist'));
+                    return;                                                
+                }
+            }
+        }
+    }
+    public function bulk_manufacturer_uploaded_data(){
+        
+        $where = array('insert_source'=>'bulk_insert');
+        $this->data['uploaded_bulk_data'] = $this->Admin->getData('manufacturer','*',$where);
+        $this->data['allCount'] = $this->db->query('SELECT FOUND_ROWS() count;')->row()->count;
+
+        $this->middle = 'manufacturer/manufacturer_bulk_uploaded_data';
+        $this->Admin();
+    }
+    
+
     public function manufacturer_edit($id)
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
@@ -619,6 +673,58 @@ Class Admin extends MY_Controller {
         $this->middle = 'product-form/list';
         $this->Admin();
     }
+    public function product_form_bulk()
+    {
+        //$this->data['brand'] = $this->Admin->brandList();
+        $this->middle = 'product-form/product_form_bulk';
+        $this->Admin();
+    }
+     public function upload_product_form_bulk()
+    {
+        if(isset($_FILES["file"]["name"]))
+        {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PHPExcel_IOFactory::load($path);
+            foreach($object->getWorksheetIterator() as $worksheet)
+            {
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                for($row=2; $row<=$highestRow; $row++)
+                {
+                    $product_form_name = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+                    
+                    ///////////// MANUFACTURER CREATE AND UPDATE
+                    $productFormExist = $this->Admin->getRowData('product_form','id',array('name'=>$product_form_name));
+                    if(empty($productFormExist)){
+                        $data = array('name'=>$product_form_name,                                    
+                                    'created_by'=>$this->session->userdata('user_id'),
+                                    'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
+                                    'insert_source'=>'bulk_insert',
+                                    'created_at'=> date('Y-m-d H:i:s'));
+                        $productFormId = $this->Admin->insertData('product_form',$data);
+                    }                    
+                }
+                if(!empty($productFormId)){                    
+                    echo  json_encode(array('status'=>1,'msg'=>'Data Imported successfully'));
+                    return ;
+                }else{
+                    echo json_encode(array('status'=>0,'msg'=>'Exist'));
+                    return;                                                
+                }
+            }
+        }
+    }
+    // public function bulk_product_form_uploaded_data(){
+        
+    //     $where = array('insert_source'=>'bulk_insert');
+    //     $this->data['uploaded_bulk_data'] = $this->Admin->getData('manufacturer','*',$where);
+    //     $this->data['allCount'] = $this->db->query('SELECT FOUND_ROWS() count;')->row()->count;
+
+    //     $this->middle = 'product-form/manufacturer_bulk_uploaded_data';
+    //     $this->Admin();
+    // }
+
+
     public function product_form_edit($id)
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
@@ -719,6 +825,99 @@ Class Admin extends MY_Controller {
         $this->middle = 'brand/list';
         $this->Admin();
     }
+    public function brand_bulk()
+    {
+        //$this->data['brand'] = $this->Admin->brandList();
+        $this->middle = 'brand/brand_bulk';
+        $this->Admin();
+    }
+     public function upload_brand_bulk()
+    {
+        if(isset($_FILES["file"]["name"]))
+        {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PHPExcel_IOFactory::load($path);
+            foreach($object->getWorksheetIterator() as $worksheet)
+            {
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                for($row=2; $row<=$highestRow; $row++)
+                {
+                    $brand_name = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+                    $brand_description = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+                    
+                    
+                    ///////////// MANUFACTURER CREATE AND UPDATE
+                    $brandExist = $this->Admin->getRowData('brand','id',array('brand_name'=>$brand_name));
+                    if(empty($brandExist)){
+                        $data = array('brand_name'=>$brand_name,
+                                    'brand_desc'=>$brand_description,
+                                    'created_by'=>$this->session->userdata('user_id'),
+                                    'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
+                                    'insert_source'=>'bulk_insert',
+                                    'created_at'=> date('Y-m-d H:i:s'));
+                        $brand_id = $this->Admin->insertData('brand',$data);
+                    }                    
+                }
+                if(!empty($brand_id)){                    
+                    echo  json_encode(array('status'=>1,'msg'=>'Data Imported successfully'));
+                    return ;
+                }else{
+                    echo json_encode(array('status'=>0,'msg'=>'Exist'));
+                    return;                                                
+                }
+            }
+        }
+    }
+    public function bulk_brand_uploaded_data(){
+        //$this->data['brand'] = $this->Admin->brandList();
+        $where = array('insert_source'=>'bulk_insert','brand_img'=>'');
+        $this->data['uploaded_bulk_data'] = $this->Admin->getData('brand','*',$where);
+        $this->data['allCount'] = $this->db->query('SELECT FOUND_ROWS() count;')->row()->count;
+
+        $this->middle = 'brand/brand_bulk_uploaded_data';
+        $this->Admin();
+    } 
+    public function brand_bulk_update(){
+          $brandId = $this->input->post('brand_id');
+          $this->load->library('upload');
+          $image = array();
+          $ImageCount = count($_FILES['profile_image']['name']);
+        for($i = 0; $i < $ImageCount; $i++){
+            $_FILES['file']['name']       = $_FILES['profile_image']['name'][$i];
+            $_FILES['file']['type']       = $_FILES['profile_image']['type'][$i];
+            $_FILES['file']['tmp_name']   = $_FILES['profile_image']['tmp_name'][$i];
+            $_FILES['file']['error']      = $_FILES['profile_image']['error'][$i];
+            $_FILES['file']['size']       = $_FILES['profile_image']['size'][$i];
+
+            // File upload configuration
+            $uploadPath = './assets/brand-images/';
+            $config['upload_path'] = $uploadPath;
+            $config['allowed_types'] = 'jpg|jpeg|png|gif';
+
+            // Load and initialize upload library
+            $this->load->library('upload', $config);
+            $this->upload->initialize($config);
+
+            // Upload file to server
+            if($this->upload->do_upload('file')){
+                // Uploaded file data
+                $imageData = $this->upload->data();
+                 $uploadImgData[$i]['image_name'] = $imageData['file_name'];                 
+                 $result = $this->Admin->updateData('brand',array('brand_img'=>$uploadImgData[$i]['image_name']),array('id'=>$brandId[$i]));
+
+            }
+        }
+        if(!empty($result)){
+            redirect(base_url('admin/brand_list'));
+        }
+         if(!empty($uploadImgData)){
+            // Insert files data into the database
+            //print_r($uploadImgData);
+            //$this->pages_model->multiple_images($uploadImgData);              
+        }
+    }
+    
     public function brand_edit($id)
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
@@ -807,9 +1006,50 @@ Class Admin extends MY_Controller {
     
     public function saltComposition_list()
     {
-        $this->data['saltComposition'] = $this->Admin->saltCompositionList();
+        $this->data['saltComposition'] = $this->Admin->saltCompositionList();        
         $this->middle = 'saltComposition/list';
         $this->Admin();
+    }
+    public function saltComposition_bulk()
+    {
+        //$this->data['brand'] = $this->Admin->brandList();
+        $this->middle = 'saltComposition/saltComposition_bulk';
+        $this->Admin();
+    }
+     public function upload_saltComposition_bulk()
+    {
+        if(isset($_FILES["file"]["name"]))
+        {
+            $path = $_FILES["file"]["tmp_name"];
+            $object = PHPExcel_IOFactory::load($path);
+            foreach($object->getWorksheetIterator() as $worksheet)
+            {
+                $highestRow = $worksheet->getHighestRow();
+                $highestColumn = $worksheet->getHighestColumn();
+                for($row=2; $row<=$highestRow; $row++)
+                {
+                    $saltcomposition = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+                    
+                    ///////////// MANUFACTURER CREATE AND UPDATE
+                    $saltcompositionExist = $this->Admin->getRowData('saltcomposition','id',array('name'=>$saltcomposition));
+                    if(empty($saltcompositionExist)){
+                        $data = array('name'=>$saltcomposition,                                    
+                                    'created_by'=>$this->session->userdata('user_id'),
+                                    'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
+                                    'insert_source'=>'bulk_insert',
+                                    'created_at'=> date('Y-m-d H:i:s'));
+                        $saltcompositionId = $this->Admin->insertData('saltcomposition',$data);
+                    }                    
+                }
+                if(!empty($saltcompositionId)){                    
+                    echo  json_encode(array('status'=>1,'msg'=>'Data Imported successfully'));
+                    return ;
+                }else{
+                    echo json_encode(array('status'=>0,'msg'=>'Exist'));
+                    return;                                                
+                }
+            }
+        }
     }
     public function saltComposition_edit($id)
     {

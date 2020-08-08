@@ -40,9 +40,12 @@
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div class="pull-right">
                     <?php if($_SESSION["user_type"]=='admin'){ ?>
+                      <a href="<?php echo base_url('admin/manufacturer_bulk'); ?>" class="btn btn-primary">Upload Bulk Manufacturer</a>   
+
                       <a href="<?php echo base_url('admin/manufacturer_add'); ?>" class="btn btn-primary">Add Manufacturer</a>   
                     <?php }
                     elseif($_SESSION["user_type"]=='vendor'){ ?>
+                      <a href="<?php echo base_url('vendor/manufacturer_bulk'); ?>" class="btn btn-primary">Upload Bulk Manufacturer</a>   
                       <a href="<?php echo base_url('vendor/manufacturer_add'); ?>" class="btn btn-primary">Add Manufacturer</a>   
                     <?php } ?>   
                   </div>                  

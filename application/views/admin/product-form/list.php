@@ -39,6 +39,7 @@
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div class="pull-right">
+                    <a href="<?php echo base_url('admin/product_form_bulk'); ?>" class="btn btn-primary">Upload Bulk Product Form</a>  
                     <a href="<?php echo base_url('admin/product_form_add'); ?>" class="btn btn-primary">Add Product Form</a>  
                   </div>                  
                   <div class="card-box table-responsive">                
