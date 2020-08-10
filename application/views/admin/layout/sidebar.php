@@ -60,10 +60,10 @@ $page = $this->uri->segment('2');
                       <li><a class="sub-item <?= ($page=="manufacturer_list")? "active":"" ?>" href="<?php echo base_url('admin/manufacturer_list'); ?>">Manufacturer</a></li>
                       <li><a class="sub-item <?= ($page=="addSingleProduct")? "active":"" ?>" href="<?php echo base_url('admin/product'); ?>">Add Product</a></li>
                       <li><a class="sub-item <?= ($page=="product_form_list")? "active":"" ?>" href="<?php echo base_url('admin/product_form_list'); ?>">Product Form</a></li>
-                      <li><a class="sub-item <?= ($page=="all_product")? "active":"" ?>" href="<?php echo base_url('admin/all_product'); ?>">All Product</a></li>
+                      <!-- <li><a class="sub-item <?= ($page=="all_product")? "active":"" ?>" href="<?php echo base_url('admin/all_product'); ?>">All Product</a></li> -->
                       <li><a class="sub-item <?= ($page=="linking")? "active":"" ?>" href="<?php echo base_url('admin/linking'); ?>">Linking</a></li>
                       <li><a class="sub-item <?= ($page=="saltComposition_list")? "active":"" ?>" href="<?php echo base_url('admin/saltComposition_list'); ?>">Salt Composition</a></li>
-                      <li><a class="sub-item <?= ($page=="all_product")? "active":"" ?>" href="<?php echo base_url('admin/all_product'); ?>">All Inventory</a></li>
+                      <li><a class="sub-item <?= ($page=="all_product")? "active":"" ?>" href="<?php echo base_url('admin/all_product'); ?>">Product list</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-home"></i> Category <span class="fa fa-chevron-down"></span></a> 

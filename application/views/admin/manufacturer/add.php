@@ -37,7 +37,7 @@
                   <label class="col-form-label col-md-3 col-sm-3  label-align"> Name<span
                       class="required">*</span></label>
                   <div class="col-md-6 col-sm-6">
-                    <input class="form-control"  name="name" required="required" value="<?php echo (!empty($manufacturer)) ? $manufacturer->name: '';?>" />
+                    <input class="form-control"  name="name[]" required="required" value="<?php echo (!empty($manufacturer)) ? $manufacturer->name: '';?>" placeholder="Manufacturer Name" />
                   </div>
                 </div>
                 
@@ -45,7 +45,7 @@
                   <div class="form-group">
                     <div class="col-md-6 offset-md-3">
                 <button type='submit' class="btn btn-primary">Submit</button>
-                <button type='reset' class="btn btn-success">Reset</button>
+                <button type='button' onclick="addmore()" class="btn btn-success">Add More</button>
                     </div>
                   </div>
                 </div>
@@ -85,4 +85,11 @@
       if (this.checked)
         $('form .alert').remove();
     }).prop('checked', false);
+
+    function addmore() {
+      var newel = $('.item:last').clone();
+
+      // Add after last <div class='input-form'>
+      $(newel).insertAfter(".item:last");
+    }
   </script>

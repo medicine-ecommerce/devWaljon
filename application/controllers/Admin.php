@@ -436,18 +436,21 @@ Class Admin extends MY_Controller {
     public function manufacturer_add()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
-            $this->form_validation->set_rules('name', 'name', 'required');
+            $this->form_validation->set_rules('name[]', 'name', 'required');
             if ($this->form_validation->run() == FALSE){ 
               $this->session->set_flashdata('error', validation_errors());      
             }
             else{
-                $data = array(
-                            'name'=>$this->input->post('name'),
-                            'created_by'=> $this->session->userdata('user_id'),
-                            'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
-                            'created_at'=> date('Y-m-d H:i:s')
-                        );
-                $result = $this->Admin->insertData('manufacturer',$data);
+                foreach ($this->input->post('name') as $key => $value) {
+                    $data[$key] = array(
+                        'name'=>$value,
+                        'created_by'=> $this->session->userdata('user_id'),
+                        'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
+                        'created_at'=> date('Y-m-d H:i:s')
+                    );
+                }
+                
+                $result = $this->db->insert_batch('manufacturer',$data);
                 if (!empty($result)) {
                     $this->session->set_flashdata('success', 'Manufacturer added successfully');                    
                 }

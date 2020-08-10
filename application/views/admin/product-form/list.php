@@ -38,9 +38,9 @@
             <div class="x_title">
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <div class="pull-right">
+                  <!-- <div class="pull-right">
                     <a href="<?php echo base_url('admin/product_form_add'); ?>" class="btn btn-primary">Add Product Form</a>  
-                  </div>                  
+                  </div> -->                  
                   <div class="card-box table-responsive">                
                     <table id="datatable-responsive" class="table user-detail-table" cellspacing="0" width="100%">
                       <thead>
@@ -184,11 +184,32 @@
     </div>
   </div>
   <!-- /page content -->
-
+<button class="open-button" onclick="openForm()"><i class="fa fa-minus"></i></button>
+  <div class="chat-popup" id="myForm">
+    <div class="form-container">
+      <div class="single-upload-div">
+          <a href="<?php echo ($_SESSION["user_type"]=='admin') ? base_url('admin/product_form_add') :  base_url('vendor/product_form_add'); ?>">
+            <span class="upload-span">Add Product Form <span class="rotate-div"></span></span>
+            <button type="button" class="btn single-upload-icon"><i class="fa fa-upload"></i></button>
+          </a> 
+      </div>
+      <button type="button" class="btn cancel" onclick="closeForm()"><i class="fa fa-close"></i></button>
+    </div>
+  </div>
       
 
 <script>
   $(document).ready(function() {
     $('#example').DataTable();
   } );
+</script>
+  
+<script>
+  function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
+
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
 </script>
