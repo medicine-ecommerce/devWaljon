@@ -909,7 +909,11 @@ Class Admin extends MY_Controller {
             }
         }
         if(!empty($result)){
-            redirect(base_url('admin/brand_list'));
+            if($this->session->userdata('user_type')=='admin' ){                
+                redirect(base_url('admin/brand_list'));
+            }else{
+                redirect(base_url('vendor/brand_list'));
+            }
         }
          if(!empty($uploadImgData)){
             // Insert files data into the database

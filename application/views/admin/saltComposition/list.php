@@ -30,12 +30,12 @@
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div class="pull-right">
                     <?php if($_SESSION["user_type"]=='admin'){ ?>                      
-                      <a href="<?php echo base_url('admin/saltComposition_bulk'); ?>" class="btn btn-primary">Upload Bulk Salt Composition</a> 
-                      <a href="<?php echo base_url('admin/saltComposition_add'); ?>" class="btn btn-primary">Add Salt Composition</a> 
+                      <a href="<?php echo base_url('admin/saltComposition_bulk'); ?>" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload Salt Composition</a> 
+                      <a href="<?php echo base_url('admin/saltComposition_add'); ?>" class="btn btn-primary">+ Add Salt Composition</a> 
                     <?php }
                     elseif($_SESSION["user_type"]=='vendor'){ ?>                      
-                      <a href="<?php echo base_url('vendor/saltComposition_bulk'); ?>" class="btn btn-primary">Upload Bulk Salt Composition</a> 
-                      <a href="<?php echo base_url('vendor/saltComposition_add'); ?>" class="btn btn-primary">Add Salt Composition</a> 
+                      <a href="<?php echo base_url('vendor/saltComposition_bulk'); ?>" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload Salt Composition</a> 
+                      <a href="<?php echo base_url('vendor/saltComposition_add'); ?>" class="btn btn-primary">+ Add Salt Composition</a> 
                     <?php } ?>  
                   </div>
                   <div class="card-box table-responsive">                
@@ -81,7 +81,7 @@
 
                               <a class="disable" href="<?php echo base_url('vendor/saltComposition_delete/'.$value->id); ?>"><span><i class="fa fa-trash" style="color: red;margin-right: 10px;"></i></span></a>
                               <?php }
-                                    else{ ?>
+                                    else if($this->session->userdata('user_type')=='admin'){  ?>
                               <a href="<?php echo base_url('admin/saltComposition_edit/'.$value->id); ?>"><span><i class="fa fa-pencil" style="color: #007bff;"></i></span></a>
 
                               <a href="<?php echo base_url('admin/saltComposition_delete/'.$value->id); ?>"><span><i class="fa fa-trash" style="color: red;margin-right: 10px;"></i></span></a>
@@ -137,13 +137,13 @@
                                   <td>
                                   <a href="<?php echo base_url('admin/saltComposition_edit/'.$value->id); ?>"><span><i class="fa fa-pencil" style="color: #007bff;"></i></span></a>
                                   <a href="<?php echo base_url('admin/saltComposition_delete/'.$value->id); ?>"><span><i class="fa fa-trash" style="color: red;margin-right: 10px;"></i></span></a>
-
+                                  <?php if($this->session->userdata('user_type')=='admin'){ ?>
                                   <?php if ($value->status=='pending' || $value->status=='reject') { ?>
                                     <a href="<?php echo base_url('admin/saltComposition_status/active/'.$value->id);?>"><span class="approved">Activate</span></a>
                                   <?php }
                                   if ($value->status=='pending' || $value->status=='active') { ?>
                                     <a href="<?php echo base_url('admin/saltComposition_status/reject/'.$value->id);?>"><span class="rejected">Deactivate</span></a>
-                                  <?php } ?>
+                                  <?php } }?>
 
                                   <!-- <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
                                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">

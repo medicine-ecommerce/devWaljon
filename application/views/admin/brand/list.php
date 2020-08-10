@@ -40,12 +40,12 @@
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                   <div class="pull-right">
                     <?php if($_SESSION["user_type"]=='admin'){ ?>
-                      <a href="<?php echo base_url('admin/brand_bulk'); ?>" class="btn btn-primary">Bulk Upload</a>
-                      <a href="<?php echo base_url('admin/brand_add'); ?>" class="btn btn-primary">Add Brand</a> 
+                      <a href="<?php echo base_url('admin/brand_bulk'); ?>" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload Brand</a>
+                      <a href="<?php echo base_url('admin/brand_add'); ?>" class="btn btn-primary">+ Add Brand</a> 
                     <?php }
                     elseif($_SESSION["user_type"]=='vendor'){ ?>
-                      <a href="<?php echo base_url('vendor/brand_bulk'); ?>" class="btn btn-primary">Bulk Upload</a>
-                      <a href="<?php echo base_url('vendor/brand_add'); ?>" class="btn btn-primary">Add Brand</a> 
+                      <a href="<?php echo base_url('vendor/brand_bulk'); ?>" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload Brand</a>
+                      <a href="<?php echo base_url('vendor/brand_add'); ?>" class="btn btn-primary">+ Add Brand</a> 
                     <?php } ?>  
                   </div>                  
                   <div class="card-box table-responsive">                

@@ -55,7 +55,6 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['vendor/category_add'] = 'admin/category_add';
 $route['vendor/manufacturer_add'] = 'admin/manufacturer_add';
-// $route['vendor/product_form_list'] = 'admin/product_form_list';
 $route['vendor/saltComposition_add'] = 'admin/saltComposition_add';
 $route['vendor/product_form_add'] = 'admin/product_form_add';
 $route['vendor/subcategory_add'] = 'admin/subcategory_add';
@@ -84,6 +83,9 @@ $route['vendor/manufacturer_bulk'] = 'admin/manufacturer_bulk';
 $route['vendor/upload_manufacturer_bulk'] = 'admin/upload_manufacturer_bulk';
 $route['vendor/product_form_bulk'] = 'admin/product_form_bulk';
 $route['vendor/upload_product_form_bulk'] = 'admin/upload_product_form_bulk';
+$route['vendor/bulk_brand_uploaded_data'] = 'admin/bulk_brand_uploaded_data';
+$route['vendor/manufacturer_list'] = 'admin/manufacturer_list';
+$route['vendor/product_form_list'] = 'admin/product_form_list';
 
 
 // $route['vendor/brand_add'] = 'admin/brand_add';
