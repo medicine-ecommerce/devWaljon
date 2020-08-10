@@ -66,7 +66,7 @@ Class Admin extends MY_Controller {
                             'company_name'      =>$this->input->post('company_name'),
                             'company_address'   =>$this->input->post('company_address'),
                             'full_name'        =>$this->input->post('full_name'),
-                            //'last_name'         =>$this->input->post('last_name'),
+                            'created_by'        =>'admin',
                             'email'             =>$this->input->post('email'),
                             'mobile'            =>$this->input->post('mobile'),
                             'password'          => md5('123456'),
@@ -119,7 +119,7 @@ Class Admin extends MY_Controller {
 
     public function vendor_status($status,$id)
     {
-        $result =$this->Admin->updateData('users',array('is_active'=>$status),array('id'=>$id));
+        $result =$this->Admin->updateData('users',array('status'=>$status),array('id'=>$id));
         if (!empty($result)) {
             $this->session->set_flashdata('success', 'status updated successfully'); 
         }
@@ -438,18 +438,21 @@ Class Admin extends MY_Controller {
     public function manufacturer_add()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
-            $this->form_validation->set_rules('name', 'name', 'required');
+            $this->form_validation->set_rules('name[]', 'name', 'required');
             if ($this->form_validation->run() == FALSE){ 
               $this->session->set_flashdata('error', validation_errors());      
             }
             else{
-                $data = array(
-                            'name'=>$this->input->post('name'),
-                            'created_by'=> $this->session->userdata('user_id'),
-                            'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
-                            'created_at'=> date('Y-m-d H:i:s')
-                        );
-                $result = $this->Admin->insertData('manufacturer',$data);
+                foreach ($this->input->post('name') as $key => $value) {
+                    $data[$key] = array(
+                        'name'=>$value,
+                        'created_by'=> $this->session->userdata('user_id'),
+                        'status'=>($this->session->userdata('user_type')=='admin')?'active':'pending',
+                        'created_at'=> date('Y-m-d H:i:s')
+                    );
+                }
+                
+                $result = $this->db->insert_batch('manufacturer',$data);
                 if (!empty($result)) {
                     $this->session->set_flashdata('success', 'Manufacturer added successfully');                    
                 }
@@ -972,6 +975,10 @@ Class Admin extends MY_Controller {
             $this->session->set_flashdata('error', 'error! Please try again'); 
         }
         redirect($_SERVER['HTTP_REFERER']);
+    }
+    public function isFeatureBrand()
+    {
+        $result = $this->Admin->updateData('brand',array('is_feature_brand'=>$this->input->post('is_feature_brand')),array('id'=>$this->input->post('id')));
     }
 
     public function saltComposition_add()
