@@ -1063,6 +1063,12 @@ span.erro-message {
     font-size: 13px;
     font-weight: 600;
 }
+p#updateProfileDetails {
+    float: right;
+    /*background-color: #4abdde;
+    color: #fff;
+    padding: 20px;*/
+}
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {

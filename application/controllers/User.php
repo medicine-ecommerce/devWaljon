@@ -383,6 +383,24 @@ Class User extends MY_Controller {
         $this->session->sess_destroy();
         redirect(base_url('user/login'));
     }
+    public function checkProfileComplete()
+    {     
+        if(!empty($this->session->userdata('user_id'))){            
+            $this->db->select('id,full_name,last_name,email,mobile,address');
+            $this->db->from('users');
+            $this->db->where('id',$this->session->userdata('user_id'));
+            $query = $this->db->get()->row();
+            
+            if(!empty($query->full_name) && !empty($query->last_name) && !empty($query->email) && !empty($query->mobile) && !empty($query->address)){
+                echo json_encode(array('status'=>1,'message'=>'Profile Completed'));
+                return;
+            }else{
+                echo json_encode(array('status'=>0,'message'=>'Profile incomplete'));
+                return;
+            }
+        }
+
+    }
     public function SaveUserAdddress()
     {     
         if(!empty($this->input->post('pin_code'))){
