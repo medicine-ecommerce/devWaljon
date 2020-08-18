@@ -299,10 +299,10 @@ Class User extends MY_Controller {
         if(!empty($this->input->post('id')))            
 
             $product = $this->User->getData('product','id,name,category_id,brand_id',array('id'=>$this->input->post('id')));
-            $category = $this->User->getData('subcategory','subcategory',array('id'=>$product[0]->category_id ));
+            // $category = $this->User->getData('subcategory','subcategory',array('id'=>$product[0]->category_id ));
             $brand = $this->User->getData('brand','brand_name',array('id'=>$product[0]->brand_id ));
             $price = $this->User->getData('product_item','sale_price',array('product_id'=>$product[0]->id ));
-            $product_image = $this->User->getData('product_images','image',array('product_id'=>$this->input->post('id')));
+            $product_image = $this->User->getData('product_images','image',array('product_id'=>$this->input->post('id')));            
 
             $data = array(                    
                     'id'     => $this->input->post('id'),
@@ -311,7 +311,7 @@ Class User extends MY_Controller {
                     'name'    => $product[0]->name, 
                     'product_id'=>$product[0]->id, 
                     'image'=>(!empty($product_image[0]->image)) ? $product_image[0]->image :'',
-                    'category_name'=>$category[0]->subcategory,
+                    // 'category_name'=>$category[0]->subcategory,
                     'brand_name'=>$brand[0]->brand_name,
             );            
             $catInsert = $this->cart->insert($data);              
@@ -399,8 +399,13 @@ Class User extends MY_Controller {
     }
     public function placeorder()
     {
-
+        // cart_product_id
         if(!empty($this->input->post('new_address_id'))){  
+            
+
+            $getBoxDimention = $this->db->select('length,breadth,height,weight')->from('product')->where(array('id'=>$this->input->post('cart_product_id')))->get()->row();
+            print_r($getBoxDimention->length);
+            die();
 
             $array = array('user_id'=>$this->session->userdata('user_id'),
                             'order_number'=> 'ORDER'. rand(10000,99999999),
