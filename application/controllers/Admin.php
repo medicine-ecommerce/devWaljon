@@ -13,9 +13,9 @@ Class Admin extends MY_Controller {
         $this->load->model('Admin_model','Admin');
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
-        // if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
-        //     redirect(base_url('admin'));
-        // }
+        if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
+            redirect(base_url('admin'));
+        }
 
     }
 
