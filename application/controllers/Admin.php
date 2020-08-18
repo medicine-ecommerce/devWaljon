@@ -14,10 +14,11 @@ Class Admin extends MY_Controller {
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
         $this->load->model('Excel_import_model');        
-        $this->load->library('excel'); 
-        // if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
-        //     redirect(base_url('admin'));
-        // }
+        $this->load->library('excel');
+        if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
+            redirect(base_url('admin'));
+        }
+         
 
     }
 
