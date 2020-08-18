@@ -38,9 +38,17 @@
             <div class="x_title">
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <!-- <div class="pull-right">
-                    <a href="<?php echo base_url('admin/product_form_add'); ?>" class="btn btn-primary">Add Product Form</a>  
-                  </div> -->                  
+                  <div class="pull-right">
+                    <?php if($_SESSION["user_type"]=='admin'){ ?>                      
+                      <a href="<?php echo base_url('admin/product_form_bulk'); ?>" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload Product Form</a>  
+                      <a href="<?php echo base_url('admin/product_form_add'); ?>" class="btn btn-primary">+ Add Product Form</a>  
+                    <?php }
+                    elseif($_SESSION["user_type"]=='vendor'){ ?>                      
+                      <a href="<?php echo base_url('vendor/product_form_bulk'); ?>" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload Product Form</a>  
+                      <a href="<?php echo base_url('vendor/product_form_add'); ?>" class="btn btn-primary">+ Add Product Form</a>  
+                    <?php } ?>  
+                    
+                  </div>                  
                   <div class="card-box table-responsive">                
                     <table id="datatable-responsive" class="table user-detail-table" cellspacing="0" width="100%">
                       <thead>

@@ -22,6 +22,7 @@
     height: 16px !important;   
 }
 </style>
+
 <script src="<?php echo base_url(); ?>assets/js/countrystatecity.js"></script>
 
 <div class="container-fluid">
@@ -52,7 +53,7 @@
                             <div class="col">VAT</div>                            
                             <div class="col">Total</div>
                           </div>
-                          <?php  
+                          <?php                            
                           foreach ($this->cart->contents() as $value) {
                           $total = $total + $value['subtotal']; ?>
                           <div class="layout-inline cart-content row">
@@ -64,6 +65,9 @@
                                 echo '<img style="width: 50%;" src="'.base_url().$value['image'].'">';
                               } ?>                                      
                               <p><?= $value['name']; ?></p>
+                              <?php if(count($this->cart->contents())==1){ ?>
+                                <input type="text" name="cart_product_id" value="<?= $value['product_id']; ?>">
+                              <?php } ?>
                             </div>        
                             <div class="col col-price col-numeric align-center ">
                               <p><i class='fas fa-rupee-sign'></i> <?= $value['price']; ?></p>

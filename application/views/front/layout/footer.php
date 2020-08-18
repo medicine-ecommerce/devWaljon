@@ -214,6 +214,7 @@ $.typeahead({
           dataType: 'JSON',
           data: {id:id,quantity:quantity},        
           success:function(data){                                         
+          	console.log(data);
             $(".cart-quantity").text(data.quantity);
             $(".cart-quantity").addClass("show-cart");
           }

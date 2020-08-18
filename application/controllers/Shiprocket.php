@@ -81,6 +81,8 @@ Class Shiprocket extends MY_Controller {
     }
     public function shiping_cancel()
     {   
+    	// $this->generate_label();
+    	// die();
     	
     	$id = $this->input->post('order_number');
 
@@ -274,6 +276,34 @@ Class Shiprocket extends MY_Controller {
 
         //$this->load->view('admin/shiping_order',$data);
         // $this->Admin();
+    }
+
+    public function generate_label(){
+
+    	$orderData = $this->Admin->shippingOrderData(32);        
+
+
+    	$curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_URL =>"https://apiv2.shiprocket.in/v1/external/shipments/create/forward-shipment",
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING =>"",
+		CURLOPT_MAXREDIRS =>10,
+		CURLOPT_TIMEOUT =>0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION =>CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_POSTFIELDS =>json_encode($orderData),
+		// CURLOPT_POSTFIELDS =>'{
+		//   "shipment_id": ["50406293"]}',
+		CURLOPT_HTTPHEADER =>array(
+		"Content-Type: application/json",
+		"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
+		$response = curl_exec($curl);
+		curl_close($curl);
+		print_r($response);
+		// $invoice = json_decode($response);
+		// return $invoice->invoice_url;
     }
     public function shiping_auth()
     {        

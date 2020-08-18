@@ -604,6 +604,10 @@ Class Vendor extends MY_Controller {
                         'how_to_work'=>$this->input->post('how_to_work'),
                         'how_to_store'=>$this->input->post('how_to_store'),
                         'safety_info'=>$this->input->post('safety_info'),
+                        'length'=>$this->input->post('length'),
+                        'breadth'=>$this->input->post('breadth'),
+                        'height'=>$this->input->post('height'),
+                        'weight'=>$this->input->post('weight'),
                         'status'=>'1',
                         'created_at'=>date('Y-m-d H:i:s'));
              $lastProductID = $this->Vendor->insertData('product',$data);

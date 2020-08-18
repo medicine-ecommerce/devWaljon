@@ -186,13 +186,47 @@
             </div>
             <div class="row padding-top-bottom-20">
                <div class="col-md-3">
-                  <h6>Additional Information </h6>
+                  <h6>Box Packaging</h6>
                </div>
                <div class="col-md-9">
                   <hr class="custom-form-hr">
                </div>  
             </div>
             <div class="row">
+              <div class="col-md-3">
+                <div class="form-group label-float-top"> 
+                  <input type="number" class="form-control control-float-top" id="length" name="length">
+                  <label for="email">Length</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group label-float-top"> 
+                  <input type="number" class="form-control control-float-top" id="breadth" name="breadth">
+                  <label for="email">Breadth</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group label-float-top"> 
+                  <input type="number" class="form-control control-float-top" id="height" name="height">
+                  <label for="email">Height</label>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group label-float-top"> 
+                  <input type="number" class="form-control control-float-top" id="weight" name="weight">
+                  <label for="email">Weight</label>
+                </div>
+              </div>
+            </div>
+            <div class="row padding-top-bottom-20">
+               <div class="col-md-3">
+                  <h6>Additional Information </h6>
+               </div>
+               <div class="col-md-9">
+                  <hr class="custom-form-hr">
+               </div>  
+            </div>
+            <div class="row">              
                <div class="col-md-12 col-sm-12">
                   <div class="x_panel">
                      <div class="x_content">
@@ -577,6 +611,11 @@ $(".form-group .form-control").blur(function(){
       var prescriptionRequired    = $("#prescriptionRequired").val();
       var salt_composition        = $("#salt_composition").val();
       var image                   = $("#fileElem").val();
+      
+      var length                   = $("#length").val();
+      var breadth                  = $("#breadth").val();
+      var height                   = $("#height").val();
+      var weight                   = $("#weight").val();
     
       if(category_id==''){
         error += "<p>The Category field is required.</p>";
@@ -619,6 +658,29 @@ $(".form-group .form-control").blur(function(){
       }     
       if(salt_composition==''){
         error += '<p>Salt Composition is required.</p>';
+      }
+
+      if(length==''){
+        error += '<p>Length is required.</p>';
+      }else if(length < 0.5){
+        error += '<p>Length of the item Must be more than 0.5.</p>';
+      }
+      if(breadth==''){
+        error += '<p>Breadth is required.</p>';
+      }else if(breadth < 0.5){
+        error += '<p>breadth of the item Must be more than 0.5.</p>';
+      }
+
+      if(height==''){
+        error += '<p>Height is required.</p>';
+      }else if(height < 0.5){
+        error += '<p>Height of the item Must be more than 0.5.</p>';
+      }
+
+      if(weight==''){
+        error += '<p>Weight is required.</p>';
+      }else if(weight < 0.5){
+        error += '<p>Weight of the item Must be more than 0.5.</p>';
       }
       
       if(error!=''){        

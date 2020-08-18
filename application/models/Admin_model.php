@@ -134,6 +134,7 @@ class Admin_model extends MY_model
 		if($this->session->userdata('user_type')=='vendor' ){
 			$this->db->where('saltcomposition.created_by',$this->session->userdata('user_id'));
 		}
+		$this->db->order_by('saltcomposition.id desc');
 		// $this ->db->order_by("FIELD(saltComposition.status,'pending','active','reject')");
 		return $this->db->get()->result();
 	}
@@ -175,7 +176,7 @@ class Admin_model extends MY_model
 		$this->db->select('orders.order_number as order_id,orders.created_at as order_date,
 			users.full_name as billing_customer_name,users.last_name as billing_last_name,users.email as billing_email,users.mobile as billing_phone,user_address.address as billing_address,user_address.city as billing_city, user_address.pin_code as billing_pincode,user_address.state as billing_state,user_address.country as billing_country, 
 
-				orders.payment_method as payment_method,(select sum(subtotal) from order_item where order_id=orders.id) as sub_total');
+				orders.payment_method as payment_method,(select sum(subtotal) from order_item where order_id=orders.id) as sub_total, orders.length,orders.breadth,orders.height,orders.weight');
 		$this->db->from('orders');
 		$this->db->where('orders.id',$id);
 		$this->db->join('user_address','user_address.id = orders.address_id');
@@ -204,39 +205,39 @@ class Admin_model extends MY_model
 		return $data;
 
 	}
-	public function orderReturnData($id){
-		$this->db->select('orders.order_number as order_id,orders.created_at as order_date,
-			users.full_name as billing_customer_name,users.last_name as billing_last_name,users.email as billing_email,users.mobile as billing_phone,user_address.address as billing_address,user_address.city as billing_city, user_address.pin_code as billing_pincode,user_address.state as billing_state,user_address.country as billing_country, 
+	// public function orderReturnData($id){
+	// 	$this->db->select('orders.order_number as order_id,orders.created_at as order_date,
+	// 		users.full_name as billing_customer_name,users.last_name as billing_last_name,users.email as billing_email,users.mobile as billing_phone,user_address.address as billing_address,user_address.city as billing_city, user_address.pin_code as billing_pincode,user_address.state as billing_state,user_address.country as billing_country, 
 
-				orders.payment_method as payment_method,(select sum(subtotal) from order_item where order_id=orders.id) as sub_total');
-		$this->db->from('orders');
-		$this->db->where('orders.id',$id);
-		$this->db->join('user_address','user_address.id = orders.address_id');
-		$this->db->join('users','users.id = orders.user_id');
-		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
-			$data = (array) $query->row();
-			$data['shipping_is_billing'] = true;
-			$data['shipping_customer_name'] = "";
-			$data['shipping_last_name'] = "";
-			$data['shipping_address'] = "";
-			$data['shipping_address_2'] = "";
-			$data['shipping_city'] = "";
-			$data['shipping_pincode'] = "";
-			$data['shipping_country'] = "";
-			$data['shipping_state'] = "";
-			$data['shipping_email'] = "";
-			$data['shipping_phone'] = "";
-			$this->db->select('order_item.price as selling_price,order_item.qty as units,product.name as name, product_item.product_sku_id as sku,');
-			$this->db->from('order_item');
-			$this->db->join('product_item','product_item.id = order_item.item_id');
-			$this->db->join('product','product.id = product_item.product_id');
-			$this->db->where('order_id',$id);
-			$data['order_items'] = $this->db->get()->result();
-		}
-		return $data;
+	// 			orders.payment_method as payment_method,(select sum(subtotal) from order_item where order_id=orders.id) as sub_total');
+	// 	$this->db->from('orders');
+	// 	$this->db->where('orders.id',$id);
+	// 	$this->db->join('user_address','user_address.id = orders.address_id');
+	// 	$this->db->join('users','users.id = orders.user_id');
+	// 	$query = $this->db->get();
+	// 	if ($query->num_rows() > 0) {
+	// 		$data = (array) $query->row();
+	// 		$data['shipping_is_billing'] = true;
+	// 		$data['shipping_customer_name'] = "";
+	// 		$data['shipping_last_name'] = "";
+	// 		$data['shipping_address'] = "";
+	// 		$data['shipping_address_2'] = "";
+	// 		$data['shipping_city'] = "";
+	// 		$data['shipping_pincode'] = "";
+	// 		$data['shipping_country'] = "";
+	// 		$data['shipping_state'] = "";
+	// 		$data['shipping_email'] = "";
+	// 		$data['shipping_phone'] = "";
+	// 		$this->db->select('order_item.price as selling_price,order_item.qty as units,product.name as name, product_item.product_sku_id as sku,');
+	// 		$this->db->from('order_item');
+	// 		$this->db->join('product_item','product_item.id = order_item.item_id');
+	// 		$this->db->join('product','product.id = product_item.product_id');
+	// 		$this->db->where('order_id',$id);
+	// 		$data['order_items'] = $this->db->get()->result();
+	// 	}
+	// 	return $data;
 
-	}
+	// }
 	public function PrescriptionList()
 	{
 		$this->db->select('users.full_name as username,users.id as user_id,order_prescription.prescription, order_prescription.created_at');
