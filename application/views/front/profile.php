@@ -48,7 +48,8 @@
                   </div>
                   <div class="col-md-6">
                     <label class="fieldlabels chg-psw-input">Email</label>
-                    <input type="text" name="email" class="form-control input-update" value="<?= $edit_data->email; ?>">
+                    <input type="text" name="email" class="form-control input-update" value="<?= $edit_data->email; ?>" autocomplete="off">
+
                     <?php if(!empty($edit_data->email)){ ?>
                     <a onclick="updateEmail()" data-toggle="modal" data-target="#emailUpdate" class="update-text">Update Email</a>
                     <?php } ?>
@@ -69,9 +70,9 @@
                   <h3>Change Password</h3>
                 </div>
                 <label class="fieldlabels chg-psw-input">Password</label>
-                <input type="password" id="txtNewPassword" name="password" class="form-control input-update"/>
+                <input type="password" id="txtNewPassword" name="password" autocomplete="off" class="form-control input-update"/>
                 <label class="fieldlabels chg-psw-input">Confirm Password</label>
-                <input type="password" onChange="checkPasswordMatch();" id="txtConfirmPassword" class="form-control input-update"/>
+                <input type="password" onChange="checkPasswordMatch();" id="txtConfirmPassword" autocomplete="off" class="form-control input-update"/>
               </div>
               <span class="input-error-message"><div class="registrationFormAlert" id="divCheckPasswordMatch"></div></span>
               <div class="submit-btn">

@@ -404,12 +404,15 @@ Class User extends MY_Controller {
             
 
             $getBoxDimention = $this->db->select('length,breadth,height,weight')->from('product')->where(array('id'=>$this->input->post('cart_product_id')))->get()->row();
-            print_r($getBoxDimention->length);
-            die();
+            
 
             $array = array('user_id'=>$this->session->userdata('user_id'),
                             'order_number'=> 'ORDER'. rand(10000,99999999),
                             'address_id'=>$this->input->post('new_address_id'),
+                            'length'=> !empty($getBoxDimention) ? $this->input->post('length') : null,
+                            'breadth'=>!empty($getBoxDimention) ? $this->input->post('breadth') : null,
+                            'height'=> !empty($getBoxDimention) ? $this->input->post('height') : null,
+                            'weight'=> !empty($getBoxDimention) ? $this->input->post('weight') : null,
                             'created_at'=>date('Y-m-d H:i:s'));
             $lastID = $this->User->insertData('orders',$array);
             if ($lastID) {

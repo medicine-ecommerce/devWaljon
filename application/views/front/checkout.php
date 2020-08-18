@@ -66,7 +66,7 @@
                               } ?>                                      
                               <p><?= $value['name']; ?></p>
                               <?php if(count($this->cart->contents())==1){ ?>
-                                <input type="text" name="cart_product_id" value="<?= $value['product_id']; ?>">
+                                <input type="hidden" name="cart_product_id" value="<?= $value['product_id']; ?>">
                               <?php } ?>
                             </div>        
                             <div class="col col-price col-numeric align-center ">
