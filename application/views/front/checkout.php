@@ -66,7 +66,7 @@
                               } ?>                                      
                               <p><?= $value['name']; ?></p>
                               <?php if(count($this->cart->contents())==1){ ?>
-                                <input type="text" name="cart_product_id" value="<?= $value['product_id']; ?>">
+                                <input type="hidden" name="cart_product_id" value="<?= $value['product_id']; ?>">
                               <?php } ?>
                             </div>        
                             <div class="col col-price col-numeric align-center ">
@@ -113,6 +113,9 @@
                     
                     <fieldset>
                       <div class="form-card">
+                        <div class="profile-mssg">
+                          <a href="<?php echo base_url('user/profile');?>"><p id="updateProfileDetails"></p></a>
+                        </div>
                         <div class="row">
                           <div class="col-7">
                             <h2 class="fs-title">Delivery Address</h2>
@@ -166,7 +169,7 @@
                           </div>
                         </div>                            
                       </div> 
-                      <input type="button" name="next" onclick="submitAddress()" class="next action-button" value="Next" />
+                      <input type="button" id="checkProfile" name="next" onclick="submitAddress()" class="next action-button check-profile" value="Next" />
                       <input type="button" name="previous" class="previous action-button-previous" value="Previous" />
                     </fieldset>
                     <fieldset>
@@ -238,26 +241,70 @@
         current_fs = $(this).parent();
         next_fs = $(this).parent().next();
 
-        //Add Class Active
-        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+        var isEnable = $(this).attr("id");
+        
+        if(isEnable == 'checkProfile'){          
+          $.ajax({
+                type: 'POST',
+                url: '<?php echo base_url('user/checkProfileComplete/'); ?>',              
+                dataType: 'JSON',
+                beforeSend: function(){
+                  $('.loading').show();
+                },
+                success: function(data){
+                    console.log(data.status);
+                    if(data.status==1){
+                        //show the next fieldset
+                    next_fs.show();
+                    //hide the current fieldset with style
+                    current_fs.animate({opacity: 0}, {
+                    step: function(now) {
+                    // for making fielset appear animation
+                    //opacity = 1 - now;
 
-        //show the next fieldset
-        next_fs.show();
-        //hide the current fieldset with style
-        current_fs.animate({opacity: 0}, {
-        step: function(now) {
-        // for making fielset appear animation
-        //opacity = 1 - now;
+                    current_fs.css({
+                    'display': 'none',
+                    'position': 'relative'
+                    });
+                    next_fs.css({'opacity': opacity});
+                    },
+                    duration: 500
+                    });
+                    setProgressBar(++current);
+                    $('#updateProfileDetails').text('');
+                    }else{
+                      $('#updateProfileDetails').text('Please Update your profile details click Here');                      
+                    }
 
-        current_fs.css({
-        'display': 'none',
-        'position': 'relative'
-        });
-        next_fs.css({'opacity': opacity});
-        },
-        duration: 500
-        });
-        setProgressBar(++current);
+                    // $('#address_id').val(html);
+                    // $('#new_address_id').val(html)
+                }
+          });
+        }else{
+
+          //Add Class Active
+          $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+
+          //show the next fieldset
+          next_fs.show();
+          //hide the current fieldset with style
+          current_fs.animate({opacity: 0}, {
+          step: function(now) {
+          // for making fielset appear animation
+          //opacity = 1 - now;
+
+          current_fs.css({
+          'display': 'none',
+          'position': 'relative'
+          });
+          next_fs.css({'opacity': opacity});
+          },
+          duration: 500
+          });
+          setProgressBar(++current);
+        }
+
+
     });
 
     $(".previous").click(function()
@@ -339,7 +386,6 @@
     });
 
     function submitAddress() {
-        
         
         var isEnable = $("#element").hasClass("new-address-enable") 
         
