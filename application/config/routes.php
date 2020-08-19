@@ -107,5 +107,9 @@ $route['user/login_code'] = 'vendor/vendorLogin';
 $route['user/signup_code'] = 'vendor/vendorregister';
 $route['user/forgot_password'] = 'vendor/forgot_password';
 
+$route['callback'] = 'razorpay/callback';
+$route['success'] = 'razorpay/success';
+$route['failed'] = 'razorpay/failed';
+
 
 

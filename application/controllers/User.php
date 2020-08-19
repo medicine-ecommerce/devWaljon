@@ -403,9 +403,9 @@ Class User extends MY_Controller {
         if(!empty($this->input->post('new_address_id'))){  
             
 
-            $getBoxDimention = $this->db->select('length,breadth,height,weight')->from('product')->where(array('id'=>$this->input->post('cart_product_id')))->get()->row();
+            /*$getBoxDimention = $this->db->select('length,breadth,height,weight')->from('product')->where(array('id'=>$this->input->post('cart_product_id')))->get()->row();
             print_r($getBoxDimention->length);
-            die();
+            die();*/
 
             $array = array('user_id'=>$this->session->userdata('user_id'),
                             'order_number'=> 'ORDER'. rand(10000,99999999),
@@ -426,13 +426,13 @@ Class User extends MY_Controller {
                 }
                 $orderPlaceSuccess = $this->User->updateData('orders',array('total_amount'=>$total),array('id'=>$lastID));
                 if ($this->input->post('payment_mode')=='online') {
-                  $data = array('ORDER_ID'=>$array['order_number'],
+                  $this->razorPayForm($lastID);
+                  /*$data = array('ORDER_ID'=>$array['order_number'],
                                 'CUST_ID'=>$this->session->userdata('user_id'),
                                 'TXN_AMOUNT'=>$total);
-                  $this->PaytmPostForm($data);
+                  $this->PaytmPostForm($data);*/
                 }
                 if($orderPlaceSuccess){
-                    $this->orderPlaced();
                     if($this->input->post('payment_mode')!='online'){
                         $this->cart->destroy();
                         $this->User->deleteData('temp_order',array('user_id'=>$this->session->userdata('user_id')));
@@ -525,7 +525,22 @@ Class User extends MY_Controller {
       else{
         redirect(base_url('user/cart'));
       }
-    }   
+    } 
+
+    public function razorPayForm($order_id)
+    {
+      $this->db->select('users.full_name,users.email,users.mobile,orders.total_amount,orders.order_number');
+      $this->db->from('orders');
+      $this->db->where('orders.id',$order_id);
+      $this->db->join('users','users.id = orders.user_id');
+      $data['itemInfo'] = $this->db->get()->row();
+
+      $data['return_url'] = site_url().'callback';
+      $data['surl'] = site_url().'success';
+      $data['furl'] = site_url().'failed';
+      $this->load->view('front/razor_pay', $data);
+    }  
+
     public function getSearchProduct()
     {
 
