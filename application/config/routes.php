@@ -100,6 +100,9 @@ $route['admin/editPersonalDetails/(:any)'] = 'vendor/editPersonalDetails/$1';
 $route['admin/vendor_bulk_upload'] = 'vendor/vendor_bulk_upload';
 $route['admin/product'] = 'vendor/inventory';
 
+$route['admin/getOrderStatus/(:any)'] = 'shiprocket/getOrderStatus/$1';
+$route['shiprocket/getOrderStatus/'] = 'vendor/inventory';
+
 $route['admin/edit_singleProduct/(:any)'] = 'vendor/edit_singleProduct/$1';
 
 

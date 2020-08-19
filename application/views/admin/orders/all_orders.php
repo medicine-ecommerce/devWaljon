@@ -62,14 +62,21 @@
                             echo '<span class="rejected">Canceled</span>';
                           } ?>
                         </td>
-                        <td><a href="<?php echo base_url('admin/order_view/'.$value->order_id); ?>"><span class="pending">View Order</span></a><br>
-                          <?php if($value->status=='pending'){ ?>
-                          <a class="ship-now" onclick="showModelForShipping(<?= $value->order_id; ?>)">Ship Now</a>
-                        <?php }else if($value->status == "on_shipping"){ ?>
-                            <a onclick="orderCancel(<?= $value->order_id; ?>)" class="order-cancel">Cancel</a>
-                        <?php }else if($value->status == "delivered"){ ?>
-                            <a onclick="returnOrder(<?= $value->order_id; ?>)" class="order-return">Return</a>                          
-                          <?php } ?>
+                        <td><a href="<?php echo base_url('admin/order_view/'.$value->order_id); ?>"><span class="pending">View Order</span></a><br>                          
+                          <a id="drop5" href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" role="button" aria-expanded="false"><span class="status-Review">Action <span class="caret"></span></span></a>
+                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 44px, 0px);">
+
+                            <?php if($value->status=='pending'){ ?>
+                              <a class="dropdown-item ship-now1" onclick="showModelForShipping(<?= $value->order_id; ?>)">Ship Now</a>
+                            <?php }else if($value->status == "on_shipping"){ ?>
+                              <a onclick="orderCancel(<?= $value->order_id; ?>)" class="dropdown-item order-cancel1">Cancel</a>
+                            <?php }else if($value->status == "delivered"){ ?>
+                              <a onclick="returnOrder(<?= $value->order_id; ?>)" class="dropdown-item order-return1">Return</a>
+                            <?php } ?>
+                            <?php if($value->status == "on_shipping"){ ?>
+                              <a href="<?php echo base_url('admin/getOrderStatus/'.$value->order_id); ?>" class="dropdown-item track-order">Track Order</a>
+                            <?php } ?>                            
+                            </div>
                            </td>
                         </tr>
                       <?php } 
@@ -244,6 +251,29 @@
                   $('#cancelOrder').modal('show');
                   $('#pass-message').text('Order Already Canceled')                  
                 }
+                // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
+              }
+        })
+  }
+  function trackOrder(id){
+    alert(id);
+        
+    $.ajax({
+              url:"<?php echo base_url() ?>/shiprocket/getOrderStatus",
+              method:"POST",
+              dataType: 'JSON',
+              data: {order_number:id},        
+              success:function(data){                    
+                   console.log(data);
+                // if(data.status==1){                                    
+                //   $('#cancelOrder').modal('show');
+                //   $('#pass-message').text('Order Canceled')
+                //   $('#sub-pass-message').text('Your order has been successfully Canceled')
+
+                // }else{
+                //   $('#cancelOrder').modal('show');
+                //   $('#pass-message').text('Order Already Canceled')                  
+                // }
                 // window.location.href = "<?php echo base_url() ?>vendor/bulk_upload";        
               }
         })

@@ -19,10 +19,34 @@ Class Shiprocket extends MY_Controller {
         // }
 
     }
+    public function getAuthToken()
+    {   
+    	$curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_URL =>"https://apiv2.shiprocket.in/v1/external/auth/login",
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING =>"",
+		CURLOPT_MAXREDIRS =>10,
+		CURLOPT_TIMEOUT =>0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION =>CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_POSTFIELDS =>"{\n \"email\":\"saimedicinesship_api@gmail.com\",\n \"password\":\"newrocket0\"\n}",
+		//CURLOPT_POSTFIELDS =>"{\n \"email\":\"mausam.api@gmail.com\",\n \"password\":\"mausam@123\"\n}",
+		CURLOPT_HTTPHEADER =>array(
+		"Content-Type: application/json" ),));
+		$response = curl_exec($curl);
+		curl_close($curl);
+		$ATUTH = json_decode($response);
+		return $ATUTH->token;
+
+    }
 
     public function shiping_order()
     {   
     	
+    	$AUTHTOKEN = $this->getAuthToken();
+
         $orderData = $this->Admin->shippingOrderData($this->input->post('order_id'));        
         
         $orderData['length'] = $this->input->post('length');
@@ -44,7 +68,7 @@ Class Shiprocket extends MY_Controller {
 		CURLOPT_POSTFIELDS =>json_encode($orderData),
 		CURLOPT_HTTPHEADER =>array(
 		"Content-Type: application/json",
-		"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
+		"Authorization:Bearer ".$AUTHTOKEN." "),));
 		$response = curl_exec($curl);
 		curl_close($curl);
 		$responseShipping = json_decode($response);
@@ -83,7 +107,7 @@ Class Shiprocket extends MY_Controller {
     {   
     	// $this->generate_label();
     	// die();
-    	
+    	$AUTHTOKEN = $this->getAuthToken();
     	$id = $this->input->post('order_number');
 
     	
@@ -108,7 +132,7 @@ Class Shiprocket extends MY_Controller {
 			  "ids": ["'.$shippingOrderNumber->shiprocket_order_id.'"]}',
 			CURLOPT_HTTPHEADER =>array(
 			"Content-Type: application/json",
-			"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
+			"Authorization:Bearer ".$AUTHTOKEN." "),));
 			$response = curl_exec($curl);
 			curl_close($curl);
 			
@@ -139,7 +163,7 @@ Class Shiprocket extends MY_Controller {
 
     public function invoice($data)
     {   
-    	
+    	$AUTHTOKEN = $this->getAuthToken();
     	$curl = curl_init();
 		curl_setopt_array($curl, array(
 		CURLOPT_URL =>"https://apiv2.shiprocket.in/v1/external/orders/print/invoice",
@@ -154,7 +178,7 @@ Class Shiprocket extends MY_Controller {
 		  "ids": ["'.$data.'"]}',
 		CURLOPT_HTTPHEADER =>array(
 		"Content-Type: application/json",
-		"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
+		"Authorization:Bearer ".$AUTHTOKEN." "),));
 		$response = curl_exec($curl);
 		curl_close($curl);
 		$invoice = json_decode($response);
@@ -163,6 +187,7 @@ Class Shiprocket extends MY_Controller {
     public function shiping_order_return()
     {   
     	
+    	$AUTHTOKEN = $this->getAuthToken();
     	$id = $this->input->post('order_number');    	
     	$shippingOrderNumber = $this->Admin->getRowData('orders','shiprocket_order_id,order_number',array('id'=>$id));     	
     	if(!empty($shippingOrderNumber)){
@@ -181,7 +206,7 @@ Class Shiprocket extends MY_Controller {
 			//   "ids": ["'.$shippingOrderNumber->shiprocket_order_id.'"]}',
 			CURLOPT_HTTPHEADER =>array(
 			"Content-Type: application/json",
-			"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
+			"Authorization:Bearer ".$AUTHTOKEN." "),));
 			$response = json_decode(curl_exec($curl));
 			curl_close($curl);
 			$retrivedData = $response->data;
@@ -254,7 +279,7 @@ Class Shiprocket extends MY_Controller {
 				CURLOPT_POSTFIELDS =>json_encode($returnData),			
 				CURLOPT_HTTPHEADER =>array(
 				"Content-Type: application/json",
-				"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
+				"Authorization:Bearer ".$AUTHTOKEN." "),));
 				$response = curl_exec($curl);
 				curl_close($curl);
 				
@@ -278,8 +303,9 @@ Class Shiprocket extends MY_Controller {
         // $this->Admin();
     }
 
-    public function generate_label(){
-
+    public function generateLabel(){
+		
+		$AUTHTOKEN = $this->getAuthToken();    	
     	$orderData = $this->Admin->shippingOrderData(32);        
 
 
@@ -298,19 +324,88 @@ Class Shiprocket extends MY_Controller {
 		//   "shipment_id": ["50406293"]}',
 		CURLOPT_HTTPHEADER =>array(
 		"Content-Type: application/json",
-		"Authorization:Bearer ".$this->config->item('SHIPROCKET_AUTH_TOKEN')." "),));
+		"Authorization:Bearer ".$AUTHTOKEN." "),));
 		$response = curl_exec($curl);
 		curl_close($curl);
 		print_r($response);
 		// $invoice = json_decode($response);
 		// return $invoice->invoice_url;
     }
-    public function shiping_auth()
-    {        
-        // $this->middle = 'shipping_auth';
-        $this->load->view('admin/shipping_auth');
-        // $this->Admin();
+    public function forwardShipment(){
+		
+		$AUTHTOKEN = $this->getAuthToken();    	
+    	$orderData = $this->Admin->shippingOrderData(32);        
+
+
+    	$curl = curl_init();
+		curl_setopt_array($curl, array(
+		CURLOPT_URL =>"https://apiv2.shiprocket.in/v1/external/shipments/create/forward-shipment",
+		CURLOPT_RETURNTRANSFER => true,
+		CURLOPT_ENCODING =>"",
+		CURLOPT_MAXREDIRS =>10,
+		CURLOPT_TIMEOUT =>0,
+		CURLOPT_FOLLOWLOCATION => true,
+		CURLOPT_HTTP_VERSION =>CURL_HTTP_VERSION_1_1,
+		CURLOPT_CUSTOMREQUEST => "POST",
+		CURLOPT_POSTFIELDS =>json_encode($orderData),
+		// CURLOPT_POSTFIELDS =>'{
+		//   "shipment_id": ["50406293"]}',
+		CURLOPT_HTTPHEADER =>array(
+		"Content-Type: application/json",
+		"Authorization:Bearer ".$AUTHTOKEN." "),));
+		$response = curl_exec($curl);
+		curl_close($curl);
+		print_r($response);
+		// $invoice = json_decode($response);
+		// return $invoice->invoice_url;
     }
+    public function getOrderStatus($id){
+
+		
+		$getOrderId = $this->Admin->getRowData('orders','order_number',array('id'=>$id));
+
+		if(!empty($getOrderId->order_number)){
+
+			$AUTHTOKEN = $this->getAuthToken();    	
+			
+			//$orderID = "1596966759857";
+
+	    	$curl = curl_init();
+			curl_setopt_array($curl, array(
+			CURLOPT_URL =>"https://apiv2.shiprocket.in/v1/external/courier/track?order_id=".$getOrderId->order_number,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING =>"",
+			CURLOPT_MAXREDIRS =>10,
+			CURLOPT_TIMEOUT =>0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION =>CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "GET",
+			// CURLOPT_POSTFIELDS =>json_encode($orderData),
+			// CURLOPT_POSTFIELDS =>'{
+			//   "shipment_id": ["50406293"]}',
+			CURLOPT_HTTPHEADER =>array(
+			"Content-Type: application/json",
+			"Authorization:Bearer ".$AUTHTOKEN." "),));
+			$response = curl_exec($curl);
+			curl_close($curl);
+			$this->data['track_data'] = json_decode($response);
+		}else{
+			$this->data['track_data'] = [];
+		}
+		// echo "<pre>";
+		// print_r(json_decode($response));
+
+        $this->middle = 'trackOrder';
+        $this->Admin();
+		// $invoice = json_decode($response);
+		// return $invoice->invoice_url;
+    }
+    // public function shiping_auth()
+    // {        
+    //     // $this->middle = 'shipping_auth';
+    //     $this->load->view('admin/shipping_auth');
+    //     // $this->Admin();
+    // }
 
 
 }

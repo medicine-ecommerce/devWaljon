@@ -38,7 +38,7 @@
             <div class="x_title">
               <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                  <!-- <div class="pull-right">
+                  <div class="pull-right">
                     <?php if($_SESSION["user_type"]=='admin'){ ?>
                       <a href="<?php echo base_url('admin/manufacturer_bulk'); ?>" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload Manufacturer</a>   
 
@@ -48,7 +48,7 @@
                       <a href="<?php echo base_url('vendor/manufacturer_bulk'); ?>" class="btn btn-primary"><i class="fa fa-upload" aria-hidden="true"></i> Upload Manufacturer</a>   
                       <a href="<?php echo base_url('vendor/manufacturer_add'); ?>" class="btn btn-primary">+ Add Manufacturer</a>   
                     <?php } ?>   
-                  </div>  -->                 
+                  </div>  
                   <div class="card-box table-responsive">                
                     <table id="datatable-responsive" class="table user-detail-table" cellspacing="0" width="100%">
                       <thead>
@@ -103,6 +103,7 @@
                                 <a class="dropdown-item" href="<?php echo base_url('admin/manufacturer_status/reject/'.$value->id);?>">Deactivate</a>
                               <?php } ?>
                             </div>
+                            
                           <?php } ?>
                           </td>
                           </tr>
