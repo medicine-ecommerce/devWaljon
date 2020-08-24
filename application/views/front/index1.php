@@ -111,6 +111,7 @@
     <?php if (!empty($product)) {      
       foreach ($product as $key => $value) { 
         $productData = json_decode($value->product);
+        if(!empty($productData)){
         ?>
         <div class="product-slider-block slider-arrow">                  
           <div class="row product-heading">
@@ -164,6 +165,7 @@
           </div>
         </div>
     <?php  }
+      }
     } ?>     
       <!-- <div class="product-slider-block slider-arrow">        
         <div class="row product-heading">
