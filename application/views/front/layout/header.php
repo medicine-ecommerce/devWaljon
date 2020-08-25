@@ -95,7 +95,7 @@
 							</a>
 						</div>
 						<div class="top_bar_contact_btn">
-							<a href="<?php echo base_url('user');?>">Medicine</a>
+							<a href="<?php echo base_url('user');?>">Medicines</a>
 							<a href="#">Consult A Doctor</a>
 							<a href="#">Book Appointment</a>
 						</div>
