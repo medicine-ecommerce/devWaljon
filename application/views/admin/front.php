@@ -6,10 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" href="images/favicon.ico" type="image/ico" />
-
-    <title>Gentelella Alela! | </title>
-
+    <link rel="icon" href="<?php echo base_url(); ?>assets/img/fevicon.png" type="image/ico" />
+    <title>Rxkin </title>
     <!-- Bootstrap -->
     <link href="<?php echo base_url(); ?>vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->

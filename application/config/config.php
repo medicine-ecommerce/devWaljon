@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/devWaljon';
+$config['base_url'] = 'https://www.rxkin.com/';
 
 /*
 |--------------------------------------------------------------------------
@@ -521,6 +521,9 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+$config['RAZOR_KEY_ID'] = 'rzp_live_lx3IrSCMNhGFJU';
+$config['RAZOR_SECRET_KEY'] = 'M8SD8i3W4mIi0pFvs7MD1cyk';
+
 $config['working_experience']= array(
 	
     array(
@@ -701,3 +704,8 @@ $config['account_type']= array(
         "key" => '7',
         "value" => "NRI Accounts",
     ));
+// TESTING
+$config['SHIPROCKET_AUTH_TOKEN'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMjYxNywiaXNzIjoiaHR0cHM6Ly9hcGl2Mi5zaGlwcm9ja2V0LmluL3YxL2V4dGVybmFsL2F1dGgvbG9naW4iLCJpYXQiOjE1OTc3NzIyNjEsImV4cCI6MTU5ODYzNjI2MSwibmJmIjoxNTk3NzcyMjYxLCJqdGkiOiJFMml5eTFPWVh5SjZIWXNQIn0.lNUJFvCHKswlSpkE2pkkv69DaTWWVxt4o7dePA3tGF0";
+
+// LIVE
+//$config['SHIPROCKET_AUTH_TOKEN'] = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjcyMjYyNiwiaXNzIjoiaHR0cHM6Ly9hcGl2Mi5zaGlwcm9ja2V0LmluL3YxL2V4dGVybmFsL2F1dGgvbG9naW4iLCJpYXQiOjE1OTc3NzI0NjksImV4cCI6MTU5ODYzNjQ2OSwibmJmIjoxNTk3NzcyNDY5LCJqdGkiOiJZNndZSktTZmtya3ZLV2thIn0.AAD0GmzscGLF-H2-jvXS4ZGyI0gCziDdrK3lwNwG8Zs";

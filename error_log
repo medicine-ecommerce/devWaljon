@@ -1,0 +1,130 @@
+[21-May-2020 15:31:47 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/public_html/test/application/views/admin/login.php on line 33
+[21-May-2020 15:40:04 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/public_html/test/application/views/admin/vendor_add.php on line 24
+[22-May-2020 15:04:51 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/public_html/test/application/views/admin/login.php on line 33
+[22-May-2020 15:05:25 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/public_html/test/application/views/admin/login.php on line 33
+[25-May-2020 18:07:52 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home1/portalwal/public_html/test/application/core/MY_Model.php on line 84
+[26-May-2020 15:35:49 Etc/GMT] PHP Parse error:  syntax error, unexpected '}' in /home1/portalwal/public_html/test/application/core/MY_Model.php on line 84
+[26-May-2020 16:29:53 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/public_html/test/application/controllers/Admin.php on line 16
+[26-May-2020 16:29:56 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/public_html/test/application/controllers/Admin.php on line 16
+[20-Aug-2020 09:53:46 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 09:53:47 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 09:55:37 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 09:56:22 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 09:57:17 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 09:58:43 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 09:59:31 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 09:59:38 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:01:24 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:01:37 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:01:46 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:01:58 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:19 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:19 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:20 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:20 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:21 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:23 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:23 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:23 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:24 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:25 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:25 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:25 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:26 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:26 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:26 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:35 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:02:40 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:03:00 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:03:00 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:06:03 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:06:04 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:08:49 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:09:47 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:09:48 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:10:59 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:11:00 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:27:45 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:31:19 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:38:28 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 10:38:32 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 11:23:33 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 13:35:40 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 13:35:42 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 13:35:45 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 13:36:44 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 13:39:40 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 13:45:17 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 13:45:19 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 13:45:25 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 13:45:28 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:36:30 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:38:04 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:39:28 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:40:36 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 42
+[20-Aug-2020 15:40:41 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 42
+[20-Aug-2020 15:41:48 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 42
+[20-Aug-2020 15:44:40 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 42
+[20-Aug-2020 15:45:28 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 42
+[20-Aug-2020 15:45:30 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 42
+[20-Aug-2020 15:45:52 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:46:41 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:46:43 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:47:16 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:47:18 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:47:37 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:47:40 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:48:46 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:49:05 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:54:42 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:54:48 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:54:56 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:56:16 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:56:40 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:56:43 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:56:45 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:56:48 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:56:48 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:57:47 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:57:48 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 15:59:12 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 16:01:09 Etc/GMT] PHP Fatal error:  Can't use method return value in write context in /home1/portalwal/rxkin.com/application/core/MY_Controller.php on line 43
+[20-Aug-2020 18:09:16 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function eregi() in /home1/portalwal/rxkin.com/phpmailer/_lib/class.phpmailer.php:594
+Stack trace:
+#0 /home1/portalwal/rxkin.com/phpmailer/_lib/class.phpmailer.php(519): PHPMailer->SmtpConnect()
+#1 /home1/portalwal/rxkin.com/phpmailer/_lib/class.phpmailer.php(412): PHPMailer->SmtpSend('Date: Thu, 20 A...', '--b1_949060ac29...')
+#2 /home1/portalwal/rxkin.com/test.php(44): PHPMailer->Send()
+#3 {main}
+  thrown in /home1/portalwal/rxkin.com/phpmailer/_lib/class.phpmailer.php on line 594
+[20-Aug-2020 18:16:07 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function eregi() in /home1/portalwal/rxkin.com/phpmailer/_lib/class.phpmailer.php:594
+Stack trace:
+#0 /home1/portalwal/rxkin.com/phpmailer/_lib/class.phpmailer.php(519): PHPMailer->SmtpConnect()
+#1 /home1/portalwal/rxkin.com/phpmailer/_lib/class.phpmailer.php(412): PHPMailer->SmtpSend('Date: Thu, 20 A...', '--b1_bc66ad49fc...')
+#2 /home1/portalwal/rxkin.com/test.php(44): PHPMailer->Send()
+#3 {main}
+  thrown in /home1/portalwal/rxkin.com/phpmailer/_lib/class.phpmailer.php on line 594
+[20-Aug-2020 18:30:27 UTC] PHP Warning:  stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1408F10B:SSL routines:ssl3_get_record:wrong version number in /home1/portalwal/rxkin.com/mail/class.smtp.php on line 343
+[20-Aug-2020 18:31:09 UTC] PHP Warning:  stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1408F10B:SSL routines:ssl3_get_record:wrong version number in /home1/portalwal/rxkin.com/mail/class.smtp.php on line 343
+[20-Aug-2020 18:40:52 UTC] PHP Fatal error:  Cannot redeclare Vendor::testEmail() in /home1/portalwal/rxkin.com/application/controllers/Vendor.php on line 879
+[20-Aug-2020 18:41:48 UTC] PHP Warning:  stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1408F10B:SSL routines:ssl3_get_record:wrong version number in /home1/portalwal/rxkin.com/mail/class.smtp.php on line 343
+[20-Aug-2020 18:43:17 UTC] PHP Fatal error:  Cannot redeclare Vendor::testEmail() in /home1/portalwal/rxkin.com/application/controllers/Vendor.php on line 891
+[20-Aug-2020 18:43:26 UTC] PHP Warning:  stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1408F10B:SSL routines:ssl3_get_record:wrong version number in /home1/portalwal/rxkin.com/mail/class.smtp.php on line 343
+[20-Aug-2020 18:44:36 UTC] PHP Warning:  stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1408F10B:SSL routines:ssl3_get_record:wrong version number in /home1/portalwal/rxkin.com/mail/class.smtp.php on line 343
+[20-Aug-2020 18:52:01 UTC] PHP Fatal error:  Cannot redeclare Vendor::testEmail() in /home1/portalwal/rxkin.com/application/controllers/Vendor.php on line 890
+[20-Aug-2020 18:52:23 UTC] PHP Fatal error:  Cannot redeclare Vendor::testEmail() in /home1/portalwal/rxkin.com/application/controllers/Vendor.php on line 891
+[20-Aug-2020 18:52:44 UTC] PHP Fatal error:  Cannot redeclare Vendor::testEmail() in /home1/portalwal/rxkin.com/application/controllers/Vendor.php on line 892
+[20-Aug-2020 18:53:33 UTC] PHP Fatal error:  Cannot redeclare Vendor::testEmail() in /home1/portalwal/rxkin.com/application/controllers/Vendor.php on line 892
+[20-Aug-2020 18:55:36 UTC] PHP Fatal error:  Cannot redeclare Vendor::testEmail() in /home1/portalwal/rxkin.com/application/controllers/Vendor.php on line 893
+[20-Aug-2020 18:56:01 UTC] PHP Fatal error:  Cannot redeclare Vendor::testEmail() in /home1/portalwal/rxkin.com/application/controllers/Vendor.php on line 893
+[20-Aug-2020 18:57:57 UTC] PHP Warning:  stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1408F10B:SSL routines:ssl3_get_record:wrong version number in /home1/portalwal/rxkin.com/mail/class.smtp.php on line 343
+[20-Aug-2020 18:58:01 UTC] PHP Warning:  stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1408F10B:SSL routines:ssl3_get_record:wrong version number in /home1/portalwal/rxkin.com/mail/class.smtp.php on line 343
+[20-Aug-2020 18:58:51 UTC] PHP Warning:  stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:1408F10B:SSL routines:ssl3_get_record:wrong version number in /home1/portalwal/rxkin.com/mail/class.smtp.php on line 343
+[20-Aug-2020 18:58:56 UTC] PHP Fatal error:  Cannot redeclare Vendor::testEmail() in /home1/portalwal/rxkin.com/application/controllers/Vendor.php on line 904

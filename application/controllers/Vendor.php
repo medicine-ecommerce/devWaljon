@@ -17,17 +17,23 @@ Class Vendor extends MY_Controller {
         $this->load->model('Excel_import_model');        
         $this->load->library('excel');  
         $this->load->library('upload');
+        $this->load->model('CustomEmail_model','EmailModel');        
 
         if (empty($this->session->userdata('user_id'))){ 
             // Allow some methods?
-            $allowed = array('forgot_password','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile','vendorLogin');
+            $allowed = array('forgot_password','testEmails','vendorregister','vendor_login','forgotPassword','createNewPassword','forgotPasswordCheckEmail','checkExistEmail','checkExistMobile','vendorLogin');
             if (!in_array($this->router->fetch_method(), $allowed)){
                 redirect(base_url('vendor/vendor_login'));
             }
         }
 
     }
-
+    
+    public function testEmails()
+    {
+       echo $this->EmailModel->sendEmail('subject', 'body', 'mausam.varun22@gmail.com', 'info@rxkin.com');
+        
+    } 
     public function index()
     {
         $this->load->helper('cookie');
@@ -43,9 +49,15 @@ Class Vendor extends MY_Controller {
 
         if(!empty($this->input->post('email'))){               
                 if(empty($this->input->post('verification_code')) && !empty($this->input->post('email'))){                    
-                    $this->session->set_userdata('temp_verification_code',999999);                    
-                    echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>1));
-                    return;
+               	    $otp  = rand(100000, 999999);
+               	    $this->session->set_userdata('temp_verification_code',$otp); 
+               	    $subject = "Forgot password verification code";
+               	    $body = "<p>Your Verification Code  : </p>".$otp;
+		    $isSend =  $this->EmailModel->sendEmail($subject, $body, $this->input->post('email'), 'info@rxkin.com');		
+		    if($isSend){		                                       
+                    	echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>1));
+                         return;
+                    }
 
                 }else if(!empty($this->input->post('verification_code'))){
                     if($this->input->post('verification_code')==$this->session->userdata('temp_verification_code')){                        
@@ -126,9 +138,16 @@ Class Vendor extends MY_Controller {
         if(!empty($this->input->post('update_email'))){                            
 
                 if(empty($this->input->post('verification_code')) && !empty($this->input->post('update_email'))){                    
-                    $this->session->set_userdata('temp_verification_code',999999);                    
-                    echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>2));
-                    return;
+                    
+                    $otp  = rand(100000, 999999);
+               	    $this->session->set_userdata('temp_verification_code',$otp); 
+               	    $subject = "Email verification code";
+               	    $body = "<p>Your Verification Code  : </p>".$otp;
+		    $isSend =  $this->EmailModel->sendEmail($subject, $body, $this->input->post('email'), 'info@rxkin.com');		
+		    if($isSend){		                                       
+                    	 echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>2));
+                         return;
+                    }                   
 
                 }else if(!empty($this->input->post('verification_code'))){
                     if($this->input->post('verification_code')==$this->session->userdata('temp_verification_code')){
@@ -231,10 +250,15 @@ Class Vendor extends MY_Controller {
                     return;
 
                 }else if(empty($this->input->post('verification_code')) && !empty($this->input->post('email')) && $registrationBy=="email"){                    
-                    $this->session->set_userdata('temp_verification_code',999999);                    
-                    echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>2));
-                    return;
-
+		    $otp  = rand(100000, 999999);
+               	    $this->session->set_userdata('temp_verification_code',$otp); 
+               	    $subject = "Email verification code";
+               	    $body = "<p>Your Email Verification Code  : </p>".$otp;
+		    $isSend =  $this->EmailModel->sendEmail($subject, $body, $this->input->post('email'), 'info@rxkin.com');		
+		    if($isSend){		                                       
+ 	                 echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>2));
+                         return;
+                    }
                 }else if(!empty($this->input->post('verification_code'))){
                     if($this->input->post('verification_code')==$this->session->userdata('temp_verification_code')){
                         $last_id = $this->Vendor->VendorRegistration($data);               
@@ -247,28 +271,49 @@ Class Vendor extends MY_Controller {
                 
                 if ($last_id > 0) {
                     
-                    if ($this->input->post('type')=='user') {
-                        if(ctype_digit($this->input->post('email'))){
-                            $data = array('mobile'=>trim($result->mobile),                                
-                                    'user_id'=>$result->id,
-                                    'user_type'=>$result->type);
-                        }else{                        
-                            $data = array('email'=>$result->email,
-                                        'user_id'=>$result->id,
-                                        'user_type'=>$result->type);
-                        }
-                    }
-                    else{
-                        if(ctype_digit($this->input->post('email'))){
-                            $data = array('mobile'=>trim($result->mobile),                                
-                                    'user_id'=>$result->id,
-                                    'user_type'=>$result->type);
-                        }else{                        
-                            $data = array('email'=>$result->email,
-                                        'user_id'=>$result->id,
-                                        'user_type'=>$result->type);
-                        }
-                    }
+                    if(ctype_digit($this->input->post('email'))){
+                            $data = array('mobile'=>trim($this->input->post('email')),                                
+                                    'user_id'=>$last_id,
+                                    'user_type'=>$this->input->post('type'));
+                    }else{                        
+                        $data = array('email'=>$this->input->post('email'),
+                                    'user_id'=>$last_id,
+                                    'user_type'=>$this->input->post('type'));
+                    }                   
+               	    if($this->input->post('type')=="vendor"){
+	               	    $subject = "New Signup notification";
+	               	    $body = "<p>Hello Admin,</p>";
+	               	    $body .= "<p>Successfully new vendor Signup</p>";
+	               	    $body .= "</br>";
+	               	    $body .= "Regards,";
+	               	    $body .= "</br>";
+	               	    $body .= "Rxkin";
+			    $this->EmailModel->sendEmail($subject, $body, 'info@rxkin.com', 'info@rxkin.com');		
+		    }
+                    
+                    
+                    // if ($this->input->post('type')=='user') {
+                    //     if(ctype_digit($this->input->post('email'))){
+                    //         $data = array('mobile'=>trim($result->mobile),                                
+                    //                 'user_id'=>$result->id,
+                    //                 'user_type'=>$result->type);
+                    //     }else{                        
+                    //         $data = array('email'=>$result->email,
+                    //                     'user_id'=>$result->id,
+                    //                     'user_type'=>$result->type);
+                    //     }
+                    // }
+                    // else{
+                    //     if(ctype_digit($this->input->post('email'))){
+                    //         $data = array('mobile'=>trim($result->mobile),                                
+                    //                 'user_id'=>$result->id,
+                    //                 'user_type'=>$result->type);
+                    //     }else{                        
+                    //         $data = array('email'=>$result->email,
+                    //                     'user_id'=>$result->id,
+                    //                     'user_type'=>$result->type);
+                    //     }
+                    // }
 
                     $this->session->set_userdata($data);
                     $this->session->set_flashdata('success', 'Your account successfully created ');

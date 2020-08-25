@@ -13,7 +13,8 @@ Class User extends MY_Controller {
         $this->load->database();
         $this->load->model('User_model','User');
         $this->load->helper(array('form', 'url'));
-        $this->load->library(array('ajax_pagination','cart','form_validation')); 
+        $this->load->library(array('ajax_pagination','cart','form_validation'));
+        $this->load->model('CustomEmail_model','EmailModel');        
                $this->load->library('pagination');
 
         $loginMethod = array('order_with_prescription','checkout','UpdatePrescription');
@@ -421,6 +422,7 @@ Class User extends MY_Controller {
         if(!empty($this->input->post('new_address_id'))){  
   
             $getBoxDimention = $this->db->select('length,breadth,height,weight')->from('product')->where(array('id'=>$this->input->post('cart_product_id')))->get()->row();
+            $getEmail = $this->db->select('email')->from('user')->where(array('id'=>$this->session->userdata('user_id')))->get()->row();
 
             $array = array('user_id'=>$this->session->userdata('user_id'),
                             'order_number'=> 'ORDER'. rand(10000,99999999),
@@ -455,6 +457,12 @@ Class User extends MY_Controller {
                     if($this->input->post('payment_mode')!='online'){
                         $this->cart->destroy();
                         $this->User->deleteData('temp_order',array('user_id'=>$this->session->userdata('user_id')));
+                    }
+                    $subject = "Order Place notification";
+               	    $body = "<p>Recieved new order </p>";
+		    $isSend =  $this->EmailModel->sendEmail($subject, $body,'info@rxkin.com', 'info@rxkin.com');		
+		    if($isSend){		                                       
+                    	 echo json_encode(array('status'=>1,'message'=>'Email Sent'));                         
                     }
                 }
             }

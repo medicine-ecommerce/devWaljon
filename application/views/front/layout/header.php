@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="OneTech shop project">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="images/favicon.ico" type="image/ico" />
+	<link rel="icon" href="<?php echo base_url(); ?>assets/img/fevicon.png" type="image/ico" />
 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/front/styles/bootstrap4/bootstrap.min.css">
 	<link href="<?php echo base_url(); ?>assets/front/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
@@ -19,7 +19,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 	<!-- Custom -->
-		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBQ9GyWMzIoUSeTvXLg8YatVBOt9UCwkB8&libraries=places"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDcMN_eJSbhtN-L0UjFL1JgsEgojxK6p9I&libraries=places"></script>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -46,7 +46,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="<?php echo base_url('assets/js/jquery.typeahead.css');?>">
 
-	<title>Medicine</title>
+	<title>Rxkin</title>
 
 <style>
 .tt-query {
@@ -90,7 +90,7 @@
 				<div class="row">
 					<div class="col d-flex flex-row main-header-section">
 						<div class="top_bar_logo">
-							<a href="<?php echo base_url('user');?>">
+							<a href="<?php echo base_url();?>">
 								<img src="<?php echo base_url(); ?>assets/img/logo.png">
 							</a>
 						</div>
