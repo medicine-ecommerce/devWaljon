@@ -76,6 +76,28 @@
 .tt-suggestion p {
 	margin: 0;
 }
+.content {
+  padding: 16px;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+.all-section {
+    z-index: 9;
+}
+.stick-header.sticky {
+    background-color: white;
+    box-shadow: -1px 6px 12px rgba(0, 0, 0, 0.06);
+    z-index: 999;
+}
+
 </style>
 </head>
 <body>
@@ -83,103 +105,103 @@
 	
 	<header class="header">
 
-		<!-- Top Bar -->
-
-		<div class="top_bar">
-			<div class="container">
-				<div class="row">
-					<div class="col d-flex flex-row main-header-section">
-						<div class="top_bar_logo">
-							<a href="<?php echo base_url();?>">
-								<img src="<?php echo base_url(); ?>assets/img/logo.png">
-							</a>
-						</div>
-						<div class="top_bar_contact_btn">
-							<a href="<?php echo base_url('user');?>">Medicine</a>
-							<a href="#">Consult A Doctor</a>
-							<a href="#">Book Appointment</a>
-						</div>
-
-						<div class="top_bar_content ml-auto">
-							<div class="top_bar_user">
-								<a href="<?php echo base_url('user/cart');?>" class="top_bar_cart"><i class="fa fa-cart-plus"></i>
-									<span class="cart-quantity <?php if(!empty($cart_quantity)){ echo "show-cart";}else{ echo  "hide-cart" ;} ?> "> <?php if(!empty($cart_quantity)){ echo $cart_quantity; } ?> </span>
+		<div class="stick-header" id="myHeader">			
+			<!-- Top Bar -->
+			<div class="top_bar">
+				<div class="container">
+					<div class="row">
+						<div class="col d-flex flex-row main-header-section">
+							<div class="top_bar_logo">
+								<a href="<?php echo base_url();?>">
+									<img src="<?php echo base_url(); ?>assets/img/logo.png">
 								</a>
-								<?php if(empty($this->session->userdata('user_type'))){ ?>
-									<div class="top_bar_user_content"><a href="<?php echo base_url();?>/user/login">Login</a></div>
-									<div class="top_bar_user_content"><a href="<?php echo base_url();?>/user/signup">Register</a></div>
-								<?php } ?> 
-								<?php 
-								if(!empty($this->session->userdata('user_type'))){ ?>				
-								<div class="main_nav_menu">
-									<ul class="standard_dropdown header-image">
-										<li>
-											<div class="head-profile-img">	
-												<img src="<?= !empty($profile->image) ? base_url()."assets/user-profile/".$profile->image : base_url()."assets/img/dummy_images.png" ?>" alt="" class="header-profile-img">
-											</div>
-											<ul class="user-menu">
-												<li><a href="<?php echo base_url('user/profile');?>">Your Profile</a></li>
-												<li><a href="<?php echo base_url('user/orderListing');?>">Your Order</a></li>
-												<li><a href="<?php echo base_url('user/logout');?>">Logout</a></li>
-											</ul>
-										</li>
-									</ul>				
-								</div>	
-								<?php } ?>								
+							</div>
+							<div class="top_bar_contact_btn">
+								<a href="<?php echo base_url('user');?>">Medicine</a>
+								<a href="#">Consult A Doctor</a>
+								<a href="#">Book Appointment</a>
+							</div>
+
+							<div class="top_bar_content ml-auto">
+								<div class="top_bar_user">
+									<a href="<?php echo base_url('user/cart');?>" class="top_bar_cart"><i class="fa fa-cart-plus"></i>
+										<span class="cart-quantity <?php if(!empty($cart_quantity)){ echo "show-cart";}else{ echo  "hide-cart" ;} ?> "> <?php if(!empty($cart_quantity)){ echo $cart_quantity; } ?> </span>
+									</a>
+									<?php if(empty($this->session->userdata('user_type'))){ ?>
+										<div class="top_bar_user_content"><a href="<?php echo base_url();?>/user/login">Login</a></div>
+										<div class="top_bar_user_content"><a href="<?php echo base_url();?>/user/signup">Register</a></div>
+									<?php } ?> 
+									<?php 
+									if(!empty($this->session->userdata('user_type'))){ ?>				
+									<div class="main_nav_menu">
+										<ul class="standard_dropdown header-image">
+											<li>
+												<div class="head-profile-img">	
+													<img src="<?= !empty($profile->image) ? base_url()."assets/user-profile/".$profile->image : base_url()."assets/img/dummy_images.png" ?>" alt="" class="header-profile-img">
+												</div>
+												<ul class="user-menu">
+													<li><a href="<?php echo base_url('user/profile');?>">Your Profile</a></li>
+													<li><a href="<?php echo base_url('user/orderListing');?>">Your Order</a></li>
+													<li><a href="<?php echo base_url('user/logout');?>">Logout</a></li>
+												</ul>
+											</li>
+										</ul>				
+									</div>	
+									<?php } ?>								
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>		
+			</div>
+			<!-- Header Main -->
+			<div class="header_main">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-3 col-12 order-lg-2 order-3 text-lg-left text-right">
+							<div class="header_search">
+								<div class="header_search_content">
+									<div class="header_search_form_container">
+										<form action="#" class="header_search_form clearfix">
+											<span class="location-logo"><i class="fa fa-map-marker"></i></i></span>
+											<input type="search" required="required" class="header_search_input" placeholder="Enter Delivery Location" id="location">
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-5 col-12 order-lg-2 order-3 text-lg-left text-right">
+							<div class="header_search">
+								<div class="header_search_content">
+									<div class="header_search_form_container">
+										<form class="header_search_form clearfix">
+										    <div class="typeahead__container">
+									            <input class="header_search_input" name="text" placeholder="Search" autocomplete="off">
+									            <button type="submit" class="header_search_button trans_300" value="Submit"><i class="fa fa-search"></i></button>
+										    </div>
+										</form>
+										<!-- <form action="#" class="header_search_form clearfix">
+											<input type="search" required="required" class="header_search_input typeahead" placeholder="Search for Medicine">
+
+											<button type="submit" class="header_search_button trans_300" value="Submit"><i class="fa fa-search"></i></button>
+										</form> -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-12 order-lg-2 order-3 text-lg-left text-right">
+							<div class="header_search">
+								<div class="header_search_content">
+									<div class="header_search_form_container">
+										<a href="<?php echo base_url('user/order_with_prescription');?>" class="upload-pres">Upload Prescription</a>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>		
-		</div>
-
-		<!-- Header Main -->
-		<div class="header_main">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-3 col-12 order-lg-2 order-3 text-lg-left text-right">
-						<div class="header_search">
-							<div class="header_search_content">
-								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<span class="location-logo"><i class="fa fa-map-marker"></i></i></span>
-										<input type="search" required="required" class="header_search_input" placeholder="Enter Delivery Location" id="location">
-									</form>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-5 col-12 order-lg-2 order-3 text-lg-left text-right">
-						<div class="header_search">
-							<div class="header_search_content">
-								<div class="header_search_form_container">
-									<form class="header_search_form clearfix">
-									    <div class="typeahead__container">
-								            <input class="header_search_input" name="text" placeholder="Search" autocomplete="off">
-								            <button type="submit" class="header_search_button trans_300" value="Submit"><i class="fa fa-search"></i></button>
-									    </div>
-									</form>
-									<!-- <form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input typeahead" placeholder="Search for Medicine">
-
-										<button type="submit" class="header_search_button trans_300" value="Submit"><i class="fa fa-search"></i></button>
-									</form> -->
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4 col-12 order-lg-2 order-3 text-lg-left text-right">
-						<div class="header_search">
-							<div class="header_search_content">
-								<div class="header_search_form_container">
-									<a href="<?php echo base_url('user/order_with_prescription');?>" class="upload-pres">Upload Prescription</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>		
+		</div>	
 		<!-- Main Navigation -->
 		<nav class="main_nav">
 			<div class="container">
@@ -370,6 +392,21 @@
 			$(this).parents('.hassubs').find('.main-menu-n').removeClass("main-menu-name");
 		});
 	});
+
+	window.onscroll = function() {myFunction()};
+
+	var header = document.getElementById("myHeader");
+	var sticky = header.offsetTop;
+
+	function myFunction() {
+	  	// console.log(window.pageYOffset);
+	  	// console.log(sticky);
+	  if (window.pageYOffset > sticky) {
+	    header.classList.add("sticky");
+	  } else {
+	    header.classList.remove("sticky");
+	  }
+	}
 
 
 	
