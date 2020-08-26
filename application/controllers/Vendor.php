@@ -245,7 +245,15 @@ Class Vendor extends MY_Controller {
                 }
 
                 if(empty($this->input->post('verification_code')) && !empty($this->input->post('email')) && $registrationBy=="mobile"){                    
-                    $this->session->set_userdata('temp_verification_code',999999);                    
+                    //$this->session->set_userdata('temp_verification_code',999999);                    
+                    $otp  = rand(100000, 999999);
+                    $this->session->set_userdata('temp_verification_code',$otp);                     
+                    $body = "<p>Your mobile number verification OTP  : </p>".$otp;
+                    $isSend =  $this->EmailModel->sendSMS($this->input->post('email'), $body);        
+                    if($isSend){                                               
+                        echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>1));
+                         return;
+                    }
                     echo  json_encode(array('status'=>1,'message'=>'Verification code sent to your mobile number','stage'=>1));                    
                     return;
 
