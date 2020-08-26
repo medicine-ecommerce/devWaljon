@@ -106,7 +106,8 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="text-center">
-							<p>Copyright &copy; 2020. All Rights Reserved</p>
+							<!-- <p>Copyright &copy; 2020. All Rights Reserved</p> -->
+							<p>&copy;2020 rxkin.com All rights reserved. In compliance with Drugs and Cosmetics Act, 1940 and Drugs and Cosmetics Rules, 1945, we don't process requests for Schedule X and other habit forming drugs.</p>
 						</div>	
 					</div>	
 				</div>

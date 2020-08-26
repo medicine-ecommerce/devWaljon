@@ -13,6 +13,7 @@ Class Shiprocket extends MY_Controller {
         $this->load->model('Admin_model','Admin');
         $this->load->helper(array('form', 'url'));
         $this->load->library('form_validation');
+        $this->load->model('CustomEmail_model','EmailModel');        
 
         // if (empty($this->session->userdata('user_id')) && $this->router->fetch_method()!='index' && $this->router->fetch_method() !='adminLogin') {
         //     redirect(base_url('admin'));
@@ -113,7 +114,7 @@ Class Shiprocket extends MY_Controller {
     	
     	$shippingOrderNumber = $this->Admin->getRowData('orders','shiprocket_order_id,order_number',array('id'=>$id)); 
     	
-    	//$shippingOrderNumber = $this->Admin->getRowData('shiprocket_order','shiprocket_order_id',array('order_id'=>$orderNumber->order_number)); 
+    	$personalDetails = $this->Admin->getRowData('users','email,mobile',array('id'=>$this->session->userdata('user_id'))); 
 
     	
     	if(!empty($shippingOrderNumber->shiprocket_order_id)){
@@ -142,6 +143,15 @@ Class Shiprocket extends MY_Controller {
 				//$this->Admin->updateData('shiprocket_order',array('order_status'=>'cancel'),array('shiprocket_order_id'=>$shippingOrderNumber->shiprocket_order_id));
 				$this->Admin->updateData('orders',array('status'=>'cancel'),array('shiprocket_order_id'=>$shippingOrderNumber->shiprocket_order_id));
 
+				// SEND SMS
+				$body = "<p>Order canceled : </p>";
+                $isSend =  $this->EmailModel->sendSMS($personalDetails->mobile, $body);        
+
+                // SEND EMAIL
+                $subject = "Order cancel notification";
+           	    $body = "<p>Order canceled</p>";
+    		    $isSend =  $this->EmailModel->sendEmail($subject, $body,$personalDetails->email,'info@rxkin.com', 'info@rxkin.com');
+
 				echo json_encode(array('status'=>1,'message'=>$ordersCancel->message));
 	            return ;
 			}else{
@@ -151,7 +161,17 @@ Class Shiprocket extends MY_Controller {
 		}else{
 			if(!empty($shippingOrderNumber->order_number)){				
 				$this->Admin->updateData('orders',array('status'=>'cancel'),array('order_number'=>$shippingOrderNumber->order_number));
+				
+				// SEND SMS
+				$body = "<p>Order canceled : </p>";
+                $isSend =  $this->EmailModel->sendSMS($personalDetails->mobile, $body);
+
+                // SEND EMAIL
+                $subject = "Order cancel notification";
+           	    $body = "<p>Order canceled</p>";
+    		    $isSend =  $this->EmailModel->sendEmail($subject, $body,$personalDetails->email,'info@rxkin.com', 'info@rxkin.com');		
 				echo json_encode(array('status'=>1,'message'=>'Order Successfully cancel'));
+
 	            return ;
 			}	
 		}
@@ -190,6 +210,7 @@ Class Shiprocket extends MY_Controller {
     	$AUTHTOKEN = $this->getAuthToken();
     	$id = $this->input->post('order_number');    	
     	$shippingOrderNumber = $this->Admin->getRowData('orders','shiprocket_order_id,order_number',array('id'=>$id));     	
+    	$personalDetails = $this->Admin->getRowData('users','email,mobile',array('id'=>$this->session->userdata('user_id'))); 
     	if(!empty($shippingOrderNumber)){
 
 			$curl = curl_init();
@@ -288,6 +309,15 @@ Class Shiprocket extends MY_Controller {
 				if($orderReturn->status_code=='21'){
 					$returnDataArr = array('shiprocket_return_order_id'=>$orderReturn->order_id,'shiprocket_return_shipment_id'=>$orderReturn->shipment_id,'shipment_return_status'=>$orderReturn->status,'status'=>'return');
 					$update = $this->Admin->updateData('orders',$returnDataArr,array('order_number'=>$shippingOrderNumber->order_number));
+					// SEND SMS
+					$body = "<p>Order Return : </p>";
+	                $isSend =  $this->EmailModel->sendSMS($personalDetails->mobile, $body);        
+
+	                // SEND EMAIL
+	                $subject = "Order return notification";
+	           	    $body = "<p>Order returned</p>";
+	    		    $isSend =  $this->EmailModel->sendEmail($subject, $body,$personalDetails->email,'info@rxkin.com', 'info@rxkin.com');
+
 					echo json_encode(array('status'=>1,'message'=>'Successfully return'));
 		            return ;
 				}else{

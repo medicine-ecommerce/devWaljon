@@ -8,7 +8,7 @@ Class CustomEmail_model extends CI_Model {
         parent::__construct();
     }
     
-    function sendEmail($subject,$body, $to , $from){
+    function sendEmail($subject,$body, $to , $from, $cc=null){
    			
         $this->load->library('email');
         
@@ -37,7 +37,9 @@ Class CustomEmail_model extends CI_Model {
         
         $this->email->from('info@rxkin.com', 'Rxkin');
         $this->email->to($to);
-        // $this->email->cc('another@another-example.com');
+        if(!empty($cc)){
+            $this->email->cc($cc);
+        }
         // $this->email->bcc('them@their-example.com');
         
         $this->email->subject($subject);
@@ -49,7 +51,7 @@ Class CustomEmail_model extends CI_Model {
    	}
     function sendSMS($number,$body){
         // Account details
-        $apiKey = urlencode('6uhUA6CA14k-GrT5DR7KAli0lxasf6X7FqrBIuBHwg');
+        $apiKey = urlencode('NalIGzVIBAM-JXFUoJgPchXPKbjm8IPYP5wqhCxND1');
         
         // Message details
         $numbers = array($number);

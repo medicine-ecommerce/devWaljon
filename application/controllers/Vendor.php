@@ -53,7 +53,7 @@ Class Vendor extends MY_Controller {
                	    $this->session->set_userdata('temp_verification_code',$otp); 
                	    $subject = "Forgot password verification code";
                	    $body = "<p>Your Verification Code  : </p>".$otp;
-		    $isSend =  $this->EmailModel->sendEmail($subject, $body, $this->input->post('email'), 'info@rxkin.com');		
+		    $isSend =  $this->EmailModel->sendEmail($subject, $body, $this->input->post('email'), 'info@rxkin.com','');		
 		    if($isSend){		                                       
                     	echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>1));
                          return;
@@ -143,7 +143,7 @@ Class Vendor extends MY_Controller {
                	    $this->session->set_userdata('temp_verification_code',$otp); 
                	    $subject = "Email verification code";
                	    $body = "<p>Your Verification Code  : </p>".$otp;
-		    $isSend =  $this->EmailModel->sendEmail($subject, $body, $this->input->post('email'), 'info@rxkin.com');		
+		    $isSend =  $this->EmailModel->sendEmail($subject, $body, $this->input->post('email'), 'info@rxkin.com','');		
 		    if($isSend){		                                       
                     	 echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>2));
                          return;
@@ -174,9 +174,18 @@ Class Vendor extends MY_Controller {
         if(!empty($this->input->post('update_mobile'))){                            
 
                 if(empty($this->input->post('verification_code')) && !empty($this->input->post('update_mobile'))){                    
-                    $this->session->set_userdata('temp_verification_code',999999);                    
-                    echo  json_encode(array('status'=>1,'message'=>'Verification code sent to your mobile number','stage'=>1));                    
-                    return;
+                    // $this->session->set_userdata('temp_verification_code',999999);                    
+                    $otp  = rand(100000, 999999);
+                    $this->session->set_userdata('temp_verification_code',$otp);                     
+                    $body = "<p>Your mobile number verification OTP  : </p>".$otp;
+                    $isSend =  $this->EmailModel->sendSMS($this->input->post('update_mobile'), $body);        
+                    if($isSend){                                                                       
+                        echo  json_encode(array('status'=>1,'message'=>'Verification code sent to your mobile number','stage'=>1));                    
+                        return;
+                    }else{
+                        echo  json_encode(array('status'=>0,'message'=>'could not send','stage'=>0));
+                        return;
+                    }
 
                 }else if(!empty($this->input->post('verification_code'))){
                     if($this->input->post('verification_code')==$this->session->userdata('temp_verification_code')){                        
@@ -260,7 +269,7 @@ Class Vendor extends MY_Controller {
                	    $this->session->set_userdata('temp_verification_code',$otp); 
                	    $subject = "Email verification code";
                	    $body = "<p>Your Email Verification Code  : </p>".$otp;
-		    $isSend =  $this->EmailModel->sendEmail($subject, $body, $this->input->post('email'), 'info@rxkin.com');		
+		    $isSend =  $this->EmailModel->sendEmail($subject, $body, $this->input->post('email'), 'info@rxkin.com','');		
 		    if($isSend){		                                       
  	                 echo json_encode(array('status'=>1,'message'=>'Verification code sent to your email id','stage'=>2));
                          return;
@@ -294,7 +303,7 @@ Class Vendor extends MY_Controller {
 	               	    $body .= "Regards,";
 	               	    $body .= "</br>";
 	               	    $body .= "Rxkin";
-			    $this->EmailModel->sendEmail($subject, $body, 'info@rxkin.com', 'info@rxkin.com');		
+			    $this->EmailModel->sendEmail($subject, $body, 'info@rxkin.com', 'info@rxkin.com','');		
 		    }
                     
                     

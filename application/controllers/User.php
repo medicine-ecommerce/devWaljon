@@ -422,7 +422,7 @@ Class User extends MY_Controller {
         if(!empty($this->input->post('new_address_id'))){  
   
             $getBoxDimention = $this->db->select('length,breadth,height,weight')->from('product')->where(array('id'=>$this->input->post('cart_product_id')))->get()->row();
-            $getEmail = $this->db->select('email')->from('user')->where(array('id'=>$this->session->userdata('user_id')))->get()->row();
+            $getEmail = $this->db->select('email,mobile')->from('user')->where(array('id'=>$this->session->userdata('user_id')))->get()->row();
 
             $array = array('user_id'=>$this->session->userdata('user_id'),
                             'order_number'=> 'ORDER'. rand(10000,99999999),
@@ -460,10 +460,15 @@ Class User extends MY_Controller {
                     }
                     $subject = "Order Place notification";
                	    $body = "<p>Recieved new order </p>";
-		    $isSend =  $this->EmailModel->sendEmail($subject, $body,'info@rxkin.com', 'info@rxkin.com');		
-		    if($isSend){		                                       
+        		    $isSend =  $this->EmailModel->sendEmail($subject, $body,$getEmail->email,'info@rxkin.com', 'info@rxkin.com');		
+        		    if($isSend){		                                       
                     	 echo json_encode(array('status'=>1,'message'=>'Email Sent'));                         
                     }
+
+                    $body = "Hi,";
+                    $body = "</br>";
+                    $body .= "<p>Your order confirmation  : </p>";
+                    $isSend =  $this->EmailModel->sendSMS($getEmail->mobile, $body);        
                 }
             }
         }
