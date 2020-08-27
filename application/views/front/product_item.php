@@ -6,7 +6,7 @@
               <div class="product-box">
                 <div class="product-cat-img">  
                   <a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>">
-                    <img class="product-image" src="<?= !empty($value->product_image) ? base_url($value->product_image): base_url('assets/img/product_dummy.png')?>">              
+                    <img class="product-image" src="<?= !empty($value->product_image) ? base_url($value->product_image): base_url('assets/img/product_dummy.png')?>" onerror="onSRCError($event)">              
                   </a>
                 </div>
                 <div class="text-center">                
