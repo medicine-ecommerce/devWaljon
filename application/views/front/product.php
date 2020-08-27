@@ -25,7 +25,7 @@
 					foreach($product["product_images"] as $main_value) { ?>					
 					 <div class="image_selected">
 						<div class="img-zoom-lens"></div>
-						<img class="demo cursor" src="<?php echo base_url().$main_value->image; ?>" alt="" height="200">
+						<img class="demo cursor" src="<?= !empty($main_value->image) ? base_url().$main_value->image : base_url().'assets/img/product_dummy.png'  ?>" alt="" height="200">
 						<div class="img-zoom-result"></div>
 					</div> 
 					<?php  } } ?>					 
@@ -37,7 +37,7 @@
 						if($slide_id < 5){ ?>					
 
 						 <div class="related-img-section">
-							<img class="demo cursor" src="<?php echo base_url().$gallary_image->image; ?>" alt="" onclick="currentSlide(<?= $slide_id; ?>)">
+							<img class="demo cursor" src="<?= !empty($gallary_image->image) ? base_url().$gallary_image->image : base_url().'assets/img/product_dummy.png' ?>" alt="" onclick="currentSlide(<?= $slide_id; ?>)">
 						</div> 
 
 					<?php }
@@ -311,7 +311,7 @@
                       <div class="product-block">  
                         <div class="product-image-section">                                              
 	                        <a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>">	
-	                          <img src="<?php echo (!empty($value->image))? base_url().$value->image : base_url('assets/front/images/best_2.png');  ?>" >
+	                          <img src="<?= !empty($value->image) ? base_url().$value->image : base_url('assets/img/product_dummy.png')  ?>" >
 	                      	</a>
                         </div>
                         <div class="shape product-page-shape">

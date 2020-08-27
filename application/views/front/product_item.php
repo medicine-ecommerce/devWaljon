@@ -6,7 +6,7 @@
               <div class="product-box">
                 <div class="product-cat-img">  
                   <a href="<?php echo base_url('user/product/'.base64_encode($value->product_id)); ?>">
-                    <img class="product-image" src="<?php echo ($value->product_image) ? base_url($value->product_image):'http://desktop-backgrounds-org.s3.amazonaws.com/400x300/twitter-nature-high-definition.jpg'?>">              
+                    <img class="product-image" src="<?= !empty($value->product_image) ? base_url($value->product_image): base_url('assets/img/product_dummy.png')?>">              
                   </a>
                 </div>
                 <div class="text-center">                

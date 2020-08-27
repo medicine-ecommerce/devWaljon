@@ -423,9 +423,9 @@ Class User extends MY_Controller {
   
             $getBoxDimention = $this->db->select('length,breadth,height,weight')->from('product')->where(array('id'=>$this->input->post('cart_product_id')))->get()->row();
             $getEmail = $this->db->select('email,mobile')->from('user')->where(array('id'=>$this->session->userdata('user_id')))->get()->row();
-
+            $orderNumber = 'ORDER'. rand(10000,99999999);
             $array = array('user_id'=>$this->session->userdata('user_id'),
-                            'order_number'=> 'ORDER'. rand(10000,99999999),
+                            'order_number'=> $orderNumber,
                             'address_id'=>$this->input->post('new_address_id'),
                             'length'=> !empty($getBoxDimention) ? $this->input->post('length') : null,
                             'breadth'=>!empty($getBoxDimention) ? $this->input->post('breadth') : null,
@@ -459,7 +459,12 @@ Class User extends MY_Controller {
                         $this->User->deleteData('temp_order',array('user_id'=>$this->session->userdata('user_id')));
                     }
                     $subject = "Order Place notification";
-               	    $body = "<p>Recieved new order </p>";
+               	    $body = "<p>Recieved new order  </p>";                    
+                    $body .= "Product Name : ".$orderNumber;
+                    $body .= "<br>";
+                    $body .= "Total Amount : ".$total;
+                    $body .= "<br>";
+                    $body .= "Payment Mode : ".$this->input->post('payment_mode');
         		    $isSend =  $this->EmailModel->sendEmail($subject, $body,$getEmail->email,'info@rxkin.com', 'info@rxkin.com');		
         		    if($isSend){		                                       
                     	 echo json_encode(array('status'=>1,'message'=>'Email Sent'));                         

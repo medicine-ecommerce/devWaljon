@@ -15,7 +15,7 @@ class User_model extends MY_model
               CONCAT('[',GROUP_CONCAT('{\"name\":\"',LEFT(product.name, 80),'\",
               			\"product_full_name\":\"',product.name,'\",
               			\"product_id\":\"',product.id,'\",
-              			\"image\":\"',product_images.image,'\",
+              			\"image\":\"',IF(product_images.image!='', product_images.image, 'assets/img/product_dummy.png') ,'\",
               			\"sale_price\":\"',product_item.sale_price,'\",
               			\"product_form\":\"',product_form.name, '\" }'),']')  
             FROM product
