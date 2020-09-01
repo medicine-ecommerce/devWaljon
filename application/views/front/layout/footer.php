@@ -92,6 +92,7 @@
 			                <li><a href="" target="_blank" class="google-plus"><i class='fab fa-google-plus-g'></i></a></li>
 			              </ul>	
 									</div>	
+									<p class="origin-in-heading">Country of Origin : India</p>	
 								</div>
 								<div class="col-md-8">
 									<!-- <img src="<?php echo base_url('assets/img/thumbs-up.png');?>"> -->

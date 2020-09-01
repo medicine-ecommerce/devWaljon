@@ -1089,6 +1089,14 @@ p.advice-type {
 .advice-section {
     margin-top: 20px;
 }
+p.origin-in-heading {
+    
+    margin-top: 15px;
+    color: white;
+    font-size: 16px;
+    display: inline-block;
+    letter-spacing: 1.1px;
+}
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {
