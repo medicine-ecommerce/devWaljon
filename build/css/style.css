@@ -1682,6 +1682,35 @@ span.erro-message {
     font-size: 13px;
     font-weight: 600;
 }
+img.safety-icon {
+    width: 30px;
+}
+.form-control.safety-input {
+    height: 50px;
+    border-radius: 3px;
+    padding: 10px;
+}
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 7px; 
+    width: 18px;
+    height: 18px;
+}
+.custom-radio-button {
+    margin-right: 5px;
+}
+p.safety-title {
+    color: #6882a5;
+    font-weight: 500;
+    font-size: 14px;
+}
+input.form-check-input {
+    cursor: pointer;
+}
+label.form-check-label {
+    cursor: pointer;
+}
+
 /*order page*/
 @media (max-width: 992px) {
     .nav-md .container.body .right_col {

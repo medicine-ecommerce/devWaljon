@@ -646,6 +646,7 @@ Class Vendor extends MY_Controller {
     public function addSingleProduct()
     {
         if ($this->input->server('REQUEST_METHOD') == 'POST'){
+
             $data = array('upload_source'=>'single_upload',
                         'created_by' =>$this->session->userdata('user_id'),
                         //'category_id'=>$this->input->post('category_id'),
@@ -653,7 +654,7 @@ Class Vendor extends MY_Controller {
                         'manufacturer_id'=>$this->input->post('manufacturer_id'),
                         'brand_id'=>$this->input->post('brand_id'),
                         'country'=>$this->input->post('country'),
-                        
+                        'prescription'=>!empty($this->input->post('prescription')) ? 1 : 0,
                         'name'=>$this->input->post('name'),
                         'product_form_id'=>$this->input->post('product_form_id'),
                         'salt_composition_id'=>$this->input->post('salt_composition_id'),
@@ -662,14 +663,25 @@ Class Vendor extends MY_Controller {
                         'when_to_use'=>$this->input->post('when_to_use'),
                         'how_to_use'=>$this->input->post('how_to_use'),
                         'how_to_work'=>$this->input->post('how_to_work'),
-                        'how_to_store'=>$this->input->post('how_to_store'),
-                        'safety_info'=>$this->input->post('safety_info'),
+                        'how_to_store'=> $this->input->post('how_to_store'),
+                        'safety_info'=> $this->input->post('safety_info'),
+                        'safety_alcohol'=>!empty($this->input->post('prescription')) ? $this->input->post('alcohol_is') : null,
+                        'safety_alcohol_description'=>!empty($this->input->post('prescription')) ? $this->input->post('alcohol_description') : null,
+                        'safety_pregnancy'=>!empty($this->input->post('prescription')) ? $this->input->post('pregnancy_is') : null,
+                        'safety_pregnancy_description'=>!empty($this->input->post('prescription')) ? $this->input->post('pregnancy_description') : null,
+                        'safety_breastfeeding'=>!empty($this->input->post('prescription')) ? $this->input->post('breastfeeding_is') : null ,
+                        'safety_breastfeeding_description'=>!empty($this->input->post('prescription')) ? $this->input->post('breastfeeding_description') : null,
+                        'safety_driving'=> !empty($this->input->post('prescription')) ? $this->input->post('driving_is') : null,
+                        'safety_driving_description'=>!empty($this->input->post('prescription')) ? $this->input->post('driving_description') : null,
+                        'safety_kideny'=>!empty($this->input->post('prescription')) ? $this->input->post('kidney_is') : null,
+                        'safety_kideny_description'=>!empty($this->input->post('prescription')) ? $this->input->post('kidney_description') : null,
                         'length'=>$this->input->post('length'),
                         'breadth'=>$this->input->post('breadth'),
                         'height'=>$this->input->post('height'),
                         'weight'=>$this->input->post('weight'),
                         'status'=>'1',
                         'created_at'=>date('Y-m-d H:i:s'));
+
              $lastProductID = $this->Vendor->insertData('product',$data);
             if ($lastProductID) {
                 foreach ($this->input->post('mrp') as $key => $value) {
@@ -743,6 +755,17 @@ Class Vendor extends MY_Controller {
                         'how_to_work'=>$this->input->post('how_to_work'),
                         'how_to_store'=>$this->input->post('how_to_store'),
                         'safety_info'=>$this->input->post('safety_info'),
+                        'prescription'=>!empty($this->input->post('prescription')) ? 1 : 0,
+                        'safety_alcohol'=>!empty($this->input->post('prescription')) ? $this->input->post('alcohol_is') : null,
+                        'safety_alcohol_description'=>!empty($this->input->post('prescription')) ? $this->input->post('alcohol_description') : null,
+                        'safety_pregnancy'=>!empty($this->input->post('prescription')) ? $this->input->post('pregnancy_is') : null,
+                        'safety_pregnancy_description'=>!empty($this->input->post('prescription')) ? $this->input->post('pregnancy_description') : null,
+                        'safety_breastfeeding'=>!empty($this->input->post('prescription')) ? $this->input->post('breastfeeding_is') : null ,
+                        'safety_breastfeeding_description'=>!empty($this->input->post('prescription')) ? $this->input->post('breastfeeding_description') : null,
+                        'safety_driving'=> !empty($this->input->post('prescription')) ? $this->input->post('driving_is') : null,
+                        'safety_driving_description'=>!empty($this->input->post('prescription')) ? $this->input->post('driving_description') : null,
+                        'safety_kideny'=>!empty($this->input->post('prescription')) ? $this->input->post('kidney_is') : null,
+                        'safety_kideny_description'=>!empty($this->input->post('prescription')) ? $this->input->post('kidney_description') : null,
                         'status'=>'1',
                         'created_at'=>date('Y-m-d H:i:s'));
             /*echo "<pre>";

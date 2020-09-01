@@ -210,6 +210,83 @@
 	<div class="feedback" id="questionsSection">
 		<div class="container">
 			<div class="row">
+				<?php if($product_item->prescription==1){ ?>
+				<div class="col-md-7">
+					<h4>Safety Advice</h4> 
+					<div class="row advice-section">						
+						<div class="col-md-2 ">
+							<p class="safety-title">Alcohol</p>
+							<img src="<?php echo base_url(); ?>assets/img/1_alcohol.png" class="safety-icon">
+						</div>
+						<div class="col-md-10 ">
+							<p class="advice-type">
+								<?php if($product_item->safety_alcohol=='safe'){ echo "Safe"; }
+								else if($product_item->safety_alcohol=='unsafe'){ echo "Unsafe"; }
+								else if($product_item->safety_alcohol=='caution'){ echo "Caution"; } 
+								else if($product_item->safety_alcohol=='safe_if_prescribe'){ echo "Safe if Prescribe"; } 
+								else if($product_item->safety_alcohol=='consult_your_doctor'){ echo "Consult Your Doctor"; } ?> </p>
+							<p class="safety-description"><?= $product_item->safety_alcohol_description; ?> </p>
+						</div>
+					</div>
+					<div class="row advice-section">						
+						<div class="col-md-2 ">
+							<p class="safety-title">Pregnancy</p>
+							<img src="<?php echo base_url(); ?>assets/img/1_pregnent.png" class="safety-icon">
+						</div>
+						<div class="col-md-10 ">
+							<p class="advice-type"><?php if($product_item->safety_pregnancy=='safe'){ echo "Safe"; }
+								else if($product_item->safety_pregnancy=='unsafe'){ echo "Unsafe"; }
+								else if($product_item->safety_pregnancy=='caution'){ echo "Caution"; } 
+								else if($product_item->safety_pregnancy=='safe_if_prescribe'){ echo "Safe if Prescribe"; } 
+								else if($product_item->safety_pregnancy=='consult_your_doctor'){ echo "Consult Your Doctor"; } ?></p>
+							<p class="safety-description"><?= $product_item->safety_pregnancy_description; ?></p>
+						</div>
+					</div>
+					<div class="row advice-section">						
+						<div class="col-md-2 ">
+							<p class="safety-title">Breastfeeding</p>
+							<img src="<?php echo base_url(); ?>assets/img/1_lady.png" class="safety-icon">
+						</div>
+						<div class="col-md-10 ">
+							<p class="advice-type"><?php if($product_item->safety_breastfeeding=='safe'){ echo "Safe"; }
+								else if($product_item->safety_breastfeeding=='unsafe'){ echo "Unsafe"; }
+								else if($product_item->safety_breastfeeding=='caution'){ echo "Caution"; } 
+								else if($product_item->safety_breastfeeding=='safe_if_prescribe'){ echo "Safe if Prescribe"; } 
+								else if($product_item->safety_breastfeeding=='consult_your_doctor'){ echo "Consult Your Doctor"; } ?> </p>
+							<p class="safety-description"><?= $product_item->safety_breastfeeding_description; ?></p>
+						</div>
+					</div>
+					<div class="row advice-section">						
+						<div class="col-md-2 ">
+							<p class="safety-title">Driving</p>
+							<img src="<?php echo base_url(); ?>assets/img/1_driving.png" class="safety-icon">
+						</div>
+						<div class="col-md-10 ">
+							<p class="advice-type"><?php if($product_item->safety_driving=='safe'){ echo "Safe"; }
+								else if($product_item->safety_driving=='unsafe'){ echo "Unsafe"; }
+								else if($product_item->safety_driving=='caution'){ echo "Caution"; } 
+								else if($product_item->safety_driving=='safe_if_prescribe'){ echo "Safe if Prescribe"; } 
+								else if($product_item->safety_driving=='consult_your_doctor'){ echo "Consult Your Doctor"; } ?></p>
+							<p class="safety-description"><?= $product_item->safety_driving_description; ?></p>
+						</div>
+					</div>
+					<div class="row advice-section">						
+						<div class="col-md-2 ">
+							<p class="safety-title">Kidney</p>
+							<img src="<?php echo base_url(); ?>assets/img/2_hearts.png" class="safety-icon">
+						</div>
+						<div class="col-md-10 ">
+							<p class="advice-type"><?php if($product_item->safety_kideny=='safe'){ echo "Safe"; }
+								else if($product_item->safety_kideny=='unsafe'){ echo "Unsafe"; }
+								else if($product_item->safety_kideny=='caution'){ echo "Caution"; } 
+								else if($product_item->safety_kideny=='safe_if_prescribe'){ echo "Safe if Prescribe"; } 
+								else if($product_item->safety_kideny=='consult_your_doctor'){ echo "Consult Your Doctor"; } ?></p>
+							<p class="safety-description"><?= $product_item->safety_kideny_description; ?></p>
+						</div>
+					</div>
+
+				</div>
+				<?php } ?>
 				<div class="col-md-7">
 					<div class="product-main-heading">
 						<h4>Frequently Asked Questions</h4>

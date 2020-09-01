@@ -1069,7 +1069,26 @@ p#updateProfileDetails {
     color: #fff;
     padding: 20px;*/
 }
-
+p.safety-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #444;
+}
+img.safety-icon {
+    width: 45px;
+}
+p.safety-description {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+p.advice-type {
+    font-size: 15px;
+    color: #4abdde;
+    margin-bottom: 0;
+}
+.advice-section {
+    margin-top: 20px;
+}
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
   .column {

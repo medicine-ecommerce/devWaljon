@@ -157,7 +157,7 @@
                   </div>
                   <div class="col-md-3">
                      <div class="form-group padding-top-bottom-20">
-                        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" id="prescriptionRequired">
+                        <input type="checkbox" onchange="prescriptionFunction()" name="prescription" id="prescriptionRequired" <?php if($product->prescription==1){ echo "checked"; } ?> >
                         <label for="vehicle1"> Prescription Required</label><br>
                      </div>
                   </div>
@@ -261,6 +261,243 @@
                      </table>
                 </div>
             </div>  
+            <!-- Safety -->
+            <div id="safety-block">
+              <div class="row padding-top-bottom-20">
+                 <div class="col-md-4">
+                    <h6>Safety Information</h6>
+                 </div>
+                 <div class="col-md-8">
+                    <hr class="custom-form-hr">
+                 </div> 
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                       <p class="safety-title">Alcohol is</p>
+                </div>
+                <div class="col-md-9">
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="alcohol1" name="alcohol_is" value="safe" <?php if($product->safety_alcohol=='safe'){ echo "checked"; } ?> >
+                    <label class="form-check-label" for="alcohol1">
+                      <span>Safe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="alcohol2" name="alcohol_is" value="unsafe" <?php  if($product->safety_alcohol=='unsafe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="alcohol2">
+                      <span>Unsafe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="alcohol3" name="alcohol_is" value="caution" <?php  if($product->safety_alcohol=='caution'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="alcohol3">
+                      <span>Caution</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="alcohol4" name="alcohol_is" value="safe_if_prescribe" <?php  if($product->safety_alcohol=='safe_if_prescribe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="alcohol4">
+                      <span>Safe if Prescribe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="alcohol5" name="alcohol_is" value="consult_your_doctor" <?php  if($product->safety_alcohol=='consult_your_doctor'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="alcohol5">
+                      <span>Consult Your Doctor</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <img src="<?php echo base_url(); ?>assets/img/1_alcohol.png" class="safety-icon">
+                </div>
+                <div class="col-md-11">
+                  <div class="form-group">                  
+                    <input type="text" class="form-control safety-input" id="alcohol" name="alcohol_description" value="<?= $product->safety_alcohol_description; ?>">
+                  </div>
+                </div>
+              </div>  
+              <div class="row">
+                <div class="col-md-3">
+                       <p class="safety-title">Pregnancy is</p>
+                </div>
+                <div class="col-md-9">
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="pregnancy1" name="pregnancy_is" value="safe" <?php  if($product->safety_pregnancy=='safe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="pregnancy1">
+                      <span>Safe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="pregnancy2" name="pregnancy_is" value="unsafe" <?php  if($product->safety_pregnancy=='unsafe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="pregnancy2">
+                      <span>Unsafe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="pregnancy3" name="pregnancy_is" value="caution" <?php  if($product->safety_pregnancy=='caution'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="pregnancy3">
+                      <span>Caution</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="pregnancy4" name="pregnancy_is" value="safe_if_prescribe" <?php  if($product->safety_pregnancy=='safe_if_prescribe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="pregnancy4">
+                      <span>Safe if Prescribe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="pregnancy5" name="pregnancy_is" value="consult_your_doctor" <?php  if($product->safety_pregnancy=='consult_your_doctor'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="pregnancy5">
+                      <span>Consult Your Doctor</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <img src="<?php echo base_url(); ?>assets/img/1_pregnent.png" class="safety-icon">
+                </div>
+                <div class="col-md-11">
+                  <div class="form-group">                  
+                    <input type="text" class="form-control safety-input" name="pregnancy_description" id="pregnancy" value="<?= $product->safety_pregnancy_description; ?>">
+                  </div>
+                </div>
+              </div> 
+              <div class="row">
+                <div class="col-md-3">
+                       <p class="safety-title">Breastfeeding is</p>
+                </div>
+                <div class="col-md-9">
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="breastfeeding1" name="breastfeeding_is" value="safe" <?php  if($product->safety_breastfeeding=='safe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="breastfeeding1">
+                      <span>Safe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="breastfeeding2" name="breastfeeding_is" value="unsafe" <?php  if($product->safety_breastfeeding=='unsafe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="breastfeeding2">
+                      <span>Unsafe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="breastfeeding3" name="breastfeeding_is" value="caution" <?php  if($product->safety_breastfeeding=='caution'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="breastfeeding3">
+                      <span>Caution</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="breastfeeding4" name="breastfeeding_is" value="safe_if_prescribe" <?php  if($product->safety_breastfeeding=='safe_if_prescribe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="breastfeeding4">
+                      <span>Safe if Prescribe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="breastfeeding5" name="breastfeeding_is" value="consult_your_doctor" <?php  if($product->safety_breastfeeding=='consult_your_doctor'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="breastfeeding5">
+                      <span>Consult Your Doctor</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <img src="<?php echo base_url(); ?>assets/img/1_lady.png" class="safety-icon">
+                </div>
+                <div class="col-md-11">
+                  <div class="form-group">                  
+                    <input type="text" class="form-control safety-input" id="breastfeeding" name="breastfeeding_description" value="<?= $product->safety_breastfeeding_description; ?>">
+                  </div>
+                </div>
+              </div> 
+              <div class="row">
+                <div class="col-md-3">
+                       <p class="safety-title">Driving is</p>
+                </div>
+                <div class="col-md-9">
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="driving1" name="driving_is" value="safe" <?php  if($product->safety_breastfeeding=='safe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="driving1">
+                      <span>Safe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="driving2" name="driving_is" value="unsafe" <?php  if($product->safety_breastfeeding=='unsafe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="driving2">
+                      <span>Unsafe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="driving3" name="driving_is" value="caution" <?php  if($product->safety_breastfeeding=='caution'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="driving3">
+                      <span>Caution</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="driving4" name="driving_is" value="safe_if_prescribe" <?php  if($product->safety_breastfeeding=='safe_if_prescribe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="driving4">
+                      <span>Safe if Prescribe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="driving5" name="driving_is" value="consult_your_doctor" <?php  if($product->safety_breastfeeding=='consult_your_doctor'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="driving5">
+                      <span>Consult Your Doctor</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <img src="<?php echo base_url(); ?>assets/img/1_driving.png" class="safety-icon">
+                </div>
+                <div class="col-md-11">
+                  <div class="form-group">                  
+                    <input type="text" class="form-control safety-input"  id="driving" name="driving_description" value="<?= $product->safety_driving_description; ?>">
+                  </div>
+                </div>
+              </div>  
+              <div class="row">
+                <div class="col-md-3">
+                       <p class="safety-title">Kidney is</p>
+                </div>
+                <div class="col-md-9">
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="kidney1" name="kidney_is" value="safe" <?php  if($product->safety_driving=='safe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="kidney1">
+                      <span>Safe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="kidney2" name="kidney_is" value="unsafe" <?php if($product->safety_driving=='unsafe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="kidney2">
+                      <span>Unsafe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="kidney3" name="kidney_is" value="caution" <?php if($product->safety_driving=='caution'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="kidney3">
+                      <span>Caution</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="kidney4" name="kidney_is" value="safe_if_prescribe" <?php if($product->safety_driving=='safe_if_prescribe'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="kidney4">
+                      <span>Safe if Prescribe</span>
+                    </label>
+                  </div>
+                  <div class="form-check-inline custom-radio-button">
+                      <input type="radio" class="form-check-input" id="kidney5" name="kidney_is" value="consult_your_doctor" <?php if($product->safety_driving=='consult_your_doctor'){ echo "checked"; } ?>>
+                    <label class="form-check-label" for="kidney5">
+                      <span>Consult Your Doctor</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-1">
+                  <img src="<?php echo base_url(); ?>assets/img/2_hearts.png" class="safety-icon">
+                </div>
+                <div class="col-md-11">
+                  <div class="form-group">                  
+                    <input type="text" class="form-control safety-input" id="kidney" name="kidney_description" value="<?= $product->safety_driving_description; ?>">
+                  </div>
+                </div>
+              </div>  
+            </div>
+            <!-- End -->
           </div> 
           <div class="col-md-4">
             <div>
@@ -333,6 +570,23 @@
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -
 <script type="text/javascript">
+
+  $(document).ready(function(){
+    var priscription = '<?php echo $product->prescription ?>';
+    
+    if(priscription==0 || priscription==''){
+      $("#safety-block").hide();
+    }
+    
+  });
+  function prescriptionFunction(){
+     if($("#prescriptionRequired").prop("checked")=== true){
+        $("#safety-block").show();
+     }else{
+        $("#safety-block").hide();
+      }
+    
+  }
 
   $(document).ready(function(){         
     $(".label-float-top").find("label").addClass("active");    
@@ -610,6 +864,11 @@ $(".form-group .form-control").blur(function(){
       var prescriptionRequired    = $("#prescriptionRequired").val();
       var salt_composition        = $("#salt_composition").val();
       // var image                   = $("#fileElem").val();
+      var alcohol_description       = $("#alcohol").val();
+      var pregnancy_description     = $("#pregnancy").val();
+      var kidney_description        = $("#kidney").val();
+      var breastfeeding_description = $("#breastfeeding").val();
+      var driving_description       = $("#driving").val();
     
       if(category_id==''){
         error += "<p>The Category field is required.</p>";
@@ -652,6 +911,25 @@ $(".form-group .form-control").blur(function(){
       }     
       if(salt_composition==''){
         error += '<p>Salt Composition is required.</p>';
+      }
+      if($("#prescriptionRequired").prop("checked")=== true){
+        
+          if(alcohol_description==''){
+            error += '<p>Safety alcohol description is required.</p>';
+          }
+          if(pregnancy_description==''){
+            error += '<p>Safety pregnancy description is required.</p>';
+          }
+          if(kidney_description==''){
+            error += '<p>Safety Kidney description is required.</p>';
+          }
+          if(breastfeeding_description==''){
+            error += '<p>Safety Breastfeeding description is required.</p>';
+          } 
+          if(driving_description==''){
+            error += '<p>Safety Driving description is required.</p>';
+          } 
+
       }
       
       if(error!=''){        
