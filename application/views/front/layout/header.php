@@ -124,7 +124,10 @@
 
 							<div class="top_bar_content ml-auto">
 								<div class="top_bar_user">
-									<a href="<?php echo base_url('user/cart');?>" class="top_bar_cart"><i class="fa fa-cart-plus"></i>
+									<a href="<?php echo base_url('user/login');?>" class="top-login-img mobile-show">
+										<span class="dummy-img"> <img src="<?php echo base_url('assets/img/dummy_images.png');?>"> </span>
+									</a>
+									<a href="<?php echo base_url('user/cart');?><?php echo base_url('user/cart');?>" class="top_bar_cart"><i class="fa fa-cart-plus"></i>
 										<span class="cart-quantity <?php if(!empty($cart_quantity)){ echo "show-cart";}else{ echo  "hide-cart" ;} ?> "> <?php if(!empty($cart_quantity)){ echo $cart_quantity; } ?> </span>
 									</a>
 									<?php if(empty($this->session->userdata('user_type'))){ ?>
@@ -171,7 +174,7 @@
 							</div>
 						</div>
 						<div class="col-lg-5 col-12 order-lg-2 order-3 text-lg-left text-right">
-							<div class="header_search">
+							<div class="header_search mobile-show">
 								<div class="header_search_content">
 									<div class="header_search_form_container">
 										<form class="header_search_form clearfix">

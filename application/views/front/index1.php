@@ -45,7 +45,8 @@
     <?php if ($home_module->shop_by_health > 0) { ?>
       <div class="icon-slider-section">
       	<div class="icon-heading-section">	    		
-        	<h4><img src="<?php echo base_url('assets/icon/heartrate_for_left_white.png');  ?>">  Shop By Health Concens  <img src="<?php echo base_url('assets/icon/heartrate_for_right_white.png');  ?>"></h4>
+        	<h4><img src="<?php echo base_url('assets/icon/heartrate_for_left_white.png');  ?>">  
+            <span class="long-text">Shop By Health Concens</span>  <img src="<?php echo base_url('assets/icon/heartrate_for_right_white.png');  ?>"></h4>
       	</div>
 
         <div class="owl-slider" >
@@ -242,11 +243,11 @@
 
     jQuery("#carousel0").owlCarousel(
     {
-      autoplay: true,
+      autoplay: false,
       lazyLoad: true,
       loop: true,
       margin: 20,
-                 responsiveClass: true,
+      responsiveClass: true,
       autoHeight: true,
       autoplayTimeout: 3000,
       smartSpeed: 800,
@@ -359,7 +360,7 @@
       nav: true,
       responsive: {
         0: {
-          items: 1
+          items: 2
         },
 
         600: {

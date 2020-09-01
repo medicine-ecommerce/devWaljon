@@ -24,7 +24,9 @@
 /************
 1. 1600px
 ************/
-
+.mobile-show{
+	display: none;
+}
 @media only screen and (max-width: 1600px)
 {
 	
@@ -130,13 +132,31 @@
 
 @media only screen and (max-width: 991px)
 {
+	a.top-login-img.mobile-show {
+	    display: inline-block;
+	    width: 40px;
+	    height: 40px;
+	    margin-right: 10px;
+	}
+	a.top-login-img.mobile-show span{
+	    width: 100%;
+	    height: 100%;
+	    padding-top: 4px;
+    	display: inline-block;
+	}
 	.top_bar
 	{
 		/*display: none;*/
 	}
+	.mobile-show{
+		display: block;
+	}
 	.header_search
 	{
 		height: 50px;
+	}
+	.top_bar_user_content{
+		display: none !important;
 	}
 	.custom_dropdown
 	{
@@ -165,6 +185,8 @@
 	}
 	.top_bar
 	{
+		display: block;
+    	border-bottom: none;
 		height: 40px;
 	}
 	.top_bar_contact_item
@@ -192,8 +214,14 @@
 	}
 	.top_bar_user a
 	{
-		font-size: 12px;
-		line-height: 40px;
+		font-size: 20px;
+	    line-height: 40px;
+	    margin: 0px;
+	    background: #eef1f2;
+	    padding: 2px 8px 5px;
+	    border-radius: 50%;
+	    color: #5f7385;
+	    vertical-align: top;
 	}
 	.user_icon
 	{
@@ -310,6 +338,9 @@
 
 @media only screen and (max-width: 767px)
 {
+	.header_search.mobile-show{
+		display: block;
+	}
 	.header_search
 	{
 		display: none;
@@ -373,6 +404,15 @@
 	{
 		left: calc((100% - 540px) / 2 + 15px);
 	}
+	.countdown-section-heading {
+	    padding: 30px 0px 10px !important;
+	}
+	.offer-block h3 {
+	    font-size: 20px !important;
+	}
+	.deal-text {
+	    margin-top: 30px !important;
+	}
 }
 
 /************
@@ -385,7 +425,7 @@
 	p{font-size: 13px;}
 	.top_bar
 	{
-		display: none;
+		/*display: none;*/
 	}
 	.logo_container, .wishlist_cart
 	{
@@ -477,6 +517,10 @@
 	.header_search
 	{
 		display: none;
+	}
+	.header_search.mobile-show{
+		display: block;
+		margin-top: 12px;
 	}
 	.main_nav
 	{
@@ -780,6 +824,87 @@
 	{
 		display: none;
 	}
+	.icon-heading-section h4 {
+	    font-size: 24px !important;
+	}
+	.brand-heading h3 {
+    	font-size: 24px !important;
+	}
+	.countdown-clock {
+	    height: 90px !important;
+	}   
+	.countdown-text {
+	    padding: 10px 0px !important;
+	    font-size: 35px !important;
+	}	
+	.countdown-section {
+	    height: auto !important;
+	    padding-bottom: 70px;
+	}
+	.product-heading img {
+	    left: 0px !important;
+	}
+	.product-heading-h4 {
+	    padding-left: 25px !important;
+	}
+	a span.product-heading-all {
+	    display: none;
+	}
+	.slider-arrow span[aria-label=Previous] {
+	    margin-left: 25px !important;
+	}
+	.slider-arrow span[aria-label=Next] {
+	    margin-left: 60px !important;
+	}
+	p.Concens-name {
+    	font-size: 18px;
+	}
+	.footer-content {
+	    padding: 40px 0px 0px !important;
+	}
+	span.ft-os-heading {
+	    width: auto !important;
+	    margin-right: 10px !important;
+	}
+	span.off-text {
+	    font-size: 10px !important;
+	}
+	span.offer-text {
+	    font-size: 14px !important;
+	}
+	.shape {
+	    height: 110px !important;
+	    width: 110px !important;
+	    left: 14% !important;
+	}
+	.main-product-name a{
+		word-break: break-word;
+	}
+	.product-price-block span {
+	    font-size: 16px !important;
+	}
+	span.cart-quantity {
+	    top: -5px !important;
+	    right: -5px !important;
+	    left: unset !important; 
+	    font-size: 12px !important;
+	    width: 20px !important;
+	    height: 20px !important;
+	    padding: 1px 6px !important;
+	}
+	.icon-heading-section {
+	    padding-bottom: 0px !important;
+	}
+	.brand-heading {
+	    padding: 30px 0px 0px !important;
+	}
+	.icon-slider-section {
+	    padding: 40px 0px !important;
+	}
+	span.ft-os .round {
+	    padding: 3px 15px 5px !important;
+	    margin: 5px 2px !important;
+	}
 }
 
 /************
@@ -797,7 +922,10 @@
 
 @media only screen and (max-width: 480px)
 {
-	
+	span.long-text {
+	    display: inline-block;
+	    width: calc(100% - 180px);
+	}
 }
 
 /************
